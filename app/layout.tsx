@@ -17,6 +17,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Crewtrace | Efficient Crew Tracking",
   description: "The definitive crew tracking and management solution for construction professionals.",
+  icons: {
+    icon: "/images/crew-trace-icon.png",
+  },
 };
 
 export default function RootLayout({
