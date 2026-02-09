@@ -6,6 +6,24 @@ import { getAllBlogPosts } from "@/lib/blog";
 export const metadata = {
     title: "Blog | Crewtrace",
     description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
+    openGraph: {
+        title: "Blog | Crewtrace",
+        description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
+        images: [
+            {
+                url: "/images/og-ct.png",
+                width: 1200,
+                height: 630,
+                alt: "The Crewtrace Blog",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Blog | Crewtrace",
+        description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
+        images: ["/images/og-ct.png"],
+    },
 };
 
 export default async function BlogPage() {

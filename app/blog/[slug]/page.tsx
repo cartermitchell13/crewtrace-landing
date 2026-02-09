@@ -20,6 +20,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: `${post.title} | Crewtrace Blog`,
         description: post.excerpt,
+        openGraph: {
+            title: `${post.title} | Crewtrace Blog`,
+            description: post.excerpt,
+            images: [
+                {
+                    url: "/images/og-ct.png",
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${post.title} | Crewtrace Blog`,
+            description: post.excerpt,
+            images: ["/images/og-ct.png"],
+        },
     };
 }
 

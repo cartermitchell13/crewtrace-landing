@@ -217,6 +217,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: `Crewtrace for ${industry.name} | GPS Time Tracking`,
         description: industry.heroSubtitle,
+        openGraph: {
+            title: `Crewtrace for ${industry.name} | GPS Time Tracking`,
+            description: industry.heroSubtitle,
+            images: [
+                {
+                    url: "/images/og-ct.png",
+                    width: 1200,
+                    height: 630,
+                    alt: `Crewtrace for ${industry.name}`,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `Crewtrace for ${industry.name} | GPS Time Tracking`,
+            description: industry.heroSubtitle,
+            images: ["/images/og-ct.png"],
+        },
     };
 }
 
