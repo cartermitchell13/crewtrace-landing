@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="relative pt-48 pb-20 px-6 overflow-hidden">
+        <section id="hero" className="relative pt-32 md:pt-36 pb-20 px-6 overflow-hidden scroll-mt-32">
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.05)_0%,transparent_50%)]" />
 

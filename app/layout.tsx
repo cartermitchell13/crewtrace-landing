@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${inter.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${inter.variable} scroll-smooth`}>
       <body
         className="antialiased"
       >
@@ -37,4 +37,3 @@ export default function RootLayout({
     </html>
   );
 }
-

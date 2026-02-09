@@ -1,6 +1,6 @@
 export default function TestimonialsSection() {
     return (
-        <section className="py-24 px-6 bg-white overflow-hidden relative">
+        <section id="results" className="py-24 px-6 bg-white overflow-hidden relative scroll-mt-32">
             {/* Background design */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2" />
 

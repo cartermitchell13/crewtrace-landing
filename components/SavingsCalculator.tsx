@@ -128,7 +128,7 @@ export default function SavingsCalculator() {
     }, [crewSize, avgHourlyRate, hoursPerWeekOnPayroll]);
 
     return (
-        <section className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden">
+        <section id="calculator" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
             {/* Ambient Background */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
 

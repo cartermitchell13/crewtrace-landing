@@ -5,7 +5,8 @@ import { ShieldCheck, AlertTriangle, FileText, UserCheck, ArrowRight } from "luc
 export default function ComplianceAudit() {
     return (
         <section
-            className="py-24 px-6 relative overflow-hidden"
+            id="compliance"
+            className="py-24 px-6 relative overflow-hidden scroll-mt-32"
             style={{ backgroundColor: '#2F27CE' }}
         >
             {/* Design Elements */}
