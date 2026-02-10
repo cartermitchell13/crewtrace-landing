@@ -15,10 +15,10 @@ export default function Hero() {
 
                 <div className="space-y-6 max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-                        Stop paying for hours that were never worked.
+                        Add more money to your bottom line without selling a single extra job.
                     </h1>
                     <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Paper timesheets, messy handwriting, and Sunday night payroll math are costing you thousands. Our GPS-verified clock-in system gives you accurate hours and your weekends back.
+                        Payroll leakage and inaccurate time entries are silently killing your margins. We install a GPS-verified time tracking system that plugs the leaks in one pay cycle, guaranteed to pay for itself or it is free.
                     </p>
                 </div>
 
