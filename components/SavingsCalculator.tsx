@@ -34,8 +34,8 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-sm font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div className="relative h-6 flex items-center">
-                <div className="absolute w-full h-1.5 bg-foreground/[0.03] rounded-full overflow-hidden border border-foreground/[0.02]">
+            <div className="relative h-10 flex items-center touch-none">
+                <div className="absolute w-full h-1.5 bg-foreground/[0.03] rounded-full overflow-hidden border border-foreground/[0.02] pointer-events-none">
                     <div
                         className="h-full bg-primary rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(47,39,206,0.2)]"
                         style={{ width: `${percentage}%` }}
@@ -48,11 +48,12 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     step={step}
                     value={value}
                     onChange={(e) => onChange(Number(e.target.value))}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 touch-auto"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                 />
                 <div
-                    className="absolute h-4 w-4 bg-white border-2 border-primary rounded-full shadow-md transition-all duration-300 pointer-events-none z-0"
-                    style={{ left: `calc(${percentage}% - 8px)` }}
+                    className="absolute h-5 w-5 bg-white border-2 border-primary rounded-full shadow-md transition-all duration-300 pointer-events-none z-0"
+                    style={{ left: `calc(${percentage}% - 10px)` }}
                 />
             </div>
         </div>
@@ -78,7 +79,7 @@ const MiniStat = ({ label, value, icon: Icon, isLoss }: MiniStatProps) => (
 
 export default function SavingsCalculator() {
     const [crewSize, setCrewSize] = useState(12);
-    const [avgHourlyRate, setAvgHourlyRate] = useState(45);
+    const [avgHourlyRate, setAvgHourlyRate] = useState(15);
     const [hoursPerWeekOnPayroll, setHoursPerWeekOnPayroll] = useState(5);
     const [isLoaded, setIsLoaded] = useState(false);
 
