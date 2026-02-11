@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { Calculator, DollarSign, Clock, TrendingDown, TrendingUp, ArrowRight, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 
 interface SliderProps {
@@ -17,6 +17,36 @@ interface SliderProps {
 
 const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange, description }: SliderProps) => {
     const percentage = ((value - min) / (max - min)) * 100;
+    const trackRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+
+    const computeValue = useCallback((clientX: number) => {
+        const track = trackRef.current;
+        if (!track) return;
+        const rect = track.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        const raw = min + ratio * (max - min);
+        const stepped = Math.round(raw / step) * step;
+        const clamped = Math.max(min, Math.min(max, stepped));
+        onChange(clamped);
+    }, [min, max, step, onChange]);
+
+    const handlePointerDown = useCallback((e: React.PointerEvent) => {
+        e.preventDefault();
+        (e.target as HTMLElement).setPointerCapture(e.pointerId);
+        setIsDragging(true);
+        computeValue(e.clientX);
+    }, [computeValue]);
+
+    const handlePointerMove = useCallback((e: React.PointerEvent) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        computeValue(e.clientX);
+    }, [isDragging, computeValue]);
+
+    const handlePointerUp = useCallback(() => {
+        setIsDragging(false);
+    }, []);
 
     return (
         <div className="group space-y-4">
@@ -34,26 +64,31 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-sm font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div className="relative h-10 flex items-center touch-none">
+            <div
+                ref={trackRef}
+                className="relative h-12 flex items-center touch-none cursor-pointer select-none"
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+                {/* Track background */}
                 <div className="absolute w-full h-1.5 bg-foreground/[0.03] rounded-full overflow-hidden border border-foreground/[0.02] pointer-events-none">
+                    {/* Fill bar — no transition for instant response */}
                     <div
-                        className="h-full bg-primary rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(47,39,206,0.2)]"
+                        className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(47,39,206,0.2)]"
                         style={{ width: `${percentage}%` }}
                     />
                 </div>
-                <input
-                    type="range"
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={value}
-                    onChange={(e) => onChange(Number(e.target.value))}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 touch-auto"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                />
+                {/* Thumb — no transition for instant response */}
                 <div
-                    className="absolute h-5 w-5 bg-white border-2 border-primary rounded-full shadow-md transition-all duration-300 pointer-events-none z-0"
-                    style={{ left: `calc(${percentage}% - 10px)` }}
+                    className={`absolute h-6 w-6 bg-white border-2 border-primary rounded-full shadow-md pointer-events-none ${isDragging ? 'scale-110 shadow-lg shadow-primary/20' : ''
+                        }`}
+                    style={{
+                        left: `calc(${percentage}% - 12px)`,
+                        transition: isDragging ? 'none' : 'box-shadow 0.15s ease',
+                    }}
                 />
             </div>
         </div>
