@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
     return (
         <div className="min-h-screen bg-background">
-            <Navbar />
+            <LandingNavbar />
             <main className="pt-32 pb-20 px-6">
                 <div className="max-w-3xl mx-auto">
                     <div className="mb-12">
