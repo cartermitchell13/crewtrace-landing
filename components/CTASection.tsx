@@ -59,10 +59,10 @@ export default function CTASection() {
                                 {/* Button Glow */}
                                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
 
-                                <button className="relative w-full lg:w-auto bg-primary text-white font-bold px-12 py-7 rounded-2xl shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all active:scale-95 text-xl flex items-center justify-center gap-3">
+                                <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="relative w-full lg:w-auto bg-primary text-white font-bold px-12 py-7 rounded-2xl shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all active:scale-95 text-xl flex items-center justify-center gap-3">
                                     Secure Your Free Audit
                                     <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-                                </button>
+                                </a>
 
                                 <p className="mt-6 text-center text-sm font-bold text-foreground/30 uppercase tracking-widest">
                                     Limited spots available this week

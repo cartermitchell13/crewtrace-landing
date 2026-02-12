@@ -103,12 +103,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <p className="text-foreground/60 mb-6">
                             Book a free demo and see how Crewtrace can save your business thousands every month.
                         </p>
-                        <Link
-                            href="/contact"
+                        <a
+                            href="https://cal.com/crewtrace/15min"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex bg-primary text-white font-bold px-6 py-3 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all"
                         >
                             Book Your Free Demo
-                        </Link>
+                        </a>
                     </div>
                 </article>
             </main>

@@ -198,15 +198,17 @@ export default function Navbar() {
 
                 {/* CTA */}
                 <div className="flex items-center gap-3">
-                    <Link
-                        href="/contact"
+                    <a
+                        href="https://cal.com/crewtrace/15min"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hidden sm:block text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
                     >
                         Contact Sales
-                    </Link>
-                    <button className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px]">
+                    </a>
+                    <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px]">
                         Get First Access
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -275,13 +277,15 @@ export default function Navbar() {
                                             className="object-cover"
                                         />
                                     </div>
-                                    <Link
-                                        href="/contact"
+                                    <a
+                                        href="https://cal.com/crewtrace/15min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-button hover:translate-y-[-1px] hover:translate-x-[-1px] transition-all"
                                     >
                                         Book a Demo
                                         <ArrowRight className="w-4 h-4" />
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -392,13 +396,15 @@ export default function Navbar() {
                                     Book a free demo and see how Crewtrace can save you thousands every month.
                                 </p>
                                 <div className="mt-4">
-                                    <Link
-                                        href="/contact"
+                                    <a
+                                        href="https://cal.com/crewtrace/15min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 bg-white text-primary text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors"
                                     >
                                         Book a Demo
                                         <ArrowRight className="w-4 h-4" />
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -556,16 +562,17 @@ function MobileMenu() {
 
                     {/* Mobile CTA */}
                     <div className="mt-6 space-y-3">
-                        <button className="w-full bg-primary text-white font-bold py-3 rounded-xl shadow-button">
+                        <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="block w-full bg-primary text-white font-bold py-3 rounded-xl shadow-button text-center">
                             Get First Access
-                        </button>
-                        <Link
-                            href="/contact"
+                        </a>
+                        <a
+                            href="https://cal.com/crewtrace/15min"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="block w-full text-center py-3 font-medium text-foreground/70"
-                            onClick={() => setIsOpen(false)}
                         >
                             Contact Sales
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

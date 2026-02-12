@@ -113,12 +113,14 @@ export default function IndustriesPage() {
                             Crewtrace works for any trade that needs accurate time tracking.
                             Let's talk about your specific needs.
                         </p>
-                        <Link
-                            href="/contact"
+                        <a
+                            href="https://cal.com/crewtrace/15min"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px]"
                         >
                             Contact Us
-                        </Link>
+                        </a>
                     </div>
                 </section>
             </main>
