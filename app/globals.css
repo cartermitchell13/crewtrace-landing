@@ -53,3 +53,56 @@ h6 {
     border-color: var(--color-foreground);
   }
 }
+
+/* Native range input styling for Savings Calculator */
+.savings-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  touch-action: auto;
+}
+
+/* Thumb - WebKit (Chrome, Safari, Edge) */
+.savings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.savings-slider::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(47, 39, 206, 0.25);
+}
+
+/* Thumb - Firefox */
+.savings-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.savings-slider::-moz-range-thumb:active {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(47, 39, 206, 0.25);
+}
+
+/* Track - Firefox (fill handled via background in component for WebKit) */
+.savings-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.03);
+}

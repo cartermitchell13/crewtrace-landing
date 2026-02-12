@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Calculator, DollarSign, Clock, TrendingDown, TrendingUp, ArrowRight, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 
 interface SliderProps {
@@ -17,88 +17,6 @@ interface SliderProps {
 
 const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange, description }: SliderProps) => {
     const percentage = ((value - min) / (max - min)) * 100;
-    const trackRef = useRef<HTMLDivElement>(null);
-    const draggingRef = useRef(false);
-    const [isDragging, setIsDragging] = useState(false);
-
-    // Stable refs for values that change every render so native listeners always see current values
-    const onChangeRef = useRef(onChange);
-    const minRef = useRef(min);
-    const maxRef = useRef(max);
-    const stepRef = useRef(step);
-    useEffect(() => { onChangeRef.current = onChange; }, [onChange]);
-    useEffect(() => { minRef.current = min; }, [min]);
-    useEffect(() => { maxRef.current = max; }, [max]);
-    useEffect(() => { stepRef.current = step; }, [step]);
-
-    const computeValue = useCallback((clientX: number) => {
-        const track = trackRef.current;
-        if (!track) return;
-        const rect = track.getBoundingClientRect();
-        const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const raw = minRef.current + ratio * (maxRef.current - minRef.current);
-        const stepped = Math.round(raw / stepRef.current) * stepRef.current;
-        const clamped = Math.max(minRef.current, Math.min(maxRef.current, stepped));
-        onChangeRef.current(clamped);
-    }, []);
-
-    // Native touch listeners with { passive: false } so preventDefault() works
-    // before the browser can claim the gesture for scrolling.
-    useEffect(() => {
-        const el = trackRef.current;
-        if (!el) return;
-
-        const onTouchStart = (e: TouchEvent) => {
-            e.preventDefault();
-            draggingRef.current = true;
-            setIsDragging(true);
-            computeValue(e.touches[0].clientX);
-        };
-
-        const onTouchMove = (e: TouchEvent) => {
-            if (!draggingRef.current) return;
-            e.preventDefault();
-            computeValue(e.touches[0].clientX);
-        };
-
-        const onTouchEnd = () => {
-            draggingRef.current = false;
-            setIsDragging(false);
-        };
-
-        el.addEventListener('touchstart', onTouchStart, { passive: false });
-        el.addEventListener('touchmove', onTouchMove, { passive: false });
-        el.addEventListener('touchend', onTouchEnd);
-        el.addEventListener('touchcancel', onTouchEnd);
-
-        return () => {
-            el.removeEventListener('touchstart', onTouchStart);
-            el.removeEventListener('touchmove', onTouchMove);
-            el.removeEventListener('touchend', onTouchEnd);
-            el.removeEventListener('touchcancel', onTouchEnd);
-        };
-    }, [computeValue]);
-
-    // Mouse support for desktop
-    const handleMouseDown = useCallback((e: React.MouseEvent) => {
-        e.preventDefault();
-        draggingRef.current = true;
-        setIsDragging(true);
-        computeValue(e.clientX);
-
-        const onMouseMove = (ev: MouseEvent) => {
-            if (!draggingRef.current) return;
-            computeValue(ev.clientX);
-        };
-        const onMouseUp = () => {
-            draggingRef.current = false;
-            setIsDragging(false);
-            window.removeEventListener('mousemove', onMouseMove);
-            window.removeEventListener('mouseup', onMouseUp);
-        };
-        window.addEventListener('mousemove', onMouseMove);
-        window.addEventListener('mouseup', onMouseUp);
-    }, [computeValue]);
 
     return (
         <div className="group space-y-4">
@@ -116,26 +34,17 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-sm font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div
-                ref={trackRef}
-                className="relative h-12 flex items-center cursor-pointer select-none"
-                onMouseDown={handleMouseDown}
-                style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
-            >
-                {/* Track background */}
-                <div className="absolute w-full h-1.5 bg-foreground/[0.03] rounded-full overflow-hidden border border-foreground/[0.02] pointer-events-none">
-                    <div
-                        className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(47,39,206,0.2)]"
-                        style={{ width: `${percentage}%` }}
-                    />
-                </div>
-                {/* Thumb */}
-                <div
-                    className={`absolute h-6 w-6 bg-white border-2 border-primary rounded-full shadow-md pointer-events-none ${isDragging ? 'scale-110 shadow-lg shadow-primary/20' : ''
-                        }`}
+            <div className="relative py-3">
+                <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={value}
+                    onChange={(e) => onChange(Number(e.target.value))}
+                    className="savings-slider"
                     style={{
-                        left: `calc(${percentage}% - 12px)`,
-                        transition: isDragging ? 'none' : 'box-shadow 0.15s ease',
+                        background: `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, rgba(0,0,0,0.03) ${percentage}%, rgba(0,0,0,0.03) 100%)`,
                     }}
                 />
             </div>
