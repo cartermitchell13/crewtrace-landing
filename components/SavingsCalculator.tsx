@@ -34,7 +34,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-sm font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div className="relative py-3">
+            <div className="relative py-4 z-10">
                 <input
                     type="range"
                     min={min}
@@ -123,7 +123,7 @@ export default function SavingsCalculator() {
     return (
         <section id="calculator" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
             {/* Ambient Background */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="flex flex-col lg:flex-row gap-20 items-stretch">
@@ -143,7 +143,7 @@ export default function SavingsCalculator() {
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-10 shadow-sm space-y-10 ring-1 ring-foreground/5 relative">
+                        <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-10 shadow-sm space-y-10 ring-1 ring-foreground/5 relative z-20">
                             <Slider
                                 label="Crew Size"
                                 description="Field workers tracking time"
