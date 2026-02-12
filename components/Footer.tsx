@@ -3,41 +3,13 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="mt-40">
+        <footer>
             <div className="max-w-full mx-auto bg-[#050315] rounded-t-[4rem] p-12 md:p-20 md:pb-12 shadow-2xl relative overflow-hidden">
                 {/* Subtle background glow */}
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
 
                 <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center border-b border-white/10 pb-16">
-                        <div className="space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                                Ready to modernize <br />
-                                <span className="text-primary-foreground/60">your job site?</span>
-                            </h2>
-                            <p className="text-white/60 text-lg max-w-md">
-                                Join the construction teams already tracking time with precision and compliance.
-                            </p>
-                        </div>
-
-                        <div className="space-y-4">
-                            <div className="flex flex-col sm:flex-row gap-3 p-1.5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="flex-1 px-4 py-3 outline-none text-white placeholder:text-white/40 bg-transparent rounded-xl"
-                                />
-                                <button className="bg-primary text-white font-bold px-8 py-3 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] whitespace-nowrap">
-                                    Join Waitlist
-                                </button>
-                            </div>
-                            <p className="text-xs text-white/40">
-                                Start your journey towards stress-free crew management today.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
                         <div className="col-span-2 md:col-span-1 space-y-6">
                             <Link href="/">
                                 <Image
@@ -67,7 +39,6 @@ export default function Footer() {
                             <ul className="space-y-4">
                                 <li><Link href="/about" className="text-white/60 hover:text-white transition-colors text-sm">About Us</Link></li>
                                 <li><Link href="/contact" className="text-white/60 hover:text-white transition-colors text-sm">Contact</Link></li>
-                                <li><Link href="/careers" className="text-white/60 hover:text-white transition-colors text-sm">Careers</Link></li>
                             </ul>
                         </div>
 

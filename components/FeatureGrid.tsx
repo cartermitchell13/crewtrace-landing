@@ -145,9 +145,9 @@ export default function FeatureGrid() {
                                     <div className="text-4xl font-bold text-secondary mb-1">2 Weeks</div>
                                     <div className="text-sm font-bold opacity-80 uppercase tracking-widest">Time to ROI</div>
                                 </div>
-                                <button className="bg-white text-primary hover:bg-white/90 transition-all font-bold px-8 py-4 rounded-2xl shadow-xl shadow-black/10 flex items-center justify-center gap-2">
+                                <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-white text-primary hover:bg-white/90 transition-all font-bold px-8 py-4 rounded-2xl shadow-xl shadow-black/10 flex items-center justify-center gap-2">
                                     Calculate Your ROI <ArrowUpRight size={18} />
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

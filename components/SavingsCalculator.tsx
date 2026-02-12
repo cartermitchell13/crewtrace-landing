@@ -255,10 +255,10 @@ export default function SavingsCalculator() {
                                     </div>
 
                                     <div className="flex flex-col justify-end gap-6">
-                                        <button className="bg-white text-primary hover:bg-white/90 active:scale-95 transition-all font-bold px-10 py-5 rounded-2xl shadow-xl shadow-black/10 flex items-center justify-center gap-3 text-lg group whitespace-nowrap">
+                                        <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-white text-primary hover:bg-white/90 active:scale-95 transition-all font-bold px-10 py-5 rounded-2xl shadow-xl shadow-black/10 flex items-center justify-center gap-3 text-lg group whitespace-nowrap">
                                             Reclaim Your Profit
                                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                        </button>
+                                        </a>
                                         <div className="flex flex-col gap-1 text-center">
                                             <p className="text-white/40 text-xs font-medium">
                                                 Verified accuracy from day 1. Zero risk implementation.

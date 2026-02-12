@@ -75,7 +75,7 @@ export default function ProcessSection() {
                         </div>
 
                         <div className="pt-4">
-                            <button className="group relative">
+                            <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="group relative">
                                 {/* Glow effect */}
                                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
@@ -83,7 +83,7 @@ export default function ProcessSection() {
                                     Start Your Implementation
                                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                 </div>
-                            </button>
+                            </a>
                         </div>
                     </div>
 

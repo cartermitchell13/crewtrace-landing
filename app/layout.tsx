@@ -17,8 +17,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Crewtrace | Efficient Crew Tracking",
   description: "The definitive crew tracking and management solution for construction professionals.",
+  manifest: "/manifest.json",
   icons: {
-    icon: "/images/crew-trace-icon.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon1.png", type: "image/png" },
+      { url: "/icon0.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Crewtrace | Efficient Crew Tracking",

@@ -78,9 +78,9 @@ export default function ComplianceAudit() {
                 </div>
 
                 <div className="mt-16 text-center">
-                    <button className="bg-white text-primary hover:bg-white/90 transition-all font-bold px-10 py-5 rounded-2xl shadow-xl shadow-black/20 flex items-center justify-center gap-2 mx-auto text-lg hover:scale-[1.02]">
+                    <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-white text-primary hover:bg-white/90 transition-all font-bold px-10 py-5 rounded-2xl shadow-xl shadow-black/20 flex items-center justify-center gap-2 mx-auto text-lg hover:scale-[1.02]">
                         Protect Your Business Now <ArrowRight size={20} />
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CTASection() {
     return (
-        <section id="audit" className="py-32 px-6 relative bg-white overflow-hidden scroll-mt-32">
+        <section id="audit" className="pt-32 pb-52 px-6 relative bg-white overflow-hidden scroll-mt-32">
             {/* Soft background accents */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
