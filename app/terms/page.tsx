@@ -39,7 +39,7 @@ export default function TermsPage() {
                         <section className="space-y-4">
                             <h2 className="text-2xl font-bold tracking-tight text-foreground">2. Description of Services</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
-                                Crewtrace provides a GPS-verified time tracking and workforce management platform designed for the construction industry. Our Services include, but are not limited to:
+                                Crewtrace provides a GPS-verified time tracking and workforce management platform designed for the construction industry, accessible via our website at getcrewtrace.com and our application hosted at crewtrace.app. Our Services include, but are not limited to:
                             </p>
                             <ul className="list-disc pl-6 space-y-2 text-foreground/70 font-medium leading-relaxed">
                                 <li>GPS geofenced clock-in and clock-out functionality</li>
@@ -177,11 +177,11 @@ export default function TermsPage() {
                             <div className="bg-white border border-foreground/5 rounded-2xl p-6 space-y-3">
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Email:</strong>{" "}
-                                    <a href="mailto:legal@crewtrace.com" className="text-primary hover:underline">legal@crewtrace.com</a>
+                                    <a href="mailto:carter@getcrewtrace.com" className="text-primary hover:underline">carter@getcrewtrace.com</a>
                                 </p>
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Website:</strong>{" "}
-                                    <a href="https://crewtrace.com" className="text-primary hover:underline">crewtrace.com</a>
+                                    <a href="https://getcrewtrace.com" className="text-primary hover:underline">getcrewtrace.com</a>
                                 </p>
                             </div>
                         </section>

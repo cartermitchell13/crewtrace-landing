@@ -117,7 +117,7 @@ export default function PrivacyPage() {
                             </ul>
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 To exercise any of these rights, please contact us at{" "}
-                                <a href="mailto:privacy@crewtrace.com" className="text-primary hover:underline font-bold">privacy@crewtrace.com</a>.
+                                <a href="mailto:carter@getcrewtrace.com" className="text-primary hover:underline font-bold">carter@getcrewtrace.com</a>.
                             </p>
                         </section>
 
@@ -150,11 +150,11 @@ export default function PrivacyPage() {
                             <div className="bg-white border border-foreground/5 rounded-2xl p-6 space-y-3">
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Email:</strong>{" "}
-                                    <a href="mailto:privacy@crewtrace.com" className="text-primary hover:underline">privacy@crewtrace.com</a>
+                                    <a href="mailto:carter@getcrewtrace.com" className="text-primary hover:underline">carter@getcrewtrace.com</a>
                                 </p>
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Website:</strong>{" "}
-                                    <a href="https://crewtrace.com" className="text-primary hover:underline">crewtrace.com</a>
+                                    <a href="https://getcrewtrace.com" className="text-primary hover:underline">getcrewtrace.com</a>
                                 </p>
                             </div>
                         </section>
