@@ -18,35 +18,87 @@ interface SliderProps {
 const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange, description }: SliderProps) => {
     const percentage = ((value - min) / (max - min)) * 100;
     const trackRef = useRef<HTMLDivElement>(null);
+    const draggingRef = useRef(false);
     const [isDragging, setIsDragging] = useState(false);
+
+    // Stable refs for values that change every render so native listeners always see current values
+    const onChangeRef = useRef(onChange);
+    const minRef = useRef(min);
+    const maxRef = useRef(max);
+    const stepRef = useRef(step);
+    useEffect(() => { onChangeRef.current = onChange; }, [onChange]);
+    useEffect(() => { minRef.current = min; }, [min]);
+    useEffect(() => { maxRef.current = max; }, [max]);
+    useEffect(() => { stepRef.current = step; }, [step]);
 
     const computeValue = useCallback((clientX: number) => {
         const track = trackRef.current;
         if (!track) return;
         const rect = track.getBoundingClientRect();
         const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const raw = min + ratio * (max - min);
-        const stepped = Math.round(raw / step) * step;
-        const clamped = Math.max(min, Math.min(max, stepped));
-        onChange(clamped);
-    }, [min, max, step, onChange]);
+        const raw = minRef.current + ratio * (maxRef.current - minRef.current);
+        const stepped = Math.round(raw / stepRef.current) * stepRef.current;
+        const clamped = Math.max(minRef.current, Math.min(maxRef.current, stepped));
+        onChangeRef.current(clamped);
+    }, []);
 
-    const handlePointerDown = useCallback((e: React.PointerEvent) => {
-        e.preventDefault();
-        (e.target as HTMLElement).setPointerCapture(e.pointerId);
-        setIsDragging(true);
-        computeValue(e.clientX);
+    // Native touch listeners with { passive: false } so preventDefault() works
+    // before the browser can claim the gesture for scrolling.
+    useEffect(() => {
+        const el = trackRef.current;
+        if (!el) return;
+
+        const onTouchStart = (e: TouchEvent) => {
+            e.preventDefault();
+            draggingRef.current = true;
+            setIsDragging(true);
+            computeValue(e.touches[0].clientX);
+        };
+
+        const onTouchMove = (e: TouchEvent) => {
+            if (!draggingRef.current) return;
+            e.preventDefault();
+            computeValue(e.touches[0].clientX);
+        };
+
+        const onTouchEnd = () => {
+            draggingRef.current = false;
+            setIsDragging(false);
+        };
+
+        el.addEventListener('touchstart', onTouchStart, { passive: false });
+        el.addEventListener('touchmove', onTouchMove, { passive: false });
+        el.addEventListener('touchend', onTouchEnd);
+        el.addEventListener('touchcancel', onTouchEnd);
+
+        return () => {
+            el.removeEventListener('touchstart', onTouchStart);
+            el.removeEventListener('touchmove', onTouchMove);
+            el.removeEventListener('touchend', onTouchEnd);
+            el.removeEventListener('touchcancel', onTouchEnd);
+        };
     }, [computeValue]);
 
-    const handlePointerMove = useCallback((e: React.PointerEvent) => {
-        if (!isDragging) return;
+    // Mouse support for desktop
+    const handleMouseDown = useCallback((e: React.MouseEvent) => {
         e.preventDefault();
+        draggingRef.current = true;
+        setIsDragging(true);
         computeValue(e.clientX);
-    }, [isDragging, computeValue]);
 
-    const handlePointerUp = useCallback(() => {
-        setIsDragging(false);
-    }, []);
+        const onMouseMove = (ev: MouseEvent) => {
+            if (!draggingRef.current) return;
+            computeValue(ev.clientX);
+        };
+        const onMouseUp = () => {
+            draggingRef.current = false;
+            setIsDragging(false);
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+        };
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
+    }, [computeValue]);
 
     return (
         <div className="group space-y-4">
@@ -66,22 +118,18 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
             </div>
             <div
                 ref={trackRef}
-                className="relative h-12 flex items-center touch-none cursor-pointer select-none"
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
+                className="relative h-12 flex items-center cursor-pointer select-none"
+                onMouseDown={handleMouseDown}
+                style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'none' }}
             >
                 {/* Track background */}
                 <div className="absolute w-full h-1.5 bg-foreground/[0.03] rounded-full overflow-hidden border border-foreground/[0.02] pointer-events-none">
-                    {/* Fill bar — no transition for instant response */}
                     <div
                         className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(47,39,206,0.2)]"
                         style={{ width: `${percentage}%` }}
                     />
                 </div>
-                {/* Thumb — no transition for instant response */}
+                {/* Thumb */}
                 <div
                     className={`absolute h-6 w-6 bg-white border-2 border-primary rounded-full shadow-md pointer-events-none ${isDragging ? 'scale-110 shadow-lg shadow-primary/20' : ''
                         }`}
