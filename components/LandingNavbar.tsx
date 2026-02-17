@@ -61,7 +61,7 @@ export default function LandingNavbar() {
                 </button>
             </div>
 
-            <div className={`md:hidden mt-2 transition-all duration-200 ${mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            <div className={`md:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-200 ${mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
                 <div className="bg-white/95 backdrop-blur-md border border-foreground/10 shadow-xl rounded-2xl p-3">
                     {navLinks.map((link) => (
                         <a
