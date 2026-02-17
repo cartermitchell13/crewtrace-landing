@@ -1,8 +1,8 @@
 import LandingNavbar from "@/components/LandingNavbar";
 import Hero from "@/components/Hero";
 import FeatureGrid from "@/components/FeatureGrid";
-import SavingsCalculator from "@/components/SavingsCalculator";
 import ComplianceAudit from "@/components/ComplianceAudit";
+import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
@@ -16,8 +16,8 @@ export default function Home() {
       <main>
         <Hero />
         <FeatureGrid />
-        <SavingsCalculator />
         <ComplianceAudit />
+        <LiteSavingsCalculator />
         <ProcessSection />
         <TestimonialsSection />
         <FAQSection />

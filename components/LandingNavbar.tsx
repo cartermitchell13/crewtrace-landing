@@ -5,11 +5,10 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
-    { label: "Features", href: "#features" },
-    { label: "Calculator", href: "#calculator" },
-    { label: "How It Works", href: "#process" },
-    { label: "Results", href: "#results" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Features", href: "/#features" },
+    { label: "How It Works", href: "/#process" },
+    { label: "Results", href: "/#results" },
+    { label: "FAQ", href: "/#faq" },
 ];
 
 export default function LandingNavbar() {
@@ -18,7 +17,7 @@ export default function LandingNavbar() {
     return (
         <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
             <div className="bg-white/85 backdrop-blur-md border border-white/30 shadow-input rounded-2xl px-5 md:px-6 py-3 flex items-center justify-between">
-                <a href="#hero" className="flex items-center">
+                <a href="/" className="flex items-center">
                     <Image
                         src="/images/crew-trace-logo.png"
                         alt="Crewtrace Logo"

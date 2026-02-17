@@ -322,17 +322,17 @@ export default function Navbar() {
                                 </div>
 
                                 <div className="mt-4 pt-4 border-t border-foreground/5">
-                                    <h3 className="text-xs font-semibold text-foreground/40 uppercase tracking-wider mb-3">Tools</h3>
+                                    <h3 className="text-xs font-semibold text-foreground/40 uppercase tracking-wider mb-3">Resources</h3>
                                     <Link
-                                        href="#calculator"
+                                        href="/blog"
                                         className="group flex items-center gap-3 p-3 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors"
                                     >
                                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                                            <Calculator className="w-5 h-5 text-primary" />
+                                            <FileText className="w-5 h-5 text-primary" />
                                         </div>
                                         <div>
-                                            <h4 className="text-sm font-semibold text-primary">ROI Calculator</h4>
-                                            <p className="text-xs text-foreground/50 mt-0.5">See your potential savings</p>
+                                            <h4 className="text-sm font-semibold text-primary">Industry Blog</h4>
+                                            <p className="text-xs text-foreground/50 mt-0.5">Insights and best practices</p>
                                         </div>
                                     </Link>
                                 </div>
@@ -342,9 +342,9 @@ export default function Navbar() {
                             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] p-6 flex flex-col border-l border-foreground/5">
                                 <span className="text-xs font-semibold text-primary uppercase tracking-wider">Latest Case Study</span>
                                 <h4 className="text-lg font-bold text-foreground mt-2">S&W Waterproofing Saves $4,200/Month</h4>
-                                <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
-                                    Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
-                                </p>
+                                    <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
+                                        Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
+                                    </p>
                                 <div className="mt-4">
                                     <Link
                                         href="/case-studies"
