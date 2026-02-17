@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Calculator, ArrowRight, BarChart3, Clock, DollarSign, TrendingDown } from "lucide-react";
+import { Calculator, ArrowRight, TrendingDown } from "lucide-react";
 
 interface SliderProps {
     label: string;
@@ -107,18 +107,6 @@ export default function LiteSavingsCalculator() {
                             Most construction companies lose 3-5% of their total payroll to manual time tracking errors, rounding, and administrative overhead.
                         </p>
                         
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <a 
-                                href="https://cal.com/crewtrace/15min" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-base group"
-                            >
-                                <BarChart3 size={18} />
-                                Get Full Profit Audit
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </a>
-                        </div>
                     </div>
 
                     {/* Right: Lite Calculator Card */}
