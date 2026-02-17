@@ -58,14 +58,19 @@ h6 {
 .savings-slider {
   --slider-track-height: 6px;
   --slider-hit-height: 22px;
+  --slider-thumb-size: 20px;
   -webkit-appearance: none;
   appearance: none;
+  display: block;
   width: 100%;
   height: var(--slider-hit-height);
+  margin: 0;
+  padding: 0;
   border-radius: 999px;
   outline: none;
   cursor: pointer;
-  touch-action: pan-y;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% var(--slider-track-height);
@@ -73,7 +78,8 @@ h6 {
 
 @media (pointer: coarse) {
   .savings-slider {
-    --slider-hit-height: 28px;
+    --slider-hit-height: 32px;
+    --slider-thumb-size: 24px;
   }
 }
 
@@ -81,8 +87,8 @@ h6 {
 .savings-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
   border-radius: 50%;
   background: white;
   border: 2px solid var(--primary);
@@ -97,8 +103,8 @@ h6 {
 
 /* Thumb - Firefox */
 .savings-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
   border-radius: 50%;
   background: white;
   border: 2px solid var(--primary);

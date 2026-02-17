@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback, useRef } from "react";
+import { useState, useMemo, useEffect, useCallback, useRef, type PointerEvent } from "react";
 import {
     Calculator, DollarSign, Clock, TrendingDown, TrendingUp,
     ArrowRight, AlertCircle, CheckCircle2, Users, MapPin,
@@ -24,6 +24,45 @@ interface SliderProps {
 
 const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange, description }: SliderProps) => {
     const percentage = ((value - min) / (max - min)) * 100;
+
+    const updateValueFromPointer = useCallback(
+        (clientX: number, container: HTMLDivElement) => {
+            const { left, width } = container.getBoundingClientRect();
+            if (width <= 0) return;
+
+            const ratio = Math.max(0, Math.min(1, (clientX - left) / width));
+            const rawValue = min + ratio * (max - min);
+            const steppedValue = min + Math.round((rawValue - min) / step) * step;
+            const clampedValue = Math.max(min, Math.min(max, steppedValue));
+
+            onChange(clampedValue);
+        },
+        [min, max, step, onChange]
+    );
+
+    const handlePointerDown = useCallback(
+        (event: PointerEvent<HTMLDivElement>) => {
+            if (event.pointerType === "mouse" && event.button !== 0) return;
+            event.currentTarget.setPointerCapture(event.pointerId);
+            updateValueFromPointer(event.clientX, event.currentTarget);
+        },
+        [updateValueFromPointer]
+    );
+
+    const handlePointerMove = useCallback(
+        (event: PointerEvent<HTMLDivElement>) => {
+            if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+            updateValueFromPointer(event.clientX, event.currentTarget);
+        },
+        [updateValueFromPointer]
+    );
+
+    const handlePointerRelease = useCallback((event: PointerEvent<HTMLDivElement>) => {
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+    }, []);
+
     return (
         <div className="group space-y-4">
             <div className="flex justify-between items-end">
@@ -40,7 +79,13 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-sm font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div className="relative py-4 z-10">
+            <div
+                className="relative py-4 z-10 touch-none select-none"
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerRelease}
+                onPointerCancel={handlePointerRelease}
+            >
                 <input
                     type="range"
                     min={min}
