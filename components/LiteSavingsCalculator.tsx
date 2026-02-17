@@ -26,7 +26,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     {prefix}{value.toLocaleString()}<span className="text-xs font-medium text-foreground/40 ml-0.5">{unit}</span>
                 </div>
             </div>
-            <div className="relative py-2">
+            <div className="relative py-4 z-10">
                 <input
                     type="range"
                     min={min}
@@ -34,7 +34,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     step={step}
                     value={value}
                     onChange={(e) => onChange(Number(e.target.value))}
-                    className="savings-slider h-1.5"
+                    className="savings-slider"
                     style={{
                         background: `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, rgba(0,0,0,0.05) ${percentage}%, rgba(0,0,0,0.05) 100%)`,
                     }}
