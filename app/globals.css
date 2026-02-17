@@ -56,14 +56,25 @@ h6 {
 
 /* Native range input styling for Savings Calculator */
 .savings-slider {
+  --slider-track-height: 6px;
+  --slider-hit-height: 22px;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
+  height: var(--slider-hit-height);
   border-radius: 999px;
   outline: none;
   cursor: pointer;
   touch-action: pan-y;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% var(--slider-track-height);
+}
+
+@media (pointer: coarse) {
+  .savings-slider {
+    --slider-hit-height: 34px;
+  }
 }
 
 /* Thumb - WebKit (Chrome, Safari, Edge) */
@@ -102,7 +113,7 @@ h6 {
 
 /* Track - Firefox (fill handled via background in component for WebKit) */
 .savings-slider::-moz-range-track {
-  height: 6px;
+  height: var(--slider-track-height);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.03);
 }
