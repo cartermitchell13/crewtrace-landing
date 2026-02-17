@@ -50,7 +50,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     onChange={(e) => onChange(Number(e.target.value))}
                     className="savings-slider"
                     style={{
-                        background: `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, rgba(0,0,0,0.03) ${percentage}%, rgba(0,0,0,0.03) 100%)`,
+                        backgroundImage: `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, rgba(0,0,0,0.03) ${percentage}%, rgba(0,0,0,0.03) 100%)`,
                     }}
                 />
             </div>
@@ -843,3 +843,4 @@ export default function SavingsCalculator() {
         </section>
     );
 }
+

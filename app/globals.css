@@ -73,7 +73,7 @@ h6 {
 
 @media (pointer: coarse) {
   .savings-slider {
-    --slider-hit-height: 34px;
+    --slider-hit-height: 28px;
   }
 }
 
