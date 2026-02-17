@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import {
     Calculator, DollarSign, Clock, TrendingDown, TrendingUp,
     ArrowRight, AlertCircle, CheckCircle2, Users, MapPin,
@@ -179,6 +179,7 @@ const OVERTIME_OPTIONS: { value: OvertimeLevel; label: string; description: stri
 export default function SavingsCalculator() {
     const [phase, setPhase] = useState<Phase>("input");
     const [loadingStep, setLoadingStep] = useState(0);
+    const generatingCardRef = useRef<HTMLDivElement>(null);
 
     // Inputs
     const [crewSize, setCrewSize] = useState(12);
@@ -351,6 +352,23 @@ export default function SavingsCalculator() {
         setLoadingStep(0);
     }, []);
 
+    useEffect(() => {
+        if (phase !== "generating") return;
+
+        const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth";
+
+        const frameId = window.requestAnimationFrame(() => {
+            generatingCardRef.current?.scrollIntoView({
+                behavior,
+                block: "center",
+            });
+        });
+
+        return () => window.cancelAnimationFrame(frameId);
+    }, [phase]);
+
     // ─── PHASE: Input ────────────────────────────────────────────
 
     if (phase === "input") {
@@ -515,7 +533,7 @@ export default function SavingsCalculator() {
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-2xl mx-auto relative z-10">
-                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
+                    <div ref={generatingCardRef} className="bg-white rounded-[2.5rem] border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
                             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                                 <Loader2 size={28} className="text-primary animate-spin" />
