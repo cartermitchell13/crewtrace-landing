@@ -1,4 +1,4 @@
-import { LucideIcon, MapPin, BarChart3, FileCheck2, CreditCard, Clock, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { LucideIcon, MapPin, BarChart3, FileCheck2, FileDown, Clock, CheckCircle2, ArrowUpRight } from "lucide-react";
 import React from "react";
 
 interface BentoCardProps {
@@ -94,34 +94,66 @@ export default function FeatureGrid() {
                         icon={BarChart3}
                         className="md:col-span-2 md:row-span-1"
                         badge="Real-time"
-                    />
-
-                    {/* Feature 3: One-Click Payroll (1x1) */}
-                    <BentoCard
-                        title="One-Click Sync"
-                        description="Verified hours flow straight into Sage, QuickBooks, or Procore."
-                        icon={CreditCard}
-                        className="md:col-span-1 md:row-span-1"
                     >
-                        <div className="flex gap-2 mt-2 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
-                            <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-[8px]">Sage</div>
-                            <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-[8px]">QB</div>
-                            <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-[8px]">PC</div>
+                        <div className="flex items-end gap-1.5 h-12 mt-2">
+                            {[
+                                { h: "h-[30%]", label: "Mon" },
+                                { h: "h-[55%]", label: "Tue" },
+                                { h: "h-[40%]", label: "Wed" },
+                                { h: "h-[75%]", label: "Thu" },
+                                { h: "h-[60%]", label: "Fri" },
+                            ].map(({ h, label }) => (
+                                <div key={label} className="flex flex-col items-center gap-1 flex-1 h-full justify-end">
+                                    <div className={`w-full rounded-t-md bg-slate-200 group-hover:bg-primary/50 transition-colors duration-500 ${h}`} />
+                                </div>
+                            ))}
+                            {/* Overrun bar — highlights red on hover */}
+                            <div className="flex flex-col items-center gap-1 flex-1 h-full justify-end">
+                                <div className="w-full h-[90%] rounded-t-md bg-slate-200 group-hover:bg-red-400/70 transition-colors duration-500" />
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-1 mt-1.5">
+                            {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d, i) => (
+                                <div key={d} className={`flex-1 text-center text-[9px] font-bold tracking-wider uppercase transition-colors duration-500 ${i === 5 ? "text-red-400" : "text-slate-400"}`}>{d}</div>
+                            ))}
                         </div>
                     </BentoCard>
 
-                    {/* Feature 4: Automated Reports (1x1) */}
+                    {/* Feature 3: CSV Exports (1x1) */}
                     <BentoCard
-                        title="Zero Data Entry"
-                        description="Reports generate themselves. No more chasing timecards."
+                        title="Flexible CSV Exports"
+                        description="Export payroll-ready files in the format your software expects — no manual reformatting."
+                        icon={FileDown}
+                        className="md:col-span-1 md:row-span-1"
+                    >
+                        <div className="flex flex-col gap-1.5 mt-2">
+                            {["Standard CSV", "ADP", "QuickBooks"].map((label) => (
+                                <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 group-hover:border-primary/20 transition-colors">
+                                    <div className="h-1.5 w-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors" />
+                                    <span className="text-xs font-semibold text-foreground/60 group-hover:text-foreground/80 transition-colors">{label}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </BentoCard>
+
+                    {/* Feature 4: Instant Payroll Reports (1x1) */}
+                    <BentoCard
+                        title="Instant Payroll Reports"
+                        description="When the shift ends, the report is already done. Hours, costs, and crew — compiled automatically."
                         icon={FileCheck2}
                         className="md:col-span-1 md:row-span-1"
                     >
-                        <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-2 group-hover:border-primary/20 transition-colors">
-                            <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                                <div className="h-full w-full bg-primary/40 group-hover:translate-x-full transition-transform duration-[2000ms] ease-in-out" />
+                        <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 group-hover:border-primary/20 transition-colors space-y-2">
+                            <div className="flex items-center justify-between">
+                                <div className="space-y-1">
+                                    <div className="h-2 w-20 bg-slate-200 rounded-full" />
+                                    <div className="h-2 w-14 bg-slate-100 rounded-full" />
+                                </div>
+                                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-200 group-hover:bg-emerald-100 text-slate-400 group-hover:text-emerald-600 text-[10px] font-bold uppercase tracking-wider transition-all duration-500">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400 group-hover:bg-emerald-500 group-hover:animate-pulse transition-colors duration-500" />
+                                    Report Ready
+                                </span>
                             </div>
-                            <div className="h-1.5 w-[70%] bg-slate-200 rounded-full" />
                         </div>
                     </BentoCard>
 
@@ -159,7 +191,20 @@ export default function FeatureGrid() {
                         icon={Clock}
                         className="md:col-span-1 md:row-span-1"
                         iconBgColor="bg-orange-500/10"
-                    />
+                    >
+                        <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-100 group-hover:border-orange-200 transition-colors duration-500">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-500 transition-colors">Friday</div>
+                                    <div className="text-xl font-bold text-slate-300 group-hover:text-slate-700 transition-colors duration-500 tabular-nums">5:00 PM</div>
+                                </div>
+                                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-200 group-hover:bg-orange-100 text-slate-400 group-hover:text-orange-600 text-[10px] font-bold uppercase tracking-wider transition-all duration-500">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400 group-hover:bg-orange-400 group-hover:animate-pulse transition-colors duration-500" />
+                                    Weekend
+                                </span>
+                            </div>
+                        </div>
+                    </BentoCard>
                 </div>
             </div>
         </section>
