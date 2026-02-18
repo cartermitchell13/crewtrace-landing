@@ -1,5 +1,6 @@
 import { LucideIcon, Rocket, Link2, TrendingUp, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import React from "react";
+import Button from "@/components/Button";
 
 interface Step {
     id: string;
@@ -22,8 +23,8 @@ const steps: Step[] = [
     {
         id: "link",
         number: "02",
-        title: "One-Tap Launch",
-        description: "No apps for your crew to download. We send a simple SMS link. Workers create an account in 30 seconds and tap one button to log hours.",
+        title: "Crew Onboarding",
+        description: "Your crew gets a text with a download link. They install the iOS or Android app, create an account in under a minute, and they're ready to clock in — no training needed.",
         icon: Link2,
         benefit: "100% Adoption Rate"
     },
@@ -62,7 +63,7 @@ export default function ProcessSection() {
                         <div className="pt-6 space-y-4">
                             <div className="flex items-center gap-3 text-sm font-bold text-foreground/70">
                                 <CheckCircle2 size={18} className="text-primary" />
-                                <span>Accounting System Sync</span>
+                                <span>Payroll-Ready CSV Export</span>
                             </div>
                             <div className="flex items-center gap-3 text-sm font-bold text-foreground/70">
                                 <CheckCircle2 size={18} className="text-primary" />
@@ -75,15 +76,9 @@ export default function ProcessSection() {
                         </div>
 
                         <div className="pt-4">
-                            <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="group relative">
-                                {/* Glow effect */}
-                                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-
-                                <div className="relative flex items-center gap-3 bg-primary text-white font-bold px-8 py-5 rounded-2xl shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all active:scale-95 text-lg">
-                                    Start Your Implementation
-                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </div>
-                            </a>
+                            <Button href="https://cal.com/crewtrace/15min" size="lg">
+                                Start Your Implementation
+                            </Button>
                         </div>
                     </div>
 

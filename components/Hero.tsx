@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "@/components/Button";
 
 export default function Hero() {
     return (
@@ -25,12 +26,12 @@ export default function Hero() {
                 {/* CTA Buttons */}
                 <div className="max-w-lg mx-auto space-y-4">
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] whitespace-nowrap text-lg text-center">
+                        <Button href="https://cal.com/crewtrace/15min" size="lg">
                             Book a Free Profit Audit
-                        </a>
-                        <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-secondary text-foreground font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] whitespace-nowrap text-lg text-center">
+                        </Button>
+                        <Button href="https://cal.com/crewtrace/15min" variant="white" size="lg">
                             See How It Works
-                        </a>
+                        </Button>
                     </div>
                     <p className="text-sm text-foreground/40">
                         Free 15-minute call. We'll show you exactly how much payroll leakage is costing you.
