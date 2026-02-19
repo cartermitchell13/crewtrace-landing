@@ -58,6 +58,7 @@ export default function DemoPage() {
                                         id="demo-video"
                                         className="absolute inset-0 w-full h-full block"
                                         src={VIDEO_SRC}
+                                        poster="/images/demo-poster.png"
                                         controls
                                         playsInline
                                         preload="metadata"
