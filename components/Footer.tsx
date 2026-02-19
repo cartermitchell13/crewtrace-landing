@@ -3,67 +3,54 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer>
-            <div className="max-w-full mx-auto bg-[#050315] rounded-t-[4rem] p-12 md:p-20 md:pb-12 shadow-2xl relative overflow-hidden">
-                {/* Subtle background glow */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+        <footer className="w-full bg-[#050315] rounded-t-[3rem] md:rounded-t-[5rem] relative overflow-hidden mt-20">
+            {/* Visual Decorations */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-                        <div className="col-span-2 md:col-span-1 space-y-6">
-                            <Link href="/">
-                                <Image
-                                    src="/images/crew-trace-logo.png"
-                                    alt="Crewtrace Logo"
-                                    width={140}
-                                    height={36}
-                                    className="h-8 w-auto object-contain brightness-0 invert"
-                                />
-                            </Link>
-                            <p className="text-sm text-white/50 leading-relaxed">
-                                The definitive crew tracking and management solution for construction professionals.
-                            </p>
+            <div className="max-w-7xl mx-auto p-12 md:p-24 relative z-10 flex flex-col items-center text-center">
+                {/* Brand Section */}
+                <div className="space-y-8 mb-16">
+                    <Link href="/" className="inline-block transform hover:scale-105 transition-transform duration-300">
+                        <Image
+                            src="/images/crew-trace-logo.png"
+                            alt="Crewtrace Logo"
+                            width={180}
+                            height={46}
+                            className="h-10 w-auto object-contain brightness-0 invert"
+                        />
+                    </Link>
+                    <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
+                        The definitive crew tracking and management solution <br className="hidden md:block" /> for construction professionals.
+                    </p>
+                </div>
+
+                {/* Navigation - Horizontal & Elegant */}
+                <div className="w-full max-w-3xl py-8 border-y border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6">
+                    <Link href="#features" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Features</Link>
+                    <Link href="#process" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">How it Works</Link>
+                    <Link href="#pricing" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Pricing</Link>
+                    <Link href="/privacy" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Privacy</Link>
+                    <Link href="/terms" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Terms</Link>
+                </div>
+
+                {/* Bottom Metadata */}
+                <div className="mt-16 w-full flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-all cursor-pointer group hover:-translate-y-1">
+                            <span className="text-white/40 group-hover:text-white text-xs font-bold">X</span>
                         </div>
-
-                        <div className="space-y-6">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Product</h4>
-                            <ul className="space-y-4">
-                                <li><Link href="#features" className="text-white/60 hover:text-white transition-colors text-sm">Features</Link></li>
-                                <li><Link href="#pricing" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</Link></li>
-                                <li><Link href="#benefits" className="text-white/60 hover:text-white transition-colors text-sm">Benefits</Link></li>
-                            </ul>
-                        </div>
-
-                        <div className="space-y-6">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Company</h4>
-                            <ul className="space-y-4">
-                                <li><Link href="/about" className="text-white/60 hover:text-white transition-colors text-sm">About Us</Link></li>
-                                <li><Link href="/contact" className="text-white/60 hover:text-white transition-colors text-sm">Contact</Link></li>
-                            </ul>
-                        </div>
-
-                        <div className="space-y-6 text-right md:text-left">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Legal</h4>
-                            <ul className="space-y-4">
-                                <li><Link href="/privacy" className="text-white/60 hover:text-white transition-colors text-sm">Privacy</Link></li>
-                                <li><Link href="/terms" className="text-white/60 hover:text-white transition-colors text-sm">Terms</Link></li>
-                            </ul>
+                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-all cursor-pointer group hover:-translate-y-1">
+                            <span className="text-white/40 group-hover:text-white text-xs font-bold">In</span>
                         </div>
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-16 mt-16 border-t border-white/5">
-                        <p className="text-xs font-medium text-white/30">
-                            © {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
-                        </p>
-                        <div className="flex items-center gap-6">
-                            {/* Placeholder for social icons if needed */}
-                            <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer group">
-                                <span className="text-white/40 group-hover:text-white text-xs">X</span>
-                            </div>
-                            <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer group">
-                                <span className="text-white/40 group-hover:text-white text-xs">In</span>
-                            </div>
-                        </div>
+                    <p className="text-xs font-bold text-white/20 uppercase tracking-[0.2em]">
+                        © {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
+                    </p>
+
+                    <div className="text-xs font-bold text-white/40 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/5">
+                        Status: <span className="text-green-500">Operational</span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
+import ServiceWorkerCleaner from "@/components/ServiceWorkerCleaner";
 
 const geistSans = Geist({
   variable: "--font-crewtrace-heading",
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body
         className="antialiased"
       >
+        <ServiceWorkerCleaner />
         {children}
       </body>
     </html>

@@ -52,15 +52,17 @@ export default function DemoPage() {
                             {/* Ambient Glow */}
                             <div className="absolute -inset-10 bg-primary/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
 
-                            <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden border border-foreground/[0.08] shadow-[0_48px_100px_-24px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.8)] bg-black aspect-video group-hover:shadow-[0_64px_120px_-32px_rgba(47,39,206,0.2),0_0_0_1px_rgba(255,255,255,0.9)] transition-all duration-700">
-                                <video
-                                    id="demo-video"
-                                    className="w-full h-full object-cover"
-                                    src={`${VIDEO_SRC}#t=0.001`}
-                                    controls
-                                    playsInline
-                                    preload="auto"
-                                />
+                            <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-foreground/[0.08] shadow-[0_48px_100px_-24px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.8)] group-hover:shadow-[0_64px_120px_-32px_rgba(47,39,206,0.2),0_0_0_1px_rgba(255,255,255,0.9)] transition-all duration-700">
+                                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                    <video
+                                        id="demo-video"
+                                        className="absolute inset-0 w-full h-full block"
+                                        src={VIDEO_SRC}
+                                        controls
+                                        playsInline
+                                        preload="metadata"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
