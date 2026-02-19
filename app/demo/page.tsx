@@ -41,7 +41,7 @@ export default function DemoPage() {
                                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">stops payroll leakage</span>
                             </h1>
                             <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-medium animate-slide-up delay-200">
-                                No sales call. No pressure. Just a short walkthrough of how construction crews are saving thousands per month—hit play and see if it makes sense for your operation.
+                                I know you&apos;re busy and the last thing you need is another sales call. So I&apos;m skipping the pitch—just hit play to see exactly how we plug payroll leaks. If it looks like it could help your operation, feel free to reach out whenever you&apos;re ready.
                             </p>
                         </div>
                     </div>
@@ -56,10 +56,10 @@ export default function DemoPage() {
                                 <video
                                     id="demo-video"
                                     className="w-full h-full object-cover"
-                                    src={VIDEO_SRC}
+                                    src={`${VIDEO_SRC}#t=0.001`}
                                     controls
                                     playsInline
-                                    preload="metadata"
+                                    preload="auto"
                                 />
                             </div>
                         </div>
@@ -69,10 +69,10 @@ export default function DemoPage() {
                     <div className="mt-16 text-center space-y-8 max-w-2xl mx-auto animate-slide-up delay-500">
                         <div className="space-y-4">
                             <p className="text-xl font-semibold text-foreground">
-                                Ready to plug the leaks in your payroll?
+                                Ready to plug the leaks?
                             </p>
                             <p className="text-foreground/60 leading-relaxed font-medium">
-                                Just reply back on LinkedIn or message me directly and I&apos;ll send you everything you need to get started.
+                                If this looks like it could save your operation some serious cash, just shoot me a message on LinkedIn. I&apos;ll handle the rest.
                             </p>
                         </div>
 
