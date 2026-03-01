@@ -2,13 +2,13 @@
 
 ## What This Is
 
-Crewtrace is a Next.js marketing site for construction payroll leakage prevention. It already has strong landing page design and several SEO-oriented route clusters (industries, features, guides, case studies, blog), but it still relies on mostly manual content operations.
+Crewtrace is a Next.js marketing site for payroll leakage prevention and compliance support for U.S. crew-based businesses. Initial focus includes construction, HVAC, waterproofing, general contractors, and landscaping companies with roughly 11-50 employees and about $500k-$5M in annual revenue.
 
-This project turns the current site into a complete multi-page SEO machine: scalable page templates, stronger technical SEO, better internal linking, measurable conversion flows, and repeatable publishing operations.
+This project turns the current site into a complete multi-page SEO machine that drives booked calls through scalable page templates, stronger technical SEO, tighter internal linking, and reliable conversion attribution.
 
 ## Core Value
 
-Crewtrace consistently acquires qualified organic pipeline by publishing high-intent, high-quality pages that are easy to scale and hard for competitors to replicate.
+Crewtrace generates qualified booked calls from U.S. crew-based businesses by proving three outcomes: less payroll overpayment, stronger compliance posture, and less weekly payroll admin time.
 
 ## Requirements
 
@@ -21,18 +21,20 @@ Crewtrace consistently acquires qualified organic pipeline by publishing high-in
 
 ### Active
 
-- [ ] Build programmatic SEO templates and data model for page scaling.
+- [ ] Prioritize and scale feature and industry page clusters first.
 - [ ] Improve technical SEO depth (schema, canonical hygiene, crawl/index controls).
 - [ ] Strengthen internal link graph and cluster architecture.
-- [ ] Scale content operations with clear quality controls.
-- [ ] Instrument conversion tracking and attribution for SEO traffic.
+- [ ] Build content and landing assets that directly support booked-call conversion.
+- [ ] Target competitor-intent opportunities against Connecteam and Workyard.
+- [ ] Scale publishing with AI-assisted workflows while enforcing quality gates.
 - [ ] Add automated SEO QA and reporting.
 
 ### Out of Scope
 
 - Building the full Crewtrace product application in this repo - this repo is marketing-site focused.
 - Running paid media landing page experiments as primary growth channel - focus is organic SEO.
-- Auto-publishing AI-generated pages without human review - quality and trust constraints.
+- Non-U.S. SEO expansion in this milestone.
+- Auto-publishing AI-generated pages without quality review.
 
 ## Context
 
@@ -40,22 +42,30 @@ Crewtrace consistently acquires qualified organic pipeline by publishing high-in
 - Existing content sources are local arrays (`lib/*.ts`) and markdown (`content/blog/*.md`).
 - Existing route clusters already match pSEO-friendly structures (`/industries/[slug]`, `/features/[slug]`, etc.).
 - Current bottlenecks are operational scalability, structured data depth, analytics visibility, and automated quality gates.
+- Primary conversion objective for SEO traffic is booked calls.
+- Brand voice target is mixed: founder-led directness plus professional brand clarity.
 
 ## Constraints
 
 - **Tech stack**: Continue on Next.js App Router - preserve current architecture momentum.
+- **Geo targeting**: U.S.-only SEO targeting for this milestone.
+- **ICP focus**: Prioritize crews in 11-50 employee companies and $500k-$5M annual revenue range.
 - **Content quality**: Avoid thin or duplicate pages - protect long-term SEO performance.
 - **Brand trust**: Compliance/payroll claims require accurate, reviewed content.
-- **Execution speed**: Build in phases with clear verification, not a full rewrite.
+- **Execution speed**: Pursue quick SEO wins while preserving long-term compounding architecture.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Use subfolder URL clusters (not subdomains) for pSEO | Preserves site authority and keeps internal linking simple | - Pending |
-| Keep page generation data-driven from typed sources | Enables repeatable expansion without copy-paste pages | - Pending |
-| Treat page quality as a release gate, not a post-launch fix | Prevents thin-content and cannibalization risk | - Pending |
-| Instrument SEO traffic-to-lead conversion from day one | Rankings alone do not prove revenue impact | - Pending |
+| Focus ICP on U.S. crew-based businesses (11-50 employees, $500k-$5M revenue) | Matches current go-to-market and sales fit | - Locked |
+| Make booked calls the primary SEO conversion target | Clear pipeline-oriented KPI for SEO performance | - Locked |
+| Prioritize feature and industry clusters before other expansions | Fastest route to high-intent query coverage | - Locked |
+| Use subfolder URL clusters (not subdomains) for pSEO | Preserves site authority and keeps internal linking simple | - Locked |
+| Keep page generation data-driven from typed sources | Enables repeatable expansion without copy-paste pages | - Locked |
+| Target competitor-intent opportunities vs Connecteam and Workyard | Directly supports outranking business priority | - Locked |
+| Treat page quality as a release gate, not a post-launch fix | Prevents thin-content and cannibalization risk | - Locked |
+| Instrument SEO traffic-to-booked-call conversion | Rankings alone do not prove revenue impact | - Locked |
 
 ---
-*Last updated: 2026-03-01 after initialization*
+*Last updated: 2026-03-01 after discovery interview refinement*

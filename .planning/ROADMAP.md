@@ -2,114 +2,115 @@
 
 ## Overview
 
-Crewtrace already has strong conversion-focused landing assets and multiple route clusters. This roadmap converts that base into a scalable SEO growth engine: first harden technical foundations, then scale programmatic page generation, then systematize conversion measurement and quality automation.
+This roadmap is optimized for fast SEO wins and long-term scale. It first locks technical SEO and positioning, then prioritizes high-intent feature and industry clusters, then expands authority and competitor coverage, and finally hardens conversion attribution and quality automation.
 
 ## Phases
 
-- [ ] **Phase 1: SEO Foundation and Crawl Integrity** - Standardize metadata, schema baseline, canonical policy, and crawl controls.
-- [ ] **Phase 2: Template and Data Platform** - Refactor key clusters into typed, data-driven templates.
-- [ ] **Phase 3: Programmatic Cluster Expansion** - Launch hybrid page generation and deterministic internal link graph.
-- [ ] **Phase 4: Authority Content Engine** - Scale high-trust guides, blog, and case-study operations.
-- [ ] **Phase 5: Conversion Instrumentation and Lead Ops** - Make SEO traffic-to-pipeline measurable and reliable.
-- [ ] **Phase 6: SEO QA Automation and Reporting** - Add CI gates and recurring performance reporting.
+- [ ] **Phase 1: SEO and Positioning Foundation** - Lock metadata, schema, canonical policy, ICP targeting, and U.S.-only crawl/index strategy.
+- [ ] **Phase 2: Priority Cluster Build (Features + Industries)** - Refactor and scale the two highest-priority clusters first.
+- [ ] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely.
+- [ ] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust.
+- [ ] **Phase 5: Booked-Call Conversion and Attribution** - Make SEO-to-call pipeline measurable and reliable.
+- [ ] **Phase 6: QA Automation and Scale Operations** - Add CI quality gates and recurring reporting for sustainable output.
 
 ## Phase Details
 
-### Phase 1: SEO Foundation and Crawl Integrity
-**Goal**: Remove technical SEO ambiguity and establish one canonical SEO contract.
+### Phase 1: SEO and Positioning Foundation
+**Goal**: Establish a single technical and strategic SEO contract aligned to ICP and promise.
 **Depends on**: Nothing (first phase)
-**Requirements**: SEO-01, SEO-02, SEO-03, SEO-04, SEO-05, SEO-06
+**Requirements**: TGT-01, TGT-02, TGT-03, TGT-04, SEO-01, SEO-02, SEO-03, SEO-04, SEO-05, SEO-06
 **Success Criteria** (what must be TRUE):
-1. Every indexable route renders unique and valid metadata/canonical values.
-2. Required structured data appears on corresponding page templates.
-3. Robots/sitemap behavior matches indexation policy with no coverage gaps.
+1. All indexable routes have valid and unique metadata/canonical values.
+2. Required schema appears on correct template types.
+3. ICP, U.S.-only targeting, and core message are explicit in strategy docs and page patterns.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Build metadata/canonical ownership map and shared validation helpers.
-- [ ] 01-02: Implement page-type schema builders and wire them into templates.
-- [ ] 01-03: Define and document crawl/index policy and web-vitals budgets.
+- [ ] 01-01: Finalize metadata/canonical ownership and indexing policy.
+- [ ] 01-02: Implement schema baseline and verification checks on current templates.
+- [ ] 01-03: Publish ICP + messaging guardrails for all SEO pages.
 
-### Phase 2: Template and Data Platform
-**Goal**: Make existing SEO clusters scalable through typed data contracts.
+### Phase 2: Priority Cluster Build (Features + Industries)
+**Goal**: Scale and strengthen the two most important high-intent clusters.
 **Depends on**: Phase 1
-**Requirements**: PSEO-01, PSEO-02, PSEO-06, CONT-01, OPS-05
+**Requirements**: CLUS-01, CLUS-02, CLUS-03, CLUS-05, CLUS-06
 **Success Criteria** (what must be TRUE):
-1. Industry and feature pages are generated from validated typed records.
-2. Cluster hubs expose deterministic navigation to child pages.
-3. Contributor documentation exists for adding new records/clusters safely.
+1. Feature and industry pages are generated from typed data contracts.
+2. Hub pages provide complete crawl paths into both clusters.
+3. Priority trades are fully represented in both clusters.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: Introduce typed schemas and validators for industry/feature records.
-- [ ] 02-02: Refactor route templates to consume schema-backed data.
-- [ ] 02-03: Publish contributor docs for cluster creation workflow.
+- [ ] 02-01: Build typed schemas and validators for feature and industry content records.
+- [ ] 02-02: Refactor feature and industry templates to use schema-backed data sources.
+- [ ] 02-03: Expand priority trade coverage with consistent template quality.
 
-### Phase 3: Programmatic Cluster Expansion
-**Goal**: Expand high-intent page inventory without thin or orphan pages.
+### Phase 3: Link Graph and Cluster Expansion
+**Goal**: Improve crawl depth, relevance distribution, and safe page expansion.
 **Depends on**: Phase 2
-**Requirements**: PSEO-03, PSEO-04, PSEO-05, CONT-02, CONT-06
+**Requirements**: CLUS-04
 **Success Criteria** (what must be TRUE):
-1. Hybrid industry x feature pages publish through one generation pipeline.
-2. Each generated page includes required unique-value sections.
-3. Internal links guarantee no indexable page is orphaned.
-**Plans**: 3 plans
-
-Plans:
-- [ ] 03-01: Implement hybrid page schema and route generation.
-- [ ] 03-02: Add unique-value content section rules and validation checks.
-- [ ] 03-03: Build related-page linking rules and segmented sitemap support.
-
-### Phase 4: Authority Content Engine
-**Goal**: Increase topical authority with repeatable editorial publishing.
-**Depends on**: Phase 3
-**Requirements**: CONT-03, CONT-04, CONT-05
-**Success Criteria** (what must be TRUE):
-1. Guide/blog/case-study publishing workflows are repeatable and validated.
-2. Content templates enforce metadata and conversion sections.
-3. New authority content integrates into cluster linking model.
+1. No indexable feature/industry page is orphaned.
+2. Related-page linking rules are deterministic and relevance-based.
+3. Expanded pages preserve non-overlapping intent ownership.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: Build content template/validation workflow for guides/blog/case studies.
-- [ ] 04-02: Create publishing cadence and internal-link insertion automation.
+- [ ] 03-01: Implement parent/sibling/internal-link graph rules across priority clusters.
+- [ ] 03-02: Add expansion pages with link and intent validation.
 
-### Phase 5: Conversion Instrumentation and Lead Ops
-**Goal**: Tie SEO performance directly to qualified pipeline.
+### Phase 4: Competitor and Authority Content
+**Goal**: Increase topical authority and capture competitor-intent demand.
+**Depends on**: Phase 3
+**Requirements**: COMP-01, COMP-02
+**Success Criteria** (what must be TRUE):
+1. Connecteam and Workyard query opportunities are mapped and tracked.
+2. Competitor-intent pages or sections are published with factual, safe claims.
+3. Authority content supports both ranking and conversion intent.
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01: Build competitor keyword map and page brief set for Connecteam and Workyard intent.
+- [ ] 04-02: Publish comparison/alternative-supporting content and connect it to clusters.
+- [ ] 04-03: Expand supporting guides/blog/case studies for authority reinforcement.
+
+### Phase 5: Booked-Call Conversion and Attribution
+**Goal**: Turn SEO traffic into measurable booked calls.
 **Depends on**: Phase 4
 **Requirements**: CRO-01, CRO-02, CRO-03, CRO-04, CRO-05
 **Success Criteria** (what must be TRUE):
-1. Contact/demo conversion flow is production-reliable.
-2. SEO landing and CTA interactions are tracked with attribution context.
-3. Reporting can segment conversion performance by cluster/template.
+1. Booked call is the tracked primary SEO conversion.
+2. All priority pages have clear booked-call CTA paths.
+3. Reporting segments booked-call performance by page and cluster.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Replace simulated form handling with real submission pipeline.
-- [ ] 05-02: Implement event schema for SEO landing + CTA conversion tracking.
-- [ ] 05-03: Build attribution reporting views by cluster and page intent.
+- [ ] 05-01: Replace simulated form submission with production-ready lead flow.
+- [ ] 05-02: Implement event taxonomy for SEO landings and booked-call interactions.
+- [ ] 05-03: Build attribution reporting by cluster, template, and landing URL.
 
-### Phase 6: SEO QA Automation and Reporting
-**Goal**: Keep quality high while page count and publishing speed increase.
+### Phase 6: QA Automation and Scale Operations
+**Goal**: Sustain quality while scaling AI-assisted publishing volume.
 **Depends on**: Phase 5
-**Requirements**: OPS-01, OPS-02, OPS-03, OPS-04
+**Requirements**: OPS-01, OPS-02, OPS-03, OPS-04, OPS-05
 **Success Criteria** (what must be TRUE):
-1. CI blocks releases with metadata, link, or schema regressions.
-2. Weekly SEO health report is generated and reviewable.
-3. Team can detect and fix SEO regressions before ranking loss compounds.
-**Plans**: 2 plans
+1. CI blocks releases with metadata, schema, or link regressions.
+2. Publishing workflow can scale output while maintaining quality gates.
+3. Weekly report gives clear visibility into indexation, traffic, and booked calls.
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: Implement CI checks for metadata uniqueness, links, and schema.
-- [ ] 06-02: Generate weekly SEO performance/coverage report and publish runbook.
+- [ ] 06-01: Implement CI checks for metadata uniqueness, internal links, and schema presence.
+- [ ] 06-02: Add publish gate logic for AI-assisted content quality control.
+- [ ] 06-03: Automate weekly SEO and conversion reporting.
 
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. SEO Foundation and Crawl Integrity | 0/3 | Not started | - |
-| 2. Template and Data Platform | 0/3 | Not started | - |
-| 3. Programmatic Cluster Expansion | 0/3 | Not started | - |
-| 4. Authority Content Engine | 0/2 | Not started | - |
-| 5. Conversion Instrumentation and Lead Ops | 0/3 | Not started | - |
-| 6. SEO QA Automation and Reporting | 0/2 | Not started | - |
+| 1. SEO and Positioning Foundation | 0/3 | Not started | - |
+| 2. Priority Cluster Build (Features + Industries) | 0/3 | Not started | - |
+| 3. Link Graph and Cluster Expansion | 0/2 | Not started | - |
+| 4. Competitor and Authority Content | 0/3 | Not started | - |
+| 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
+| 6. QA Automation and Scale Operations | 0/3 | Not started | - |

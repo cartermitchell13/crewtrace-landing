@@ -4,15 +4,15 @@
 
 See: .planning/PROJECT.md (updated 2026-03-01)
 
-**Core value:** Crewtrace consistently acquires qualified organic pipeline by publishing high-intent, high-quality pages that are easy to scale and hard for competitors to replicate.
-**Current focus:** Phase 1 - SEO Foundation and Crawl Integrity
+**Core value:** Crewtrace generates qualified booked calls from U.S. crew-based businesses by proving three outcomes: less payroll overpayment, stronger compliance posture, and less weekly payroll admin time.
+**Current focus:** Phase 1 - SEO and Positioning Foundation
 
 ## Current Position
 
-Phase: 1 of 6 (SEO Foundation and Crawl Integrity)
+Phase: 1 of 6 (SEO and Positioning Foundation)
 Plan: 1 of 3 in current phase
 Status: Ready to plan
-Last activity: 2026-03-01 - Initialized GSD project, requirements, roadmap, and codebase map
+Last activity: 2026-03-01 - Discovery interview inputs incorporated into project, requirements, and roadmap
 
 Progress: [----------] 0%
 
@@ -40,7 +40,10 @@ Progress: [----------] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Initialization: Prioritize technical SEO and template/data contracts before large page-volume expansion.
+- Discovery lock: ICP is U.S. crew-based companies (11-50 employees, roughly $500k-$5M revenue).
+- Growth priority: feature and industry clusters first.
+- Primary conversion KPI: booked calls.
+- Competitor focus: outrank Connecteam and Workyard.
 
 ### Pending Todos
 
@@ -48,10 +51,10 @@ None yet.
 
 ### Blockers/Concerns
 
-- Analytics provider and attribution schema still need selection before Phase 5 implementation.
+- Analytics provider and attribution schema still need final selection before Phase 5 implementation.
 
 ## Session Continuity
 
-Last session: 2026-03-01 10:40
-Stopped at: Completed project initialization and roadmap creation
+Last session: 2026-03-01 11:20
+Stopped at: Discovery refinement completed; ready to execute Phase 1 planning and implementation
 Resume file: None
