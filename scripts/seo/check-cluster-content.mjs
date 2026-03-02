@@ -83,6 +83,7 @@ function run() {
 
     const featureRecords = solutionModule.featureRecords ?? solutionModule.solutions;
     const industryRecords = industryModule.industryRecords;
+    const requiredPriorityIndustrySlugs = industryModule.requiredPriorityIndustrySlugs ?? [];
 
     assertRecords(
         featureRecords,
@@ -158,6 +159,34 @@ function run() {
         ensure(
             missingFeatureLinks.length === 0,
             `industry "${industry.slug}" references missing features: ${missingFeatureLinks.join(", ")}`,
+            errors,
+        );
+    }
+
+    for (const requiredSlug of requiredPriorityIndustrySlugs) {
+        ensure(
+            industrySlugSet.has(requiredSlug),
+            `missing required priority trade industry slug: ${requiredSlug}`,
+            errors,
+        );
+
+        const industry = industryRecords.find((record) => record.slug === requiredSlug);
+        if (!industry) {
+            continue;
+        }
+
+        ensure(
+            industry.relatedSolutions.length > 0,
+            `required priority trade "${requiredSlug}" must include relatedSolutions`,
+            errors,
+        );
+
+        const linkedFromFeatures = featureRecords.some((feature) =>
+            feature.relatedIndustries.includes(requiredSlug),
+        );
+        ensure(
+            linkedFromFeatures,
+            `required priority trade "${requiredSlug}" must be referenced by at least one feature`,
             errors,
         );
     }
