@@ -6,7 +6,7 @@ This roadmap is optimized for fast SEO wins and long-term scale. It first locks 
 
 ## Phases
 
-- [ ] **Phase 1: SEO and Positioning Foundation** - Lock metadata, schema, canonical policy, ICP targeting, and U.S.-only crawl/index strategy.
+- [x] **Phase 1: SEO and Positioning Foundation** - Lock metadata, schema, canonical policy, ICP targeting, and U.S.-only crawl/index strategy. (Completed 2026-03-01)
 - [ ] **Phase 2: Priority Cluster Build (Features + Industries)** - Refactor and scale the two highest-priority clusters first.
 - [ ] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely.
 - [ ] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust.
@@ -26,9 +26,9 @@ This roadmap is optimized for fast SEO wins and long-term scale. It first locks 
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Finalize metadata/canonical ownership and indexing policy.
-- [ ] 01-02: Implement schema baseline and verification checks on current templates.
-- [ ] 01-03: Publish ICP + messaging guardrails for all SEO pages.
+- [x] 01-01: Finalize metadata/canonical ownership and indexing policy.
+- [x] 01-02: Implement schema baseline and verification checks on current templates.
+- [x] 01-03: Publish ICP + messaging guardrails for all SEO pages.
 
 ### Phase 2: Priority Cluster Build (Features + Industries)
 **Goal**: Scale and strengthen the two most important high-intent clusters.
@@ -41,7 +41,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: Build typed schemas and validators for feature and industry content records.
+- [x] 02-01: Build typed schemas and validators for feature and industry content records.
 - [ ] 02-02: Refactor feature and industry templates to use schema-backed data sources.
 - [ ] 02-03: Expand priority trade coverage with consistent template quality.
 
@@ -108,8 +108,8 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. SEO and Positioning Foundation | 0/3 | Not started | - |
-| 2. Priority Cluster Build (Features + Industries) | 0/3 | Not started | - |
+| 1. SEO and Positioning Foundation | 3/3 | Complete | 2026-03-01 |
+| 2. Priority Cluster Build (Features + Industries) | 1/3 | In Progress | - |
 | 3. Link Graph and Cluster Expansion | 0/2 | Not started | - |
 | 4. Competitor and Authority Content | 0/3 | Not started | - |
 | 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
