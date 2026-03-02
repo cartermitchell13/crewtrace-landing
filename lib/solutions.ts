@@ -20,7 +20,7 @@ export const featureRecords: FeatureRecord[] = [
             "Replace paper timesheets with GPS-verified clock-ins and clock-outs so payroll is based on where crews actually worked.",
         primaryKeyword: "gps time tracking for construction",
         primaryIntent: "gps-verified-contractor-time-tracking",
-        relatedIndustries: ["roofing", "plumbing", "landscaping"],
+        relatedIndustries: ["roofing", "plumbing", "landscaping", "construction"],
         challenges: [
             "Unverified clock-ins from the truck or parking lot",
             "Disputes over arrival and departure times",
@@ -45,7 +45,13 @@ export const featureRecords: FeatureRecord[] = [
             "Identify hidden overpayment patterns including early punch-ins, long breaks, and unverified overtime with daily visibility.",
         primaryKeyword: "reduce payroll leakage construction",
         primaryIntent: "construction-payroll-overpayment-prevention",
-        relatedIndustries: ["general-contractors", "concrete", "hvac"],
+        relatedIndustries: [
+            "general-contractors",
+            "concrete",
+            "hvac",
+            "construction",
+            "waterproofing",
+        ],
         challenges: [
             "Small daily time inflation that compounds weekly",
             "No system for spotting repeated overpayment patterns",
@@ -70,7 +76,7 @@ export const featureRecords: FeatureRecord[] = [
             "Maintain defensible time records, approval history, and location context to support FLSA and DOL audit requirements.",
         primaryKeyword: "construction time tracking compliance",
         primaryIntent: "dol-flsa-contractor-timekeeping-compliance",
-        relatedIndustries: ["general-contractors", "roofing", "hvac"],
+        relatedIndustries: ["general-contractors", "roofing", "hvac", "construction"],
         challenges: [
             "Missing or incomplete time documentation",
             "Difficulty proving edits and approvals",
@@ -95,7 +101,7 @@ export const featureRecords: FeatureRecord[] = [
             "Use custom geofence zones per project so workers can only clock in when physically inside approved work areas.",
         primaryKeyword: "geofence time clock",
         primaryIntent: "jobsite-geofenced-time-clock",
-        relatedIndustries: ["landscaping", "concrete", "roofing"],
+        relatedIndustries: ["landscaping", "concrete", "roofing", "waterproofing"],
         challenges: [
             "Crews moving between multiple sites in one day",
             "Clock-ins happening off-site",
@@ -120,7 +126,12 @@ export const featureRecords: FeatureRecord[] = [
             "Export approved hours in payroll-friendly formats so your team spends less time fixing data and more time running operations.",
         primaryKeyword: "construction payroll export",
         primaryIntent: "contractor-payroll-export-workflow",
-        relatedIndustries: ["plumbing", "hvac", "general-contractors"],
+        relatedIndustries: [
+            "plumbing",
+            "hvac",
+            "general-contractors",
+            "waterproofing",
+        ],
         challenges: [
             "Manual re-entry from timesheets into payroll software",
             "Formatting mismatches between systems",

@@ -247,6 +247,67 @@ export const industryRecords: IndustryRecord[] = [
         ],
     },
     {
+        slug: "construction",
+        name: "Construction",
+        icon: "hard-hat",
+        primaryKeyword: "construction crew time tracking",
+        primaryIntent: "construction-crew-time-and-payroll-control",
+        metaTitle: "Crewtrace for Construction Crews",
+        metaDescription:
+            "Track construction crew hours with verified field data to reduce overpayment and payroll friction.",
+        heroTitle: "Control labor costs across active construction sites",
+        heroSubtitle:
+            "Construction leaders need clean time data across many crews and changing sites. Crewtrace gives one verified source before payroll closes.",
+        hubDescription:
+            "Track field time across active construction sites with verified clock events and cleaner payroll workflows.",
+        hubStat: "Avg. $2,100/mo saved",
+        painPoints: [
+            {
+                title: "Unverified start times",
+                description:
+                    "Foremen cannot confirm exactly when workers were on site and productive.",
+            },
+            {
+                title: "Multi-site blind spots",
+                description:
+                    "Project leads lose visibility when crews move between active jobs.",
+            },
+            {
+                title: "Payroll close fire drills",
+                description:
+                    "Admins spend end-of-week hours reconciling conflicting timesheets.",
+            },
+        ],
+        benefits: [
+            {
+                title: "Site-level verification",
+                description: "Clock events are tied to active job locations.",
+                icon: "map-pin",
+            },
+            {
+                title: "Cross-site visibility",
+                description: "See where each crew worked throughout the day.",
+                icon: "trending-up",
+            },
+            {
+                title: "Audit-ready history",
+                description: "Preserve a defensible record of edits and approvals.",
+                icon: "shield-check",
+            },
+            {
+                title: "Payroll-ready exports",
+                description: "Send approved labor data to payroll without manual cleanup.",
+                icon: "clock",
+            },
+        ],
+        stats: [
+            { value: "$2,100", label: "Average monthly savings" },
+            { value: "5 hrs", label: "Saved on payroll review weekly" },
+            { value: "99%", label: "Clock event verification rate" },
+        ],
+        relatedSolutions: ["gps-time-tracking", "payroll-leakage-prevention", "dol-compliance"],
+    },
+    {
         slug: "general-contractors",
         name: "General Contractors",
         icon: "hard-hat",
@@ -309,6 +370,71 @@ export const industryRecords: IndustryRecord[] = [
             company: "Chen Construction LLC",
         },
         relatedSolutions: ["payroll-leakage-prevention", "dol-compliance", "payroll-exports"],
+    },
+    {
+        slug: "waterproofing",
+        name: "Waterproofing",
+        icon: "droplets",
+        primaryKeyword: "waterproofing crew time tracking",
+        primaryIntent: "waterproofing-job-time-and-crew-control",
+        metaTitle: "Crewtrace for Waterproofing Contractors",
+        metaDescription:
+            "Track waterproofing crews across rotating jobs with verified start/stop records and payroll-ready outputs.",
+        heroTitle: "Keep waterproofing crews accountable across every job",
+        heroSubtitle:
+            "Waterproofing teams move fast between inspections, prep, and install work. Crewtrace verifies where hours were worked before payroll.",
+        hubDescription:
+            "Verified time tracking for waterproofing crews working across changing commercial and residential jobs.",
+        hubStat: "Avg. $1,500/mo saved",
+        painPoints: [
+            {
+                title: "Unverified travel and prep time",
+                description:
+                    "Managers cannot separate transit, setup, and billable install work.",
+            },
+            {
+                title: "Off-site clock activity",
+                description:
+                    "Clock-ins can happen before crews actually reach the assigned property.",
+            },
+            {
+                title: "Inconsistent daily records",
+                description:
+                    "Paper logs create disputes about job duration and overtime approvals.",
+            },
+        ],
+        benefits: [
+            {
+                title: "Geofenced clocking",
+                description: "Allow clock-ins only when crews are at approved properties.",
+                icon: "map-pin",
+            },
+            {
+                title: "Shift exception alerts",
+                description: "Flag irregular starts, overtime spikes, and long breaks.",
+                icon: "alert-circle",
+            },
+            {
+                title: "Crew productivity reports",
+                description: "Compare labor effort by job type and team.",
+                icon: "bar-chart-3",
+            },
+            {
+                title: "Payroll export workflow",
+                description: "Export approved hours directly into payroll processing.",
+                icon: "clock",
+            },
+        ],
+        stats: [
+            { value: "$1,500", label: "Average monthly savings" },
+            { value: "17%", label: "Reduction in overpayment risk" },
+            { value: "3 hrs", label: "Saved on weekly payroll administration" },
+        ],
+        relatedSolutions: [
+            "geofencing-time-clock",
+            "payroll-leakage-prevention",
+            "payroll-exports",
+        ],
     },
     {
         slug: "landscaping",
@@ -440,6 +566,14 @@ export const industryRecords: IndustryRecord[] = [
 export type IndustrySlug = IndustryRecord["slug"];
 
 export const industrySlugs: IndustrySlug[] = industryRecords.map((industry) => industry.slug);
+
+export const requiredPriorityIndustrySlugs = [
+    "construction",
+    "hvac",
+    "waterproofing",
+    "general-contractors",
+    "landscaping",
+] as const;
 
 export const industryBySlug: Record<string, IndustryRecord> = Object.fromEntries(
     industryRecords.map((industry) => [industry.slug, industry]),
