@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seo:check": "node scripts/seo/check-seo-contract.mjs",
+    "seo:check-clusters": "node scripts/seo/check-cluster-content.mjs",
+    "seo:check-schema": "node scripts/seo/check-schema-presence.mjs",
+    "seo:check-messaging": "node scripts/seo/check-messaging-guardrails.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

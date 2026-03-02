@@ -1,0 +1,176 @@
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import ts from "typescript";
+
+const projectRoot = process.cwd();
+
+function loadTsModule(relativePath) {
+    const filePath = path.join(projectRoot, relativePath);
+    const source = fs.readFileSync(filePath, "utf8");
+    const compiled = ts.transpileModule(source, {
+        compilerOptions: {
+            module: ts.ModuleKind.CommonJS,
+            target: ts.ScriptTarget.ES2022,
+            esModuleInterop: true,
+        },
+        fileName: filePath,
+    }).outputText;
+
+    const module = { exports: {} };
+    const dirname = path.dirname(filePath);
+    const localRequire = (specifier) => {
+        throw new Error(
+            `Unsupported import "${specifier}" in ${relativePath}. Keep cluster contracts data-only.`,
+        );
+    };
+
+    vm.runInNewContext(compiled, {
+        module,
+        exports: module.exports,
+        require: localRequire,
+        __dirname: dirname,
+        __filename: filePath,
+        console,
+        process,
+    });
+
+    return module.exports;
+}
+
+function ensure(condition, message, errors) {
+    if (!condition) {
+        errors.push(message);
+    }
+}
+
+function findDuplicates(values) {
+    const seen = new Set();
+    const duplicates = new Set();
+    for (const value of values) {
+        if (seen.has(value)) {
+            duplicates.add(value);
+        }
+        seen.add(value);
+    }
+    return [...duplicates];
+}
+
+function assertRecords(records, requiredKeys, clusterName, errors) {
+    ensure(Array.isArray(records) && records.length > 0, `${clusterName}: records must be non-empty`, errors);
+
+    for (const [index, record] of records.entries()) {
+        for (const key of requiredKeys) {
+            const value = record[key];
+            if (Array.isArray(value)) {
+                ensure(value.length > 0, `${clusterName}[${index}] missing non-empty array "${key}"`, errors);
+                continue;
+            }
+            ensure(
+                typeof value === "string" && value.trim().length > 0,
+                `${clusterName}[${index}] missing required string "${key}"`,
+                errors,
+            );
+        }
+    }
+}
+
+function run() {
+    const errors = [];
+
+    const solutionModule = loadTsModule("lib/solutions.ts");
+    const industryModule = loadTsModule("lib/industries.ts");
+
+    const featureRecords = solutionModule.featureRecords ?? solutionModule.solutions;
+    const industryRecords = industryModule.industryRecords;
+
+    assertRecords(
+        featureRecords,
+        ["slug", "name", "primaryKeyword", "primaryIntent", "description"],
+        "featureRecords",
+        errors,
+    );
+    assertRecords(
+        industryRecords,
+        [
+            "slug",
+            "name",
+            "primaryKeyword",
+            "primaryIntent",
+            "metaTitle",
+            "metaDescription",
+            "heroTitle",
+            "heroSubtitle",
+        ],
+        "industryRecords",
+        errors,
+    );
+
+    const featureSlugs = featureRecords.map((feature) => feature.slug);
+    const industrySlugs = industryRecords.map((industry) => industry.slug);
+    const featureIntents = featureRecords.map((feature) => feature.primaryIntent);
+    const industryIntents = industryRecords.map((industry) => industry.primaryIntent);
+
+    const duplicateFeatureSlugs = findDuplicates(featureSlugs);
+    const duplicateIndustrySlugs = findDuplicates(industrySlugs);
+    const duplicateFeatureIntents = findDuplicates(featureIntents);
+    const duplicateIndustryIntents = findDuplicates(industryIntents);
+
+    ensure(
+        duplicateFeatureSlugs.length === 0,
+        `featureRecords has duplicate slugs: ${duplicateFeatureSlugs.join(", ")}`,
+        errors,
+    );
+    ensure(
+        duplicateIndustrySlugs.length === 0,
+        `industryRecords has duplicate slugs: ${duplicateIndustrySlugs.join(", ")}`,
+        errors,
+    );
+    ensure(
+        duplicateFeatureIntents.length === 0,
+        `featureRecords has duplicate primaryIntent values: ${duplicateFeatureIntents.join(", ")}`,
+        errors,
+    );
+    ensure(
+        duplicateIndustryIntents.length === 0,
+        `industryRecords has duplicate primaryIntent values: ${duplicateIndustryIntents.join(", ")}`,
+        errors,
+    );
+
+    const featureSlugSet = new Set(featureSlugs);
+    const industrySlugSet = new Set(industrySlugs);
+
+    for (const feature of featureRecords) {
+        const missingIndustryLinks = feature.relatedIndustries.filter(
+            (industrySlug) => !industrySlugSet.has(industrySlug),
+        );
+        ensure(
+            missingIndustryLinks.length === 0,
+            `feature "${feature.slug}" references missing industries: ${missingIndustryLinks.join(", ")}`,
+            errors,
+        );
+    }
+
+    for (const industry of industryRecords) {
+        const missingFeatureLinks = industry.relatedSolutions.filter(
+            (featureSlug) => !featureSlugSet.has(featureSlug),
+        );
+        ensure(
+            missingFeatureLinks.length === 0,
+            `industry "${industry.slug}" references missing features: ${missingFeatureLinks.join(", ")}`,
+            errors,
+        );
+    }
+
+    if (errors.length > 0) {
+        console.error("Cluster content check failed:");
+        for (const entry of errors) {
+            console.error(`- ${entry}`);
+        }
+        process.exit(1);
+    }
+
+    console.log("Cluster content check passed.");
+}
+
+run();
