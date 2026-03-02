@@ -43,7 +43,7 @@ Plans:
 Plans:
 - [x] 02-01: Build typed schemas and validators for feature and industry content records.
 - [x] 02-02: Refactor feature and industry templates to use schema-backed data sources.
-- [ ] 02-03: Expand priority trade coverage with consistent template quality.
+- [x] 02-03: Expand priority trade coverage with consistent template quality.
 
 ### Phase 3: Link Graph and Cluster Expansion
 **Goal**: Improve crawl depth, relevance distribution, and safe page expansion.
@@ -109,7 +109,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. SEO and Positioning Foundation | 3/3 | Complete | 2026-03-01 |
-| 2. Priority Cluster Build (Features + Industries) | 2/3 | In Progress | - |
+| 2. Priority Cluster Build (Features + Industries) | 3/3 | In Progress | - |
 | 3. Link Graph and Cluster Expansion | 0/2 | Not started | - |
 | 4. Competitor and Authority Content | 0/3 | Not started | - |
 | 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |

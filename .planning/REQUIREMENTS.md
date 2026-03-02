@@ -27,7 +27,7 @@
 - [x] **CLUS-02**: Industry page templates are driven by typed data records, not hand-edited page files.
 - [x] **CLUS-03**: Feature and industry hub pages provide crawlable navigation to all child pages.
 - [ ] **CLUS-04**: Every indexable feature/industry page has at least one parent and one sibling internal link.
-- [ ] **CLUS-05**: Priority trade coverage includes construction, HVAC, waterproofing, general contractors, and landscaping.
+- [x] **CLUS-05**: Priority trade coverage includes construction, HVAC, waterproofing, general contractors, and landscaping.
 - [x] **CLUS-06**: Each feature/industry page maps to one primary search intent with non-overlapping URL ownership.
 
 ### Competitor SEO Strategy
@@ -84,7 +84,7 @@
 | CLUS-01 | Phase 2 | Complete |
 | CLUS-02 | Phase 2 | Complete |
 | CLUS-03 | Phase 2 | Complete |
-| CLUS-05 | Phase 2 | Pending |
+| CLUS-05 | Phase 2 | Complete |
 | CLUS-06 | Phase 2 | Complete |
 | CLUS-04 | Phase 3 | Pending |
 | COMP-01 | Phase 4 | Pending |
