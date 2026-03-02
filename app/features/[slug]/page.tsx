@@ -28,6 +28,10 @@ function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
 }
 
+function sortIndustrySlugs(slugs: string[]) {
+    return [...slugs].sort((a, b) => toIndustryName(a).localeCompare(toIndustryName(b)));
+}
+
 export function generateStaticParams() {
     return featureSlugs.map((slug) => ({ slug }));
 }
@@ -271,7 +275,7 @@ export default async function FeatureDetailPage({
                                     See exactly how this translates to your specific industry with targeted case studies and workflows.
                                 </p>
                                 <div className="flex flex-wrap gap-3 mt-auto">
-                                    {solution.relatedIndustries.map((industrySlug) => (
+                                    {sortIndustrySlugs(solution.relatedIndustries).map((industrySlug) => (
                                         <Link
                                             key={industrySlug}
                                             href={`/industries/${industrySlug}`}

@@ -127,6 +127,9 @@ export default async function IndustryPage({
                                     <IndustryIcon size={18} />
                                     <span>Crewtrace for {industry.name}</span>
                                 </div>
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-foreground/10 text-xs font-bold uppercase tracking-wider text-foreground/60">
+                                    <span>{industry.primaryKeyword}</span>
+                                </div>
 
                                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
                                     {industry.heroTitle}

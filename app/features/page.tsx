@@ -28,6 +28,10 @@ function toIndustryName(slug: string) {
         .join(" ");
 }
 
+function sortIndustrySlugs(slugs: string[]) {
+    return [...slugs].sort((a, b) => toIndustryName(a).localeCompare(toIndustryName(b)));
+}
+
 export default function FeaturesPage() {
     return (
         <div className="min-h-screen bg-background">
@@ -68,7 +72,7 @@ export default function FeaturesPage() {
                                     {feature.description}
                                 </p>
                                 <div className="mt-6 flex flex-wrap gap-2">
-                                    {feature.relatedIndustries.map((industrySlug) => (
+                                    {sortIndustrySlugs(feature.relatedIndustries).map((industrySlug) => (
                                         <Link
                                             key={industrySlug}
                                             href={`/industries/${industrySlug}`}

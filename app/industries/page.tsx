@@ -15,11 +15,20 @@ import { createPageMetadata } from "@/lib/seo";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import {
     getIndustrySummaries,
+    requiredPriorityIndustrySlugs,
     type IndustryIconKey,
 } from "@/lib/industries";
 import { getFeaturesBySlugs } from "@/lib/solutions";
 
-const industrySummaries = getIndustrySummaries();
+const priorityTradeSet = new Set<string>(requiredPriorityIndustrySlugs);
+const industrySummaries = getIndustrySummaries().sort((a, b) => {
+    const aPriority = priorityTradeSet.has(a.slug) ? 0 : 1;
+    const bPriority = priorityTradeSet.has(b.slug) ? 0 : 1;
+    if (aPriority !== bPriority) {
+        return aPriority - bPriority;
+    }
+    return a.name.localeCompare(b.name);
+});
 
 const iconByKey: Partial<Record<IndustryIconKey, LucideIcon>> = {
     home: Home,
@@ -81,6 +90,11 @@ export default function IndustriesPage() {
                                         <p className="text-foreground/60 text-sm mb-4 leading-relaxed">
                                             {industry.description}
                                         </p>
+                                        {priorityTradeSet.has(industry.slug) && (
+                                            <p className="mb-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                                                Priority Trade
+                                            </p>
+                                        )}
                                         <div className="mb-5 flex flex-wrap gap-2">
                                             {getIndustrySolutions(industry.relatedSolutions).map((solution) => (
                                                 <Link
