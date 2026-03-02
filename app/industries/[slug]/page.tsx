@@ -313,7 +313,7 @@ export default async function IndustryPage({
                                         </svg>
                                     </div>
                                     <p className="text-2xl font-bold italic tracking-tight leading-relaxed relative z-10">
-                                        "{industry.testimonial.quote}"
+                                        &ldquo;{industry.testimonial.quote}&rdquo;
                                     </p>
                                     <div className="flex justify-between items-end">
                                         <div>

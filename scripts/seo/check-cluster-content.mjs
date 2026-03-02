@@ -17,7 +17,7 @@ function loadTsModule(relativePath) {
         fileName: filePath,
     }).outputText;
 
-    const module = { exports: {} };
+    const moduleRef = { exports: {} };
     const dirname = path.dirname(filePath);
     const localRequire = (specifier) => {
         throw new Error(
@@ -26,8 +26,8 @@ function loadTsModule(relativePath) {
     };
 
     vm.runInNewContext(compiled, {
-        module,
-        exports: module.exports,
+        module: moduleRef,
+        exports: moduleRef.exports,
         require: localRequire,
         __dirname: dirname,
         __filename: filePath,
@@ -35,7 +35,7 @@ function loadTsModule(relativePath) {
         process,
     });
 
-    return module.exports;
+    return moduleRef.exports;
 }
 
 function ensure(condition, message, errors) {
