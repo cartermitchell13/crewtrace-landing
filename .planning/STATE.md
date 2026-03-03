@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: seo-growth-engine
-status: milestone_complete
-last_updated: "2026-03-03T10:42:28.0192070-08:00"
+milestone: v1.1
+milestone_name: growth-loops
+status: defining_requirements
+last_updated: "2026-03-03T11:02:00-08:00"
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 17
-  completed_plans: 17
+  total_phases: 5
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -18,22 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-03)
 
 **Core value:** Crewtrace generates qualified booked calls from U.S. crew-based businesses by proving three outcomes: less payroll overpayment, stronger compliance posture, and less weekly payroll admin time.
-**Current focus:** v1.0 archived; define v1.1 goals and fresh requirements.
+**Current focus:** Defining v1.1 Growth Loops requirements and roadmap.
 
 ## Current Position
 
-Phase: Milestone closeout complete
-Status: v1.0 archived and tagged
-Last activity: 2026-03-03 - archived roadmap and requirements, updated project/state, prepared next-milestone handoff
+Phase: Not started (defining requirements)
+Plan: -
+Status: Defining requirements
+Last activity: 2026-03-03 - Milestone v1.1 started
 
-Progress: [##########] 100%
-
-## Milestone Snapshot (v1.0)
-
-- Phases completed: 6
-- Plans completed: 17
-- Tasks completed: 51
-- Timeline: 2026-03-01 to 2026-03-03
+Progress: [----------] 0%
 
 ## Accumulated Context
 
@@ -43,7 +37,7 @@ Decisions are logged in PROJECT.md Key Decisions table.
 
 ### Pending Todos
 
-- Define v1.1 milestone scope and requirements.
+- Define v1.1 requirements and roadmap.
 - Integrate production data sources into weekly SEO reporting pipeline.
 - Address full-repo lint debt outside scoped SEO gate linting.
 
@@ -55,5 +49,5 @@ Decisions are logged in PROJECT.md Key Decisions table.
 ## Session Continuity
 
 Last session: 2026-03-03
-Stopped at: Milestone v1.0 closeout complete
-Resume file: .planning/PROJECT.md
+Stopped at: Started v1.1 milestone initialization
+Resume file: .planning/REQUIREMENTS.md
