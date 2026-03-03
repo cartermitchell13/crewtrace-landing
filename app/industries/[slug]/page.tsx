@@ -28,7 +28,9 @@ import {
     industryBySlug,
     industrySlugs,
     type IndustryIconKey,
+    type IndustryRecord,
 } from "@/lib/industries";
+import { getIndustryDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { getFeaturesBySlugs } from "@/lib/solutions";
@@ -89,6 +91,10 @@ export default async function IndustryPage({
         notFound();
     }
 
+    const detailLinks = getIndustryDetailLinks(industry.slug, {
+        siblingLimit: 4,
+        crossClusterLimit: 5,
+    });
     const articleJsonLd = articleSchema({
         headline: `Crewtrace for ${industry.name}`,
         description: industry.heroSubtitle,
@@ -102,7 +108,10 @@ export default async function IndustryPage({
     ]);
 
     const IndustryIcon = iconByKey[industry.icon];
-    const relatedSolutions = getFeaturesBySlugs(industry.relatedSolutions);
+    const relatedSolutions = getFeaturesBySlugs(detailLinks.relatedFeatureSlugs);
+    const siblingIndustries: IndustryRecord[] = detailLinks.siblingIndustrySlugs
+        .map((siblingSlug) => industryBySlug[siblingSlug])
+        .filter((record): record is IndustryRecord => Boolean(record));
 
     return (
         <div className="min-h-screen bg-background">
@@ -339,6 +348,13 @@ export default async function IndustryPage({
                             <p className="text-foreground/60 text-lg leading-relaxed">
                                 Combine your industry workflow with these focused features to improve compliance, payroll accuracy, and field visibility.
                             </p>
+                            <Link
+                                href={detailLinks.parentPath}
+                                className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
+                            >
+                                Browse all industries
+                                <ArrowRight size={16} />
+                            </Link>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -373,6 +389,26 @@ export default async function IndustryPage({
                                 </Link>
                             </div>
                         )}
+
+                        <div className="mt-12">
+                            <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                                Related industries with similar workflow overlap
+                            </h3>
+                            <p className="mt-3 text-sm text-foreground/60 max-w-2xl">
+                                These pages are ranked by shared feature overlap and kept deterministic for stable crawl paths.
+                            </p>
+                            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {siblingIndustries.map((relatedIndustry) => (
+                                    <Link
+                                        key={relatedIndustry.slug}
+                                        href={`/industries/${relatedIndustry.slug}`}
+                                        className="rounded-2xl border border-foreground/10 bg-white px-5 py-4 text-sm font-semibold text-foreground/80 hover:border-primary/20 hover:text-primary transition-colors"
+                                    >
+                                        {relatedIndustry.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </section>
 

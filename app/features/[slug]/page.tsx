@@ -16,6 +16,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
+import { getFeatureDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import {
@@ -26,10 +27,6 @@ import {
 
 function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
-}
-
-function sortIndustrySlugs(slugs: string[]) {
-    return [...slugs].sort((a, b) => toIndustryName(a).localeCompare(toIndustryName(b)));
 }
 
 export function generateStaticParams() {
@@ -72,6 +69,10 @@ export default async function FeatureDetailPage({
         notFound();
     }
 
+    const detailLinks = getFeatureDetailLinks(solution.slug, {
+        siblingLimit: 4,
+        crossClusterLimit: 5,
+    });
     const articleJsonLd = articleSchema({
         headline: solution.name,
         description: solution.description,
@@ -83,9 +84,7 @@ export default async function FeatureDetailPage({
         { name: solution.name, path: `/features/${slug}` },
     ]);
 
-    const relatedFeatures = getFeaturesBySlugs(
-        featureSlugs.filter((candidateSlug) => candidateSlug !== solution.slug).slice(0, 3)
-    );
+    const relatedFeatures = getFeaturesBySlugs(detailLinks.siblingFeatureSlugs);
 
     return (
         <div className="min-h-screen bg-background">
@@ -274,8 +273,15 @@ export default async function FeatureDetailPage({
                                 <p className="text-foreground/60 mb-8 font-medium leading-relaxed">
                                     See exactly how this translates to your specific industry with targeted case studies and workflows.
                                 </p>
+                                <Link
+                                    href={detailLinks.parentPath}
+                                    className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
+                                >
+                                    Browse all features
+                                    <ArrowRight size={14} />
+                                </Link>
                                 <div className="flex flex-wrap gap-3 mt-auto">
-                                    {sortIndustrySlugs(solution.relatedIndustries).map((industrySlug) => (
+                                    {detailLinks.relatedIndustrySlugs.map((industrySlug) => (
                                         <Link
                                             key={industrySlug}
                                             href={`/industries/${industrySlug}`}
@@ -291,7 +297,7 @@ export default async function FeatureDetailPage({
                             <div className="rounded-[3rem] bg-[#FBFBFE] border border-foreground/5 p-12 flex flex-col hover:shadow-xl hover:border-primary/20 transition-all duration-300">
                                 <h3 className="text-2xl font-bold text-foreground mb-4">Expand your capabilities</h3>
                                 <p className="text-foreground/60 mb-8 font-medium leading-relaxed">
-                                    Combine this with our other powerful tools to completely eliminate payroll leakage.
+                                    Combine this with adjacent Crewtrace features selected from deterministic sibling overlap.
                                 </p>
                                 <div className="flex flex-col gap-3 mt-auto">
                                     {relatedFeatures.map((related) => (
