@@ -168,7 +168,12 @@ export function parseSeoEventPayload(value: unknown): SeoEventPayload | null {
         landing_url: candidate.landing_url,
     };
 
-    const optionalStringKeys: Array<keyof SeoEventPayload> = [
+    type OptionalSeoEventStringKey = Exclude<
+        keyof SeoEventPayload,
+        "event" | "occurred_at" | "template_type" | "cluster" | "landing_url"
+    >;
+
+    const optionalStringKeys: OptionalSeoEventStringKey[] = [
         "page_url",
         "page_slug",
         "cta_label",
@@ -191,7 +196,7 @@ export function parseSeoEventPayload(value: unknown): SeoEventPayload | null {
     for (const key of optionalStringKeys) {
         const valueAtKey = candidate[key];
         if (typeof valueAtKey === "string" && valueAtKey.trim().length > 0) {
-            payload[key] = valueAtKey;
+            payload[key] = valueAtKey as SeoEventPayload[typeof key];
         }
     }
 
