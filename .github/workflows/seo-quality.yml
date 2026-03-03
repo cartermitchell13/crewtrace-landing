@@ -1,0 +1,40 @@
+name: SEO Quality Gates
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  seo-quality:
+    name: Guardrails, Tests, Lint, Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run SEO guardrails (fast fail)
+        run: npm run seo:check:all
+
+      - name: Run focused SEO vitest suites
+        run: npx vitest run lib/__tests__/seo-policy.test.ts lib/__tests__/schema.test.ts
+
+      - name: Run lint for SEO quality gate scope
+        run: npm run lint:seo
+
+      - name: Run production build
+        run: npm run build

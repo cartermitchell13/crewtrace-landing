@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "lint:seo": "npm run lint -- scripts/seo lib/__tests__/seo-policy.test.ts lib/__tests__/schema.test.ts",
     "seo:check": "node scripts/seo/check-seo-contract.mjs",
+    "seo:check-links": "node scripts/seo/check-internal-links.mjs",
     "seo:check-clusters": "node scripts/seo/check-cluster-content.mjs",
     "seo:check-attribution": "node scripts/seo/check-booked-call-attribution.mjs",
     "seo:check-schema": "node scripts/seo/check-schema-presence.mjs",
     "seo:check-messaging": "node scripts/seo/check-messaging-guardrails.mjs",
+    "seo:check:all": "npm run seo:check && npm run seo:check-schema && npm run seo:check-links && npm run seo:check-clusters && npm run seo:check-messaging && npm run seo:check-attribution",
     "seo:report-booked-calls": "node scripts/analytics/export-booked-call-report.mjs"
   },
   "dependencies": {
