@@ -11,7 +11,7 @@ This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable prod
 
 ## Phases
 
-- [ ] **Phase 7: Production Data Integration and Contracts** - Replace fixture-based reporting inputs with validated production source ingestion and normalized dimensions.
+- [ ] **Phase 7: Production Data Integration and Contracts** - Replace fixture-based reporting inputs with validated production source ingestion (including GA4), event contracts, and normalized dimensions.
 - [ ] **Phase 8: Opportunity Scoring and Backlog Operations** - Convert normalized performance data into weekly ranked execution actions.
 - [ ] **Phase 9: Programmatic Expansion Engine** - Expand additional high-intent clusters with contract-backed templates and guardrails.
 - [ ] **Phase 10: CRO Experimentation and Alerting** - Improve booked-call conversion using experiments and anomaly response loops.
@@ -22,12 +22,13 @@ This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable prod
 ### Phase 7: Production Data Integration and Contracts
 **Goal**: Build trusted, production-backed data flow for SEO and booked-call analysis.
 **Depends on**: Phase 6
-**Requirements**: DATA-01, DATA-02, DATA-03, DATA-04, OPS-10
+**Requirements**: DATA-01, DATA-02, DATA-05, DATA-03, DATA-04, OPS-10
 **Success Criteria**:
 1. Weekly reporting pipeline consumes production source data (no fixture dependency in release workflows).
 2. Ingestion jobs validate required schemas and fail fast on malformed rows.
-3. Attribution joins preserve first-touch landing dimensions and deterministic conversion keys.
-4. Canonical URL, cluster, and template normalization is consistent across ingestion, scoring, and reporting outputs.
+3. GA4 setup is complete and validated for required SEO conversion events and landing dimensions.
+4. Attribution joins preserve first-touch landing dimensions and deterministic conversion keys.
+5. Canonical URL, cluster, and template normalization is consistent across ingestion, scoring, and reporting outputs.
 
 ### Phase 8: Opportunity Scoring and Backlog Operations
 **Goal**: Turn performance data into an actionable, repeatable weekly work queue.

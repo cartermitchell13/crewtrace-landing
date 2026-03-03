@@ -12,6 +12,7 @@ Requirements for this milestone. Each maps to exactly one roadmap phase.
 
 - [ ] **DATA-01**: Weekly SEO operations reporting uses production data sources (search, analytics, and booked-call outcomes) instead of fixtures.
 - [ ] **DATA-02**: Ingestion jobs pull and validate required fields from each source on a scheduled cadence.
+- [ ] **DATA-05**: GA4 property and web data stream are configured with required SEO conversion events (`seo_landing_view`, `booked_call_cta_click`, `lead_form_submit_*`) and validated in reports.
 - [ ] **DATA-03**: Booked-call outcomes are joinable to first-touch landing attribution with deterministic event keys.
 - [ ] **DATA-04**: URL normalization maps every row to canonical landing URL, cluster, and template dimensions.
 
@@ -68,6 +69,7 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 |-------------|-------|--------|
 | DATA-01 | Phase 7 | Pending |
 | DATA-02 | Phase 7 | Pending |
+| DATA-05 | Phase 7 | Pending |
 | DATA-03 | Phase 7 | Pending |
 | DATA-04 | Phase 7 | Pending |
 | OPS-10 | Phase 7 | Pending |
@@ -86,8 +88,8 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 | OPS-06 | Phase 11 | Pending |
 
 **Coverage:**
-- v1.1 requirements: 18 total
-- Mapped to phases: 18
+- v1.1 requirements: 19 total
+- Mapped to phases: 19
 - Unmapped: 0
 
 ---
