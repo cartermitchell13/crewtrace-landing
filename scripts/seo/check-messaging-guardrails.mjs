@@ -1,22 +1,56 @@
+#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 
 const projectRoot = process.cwd();
 
 const targetFiles = [
-    "components/Hero.tsx",
-    "components/CTASection.tsx",
-    "components/FAQSection.tsx",
-    "app/page.tsx",
-    "app/industries/page.tsx",
-    "app/features/[slug]/page.tsx",
-    "app/industries/[slug]/page.tsx",
+    {
+        filePath: "components/Hero.tsx",
+        requiredTokens: ["getTemplateMessaging", "publicIcpPhrase"],
+    },
+    {
+        filePath: "components/CTASection.tsx",
+        requiredTokens: ["getTemplateMessaging", "orderedPromiseLine"],
+    },
+    {
+        filePath: "app/page.tsx",
+        requiredTokens: ["@/lib/messaging", "orderedPromiseLine"],
+    },
+    {
+        filePath: "app/features/page.tsx",
+        requiredTokens: ["@/lib/messaging", "/features/", "/industries/"],
+    },
+    {
+        filePath: "app/industries/page.tsx",
+        requiredTokens: ["@/lib/messaging", "/industries/", "/features/"],
+    },
+    {
+        filePath: "app/features/[slug]/page.tsx",
+        requiredTokens: ["@/lib/messaging", "templateType=\"feature_detail\""],
+    },
+    {
+        filePath: "app/industries/[slug]/page.tsx",
+        requiredTokens: ["@/lib/messaging", "templateType=\"industry_detail\""],
+    },
+    {
+        filePath: "app/compare/page.tsx",
+        requiredTokens: ["@/lib/messaging", "/compare/${competitor.slug}"],
+    },
+    {
+        filePath: "app/compare/[slug]/page.tsx",
+        requiredTokens: ["@/lib/messaging", "templateType=\"competitor_detail\""],
+    },
+    {
+        filePath: "app/contact/page.tsx",
+        requiredTokens: ["@/lib/messaging", "buildLeadFormEvent"],
+    },
 ];
 
 const bannedPublicPhrases = ["11-50 employees", "$500k-$5M"];
 
-function read(filePath) {
-    return fs.readFileSync(path.join(projectRoot, filePath), "utf8");
+function read(relativePath) {
+    return fs.readFileSync(path.join(projectRoot, relativePath), "utf8");
 }
 
 function run() {
@@ -27,7 +61,14 @@ function run() {
         errors.push("Missing docs/seo/icp-messaging-guardrails.md.");
     } else {
         const guardrails = fs.readFileSync(guardrailDocPath, "utf8").toLowerCase();
-        for (const requiredTerm of ["multiple crews", "reduce payroll overpayment", "compliance", "admin time"]) {
+        for (const requiredTerm of [
+            "multiple crews",
+            "reduce payroll overpayment",
+            "compliance",
+            "admin time",
+            "headline",
+            "cta",
+        ]) {
             if (!guardrails.includes(requiredTerm)) {
                 errors.push(`icp-messaging-guardrails.md is missing required phrase: ${requiredTerm}`);
             }
@@ -37,27 +78,51 @@ function run() {
     const messagingLibraryPath = path.join(projectRoot, "lib/messaging.ts");
     if (!fs.existsSync(messagingLibraryPath)) {
         errors.push("Missing lib/messaging.ts.");
+    } else {
+        const messagingLibrary = fs.readFileSync(messagingLibraryPath, "utf8");
+        for (const requiredExport of [
+            "intentHeadlineOptions",
+            "proofLedBodyHelpers",
+            "ctaFramingVariants",
+            "getTemplateMessaging",
+        ]) {
+            if (!messagingLibrary.includes(requiredExport)) {
+                errors.push(`lib/messaging.ts must export ${requiredExport}.`);
+            }
+        }
     }
 
-    for (const filePath of targetFiles) {
-        if (!fs.existsSync(path.join(projectRoot, filePath))) {
-            errors.push(`Missing target file: ${filePath}`);
+    for (const target of targetFiles) {
+        const absoluteFilePath = path.join(projectRoot, target.filePath);
+        if (!fs.existsSync(absoluteFilePath)) {
+            errors.push(`Missing target file: ${target.filePath}`);
             continue;
         }
 
-        const content = read(filePath);
-
+        const content = read(target.filePath);
         if (!content.includes("@/lib/messaging")) {
-            errors.push(`${filePath} must import messaging helpers from @/lib/messaging.`);
+            errors.push(`${target.filePath} must import messaging helpers from @/lib/messaging.`);
         }
 
-        if (!content.includes("publicIcpPhrase") && !content.includes("orderedPromiseLine")) {
-            errors.push(`${filePath} must use publicIcpPhrase or orderedPromiseLine.`);
+        if (
+            !content.includes("publicIcpPhrase") &&
+            !content.includes("orderedPromiseLine") &&
+            !content.includes("getTemplateMessaging")
+        ) {
+            errors.push(
+                `${target.filePath} must use getTemplateMessaging, publicIcpPhrase, or orderedPromiseLine.`,
+            );
+        }
+
+        for (const token of target.requiredTokens) {
+            if (!content.includes(token)) {
+                errors.push(`${target.filePath} is missing required messaging token: "${token}".`);
+            }
         }
 
         for (const banned of bannedPublicPhrases) {
             if (content.includes(banned)) {
-                errors.push(`${filePath} contains disallowed public qualifier phrase: "${banned}"`);
+                errors.push(`${target.filePath} contains disallowed public qualifier phrase: "${banned}"`);
             }
         }
     }
@@ -70,8 +135,7 @@ function run() {
         process.exit(1);
     }
 
-    console.log("Messaging guardrail check passed.");
+    console.log(`Messaging guardrail check passed for ${targetFiles.length} files.`);
 }
 
 run();
-

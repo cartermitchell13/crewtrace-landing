@@ -14,6 +14,7 @@ Use this sequence consistently in primary sections:
 ## Voice Rules
 - Headline style: founder-direct and outcome-led.
 - Body style: professional, proof-led, and operationally specific.
+- CTA style: action-first, explicit next step, and low-friction.
 - Avoid fluffy claims without implementation context.
 
 ## Claims Policy
@@ -25,4 +26,3 @@ Use this sequence consistently in primary sections:
   - "11-50 employees"
   - "$500k-$5M"
 - Promise sequence presented in a different order on core SEO templates.
-
