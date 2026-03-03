@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+    getStaticSeoPolicy,
     getDisallowedStaticPaths,
     getSitemapStaticPolicies,
     isIndexablePath,
@@ -32,9 +33,20 @@ describe("seo policy", () => {
     it("keeps dynamic SEO routes indexable", () => {
         expect(isIndexablePath("/features/gps-time-tracking")).toBe(true);
         expect(isIndexablePath("/industries/hvac")).toBe(true);
+        expect(isIndexablePath("/compare/connecteam")).toBe(true);
         expect(isIndexablePath("/blog/example-post")).toBe(true);
         expect(isIndexablePath("/guides/example-guide")).toBe(true);
         expect(isIndexablePath("/case-studies/example-study")).toBe(true);
     });
-});
 
+    it("keeps canonical owners for core static paths", () => {
+        expect(getStaticSeoPolicy("/")).toBeDefined();
+        expect(getStaticSeoPolicy("/contact")?.indexable).toBe(true);
+        expect(getStaticSeoPolicy("/calculator")?.indexable).toBe(false);
+        expect(getStaticSeoPolicy("/privacy")?.indexable).toBe(false);
+    });
+
+    it("does not mark unknown routes as indexable by default", () => {
+        expect(isIndexablePath("/unknown-route")).toBe(false);
+    });
+});

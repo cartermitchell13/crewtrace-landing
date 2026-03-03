@@ -1,23 +1,57 @@
 import fs from "node:fs";
 import path from "node:path";
+import ts from "typescript";
 
 const projectRoot = process.cwd();
 
-const staticMetadataFiles = [
-    "app/page.tsx",
-    "app/about/page.tsx",
-    "app/blog/page.tsx",
-    "app/case-studies/page.tsx",
-    "app/compare/page.tsx",
-    "app/guides/page.tsx",
-    "app/features/page.tsx",
-    "app/industries/page.tsx",
-    "app/contact/layout.tsx",
-    "app/demo/page.tsx",
-    "app/calculator/layout.tsx",
-    "app/compliance-audit/page.tsx",
-    "app/privacy/page.tsx",
-    "app/terms/page.tsx",
+const staticMetadataContracts = [
+    { filePath: "app/page.tsx", path: "/", indexable: true },
+    { filePath: "app/about/page.tsx", path: "/about", indexable: true },
+    { filePath: "app/blog/page.tsx", path: "/blog", indexable: true },
+    { filePath: "app/case-studies/page.tsx", path: "/case-studies", indexable: true },
+    { filePath: "app/compare/page.tsx", path: "/compare", indexable: true },
+    { filePath: "app/guides/page.tsx", path: "/guides", indexable: true },
+    { filePath: "app/features/page.tsx", path: "/features", indexable: true },
+    { filePath: "app/industries/page.tsx", path: "/industries", indexable: true },
+    { filePath: "app/contact/layout.tsx", path: "/contact", indexable: true },
+    { filePath: "app/demo/page.tsx", path: "/demo", indexable: false },
+    { filePath: "app/calculator/layout.tsx", path: "/calculator", indexable: false },
+    { filePath: "app/compliance-audit/page.tsx", path: "/compliance-audit", indexable: false },
+    { filePath: "app/privacy/page.tsx", path: "/privacy", indexable: false },
+    { filePath: "app/terms/page.tsx", path: "/terms", indexable: false },
+];
+
+const dynamicMetadataContracts = [
+    {
+        filePath: "app/features/[slug]/page.tsx",
+        dynamicPath: "/features/${slug}",
+        fallbackPath: "/features",
+    },
+    {
+        filePath: "app/industries/[slug]/page.tsx",
+        dynamicPath: "/industries/${slug}",
+        fallbackPath: "/industries",
+    },
+    {
+        filePath: "app/compare/[slug]/page.tsx",
+        dynamicPath: "/compare/${slug}",
+        fallbackPath: "/compare",
+    },
+    {
+        filePath: "app/blog/[slug]/page.tsx",
+        dynamicPath: "/blog/${slug}",
+        fallbackPath: "/blog",
+    },
+    {
+        filePath: "app/guides/[slug]/page.tsx",
+        dynamicPath: "/guides/${slug}",
+        fallbackPath: "/guides",
+    },
+    {
+        filePath: "app/case-studies/[slug]/page.tsx",
+        dynamicPath: "/case-studies/${slug}",
+        fallbackPath: "/case-studies",
+    },
 ];
 
 const expectedNoIndexPaths = new Set([
@@ -32,96 +66,212 @@ function read(filePath) {
     return fs.readFileSync(path.join(projectRoot, filePath), "utf8");
 }
 
-function parseMetadata(filePath) {
-    const content = read(filePath);
-    const metadataCall = content.match(/createPageMetadata\(\s*{([\s\S]*?)}\s*\)/);
-
-    if (!metadataCall) {
-        return null;
+function normalizePath(pathValue) {
+    if (!pathValue || pathValue === "/") {
+        return "/";
     }
-
-    const block = metadataCall[1];
-    const title = block.match(/title:\s*["'`]([\s\S]*?)["'`]\s*,/)?.[1]?.trim();
-    const description = block.match(/description:\s*["'`]([\s\S]*?)["'`]\s*,/)?.[1]?.trim();
-    const routePath = block.match(/path:\s*["'`]([^"'`]+)["'`]/)?.[1]?.trim();
-    const noIndex = block.match(/noIndex:\s*(true|false)/)?.[1] === "true";
-
-    if (!title || !description || !routePath) {
-        return {
-            filePath,
-            error: "Missing title, description, or path in createPageMetadata call.",
-        };
-    }
-
-    return {
-        filePath,
-        title,
-        description,
-        path: routePath,
-        noIndex,
-    };
+    return pathValue.startsWith("/") ? pathValue : `/${pathValue}`;
 }
 
-function ensure(condition, message) {
-    if (!condition) {
-        throw new Error(message);
+function getStringInitializerValue(initializer, sourceFile) {
+    if (ts.isStringLiteral(initializer) || ts.isNoSubstitutionTemplateLiteral(initializer)) {
+        return initializer.text;
     }
+
+    if (ts.isTemplateExpression(initializer)) {
+        const text = initializer.getText(sourceFile);
+        return text.slice(1, -1);
+    }
+
+    return null;
+}
+
+function getBooleanInitializerValue(initializer) {
+    if (initializer.kind === ts.SyntaxKind.TrueKeyword) {
+        return true;
+    }
+    if (initializer.kind === ts.SyntaxKind.FalseKeyword) {
+        return false;
+    }
+    return null;
+}
+
+function parseMetadataCalls(filePath, errors) {
+    const content = read(filePath);
+    const sourceFile = ts.createSourceFile(
+        filePath,
+        content,
+        ts.ScriptTarget.ES2022,
+        true,
+        ts.ScriptKind.TSX,
+    );
+    const calls = [];
+
+    const visit = (node) => {
+        if (
+            ts.isCallExpression(node) &&
+            ts.isIdentifier(node.expression) &&
+            node.expression.text === "createPageMetadata"
+        ) {
+            const metadataArg = node.arguments[0];
+            if (!metadataArg || !ts.isObjectLiteralExpression(metadataArg)) {
+                errors.push(`${filePath}: createPageMetadata call must receive an object literal.`);
+                return;
+            }
+
+            const record = {
+                filePath,
+                title: "",
+                description: "",
+                path: null,
+                noIndex: false,
+                hasNoIndexField: false,
+                hasTitleField: false,
+                hasDescriptionField: false,
+                hasPathField: false,
+            };
+
+            for (const property of metadataArg.properties) {
+                if (!ts.isPropertyAssignment(property) || !ts.isIdentifier(property.name)) {
+                    continue;
+                }
+
+                const propertyName = property.name.text;
+                if (propertyName === "title") {
+                    record.hasTitleField = true;
+                    const value = getStringInitializerValue(property.initializer, sourceFile);
+                    if (value !== null) {
+                        record.title = value.trim();
+                    } else {
+                        record.title = property.initializer.getText(sourceFile).trim();
+                    }
+                }
+
+                if (propertyName === "description") {
+                    record.hasDescriptionField = true;
+                    const value = getStringInitializerValue(property.initializer, sourceFile);
+                    if (value !== null) {
+                        record.description = value.trim();
+                    } else {
+                        record.description = property.initializer.getText(sourceFile).trim();
+                    }
+                }
+
+                if (propertyName === "path") {
+                    record.hasPathField = true;
+                    const value = getStringInitializerValue(property.initializer, sourceFile);
+                    if (value !== null) {
+                        record.path = normalizePath(value.trim());
+                    } else {
+                        const rawPath = property.initializer.getText(sourceFile).trim();
+                        record.path = normalizePath(rawPath.replace(/^[`'"]|[`'"]$/g, ""));
+                    }
+                }
+
+                if (propertyName === "noIndex") {
+                    const value = getBooleanInitializerValue(property.initializer);
+                    if (value !== null) {
+                        record.noIndex = value;
+                        record.hasNoIndexField = true;
+                    }
+                }
+            }
+
+            calls.push(record);
+        }
+
+        ts.forEachChild(node, visit);
+    };
+
+    visit(sourceFile);
+
+    if (calls.length === 0) {
+        errors.push(`${filePath}: missing createPageMetadata call.`);
+        return [];
+    }
+
+    for (const [callIndex, call] of calls.entries()) {
+        if (!call.hasTitleField || !call.hasDescriptionField || !call.hasPathField || !call.path) {
+            errors.push(
+                `${filePath}: call #${callIndex + 1} is missing title, description, or path in createPageMetadata.`,
+            );
+        }
+    }
+
+    return calls;
 }
 
 function run() {
     const errors = [];
     const policyText = read("lib/seoPolicy.ts");
 
-    ensure(
-        fs.existsSync(path.join(projectRoot, "lib/seoPolicy.ts")),
-        "Missing lib/seoPolicy.ts.",
-    );
+    const staticMetadataRecords = [];
 
-    for (const noIndexPath of expectedNoIndexPaths) {
-        const escaped = noIndexPath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        const pattern = new RegExp(
-            `path:\\s*"${escaped}"[\\s\\S]*?indexable:\\s*false`,
-            "m",
-        );
-        if (!pattern.test(policyText)) {
-            errors.push(`SEO policy must mark ${noIndexPath} as indexable: false.`);
-        }
-    }
+    for (const contract of staticMetadataContracts) {
+        const calls = parseMetadataCalls(contract.filePath, errors);
+        const ownershipMatch = calls.filter((call) => call.path === contract.path);
 
-    if (!/path:\s*"\/compare"[\s\S]*?indexable:\s*true/m.test(policyText)) {
-        errors.push('SEO policy must include static indexable coverage for "/compare".');
-    }
-
-    if (!/["'`]\/compare\/["'`]/.test(policyText)) {
-        errors.push('SEO policy dynamic prefixes must include "/compare/".');
-    }
-
-    const parsed = staticMetadataFiles.map(parseMetadata);
-
-    for (const record of parsed) {
-        if (!record) {
-            errors.push("Unable to parse createPageMetadata call.");
+        if (ownershipMatch.length !== 1) {
+            errors.push(
+                `${contract.filePath}: expected one createPageMetadata canonical owner for ${contract.path}, found ${ownershipMatch.length}.`,
+            );
             continue;
         }
 
-        if ("error" in record) {
-            errors.push(`${record.filePath}: ${record.error}`);
-            continue;
+        const record = ownershipMatch[0];
+        if (contract.indexable && record.noIndex) {
+            errors.push(
+                `${contract.filePath}: indexable path ${contract.path} must not set noIndex: true.`,
+            );
+        }
+        if (!contract.indexable && record.hasNoIndexField && !record.noIndex) {
+            errors.push(
+                `${contract.filePath}: non-indexable path ${contract.path} must set noIndex: true.`,
+            );
         }
 
-        const escapedPath = record.path.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        if (!new RegExp(`path:\\s*"${escapedPath}"`).test(policyText)) {
-            errors.push(`${record.filePath}: path ${record.path} is missing from lib/seoPolicy.ts`);
+        if (calls.length > 1) {
+            const unexpectedPaths = calls
+                .map((call) => call.path)
+                .filter((pathValue) => pathValue && pathValue !== contract.path);
+            if (unexpectedPaths.length > 0) {
+                errors.push(
+                    `${contract.filePath}: unexpected canonical path ownership ${unexpectedPaths.join(", ")}.`,
+                );
+            }
         }
+
+        staticMetadataRecords.push({
+            ...record,
+            expectedIndexable: contract.indexable,
+        });
     }
 
-    const indexableRecords = parsed.filter(
-        (record) => record && !("error" in record) && !expectedNoIndexPaths.has(record.path),
-    );
+    for (const contract of dynamicMetadataContracts) {
+        const calls = parseMetadataCalls(contract.filePath, errors);
+        const dynamicOwnerCount = calls.filter(
+            (call) => call.path === contract.dynamicPath && !call.noIndex,
+        ).length;
+        const fallbackOwnerCount = calls.filter(
+            (call) => call.path === contract.fallbackPath && call.noIndex,
+        ).length;
+
+        if (dynamicOwnerCount !== 1) {
+            errors.push(
+                `${contract.filePath}: expected one dynamic canonical owner ${contract.dynamicPath} without noIndex; found ${dynamicOwnerCount}.`,
+            );
+        }
+
+        if (fallbackOwnerCount !== 1) {
+            errors.push(
+                `${contract.filePath}: expected one noIndex fallback owner ${contract.fallbackPath}; found ${fallbackOwnerCount}.`,
+            );
+        }
+    }
 
     const duplicateCheck = (field) => {
         const seen = new Map();
-        for (const record of indexableRecords) {
+        for (const record of staticMetadataRecords.filter((entry) => entry.expectedIndexable)) {
             const value = record[field];
             if (seen.has(value)) {
                 errors.push(
@@ -136,6 +286,38 @@ function run() {
     duplicateCheck("path");
     duplicateCheck("title");
     duplicateCheck("description");
+
+    for (const contract of staticMetadataContracts) {
+        const escapedPath = contract.path.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const expectedIndexable = contract.indexable ? "true" : "false";
+        const pattern = new RegExp(
+            `path:\\s*"${escapedPath}"[\\s\\S]*?indexable:\\s*${expectedIndexable}`,
+            "m",
+        );
+        if (!pattern.test(policyText)) {
+            errors.push(
+                `lib/seoPolicy.ts must include ${contract.path} with indexable: ${expectedIndexable}.`,
+            );
+        }
+    }
+
+    for (const dynamicPrefix of ["/features/", "/industries/", "/compare/", "/blog/", "/guides/", "/case-studies/"]) {
+        const prefixPattern = new RegExp(`["'\`]${dynamicPrefix.replace("/", "\\/")}["'\`]`);
+        if (!prefixPattern.test(policyText)) {
+            errors.push(`SEO policy dynamic prefixes must include "${dynamicPrefix}".`);
+        }
+    }
+
+    for (const noIndexPath of expectedNoIndexPaths) {
+        const escaped = noIndexPath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const pattern = new RegExp(
+            `path:\\s*"${escaped}"[\\s\\S]*?indexable:\\s*false`,
+            "m",
+        );
+        if (!pattern.test(policyText)) {
+            errors.push(`SEO policy must mark ${noIndexPath} as indexable: false.`);
+        }
+    }
 
     const canonicalDoc = read("docs/seo/canonical-and-indexing-policy.md");
     const cwvDoc = read("docs/seo/cwv-budgets.md");

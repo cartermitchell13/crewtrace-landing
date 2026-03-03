@@ -29,12 +29,13 @@ describe("schema builders", () => {
 
     it("creates breadcrumb list with absolute URLs", () => {
         const schema = breadcrumbSchema([
-            { name: "Home", path: "/" },
+            { name: "Home", path: "" },
             { name: "Blog", path: "/blog" },
         ]);
 
         expect(schema["@type"]).toBe("BreadcrumbList");
         expect(schema.itemListElement[0].position).toBe(1);
+        expect(schema.itemListElement[0].item).toBe("https://getcrewtrace.com");
         expect(schema.itemListElement[1].item).toContain("/blog");
     });
 
@@ -51,6 +52,17 @@ describe("schema builders", () => {
         expect(schema.headline).toBe("Example Headline");
         expect(schema.mainEntityOfPage).toContain("/blog/example");
         expect(schema.author.name).toBe("Example Author");
+        expect(schema.dateModified).toBe("2026-01-01");
+    });
+
+    it("defaults article author to site name when not provided", () => {
+        const schema = articleSchema({
+            headline: "Default Author",
+            description: "Default author description",
+            path: "guides/default-author",
+        });
+
+        expect(schema.author.name).toBe("Crewtrace");
+        expect(schema.mainEntityOfPage).toContain("/guides/default-author");
     });
 });
-

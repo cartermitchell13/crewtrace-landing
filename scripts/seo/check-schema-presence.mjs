@@ -3,15 +3,70 @@ import path from "node:path";
 
 const projectRoot = process.cwd();
 
-const requiredTokensByFile = {
-    "app/layout.tsx": ["organizationSchema()", "websiteSchema()", "@/lib/schema"],
-    "app/page.tsx": ["faqSchema(", "homeFaqItems", "@/lib/schema"],
-    "app/blog/[slug]/page.tsx": ["articleSchema(", "breadcrumbSchema(", "@/lib/schema"],
-    "app/guides/[slug]/page.tsx": ["articleSchema(", "breadcrumbSchema(", "@/lib/schema"],
-    "app/case-studies/[slug]/page.tsx": ["articleSchema(", "breadcrumbSchema(", "@/lib/schema"],
-    "app/features/[slug]/page.tsx": ["articleSchema(", "breadcrumbSchema(", "@/lib/schema"],
-    "app/industries/[slug]/page.tsx": ["articleSchema(", "breadcrumbSchema(", "@/lib/schema"],
-};
+const requiredSchemaContracts = [
+    {
+        filePath: "app/layout.tsx",
+        requiredTokens: ["organizationSchema()", "websiteSchema()", "@/lib/schema"],
+    },
+    {
+        filePath: "app/page.tsx",
+        requiredTokens: ["faqSchema(", "homeFaqItems", "@/lib/schema"],
+    },
+    {
+        filePath: "app/blog/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+    {
+        filePath: "app/guides/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+    {
+        filePath: "app/case-studies/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+    {
+        filePath: "app/features/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+    {
+        filePath: "app/industries/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+    {
+        filePath: "app/compare/[slug]/page.tsx",
+        requiredTokens: [
+            "articleSchema(",
+            "breadcrumbSchema(",
+            "@/lib/schema",
+            'type="application/ld+json"',
+        ],
+    },
+];
 
 function read(filePath) {
     return fs.readFileSync(path.join(projectRoot, filePath), "utf8");
@@ -37,18 +92,25 @@ function run() {
         errors.push("Missing lib/schema.ts.");
     }
 
-    for (const [filePath, requiredTokens] of Object.entries(requiredTokensByFile)) {
-        const fullPath = path.join(projectRoot, filePath);
+    for (const contract of requiredSchemaContracts) {
+        const fullPath = path.join(projectRoot, contract.filePath);
         if (!fs.existsSync(fullPath)) {
-            errors.push(`Missing required template file: ${filePath}`);
+            errors.push(`Missing required template file: ${contract.filePath}`);
             continue;
         }
 
-        const content = read(filePath);
-        for (const token of requiredTokens) {
+        const content = read(contract.filePath);
+        const missingTokens = [];
+        for (const token of contract.requiredTokens) {
             if (!content.includes(token)) {
-                errors.push(`${filePath} is missing required schema token: ${token}`);
+                missingTokens.push(token);
             }
+        }
+
+        if (missingTokens.length > 0) {
+            errors.push(
+                `${contract.filePath} is missing required schema tokens: ${missingTokens.join(", ")}`,
+            );
         }
     }
 
@@ -64,4 +126,3 @@ function run() {
 }
 
 run();
-
