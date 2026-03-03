@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
+import { createPageMetadata } from "@/lib/seo";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export async function generateStaticParams() {
     const posts = await getAllBlogPosts();
@@ -14,31 +16,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const post = await getBlogPost(slug);
 
     if (!post) {
-        return { title: "Post Not Found" };
+        return createPageMetadata({
+            title: "Post Not Found",
+            description: "The requested blog post could not be found.",
+            path: "/blog",
+            noIndex: true,
+        });
     }
 
-    return {
-        title: `${post.title} | Crewtrace Blog`,
+    return createPageMetadata({
+        title: `${post.title} (Blog)`,
         description: post.excerpt,
-        openGraph: {
-            title: `${post.title} | Crewtrace Blog`,
-            description: post.excerpt,
-            images: [
-                {
-                    url: "/images/og-ct.png",
-                    width: 1200,
-                    height: 630,
-                    alt: post.title,
-                },
-            ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            title: `${post.title} | Crewtrace Blog`,
-            description: post.excerpt,
-            images: ["/images/og-ct.png"],
-        },
-    };
+        path: `/blog/${slug}`,
+    });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -49,11 +39,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         notFound();
     }
 
+    const articleJsonLd = articleSchema({
+        headline: post.title,
+        description: post.excerpt,
+        path: `/blog/${slug}`,
+        datePublished: post.date,
+        authorName: post.author,
+    });
+
+    const breadcrumbJsonLd = breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${slug}` },
+    ]);
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
             <main className="pt-32 pb-20 px-6">
                 <article className="max-w-3xl mx-auto">
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+                    />
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                    />
                     {/* Back Link */}
                     <Link
                         href="/blog"

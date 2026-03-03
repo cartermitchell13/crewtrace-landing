@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/Button";
+import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 
 export default function Hero() {
     return (
@@ -19,7 +20,7 @@ export default function Hero() {
                         Add more money to your bottom line without selling a single extra job.
                     </h1>
                     <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Payroll leakage and inaccurate time entries are silently killing your margins. We install a GPS-verified time tracking system that plugs the leaks in one pay cycle, guaranteed to pay for itself or it is free.
+                        Payroll leakage and inaccurate time entries are silently killing your margins for teams running multiple crews. Crewtrace is built {publicIcpPhrase}. {orderedPromiseLine}
                     </p>
                 </div>
 
@@ -34,7 +35,7 @@ export default function Hero() {
                         </Button>
                     </div>
                     <p className="text-sm text-foreground/40">
-                        Free 15-minute call. We'll show you exactly how much payroll leakage is costing you.
+                        Free 15-minute call. We will show you exactly how much payroll leakage is costing you.
                     </p>
                 </div>
 

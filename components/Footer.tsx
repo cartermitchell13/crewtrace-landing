@@ -27,9 +27,11 @@ export default function Footer() {
 
                 {/* Navigation - Horizontal & Elegant */}
                 <div className="w-full max-w-3xl py-8 border-y border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6">
-                    <Link href="#features" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Features</Link>
-                    <Link href="#process" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">How it Works</Link>
-                    <Link href="#pricing" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Pricing</Link>
+                    <Link href="/industries" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Industries</Link>
+                    <Link href="/features/gps-time-tracking" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Features</Link>
+                    <Link href="/blog" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Blog</Link>
+                    <Link href="/guides" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Guides</Link>
+                    <Link href="/case-studies" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Case Studies</Link>
                     <Link href="/privacy" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Privacy</Link>
                     <Link href="/terms" className="text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-widest">Terms</Link>
                 </div>

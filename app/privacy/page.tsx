@@ -1,11 +1,13 @@
 import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Privacy Policy | Crewtrace",
+export const metadata: Metadata = createPageMetadata({
+    title: "Privacy Policy",
     description: "Crewtrace Privacy Policy — how we collect, use, and protect your data.",
-};
+    path: "/privacy",
+});
 
 export default function PrivacyPage() {
     return (

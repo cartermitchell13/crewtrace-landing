@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { getSolutionSummaries } from "@/lib/solutions";
 import {
     Home,
     Thermometer,
@@ -10,17 +11,15 @@ import {
     HardHat,
     Trees,
     Construction,
+    MapPin,
+    ShieldCheck,
+    Clock,
     FileText,
     BarChart3,
     BookOpen,
     Users,
     Mail,
     ArrowRight,
-    Calculator,
-    ChevronDown,
-    ChevronRight,
-    X,
-    Menu,
 } from "lucide-react";
 
 // Industry data for mega menu
@@ -99,11 +98,27 @@ const company = [
     },
 ];
 
-type MenuType = "industries" | "resources" | "company" | null;
+const solutionIconsBySlug = {
+    "gps-time-tracking": MapPin,
+    "payroll-leakage-prevention": BarChart3,
+    "dol-compliance": ShieldCheck,
+    "geofencing-time-clock": Clock,
+    "payroll-exports": FileText,
+} as const;
+
+const solutionItems = getSolutionSummaries().map((solution) => ({
+    name: solution.name,
+    slug: `/features/${solution.slug}`,
+    description: solution.tagline,
+    Icon:
+        solutionIconsBySlug[solution.slug as keyof typeof solutionIconsBySlug] ??
+        FileText,
+}));
+
+type MenuType = "features" | "industries" | "resources" | "company" | null;
 
 export default function Navbar() {
     const [activeMenu, setActiveMenu] = useState<MenuType>(null);
-    const [isAnimating, setIsAnimating] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const navRef = useRef<HTMLDivElement>(null);
 
@@ -113,13 +128,11 @@ export default function Navbar() {
             timeoutRef.current = null;
         }
         setActiveMenu(menu);
-        setIsAnimating(true);
     };
 
     const handleMouseLeave = () => {
         timeoutRef.current = setTimeout(() => {
             setActiveMenu(null);
-            setIsAnimating(false);
         }, 150);
     };
 
@@ -154,6 +167,17 @@ export default function Navbar() {
 
                 {/* Navigation Links */}
                 <div className="hidden md:flex items-center gap-1">
+                    {/* Features Dropdown */}
+                    <div
+                        className="relative"
+                        onMouseEnter={() => handleMouseEnter("features")}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${activeMenu === "features" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                            Features
+                        </button>
+                    </div>
+
                     {/* Industries Dropdown */}
                     <div
                         className="relative"
@@ -187,12 +211,12 @@ export default function Navbar() {
                         </button>
                     </div>
 
-                    {/* Pricing Link */}
+                    {/* Calculator Link */}
                     <Link
-                        href="#pricing"
+                        href="/calculator"
                         className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-lg transition-all duration-200"
                     >
-                        Pricing
+                        ROI Calculator
                     </Link>
                 </div>
 
@@ -219,6 +243,66 @@ export default function Navbar() {
                 onMouseLeave={handleMouseLeave}
             >
                 <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-2xl overflow-hidden">
+                    {/* Features Mega Menu */}
+                    {activeMenu === "features" && (
+                        <div className="grid grid-cols-[1fr_320px]">
+                            {/* Left: Feature Links */}
+                            <div className="p-6">
+                                <div className="mb-4">
+                                    <h3 className="text-xs font-semibold text-foreground/40 uppercase tracking-wider">Features</h3>
+                                </div>
+                                <div className="grid grid-cols-2 gap-1">
+                                    {solutionItems.map((solution) => (
+                                        <Link
+                                            key={solution.slug}
+                                            href={solution.slug}
+                                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-foreground/[0.03] transition-all duration-150"
+                                        >
+                                            <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                                <solution.Icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
+                                            </div>
+                                            <div className="min-w-0">
+                                                <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                    {solution.name}
+                                                </h4>
+                                                <p className="text-xs text-foreground/50 mt-0.5 leading-relaxed">
+                                                    {solution.description}
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right: Featured CTA */}
+                            <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] p-6 flex flex-col justify-between border-l border-foreground/5">
+                                <div>
+                                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">Need Help Choosing?</span>
+                                    <h4 className="text-lg font-bold text-foreground mt-2">Find your fastest ROI path</h4>
+                                    <p className="text-sm text-foreground/60 mt-2 leading-relaxed">
+                                        Compare workflows by trade and see where Crewtrace can reduce payroll leakage first.
+                                    </p>
+                                </div>
+                                <div className="mt-4 space-y-3">
+                                    <Link
+                                        href="/industries"
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                                    >
+                                        Explore by industry
+                                        <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                    <Link
+                                        href="/calculator"
+                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-button hover:translate-y-[-1px] hover:translate-x-[-1px] transition-all"
+                                    >
+                                        Estimate your savings
+                                        <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Industries Mega Menu */}
                     {activeMenu === "industries" && (
                         <div className="grid grid-cols-[1fr_320px]">
@@ -452,6 +536,38 @@ function MobileMenu() {
                 className={`md:hidden fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white z-[56] shadow-2xl transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >
                 <div className="p-6 pt-20 h-full overflow-y-auto">
+                    {/* Features Accordion */}
+                    <div className="border-b border-foreground/10">
+                        <button
+                            className="w-full flex items-center justify-between py-4"
+                            onClick={() => setActiveAccordion(activeAccordion === "features" ? null : "features")}
+                        >
+                            <span className="font-semibold text-foreground">Features</span>
+                            <svg
+                                className={`w-5 h-5 transition-transform duration-200 ${activeAccordion === "features" ? "rotate-180" : ""}`}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "features" ? "max-h-96 pb-4" : "max-h-0"}`}>
+                            <div className="space-y-1">
+                                {solutionItems.map((solution) => (
+                                    <Link
+                                        key={solution.slug}
+                                        href={solution.slug}
+                                        className="block px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        <span className="text-sm font-medium text-foreground/70">{solution.name}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Industries Accordion */}
                     <div className="border-b border-foreground/10">
                         <button
@@ -551,13 +667,13 @@ function MobileMenu() {
                         </div>
                     </div>
 
-                    {/* Pricing Link */}
+                    {/* Calculator Link */}
                     <Link
-                        href="#pricing"
+                        href="/calculator"
                         className="block py-4 font-semibold text-foreground border-b border-foreground/10"
                         onClick={() => setIsOpen(false)}
                     >
-                        Pricing
+                        ROI Calculator
                     </Link>
 
                     {/* Mobile CTA */}

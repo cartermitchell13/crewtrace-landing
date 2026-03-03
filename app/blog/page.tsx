@@ -2,29 +2,14 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getAllBlogPosts } from "@/lib/blog";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-    title: "Blog | Crewtrace",
-    description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
-    openGraph: {
-        title: "Blog | Crewtrace",
-        description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
-        images: [
-            {
-                url: "/images/og-ct.png",
-                width: 1200,
-                height: 630,
-                alt: "The Crewtrace Blog",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Blog | Crewtrace",
-        description: "Industry insights, best practices, and tips for construction contractors looking to improve their operations.",
-        images: ["/images/og-ct.png"],
-    },
-};
+export const metadata = createPageMetadata({
+    title: "Construction Payroll & Time Tracking Blog",
+    description:
+        "Actionable content for contractors on payroll leakage prevention, GPS time tracking, compliance readiness, and field operations.",
+    path: "/blog",
+});
 
 export default async function BlogPage() {
     const posts = await getAllBlogPosts();
@@ -83,7 +68,7 @@ export default async function BlogPage() {
                             </div>
                             <h2 className="text-2xl font-bold text-foreground mb-2">Coming Soon</h2>
                             <p className="text-foreground/60 mb-8 max-w-md mx-auto">
-                                We're working on some great content for you. Check back soon for
+                                We&apos;re working on some great content for you. Check back soon for
                                 industry insights and best practices.
                             </p>
                             <Link

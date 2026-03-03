@@ -3,15 +3,14 @@ import LandingNavbar from "@/components/LandingNavbar";
 import ComplianceAuditTool from "@/components/ComplianceAuditTool";
 import Footer from "@/components/Footer";
 import { ShieldCheck, Lock, Scale, AlertTriangle } from "lucide-react";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Free Compliance Audit | Crewtrace",
-    description: "Is your time-tracking actually compliant? Answer 7 questions and get an instant compliance score against FLSA, Davis-Bacon, and DOL audit standards — free, no email required.",
-    openGraph: {
-        title: "Free Compliance Audit | Crewtrace",
-        description: "Find out if your time-tracking practices would survive a DOL audit. Get your compliance score in under 2 minutes.",
-    },
-};
+export const metadata: Metadata = createPageMetadata({
+    title: "Free Compliance Audit",
+    description:
+        "Is your time-tracking actually compliant? Answer 7 questions and get an instant compliance score against FLSA, Davis-Bacon, and DOL audit standards.",
+    path: "/compliance-audit",
+});
 
 export default function ComplianceAuditPage() {
     return (

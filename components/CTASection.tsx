@@ -1,6 +1,7 @@
-import { ArrowRight, CheckCircle2, Calculator, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Calculator, ShieldCheck } from "lucide-react";
 import React from "react";
 import Button from "@/components/Button";
+import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 
 export default function CTASection() {
     return (
@@ -27,7 +28,7 @@ export default function CTASection() {
                             </h2>
 
                             <p className="text-xl text-foreground/50 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                                We do not want you to pay us unless we know we can save you money. On a free 15-minute call, we will audit your current time tracking and payroll process and tell you if Crewtrace is a fit.
+                                We do not want you to pay us unless we know we can save you money. On a free 15-minute call, we audit your current time tracking and payroll process to show what Crewtrace can do {publicIcpPhrase}. {orderedPromiseLine}
                             </p>
 
                             <div className="rounded-2xl border border-primary/15 bg-primary/[0.03] p-6 space-y-3 max-w-xl mx-auto lg:mx-0 text-left">

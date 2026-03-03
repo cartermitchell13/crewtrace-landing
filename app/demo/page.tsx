@@ -2,18 +2,20 @@ import type { Metadata } from "next";
 import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import { createPageMetadata } from "@/lib/seo";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 const LINKEDIN_URL = "https://www.linkedin.com/in/cartermitchell98/";
 const VIDEO_SRC = "/videos/demo.mp4";
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
     title: "See CrewTrace in Action | Demo",
     description:
         "Watch a quick walkthrough of how CrewTrace stops payroll leakage for construction crews — no sales call required.",
-    robots: { index: false, follow: false }, // keep this page off Google
-};
+    path: "/demo",
+    noIndex: true,
+});
 
 export default function DemoPage() {
     return (

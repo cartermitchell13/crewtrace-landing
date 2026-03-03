@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
-    { label: "Features", href: "/#features" },
-    { label: "How It Works", href: "/#process" },
-    { label: "Results", href: "/#results" },
-    { label: "FAQ", href: "/#faq" },
+    { label: "Features", href: "/features/gps-time-tracking" },
+    { label: "Industries", href: "/industries" },
+    { label: "Guides", href: "/guides" },
+    { label: "Case Studies", href: "/case-studies" },
 ];
 
 export default function LandingNavbar() {
@@ -17,7 +18,7 @@ export default function LandingNavbar() {
     return (
         <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
             <div className="bg-white/85 backdrop-blur-md border border-white/30 shadow-input rounded-2xl px-5 md:px-6 py-3 flex items-center justify-between">
-                <a href="/" className="flex items-center">
+                <Link href="/" className="flex items-center">
                     <Image
                         src="/images/crew-trace-logo.png"
                         alt="Crewtrace Logo"
@@ -25,17 +26,17 @@ export default function LandingNavbar() {
                         height={32}
                         className="h-8 w-auto object-contain"
                     />
-                </a>
+                </Link>
 
                 <div className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.href}
                             href={link.href}
                             className="px-4 py-2 text-sm font-medium rounded-lg text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03] transition-colors"
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -64,14 +65,14 @@ export default function LandingNavbar() {
             <div className={`md:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-200 ${mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
                 <div className="bg-white/95 backdrop-blur-md border border-foreground/10 shadow-xl rounded-2xl p-3">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.href}
                             href={link.href}
                             onClick={() => setMobileOpen(false)}
                             className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03] transition-colors"
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                     <a
                         href="https://cal.com/crewtrace/15min"

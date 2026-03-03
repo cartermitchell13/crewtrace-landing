@@ -1,11 +1,13 @@
 import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Terms of Service | Crewtrace",
+export const metadata: Metadata = createPageMetadata({
+    title: "Terms of Service",
     description: "Crewtrace Terms of Service — the rules and guidelines governing your use of our platform.",
-};
+    path: "/terms",
+});
 
 export default function TermsPage() {
     return (

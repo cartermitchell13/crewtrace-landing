@@ -1,6 +1,9 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Crewtrace",
+  "short_name": "Crewtrace",
+  "description": "GPS-verified time tracking and payroll leakage prevention for construction crews.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

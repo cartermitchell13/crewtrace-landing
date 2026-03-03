@@ -1,6 +1,6 @@
 "use client";
 
-import LandingNavbar from "@/components/LandingNavbar";
+import Navbar from "@/components/Navbar";
 import SavingsCalculator from "@/components/SavingsCalculator";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Lock, TrendingUp, Sparkles } from "lucide-react";
@@ -8,7 +8,7 @@ import { CheckCircle2, Lock, TrendingUp, Sparkles } from "lucide-react";
 export default function CalculatorPage() {
     return (
         <div className="min-h-screen bg-[#FBFBFE]">
-            <LandingNavbar />
+            <Navbar />
             
             <main className="pt-32 pb-20">
                 {/* Hero Header */}
