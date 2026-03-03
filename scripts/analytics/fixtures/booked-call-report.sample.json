@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-02-24T23:59:59Z",
+  "rows": [
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/gps-time-tracking",
+      "booked_call_cta_click_count": 8,
+      "lead_form_submit_success_count": 3
+    },
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/payroll-leakage-prevention",
+      "booked_call_cta_click_count": 6,
+      "lead_form_submit_success_count": 2
+    },
+    {
+      "cluster": "industries",
+      "template_type": "industry_detail",
+      "landing_url": "/industries/construction",
+      "booked_call_cta_click_count": 10,
+      "lead_form_submit_success_count": 4
+    },
+    {
+      "cluster": "industries",
+      "template_type": "industry_detail",
+      "landing_url": "/industries/hvac",
+      "booked_call_cta_click_count": 7,
+      "lead_form_submit_success_count": 3
+    },
+    {
+      "cluster": "compare",
+      "template_type": "competitor_detail",
+      "landing_url": "/compare/connecteam",
+      "booked_call_cta_click_count": 4,
+      "lead_form_submit_success_count": 1
+    },
+    {
+      "cluster": "guides",
+      "template_type": "guide_detail",
+      "landing_url": "/guides/construction-time-tracking-implementation",
+      "booked_call_cta_click_count": 3,
+      "lead_form_submit_success_count": 1
+    },
+    {
+      "cluster": "blog",
+      "template_type": "blog_detail",
+      "landing_url": "/blog/gps-time-tracking-vs-paper-timesheets",
+      "booked_call_cta_click_count": 5,
+      "lead_form_submit_success_count": 2
+    },
+    {
+      "cluster": "case-studies",
+      "template_type": "case_study_detail",
+      "landing_url": "/case-studies/chen-construction-multi-site-control",
+      "booked_call_cta_click_count": 2,
+      "lead_form_submit_success_count": 1
+    }
+  ]
+}
+
