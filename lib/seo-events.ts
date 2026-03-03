@@ -1,4 +1,5 @@
 import {
+    buildDeterministicConversionKey,
     mergeWithFirstTouchAttribution,
     type FirstTouchAttribution,
 } from "@/lib/first-touch-attribution";
@@ -6,6 +7,7 @@ import {
 export const seoEventNames = [
     "seo_landing_view",
     "booked_call_cta_click",
+    "booked_call_embed_interaction",
     "lead_form_submit_attempt",
     "lead_form_submit_success",
     "lead_form_submit_failure",
@@ -19,6 +21,7 @@ export type SeoEventPayload = {
     template_type: string;
     cluster: string;
     landing_url: string;
+    conversion_key: string;
     page_url?: string;
     page_slug?: string;
     cta_label?: string;
@@ -77,6 +80,13 @@ function buildSeoEvent(
         toOptionalValue(mergedAttribution.landing_url) ??
         toOptionalValue(context.pageUrl) ??
         "/";
+    const conversionKey = buildDeterministicConversionKey({
+        cluster: context.cluster,
+        templateType: context.templateType,
+        landingUrl,
+        attribution: context.attribution,
+        firstTouch: context.firstTouch,
+    });
 
     return {
         event: eventName,
@@ -84,6 +94,7 @@ function buildSeoEvent(
         template_type: context.templateType,
         cluster: context.cluster,
         landing_url: landingUrl,
+        conversion_key: conversionKey,
         page_url: toOptionalValue(context.pageUrl),
         page_slug: toOptionalValue(context.pageSlug),
         cta_label: toOptionalValue(extras.cta_label),
@@ -143,6 +154,19 @@ export function buildLeadFormEvent(
     });
 }
 
+export function buildBookedCallEmbedInteractionEvent(
+    context: SeoEventContext,
+    options: {
+        ctaLabel?: string;
+        ctaLocation?: string;
+    } = {},
+): SeoEventPayload {
+    return buildSeoEvent("booked_call_embed_interaction", context, {
+        cta_label: options.ctaLabel,
+        cta_location: options.ctaLocation,
+    });
+}
+
 export function parseSeoEventPayload(value: unknown): SeoEventPayload | null {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
         return null;
@@ -166,11 +190,17 @@ export function parseSeoEventPayload(value: unknown): SeoEventPayload | null {
         template_type: candidate.template_type,
         cluster: candidate.cluster,
         landing_url: candidate.landing_url,
+        conversion_key: "",
     };
 
     type OptionalSeoEventStringKey = Exclude<
         keyof SeoEventPayload,
-        "event" | "occurred_at" | "template_type" | "cluster" | "landing_url"
+        | "event"
+        | "occurred_at"
+        | "template_type"
+        | "cluster"
+        | "landing_url"
+        | "conversion_key"
     >;
 
     const optionalStringKeys: OptionalSeoEventStringKey[] = [
@@ -199,6 +229,37 @@ export function parseSeoEventPayload(value: unknown): SeoEventPayload | null {
             payload[key] = valueAtKey as SeoEventPayload[typeof key];
         }
     }
+
+    if (
+        typeof candidate.conversion_key === "string" &&
+        candidate.conversion_key.trim().length > 0
+    ) {
+        payload.conversion_key = candidate.conversion_key.trim();
+        return payload;
+    }
+
+    if (candidate.event === "booked_call_embed_interaction") {
+        return null;
+    }
+
+    payload.conversion_key = buildDeterministicConversionKey({
+        cluster: payload.cluster,
+        templateType: payload.template_type,
+        landingUrl: payload.landing_url,
+        attribution: {
+            landing_url: payload.landing_url,
+            utm_source: payload.utm_source,
+            utm_medium: payload.utm_medium,
+            utm_campaign: payload.utm_campaign,
+            utm_term: payload.utm_term,
+            utm_content: payload.utm_content,
+            gclid: payload.gclid,
+            fbclid: payload.fbclid,
+            msclkid: payload.msclkid,
+            ttclid: payload.ttclid,
+            li_fat_id: payload.li_fat_id,
+        },
+    });
 
     return payload;
 }

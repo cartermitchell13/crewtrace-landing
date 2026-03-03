@@ -32,6 +32,40 @@ function normalizeValue(value: string | null | undefined): string | undefined {
     return trimmed.length > 0 ? trimmed : undefined;
 }
 
+function normalizePathForKey(value: string | null | undefined): string {
+    const trimmed = normalizeValue(value);
+    if (!trimmed) {
+        return "/unknown";
+    }
+
+    let pathname = trimmed;
+    try {
+        pathname = new URL(trimmed).pathname;
+    } catch {
+        pathname = trimmed.split("?")[0].split("#")[0];
+    }
+
+    if (!pathname.startsWith("/")) {
+        pathname = `/${pathname}`;
+    }
+
+    if (pathname.length > 1 && pathname.endsWith("/")) {
+        pathname = pathname.slice(0, -1);
+    }
+
+    return pathname.toLowerCase();
+}
+
+function stableHash(input: string): string {
+    let hash = 2166136261;
+    for (let index = 0; index < input.length; index += 1) {
+        hash ^= input.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+    }
+
+    return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
 function getBrowserStorage(): StorageLike | null {
     if (typeof window === "undefined") {
         return null;
@@ -177,4 +211,35 @@ export function mergeWithFirstTouchAttribution(
     }
 
     return merged;
+}
+
+export function buildDeterministicConversionKey(options: {
+    cluster: string;
+    templateType: string;
+    landingUrl: string;
+    attribution?: Partial<FirstTouchAttribution> | null;
+    firstTouch?: FirstTouchAttribution | null;
+}): string {
+    const merged = mergeWithFirstTouchAttribution(
+        options.attribution,
+        options.firstTouch,
+    );
+    const keyParts = [
+        normalizeValue(options.cluster)?.toLowerCase() ?? "unknown",
+        normalizeValue(options.templateType)?.toLowerCase() ?? "unknown",
+        normalizePathForKey(options.landingUrl),
+        normalizePathForKey(merged.landing_url),
+        normalizeValue(merged.utm_source)?.toLowerCase() ?? "na",
+        normalizeValue(merged.utm_medium)?.toLowerCase() ?? "na",
+        normalizeValue(merged.utm_campaign)?.toLowerCase() ?? "na",
+        normalizeValue(merged.utm_term)?.toLowerCase() ?? "na",
+        normalizeValue(merged.utm_content)?.toLowerCase() ?? "na",
+        normalizeValue(merged.gclid)?.toLowerCase() ?? "na",
+        normalizeValue(merged.fbclid)?.toLowerCase() ?? "na",
+        normalizeValue(merged.msclkid)?.toLowerCase() ?? "na",
+        normalizeValue(merged.ttclid)?.toLowerCase() ?? "na",
+        normalizeValue(merged.li_fat_id)?.toLowerCase() ?? "na",
+    ];
+
+    return `seo-${stableHash(keyParts.join("|"))}`;
 }

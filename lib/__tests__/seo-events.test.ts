@@ -5,7 +5,9 @@ import {
 } from "@/lib/first-touch-attribution";
 import {
     buildBookedCallCtaClickEvent,
+    buildBookedCallEmbedInteractionEvent,
     buildLeadFormEvent,
+    parseSeoEventPayload,
     seoEventNames,
 } from "@/lib/seo-events";
 
@@ -27,6 +29,7 @@ describe("seo event contracts", () => {
         expect(seoEventNames).toEqual([
             "seo_landing_view",
             "booked_call_cta_click",
+            "booked_call_embed_interaction",
             "lead_form_submit_attempt",
             "lead_form_submit_success",
             "lead_form_submit_failure",
@@ -63,6 +66,7 @@ describe("seo event contracts", () => {
         expect(event.utm_source).toBe("google");
         expect(event.utm_medium).toBe("email");
         expect(event.referrer).toBe("https://google.com");
+        expect(event.conversion_key).toMatch(/^seo-[0-9a-f]{8}$/);
     });
 
     it("keeps first-touch attribution stable after initial capture", () => {
@@ -106,5 +110,50 @@ describe("seo event contracts", () => {
         expect(leadFailure.landing_url).toBe("/features/gps-time-tracking");
         expect(leadFailure.utm_source).toBe("google");
         expect(leadFailure.error_code).toBe("downstream_failed");
+        expect(leadFailure.conversion_key).toMatch(/^seo-[0-9a-f]{8}$/);
+    });
+
+    it("builds deterministic conversion keys for identical attribution input", () => {
+        const context = {
+            templateType: "industry_detail",
+            cluster: "industries",
+            pageUrl: "/industries/hvac",
+            firstTouch: {
+                captured_at: "2026-03-01T00:00:00.000Z",
+                utm_source: "google",
+                utm_medium: "organic",
+                landing_url: "/features/gps-time-tracking",
+            },
+        };
+
+        const first = buildBookedCallCtaClickEvent(context);
+        const second = buildBookedCallEmbedInteractionEvent(context);
+        expect(first.conversion_key).toBe(second.conversion_key);
+    });
+
+    it("parses legacy payloads by deriving conversion key when missing", () => {
+        const parsed = parseSeoEventPayload({
+            event: "booked_call_cta_click",
+            occurred_at: "2026-03-01T10:01:00.000Z",
+            template_type: "feature_detail",
+            cluster: "features",
+            landing_url: "/features/gps-time-tracking",
+            utm_source: "google",
+        });
+
+        expect(parsed).not.toBeNull();
+        expect(parsed?.conversion_key).toMatch(/^seo-[0-9a-f]{8}$/);
+    });
+
+    it("requires conversion keys for booked_call_embed_interaction payload parsing", () => {
+        expect(
+            parseSeoEventPayload({
+                event: "booked_call_embed_interaction",
+                occurred_at: "2026-03-01T10:01:00.000Z",
+                template_type: "contact",
+                cluster: "company",
+                landing_url: "/contact",
+            }),
+        ).toBeNull();
     });
 });
