@@ -92,5 +92,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-03
-Stopped at: Completed 04-VERIFICATION and phase closeout docs
-Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-CONTEXT.md (when created)
+Stopped at: Phase 5 context gathered
+Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-CONTEXT.md
