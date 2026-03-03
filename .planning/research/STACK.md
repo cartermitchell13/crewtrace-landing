@@ -1,8 +1,8 @@
-﻿# Stack Research
+# Stack Research
 
-**Domain:** Programmatic SEO for a B2B SaaS marketing site (construction workforce/payroll niche)
-**Researched:** 2026-03-01
-**Confidence:** HIGH
+**Domain:** SEO growth engine for conversion-focused marketing site operations
+**Researched:** 2026-03-03
+**Confidence:** MEDIUM
 
 ## Recommended Stack
 
@@ -10,72 +10,68 @@
 
 | Technology | Version | Purpose | Why Recommended |
 |------------|---------|---------|-----------------|
-| Next.js App Router | 16.x | Routing, static generation, metadata APIs | Excellent fit for templated SEO pages and sitemap generation |
-| TypeScript | 5.x | Typed content models and generators | Prevents schema drift as page count scales |
-| React | 19.x | Componentized template rendering | Reuse blocks across clusters while preserving consistency |
-| Tailwind CSS | 4.x | Utility-first design system | Fast iteration across many templates with token consistency |
+| Next.js App Router | Existing in repo | Route generation and server/client composition | Already production baseline; supports deterministic template rendering and API endpoints. |
+| TypeScript | Existing in repo | Contracts for page content, events, and reporting payloads | Critical for pSEO scale where schema drift causes silent failures. |
+| Node.js script pipeline | Existing in repo | Scheduled reporting, validation checks, data transforms | Keeps ops checks reproducible in CI and local workflows. |
 
 ### Supporting Libraries
 
 | Library | Version | Purpose | When to Use |
 |---------|---------|---------|-------------|
-| gray-matter | 4.x | Parse markdown frontmatter | Blog/guide ingestion from markdown files |
-| remark + remark-html | 15.x / 16.x | Render markdown to HTML | Long-form content pages |
-| zod | latest | Data schema validation | Validate pSEO records before publish |
-| rehype plugins | latest | Heading IDs / sanitization | Rich article rendering and TOC support |
+| Google Search Console API client | Current stable at implementation time | Pull query/page index and performance data | Use in data ingestion phase for production weekly reporting. |
+| Analytics provider SDK (GA4/measurement export) | Current stable at implementation time | Session and landing behavior ingestion | Use when merging SEO and on-site behavior in one model. |
+| Validation library already used in repo | Existing in repo | Ingestion schema and event payload validation | Use at data boundaries to block malformed rows/events. |
 
 ### Development Tools
 
 | Tool | Purpose | Notes |
 |------|---------|-------|
-| ESLint + Next config | Static quality checks | Keep route/page conventions consistent |
-| Vitest | Utility and route logic testing | Validate generators, metadata, and sitemap coverage |
-| Lighthouse CI | Performance and SEO budgets | Catch regressions before deploy |
+| Existing CI workflows | Release and quality gates | Extend current workflows rather than adding parallel pipelines. |
+| Existing script guardrails | Regression checks for SEO/CTA/reporting wiring | Add new checks for ingestion contracts and opportunity outputs. |
 
 ## Installation
 
 ```bash
-# Optional additions for scaling operations
-npm install zod
-npm install -D lighthouse-ci
+# No mandatory stack migration required for v1.1.
+# Add provider SDKs only when integration implementation begins.
 ```
 
 ## Alternatives Considered
 
 | Recommended | Alternative | When to Use Alternative |
 |-------------|-------------|-------------------------|
-| Local typed data + markdown | Headless CMS first | Use CMS when content contributors expand beyond engineering |
-| App Router static routes | SSR-everything pages | Use SSR only for truly dynamic, user-specific pages |
-| One primary domain | SEO subdomains | Only if legal/ops constraints force strict property separation |
+| Script-first ingestion in repo | External ETL platform first | Use external ETL when data volume or connector breadth exceeds current ops capacity. |
+| Typed contracts in app repo | Spreadsheet-driven mapping | Only for one-off investigations, not production pipelines. |
 
 ## What NOT to Use
 
 | Avoid | Why | Use Instead |
 |-------|-----|-------------|
-| Thin token-swapped templates | High duplicate/thin-content risk | Rich data-driven template sections per page |
-| Unvalidated content imports | Schema drift at scale | Typed schemas + CI validation |
-| Manual sitemap maintenance | Easy to miss new pages | Programmatic sitemap generation |
+| Unvalidated webhook/event ingestion | Leads to reporting drift and trust loss in metrics | Schema-validated ingestion with explicit failure logs. |
+| Manual page-priority decisions without scoring | Creates inconsistent output and bias | Deterministic opportunity scoring with explicit inputs. |
 
 ## Stack Patterns by Variant
 
-**If page count stays under 200:**
-- Keep file-based content source with strict schemas.
+**If data source access is limited:**
+- Use export-file ingestion jobs with strict schema checks.
+- Because it preserves deterministic outputs before direct APIs are unlocked.
 
-**If page count grows beyond 500:**
-- Move to data pipeline + content operations tooling while preserving same template layer.
+**If API access is available:**
+- Use scheduled pull jobs with checkpointed cursors and idempotent merges.
+- Because it reduces manual operations and keeps weekly reports fresh.
 
 ## Version Compatibility
 
 | Package A | Compatible With | Notes |
 |-----------|-----------------|-------|
-| next@16.x | react@19.x | Current repo baseline |
-| vitest@4.x | jsdom@28.x | Current test stack baseline |
+| Existing Next.js + Node runtime | Existing repo toolchain | Keep dependencies aligned with current lockfile and CI runtime. |
 
 ## Sources
 
-- Existing repository architecture and dependencies (high confidence).
-- Programmatic SEO playbook principles from local skill reference (high confidence).
+- Existing repo architecture and workflows (`.planning/milestones/v1.0-ROADMAP.md`, `.planning/PROJECT.md`) - High confidence
+- Existing script and CI patterns in this codebase - High confidence
+- Industry-practice inference for SEO data operations - Medium confidence
 
 ---
-*Stack research for: Crewtrace SEO growth architecture*
-*Researched: 2026-03-01*
+*Stack research for: SEO growth operations on Crewtrace*
+*Researched: 2026-03-03*

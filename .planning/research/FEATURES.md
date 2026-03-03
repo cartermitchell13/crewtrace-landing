@@ -1,7 +1,7 @@
-﻿# Feature Research
+# Feature Research
 
-**Domain:** Programmatic SEO growth for B2B SaaS demand generation
-**Researched:** 2026-03-01
+**Domain:** SEO growth loop and conversion optimization for pSEO marketing site
+**Researched:** 2026-03-03
 **Confidence:** HIGH
 
 ## Feature Landscape
@@ -10,88 +10,88 @@
 
 | Feature | Why Expected | Complexity | Notes |
 |---------|--------------|------------|-------|
-| Unique metadata per page | Baseline SEO hygiene | LOW | Must include title, description, canonical |
-| Crawlable URL hierarchy | Helps users and crawlers navigate | LOW | Subfolder clusters beat orphan pages |
-| Internal links between related pages | Essential for discovery and authority flow | MEDIUM | Hub-spoke model required |
-| Structured data for major page types | Needed for rich SERP eligibility | MEDIUM | Breadcrumb + Article + FAQ where relevant |
-| Reliable sitemap coverage | Prevents indexation blind spots | LOW | Auto-generated from route/data inventory |
+| Production search + analytics ingestion | Reporting without live data is not trusted | MEDIUM | Required before prioritization decisions. |
+| Opportunity scoring and weekly prioritized backlog | SEO teams expect a repeatable prioritization system | MEDIUM | Must tie directly to rankings + conversion impact. |
+| Conversion experiment instrumentation | Growth teams expect measured CRO iteration | MEDIUM | Must be joined to booked-call outcomes, not CTR only. |
 
 ### Differentiators (Competitive Advantage)
 
 | Feature | Value Proposition | Complexity | Notes |
 |---------|-------------------|------------|-------|
-| Industry x feature hybrid pages | Captures high-intent long-tail demand | MEDIUM | Example: roofing + payroll exports |
-| Operational calculators with conversion hooks | Converts informational traffic into leads | MEDIUM | Keep calculators indexable and measurable |
-| Compliance-focused evidence pages | Builds trust in regulated payroll/time domain | MEDIUM | Case studies + legal-aware copy standards |
-| SEO QA automation pipeline | Lets team scale without quality collapse | HIGH | Metadata, links, uniqueness, sitemap checks |
+| Cluster-aware opportunity model | Focuses work on pages with highest pipeline upside | MEDIUM | Uses existing cluster/template taxonomy from v1.0. |
+| Automated remediation playbooks | Speeds reaction when conversion/rank drops occur | MEDIUM | Converts monitoring into action. |
+| Contract-first expansion to new cluster types | Scales content without quality drift | HIGH | Reuses guardrail strategy that worked in v1.0. |
 
 ### Anti-Features (Commonly Requested, Often Problematic)
 
 | Feature | Why Requested | Why Problematic | Alternative |
 |---------|---------------|-----------------|-------------|
-| Massive city-page generation with weak data | Looks like quick traffic gain | High thin-page and doorway-page risk | Publish only high-intent, data-backed markets |
-| AI bulk page publishing without review | Fast volume | Accuracy and trust issues in compliance niche | Human-reviewed briefs with templates |
-| Multiple subdomains for clusters | Seems organizationally clean | Dilutes authority and adds technical overhead | Keep clusters in first-party subfolders |
+| Immediate non-U.S. expansion | Appears to increase addressable volume quickly | Splits focus before U.S. engine is fully efficient | Keep U.S. scope until KPI thresholds are sustained. |
+| Fully auto-published pages at scale | Feels like fastest way to grow index footprint | Increases risk of thin/duplicative content and trust loss | Keep publish gates and human review checkpoints. |
 
 ## Feature Dependencies
 
-```text
-Metadata and schema foundations
-  -> Template refactor
-     -> Page cluster expansion
-        -> Internal-link automation
-           -> QA and reporting automation
+```
+Production data ingestion
+    --requires--> canonical URL/cluster normalization
+                       --enables--> opportunity scoring
+                                      --enables--> backlog automation
+                                                       --drives--> cluster expansion and CRO experiments
 ```
 
 ### Dependency Notes
 
-- Template scaling should not start before metadata/canonical standards are centralized.
-- Internal-link automation depends on stable typed page records and related-entity mapping.
-- SEO reporting quality depends on analytics and event instrumentation decisions.
+- **Opportunity scoring requires production ingestion:** scores are only useful when fed by real performance/conversion data.
+- **Expansion and CRO both require backlog prioritization:** prevents random execution and preserves focus.
+- **Anomaly alerting requires stable baseline metrics:** otherwise alert noise overwhelms operators.
 
 ## MVP Definition
 
-### Launch With (v1)
+### Launch With (v1.1)
 
-- [ ] Technical SEO hardening for all existing pages.
-- [ ] Data-driven templates for industries, features, and hybrid pages.
-- [ ] Internal linking graph with no orphan pages.
-- [ ] Working conversion tracking and lead capture.
-- [ ] Automated SEO QA checks in CI.
+- [x] Production ingestion and normalized reporting model.
+- [x] Weekly opportunity scoring and prioritized action queue.
+- [x] Controlled expansion of new cluster types under existing quality gates.
+- [x] CRO experiment and anomaly loop tied to booked-call outcomes.
 
 ### Add After Validation (v1.x)
 
-- [ ] Additional long-tail clusters (integrations, comparisons).
-- [ ] Editorial workflow automation for content refresh cycles.
+- [ ] Predictive scoring with trend forecasting after baseline loop stability.
+- [ ] Semi-automated content brief generation from top opportunities.
 
 ### Future Consideration (v2+)
 
-- [ ] Internationalization/localized cluster expansion.
-- [ ] Location-based service pages with proprietary datasets.
+- [ ] Non-U.S. market expansion once U.S. system shows repeatable outcomes.
+- [ ] Multi-channel growth loop including paid channels.
 
 ## Feature Prioritization Matrix
 
 | Feature | User Value | Implementation Cost | Priority |
 |---------|------------|---------------------|----------|
-| Metadata + schema standardization | HIGH | MEDIUM | P1 |
-| Hybrid programmatic templates | HIGH | MEDIUM | P1 |
-| Link graph automation | HIGH | MEDIUM | P1 |
-| Analytics attribution and event model | HIGH | MEDIUM | P1 |
-| CI SEO QA and reporting | HIGH | HIGH | P1 |
+| Production data ingestion | HIGH | MEDIUM | P1 |
+| Opportunity scoring and backlog | HIGH | MEDIUM | P1 |
+| Contract-first cluster expansion | HIGH | HIGH | P1 |
+| CRO experiments and anomaly alerts | HIGH | MEDIUM | P1 |
+| Global lint gate convergence | MEDIUM | MEDIUM | P2 |
+
+**Priority key:**
+- P1: Must have for milestone
+- P2: Should have within milestone if sequencing allows
+- P3: Future consideration
 
 ## Competitor Feature Analysis
 
-| Feature | Typical Competitor Pattern | Risk | Our Approach |
-|---------|----------------------------|------|--------------|
-| Programmatic pages | Token-swapped pages | Thin content penalties | Data-rich sections per template |
-| Internal linking | Inconsistent/manual | Orphan pages and weak crawl depth | Rules-based link graph |
-| Conversion measurement | Last-click only | SEO ROI ambiguity | Source-aware event instrumentation |
+| Feature | Competitor A | Competitor B | Our Approach |
+|---------|--------------|--------------|--------------|
+| SEO performance ops loop | Opaque prioritization workflows | Mixed static reporting | Build transparent score and backlog output in repo artifacts. |
+| Conversion attribution detail | Often aggregate-level only | Often limited to last-touch | Preserve first-touch + landing/template/cluster level attribution. |
 
 ## Sources
 
-- Current Crewtrace codebase structure and content model.
-- Local programmatic-seo skill playbook guidance.
+- v1.0 delivery artifacts and summaries in `.planning/milestones/`
+- Existing project requirements/decisions in `.planning/PROJECT.md`
+- Existing reporting outputs in `.planning/phases/06-qa-automation-and-scale-operations/.tmp-weekly-report/`
 
 ---
-*Feature research for: Crewtrace SEO machine roadmap*
-*Researched: 2026-03-01*
+*Feature research for: SEO growth loops*
+*Researched: 2026-03-03*

@@ -1,117 +1,126 @@
-﻿# Project Research Summary
+# Project Research Summary
 
 **Project:** Crewtrace SEO Growth Engine
-**Domain:** Programmatic SEO for construction SaaS demand generation
-**Researched:** 2026-03-01
+**Domain:** Data-driven SEO growth loops for a conversion-focused marketing site
+**Researched:** 2026-03-03
 **Confidence:** HIGH
 
 ## Executive Summary
 
-Crewtrace already has the right foundation for an SEO-led growth system: multiple intent clusters, dynamic routes, centralized metadata helpers, and strong conversion-oriented page design. The primary challenge is not initial capability, but scale discipline.
+v1.0 established strong SEO and conversion infrastructure. For v1.1, the highest-value path is to close the execution loop: production data ingestion, deterministic opportunity scoring, prioritized action backlog, controlled expansion, and measurable CRO experiments.
 
-The recommended path is a six-phase program: harden technical SEO, refactor templates into typed scalable structures, expand high-intent page clusters, grow authority content, instrument conversion attribution, and automate SEO QA/reporting.
+The recommended approach is incremental and contract-first. Keep the existing stack, add source integrations, and enforce schema checks across ingestion/scoring/reporting boundaries. This preserves trust in metrics while scaling output.
 
-The key risk is publishing volume faster than quality controls. The roadmap therefore prioritizes template/data contracts and QA gates before large-scale page expansion.
+The main risks are metric mismatch across sources, prioritization outputs that do not translate into execution, and expansion that outruns quality controls. These are mitigated by early normalization contracts, action-oriented backlog exports, and existing publish/SEO guardrails.
 
 ## Key Findings
 
 ### Recommended Stack
 
-Use the current Next.js + TypeScript stack, add schema validation and SEO QA automation, and keep all SEO clusters in first-party subfolders. This gives scalable architecture without a disruptive rewrite.
+Reuse the current Next.js + TypeScript + script-first architecture and extend it with provider ingestion adapters and schema validation at each boundary.
 
 **Core technologies:**
-- Next.js App Router: route templates + sitemap/robots APIs.
-- TypeScript: typed content records and generator safety.
-- Tailwind + reusable components: consistent templates at scale.
+- Next.js + existing API/workflow setup: keep platform stable while adding growth-loop capabilities.
+- TypeScript contracts: prevent scoring/reporting drift as sources expand.
+- Node script + CI orchestration: supports deterministic artifacts and weekly automation.
 
 ### Expected Features
 
 **Must have (table stakes):**
-- unique metadata/canonical control,
-- page-type structured data,
-- deterministic internal linking,
-- complete sitemap coverage,
-- conversion attribution.
+- Production ingestion for search, analytics, and booked-call outcomes.
+- Weekly opportunity scoring with ranked action backlog.
+- CRO experiments and anomaly alerts tied to booked-call performance.
 
 **Should have (competitive):**
-- industry x feature hybrid pages,
-- robust lead magnets tied to intent,
-- QA automation pipeline.
+- Cluster-aware scoring and remediation playbooks.
+- Contract-first expansion into additional cluster types.
 
 **Defer (v2+):**
-- localization and location-scale clusters until core engine is stable.
+- Non-U.S. expansion and multi-channel growth loops.
 
 ### Architecture Approach
 
-Adopt typed page records feeding template rendering, metadata/schema generation, link graph construction, and sitemap output from one source of truth. This avoids divergence across content, SEO tags, and crawl surfaces.
+Implement a linear loop: source ingestion -> normalization -> scoring -> backlog artifacts -> execution -> reporting and alerts. Keep each step deterministic and contract-validated so weekly outputs are auditable and actionable.
+
+**Major components:**
+1. Ingestion and normalization contracts.
+2. Opportunity scoring and backlog generation.
+3. Expansion/CRO execution surfaces with monitoring feedback.
 
 ### Critical Pitfalls
 
-1. Thin token-swapped pages -> enforce data-rich template sections.
-2. Keyword cannibalization -> maintain intent-to-URL ownership map.
-3. Orphan pages -> automate hub-spoke linking rules.
-4. No revenue attribution -> instrument conversion events by template.
-5. Manual QA collapse -> enforce CI SEO gates before publish.
+1. **Data mismatch across sources** - enforce one canonical mapping layer and validation at ingestion.
+2. **Backlog without execution** - produce owner-ready action rows, not summary dashboards only.
+3. **Expansion quality drift** - gate new templates/pages with intent and quality checks.
+4. **CRO signal noise** - require sample/confidence criteria for experiment conclusions.
+5. **Permanent lint debt** - dedicate a phase to restore global lint release gating.
 
 ## Implications for Roadmap
 
-### Phase 1: Technical SEO Hardening
-**Rationale:** Foundation first prevents expensive rework.
-**Delivers:** metadata consistency, schema baseline, canonical and crawl rules.
-**Avoids:** cannibalization and indexation drift.
+### Phase 7: Production Data Integration and Contracts
+**Rationale:** Scoring and experimentation require trusted production data first.
+**Delivers:** Live source ingestion, normalization contracts, and reporting data integrity.
+**Addresses:** DATA requirements and ingestion quality checks.
+**Avoids:** Reporting trust erosion.
 
-### Phase 2: Template and Data Model Refactor
-**Rationale:** Scaling requires typed, validated records.
-**Delivers:** reusable page engines with shared contracts.
-**Implements:** typed content architecture.
+### Phase 8: Opportunity Scoring and Backlog Operations
+**Rationale:** Once data is trusted, prioritize where to act.
+**Delivers:** Weekly score model and ranked execution queue.
+**Uses:** Normalized metrics from Phase 7.
+**Implements:** Backlog artifact and operations loop.
 
-### Phase 3: Cluster Expansion and Link Graph
-**Rationale:** Growth pages only after foundations are reliable.
-**Delivers:** industry x feature expansion and no-orphan linkage.
+### Phase 9: Programmatic Expansion Engine
+**Rationale:** Expansion should follow measured opportunities, not broad assumptions.
+**Delivers:** Additional cluster templates and guarded publishing of new pages.
 
-### Phase 4: Authority Content Scaling
-**Rationale:** Boost topical depth and trust for hard queries.
-**Delivers:** guides/blog/case-study operating cadence.
+### Phase 10: CRO Experimentation and Alerting
+**Rationale:** Convert traffic gains into booked-call gains through measured iteration.
+**Delivers:** Experiment framework, lift reporting, and anomaly alerting.
 
-### Phase 5: Conversion and Attribution
-**Rationale:** Rankings without pipeline visibility are incomplete.
-**Delivers:** lead capture reliability and event instrumentation.
-
-### Phase 6: QA Automation and Reporting
-**Rationale:** Sustains quality as output volume increases.
-**Delivers:** automated checks and recurring SEO performance reports.
+### Phase 11: Platform Hardening and Lint Convergence
+**Rationale:** Close remaining quality debt so scaling remains sustainable.
+**Delivers:** Global lint release gate and ops hardening.
 
 ### Phase Ordering Rationale
 
-- Foundation and data contracts precede scale.
-- Scale precedes full automation only where necessary.
-- Attribution and QA complete the growth feedback loop.
+- Data reliability first, then prioritization, then expansion and optimization.
+- Each phase consumes explicit outputs from the previous phase.
+- Ordering directly mitigates highest-impact pitfalls in sequence.
 
 ### Research Flags
 
-Phases likely needing deeper implementation research:
-- **Phase 5:** analytics and event architecture decisions.
-- **Phase 6:** CI tooling choices and reporting integration.
+Phases likely needing deeper research during planning:
+- **Phase 7:** Provider-specific API/auth constraints and quota behavior.
+- **Phase 10:** Statistical confidence thresholds for low-volume segments.
 
-Phases with standard patterns:
-- **Phase 1-4:** strong existing conventions and known implementation paths.
+Phases with standard patterns (skip deep research-phase):
+- **Phase 8, 9, 11:** Built mainly on existing repository patterns and guardrails.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | Built on existing, proven repo architecture |
-| Features | HIGH | Derived from pSEO patterns plus current gaps |
-| Architecture | HIGH | Strong route and content baseline already exists |
-| Pitfalls | HIGH | Common failure modes match current repo trajectory |
+| Stack | HIGH | Extension of validated v1.0 architecture. |
+| Features | HIGH | Directly derived from current gaps and growth goals. |
+| Architecture | HIGH | Incremental layering on existing deterministic script model. |
+| Pitfalls | HIGH | Grounded in v1.0 outcomes and known SEO ops failure modes. |
 
 **Overall confidence:** HIGH
 
 ### Gaps to Address
 
-- Confirm analytics provider and attribution schema.
-- Decide data source evolution path (typed files vs CMS) by target page volume.
+- Confirm provider auth/data retention constraints for production ingestion.
+- Define minimum sample and significance policy for experiment decisions.
+
+## Sources
+
+### Primary (HIGH confidence)
+- `.planning/PROJECT.md` and `.planning/milestones/v1.0-ROADMAP.md`
+- Existing reporting and quality workflow patterns in repository scripts
+
+### Secondary (MEDIUM confidence)
+- Internal growth-loop strategy assumptions based on current SEO/CRO objectives
 
 ---
-*Research completed: 2026-03-01*
+*Research completed: 2026-03-03*
 *Ready for roadmap: yes*

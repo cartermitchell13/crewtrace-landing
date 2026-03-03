@@ -1,159 +1,145 @@
-﻿# Pitfalls Research
+# Pitfalls Research
 
-**Domain:** Programmatic SEO for a conversion-focused B2B site
-**Researched:** 2026-03-01
+**Domain:** SEO growth loop implementation on existing production marketing site
+**Researched:** 2026-03-03
 **Confidence:** HIGH
 
 ## Critical Pitfalls
 
-### Pitfall 1: Thin template variation
+### Pitfall 1: Reporting Trust Erosion from Data Mismatch
 
-**What goes wrong:**
-Pages differ only by swapped keywords/slugs and provide little unique value.
+**What goes wrong:** Teams stop using outputs because booking totals and page metrics do not align.
 
-**Why it happens:**
-Teams optimize for page count instead of content depth.
+**Why it happens:** URL normalization and attribution fields are inconsistent between sources.
 
-**How to avoid:**
-Define required unique sections per page type (proof points, contextual challenges, linked assets).
+**How to avoid:** Enforce one canonical mapping layer and contract validation before scoring/reporting.
 
-**Warning signs:**
-High page count growth with low engagement/time on page and high overlap in copy.
+**Warning signs:** Frequent manual reconciliation and unexplained report deltas week-to-week.
 
-**Phase to address:**
-Phase 2 and Phase 3.
+**Phase to address:** Phase 7 (production data integration).
 
 ---
 
-### Pitfall 2: Keyword cannibalization across clusters
+### Pitfall 2: Prioritization Theater
 
-**What goes wrong:**
-Multiple pages target the same intent, competing against each other.
+**What goes wrong:** A scoring model exists, but execution still follows intuition.
 
-**Why it happens:**
-No explicit keyword-to-URL ownership map.
+**Why it happens:** Score outputs do not produce concrete action items with owners.
 
-**How to avoid:**
-Create a canonical intent map and validate every new page against it.
+**How to avoid:** Emit ranked backlog artifacts with action type, rationale, and owner workflow.
 
-**Warning signs:**
-Frequent ranking swaps between your own URLs for target queries.
+**Warning signs:** Same pages remain on backlog for weeks with no movement.
 
-**Phase to address:**
-Phase 1 and Phase 3.
+**Phase to address:** Phase 8 (opportunity scoring + backlog ops).
 
 ---
 
-### Pitfall 3: Orphan pages and weak crawl depth
+### Pitfall 3: Expansion Without Guardrails
 
-**What goes wrong:**
-Programmatic pages exist in sitemap but are weakly linked internally.
+**What goes wrong:** New clusters increase page count but reduce quality and conversion rate.
 
-**Why it happens:**
-Page generation outpaces IA/linking design.
+**Why it happens:** Template growth outpaces intent ownership and quality checks.
 
-**How to avoid:**
-Implement deterministic hub-spoke and sibling-link rules.
+**How to avoid:** Require contract checks, intent ownership, and hub/sitemap linkage before publish.
 
-**Warning signs:**
-New pages indexed slowly with little internal-link equity.
+**Warning signs:** Index growth without proportional clicks/booked calls.
 
-**Phase to address:**
-Phase 3.
+**Phase to address:** Phase 9 (programmatic expansion).
 
 ---
 
-### Pitfall 4: SEO wins without revenue attribution
+### Pitfall 4: CRO Noise Instead of Signal
 
-**What goes wrong:**
-Traffic rises, but team cannot tie SEO pages to pipeline.
+**What goes wrong:** Experiments run but results are inconclusive or misleading.
 
-**Why it happens:**
-No page-level conversion events or source attribution.
+**Why it happens:** No minimum sample or confidence thresholds; segmentation is too broad.
 
-**How to avoid:**
-Instrument conversion events by page template, source, and CTA location.
+**How to avoid:** Define experiment contract with stopping rules and cluster/template segmentation.
 
-**Warning signs:**
-Reporting shows sessions/rankings only, no conversion breakdown.
+**Warning signs:** Frequent reversals and contradictory experiment conclusions.
 
-**Phase to address:**
-Phase 5.
+**Phase to address:** Phase 10 (CRO experimentation).
 
 ---
 
-### Pitfall 5: Manual QA collapse at scale
+### Pitfall 5: Permanent Partial Quality Gates
 
-**What goes wrong:**
-Duplicate metadata, broken links, and sitemap drift appear as page volume grows.
+**What goes wrong:** Scoped lint gates remain forever and technical debt compounds.
 
-**Why it happens:**
-No automated quality gates in CI.
+**Why it happens:** No dedicated phase to retire legacy lint debt.
 
-**How to avoid:**
-Add scripted checks for metadata uniqueness, link integrity, and sitemap coverage.
+**How to avoid:** Isolate and resolve debt in a milestone phase with clear exit criteria.
 
-**Warning signs:**
-Frequent post-release SEO hotfixes.
+**Warning signs:** Repeated TODOs for global lint with no timeline.
 
-**Phase to address:**
-Phase 6.
+**Phase to address:** Phase 11 (platform hardening).
 
 ## Technical Debt Patterns
 
 | Shortcut | Immediate Benefit | Long-term Cost | When Acceptable |
 |----------|-------------------|----------------|-----------------|
-| Hardcoded content arrays only | Fast initial shipping | Slow scaling and high editing overhead | Acceptable under ~200 pages |
-| Schema only at site root | Quick launch | Missed rich-result opportunities | Short-term only |
-| Manual internal links | Easy authoring | Orphan pages and inconsistent relevance | Never at pSEO scale |
+| Manual metric patching in reports | Fast weekly fix | Hidden drift and non-repeatable ops | Only emergency one-off with follow-up fix ticket |
+| Shipping new templates without score-based prioritization | Faster content output | Lower ROI and strategy thrash | Rarely, only for urgent business priority |
 
 ## Integration Gotchas
 
 | Integration | Common Mistake | Correct Approach |
 |-------------|----------------|------------------|
-| Scheduler CTA | Link everywhere without tracking | Add source-aware conversion events |
-| Analytics | Install tags without event model | Define event taxonomy before rollout |
-| Content import | Accept invalid records silently | Enforce schema validation in CI |
+| Search performance data | Using page paths without canonical normalization | Normalize URLs first, then aggregate. |
+| Booking/CRM data | Missing deterministic event IDs | Require event IDs and timestamp normalization at ingest. |
+| Analytics events | Mixing first-touch and last-touch semantics | Preserve first-touch as canonical SEO attribution dimension. |
 
 ## Performance Traps
 
 | Trap | Symptoms | Prevention | When It Breaks |
 |------|----------|------------|----------------|
-| Overweight templates | Poor LCP/INP on cluster pages | Performance budgets and component splitting | Mid-size traffic growth |
-| Unbounded client JS in SEO pages | Indexable pages become heavy | Keep most pages server-rendered and static | As pages and components multiply |
-| Image/video without strategy | Slower crawl and UX | Next image optimizations + media policies | Immediately on low-end devices |
+| Full reprocessing every run | Slow jobs and timeout risk | Incremental checkpoints by date/source | As data history grows |
+| Overly complex scoring formula early | Operator confusion and distrust | Start with explicit weighted factors and iterate | At first rollout |
 
-## Security and Trust Mistakes
+## Security Mistakes
 
 | Mistake | Risk | Prevention |
 |---------|------|------------|
-| Unsourced compliance claims | Legal/trust exposure | Content review checklist and citation policy |
-| Non-functional lead forms | Lost revenue and trust | Production-ready endpoint + monitoring |
-| Inconsistent legal copy updates | Policy mismatch | Versioned legal update process |
+| Logging raw lead PII in analytics artifacts | Data leakage risk | Redact/suppress PII before export and commit. |
+| Exposing provider secrets in scripts/workflows | Unauthorized data access | Use env-based secret management and restricted CI contexts. |
+
+## UX Pitfalls
+
+| Pitfall | User Impact | Better Approach |
+|---------|-------------|-----------------|
+| Backlogs without clear next action | Team stalls despite data availability | Include action type, rationale, and owner per row. |
+| Alert floods with low precision | Teams ignore alerts | Use thresholding and cluster-level dedupe. |
 
 ## "Looks Done But Isn't" Checklist
 
-- [ ] Metadata exists, but canonical ownership map is missing.
-- [ ] New pages are generated, but related links are not deterministic.
-- [ ] Sitemap updates, but no verification that each URL is internally reachable.
-- [ ] Conversion CTA exists, but events are not attributable by page type.
-- [ ] Schema exists, but page-type schema is incomplete.
+- [ ] **Data ingestion:** Often missing backfill/retry handling - verify idempotent reruns.
+- [ ] **Scoring model:** Often missing explainability fields - verify every score has rationale.
+- [ ] **CRO experiments:** Often missing minimum sample rules - verify stop conditions.
+- [ ] **Global lint fix:** Often missing CI enforcement switch-over - verify `npm run lint` is release-gating.
+
+## Recovery Strategies
+
+| Pitfall | Recovery Cost | Recovery Steps |
+|---------|---------------|----------------|
+| Data mismatch across sources | MEDIUM | Freeze reporting release, reconcile mapping, rerun normalized exports. |
+| Expansion quality drop | MEDIUM | Pause publication, enforce guardrails, prune low-value pages. |
+| Experiment misreads | LOW | Recompute with corrected segmentation and sample thresholds. |
 
 ## Pitfall-to-Phase Mapping
 
 | Pitfall | Prevention Phase | Verification |
 |---------|------------------|--------------|
-| Thin templates | Phase 2/3 | Content uniqueness checks and manual sampling |
-| Cannibalization | Phase 1/3 | Intent map coverage and URL ownership checks |
-| Orphan pages | Phase 3 | Internal link crawl + orphan report |
-| No attribution | Phase 5 | Conversion events by template in analytics |
-| QA collapse | Phase 6 | CI gates with fail-on-error policy |
+| Reporting trust erosion | Phase 7 | Data contract checks and reconciliation tests pass. |
+| Prioritization theater | Phase 8 | Weekly backlog generated and consumed in planning ritual. |
+| Expansion without guardrails | Phase 9 | Publish checks fail on missing intent/link contracts. |
+| CRO noise | Phase 10 | Experiments include confidence and minimum sample fields. |
+| Partial quality gates | Phase 11 | Global lint runs in CI release path. |
 
 ## Sources
 
-- Existing Crewtrace code and content architecture.
-- Programmatic SEO best-practice playbooks from local skill context.
+- v1.0 implementation and verification summaries
+- Existing CI/reporting workflows and temporary report outputs
 
 ---
-*Pitfalls research for: Crewtrace SEO scale-up*
-*Researched: 2026-03-01*
+*Pitfalls research for: Crewtrace v1.1 growth loops*
+*Researched: 2026-03-03*

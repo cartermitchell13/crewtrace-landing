@@ -1,141 +1,141 @@
-﻿# Architecture Research
+# Architecture Research
 
-**Domain:** Programmatic SEO architecture for a multi-page B2B marketing site
-**Researched:** 2026-03-01
+**Domain:** Data-driven SEO growth loop on existing Next.js marketing site
+**Researched:** 2026-03-03
 **Confidence:** HIGH
 
 ## Standard Architecture
 
 ### System Overview
 
-```text
-User/Crawler Request
-  -> Next.js route template
-     -> typed content/data record
-        -> metadata + schema builder
-           -> rendered page
-              -> related-page linker
-                 -> sitemap/indexing endpoints
+```
+[Source APIs/Exports]
+    -> [Ingestion Jobs]
+        -> [Normalized Data Contracts]
+            -> [Opportunity Scoring Engine]
+                -> [Action Backlog Artifacts]
+                    -> [Template/Cluster Execution + CRO Tests]
+                        -> [Weekly Ops Reports + Alerts]
 ```
 
 ### Component Responsibilities
 
 | Component | Responsibility | Typical Implementation |
 |-----------|----------------|------------------------|
-| Route templates | Render page classes by cluster | `app/<cluster>/[slug]/page.tsx` |
-| Content model | Define and validate records | Typed schema in `lib/` + validator |
-| Metadata engine | Canonical, title, description, robots | Shared helper utilities |
-| Schema engine | JSON-LD for page type | Composable schema builders |
-| Link graph | Related pages and hubs | Rule-based relatedness map |
-| Crawl endpoints | Sitemap and robots policy | `app/sitemap.ts`, `app/robots.ts` |
+| Ingestion layer | Pull and validate search/analytics/booking records | Scheduled Node scripts + schema validation |
+| Normalization layer | Canonical URL, cluster, template mapping | Shared mapping helpers and deterministic transforms |
+| Scoring layer | Rank opportunities by impact/effort | Weighted scoring script with explicit factors |
+| Activation layer | Turn top opportunities into page/CRO actions | Backlog exports consumed in planning/execution |
+| Monitoring layer | Report trends and detect regressions | Weekly artifacts + threshold-based alerts |
 
 ## Recommended Project Structure
 
-```text
-app/
-|-- industries/[slug]/page.tsx
-|-- features/[slug]/page.tsx
-|-- solutions/[slug]/page.tsx (legacy redirects)
-|-- sitemap.ts
-`-- robots.ts
-
-lib/
-|-- seo.ts
-|-- content/
-|   |-- industries.ts
-|   |-- features.ts
-|   `-- hybrids.ts
-|-- schema/
-|   `-- builders.ts
-`-- linking/
-    `-- related.ts
+```
+scripts/
+  analytics/
+    ingest-*.mjs
+    score-*.mjs
+    export-*.mjs
+    lib/
+      contracts/
+      mappings/
+      scoring/
+docs/seo/
+  growth-loop-ops.md
+.planning/
+  research/
+  REQUIREMENTS.md
+  ROADMAP.md
 ```
 
 ### Structure Rationale
 
-- Keep template rendering in routes and business/content logic in `lib/`.
-- Separate metadata/schema/linking concerns to avoid duplication.
-- Preserve cluster-specific data modules for clear ownership.
+- **`scripts/analytics/`** keeps data and scoring operations close to existing reporting scripts.
+- **`lib/contracts|mappings|scoring`** isolates reusable logic for testing and CI guardrails.
 
 ## Architectural Patterns
 
-### Pattern 1: Typed template contracts
+### Pattern 1: Contract-First Data Boundaries
 
-**What:** Every cluster record conforms to a schema before route build.
-**When to use:** Any new programmatic page type.
-**Trade-offs:** More upfront modeling, fewer runtime surprises.
+**What:** Validate every input and output artifact with typed schema/contracts.
+**When to use:** All ingestion and scoring boundaries.
+**Trade-offs:** Slight overhead; major reduction in silent metric drift.
 
-### Pattern 2: Hub-and-spoke internal linking
+### Pattern 2: Deterministic Artifact Outputs
 
-**What:** Cluster hub pages link to spokes; spokes link to siblings and parent hubs.
-**When to use:** All SEO clusters.
-**Trade-offs:** Requires link rules and QA checks.
+**What:** Export sorted JSON/CSV outputs with stable structure for weekly review.
+**When to use:** Reports, backlog files, alert payloads.
+**Trade-offs:** Less ad-hoc flexibility; better reproducibility and diffability.
 
-### Pattern 3: Declarative metadata builders
+### Pattern 3: Incremental Loop Activation
 
-**What:** Central metadata and schema builders called by templates.
-**When to use:** Every indexable route.
-**Trade-offs:** Central changes affect many pages (good for consistency, risky if untested).
+**What:** Sequence ingestion -> scoring -> actioning -> alerting, not all-at-once rollout.
+**When to use:** Milestone-phase delivery.
+**Trade-offs:** Slower initial breadth; lower integration risk.
 
 ## Data Flow
 
 ### Request Flow
 
-```text
-Request -> Route -> Content record -> Metadata/Schema -> Rendered page -> Related links
+```
+Scheduled workflow
+    -> ingest source data
+    -> normalize to shared dimensions
+    -> compute scores
+    -> emit backlog/report/alert artifacts
+    -> operator executes top actions
 ```
 
 ### Key Data Flows
 
-1. Content records feed templates, metadata, schema, and sitemap from one source of truth.
-2. Link graph uses entity relationships (industry, feature, intent) to prevent orphan pages.
+1. **Search + conversion merge flow:** source metrics join on canonical landing URLs and first-touch attribution dimensions.
+2. **Scoring flow:** normalized rows produce opportunity priority with rationale fields.
+3. **Alert flow:** weekly deltas trigger threshold checks and remediation suggestions.
 
 ## Scaling Considerations
 
 | Scale | Architecture Adjustments |
 |-------|--------------------------|
-| 0-200 pages | File-based records with strict schemas |
-| 200-1000 pages | Add content ops pipeline + automated QA |
-| 1000+ pages | Introduce managed content source and publishing orchestration |
-
-### Scaling Priorities
-
-1. Prevent duplication/cannibalization before adding page volume.
-2. Automate QA before adding new clusters.
+| Current (single brand/site) | Script-first in repo is sufficient |
+| Multi-brand/site | Separate source configs and per-site artifact namespaces |
+| High-volume query sets | Add incremental ingestion checkpoints and partitioned processing |
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Copy-paste templates per route
+### Anti-Pattern 1: Dashboard-Only Operations
 
-- Why wrong: inconsistent SEO rules and high maintenance overhead.
-- Do this instead: shared render blocks + cluster configs.
+**What people do:** Rely on BI dashboards without artifact outputs tied to execution.
+**Why it's wrong:** Insights do not become action queues.
+**Do this instead:** Export ranked backlog artifacts consumed by weekly planning.
 
-### Anti-Pattern 2: Content and metadata maintained separately
+### Anti-Pattern 2: Mixing Raw and Normalized URLs
 
-- Why wrong: drift between on-page copy and SERP intent.
-- Do this instead: derive metadata from same typed record fields.
+**What people do:** Score/report directly from mixed URL forms.
+**Why it's wrong:** Splits signal and creates false trends.
+**Do this instead:** Normalize URLs once and reuse across all downstream steps.
 
 ## Integration Points
 
-### External services
+### External Services
 
 | Service | Integration Pattern | Notes |
 |---------|---------------------|-------|
-| Cal.com | CTA outbound links | Conversion dependency, not rendering dependency |
-| Analytics provider (planned) | Client + server events | Needed for SEO ROI attribution |
+| Search performance provider | Scheduled pull/export ingestion | Validate required columns every run. |
+| Web analytics provider | Session/event aggregation ingestion | Keep landing and attribution dimensions consistent. |
+| Booking/CRM provider | Conversion outcome ingestion | Require deterministic event IDs for joins. |
 
-### Internal boundaries
+### Internal Boundaries
 
 | Boundary | Communication | Notes |
 |----------|---------------|-------|
-| route templates <-> content records | typed imports | fail-fast on missing records |
-| templates <-> metadata/schema builders | helper functions | enforce canonical consistency |
+| Ingestion -> Scoring | Versioned JSON artifacts | Enforce schema version field. |
+| Scoring -> Execution planning | Prioritized backlog artifact | Include confidence + recommended action type. |
 
 ## Sources
 
-- Existing Crewtrace architecture and route structure.
-- Programmatic SEO implementation principles from local skill guide.
+- Existing Crewtrace architecture and milestone artifacts
+- Existing analytics and SEO script patterns in repo
 
 ---
-*Architecture research for: Crewtrace SEO platform expansion*
-*Researched: 2026-03-01*
+*Architecture research for: Crewtrace v1.1 growth loops*
+*Researched: 2026-03-03*
