@@ -83,7 +83,7 @@ export async function getAllBlogPosts(): Promise<BlogPostMeta[]> {
                     return null;
                 }
 
-                return {
+                const post: BlogPostMeta = {
                     slug,
                     title: frontmatter.title,
                     excerpt: frontmatter.excerpt,
@@ -92,15 +92,19 @@ export async function getAllBlogPosts(): Promise<BlogPostMeta[]> {
                     readTime: frontmatter.readTime,
                     icon: frontmatter.icon,
                 };
+
+                return post;
             })
     );
 
+    const validPosts = allPostsData.filter((post): post is BlogPostMeta => Boolean(post));
+
     // Sort posts by date
-    return allPostsData.filter(Boolean).sort((a, b) => {
+    return validPosts.sort((a, b) => {
         if (a.date < b.date) return 1;
         if (a.date > b.date) return -1;
         return 0;
-    }) as BlogPostMeta[];
+    });
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
