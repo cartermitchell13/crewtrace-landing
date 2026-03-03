@@ -2,8 +2,8 @@
 
 ## Milestone
 
-- ?? **v1.1 Growth Loops** - Phases 7-11 (in progress)
-- ? **v1.0 SEO Growth Engine** - Phases 1-6 (shipped 2026-03-03, archived in `.planning/milestones/v1.0-ROADMAP.md`)
+- [IN PROGRESS] **v1.1 Growth Loops** - Phases 7-11
+- [SHIPPED] **v1.0 SEO Growth Engine** - Phases 1-6 (2026-03-03, archived in `.planning/milestones/v1.0-ROADMAP.md`)
 
 ## Overview
 
