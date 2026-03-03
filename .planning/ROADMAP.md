@@ -8,7 +8,7 @@ This roadmap is optimized for fast SEO wins and long-term scale. It first locks 
 
 - [x] **Phase 1: SEO and Positioning Foundation** - Lock metadata, schema, canonical policy, ICP targeting, and U.S.-only crawl/index strategy. (Completed 2026-03-01)
 - [x] **Phase 2: Priority Cluster Build (Features + Industries)** - Refactor and scale the two highest-priority clusters first. (Completed 2026-03-02)
-- [ ] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely.
+- [x] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely. (Completed 2026-03-03)
 - [ ] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust.
 - [ ] **Phase 5: Booked-Call Conversion and Attribution** - Make SEO-to-call pipeline measurable and reliable.
 - [ ] **Phase 6: QA Automation and Scale Operations** - Add CI quality gates and recurring reporting for sustainable output.
@@ -57,7 +57,7 @@ Plans:
 
 Plans:
 - [x] 03-01: Implement parent/sibling/internal-link graph rules across priority clusters.
-- [ ] 03-02: Add expansion pages with link and intent validation.
+- [x] 03-02: Add expansion pages with link and intent validation.
 
 ### Phase 4: Competitor and Authority Content
 **Goal**: Increase topical authority and capture competitor-intent demand.
@@ -110,7 +110,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. SEO and Positioning Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Priority Cluster Build (Features + Industries) | 3/3 | Complete | 2026-03-02 |
-| 3. Link Graph and Cluster Expansion | 1/2 | In Progress | - |
+| 3. Link Graph and Cluster Expansion | 2/2 | Complete | 2026-03-03 |
 | 4. Competitor and Authority Content | 0/3 | Not started | - |
 | 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
 | 6. QA Automation and Scale Operations | 0/3 | Not started | - |
