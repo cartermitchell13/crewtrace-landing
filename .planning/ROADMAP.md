@@ -13,6 +13,7 @@ This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable prod
 
 - [x] **Phase 7: Production Data Integration and Contracts** - Replace fixture-based reporting inputs with validated production source ingestion (including GA4), event contracts, and normalized dimensions. (completed 2026-03-03)
 - [ ] **Phase 8: Opportunity Scoring and Backlog Operations** - Convert normalized performance data into weekly ranked execution actions.
+- [x] **Phase 08.1: Content and UI Optimization for Keyword Ranking** - Refresh high-intent templates with intent-aligned copy, stronger UX hierarchy, and guarded internal-link/metadata integrity. (completed 2026-03-03)
 - [ ] **Phase 9: Programmatic Expansion Engine** - Expand additional high-intent clusters with contract-backed templates and guardrails.
 - [ ] **Phase 10: CRO Experimentation and Alerting** - Improve booked-call conversion using experiments and anomaly response loops.
 - [ ] **Phase 11: Platform Hardening and Lint Convergence** - Restore full-repo lint gating and finalize operational quality controls.
@@ -39,6 +40,23 @@ This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable prod
 2. Backlog artifact includes action type and ownership-ready fields.
 3. Cannibalization and orphan-link risk detection is included in opportunity output.
 4. Weekly ops review process can track status progression for top opportunities.
+
+### Phase 08.1: Content and UI Optimization for Keyword Ranking (INSERTED)
+
+**Goal:** Improve ranking and conversion performance on high-intent landing templates through contract-safe copy refreshes and UX redesigns.
+**Requirements**: SEO-06, SEO-07, SEO-08, SEO-09
+**Depends on:** Phase 8
+**Success Criteria**:
+1. High-priority entry templates (`/`, `/features`, `/industries`) are rewritten with intent-aligned copy and clearer CTA hierarchy.
+2. Detail templates (`/features/[slug]`, `/industries/[slug]`, `/compare/[slug]`, `/contact`) ship UX and copy refreshes without breaking telemetry or schema/metadata contracts.
+3. Template refreshes preserve crawlable internal-link pathways and canonical/indexability guardrails.
+4. Weekly optimization backlog output includes deterministic action type, owner, status, and rationale fields to drive ongoing content operations.
+**Plans:** 3/3 plans complete
+
+Plans:
+- [x] 08.1-01-PLAN.md — Build deterministic optimization foundation (priority map + copy/UI guardrails).
+- [x] 08.1-02-PLAN.md — Redesign homepage and hub templates for intent clarity and conversion flow.
+- [x] 08.1-03-PLAN.md — Refresh detail/comparison/contact templates with proof-led UX and link-safe content updates.
 
 ### Phase 9: Programmatic Expansion Engine
 **Goal**: Scale new high-intent cluster types without degrading quality or ownership integrity.
@@ -75,6 +93,7 @@ This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable prod
 |-------|----------------|--------|-----------|
 | 7. Production Data Integration and Contracts | 3/3 | Complete    | 2026-03-03 |
 | 8. Opportunity Scoring and Backlog Operations | 0/0 | Not started | - |
+| 8.1 Content and UI Optimization for Keyword Ranking | 3/3 | Complete | 2026-03-03 |
 | 9. Programmatic Expansion Engine | 0/0 | Not started | - |
 | 10. CRO Experimentation and Alerting | 0/0 | Not started | - |
 | 11. Platform Hardening and Lint Convergence | 0/0 | Not started | - |

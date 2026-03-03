@@ -23,6 +23,13 @@ Requirements for this milestone. Each maps to exactly one roadmap phase.
 - [ ] **OPS-09**: Opportunity outputs flag cannibalization and orphan-link risks with recommended remediation.
 - [ ] **OPS-11**: Weekly SEO review artifacts include owner, status, and follow-up fields for top opportunities.
 
+### Content and UX Optimization
+
+- [x] **SEO-06**: Priority landing templates are rewritten with intent-aligned, proof-led copy while preserving ICP messaging guardrails.
+- [x] **SEO-07**: Core SEO templates adopt a clearer mobile-first hierarchy that improves scanability and CTA visibility.
+- [x] **SEO-08**: Internal links, metadata ownership, and indexability contracts remain valid after template refresh work.
+- [x] **SEO-09**: Weekly optimization backlog includes deterministic action type, owner, status, and rationale fields for refreshed pages.
+
 ### Programmatic Expansion
 
 - [ ] **SCALE-01**: Additional high-intent cluster types are added through typed contracts and reusable templates.
@@ -77,6 +84,10 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 | OPS-08 | Phase 8 | Pending |
 | OPS-09 | Phase 8 | Pending |
 | OPS-11 | Phase 8 | Pending |
+| SEO-06 | Phase 08.1 | Complete |
+| SEO-07 | Phase 08.1 | Complete |
+| SEO-08 | Phase 08.1 | Complete |
+| SEO-09 | Phase 08.1 | Complete |
 | SCALE-01 | Phase 9 | Pending |
 | SCALE-03 | Phase 9 | Pending |
 | SCALE-04 | Phase 9 | Pending |
@@ -88,8 +99,8 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 | OPS-06 | Phase 11 | Pending |
 
 **Coverage:**
-- v1.1 requirements: 19 total
-- Mapped to phases: 19
+- v1.1 requirements: 23 total
+- Mapped to phases: 23
 - Unmapped: 0
 
 ---
