@@ -147,6 +147,40 @@ export const guides: Guide[] = [
             },
         ],
     },
+    {
+        slug: "crew-time-tracking-migration-risk-checklist",
+        title: "Crew Time Tracking Migration Risk Checklist for Field Teams",
+        summary:
+            "Use this checklist to reduce rollout risk when switching from a legacy time app to a payroll-confidence workflow.",
+        readTime: "7 min read",
+        category: "Migration",
+        sections: [
+            {
+                heading: "Baseline your current risk before you switch",
+                points: [
+                    "List where payroll disputes happen today and which crews generate the highest exception volume.",
+                    "Document how clock edits, approvals, and exports are handled right now.",
+                    "Define success metrics before migration: approval time, dispute count, and payroll correction rate.",
+                ],
+            },
+            {
+                heading: "Design a low-friction transition path",
+                points: [
+                    "Pilot with one crew and one supervisor before company-wide rollout.",
+                    "Map geofence coverage and exception thresholds before launch day.",
+                    "Run one parallel payroll cycle to compare legacy vs new records.",
+                ],
+            },
+            {
+                heading: "Lock proof and accountability loops",
+                points: [
+                    "Publish one owner for weekly freshness review on policy and comparison claims.",
+                    "Review migration blockers after each payroll close and resolve in the next sprint.",
+                    "Train supervisors on one escalation path for edge cases and missed punches.",
+                ],
+            },
+        ],
+    },
 ];
 
 export const guideSlugs = guides.map((guide) => guide.slug);

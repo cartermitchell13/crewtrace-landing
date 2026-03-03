@@ -81,6 +81,29 @@ export const caseStudies: CaseStudy[] = [
         author: "Mike Ramirez",
         company: "Ramirez Roofing Co.",
     },
+    {
+        slug: "summit-hvac-payroll-confidence",
+        title: "Summit HVAC reduced payroll disputes after a phased migration",
+        industry: "HVAC",
+        summary:
+            "Summit HVAC moved from fragmented field logs to location-verified time records and stabilized payroll approvals in three weeks.",
+        challenge:
+            "Technicians worked across multiple calls each day, and the office team spent hours reconciling conflicting records before payroll lock.",
+        approach: [
+            "Ran a one-crew pilot with geofenced clock zones and supervisor exception alerts",
+            "Introduced weekly migration checkpoints tied to payroll-close outcomes",
+            "Used proof-led guide workflows to train supervisors and office reviewers",
+        ],
+        outcomes: [
+            "42% reduction in payroll dispute tickets",
+            "Payroll review window shortened from 5 hours to under 2 hours weekly",
+            "Higher confidence in overtime approvals across field supervisors",
+        ],
+        quote:
+            "The phased rollout gave us confidence. We fixed payroll friction without creating chaos in the field.",
+        author: "Erin Delgado",
+        company: "Summit HVAC Services",
+    },
 ];
 
 export const caseStudySlugs = caseStudies.map((study) => study.slug);

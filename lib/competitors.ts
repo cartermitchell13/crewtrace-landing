@@ -170,8 +170,16 @@ export const competitorRecords: CompetitorRecord[] = [
         linkTargets: {
             featureSlugs: ["gps-time-tracking", "payroll-leakage-prevention", "payroll-exports"],
             industrySlugs: ["construction", "general-contractors", "waterproofing"],
-            guideSlugs: ["construction-time-tracking-implementation", "payroll-export-workflow-for-contractors"],
-            caseStudySlugs: ["chen-construction-multi-site-control", "sw-waterproofing-payroll-recovery"],
+            guideSlugs: [
+                "construction-time-tracking-implementation",
+                "payroll-export-workflow-for-contractors",
+                "crew-time-tracking-migration-risk-checklist",
+            ],
+            caseStudySlugs: [
+                "chen-construction-multi-site-control",
+                "sw-waterproofing-payroll-recovery",
+                "summit-hvac-payroll-confidence",
+            ],
         },
     },
     {
@@ -278,8 +286,16 @@ export const competitorRecords: CompetitorRecord[] = [
         linkTargets: {
             featureSlugs: ["gps-time-tracking", "overtime-alerts", "dol-compliance"],
             industrySlugs: ["construction", "hvac", "electrical"],
-            guideSlugs: ["geofencing-best-practices-for-job-sites", "dol-audit-ready-time-records"],
-            caseStudySlugs: ["ramirez-roofing-overtime-control", "chen-construction-multi-site-control"],
+            guideSlugs: [
+                "geofencing-best-practices-for-job-sites",
+                "dol-audit-ready-time-records",
+                "crew-time-tracking-migration-risk-checklist",
+            ],
+            caseStudySlugs: [
+                "ramirez-roofing-overtime-control",
+                "chen-construction-multi-site-control",
+                "summit-hvac-payroll-confidence",
+            ],
         },
     },
 ];
