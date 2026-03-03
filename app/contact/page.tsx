@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { parseLeadApiResponse, type LeadPayload } from "@/lib/lead-contract";
 
 export default function ContactPage() {
     const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [submitMessage, setSubmitMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -18,10 +20,45 @@ export default function ContactPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormState("submitting");
+        setSubmitMessage(null);
 
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setFormState("success");
+        const payload: LeadPayload = {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            crewSize: formData.crewSize,
+            message: formData.message,
+        };
+
+        try {
+            const response = await fetch("/api/lead", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const json = await response.json().catch(() => null);
+            const leadResponse = parseLeadApiResponse(json);
+
+            if (!response.ok || !leadResponse?.ok) {
+                setFormState("error");
+                setSubmitMessage(
+                    leadResponse?.message ||
+                    "We could not submit your request. Please try again.",
+                );
+                return;
+            }
+
+            setFormState("success");
+        } catch {
+            setFormState("error");
+            setSubmitMessage(
+                "Network error while submitting your request. Please retry.",
+            );
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -40,10 +77,10 @@ export default function ContactPage() {
                         {/* Left Column - Info */}
                         <div>
                             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-                                Let's talk about your payroll leaks
+                                Let&apos;s talk about your payroll leaks
                             </h1>
                             <p className="text-lg text-foreground/60 mb-8">
-                                Book a free 15-minute call with our team. We'll show you exactly
+                                Book a free 15-minute call with our team. We&apos;ll show you exactly
                                 how much you could save with GPS-verified time tracking.
                             </p>
 
@@ -92,7 +129,7 @@ export default function ContactPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <h2 className="text-2xl font-bold text-foreground mb-2">We'll be in touch!</h2>
+                                    <h2 className="text-2xl font-bold text-foreground mb-2">We&apos;ll be in touch!</h2>
                                     <p className="text-foreground/60 mb-6">
                                         Someone from our team will reach out within 24 hours.
                                     </p>
@@ -227,6 +264,12 @@ export default function ContactPage() {
                                                 "Book My Free Demo"
                                             )}
                                         </button>
+
+                                        {formState === "error" && submitMessage && (
+                                            <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                                                {submitMessage} You can correct any details and submit again.
+                                            </div>
+                                        )}
 
                                         <p className="text-xs text-foreground/40 text-center">
                                             By submitting this form, you agree to our{" "}
