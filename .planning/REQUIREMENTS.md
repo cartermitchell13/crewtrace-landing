@@ -10,11 +10,11 @@ Requirements for this milestone. Each maps to exactly one roadmap phase.
 
 ### Data Integration and Attribution
 
-- [ ] **DATA-01**: Weekly SEO operations reporting uses production data sources (search, analytics, and booked-call outcomes) instead of fixtures.
-- [ ] **DATA-02**: Ingestion jobs pull and validate required fields from each source on a scheduled cadence.
-- [ ] **DATA-05**: GA4 property and web data stream are configured with required SEO conversion events (`seo_landing_view`, `booked_call_cta_click`, `lead_form_submit_*`) and validated in reports.
-- [ ] **DATA-03**: Booked-call outcomes are joinable to first-touch landing attribution with deterministic event keys.
-- [ ] **DATA-04**: URL normalization maps every row to canonical landing URL, cluster, and template dimensions.
+- [x] **DATA-01**: Weekly SEO operations reporting uses production data sources (search, analytics, and booked-call outcomes) instead of fixtures.
+- [x] **DATA-02**: Ingestion jobs pull and validate required fields from each source on a scheduled cadence.
+- [x] **DATA-05**: GA4 property and web data stream are configured with required SEO conversion events (`seo_landing_view`, `booked_call_cta_click`, `lead_form_submit_*`) and validated in reports.
+- [x] **DATA-03**: Booked-call outcomes are joinable to first-touch landing attribution with deterministic event keys.
+- [x] **DATA-04**: URL normalization maps every row to canonical landing URL, cluster, and template dimensions.
 
 ### Opportunity Prioritization
 
@@ -40,7 +40,7 @@ Requirements for this milestone. Each maps to exactly one roadmap phase.
 ### Quality and Operations Hardening
 
 - [ ] **OPS-06**: Full-repo lint debt is resolved so global lint is restored as a universal release gate.
-- [ ] **OPS-10**: CI validates data-ingestion and reporting contracts to block malformed artifacts from release workflows.
+- [x] **OPS-10**: CI validates data-ingestion and reporting contracts to block malformed artifacts from release workflows.
 
 ## v2 Requirements
 
@@ -67,12 +67,12 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Phase 7 | Pending |
-| DATA-02 | Phase 7 | Pending |
-| DATA-05 | Phase 7 | Pending |
-| DATA-03 | Phase 7 | Pending |
-| DATA-04 | Phase 7 | Pending |
-| OPS-10 | Phase 7 | Pending |
+| DATA-01 | Phase 7 | Complete |
+| DATA-02 | Phase 7 | Complete |
+| DATA-05 | Phase 7 | Complete |
+| DATA-03 | Phase 7 | Complete |
+| DATA-04 | Phase 7 | Complete |
+| OPS-10 | Phase 7 | Complete |
 | OPS-07 | Phase 8 | Pending |
 | OPS-08 | Phase 8 | Pending |
 | OPS-09 | Phase 8 | Pending |
