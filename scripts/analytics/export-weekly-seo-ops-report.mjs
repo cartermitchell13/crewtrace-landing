@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
     mapUrlToCluster,
     normalizeUrlPath,
     orderedWeeklyClusters,
+    resolveCanonicalLandingDimensions,
 } from "./lib/weekly-report-cluster-map.mjs";
 
-const schemaVersion = "1.0.0";
+const schemaVersion = "2.0.0";
 
 function parseArgs(argv) {
     const args = {};
@@ -78,23 +80,40 @@ function parseIndexedFlag(value) {
     return normalized === "1" || normalized === "true" || normalized === "yes";
 }
 
-function createClusterSeed(cluster) {
+function parseEventDate(value) {
+    if (typeof value !== "string" || value.trim().length === 0) {
+        return null;
+    }
+
+    const parsed = Date.parse(value);
+    if (Number.isNaN(parsed)) {
+        return null;
+    }
+
+    return new Date(parsed).toISOString().slice(0, 10);
+}
+
+function createRecordSeed(dimensions) {
     return {
-        cluster,
+        ...dimensions,
         indexed_pages: 0,
         tracked_urls: new Set(),
         traffic_clicks: 0,
         traffic_impressions: 0,
         booked_calls: 0,
+        booked_call_embed_interactions: 0,
         lead_submits_success: 0,
+        conversion_keys: new Set(),
     };
 }
 
-function getClusterRecord(records, cluster) {
-    if (!records.has(cluster)) {
-        records.set(cluster, createClusterSeed(cluster));
+function getRecord(records, dimensions) {
+    const key = `${dimensions.cluster}::${dimensions.template_type}::${dimensions.landing_url}`;
+    if (!records.has(key)) {
+        records.set(key, createRecordSeed(dimensions));
     }
-    return records.get(cluster);
+
+    return records.get(key);
 }
 
 function parseBookedRows(filePath) {
@@ -102,12 +121,15 @@ function parseBookedRows(filePath) {
     if (!Array.isArray(parsed.rows)) {
         throw new Error("Booked-call input must include a top-level rows array.");
     }
+
     return parsed;
 }
 
 function toCsv(rows) {
     const headers = [
         "cluster",
+        "template_type",
+        "landing_url",
         "week_start",
         "week_end",
         "indexed_pages",
@@ -115,7 +137,9 @@ function toCsv(rows) {
         "traffic_trend_clicks",
         "traffic_trend_impressions",
         "booked_calls",
+        "booked_call_embed_interactions",
         "lead_submits_success",
+        "joinable_conversion_keys",
     ];
 
     const lines = [headers.join(",")];
@@ -123,6 +147,8 @@ function toCsv(rows) {
         lines.push(
             [
                 row.cluster,
+                row.template_type,
+                row.landing_url,
                 row.week_start,
                 row.week_end,
                 row.indexed_pages,
@@ -130,7 +156,9 @@ function toCsv(rows) {
                 row.traffic_trend.clicks,
                 row.traffic_trend.impressions,
                 row.booked_calls,
+                row.booked_call_embed_interactions,
                 row.lead_submits_success,
+                row.joinable_conversion_keys,
             ].join(","),
         );
     }
@@ -138,18 +166,26 @@ function toCsv(rows) {
     return `${lines.join("\n")}\n`;
 }
 
-function main() {
-    const args = parseArgs(process.argv.slice(2));
-    const indexedPath = args.indexed;
-    const trafficPath = args.traffic;
-    const bookedPath = args.booked;
-    const outputDir = args.output;
+function compareClusterOrder(leftCluster, rightCluster) {
+    const leftIndex = orderedWeeklyClusters.indexOf(leftCluster);
+    const rightIndex = orderedWeeklyClusters.indexOf(rightCluster);
+    if (leftIndex === rightIndex) {
+        return leftCluster.localeCompare(rightCluster);
+    }
+
+    return leftIndex - rightIndex;
+}
+
+export function exportWeeklySeoOpsReport(options) {
+    const indexedPath = options.indexed;
+    const trafficPath = options.traffic;
+    const bookedPath = options.booked;
+    const outputDir = options.output;
 
     if (!indexedPath || !trafficPath || !bookedPath || !outputDir) {
-        console.error(
+        throw new Error(
             "Usage: node scripts/analytics/export-weekly-seo-ops-report.mjs --indexed <indexed.csv> --traffic <traffic.csv> --booked <booked.json> --output <dir>",
         );
-        process.exit(1);
     }
 
     const indexedRows = parseCsv(indexedPath);
@@ -159,31 +195,33 @@ function main() {
     assertRequiredColumns(indexedRows, ["date", "url", "indexed"], "Indexed CSV");
     assertRequiredColumns(trafficRows, ["date", "url", "clicks", "impressions"], "Traffic CSV");
 
-    const clusterRecords = new Map();
+    const records = new Map();
     const observedDates = new Set();
 
     for (const row of indexedRows) {
-        const cluster = mapUrlToCluster(row.url);
-        const record = getClusterRecord(clusterRecords, cluster);
-        const normalizedPath = normalizeUrlPath(row.url);
-        record.tracked_urls.add(normalizedPath);
+        const dimensions = resolveCanonicalLandingDimensions(row.url);
+        const record = getRecord(records, dimensions);
+        record.tracked_urls.add(dimensions.landing_url);
         if (parseIndexedFlag(row.indexed)) {
-            record.indexed_pages += 1;
+            record.indexed_pages = 1;
         }
-        if (row.date) {
-            observedDates.add(row.date);
+
+        const eventDate = parseEventDate(row.date) ?? parseEventDate(row.occurred_at);
+        if (eventDate) {
+            observedDates.add(eventDate);
         }
     }
 
     for (const row of trafficRows) {
-        const cluster = mapUrlToCluster(row.url);
-        const record = getClusterRecord(clusterRecords, cluster);
-        const normalizedPath = normalizeUrlPath(row.url);
-        record.tracked_urls.add(normalizedPath);
+        const dimensions = resolveCanonicalLandingDimensions(row.url);
+        const record = getRecord(records, dimensions);
+        record.tracked_urls.add(dimensions.landing_url);
         record.traffic_clicks += parseNumber(row.clicks);
         record.traffic_impressions += parseNumber(row.impressions);
-        if (row.date) {
-            observedDates.add(row.date);
+
+        const eventDate = parseEventDate(row.date) ?? parseEventDate(row.occurred_at);
+        if (eventDate) {
+            observedDates.add(eventDate);
         }
     }
 
@@ -192,27 +230,39 @@ function main() {
             continue;
         }
 
-        const url = typeof row.landing_url === "string" ? row.landing_url : "/unknown";
-        const mappedCluster = mapUrlToCluster(url);
-        const rowCluster = typeof row.cluster === "string" && row.cluster.trim().length > 0
-            ? row.cluster.trim()
-            : mappedCluster;
-        const cluster = orderedWeeklyClusters.includes(rowCluster) ? rowCluster : mappedCluster;
-        const record = getClusterRecord(clusterRecords, cluster);
-        const normalizedPath = normalizeUrlPath(url);
-        record.tracked_urls.add(normalizedPath);
+        const landingUrl = normalizeUrlPath(row.landing_url ?? "/unknown");
+        const dimensions = {
+            landing_url: landingUrl,
+            cluster: typeof row.cluster === "string" && row.cluster.trim().length > 0
+                ? row.cluster.trim()
+                : mapUrlToCluster(landingUrl),
+            template_type:
+                typeof row.template_type === "string" && row.template_type.trim().length > 0
+                    ? row.template_type.trim()
+                    : resolveCanonicalLandingDimensions(landingUrl).template_type,
+        };
+        const record = getRecord(records, dimensions);
+        record.tracked_urls.add(landingUrl);
         record.booked_calls += parseNumber(row.booked_call_cta_click_count);
+        record.booked_call_embed_interactions += parseNumber(
+            row.booked_call_embed_interaction_count,
+        );
         record.lead_submits_success += parseNumber(row.lead_form_submit_success_count);
+        if (typeof row.conversion_key === "string" && row.conversion_key.trim().length > 0) {
+            record.conversion_keys.add(row.conversion_key.trim());
+        }
     }
 
     const sortedDates = [...observedDates].sort();
-    const weekStart = sortedDates[0] ?? null;
-    const weekEnd = sortedDates[sortedDates.length - 1] ?? null;
+    const weekStart = options["week-start"] ?? sortedDates[0] ?? null;
+    const weekEnd = options["week-end"] ?? sortedDates[sortedDates.length - 1] ?? null;
 
-    const rows = [...clusterRecords.values()]
+    const rows = [...records.values()]
         .filter((record) => record.tracked_urls.size > 0)
         .map((record) => ({
             cluster: record.cluster,
+            template_type: record.template_type,
+            landing_url: record.landing_url,
             week_start: weekStart,
             week_end: weekEnd,
             indexed_pages: record.indexed_pages,
@@ -222,12 +272,22 @@ function main() {
                 impressions: record.traffic_impressions,
             },
             booked_calls: record.booked_calls,
+            booked_call_embed_interactions: record.booked_call_embed_interactions,
             lead_submits_success: record.lead_submits_success,
+            joinable_conversion_keys: record.conversion_keys.size,
         }))
         .sort((left, right) => {
-            const leftIndex = orderedWeeklyClusters.indexOf(left.cluster);
-            const rightIndex = orderedWeeklyClusters.indexOf(right.cluster);
-            return leftIndex - rightIndex;
+            const byCluster = compareClusterOrder(left.cluster, right.cluster);
+            if (byCluster !== 0) {
+                return byCluster;
+            }
+
+            const byTemplate = left.template_type.localeCompare(right.template_type);
+            if (byTemplate !== 0) {
+                return byTemplate;
+            }
+
+            return left.landing_url.localeCompare(right.landing_url);
         });
 
     const report = {
@@ -241,7 +301,12 @@ function main() {
         summary: {
             week_start: weekStart,
             week_end: weekEnd,
-            cluster_count: rows.length,
+            row_count: rows.length,
+            normalization: {
+                cluster: "mapUrlToCluster",
+                template_type: "resolveCanonicalLandingDimensions",
+                landing_url: "normalizeUrlPath",
+            },
         },
         rows,
     };
@@ -253,9 +318,16 @@ function main() {
     fs.writeFileSync(jsonPath, JSON.stringify(report, null, 2), "utf8");
     fs.writeFileSync(csvPath, toCsv(rows), "utf8");
 
-    console.log(`Wrote ${jsonPath}`);
-    console.log(`Wrote ${csvPath}`);
+    return { jsonPath, csvPath };
 }
 
-main();
+function main() {
+    const args = parseArgs(process.argv.slice(2));
+    const output = exportWeeklySeoOpsReport(args);
+    console.log(`Wrote ${output.jsonPath}`);
+    console.log(`Wrote ${output.csvPath}`);
+}
 
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+    main();
+}

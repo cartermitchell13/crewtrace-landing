@@ -54,3 +54,34 @@ export function mapUrlToCluster(value) {
 
     return "other";
 }
+
+const templatePrefixMap = [
+    { template_type: "feature_detail", root: "/features" },
+    { template_type: "industry_detail", root: "/industries" },
+    { template_type: "competitor_detail", root: "/compare" },
+    { template_type: "guide_detail", root: "/guides" },
+    { template_type: "case_study_detail", root: "/case-studies" },
+    { template_type: "blog_detail", root: "/blog" },
+    { template_type: "contact", root: "/contact" },
+];
+
+export function mapUrlToTemplateType(value) {
+    const normalizedPath = normalizeUrlPath(value);
+
+    for (const mapping of templatePrefixMap) {
+        if (normalizedPath === mapping.root || normalizedPath.startsWith(`${mapping.root}/`)) {
+            return mapping.template_type;
+        }
+    }
+
+    return "other";
+}
+
+export function resolveCanonicalLandingDimensions(value) {
+    const landing_url = normalizeUrlPath(value);
+    return {
+        landing_url,
+        cluster: mapUrlToCluster(landing_url),
+        template_type: mapUrlToTemplateType(landing_url),
+    };
+}
