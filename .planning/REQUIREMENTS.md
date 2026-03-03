@@ -38,8 +38,8 @@
 ### Conversion and Attribution
 
 - [ ] **CRO-01**: Primary conversion event is booked call from SEO landing pages.
-- [ ] **CRO-02**: Every priority feature/industry page includes a clear booked-call CTA path.
-- [ ] **CRO-03**: Contact/demo form submissions use a real backend endpoint and handle success/failure states.
+- [x] **CRO-02**: Every priority feature/industry page includes a clear booked-call CTA path.
+- [x] **CRO-03**: Contact/demo form submissions use a real backend endpoint and handle success/failure states.
 - [ ] **CRO-04**: SEO landing sessions and CTA interactions emit page-level events with source attribution.
 - [ ] **CRO-05**: Reporting can segment booked-call conversion by cluster, template type, and landing URL.
 
@@ -90,8 +90,8 @@
 | COMP-01 | Phase 4 | Complete |
 | COMP-02 | Phase 4 | Complete |
 | CRO-01 | Phase 5 | Pending |
-| CRO-02 | Phase 5 | Pending |
-| CRO-03 | Phase 5 | Pending |
+| CRO-02 | Phase 5 | Complete |
+| CRO-03 | Phase 5 | Complete |
 | CRO-04 | Phase 5 | Pending |
 | CRO-05 | Phase 5 | Pending |
 | OPS-01 | Phase 6 | Pending |

@@ -85,7 +85,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Replace simulated form submission with production-ready lead flow.
+- [x] 05-01: Replace simulated form submission with production-ready lead flow.
 - [ ] 05-02: Implement event taxonomy for SEO landings and booked-call interactions.
 - [ ] 05-03: Build attribution reporting by cluster, template, and landing URL.
 
@@ -112,5 +112,5 @@ Plans:
 | 2. Priority Cluster Build (Features + Industries) | 3/3 | Complete | 2026-03-02 |
 | 3. Link Graph and Cluster Expansion | 2/2 | Complete | 2026-03-03 |
 | 4. Competitor and Authority Content | 3/3 | Complete | 2026-03-03 |
-| 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
+| 5. Booked-Call Conversion and Attribution | 1/3 | In Progress | - |
 | 6. QA Automation and Scale Operations | 0/3 | Not started | - |
