@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
 import { caseStudyBySlug, caseStudySlugs } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
@@ -166,14 +167,16 @@ export default async function CaseStudyDetailPage({
                                 We can map your current process and show where leakage is happening.
                             </p>
                         </div>
-                        <a
-                            href="https://cal.com/crewtrace/15min"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <BookedCallLink
+                            cluster="case-studies"
+                            templateType="case_study_detail"
+                            landingPath={`/case-studies/${slug}`}
+                            ctaLabel="Book a free audit"
+                            ctaLocation="footer_cta"
                             className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white"
                         >
                             Book a free audit
-                        </a>
+                        </BookedCallLink>
                     </section>
                 </article>
             </main>

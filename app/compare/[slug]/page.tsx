@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import {
     competitorBySlug,
     competitorSlugs,
@@ -374,14 +375,16 @@ export default async function CompareDetailPage({
                             </h2>
                             <p className="mt-2 text-white/80">{competitor.softCtaBody}</p>
                         </div>
-                        <a
-                            href="https://cal.com/crewtrace/15min"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <BookedCallLink
+                            cluster="compare"
+                            templateType="competitor_detail"
+                            landingPath={`/compare/${slug}`}
+                            ctaLabel="Book a free audit"
+                            ctaLocation="footer_cta"
                             className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
                         >
                             Book a free audit
-                        </a>
+                        </BookedCallLink>
                     </section>
                 </article>
             </main>

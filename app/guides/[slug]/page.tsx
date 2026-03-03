@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import { getCompetitorsByGuideSlug } from "@/lib/competitors";
 import { guideBySlug, guideSlugs } from "@/lib/guides";
 import { createPageMetadata } from "@/lib/seo";
@@ -152,14 +153,16 @@ export default async function GuideDetailPage({
                                 We can map your current process and provide a practical rollout plan.
                             </p>
                         </div>
-                        <a
-                            href="https://cal.com/crewtrace/15min"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <BookedCallLink
+                            cluster="guides"
+                            templateType="guide_detail"
+                            landingPath={`/guides/${slug}`}
+                            ctaLabel="Book a free audit"
+                            ctaLocation="footer_cta"
                             className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
                         >
                             Book a free audit
-                        </a>
+                        </BookedCallLink>
                     </section>
                 </article>
             </main>
