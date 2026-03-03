@@ -6,6 +6,7 @@ const REQUIRED_DIMENSIONS = ["cluster", "template_type", "landing_url"];
 const TRACKED_EVENT_NAMES = new Set([
     "seo_landing_view",
     "booked_call_cta_click",
+    "booked_call_embed_interaction",
     "lead_form_submit_attempt",
     "lead_form_submit_success",
     "lead_form_submit_failure",
@@ -73,14 +74,126 @@ function normalizeDimension(value, fallback) {
     return normalized.length > 0 ? normalized : fallback;
 }
 
-function createRowSeed(cluster, templateType, landingUrl) {
+function normalizeUrlPath(value) {
+    if (typeof value !== "string" || value.trim().length === 0) {
+        return "/unknown";
+    }
+
+    const trimmed = value.trim();
+    let pathname = trimmed;
+    try {
+        pathname = new URL(trimmed).pathname;
+    } catch {
+        pathname = trimmed.split("?")[0].split("#")[0];
+    }
+
+    if (!pathname.startsWith("/")) {
+        pathname = `/${pathname}`;
+    }
+
+    if (pathname.length > 1 && pathname.endsWith("/")) {
+        pathname = pathname.slice(0, -1);
+    }
+
+    return pathname.toLowerCase();
+}
+
+function inferTemplateType(pathname) {
+    if (pathname.startsWith("/features/")) {
+        return "feature_detail";
+    }
+    if (pathname.startsWith("/industries/")) {
+        return "industry_detail";
+    }
+    if (pathname.startsWith("/compare/")) {
+        return "competitor_detail";
+    }
+    if (pathname.startsWith("/guides/")) {
+        return "guide_detail";
+    }
+    if (pathname.startsWith("/case-studies/")) {
+        return "case_study_detail";
+    }
+    if (pathname.startsWith("/blog/")) {
+        return "blog_detail";
+    }
+    if (pathname === "/contact") {
+        return "contact";
+    }
+
+    return "other";
+}
+
+function inferCluster(pathname) {
+    if (pathname.startsWith("/features/")) {
+        return "features";
+    }
+    if (pathname.startsWith("/industries/")) {
+        return "industries";
+    }
+    if (pathname.startsWith("/compare/")) {
+        return "compare";
+    }
+    if (pathname.startsWith("/guides/")) {
+        return "guides";
+    }
+    if (pathname.startsWith("/case-studies/")) {
+        return "case-studies";
+    }
+    if (pathname.startsWith("/blog/")) {
+        return "blog";
+    }
+
+    return "other";
+}
+
+function stableHash(input) {
+    let hash = 2166136261;
+    for (let index = 0; index < input.length; index += 1) {
+        hash ^= input.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+    }
+
+    return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function deriveConversionKey(event, dimensions) {
+    if (typeof event.conversion_key === "string" && event.conversion_key.trim().length > 0) {
+        return event.conversion_key.trim();
+    }
+
+    const material = [
+        dimensions.cluster,
+        dimensions.template_type,
+        dimensions.landing_url,
+        normalizeDimension(event.utm_source, "na"),
+        normalizeDimension(event.utm_medium, "na"),
+        normalizeDimension(event.utm_campaign, "na"),
+        normalizeDimension(event.utm_term, "na"),
+        normalizeDimension(event.utm_content, "na"),
+        normalizeDimension(event.gclid, "na"),
+        normalizeDimension(event.fbclid, "na"),
+        normalizeDimension(event.msclkid, "na"),
+        normalizeDimension(event.ttclid, "na"),
+        normalizeDimension(event.li_fat_id, "na"),
+    ];
+
+    return `seo-${stableHash(material.join("|").toLowerCase())}`;
+}
+
+function createRowSeed(cluster, templateType, landingUrl, conversionKey, firstTouchLandingUrl, firstTouchCluster, firstTouchTemplateType) {
     return {
         cluster,
         template_type: templateType,
         landing_url: landingUrl,
+        conversion_key: conversionKey,
+        first_touch_landing_url: firstTouchLandingUrl,
+        first_touch_cluster: firstTouchCluster,
+        first_touch_template_type: firstTouchTemplateType,
         event_count: 0,
         seo_landing_view_count: 0,
         booked_call_cta_click_count: 0,
+        booked_call_embed_interaction_count: 0,
         lead_form_submit_attempt_count: 0,
         lead_form_submit_success_count: 0,
         lead_form_submit_failure_count: 0,
@@ -94,9 +207,11 @@ function aggregateEvents(events) {
         event_count: 0,
         seo_landing_view_count: 0,
         booked_call_cta_click_count: 0,
+        booked_call_embed_interaction_count: 0,
         lead_form_submit_attempt_count: 0,
         lead_form_submit_success_count: 0,
         lead_form_submit_failure_count: 0,
+        rows_missing_conversion_key: 0,
     };
     const timestamps = [];
 
@@ -110,13 +225,51 @@ function aggregateEvents(events) {
             continue;
         }
 
-        const cluster = normalizeDimension(event.cluster, "unknown");
-        const templateType = normalizeDimension(event.template_type, "unknown");
-        const landingUrl = normalizeDimension(event.landing_url, "/unknown");
-        const key = `${cluster}::${templateType}::${landingUrl}`;
+        const landingUrl = normalizeUrlPath(normalizeDimension(event.landing_url, "/unknown"));
+        const cluster = normalizeDimension(event.cluster, inferCluster(landingUrl));
+        const templateType = normalizeDimension(
+            event.template_type,
+            inferTemplateType(landingUrl),
+        );
+        const firstTouchLandingUrl = normalizeUrlPath(
+            normalizeDimension(event.first_touch_landing_url, landingUrl),
+        );
+        const firstTouchCluster = normalizeDimension(
+            event.first_touch_cluster,
+            inferCluster(firstTouchLandingUrl),
+        );
+        const firstTouchTemplateType = normalizeDimension(
+            event.first_touch_template_type,
+            inferTemplateType(firstTouchLandingUrl),
+        );
+        const conversionKey = deriveConversionKey(event, {
+            cluster,
+            template_type: templateType,
+            landing_url: landingUrl,
+        });
+        if (
+            !event.conversion_key ||
+            typeof event.conversion_key !== "string" ||
+            event.conversion_key.trim().length === 0
+        ) {
+            totals.rows_missing_conversion_key += 1;
+        }
+
+        const key = `${cluster}::${templateType}::${landingUrl}::${conversionKey}`;
 
         if (!grouped.has(key)) {
-            grouped.set(key, createRowSeed(cluster, templateType, landingUrl));
+            grouped.set(
+                key,
+                createRowSeed(
+                    cluster,
+                    templateType,
+                    landingUrl,
+                    conversionKey,
+                    firstTouchLandingUrl,
+                    firstTouchCluster,
+                    firstTouchTemplateType,
+                ),
+            );
         }
 
         const row = grouped.get(key);
@@ -131,6 +284,11 @@ function aggregateEvents(events) {
         if (event.event === "booked_call_cta_click") {
             row.booked_call_cta_click_count += 1;
             totals.booked_call_cta_click_count += 1;
+        }
+
+        if (event.event === "booked_call_embed_interaction") {
+            row.booked_call_embed_interaction_count += 1;
+            totals.booked_call_embed_interaction_count += 1;
         }
 
         if (event.event === "lead_form_submit_attempt") {
@@ -186,9 +344,14 @@ function aggregateEvents(events) {
 function toCsv(rows) {
     const header = [
         ...REQUIRED_DIMENSIONS,
+        "conversion_key",
+        "first_touch_landing_url",
+        "first_touch_cluster",
+        "first_touch_template_type",
         "event_count",
         "seo_landing_view_count",
         "booked_call_cta_click_count",
+        "booked_call_embed_interaction_count",
         "lead_form_submit_attempt_count",
         "lead_form_submit_success_count",
         "lead_form_submit_failure_count",
@@ -232,6 +395,10 @@ function main() {
                 input_file: inputPath,
                 dimensions: REQUIRED_DIMENSIONS,
                 totals: report.totals,
+                join_diagnostics: {
+                    rows_missing_conversion_key: report.totals.rows_missing_conversion_key,
+                    requires_deterministic_key: true,
+                },
                 rows: report.rows,
             },
             null,
