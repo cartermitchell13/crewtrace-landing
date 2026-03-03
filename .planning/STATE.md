@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-03-03T07:19:30Z"
+last_updated: "2026-03-03T07:26:00Z"
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 17
-  completed_plans: 13
+  completed_plans: 14
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Crewtrace generates qualified booked calls from U.S. crew-based businesses by proving three outcomes: less payroll overpayment, stronger compliance posture, and less weekly payroll admin time.
-**Current focus:** Phase 5 - Booked-Call Conversion and Attribution
+**Current focus:** Phase 6 - QA Automation and Scale Operations
 
 ## Current Position
 
-Phase: 5 of 6 (Booked-Call Conversion and Attribution)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-03-03 - Completed Phase 5 Plan 05-02 execution and verification
+Phase: 6 of 6 (QA Automation and Scale Operations)
+Plan: 0 of 3 in current phase (not started)
+Status: Ready to plan
+Last activity: 2026-03-03 - Completed Phase 5 execution and verification (05-01 through 05-03)
 
-Progress: [########--] 76%
+Progress: [########--] 82%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
-- Average duration: 20.7 min (Phases 2-5 tracked execution)
-- Total execution time: 207 min
+- Total plans completed: 14
+- Average duration: 19.2 min (Phases 2-5 tracked execution)
+- Total execution time: 211 min
 
 **By Phase:**
 
@@ -44,11 +44,11 @@ Progress: [########--] 76%
 | 2. Priority Cluster Build (Features + Industries) | 3 | 77 min | 25.6 min |
 | 3. Link Graph and Cluster Expansion | 2 | 51 min | 25.5 min |
 | 4. Competitor and Authority Content | 3 | 69 min | 23.0 min |
-| 5. Booked-Call Conversion and Attribution | 2 | 10 min | 5.0 min |
+| 5. Booked-Call Conversion and Attribution | 3 | 14 min | 4.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 19 min, 26 min, 24 min, 4 min, 6 min
-- Trend: Mixed (faster execution in Phase 5 buildout)
+- Last 5 plans: 26 min, 24 min, 4 min, 6 min, 4 min
+- Trend: Improving for conversion-attribution implementation phases
 
 ## Accumulated Context
 
@@ -84,6 +84,8 @@ Recent decisions affecting current work:
 - [Phase 05]: Booked-call URLs now use a shared allowlisted attribution builder. - Prevents parameter drift across priority templates and keeps CTA attribution deterministic.
 - [Phase 05]: SEO telemetry uses one shared taxonomy and transport path (`build*Event` + `sendSeoEvent` + `/api/events`). - Keeps event naming and payload structure stable across templates.
 - [Phase 05]: First-touch attribution takes precedence during merge and is captured once at layout bootstrap. - Preserves SEO-origin context for downstream conversion attribution.
+- [Phase 05]: Attribution reporting is exported from NDJSON using deterministic cluster/template/landing grouping. - Produces reproducible JSON and CSV artifacts for ops reporting.
+- [Phase 05]: Required template families are protected by `seo:check-attribution` coverage guardrails. - Prevents regressions in shared booked-call CTA wiring and landing tracker markers.
 
 ### Pending Todos
 
@@ -92,10 +94,10 @@ None.
 ### Blockers/Concerns
 
 - Full-repo lint still fails on pre-existing `.codex/get-shit-done/*` and unrelated UI lint debt.
-- Analytics provider and attribution schema still need final selection before Phase 5 implementation.
+- Event forwarding destination remains optional and can be configured later via webhook env vars.
 
 ## Session Continuity
 
 Last session: 2026-03-03
-Stopped at: Completed 05-02-PLAN.md
-Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-03-PLAN.md
+Stopped at: Completed Phase 5 verification and roadmap updates
+Resume file: .planning/ROADMAP.md

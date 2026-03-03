@@ -10,7 +10,7 @@ This roadmap is optimized for fast SEO wins and long-term scale. It first locks 
 - [x] **Phase 2: Priority Cluster Build (Features + Industries)** - Refactor and scale the two highest-priority clusters first. (Completed 2026-03-02)
 - [x] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely. (Completed 2026-03-03)
 - [x] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust. (Completed 2026-03-03)
-- [ ] **Phase 5: Booked-Call Conversion and Attribution** - Make SEO-to-call pipeline measurable and reliable.
+- [x] **Phase 5: Booked-Call Conversion and Attribution** - Make SEO-to-call pipeline measurable and reliable. (Completed 2026-03-03)
 - [ ] **Phase 6: QA Automation and Scale Operations** - Add CI quality gates and recurring reporting for sustainable output.
 
 ## Phase Details
@@ -87,7 +87,7 @@ Plans:
 Plans:
 - [x] 05-01: Replace simulated form submission with production-ready lead flow.
 - [x] 05-02: Implement event taxonomy for SEO landings and booked-call interactions.
-- [ ] 05-03: Build attribution reporting by cluster, template, and landing URL.
+- [x] 05-03: Build attribution reporting by cluster, template, and landing URL.
 
 ### Phase 6: QA Automation and Scale Operations
 **Goal**: Sustain quality while scaling AI-assisted publishing volume.
@@ -112,5 +112,5 @@ Plans:
 | 2. Priority Cluster Build (Features + Industries) | 3/3 | Complete | 2026-03-02 |
 | 3. Link Graph and Cluster Expansion | 2/2 | Complete | 2026-03-03 |
 | 4. Competitor and Authority Content | 3/3 | Complete | 2026-03-03 |
-| 5. Booked-Call Conversion and Attribution | 2/3 | In Progress | - |
+| 5. Booked-Call Conversion and Attribution | 3/3 | Complete | 2026-03-03 |
 | 6. QA Automation and Scale Operations | 0/3 | Not started | - |

@@ -41,7 +41,7 @@
 - [x] **CRO-02**: Every priority feature/industry page includes a clear booked-call CTA path.
 - [x] **CRO-03**: Contact/demo form submissions use a real backend endpoint and handle success/failure states.
 - [x] **CRO-04**: SEO landing sessions and CTA interactions emit page-level events with source attribution.
-- [ ] **CRO-05**: Reporting can segment booked-call conversion by cluster, template type, and landing URL.
+- [x] **CRO-05**: Reporting can segment booked-call conversion by cluster, template type, and landing URL.
 
 ### Quality and Operations
 
@@ -93,7 +93,7 @@
 | CRO-02 | Phase 5 | Complete |
 | CRO-03 | Phase 5 | Complete |
 | CRO-04 | Phase 5 | Complete |
-| CRO-05 | Phase 5 | Pending |
+| CRO-05 | Phase 5 | Complete |
 | OPS-01 | Phase 6 | Pending |
 | OPS-02 | Phase 6 | Pending |
 | OPS-03 | Phase 6 | Pending |
