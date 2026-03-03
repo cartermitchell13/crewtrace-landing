@@ -1,9 +1,19 @@
 import { CheckCircle2, Calculator, ShieldCheck } from "lucide-react";
 import React from "react";
-import Button from "@/components/Button";
+import BookedCallLink from "@/components/BookedCallLink";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 
-export default function CTASection() {
+type CTASectionProps = {
+    cluster?: string;
+    templateType?: string;
+    landingPath?: string;
+};
+
+export default function CTASection({
+    cluster = "home",
+    templateType = "shared_cta",
+    landingPath = "/",
+}: CTASectionProps) {
     return (
         <section id="audit" className="pt-32 pb-52 px-6 relative bg-white overflow-hidden scroll-mt-32">
             {/* Soft background accents */}
@@ -57,9 +67,15 @@ export default function CTASection() {
                         </div>
 
                         <div className="w-full lg:w-auto flex flex-col items-center gap-4">
-                            <Button href="https://cal.com/crewtrace/15min" size="lg">
+                            <BookedCallLink
+                                asButton
+                                buttonSize="lg"
+                                cluster={cluster}
+                                templateType={templateType}
+                                landingPath={landingPath}
+                            >
                                 Secure Your Free Audit
-                            </Button>
+                            </BookedCallLink>
                             <p className="text-sm font-bold text-foreground/30 uppercase tracking-widest">
                                 Limited spots available this week
                             </p>

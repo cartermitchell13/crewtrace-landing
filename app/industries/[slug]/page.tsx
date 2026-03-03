@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import CTASection from "@/components/CTASection";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import {
@@ -152,14 +153,15 @@ export default async function IndustryPage({
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-4">
-                                    <a
-                                        href="https://cal.com/crewtrace/15min"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <BookedCallLink
+                                        cluster="industries"
+                                        templateType="industry_detail"
+                                        landingPath={`/industries/${slug}`}
+                                        params={{ utm_medium: "organic" }}
                                         className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] text-lg"
                                     >
                                         Book a Free Demo <ArrowRight size={20} />
-                                    </a>
+                                    </BookedCallLink>
                                     <Link
                                         href="#features"
                                         className="inline-flex justify-center bg-secondary text-foreground font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] text-lg"
@@ -412,7 +414,11 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
-                <CTASection />
+                <CTASection
+                    cluster="industries"
+                    templateType="industry_detail"
+                    landingPath={`/industries/${slug}`}
+                />
             </main>
             <Footer />
         </div>

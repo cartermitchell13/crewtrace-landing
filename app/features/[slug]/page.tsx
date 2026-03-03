@@ -13,6 +13,7 @@ import {
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import CTASection from "@/components/CTASection";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
@@ -122,14 +123,15 @@ export default async function FeatureDetailPage({
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <a
-                                    href="https://cal.com/crewtrace/15min"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <BookedCallLink
+                                    cluster="features"
+                                    templateType="feature_detail"
+                                    landingPath={`/features/${slug}`}
+                                    params={{ utm_medium: "organic" }}
                                     className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(47,39,206,0.2)] hover:shadow-[0_12px_40px_rgba(47,39,206,0.3)] hover:translate-y-[-2px] transition-all duration-300 active:translate-y-[0px] text-lg"
                                 >
                                     Book a Free Demo <ArrowRight size={20} />
-                                </a>
+                                </BookedCallLink>
                             </div>
 
                             <div className="flex items-center justify-center gap-6 pt-4 text-sm font-bold text-foreground/40 uppercase tracking-widest">
@@ -321,7 +323,11 @@ export default async function FeatureDetailPage({
                 </section>
 
                 {/* CTA Section */}
-                <CTASection />
+                <CTASection
+                    cluster="features"
+                    templateType="feature_detail"
+                    landingPath={`/features/${slug}`}
+                />
             </main>
             <Footer />
         </div>
