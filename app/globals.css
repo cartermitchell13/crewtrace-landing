@@ -17,6 +17,7 @@
 
   --shadow-button: 2px 2px 0px 1px rgb(5, 3, 21);
   --shadow-input: 0px 0px 29.1px 0px rgba(67, 59, 255, 0.25);
+  --shadow-panel: 0 18px 55px -28px rgba(47, 39, 206, 0.35);
 }
 
 :root {
@@ -24,6 +25,9 @@
   --foreground: #000000;
   --primary: #2F27CE;
   --secondary: #DEDCFF;
+  --reading-max: 72ch;
+  --text-body: #2b2b36;
+  --text-muted: #5f6070;
 }
 
 body {
@@ -32,6 +36,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -43,6 +48,16 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+p {
+  max-width: var(--reading-max);
+  color: var(--text-body);
+}
+
+a {
+  text-underline-offset: 2px;
 }
 
 @layer base {
@@ -81,6 +96,14 @@ h6 {
     --slider-hit-height: 32px;
     --slider-thumb-size: 24px;
   }
+}
+
+.cta-highlight {
+  box-shadow: var(--shadow-button);
+}
+
+.surface-panel {
+  box-shadow: var(--shadow-panel);
 }
 
 /* Thumb - WebKit (Chrome, Safari, Edge) */
