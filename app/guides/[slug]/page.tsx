@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getCompetitorsByGuideSlug } from "@/lib/competitors";
 import { guideBySlug, guideSlugs } from "@/lib/guides";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
@@ -46,6 +47,10 @@ export default async function GuideDetailPage({
     if (!guide) {
         notFound();
     }
+
+    const relatedComparisons = getCompetitorsByGuideSlug(guide.slug).sort((left, right) =>
+        left.name.localeCompare(right.name),
+    );
 
     const articleJsonLd = articleSchema({
         headline: guide.title,
@@ -114,6 +119,29 @@ export default async function GuideDetailPage({
                             </section>
                         ))}
                     </div>
+
+                    {relatedComparisons.length > 0 && (
+                        <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Compare options after this guide
+                            </h2>
+                            <p className="mt-3 text-foreground/60 leading-relaxed">
+                                If you are evaluating vendor fit, use these neutral comparison pages
+                                to connect this implementation guidance with a decision path.
+                            </p>
+                            <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {relatedComparisons.map((competitor) => (
+                                    <Link
+                                        key={competitor.slug}
+                                        href={`/compare/${competitor.slug}`}
+                                        className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] px-5 py-4 text-sm font-semibold text-foreground/80 hover:border-primary/20 hover:text-primary transition-colors"
+                                    >
+                                        Crewtrace vs {competitor.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                     <section className="mt-8 rounded-3xl bg-primary text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                         <div>
