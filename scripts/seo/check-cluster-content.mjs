@@ -127,6 +127,8 @@ function run() {
     const featureRecords = solutionModule.featureRecords ?? solutionModule.solutions;
     const industryRecords = industryModule.industryRecords;
     const requiredPriorityIndustrySlugs = industryModule.requiredPriorityIndustrySlugs ?? [];
+    const expansionFeatureSlugs = solutionModule.expansionFeatureSlugs ?? [];
+    const expansionIndustrySlugs = industryModule.expansionIndustrySlugs ?? [];
 
     assertRecords(
         featureRecords,
@@ -270,6 +272,70 @@ function run() {
             `required priority trade "${requiredSlug}" must be referenced by at least one feature`,
             errors,
         );
+    }
+
+    for (const featureSlug of expansionFeatureSlugs) {
+        const feature = featureBySlug.get(featureSlug);
+        ensure(Boolean(feature), `missing expansion feature slug: ${featureSlug}`, errors);
+        if (!feature) {
+            continue;
+        }
+
+        const siblingFeatureLinks = getFeatureSiblings(feature, featureRecords);
+        ensure(
+            siblingFeatureLinks.length > 0,
+            `expansion feature "${featureSlug}" has no sibling eligibility`,
+            errors,
+        );
+
+        ensure(
+            feature.relatedIndustries.length > 0,
+            `expansion feature "${featureSlug}" must have at least one related industry`,
+            errors,
+        );
+
+        for (const industrySlug of feature.relatedIndustries) {
+            const industry = industryBySlug.get(industrySlug);
+            if (!industry || !industry.relatedSolutions.includes(featureSlug)) {
+                ensure(
+                    false,
+                    `expansion feature "${featureSlug}" has non-reciprocal industry link "${industrySlug}"`,
+                    errors,
+                );
+            }
+        }
+    }
+
+    for (const industrySlug of expansionIndustrySlugs) {
+        const industry = industryBySlug.get(industrySlug);
+        ensure(Boolean(industry), `missing expansion industry slug: ${industrySlug}`, errors);
+        if (!industry) {
+            continue;
+        }
+
+        const siblingIndustryLinks = getIndustrySiblings(industry, industryRecords);
+        ensure(
+            siblingIndustryLinks.length > 0,
+            `expansion industry "${industrySlug}" has no sibling eligibility`,
+            errors,
+        );
+
+        ensure(
+            industry.relatedSolutions.length > 0,
+            `expansion industry "${industrySlug}" must have at least one related feature`,
+            errors,
+        );
+
+        for (const featureSlug of industry.relatedSolutions) {
+            const feature = featureBySlug.get(featureSlug);
+            if (!feature || !feature.relatedIndustries.includes(industrySlug)) {
+                ensure(
+                    false,
+                    `expansion industry "${industrySlug}" has non-reciprocal feature link "${featureSlug}"`,
+                    errors,
+                );
+            }
+        }
     }
 
     const featureDetailTemplate = fs.readFileSync(

@@ -2,11 +2,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+    expansionIndustrySlugs,
     industryBySlug,
     industrySlugs,
     requiredPriorityIndustrySlugs,
 } from "@/lib/industries";
-import { featureRecords, featureSlugs } from "@/lib/solutions";
+import {
+    expansionFeatureSlugs,
+    featureBySlug,
+    featureRecords,
+    featureSlugs,
+} from "@/lib/solutions";
 import {
     findReciprocalLinkViolations,
     getFeatureDetailLinks,
@@ -58,6 +64,38 @@ describe("priority cluster coverage", () => {
         });
 
         expect(uncoveredIndustrySlugs).toEqual([]);
+    });
+
+    it("keeps expansion records eligible for reciprocal and sibling coverage", () => {
+        for (const featureSlug of expansionFeatureSlugs) {
+            expect(featureSlugs.includes(featureSlug), `missing expansion feature ${featureSlug}`).toBe(true);
+            const feature = featureBySlug[featureSlug];
+            const detailLinks = getFeatureDetailLinks(featureSlug);
+
+            expect(feature).toBeDefined();
+            expect(detailLinks.relatedIndustrySlugs.length).toBeGreaterThan(0);
+            expect(detailLinks.siblingFeatureSlugs.length).toBeGreaterThan(0);
+
+            for (const industrySlug of detailLinks.relatedIndustrySlugs) {
+                const industry = industryBySlug[industrySlug];
+                expect(industry?.relatedSolutions.includes(featureSlug)).toBe(true);
+            }
+        }
+
+        for (const industrySlug of expansionIndustrySlugs) {
+            expect(industrySlugs.includes(industrySlug), `missing expansion industry ${industrySlug}`).toBe(true);
+            const industry = industryBySlug[industrySlug];
+            const detailLinks = getIndustryDetailLinks(industrySlug);
+
+            expect(industry).toBeDefined();
+            expect(detailLinks.relatedFeatureSlugs.length).toBeGreaterThan(0);
+            expect(detailLinks.siblingIndustrySlugs.length).toBeGreaterThan(0);
+
+            for (const featureSlug of detailLinks.relatedFeatureSlugs) {
+                const feature = featureBySlug[featureSlug];
+                expect(feature?.relatedIndustries.includes(industrySlug)).toBe(true);
+            }
+        }
     });
 
     it("retains crawlable template link patterns for hubs and detail pages", () => {
