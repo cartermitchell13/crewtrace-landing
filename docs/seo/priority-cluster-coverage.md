@@ -17,8 +17,20 @@ Each required trade must have:
 | `general-contractors` | `/industries/general-contractors` | `payroll-leakage-prevention`, `dol-compliance`, `payroll-exports` |
 | `landscaping` | `/industries/landscaping` | `geofencing-time-clock`, `gps-time-tracking`, `payroll-leakage-prevention` |
 
+## Phase 3 Expansion Records
+
+The expansion set below is eligible only when each record maintains:
+- unique `primaryIntent` ownership in its cluster
+- reciprocal cross-cluster links
+- non-orphan sibling eligibility under overlap ranking rules
+
+| Expansion type | Slug | URL | Reciprocal links |
+|----------------|------|-----|------------------|
+| Feature | `overtime-alerts` | `/features/overtime-alerts` | `construction`, `hvac`, `roofing`, `electrical` |
+| Industry | `electrical` | `/industries/electrical` | `overtime-alerts`, `payroll-leakage-prevention`, `dol-compliance` |
+
 ## Notes
 
 - Additional non-priority trades can remain in the dataset, but cannot replace these required rows.
 - Ownership checks are enforced in `scripts/seo/check-cluster-content.mjs`.
-- Regression tests for required trade presence are enforced in `lib/__tests__/cluster-coverage.test.ts`.
+- Regression tests for required trade presence and expansion eligibility are enforced in `lib/__tests__/cluster-coverage.test.ts`.

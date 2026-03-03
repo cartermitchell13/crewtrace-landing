@@ -123,6 +123,7 @@ export const industryRecords: IndustryRecord[] = [
             "payroll-leakage-prevention",
             "geofencing-time-clock",
             "dol-compliance",
+            "overtime-alerts",
         ],
     },
     {
@@ -187,6 +188,7 @@ export const industryRecords: IndustryRecord[] = [
             "payroll-exports",
             "dol-compliance",
             "payroll-leakage-prevention",
+            "overtime-alerts",
         ],
     },
     {
@@ -311,7 +313,12 @@ export const industryRecords: IndustryRecord[] = [
             { value: "5 hrs", label: "Saved on payroll review weekly" },
             { value: "99%", label: "Clock event verification rate" },
         ],
-        relatedSolutions: ["gps-time-tracking", "payroll-leakage-prevention", "dol-compliance"],
+        relatedSolutions: [
+            "gps-time-tracking",
+            "payroll-leakage-prevention",
+            "dol-compliance",
+            "overtime-alerts",
+        ],
     },
     {
         slug: "general-contractors",
@@ -567,6 +574,71 @@ export const industryRecords: IndustryRecord[] = [
             "dol-compliance",
         ],
     },
+    {
+        slug: "electrical",
+        name: "Electrical",
+        icon: "alert-circle",
+        primaryKeyword: "electrical contractor overtime tracking",
+        primaryIntent: "electrical-overtime-and-compliance-control",
+        metaTitle: "Crewtrace for Electrical Contractors",
+        metaDescription:
+            "Control overtime and compliance risk for electrical crews with verified field time and proactive alerts.",
+        heroTitle: "Reduce overtime leakage on electrical jobs",
+        heroSubtitle:
+            "Electrical projects can run long with last-minute scope shifts. Crewtrace alerts your team before overtime becomes a payroll surprise.",
+        hubDescription:
+            "Verified time tracking and overtime exception control for electrical contractors.",
+        hubStat: "Avg. $1,600/mo saved",
+        painPoints: [
+            {
+                title: "Unplanned overtime spikes",
+                description:
+                    "Late-day service calls and change orders create overtime overages that are hard to control.",
+            },
+            {
+                title: "Compliance exposure on edited time",
+                description:
+                    "Manual timesheet adjustments make it difficult to prove payroll decisions later.",
+            },
+            {
+                title: "Delayed payroll intervention",
+                description:
+                    "Teams discover labor overages after payroll processing has already started.",
+            },
+        ],
+        benefits: [
+            {
+                title: "Overtime exception alerts",
+                description: "Flag threshold breaches before they reach payroll approval.",
+                icon: "alert-circle",
+            },
+            {
+                title: "Audit-ready edit history",
+                description: "Track each time change with approval context and timestamps.",
+                icon: "shield-check",
+            },
+            {
+                title: "Crew-level labor analytics",
+                description: "Compare overtime patterns by project, crew, and supervisor.",
+                icon: "bar-chart-3",
+            },
+            {
+                title: "Field-verified clock events",
+                description: "Tie time entries to real job sites for stronger payroll confidence.",
+                icon: "map-pin",
+            },
+        ],
+        stats: [
+            { value: "$1,600", label: "Average monthly savings" },
+            { value: "19%", label: "Reduction in overtime overpayment risk" },
+            { value: "3 hrs", label: "Saved on weekly payroll exception review" },
+        ],
+        relatedSolutions: [
+            "overtime-alerts",
+            "payroll-leakage-prevention",
+            "dol-compliance",
+        ],
+    },
 ];
 
 export type IndustrySlug = IndustryRecord["slug"];
@@ -580,6 +652,8 @@ export const requiredPriorityIndustrySlugs = [
     "general-contractors",
     "landscaping",
 ] as const;
+
+export const expansionIndustrySlugs = ["electrical"] as const;
 
 export const industryBySlug: Record<string, IndustryRecord> = Object.fromEntries(
     industryRecords.map((industry) => [industry.slug, industry]),

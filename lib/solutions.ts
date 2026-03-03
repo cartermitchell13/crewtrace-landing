@@ -60,6 +60,7 @@ export const featureRecords: FeatureRecord[] = [
             "roofing",
             "plumbing",
             "landscaping",
+            "electrical",
         ],
         challenges: [
             "Small daily time inflation that compounds weekly",
@@ -91,6 +92,7 @@ export const featureRecords: FeatureRecord[] = [
             "hvac",
             "construction",
             "concrete",
+            "electrical",
         ],
         challenges: [
             "Missing or incomplete time documentation",
@@ -163,11 +165,38 @@ export const featureRecords: FeatureRecord[] = [
             "Fewer payroll correction cycles",
         ],
     },
+    {
+        slug: "overtime-alerts",
+        name: "Overtime Alerts",
+        tagline: "Catch overtime spikes before they hit payroll.",
+        description:
+            "Track overtime risk in real time with configurable alerts so field leads can correct schedule and labor issues before payroll closes.",
+        primaryKeyword: "construction overtime alert software",
+        primaryIntent: "construction-overtime-risk-alerts",
+        relatedIndustries: ["construction", "hvac", "roofing", "electrical"],
+        challenges: [
+            "Unexpected overtime spikes discovered only at payroll close",
+            "No live trigger when crews exceed scheduled labor windows",
+            "Late interventions that still result in avoidable overpayment",
+        ],
+        capabilities: [
+            "Configurable overtime thresholds by crew or job",
+            "Same-day alerts for overtime and break anomalies",
+            "Exception queue for supervisor review before approval",
+        ],
+        outcomes: [
+            "Earlier correction of labor overrun patterns",
+            "Lower overtime-related payroll leakage",
+            "Faster escalation of timekeeping exceptions",
+        ],
+    },
 ];
 
 export type FeatureSlug = FeatureRecord["slug"];
 
 export const featureSlugs: FeatureSlug[] = featureRecords.map((feature) => feature.slug);
+
+export const expansionFeatureSlugs = ["overtime-alerts"] as const;
 
 export const featureBySlug: Record<string, FeatureRecord> = Object.fromEntries(
     featureRecords.map((feature) => [feature.slug, feature]),
