@@ -62,3 +62,39 @@ Current fixtures cover:
 
 This provides deterministic multi-cluster weekly data for local validation.
 
+## Export Command
+
+Run locally:
+
+```bash
+node scripts/analytics/export-weekly-seo-ops-report.mjs \
+  --indexed scripts/analytics/fixtures/search-console-indexed.sample.csv \
+  --traffic scripts/analytics/fixtures/search-console-traffic.sample.csv \
+  --booked scripts/analytics/fixtures/booked-call-report.sample.json \
+  --output .planning/phases/06-qa-automation-and-scale-operations/.tmp-weekly-report
+```
+
+## Automation Schedule
+
+- Workflow file: `.github/workflows/weekly-seo-report.yml`
+- Triggers:
+  - Weekly cron: `0 13 * * 1` (Monday 13:00 UTC)
+  - Manual dispatch: `workflow_dispatch`
+- Output artifacts:
+  - `weekly-seo-ops-report.json`
+  - `weekly-seo-ops-report.csv`
+
+## Artifact Retrieval
+
+1. Open the latest run for `Weekly SEO Operations Report`.
+2. Download artifact `weekly-seo-report`.
+3. Consume JSON for machine workflows and CSV for analyst review.
+
+## Remediation (Missing or Invalid Inputs)
+
+If report generation fails:
+
+1. Confirm required columns/fields are present in all three inputs.
+2. Re-run exporter locally with the same command to reproduce.
+3. Verify URL paths normalize into expected clusters (`features`, `industries`, `compare`, `guides`, `case-studies`, `blog`).
+4. If source exports changed shape, update fixture/schema contracts before changing exporter logic.

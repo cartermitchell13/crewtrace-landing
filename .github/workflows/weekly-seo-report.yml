@@ -1,0 +1,39 @@
+name: Weekly SEO Operations Report
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+
+jobs:
+  weekly-seo-report:
+    name: Export weekly SEO ops report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate weekly report artifacts
+        run: |
+          node scripts/analytics/export-weekly-seo-ops-report.mjs \
+            --indexed scripts/analytics/fixtures/search-console-indexed.sample.csv \
+            --traffic scripts/analytics/fixtures/search-console-traffic.sample.csv \
+            --booked scripts/analytics/fixtures/booked-call-report.sample.json \
+            --output .tmp/weekly-seo-report
+
+      - name: Upload weekly report artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-seo-report
+          path: .tmp/weekly-seo-report
