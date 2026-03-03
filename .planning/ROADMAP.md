@@ -56,7 +56,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: Implement parent/sibling/internal-link graph rules across priority clusters.
+- [x] 03-01: Implement parent/sibling/internal-link graph rules across priority clusters.
 - [ ] 03-02: Add expansion pages with link and intent validation.
 
 ### Phase 4: Competitor and Authority Content
@@ -110,7 +110,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. SEO and Positioning Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Priority Cluster Build (Features + Industries) | 3/3 | Complete | 2026-03-02 |
-| 3. Link Graph and Cluster Expansion | 0/2 | Not started | - |
+| 3. Link Graph and Cluster Expansion | 1/2 | In Progress | - |
 | 4. Competitor and Authority Content | 0/3 | Not started | - |
 | 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
 | 6. QA Automation and Scale Operations | 0/3 | Not started | - |
