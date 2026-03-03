@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CalEmbedInteractionTracker from "@/components/CalEmbedInteractionTracker";
 import { parseLeadApiResponse, type LeadPayload } from "@/lib/lead-contract";
 import {
     captureFirstTouchAttribution,
@@ -131,6 +132,11 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
+            <CalEmbedInteractionTracker
+                templateType="contact"
+                cluster="company"
+                ctaLocation="cal_embed"
+            />
             <main className="pt-32 pb-20 px-6">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
