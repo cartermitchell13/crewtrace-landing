@@ -30,6 +30,9 @@ jobs:
       - name: Run SEO guardrails (fast fail)
         run: npm run seo:check:all
 
+      - name: Run production data contract checks
+        run: npm run seo:check:data-contracts
+
       - name: Run focused SEO vitest suites
         run: npx vitest run lib/__tests__/seo-policy.test.ts lib/__tests__/schema.test.ts
 

@@ -14,8 +14,12 @@
     "seo:check-attribution": "node scripts/seo/check-booked-call-attribution.mjs",
     "seo:check-schema": "node scripts/seo/check-schema-presence.mjs",
     "seo:check-messaging": "node scripts/seo/check-messaging-guardrails.mjs",
-    "seo:check:all": "npm run seo:check && npm run seo:check-schema && npm run seo:check-links && npm run seo:check-clusters && npm run seo:check-messaging && npm run seo:check-attribution",
+    "seo:check:production-ingestion": "node scripts/seo/check-production-ingestion-contract.mjs",
+    "seo:check:ga4": "node scripts/analytics/validate-ga4-readiness.mjs",
+    "seo:check:data-contracts": "npm run seo:check:production-ingestion -- --indexed scripts/analytics/fixtures/production/search-console-indexed.weekly.sample.csv --traffic scripts/analytics/fixtures/production/search-console-traffic.weekly.sample.csv --booked-events scripts/analytics/fixtures/production/booked-call-events.weekly.sample.ndjson && npm run seo:check:ga4 -- --input scripts/analytics/fixtures/ga4/ga4-events.weekly.sample.csv",
+    "seo:check:all": "npm run seo:check && npm run seo:check-schema && npm run seo:check-links && npm run seo:check-clusters && npm run seo:check-messaging && npm run seo:check-attribution && npm run seo:check:data-contracts",
     "seo:report-booked-calls": "node scripts/analytics/export-booked-call-report.mjs",
+    "seo:report:weekly-production": "node scripts/analytics/build-weekly-seo-production-report.mjs",
     "content:check-publish": "node scripts/content/check-ai-publish-gate.mjs --input content/blog"
   },
   "dependencies": {

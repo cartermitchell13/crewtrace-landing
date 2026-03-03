@@ -26,10 +26,16 @@ jobs:
 
       - name: Generate weekly report artifacts
         run: |
-          node scripts/analytics/export-weekly-seo-ops-report.mjs \
-            --indexed scripts/analytics/fixtures/search-console-indexed.sample.csv \
-            --traffic scripts/analytics/fixtures/search-console-traffic.sample.csv \
-            --booked scripts/analytics/fixtures/booked-call-report.sample.json \
+          INDEXED_PATH="${SEO_REPORT_INDEXED_PATH:-scripts/analytics/fixtures/production/search-console-indexed.weekly.sample.csv}"
+          TRAFFIC_PATH="${SEO_REPORT_TRAFFIC_PATH:-scripts/analytics/fixtures/production/search-console-traffic.weekly.sample.csv}"
+          BOOKED_EVENTS_PATH="${SEO_REPORT_BOOKED_EVENTS_PATH:-scripts/analytics/fixtures/production/booked-call-events.weekly.sample.ndjson}"
+          GA4_PATH="${SEO_REPORT_GA4_PATH:-scripts/analytics/fixtures/ga4/ga4-events.weekly.sample.csv}"
+
+          node scripts/analytics/build-weekly-seo-production-report.mjs \
+            --indexed "$INDEXED_PATH" \
+            --traffic "$TRAFFIC_PATH" \
+            --booked-events "$BOOKED_EVENTS_PATH" \
+            --ga4 "$GA4_PATH" \
             --output .tmp/weekly-seo-report
 
       - name: Upload weekly report artifacts
