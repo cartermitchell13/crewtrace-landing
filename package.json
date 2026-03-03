@@ -15,7 +15,8 @@
     "seo:check-schema": "node scripts/seo/check-schema-presence.mjs",
     "seo:check-messaging": "node scripts/seo/check-messaging-guardrails.mjs",
     "seo:check:all": "npm run seo:check && npm run seo:check-schema && npm run seo:check-links && npm run seo:check-clusters && npm run seo:check-messaging && npm run seo:check-attribution",
-    "seo:report-booked-calls": "node scripts/analytics/export-booked-call-report.mjs"
+    "seo:report-booked-calls": "node scripts/analytics/export-booked-call-report.mjs",
+    "content:check-publish": "node scripts/content/check-ai-publish-gate.mjs --input content/blog"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

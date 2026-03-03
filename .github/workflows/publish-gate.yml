@@ -1,0 +1,49 @@
+name: AI Publish Gate
+
+on:
+  pull_request:
+    paths:
+      - "content/blog/**"
+      - "scripts/content/**"
+      - "lib/blog.ts"
+      - ".github/workflows/publish-gate.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "content/blog/**"
+      - "scripts/content/**"
+      - "lib/blog.ts"
+      - ".github/workflows/publish-gate.yml"
+  workflow_dispatch:
+
+jobs:
+  publish-gate:
+    name: Validate AI-assisted content quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run publish-gate validator
+        run: node scripts/content/check-ai-publish-gate.mjs --input content/blog --format json --output .tmp/publish-gate-report.json
+
+      - name: Lint publish-gate surfaces
+        run: npm run lint -- scripts/content/check-ai-publish-gate.mjs lib/blog.ts
+
+      - name: Upload publish-gate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-gate-report
+          path: .tmp/publish-gate-report.json
