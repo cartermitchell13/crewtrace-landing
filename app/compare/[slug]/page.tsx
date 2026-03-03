@@ -37,8 +37,13 @@ function toCaseStudyPath(slug: string) {
     return `/case-studies/${slug}`;
 }
 
+function sortByLabel<T extends { label: string }>(entries: T[]): T[] {
+    return [...entries].sort((left, right) => left.label.localeCompare(right.label));
+}
+
 function toFeatureLinks(record: CompetitorRecord) {
-    return record.linkTargets.featureSlugs
+    return sortByLabel(
+        record.linkTargets.featureSlugs
         .map((slug) => {
             const feature = featureBySlug[slug];
             if (!feature) {
@@ -54,11 +59,13 @@ function toFeatureLinks(record: CompetitorRecord) {
         .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
             Boolean(entry),
         )
-        .slice(0, FEATURE_LINK_LIMIT);
+        .slice(0, FEATURE_LINK_LIMIT),
+    );
 }
 
 function toIndustryLinks(record: CompetitorRecord) {
-    return record.linkTargets.industrySlugs
+    return sortByLabel(
+        record.linkTargets.industrySlugs
         .map((slug) => {
             const industry = industryBySlug[slug];
             if (!industry) {
@@ -74,11 +81,13 @@ function toIndustryLinks(record: CompetitorRecord) {
         .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
             Boolean(entry),
         )
-        .slice(0, INDUSTRY_LINK_LIMIT);
+        .slice(0, INDUSTRY_LINK_LIMIT),
+    );
 }
 
 function toGuideLinks(record: CompetitorRecord) {
-    return record.linkTargets.guideSlugs
+    return sortByLabel(
+        record.linkTargets.guideSlugs
         .map((slug) => {
             const guide = guideBySlug[slug];
             if (!guide) {
@@ -94,11 +103,13 @@ function toGuideLinks(record: CompetitorRecord) {
         .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
             Boolean(entry),
         )
-        .slice(0, GUIDE_LINK_LIMIT);
+        .slice(0, GUIDE_LINK_LIMIT),
+    );
 }
 
 function toCaseStudyLinks(record: CompetitorRecord) {
-    return record.linkTargets.caseStudySlugs
+    return sortByLabel(
+        record.linkTargets.caseStudySlugs
         .map((slug) => {
             const study = caseStudyBySlug[slug];
             if (!study) {
@@ -114,7 +125,8 @@ function toCaseStudyLinks(record: CompetitorRecord) {
         .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
             Boolean(entry),
         )
-        .slice(0, CASE_STUDY_LINK_LIMIT);
+        .slice(0, CASE_STUDY_LINK_LIMIT),
+    );
 }
 
 function getNextReviewDateLabel(lastReviewedOn: string, reviewCadenceDays: number): string {
