@@ -7,7 +7,13 @@ import { industryBySlug } from "@/lib/industries";
 import { createPageMetadata } from "@/lib/seo";
 import { getFeatureSummaries } from "@/lib/solutions";
 
-const featureSummaries = getFeatureSummaries();
+const featureSummaries = getFeatureSummaries().sort((left, right) => {
+    const byName = left.name.localeCompare(right.name);
+    if (byName !== 0) {
+        return byName;
+    }
+    return left.slug.localeCompare(right.slug);
+});
 
 export const metadata: Metadata = createPageMetadata({
     title: "Features | Contractor Time Tracking and Payroll Controls",

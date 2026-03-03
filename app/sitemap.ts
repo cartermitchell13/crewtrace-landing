@@ -18,14 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: policy.priority ?? 0.8,
     }));
 
-    const industryEntries: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
+    const industryEntries: MetadataRoute.Sitemap = [...industrySlugs].sort().map((slug) => ({
         url: `${siteConfig.url}/industries/${slug}`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.8,
     }));
 
-    const featureEntries: MetadataRoute.Sitemap = solutionSlugs.map((slug) => ({
+    const featureEntries: MetadataRoute.Sitemap = [...solutionSlugs].sort().map((slug) => ({
         url: `${siteConfig.url}/features/${slug}`,
         lastModified: now,
         changeFrequency: "monthly",

@@ -27,7 +27,11 @@ const industrySummaries = getIndustrySummaries().sort((a, b) => {
     if (aPriority !== bPriority) {
         return aPriority - bPriority;
     }
-    return a.name.localeCompare(b.name);
+    const byName = a.name.localeCompare(b.name);
+    if (byName !== 0) {
+        return byName;
+    }
+    return a.slug.localeCompare(b.slug);
 });
 
 const iconByKey: Partial<Record<IndustryIconKey, LucideIcon>> = {
