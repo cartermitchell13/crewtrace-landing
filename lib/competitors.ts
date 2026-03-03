@@ -71,8 +71,8 @@ export const competitorRecords: CompetitorRecord[] = [
         publishStatus: "publish",
         pageTitle: "Crewtrace vs Connecteam for U.S. field crews",
         pageSummary:
-            "Neutral comparison for payroll-focused teams that need location-verified time and cleaner payroll approvals.",
-        heroTagline: "Compare with a payroll-confidence lens, not feature overload.",
+            "Neutral comparison for payroll-focused teams that need location-verified time, cleaner approvals, and lower implementation risk.",
+        heroTagline: "Compare through a payroll-confidence lens, not a feature checklist.",
         primaryKeyword: "crewtrace vs connecteam",
         keywordClusters: [
             {
@@ -166,7 +166,7 @@ export const competitorRecords: CompetitorRecord[] = [
         reviewCadenceDays: 30,
         softCtaHeadline: "Need a second set of eyes on your current workflow?",
         softCtaBody:
-            "Share your payroll and field process. We will map where verification gaps are likely costing you money.",
+            "Share your payroll and field workflow. We will map likely verification gaps and a practical rollout order.",
         linkTargets: {
             featureSlugs: ["gps-time-tracking", "payroll-leakage-prevention", "payroll-exports"],
             industrySlugs: ["construction", "general-contractors", "waterproofing"],
@@ -189,7 +189,7 @@ export const competitorRecords: CompetitorRecord[] = [
         pageTitle: "Crewtrace vs Workyard for payroll-safe field operations",
         pageSummary:
             "Factual comparison for teams evaluating GPS time tracking, overtime controls, and implementation confidence.",
-        heroTagline: "Choose the model that protects labor margins and keeps payroll review predictable.",
+        heroTagline: "Choose the model that protects labor margin and keeps payroll review predictable.",
         primaryKeyword: "crewtrace vs workyard",
         keywordClusters: [
             {

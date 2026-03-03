@@ -15,9 +15,9 @@ export const featureRecords: FeatureRecord[] = [
     {
         slug: "gps-time-tracking",
         name: "GPS Time Tracking",
-        tagline: "Verified start and stop times at every job site.",
+        tagline: "Tie every clock event to the actual job site in real time.",
         description:
-            "Replace paper timesheets with GPS-verified clock-ins and clock-outs so payroll is based on where crews actually worked.",
+            "Replace paper timesheets with GPS-verified clock-ins and clock-outs so payroll decisions start from field evidence, not memory.",
         primaryKeyword: "gps time tracking for construction",
         primaryIntent: "gps-verified-contractor-time-tracking",
         relatedIndustries: [
@@ -38,17 +38,17 @@ export const featureRecords: FeatureRecord[] = [
             "Live attendance visibility for supervisors",
         ],
         outcomes: [
-            "Cleaner payroll approvals",
-            "Fewer wage disputes",
-            "Higher confidence in labor reporting",
+            "Cleaner payroll approvals before close",
+            "Fewer wage and arrival-time disputes",
+            "Higher confidence in labor-cost reporting",
         ],
     },
     {
         slug: "payroll-leakage-prevention",
         name: "Payroll Leakage Prevention",
-        tagline: "Find and stop labor waste before payroll closes.",
+        tagline: "Find and correct labor leakage during the week, not after payroll.",
         description:
-            "Identify hidden overpayment patterns including early punch-ins, long breaks, and unverified overtime with daily visibility.",
+            "Identify hidden overpayment patterns including early punch-ins, long breaks, and unverified overtime before they compound.",
         primaryKeyword: "reduce payroll leakage construction",
         primaryIntent: "construction-payroll-overpayment-prevention",
         relatedIndustries: [
@@ -73,17 +73,17 @@ export const featureRecords: FeatureRecord[] = [
             "Labor-cost trend reporting by crew",
         ],
         outcomes: [
-            "Lower overpayment risk",
+            "Lower recurring overpayment risk",
             "Faster payroll review cycles",
-            "More predictable labor margins",
+            "More predictable labor margin control",
         ],
     },
     {
         slug: "dol-compliance",
         name: "DOL Compliance Tracking",
-        tagline: "Audit-ready records for wage and hour compliance.",
+        tagline: "Maintain audit-ready time records for wage and hour reviews.",
         description:
-            "Maintain defensible time records, approval history, and location context to support FLSA and DOL audit requirements.",
+            "Maintain defensible time records, approval history, and location context so compliance reviews are straightforward and traceable.",
         primaryKeyword: "construction time tracking compliance",
         primaryIntent: "dol-flsa-contractor-timekeeping-compliance",
         relatedIndustries: [
@@ -106,14 +106,14 @@ export const featureRecords: FeatureRecord[] = [
         ],
         outcomes: [
             "Stronger documentation posture",
-            "Reduced audit scramble",
+            "Less last-minute audit scramble",
             "Higher confidence in compliance reporting",
         ],
     },
     {
         slug: "geofencing-time-clock",
         name: "Geofencing Time Clock",
-        tagline: "Clock-in boundaries that match real job sites.",
+        tagline: "Set clock-in boundaries that match how jobs are actually staffed.",
         description:
             "Use custom geofence zones per project so workers can only clock in when physically inside approved work areas.",
         primaryKeyword: "geofence time clock",
@@ -131,16 +131,16 @@ export const featureRecords: FeatureRecord[] = [
         ],
         outcomes: [
             "More accurate site-level labor data",
-            "Fewer location-related disputes",
+            "Fewer location-related payroll disputes",
             "Cleaner project cost tracking",
         ],
     },
     {
         slug: "payroll-exports",
         name: "Payroll Exports",
-        tagline: "Payroll-ready files without manual cleanup.",
+        tagline: "Send payroll-ready files without last-minute reformatting.",
         description:
-            "Export approved hours in payroll-friendly formats so your team spends less time fixing data and more time running operations.",
+            "Export approved hours in payroll-friendly formats so payroll teams can finalize runs faster and with fewer corrections.",
         primaryKeyword: "construction payroll export",
         primaryIntent: "contractor-payroll-export-workflow",
         relatedIndustries: [
@@ -161,14 +161,14 @@ export const featureRecords: FeatureRecord[] = [
         ],
         outcomes: [
             "Faster payroll processing",
-            "Reduced admin effort",
+            "Reduced weekly admin effort",
             "Fewer payroll correction cycles",
         ],
     },
     {
         slug: "overtime-alerts",
         name: "Overtime Alerts",
-        tagline: "Catch overtime spikes before they hit payroll.",
+        tagline: "Catch overtime spikes early enough to intervene the same day.",
         description:
             "Track overtime risk in real time with configurable alerts so field leads can correct schedule and labor issues before payroll closes.",
         primaryKeyword: "construction overtime alert software",

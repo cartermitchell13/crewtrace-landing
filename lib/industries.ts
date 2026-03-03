@@ -66,9 +66,9 @@ export const industryRecords: IndustryRecord[] = [
             "GPS-verified time tracking for roofing crews to reduce payroll leakage and improve compliance confidence.",
         heroTitle: "Stop paying roofers for hours they did not work",
         heroSubtitle:
-            "Roofing crews start early and finish when the job is done. Crewtrace gives you GPS-verified proof of every hour worked.",
+            "Roofing crews start early and move fast. Crewtrace gives you GPS-verified proof of every hour before payroll approvals.",
         hubDescription:
-            "Stop guessing when crews arrive at job sites. GPS-verified time tracking for roofing contractors.",
+            "Track when roofing crews actually arrive, start, and wrap each site with verified clock events.",
         hubStat: "Avg. $1,400/mo saved",
         painPoints: [
             {
@@ -137,9 +137,9 @@ export const industryRecords: IndustryRecord[] = [
             "Track HVAC technicians across service calls with verified field time and cleaner payroll workflows.",
         heroTitle: "Track HVAC technicians across every service call",
         heroSubtitle:
-            "Your technicians visit multiple locations daily. Crewtrace automatically logs time at each job site with no manual entry.",
+            "Your technicians visit multiple locations daily. Crewtrace verifies time at each stop so payroll and dispatch stay aligned.",
         hubDescription:
-            "Track technicians across multiple service calls with accurate, verified time logs.",
+            "Track technicians across service calls with verified time logs and cleaner payroll handoff.",
         hubStat: "Avg. $1,200/mo saved",
         painPoints: [
             {
@@ -202,9 +202,9 @@ export const industryRecords: IndustryRecord[] = [
             "Verified field time for plumbing teams across residential, commercial, and emergency jobs.",
         heroTitle: "Know exactly when plumbers arrive and leave",
         heroSubtitle:
-            "Emergency calls, residential jobs, and commercial contracts all require accurate records. Crewtrace tracks every minute with GPS precision.",
+            "Emergency calls, residential jobs, and commercial contracts need clean records. Crewtrace verifies the minutes that should be paid.",
         hubDescription:
-            "Know exactly when plumbers clock in and out at each job site.",
+            "See when plumbers clock in, leave, and return so overtime and billing decisions hold up.",
         hubStat: "Avg. $1,100/mo saved",
         painPoints: [
             {
@@ -265,7 +265,7 @@ export const industryRecords: IndustryRecord[] = [
             "Track construction crew hours with verified field data to reduce overpayment and payroll friction.",
         heroTitle: "Control labor costs across active construction sites",
         heroSubtitle:
-            "Construction leaders need clean time data across many crews and changing sites. Crewtrace gives one verified source before payroll closes.",
+            "Construction leaders need one verified source across changing sites. Crewtrace keeps payroll and field ops using the same record.",
         hubDescription:
             "Track field time across active construction sites with verified clock events and cleaner payroll workflows.",
         hubStat: "Avg. $2,100/mo saved",
@@ -331,9 +331,9 @@ export const industryRecords: IndustryRecord[] = [
             "Track multiple crews and projects with one contractor-focused time tracking and payroll workflow.",
         heroTitle: "Manage multiple crews across every job site",
         heroSubtitle:
-            "When you are juggling subcontractors, employees, and multiple projects, Crewtrace gives you one dashboard to track everyone.",
+            "When you are juggling subcontractors, employees, and multiple projects, Crewtrace gives one accountable record before payroll.",
         hubDescription:
-            "Manage multiple crews across different sites with one simple dashboard.",
+            "Manage multiple crews across different sites with one source of verified labor time.",
         hubStat: "Avg. $2,500/mo saved",
         painPoints: [
             {
@@ -395,9 +395,9 @@ export const industryRecords: IndustryRecord[] = [
             "Track waterproofing crews across rotating jobs with verified start/stop records and payroll-ready outputs.",
         heroTitle: "Keep waterproofing crews accountable across every job",
         heroSubtitle:
-            "Waterproofing teams move fast between inspections, prep, and install work. Crewtrace verifies where hours were worked before payroll.",
+            "Waterproofing teams move between inspections, prep, and install work quickly. Crewtrace verifies where time was worked before payroll.",
         hubDescription:
-            "Verified time tracking for waterproofing crews working across changing commercial and residential jobs.",
+            "Verified time tracking for waterproofing crews rotating across commercial and residential properties.",
         hubStat: "Avg. $1,500/mo saved",
         painPoints: [
             {
@@ -460,9 +460,9 @@ export const industryRecords: IndustryRecord[] = [
             "GPS time tracking for landscaping crews that move across properties all day.",
         heroTitle: "GPS tracking for crews that move all day",
         heroSubtitle:
-            "Landscaping crews can hit 5-10 properties daily. Crewtrace automatically tracks time at each location.",
+            "Landscaping crews can hit many properties daily. Crewtrace verifies time per stop so route and payroll decisions stay grounded.",
         hubDescription:
-            "GPS verification for outdoor job sites, built for crews that move between locations.",
+            "GPS verification for outdoor job sites built for crews that move between locations.",
         hubStat: "Avg. $900/mo saved",
         painPoints: [
             {
@@ -522,7 +522,7 @@ export const industryRecords: IndustryRecord[] = [
             "Track concrete labor hours against pour schedules with verified, payroll-ready data.",
         heroTitle: "Accurate time tracking for pour schedules",
         heroSubtitle:
-            "Concrete work runs on tight timelines. Crewtrace ensures you pay for the hours your crew actually worked.",
+            "Concrete work runs on tight timelines. Crewtrace helps you separate active labor from wait time and delays.",
         hubDescription:
             "Accurate time tracking for pour schedules so labor costs stay aligned to field reality.",
         hubStat: "Avg. $1,300/mo saved",
