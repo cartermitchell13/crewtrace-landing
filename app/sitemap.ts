@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 import { caseStudySlugs } from "@/lib/caseStudies";
+import { competitorSlugs } from "@/lib/competitors";
 import { guideSlugs } from "@/lib/guides";
 import { industrySlugs } from "@/lib/industries";
 import { siteConfig } from "@/lib/seo";
@@ -46,6 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
+    const competitorEntries: MetadataRoute.Sitemap = [...competitorSlugs].sort().map((slug) => ({
+        url: `${siteConfig.url}/compare/${slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7,
+    }));
+
     const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
         url: `${siteConfig.url}/blog/${post.slug}`,
         lastModified: post.date ? new Date(post.date) : now,
@@ -59,6 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...featureEntries,
         ...guideEntries,
         ...caseStudyEntries,
+        ...competitorEntries,
         ...blogEntries,
     ];
 }

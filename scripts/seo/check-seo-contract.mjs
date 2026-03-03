@@ -8,6 +8,7 @@ const staticMetadataFiles = [
     "app/about/page.tsx",
     "app/blog/page.tsx",
     "app/case-studies/page.tsx",
+    "app/compare/page.tsx",
     "app/guides/page.tsx",
     "app/features/page.tsx",
     "app/industries/page.tsx",
@@ -87,6 +88,14 @@ function run() {
         }
     }
 
+    if (!/path:\s*"\/compare"[\s\S]*?indexable:\s*true/m.test(policyText)) {
+        errors.push('SEO policy must include static indexable coverage for "/compare".');
+    }
+
+    if (!/["'`]\/compare\/["'`]/.test(policyText)) {
+        errors.push('SEO policy dynamic prefixes must include "/compare/".');
+    }
+
     const parsed = staticMetadataFiles.map(parseMetadata);
 
     for (const record of parsed) {
@@ -141,6 +150,15 @@ function run() {
         if (!cwvDoc.toLowerCase().includes(required)) {
             errors.push(`docs/seo/cwv-budgets.md is missing required term: ${required}`);
         }
+    }
+
+    const navbar = read("components/Navbar.tsx");
+    const homepage = read("app/page.tsx");
+    if (navbar.includes("/compare")) {
+        errors.push("components/Navbar.tsx must not include top-level /compare links.");
+    }
+    if (homepage.includes("/compare")) {
+        errors.push("app/page.tsx must not include /compare links.");
     }
 
     if (errors.length > 0) {

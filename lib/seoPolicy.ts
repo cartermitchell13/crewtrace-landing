@@ -4,6 +4,7 @@ export type SeoPageKind =
     | "home"
     | "feature_detail"
     | "industry_detail"
+    | "competitor_detail"
     | "blog_detail"
     | "guide_detail"
     | "case_study_detail"
@@ -78,6 +79,15 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         priority: 0.8,
     },
     {
+        path: "/compare",
+        pageKind: "hub",
+        indexable: true,
+        titlePattern: "Crewtrace Comparison Guides for Connecteam and Workyard",
+        descriptionPattern: "Neutral competitor-intent hub for factual comparison pages.",
+        changeFrequency: "monthly",
+        priority: 0.7,
+    },
+    {
         path: "/about",
         pageKind: "company",
         indexable: true,
@@ -135,6 +145,7 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
 const dynamicPolicyPrefixes = [
     "/features/",
     "/industries/",
+    "/compare/",
     "/blog/",
     "/guides/",
     "/case-studies/",
