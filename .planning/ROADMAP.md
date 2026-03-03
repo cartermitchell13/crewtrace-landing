@@ -1,9 +1,79 @@
 # Roadmap: Crewtrace SEO Growth Engine
 
-## Milestones
+## Milestone
 
-- [x] **v1.0 SEO Growth Engine** - Phases 1-6 shipped 2026-03-03. Full archive: [v1.0 roadmap](./milestones/v1.0-ROADMAP.md).
+- ?? **v1.1 Growth Loops** - Phases 7-11 (in progress)
+- ? **v1.0 SEO Growth Engine** - Phases 1-6 (shipped 2026-03-03, archived in `.planning/milestones/v1.0-ROADMAP.md`)
 
-## Current Status
+## Overview
 
-Milestone v1.0 is complete. Define the next milestone and generate fresh requirements with `$gsd-new-milestone`.
+This roadmap turns v1.0 SEO infrastructure into an execution loop: reliable production data -> ranked opportunities -> expansion and CRO actions -> measurable booked-call lift. Phase order prioritizes data trust and operations discipline before scaling output.
+
+## Phases
+
+- [ ] **Phase 7: Production Data Integration and Contracts** - Replace fixture-based reporting inputs with validated production source ingestion and normalized dimensions.
+- [ ] **Phase 8: Opportunity Scoring and Backlog Operations** - Convert normalized performance data into weekly ranked execution actions.
+- [ ] **Phase 9: Programmatic Expansion Engine** - Expand additional high-intent clusters with contract-backed templates and guardrails.
+- [ ] **Phase 10: CRO Experimentation and Alerting** - Improve booked-call conversion using experiments and anomaly response loops.
+- [ ] **Phase 11: Platform Hardening and Lint Convergence** - Restore full-repo lint gating and finalize operational quality controls.
+
+## Phase Details
+
+### Phase 7: Production Data Integration and Contracts
+**Goal**: Build trusted, production-backed data flow for SEO and booked-call analysis.
+**Depends on**: Phase 6
+**Requirements**: DATA-01, DATA-02, DATA-03, DATA-04, OPS-10
+**Success Criteria**:
+1. Weekly reporting pipeline consumes production source data (no fixture dependency in release workflows).
+2. Ingestion jobs validate required schemas and fail fast on malformed rows.
+3. Attribution joins preserve first-touch landing dimensions and deterministic conversion keys.
+4. Canonical URL, cluster, and template normalization is consistent across ingestion, scoring, and reporting outputs.
+
+### Phase 8: Opportunity Scoring and Backlog Operations
+**Goal**: Turn performance data into an actionable, repeatable weekly work queue.
+**Depends on**: Phase 7
+**Requirements**: OPS-07, OPS-08, OPS-09, OPS-11
+**Success Criteria**:
+1. Weekly score model outputs ranked opportunities with transparent impact/effort rationale.
+2. Backlog artifact includes action type and ownership-ready fields.
+3. Cannibalization and orphan-link risk detection is included in opportunity output.
+4. Weekly ops review process can track status progression for top opportunities.
+
+### Phase 9: Programmatic Expansion Engine
+**Goal**: Scale new high-intent cluster types without degrading quality or ownership integrity.
+**Depends on**: Phase 8
+**Requirements**: SCALE-01, SCALE-03, SCALE-04, SCALE-05
+**Success Criteria**:
+1. New integration/comparison templates are generated from typed contracts (not hand-authored route files).
+2. Quality/intent guardrails block publication when ownership or quality constraints fail.
+3. New pages are linked from hubs and sitemap in the same release cycle.
+4. Expansion does not introduce indexable orphan pages.
+
+### Phase 10: CRO Experimentation and Alerting
+**Goal**: Improve booked-call conversion rate through measured experiments and early drop detection.
+**Depends on**: Phase 9
+**Requirements**: CRO-06, CRO-07, CRO-08, CRO-09
+**Success Criteria**:
+1. Priority templates can run controlled A/B CTA experiments.
+2. Experiment outputs report lift with sample and confidence metadata.
+3. Cluster/template conversion-drop alerts are triggered by explicit thresholds.
+4. Alert and experiment outputs generate remediation playbook recommendations.
+
+### Phase 11: Platform Hardening and Lint Convergence
+**Goal**: Remove remaining quality debt so growth workflows remain scalable and release-safe.
+**Depends on**: Phase 10
+**Requirements**: OPS-06
+**Success Criteria**:
+1. Global lint runs clean and is enforced in release CI.
+2. Existing SEO/publish/reporting workflows remain green after lint convergence.
+3. Quality gate documentation is updated with unified release requirements.
+
+## Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 7. Production Data Integration and Contracts | 0/0 | Not started | - |
+| 8. Opportunity Scoring and Backlog Operations | 0/0 | Not started | - |
+| 9. Programmatic Expansion Engine | 0/0 | Not started | - |
+| 10. CRO Experimentation and Alerting | 0/0 | Not started | - |
+| 11. Platform Hardening and Lint Convergence | 0/0 | Not started | - |

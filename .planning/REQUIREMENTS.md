@@ -66,30 +66,30 @@ Deferred to future release. Tracked but not in the v1.1 roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | TBD | Pending |
-| DATA-02 | TBD | Pending |
-| DATA-03 | TBD | Pending |
-| DATA-04 | TBD | Pending |
-| OPS-07 | TBD | Pending |
-| OPS-08 | TBD | Pending |
-| OPS-09 | TBD | Pending |
-| OPS-11 | TBD | Pending |
-| SCALE-01 | TBD | Pending |
-| SCALE-03 | TBD | Pending |
-| SCALE-04 | TBD | Pending |
-| SCALE-05 | TBD | Pending |
-| CRO-06 | TBD | Pending |
-| CRO-07 | TBD | Pending |
-| CRO-08 | TBD | Pending |
-| CRO-09 | TBD | Pending |
-| OPS-06 | TBD | Pending |
-| OPS-10 | TBD | Pending |
+| DATA-01 | Phase 7 | Pending |
+| DATA-02 | Phase 7 | Pending |
+| DATA-03 | Phase 7 | Pending |
+| DATA-04 | Phase 7 | Pending |
+| OPS-10 | Phase 7 | Pending |
+| OPS-07 | Phase 8 | Pending |
+| OPS-08 | Phase 8 | Pending |
+| OPS-09 | Phase 8 | Pending |
+| OPS-11 | Phase 8 | Pending |
+| SCALE-01 | Phase 9 | Pending |
+| SCALE-03 | Phase 9 | Pending |
+| SCALE-04 | Phase 9 | Pending |
+| SCALE-05 | Phase 9 | Pending |
+| CRO-06 | Phase 10 | Pending |
+| CRO-07 | Phase 10 | Pending |
+| CRO-08 | Phase 10 | Pending |
+| CRO-09 | Phase 10 | Pending |
+| OPS-06 | Phase 11 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 18 total
-- Mapped to phases: 0
-- Unmapped: 18
+- Mapped to phases: 18
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-03*
-*Last updated: 2026-03-03 after milestone v1.1 initialization*
+*Last updated: 2026-03-03 after roadmap creation*
