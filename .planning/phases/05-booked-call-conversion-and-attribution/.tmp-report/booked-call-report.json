@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-03-01T12:30:00.000Z",
+  "input_file": "scripts/analytics/fixtures/booked-call-events.sample.ndjson",
+  "dimensions": [
+    "cluster",
+    "template_type",
+    "landing_url"
+  ],
+  "totals": {
+    "event_count": 10,
+    "seo_landing_view_count": 2,
+    "booked_call_cta_click_count": 4,
+    "lead_form_submit_attempt_count": 2,
+    "lead_form_submit_success_count": 1,
+    "lead_form_submit_failure_count": 1
+  },
+  "rows": [
+    {
+      "cluster": "blog",
+      "template_type": "blog_detail",
+      "landing_url": "/blog/5-signs-losing-money-payroll",
+      "event_count": 1,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 1,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "company",
+      "template_type": "contact",
+      "landing_url": "/features/gps-time-tracking",
+      "event_count": 2,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 0,
+      "lead_form_submit_attempt_count": 1,
+      "lead_form_submit_success_count": 1,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "company",
+      "template_type": "contact",
+      "landing_url": "/industries/hvac",
+      "event_count": 2,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 0,
+      "lead_form_submit_attempt_count": 1,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 1,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "compare",
+      "template_type": "competitor_detail",
+      "landing_url": "/compare/connecteam",
+      "event_count": 1,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 1,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/gps-time-tracking",
+      "event_count": 2,
+      "seo_landing_view_count": 1,
+      "booked_call_cta_click_count": 1,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "industries",
+      "template_type": "industry_detail",
+      "landing_url": "/industries/hvac",
+      "event_count": 2,
+      "seo_landing_view_count": 1,
+      "booked_call_cta_click_count": 1,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    }
+  ]
+}

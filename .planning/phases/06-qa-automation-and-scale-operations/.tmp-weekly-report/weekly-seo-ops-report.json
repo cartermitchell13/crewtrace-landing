@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-03T18:18:12.620Z",
+  "input_files": {
+    "indexed": "scripts/analytics/fixtures/search-console-indexed.sample.csv",
+    "traffic": "scripts/analytics/fixtures/search-console-traffic.sample.csv",
+    "booked": "scripts/analytics/fixtures/booked-call-report.sample.json"
+  },
+  "summary": {
+    "week_start": "2026-02-24",
+    "week_end": "2026-02-24",
+    "cluster_count": 6
+  },
+  "rows": [
+    {
+      "cluster": "features",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 2,
+      "tracked_urls": 2,
+      "traffic_trend": {
+        "clicks": 43,
+        "impressions": 421
+      },
+      "booked_calls": 14,
+      "lead_submits_success": 5
+    },
+    {
+      "cluster": "industries",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 2,
+      "tracked_urls": 2,
+      "traffic_trend": {
+        "clicks": 53,
+        "impressions": 517
+      },
+      "booked_calls": 17,
+      "lead_submits_success": 7
+    },
+    {
+      "cluster": "compare",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 12,
+        "impressions": 190
+      },
+      "booked_calls": 4,
+      "lead_submits_success": 1
+    },
+    {
+      "cluster": "guides",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 15,
+        "impressions": 160
+      },
+      "booked_calls": 3,
+      "lead_submits_success": 1
+    },
+    {
+      "cluster": "case-studies",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 0,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 9,
+        "impressions": 120
+      },
+      "booked_calls": 2,
+      "lead_submits_success": 1
+    },
+    {
+      "cluster": "blog",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 18,
+        "impressions": 205
+      },
+      "booked_calls": 5,
+      "lead_submits_success": 2
+    }
+  ]
+}

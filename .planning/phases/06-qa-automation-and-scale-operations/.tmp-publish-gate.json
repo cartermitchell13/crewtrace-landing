@@ -1,0 +1,27 @@
+{
+  "input": "content/blog",
+  "changed_only": false,
+  "summary": {
+    "checked_files": 2,
+    "passed": 2,
+    "failed": 0,
+    "generated_at": "2026-03-03T18:09:03.661Z",
+    "rules_version": "1.0.0"
+  },
+  "results": [
+    {
+      "file": "content/blog/5-signs-losing-money-payroll.md",
+      "status": "pass",
+      "word_count": 552,
+      "heading_count": 6,
+      "errors": []
+    },
+    {
+      "file": "content/blog/gps-time-tracking-vs-paper-timesheets.md",
+      "status": "pass",
+      "word_count": 589,
+      "heading_count": 6,
+      "errors": []
+    }
+  ]
+}
