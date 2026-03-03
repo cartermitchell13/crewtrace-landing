@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-03-03T07:10:00Z"
+last_updated: "2026-03-03T07:19:30Z"
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 17
-  completed_plans: 12
+  completed_plans: 13
 ---
 
 # Project State
@@ -23,18 +23,18 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 6 (Booked-Call Conversion and Attribution)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-03 - Completed Phase 5 Plan 05-01 execution and verification
+Last activity: 2026-03-03 - Completed Phase 5 Plan 05-02 execution and verification
 
-Progress: [#######---] 71%
+Progress: [########--] 76%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
-- Average duration: 22.2 min (Phases 2-5 tracked execution)
-- Total execution time: 201 min
+- Total plans completed: 13
+- Average duration: 20.7 min (Phases 2-5 tracked execution)
+- Total execution time: 207 min
 
 **By Phase:**
 
@@ -44,11 +44,11 @@ Progress: [#######---] 71%
 | 2. Priority Cluster Build (Features + Industries) | 3 | 77 min | 25.6 min |
 | 3. Link Graph and Cluster Expansion | 2 | 51 min | 25.5 min |
 | 4. Competitor and Authority Content | 3 | 69 min | 23.0 min |
-| 5. Booked-Call Conversion and Attribution | 1 | 4 min | 4.0 min |
+| 5. Booked-Call Conversion and Attribution | 2 | 10 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 24 min, 19 min, 26 min, 24 min, 4 min
-- Trend: Mixed (fast completion on latest plan)
+- Last 5 plans: 19 min, 26 min, 24 min, 4 min, 6 min
+- Trend: Mixed (faster execution in Phase 5 buildout)
 
 ## Accumulated Context
 
@@ -82,6 +82,8 @@ Recent decisions affecting current work:
 - [Phase 04]: Competitor pages remain absent from homepage/navbar and are discoverable via sitemap and contextual modules only.
 - [Phase 05]: Lead forwarding is env-driven with explicit downstream failure responses. - Allows local success path without external dependencies while preserving reliable error semantics when forwarding is configured.
 - [Phase 05]: Booked-call URLs now use a shared allowlisted attribution builder. - Prevents parameter drift across priority templates and keeps CTA attribution deterministic.
+- [Phase 05]: SEO telemetry uses one shared taxonomy and transport path (`build*Event` + `sendSeoEvent` + `/api/events`). - Keeps event naming and payload structure stable across templates.
+- [Phase 05]: First-touch attribution takes precedence during merge and is captured once at layout bootstrap. - Preserves SEO-origin context for downstream conversion attribution.
 
 ### Pending Todos
 
@@ -95,5 +97,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-03
-Stopped at: Completed 05-01-PLAN.md
-Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-02-PLAN.md
+Stopped at: Completed 05-02-PLAN.md
+Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-03-PLAN.md
