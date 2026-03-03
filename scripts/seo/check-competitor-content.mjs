@@ -77,6 +77,12 @@ function run() {
         "connecteam",
         "workyard",
     ];
+    const getCompetitorsByGuideSlug =
+        competitorModule.getCompetitorsByGuideSlug ??
+        (() => []);
+    const getCompetitorsByCaseStudySlug =
+        competitorModule.getCompetitorsByCaseStudySlug ??
+        (() => []);
     const featureSlugs = solutionModule.featureSlugs ?? solutionModule.solutionSlugs ?? [];
     const industrySlugs = industryModule.industrySlugs ?? [];
     const guideSlugs = guideModule.guideSlugs ?? [];
@@ -237,7 +243,64 @@ function run() {
                 errors,
             );
         }
+
+        const proofLinkCount = guideLinks.length + caseStudyLinks.length;
+        ensure(
+            proofLinkCount > 0,
+            `${competitor.slug}: must link to at least one guide or case study`,
+            errors,
+        );
+
+        for (const slug of guideLinks) {
+            const reverseLinks = getCompetitorsByGuideSlug(slug);
+            ensure(
+                Array.isArray(reverseLinks) &&
+                    reverseLinks.some((record) => record.slug === competitor.slug),
+                `${competitor.slug}: reverse competitor mapping missing for guide "${slug}"`,
+                errors,
+            );
+        }
+
+        for (const slug of caseStudyLinks) {
+            const reverseLinks = getCompetitorsByCaseStudySlug(slug);
+            ensure(
+                Array.isArray(reverseLinks) &&
+                    reverseLinks.some((record) => record.slug === competitor.slug),
+                `${competitor.slug}: reverse competitor mapping missing for case study "${slug}"`,
+                errors,
+            );
+        }
     }
+
+    const guideTemplate = fs.readFileSync(
+        path.join(projectRoot, "app/guides/[slug]/page.tsx"),
+        "utf8",
+    );
+    const caseStudyTemplate = fs.readFileSync(
+        path.join(projectRoot, "app/case-studies/[slug]/page.tsx"),
+        "utf8",
+    );
+
+    ensure(
+        guideTemplate.includes("getCompetitorsByGuideSlug"),
+        "guide detail template must use getCompetitorsByGuideSlug for contextual compare links",
+        errors,
+    );
+    ensure(
+        caseStudyTemplate.includes("getCompetitorsByCaseStudySlug"),
+        "case-study detail template must use getCompetitorsByCaseStudySlug for contextual compare links",
+        errors,
+    );
+    ensure(
+        guideTemplate.includes("/compare/"),
+        "guide detail template must include contextual /compare/ links",
+        errors,
+    );
+    ensure(
+        caseStudyTemplate.includes("/compare/"),
+        "case-study detail template must include contextual /compare/ links",
+        errors,
+    );
 
     if (errors.length > 0) {
         console.error("Competitor content check failed:");

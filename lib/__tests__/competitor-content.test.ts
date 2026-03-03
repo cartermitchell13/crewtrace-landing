@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
     competitorRecords,
     competitorSlugs,
+    getCompetitorsByCaseStudySlug,
+    getCompetitorsByGuideSlug,
     requiredCompetitorSlugs,
 } from "@/lib/competitors";
 import { caseStudySlugs } from "@/lib/caseStudies";
@@ -105,6 +107,34 @@ describe("competitor content contracts", () => {
                 expect(
                     caseStudySet.has(slug),
                     `${competitor.slug} references missing case-study slug "${slug}"`,
+                ).toBe(true);
+            }
+        }
+    });
+
+    it("enforces proof-link graph expectations for competitor pages", () => {
+        for (const competitor of competitorRecords) {
+            const proofLinkCount =
+                competitor.linkTargets.guideSlugs.length +
+                competitor.linkTargets.caseStudySlugs.length;
+            expect(
+                proofLinkCount,
+                `${competitor.slug} must have at least one proof asset link`,
+            ).toBeGreaterThan(0);
+
+            for (const slug of competitor.linkTargets.guideSlugs) {
+                const reverseLinks = getCompetitorsByGuideSlug(slug);
+                expect(
+                    reverseLinks.some((record) => record.slug === competitor.slug),
+                    `${competitor.slug} guide reverse-link missing for "${slug}"`,
+                ).toBe(true);
+            }
+
+            for (const slug of competitor.linkTargets.caseStudySlugs) {
+                const reverseLinks = getCompetitorsByCaseStudySlug(slug);
+                expect(
+                    reverseLinks.some((record) => record.slug === competitor.slug),
+                    `${competitor.slug} case-study reverse-link missing for "${slug}"`,
                 ).toBe(true);
             }
         }
