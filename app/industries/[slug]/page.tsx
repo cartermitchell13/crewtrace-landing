@@ -1,11 +1,10 @@
-﻿import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
     AlertCircle,
     ArrowRight,
-    ArrowUpRight,
     BarChart3,
     CheckCircle2,
     Clock,
@@ -25,7 +24,11 @@ import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
+import {
+    getTemplateMessaging,
+    orderedPromiseLine,
+    publicIcpPhrase,
+} from "@/lib/messaging";
 import {
     industryBySlug,
     industrySlugs,
@@ -52,6 +55,8 @@ const iconByKey: Record<IndustryIconKey, LucideIcon> = {
     "trending-up": TrendingUp,
     "shield-check": ShieldCheck,
 };
+
+const industryMessaging = getTemplateMessaging("industry_detail");
 
 export function generateStaticParams() {
     return industrySlugs.map((slug) => ({ slug }));
@@ -102,7 +107,6 @@ export default async function IndustryPage({
         description: industry.heroSubtitle,
         path: `/industries/${slug}`,
     });
-
     const breadcrumbJsonLd = breadcrumbSchema([
         { name: "Home", path: "/" },
         { name: "Industries", path: "/industries" },
@@ -134,300 +138,173 @@ export default async function IndustryPage({
                     pageUrl={`/industries/${slug}`}
                 />
 
-                <section className="relative pt-48 pb-20 px-6 overflow-hidden">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.05)_0%,transparent_50%)]" />
-
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col lg:flex-row items-center gap-16">
-                            <div className="flex-1 space-y-8">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-bold text-primary">
-                                    <IndustryIcon size={18} />
-                                    <span>Crewtrace for {industry.name}</span>
-                                </div>
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-foreground/10 text-xs font-bold uppercase tracking-wider text-foreground/60">
-                                    <span>{industry.primaryKeyword}</span>
-                                </div>
-
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-                                    {industry.heroTitle}
-                                </h1>
-
-                                <p className="text-xl text-foreground/60 max-w-2xl leading-relaxed font-medium">
-                                    {industry.heroSubtitle}
-                                </p>
-                                <p className="text-base text-foreground/50 max-w-2xl leading-relaxed font-medium">
-                                    Built {publicIcpPhrase}. {orderedPromiseLine}
-                                </p>
-
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <BookedCallLink
-                                        cluster="industries"
-                                        templateType="industry_detail"
-                                        landingPath={`/industries/${slug}`}
-                                        params={{ utm_medium: "organic" }}
-                                        ctaLabel="Book a Free Demo"
-                                        ctaLocation="hero"
-                                        className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] text-lg"
-                                    >
-                                        Book a Free Demo <ArrowRight size={20} />
-                                    </BookedCallLink>
-                                    <Link
-                                        href="#features"
-                                        className="inline-flex justify-center bg-secondary text-foreground font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] text-lg"
-                                    >
-                                        See Features
-                                    </Link>
-                                </div>
-
-                                <div className="flex items-center gap-6 pt-4 text-sm font-bold text-foreground/40 uppercase tracking-widest">
-                                    <div className="flex items-center gap-2">
-                                        <CheckCircle2 size={16} className="text-primary" />
-                                        <span>No Hardware Needed</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <CheckCircle2 size={16} className="text-primary" />
-                                        <span>Setup in 5 Minutes</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex-1 relative">
-                                <div className="absolute -inset-4 bg-primary/5 rounded-[3rem] blur-3xl" />
-                                <div className="relative rounded-[2.5rem] border border-foreground/5 bg-white p-4 shadow-2xl">
-                                    <Image
-                                        src="/images/ct-hero-min (1).png"
-                                        alt={`${industry.name} dashboard mockup`}
-                                        width={800}
-                                        height={600}
-                                        className="rounded-[2rem] w-full h-auto"
-                                    />
-                                </div>
-                            </div>
+                <section className="relative overflow-hidden px-6 pb-20 pt-36 md:pb-24 md:pt-40">
+                    <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
+                    <div className="mx-auto max-w-6xl rounded-[2rem] border border-foreground/10 bg-white p-8 md:p-10">
+                        <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                            <IndustryIcon size={14} />
+                            {industry.primaryKeyword}
+                        </p>
+                        <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+                            {industry.heroTitle}
+                        </h1>
+                        <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                            {industry.heroSubtitle} {industryMessaging.proofBody}
+                        </p>
+                        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/55 md:text-base">
+                            Built {publicIcpPhrase}. {orderedPromiseLine}
+                        </p>
+                        <div className="mt-7 flex flex-wrap gap-3">
+                            <BookedCallLink
+                                cluster="industries"
+                                templateType="industry_detail"
+                                landingPath={`/industries/${slug}`}
+                                params={{ utm_medium: "organic" }}
+                                ctaLabel={industryMessaging.primaryCta}
+                                ctaLocation="hero"
+                                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-button"
+                            >
+                                {industryMessaging.primaryCta}
+                            </BookedCallLink>
+                            <Link
+                                href={detailLinks.parentPath}
+                                className="inline-flex items-center justify-center rounded-xl border border-foreground/15 bg-white px-6 py-3 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/25 hover:text-primary"
+                            >
+                                Browse all industries
+                            </Link>
                         </div>
+                    </div>
+
+                    <div className="mx-auto mt-8 max-w-6xl rounded-3xl border border-foreground/10 bg-white p-3 shadow-[0_20px_70px_-24px_rgba(47,39,206,0.35)]">
+                        <Image
+                            src="/images/ct-hero-min (1).png"
+                            alt={`${industry.name} dashboard mockup`}
+                            width={1200}
+                            height={800}
+                            className="h-auto w-full rounded-2xl object-cover"
+                            priority
+                        />
                     </div>
                 </section>
 
-                <section className="px-6 py-16 bg-[#FBFBFE] border-y border-foreground/5 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/[0.02] -skew-x-12 translate-x-1/2" />
-                    <div className="max-w-7xl mx-auto relative z-10">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            {industry.stats.map((stat) => (
-                                <div key={stat.label} className="text-center space-y-2">
-                                    <div className="text-5xl font-bold text-primary tracking-tight">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-sm font-bold text-foreground/40 uppercase tracking-widest">
-                                        {stat.label}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                <section className="px-6 py-32 bg-white">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/5 border border-red-500/10 text-red-600 text-sm font-bold">
-                                <AlertCircle size={16} />
-                                <span>Common Industry Challenges</span>
-                            </div>
-                            <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-                                Stop the <span className="text-red-500">payroll leakage</span> in your {industry.name.toLowerCase()} business.
-                            </h2>
-                            <p className="text-xl text-foreground/60 font-medium leading-relaxed">
-                                Every {industry.name.toLowerCase()} contractor deals with these hidden costs. Here is what is eating your margins.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <section className="bg-white px-6 pb-20">
+                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-8 md:p-10">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                            What crews in {industry.name} usually struggle with
+                        </h2>
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
                             {industry.painPoints.map((point) => (
-                                <div
+                                <article
                                     key={point.title}
-                                    className="group relative overflow-hidden rounded-[2.5rem] border border-red-500/5 bg-red-50/30 p-10 transition-all duration-500 hover:-translate-y-1"
+                                    className="rounded-2xl border border-red-200 bg-red-50/70 p-5"
                                 >
-                                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10 text-red-600 mb-8 border border-red-500/20">
-                                        <AlertCircle size={28} />
-                                    </div>
-                                    <h3 className="text-2xl font-bold tracking-tight mb-4 group-hover:text-red-600 transition-colors">
-                                        {point.title}
-                                    </h3>
-                                    <p className="text-foreground/60 font-medium leading-relaxed">
+                                    <h3 className="text-lg font-bold text-foreground">{point.title}</h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-foreground/70">
                                         {point.description}
                                     </p>
-                                </div>
+                                </article>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                <section id="features" className="px-6 py-32 bg-[#FBFBFE]">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-sm font-bold">
-                                <CheckCircle2 size={16} />
-                                <span>The Solution</span>
-                            </div>
-                            <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-                                Built for <span className="text-primary">{industry.name}</span> Contractors
-                            </h2>
-                            <p className="text-xl text-foreground/60 font-medium leading-relaxed">
-                                Features designed specifically for the unique challenges of {industry.name.toLowerCase()} work.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section id="features" className="bg-[#FBFBFE] px-6 py-20">
+                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                            Recommended workflow stack for {industry.name}
+                        </h2>
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                             {industry.benefits.map((benefit) => {
                                 const BenefitIcon = iconByKey[benefit.icon];
                                 return (
-                                    <div
+                                    <article
                                         key={benefit.title}
-                                        className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-10 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 flex flex-col sm:flex-row gap-8"
+                                        className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5"
                                     >
-                                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary flex-shrink-0 border border-primary/10 transition-transform group-hover:scale-110 group-hover:rotate-3">
-                                            <BenefitIcon size={32} />
+                                        <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                            <BenefitIcon size={22} />
                                         </div>
-                                        <div className="space-y-3">
-                                            <h3 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                                                {benefit.title}
-                                            </h3>
-                                            <p className="text-foreground/60 font-medium leading-relaxed">
-                                                {benefit.description}
-                                            </p>
-                                        </div>
-                                        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
-                                            <ArrowUpRight size={24} className="text-primary" />
-                                        </div>
-                                    </div>
+                                        <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+                                            {benefit.title}
+                                        </h3>
+                                        <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                                            {benefit.description}
+                                        </p>
+                                    </article>
                                 );
                             })}
                         </div>
                     </div>
                 </section>
 
-                {industry.testimonial && (
-                    <section className="py-32 px-6 bg-white overflow-hidden relative border-t border-foreground/5">
-                        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2" />
-                        <div className="max-w-7xl mx-auto relative z-10">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                                <div className="space-y-8">
-                                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                                        Real results for <span className="text-primary">{industry.name}</span> crews.
-                                    </h2>
-                                    <p className="text-xl text-foreground/60 font-medium leading-relaxed">
-                                        See how other {industry.name.toLowerCase()} contractors are using Crewtrace to eliminate overpayment and streamline payroll.
-                                    </p>
-                                    <div className="flex gap-12 pt-4">
-                                        <div>
-                                            <div className="text-4xl font-bold text-primary">{industry.stats[0].value}</div>
-                                            <div className="text-sm font-bold text-foreground/40 uppercase tracking-wider mt-2">Avg. Savings</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-4xl font-bold text-primary">100%</div>
-                                            <div className="text-sm font-bold text-foreground/40 uppercase tracking-wider mt-2">Verified Hours</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="p-12 rounded-[3.5rem] bg-background border border-foreground/5 shadow-[0_32px_64px_-16px_rgba(47,39,206,0.08)] space-y-8 relative">
-                                    <div className="text-primary/10 absolute top-8 right-12">
-                                        <svg width="60" height="45" viewBox="0 0 60 45" fill="currentColor">
-                                            <path d="M15.4 0C6.9 0 0 6.9 0 15.4v29.6h25.7V15.4H10.3c0-2.8 2.3-5.1 5.1-5.1V0zm34.3 0c-8.5 0-15.4 6.9-15.4 15.4v29.6H60V15.4H44.6c0-2.8 2.3-5.1 5.1-5.1V0z" />
-                                        </svg>
-                                    </div>
-                                    <p className="text-2xl font-bold italic tracking-tight leading-relaxed relative z-10">
-                                        &ldquo;{industry.testimonial.quote}&rdquo;
-                                    </p>
-                                    <div className="flex justify-between items-end">
-                                        <div>
-                                            <div className="font-bold text-foreground text-lg">{industry.testimonial.author}</div>
-                                            <div className="text-sm text-foreground/40 font-bold uppercase tracking-widest">{industry.testimonial.company}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                )}
-
-                <section className="px-6 py-20 bg-[#FBFBFE] border-t border-foreground/5">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="max-w-3xl space-y-4 mb-10">
-                            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                                Recommended Crewtrace features for {industry.name}
+                <section className="bg-white px-6 py-20">
+                    <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
+                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Related feature paths
                             </h2>
-                            <p className="text-foreground/60 text-lg leading-relaxed">
-                                Combine your industry workflow with these focused features to improve compliance, payroll accuracy, and field visibility.
+                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
+                                These feature pages are linked by deterministic overlap so teams can
+                                expand without losing focus.
                             </p>
-                            <Link
-                                href={detailLinks.parentPath}
-                                className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
-                            >
-                                Browse all industries
-                                <ArrowRight size={16} />
-                            </Link>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {relatedSolutions.map((solution) => (
-                                <Link
-                                    key={solution.slug}
-                                    href={`/features/${solution.slug}`}
-                                    className="rounded-2xl border border-foreground/10 bg-white p-6 hover:border-primary/20 hover:shadow-xl transition-all"
-                                >
-                                    <h3 className="text-xl font-bold tracking-tight text-foreground">
-                                        {solution.name}
-                                    </h3>
-                                    <p className="mt-3 text-sm text-foreground/60 leading-relaxed">
-                                        {solution.tagline}
-                                    </p>
-                                    <p className="mt-4 text-sm font-semibold text-primary inline-flex items-center gap-2">
-                                        Explore feature
-                                        <span aria-hidden>{"->"}</span>
-                                    </p>
-                                </Link>
-                            ))}
-                        </div>
-
-                        {relatedSolutions[0] && (
-                            <div className="mt-8">
-                                <Link
-                                    href={`/features/${relatedSolutions[0].slug}`}
-                                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
-                                >
-                                    Start with {relatedSolutions[0].name}
-                                    <ArrowRight size={16} />
-                                </Link>
+                            <div className="mt-6 space-y-3">
+                                {relatedSolutions.map((solution) => (
+                                    <Link
+                                        key={solution.slug}
+                                        href={`/features/${solution.slug}`}
+                                        className="flex items-center justify-between rounded-2xl border border-foreground/10 bg-white p-4 transition-colors hover:border-primary/25"
+                                    >
+                                        <span className="font-semibold text-foreground">{solution.name}</span>
+                                        <ArrowRight size={16} className="text-primary" />
+                                    </Link>
+                                ))}
                             </div>
-                        )}
+                        </article>
 
-                        <div className="mt-12">
-                            <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                                Related industries with similar workflow overlap
-                            </h3>
-                            <p className="mt-3 text-sm text-foreground/60 max-w-2xl">
-                                These pages are ranked by shared feature overlap and kept deterministic for stable crawl paths.
+                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Related industries
+                            </h2>
+                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
+                                Keep crawl depth and route continuity with these adjacent industry pages.
                             </p>
-                            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
                                 {siblingIndustries.map((relatedIndustry) => (
                                     <Link
                                         key={relatedIndustry.slug}
                                         href={`/industries/${relatedIndustry.slug}`}
-                                        className="rounded-2xl border border-foreground/10 bg-white px-5 py-4 text-sm font-semibold text-foreground/80 hover:border-primary/20 hover:text-primary transition-colors"
+                                        className="rounded-2xl border border-foreground/10 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 transition-colors hover:border-primary/20 hover:text-primary"
                                     >
                                         {relatedIndustry.name}
                                     </Link>
                                 ))}
                             </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section className="bg-[#FBFBFE] px-6 py-20">
+                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                            Current operating signals
+                        </h2>
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {industry.stats.map((stat) => (
+                                <article
+                                    key={stat.label}
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 text-center"
+                                >
+                                    <p className="text-3xl font-bold text-primary">{stat.value}</p>
+                                    <p className="mt-1 text-xs font-bold uppercase tracking-widest text-foreground/45">
+                                        {stat.label}
+                                    </p>
+                                </article>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                <CTASection
-                    cluster="industries"
-                    templateType="industry_detail"
-                    landingPath={`/industries/${slug}`}
-                />
+                <CTASection cluster="industries" templateType="industry_detail" landingPath={`/industries/${slug}`} />
             </main>
             <Footer />
         </div>

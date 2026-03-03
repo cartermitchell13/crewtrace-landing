@@ -1,31 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-    CheckCircle2,
-    ArrowRight,
-    Target,
-    TrendingUp,
-    X,
-    Check
-} from "lucide-react";
-
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
+import {
+    getTemplateMessaging,
+    orderedPromiseLine,
+    publicIcpPhrase,
+} from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
 import { getFeatureDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
-import {
-    featureBySlug,
-    featureSlugs,
-    getFeaturesBySlugs,
-} from "@/lib/solutions";
+import { featureBySlug, featureSlugs, getFeaturesBySlugs } from "@/lib/solutions";
+
+const detailMessaging = getTemplateMessaging("feature_detail");
 
 function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
@@ -80,9 +74,9 @@ export default async function FeatureDetailPage({
         description: solution.description,
         path: `/features/${slug}`,
     });
-
     const breadcrumbJsonLd = breadcrumbSchema([
         { name: "Home", path: "/" },
+        { name: "Features", path: "/features" },
         { name: solution.name, path: `/features/${slug}` },
     ]);
 
@@ -106,237 +100,151 @@ export default async function FeatureDetailPage({
                     pageSlug={slug}
                     pageUrl={`/features/${slug}`}
                 />
-                {/* Hero Section */}
-                <section className="relative pt-40 pb-32 px-6 overflow-hidden bg-white">
-                    {/* Soft glowing mesh background */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] -z-10 bg-[radial-gradient(ellipse_at_top,rgba(47,39,206,0.08)_0%,transparent_70%)]" />
 
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center max-w-4xl mx-auto space-y-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-sm font-bold text-primary uppercase tracking-widest">
-                                <Target size={16} />
-                                <span>{solution.primaryKeyword}</span>
-                            </div>
-
-                            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1] max-w-3xl mx-auto">
-                                {solution.name}
-                            </h1>
-
-                            <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed font-medium max-w-2xl mx-auto">
-                                {solution.description}
-                            </p>
-                            <p className="text-base md:text-lg text-foreground/50 leading-relaxed font-medium max-w-2xl mx-auto">
-                                Built {publicIcpPhrase}. {orderedPromiseLine}
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <BookedCallLink
-                                    cluster="features"
-                                    templateType="feature_detail"
-                                    landingPath={`/features/${slug}`}
-                                    params={{ utm_medium: "organic" }}
-                                    ctaLabel="Book a Free Demo"
-                                    ctaLocation="hero"
-                                    className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(47,39,206,0.2)] hover:shadow-[0_12px_40px_rgba(47,39,206,0.3)] hover:translate-y-[-2px] transition-all duration-300 active:translate-y-[0px] text-lg"
-                                >
-                                    Book a Free Demo <ArrowRight size={20} />
-                                </BookedCallLink>
-                            </div>
-
-                            <div className="flex items-center justify-center gap-6 pt-4 text-sm font-bold text-foreground/40 uppercase tracking-widest">
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 size={16} className="text-primary" />
-                                    <span>No Hardware Needed</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 size={16} className="text-primary" />
-                                    <span>Setup in 5 Minutes</span>
-                                </div>
-                            </div>
+                <section className="relative overflow-hidden px-6 pb-20 pt-36 md:pb-24 md:pt-40">
+                    <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
+                    <div className="mx-auto max-w-6xl rounded-[2rem] border border-foreground/10 bg-white p-8 md:p-10">
+                        <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                            {solution.primaryKeyword}
+                        </p>
+                        <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+                            {solution.name}
+                        </h1>
+                        <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                            {solution.description} {detailMessaging.proofBody}
+                        </p>
+                        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/55 md:text-base">
+                            Built {publicIcpPhrase}. {orderedPromiseLine}
+                        </p>
+                        <div className="mt-7 flex flex-wrap gap-3">
+                            <BookedCallLink
+                                cluster="features"
+                                templateType="feature_detail"
+                                landingPath={`/features/${slug}`}
+                                params={{ utm_medium: "organic" }}
+                                ctaLabel={detailMessaging.primaryCta}
+                                ctaLocation="hero"
+                                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-button"
+                            >
+                                {detailMessaging.primaryCta}
+                            </BookedCallLink>
+                            <Link
+                                href={detailLinks.parentPath}
+                                className="inline-flex items-center justify-center rounded-xl border border-foreground/15 bg-white px-6 py-3 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/25 hover:text-primary"
+                            >
+                                Browse all features
+                            </Link>
                         </div>
+                    </div>
 
-                        {/* Floating Mockup */}
-                        <div className="mt-20 relative px-4 md:px-0">
-                            <div className="absolute -inset-4 md:-inset-10 bg-gradient-to-tr from-primary/10 via-primary/5 to-transparent rounded-[3rem] blur-3xl" />
-                            <div className="relative rounded-[2rem] md:rounded-[3rem] border border-foreground/5 bg-white p-2 md:p-3 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.1)] ring-1 ring-foreground/5 max-w-5xl mx-auto overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-                                <Image
-                                    src="/images/ct-hero-min (1).png"
-                                    alt={`${solution.name} Dashboard Mockup`}
-                                    width={1200}
-                                    height={800}
-                                    className="rounded-[1.5rem] md:rounded-[2.5rem] w-full h-auto object-cover"
-                                    priority
-                                />
-                            </div>
-                        </div>
+                    <div className="mx-auto mt-8 max-w-6xl rounded-3xl border border-foreground/10 bg-white p-3 shadow-[0_20px_70px_-24px_rgba(47,39,206,0.35)]">
+                        <Image
+                            src="/images/ct-hero-min (1).png"
+                            alt={`${solution.name} dashboard mockup`}
+                            width={1200}
+                            height={800}
+                            className="h-auto w-full rounded-2xl object-cover"
+                            priority
+                        />
                     </div>
                 </section>
 
-                {/* Before / After Section */}
-                <section className="py-32 px-6 bg-[#FBFBFE] relative border-t border-foreground/5">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center mb-16 space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                                The difference is clear.
+                <section className="bg-white px-6 pb-20">
+                    <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
+                        <article className="rounded-3xl border border-red-200 bg-red-50/70 p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Common failure points
                             </h2>
-                            <p className="text-xl text-foreground/60 font-medium max-w-2xl mx-auto">
-                                Stop accepting the hidden costs of {solution.name.toLowerCase()} and upgrade to a flawless process.
-                            </p>
-                        </div>
+                            <ul className="mt-4 space-y-3 text-sm text-foreground/70 md:text-base">
+                                {solution.challenges.map((challenge) => (
+                                    <li key={challenge} className="flex gap-3">
+                                        <span aria-hidden>{"*"}</span>
+                                        <span>{challenge}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </article>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 lg:rounded-[3rem] overflow-hidden border border-foreground/5 shadow-2xl shadow-primary/5 bg-white">
-                            {/* Before (Challenges) */}
-                            <div className="bg-white p-10 md:p-16 relative border-b lg:border-b-0 lg:border-r border-foreground/5">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                                <h3 className="text-2xl font-bold text-foreground mb-10 flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-500 border border-red-100">
-                                        <X size={24} />
-                                    </div>
-                                    The Old Way
-                                </h3>
-                                <ul className="space-y-8 relative z-10">
-                                    {solution.challenges.map((challenge, index) => (
-                                        <li key={index} className="flex gap-4 items-start">
-                                            <X className="text-red-400 flex-shrink-0 mt-1" size={24} />
-                                            <span className="text-lg text-foreground/70 font-medium leading-relaxed">{challenge}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <article className="rounded-3xl border border-emerald-200 bg-emerald-50/60 p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                What changes after rollout
+                            </h2>
+                            <ul className="mt-4 space-y-3 text-sm text-foreground/75 md:text-base">
+                                {solution.capabilities.map((capability) => (
+                                    <li key={capability} className="flex gap-3">
+                                        <CheckCircle2 size={18} className="mt-0.5 text-emerald-600" />
+                                        <span>{capability}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </article>
+                    </div>
+                </section>
 
-                            {/* After (Capabilities) */}
-                            <div className="bg-primary p-10 md:p-16 relative text-white">
-                                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1)_0%,transparent_60%)] pointer-events-none" />
-                                <h3 className="text-2xl font-bold text-white mb-10 flex items-center gap-3 relative z-10">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-sm border border-white/20">
-                                        <Check size={24} />
-                                    </div>
-                                    The Crewtrace Way
-                                </h3>
-                                <ul className="space-y-8 relative z-10">
-                                    {solution.capabilities.map((capability, index) => (
-                                        <li key={index} className="flex gap-4 items-start">
-                                            <CheckCircle2 className="text-white flex-shrink-0 mt-1" size={24} />
-                                            <span className="text-lg text-white/90 font-medium leading-relaxed">{capability}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                <section className="bg-[#FBFBFE] px-6 py-20">
+                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                            Expected outcomes
+                        </h2>
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {solution.outcomes.map((outcome) => (
+                                <div
+                                    key={outcome}
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5"
+                                >
+                                    <p className="text-base font-semibold text-foreground">{outcome}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Outcomes Section (Dark Mode) */}
-                <section className="py-32 px-6 bg-foreground text-white relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_100%,rgba(47,39,206,0.5)_0%,transparent_60%)] opacity-30" />
-
-                    <div className="max-w-7xl mx-auto relative z-10">
-                        <div className="flex flex-col lg:flex-row gap-16 items-center">
-                            <div className="flex-1 space-y-8 text-center lg:text-left">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-bold text-white/80 uppercase tracking-widest">
-                                    <TrendingUp size={16} className="text-emerald-400" />
-                                    <span>The Bottom Line</span>
-                                </div>
-
-                                <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-                                    Outcomes that <br />
-                                    <span className="text-primary-foreground">actually matter.</span>
-                                </h2>
-
-                                <p className="text-xl text-white/60 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                                    By implementing {solution.name} through Crewtrace, our users see immediate improvements in operational efficiency and payroll accuracy.
-                                </p>
-                            </div>
-
-                            <div className="flex-1 w-full space-y-4">
-                                {solution.outcomes.map((outcome, index) => (
-                                    <div key={index} className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl backdrop-blur-sm flex items-center gap-5 hover:bg-white/10 transition-colors group">
-                                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white flex-shrink-0 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-                                            <TrendingUp size={28} />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">{outcome}</h3>
-                                        </div>
-                                    </div>
+                <section className="bg-white px-6 py-20">
+                    <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
+                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Related industries for this workflow
+                            </h2>
+                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
+                                Open these industry pages to see trade-specific implementation details.
+                            </p>
+                            <div className="mt-6 flex flex-wrap gap-2">
+                                {detailLinks.relatedIndustrySlugs.map((industrySlug) => (
+                                    <Link
+                                        key={industrySlug}
+                                        href={`/industries/${industrySlug}`}
+                                        className="rounded-full border border-foreground/10 bg-white px-4 py-2 text-sm font-semibold text-foreground/70 transition-colors hover:border-primary/20 hover:text-primary"
+                                    >
+                                        {toIndustryName(industrySlug)}
+                                    </Link>
                                 ))}
                             </div>
-                        </div>
-                    </div>
-                </section>
+                        </article>
 
-                {/* Ecosystem Section */}
-                <section className="py-32 px-6 bg-white border-b border-foreground/5">
-                    <div className="max-w-7xl mx-auto space-y-16">
-                        <div className="text-center">
-                            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                                Connects seamlessly to your workflow.
+                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                                Adjacent feature workflows
                             </h2>
-                            <p className="mt-6 text-xl text-foreground/60 font-medium max-w-2xl mx-auto">
-                                Every feature in Crewtrace integrates with the others, giving you a comprehensive operational toolkit.
+                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
+                                Build depth with related controls ranked by deterministic overlap.
                             </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Industries Box */}
-                            <div className="rounded-[3rem] bg-[#FBFBFE] border border-foreground/5 p-12 flex flex-col hover:shadow-xl hover:border-primary/20 transition-all duration-300">
-                                <h3 className="text-2xl font-bold text-foreground mb-4">Crafted for trades</h3>
-                                <p className="text-foreground/60 mb-8 font-medium leading-relaxed">
-                                    See exactly how this translates to your specific industry with targeted case studies and workflows.
-                                </p>
-                                <Link
-                                    href={detailLinks.parentPath}
-                                    className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
-                                >
-                                    Browse all features
-                                    <ArrowRight size={14} />
-                                </Link>
-                                <div className="flex flex-wrap gap-3 mt-auto">
-                                    {detailLinks.relatedIndustrySlugs.map((industrySlug) => (
-                                        <Link
-                                            key={industrySlug}
-                                            href={`/industries/${industrySlug}`}
-                                            className="rounded-full border border-foreground/10 bg-white px-6 py-3 text-sm font-bold text-foreground/70 hover:border-primary/30 hover:text-primary transition-all shadow-sm flex items-center gap-2"
-                                        >
-                                            {toIndustryName(industrySlug)} <ArrowRight size={14} />
-                                        </Link>
-                                    ))}
-                                </div>
+                            <div className="mt-6 space-y-3">
+                                {relatedFeatures.map((related) => (
+                                    <Link
+                                        key={related.slug}
+                                        href={`/features/${related.slug}`}
+                                        className="flex items-center justify-between rounded-2xl border border-foreground/10 bg-white p-4 transition-colors hover:border-primary/25"
+                                    >
+                                        <span className="font-semibold text-foreground">{related.name}</span>
+                                        <ArrowRight size={16} className="text-primary" />
+                                    </Link>
+                                ))}
                             </div>
-
-                            {/* Features Box */}
-                            <div className="rounded-[3rem] bg-[#FBFBFE] border border-foreground/5 p-12 flex flex-col hover:shadow-xl hover:border-primary/20 transition-all duration-300">
-                                <h3 className="text-2xl font-bold text-foreground mb-4">Expand your capabilities</h3>
-                                <p className="text-foreground/60 mb-8 font-medium leading-relaxed">
-                                    Combine this with adjacent Crewtrace features selected from deterministic sibling overlap.
-                                </p>
-                                <div className="flex flex-col gap-3 mt-auto">
-                                    {relatedFeatures.map((related) => (
-                                        <Link
-                                            key={related.slug}
-                                            href={`/features/${related.slug}`}
-                                            className="flex items-center justify-between rounded-2xl border border-foreground/5 bg-white p-5 hover:border-primary/30 transition-all group shadow-sm"
-                                        >
-                                            <span className="font-bold text-foreground/80 group-hover:text-primary transition-colors text-lg">
-                                                {related.name}
-                                            </span>
-                                            <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                                                <ArrowRight size={18} className="text-primary" />
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        </article>
                     </div>
                 </section>
 
-                {/* CTA Section */}
-                <CTASection
-                    cluster="features"
-                    templateType="feature_detail"
-                    landingPath={`/features/${slug}`}
-                />
+                <CTASection cluster="features" templateType="feature_detail" landingPath={`/features/${slug}`} />
             </main>
             <Footer />
         </div>
