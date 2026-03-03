@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-03-03T00:57:40.683Z"
+last_updated: "2026-03-03T20:40:00Z"
 progress:
   total_phases: 6
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 17
-  completed_plans: 8
+  completed_plans: 11
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Crewtrace generates qualified booked calls from U.S. crew-based businesses by proving three outcomes: less payroll overpayment, stronger compliance posture, and less weekly payroll admin time.
-**Current focus:** Phase 4 - Competitor and Authority Content
+**Current focus:** Phase 5 - Booked-Call Conversion and Attribution
 
 ## Current Position
 
-Phase: 4 of 6 (Competitor and Authority Content)
-Plan: 0 of 3 in current phase
+Phase: 5 of 6 (Booked-Call Conversion and Attribution)
+Plan: 0 of 3 in current phase (not started)
 Status: Ready to plan
-Last activity: 2026-03-03 - Completed Phase 3 execution and verification (03-01 through 03-02)
+Last activity: 2026-03-03 - Completed Phase 4 execution and verification (04-01 through 04-03)
 
-Progress: [#####-----] 47%
+Progress: [#######---] 65%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 25.5 min (Phases 2-3 tracked execution)
-- Total execution time: 128 min
+- Total plans completed: 11
+- Average duration: 24.6 min (Phases 2-4 tracked execution)
+- Total execution time: 197 min
 
 **By Phase:**
 
@@ -43,10 +43,11 @@ Progress: [#####-----] 47%
 | 1. SEO and Positioning Foundation | 3 | - | - |
 | 2. Priority Cluster Build (Features + Industries) | 3 | 77 min | 25.6 min |
 | 3. Link Graph and Cluster Expansion | 2 | 51 min | 25.5 min |
+| 4. Competitor and Authority Content | 3 | 69 min | 23.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 27 min, 24 min, 22 min, 31 min, 24 min
-- Trend: Stable
+- Last 5 plans: 27 min, 24 min, 19 min, 26 min, 24 min
+- Trend: Stable to improving
 
 ## Accumulated Context
 
@@ -74,10 +75,14 @@ Recent decisions affecting current work:
 - [Phase 03]: Parent hub links (`/features`, `/industries`) are explicit in detail templates.
 - [Phase 03]: Expansion inventory is tracked via explicit slug contracts (`expansionFeatureSlugs`, `expansionIndustrySlugs`).
 - [Phase 03]: Hub and sitemap ordering is deterministic under expansion through shared slug export sorting.
+- [Phase 04]: Competitor routes are published under `/compare` with static policy + dynamic prefix ownership in `lib/seoPolicy.ts`.
+- [Phase 04]: Competitor coverage is contract-first (`lib/competitors.ts`) and guarded by Vitest plus script checks.
+- [Phase 04]: Authority pages now include contextual return links to relevant competitor comparisons via reverse lookup helpers.
+- [Phase 04]: Competitor pages remain absent from homepage/navbar and are discoverable via sitemap and contextual modules only.
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
@@ -87,5 +92,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-03
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-competitor-and-authority-content/04-CONTEXT.md
+Stopped at: Completed 04-VERIFICATION and phase closeout docs
+Resume file: .planning/phases/05-booked-call-conversion-and-attribution/05-CONTEXT.md (when created)

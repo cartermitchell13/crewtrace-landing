@@ -9,7 +9,7 @@ This roadmap is optimized for fast SEO wins and long-term scale. It first locks 
 - [x] **Phase 1: SEO and Positioning Foundation** - Lock metadata, schema, canonical policy, ICP targeting, and U.S.-only crawl/index strategy. (Completed 2026-03-01)
 - [x] **Phase 2: Priority Cluster Build (Features + Industries)** - Refactor and scale the two highest-priority clusters first. (Completed 2026-03-02)
 - [x] **Phase 3: Link Graph and Cluster Expansion** - Remove orphan risk and expand high-intent pages safely. (Completed 2026-03-03)
-- [ ] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust.
+- [x] **Phase 4: Competitor and Authority Content** - Build content designed to outrank Connecteam and Workyard while deepening trust. (Completed 2026-03-03)
 - [ ] **Phase 5: Booked-Call Conversion and Attribution** - Make SEO-to-call pipeline measurable and reliable.
 - [ ] **Phase 6: QA Automation and Scale Operations** - Add CI quality gates and recurring reporting for sustainable output.
 
@@ -70,9 +70,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: Build competitor keyword map and page brief set for Connecteam and Workyard intent.
-- [ ] 04-02: Publish comparison/alternative-supporting content and connect it to clusters.
-- [ ] 04-03: Expand supporting guides/blog/case studies for authority reinforcement.
+- [x] 04-01: Build competitor keyword map and page brief set for Connecteam and Workyard intent.
+- [x] 04-02: Publish comparison/alternative-supporting content and connect it to clusters.
+- [x] 04-03: Expand supporting guides/blog/case studies for authority reinforcement.
 
 ### Phase 5: Booked-Call Conversion and Attribution
 **Goal**: Turn SEO traffic into measurable booked calls.
@@ -111,6 +111,6 @@ Plans:
 | 1. SEO and Positioning Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Priority Cluster Build (Features + Industries) | 3/3 | Complete | 2026-03-02 |
 | 3. Link Graph and Cluster Expansion | 2/2 | Complete | 2026-03-03 |
-| 4. Competitor and Authority Content | 0/3 | Not started | - |
+| 4. Competitor and Authority Content | 3/3 | Complete | 2026-03-03 |
 | 5. Booked-Call Conversion and Attribution | 0/3 | Not started | - |
 | 6. QA Automation and Scale Operations | 0/3 | Not started | - |

@@ -32,8 +32,8 @@
 
 ### Competitor SEO Strategy
 
-- [ ] **COMP-01**: Keyword and SERP tracking explicitly includes Connecteam and Workyard target terms.
-- [ ] **COMP-02**: Content strategy includes safe, factual competitor-intent pages or sections designed to outrank both competitors.
+- [x] **COMP-01**: Keyword and SERP tracking explicitly includes Connecteam and Workyard target terms.
+- [x] **COMP-02**: Content strategy includes safe, factual competitor-intent pages or sections designed to outrank both competitors.
 
 ### Conversion and Attribution
 
@@ -87,8 +87,8 @@
 | CLUS-05 | Phase 2 | Complete |
 | CLUS-06 | Phase 2 | Complete |
 | CLUS-04 | Phase 3 | Complete |
-| COMP-01 | Phase 4 | Pending |
-| COMP-02 | Phase 4 | Pending |
+| COMP-01 | Phase 4 | Complete |
+| COMP-02 | Phase 4 | Complete |
 | CRO-01 | Phase 5 | Pending |
 | CRO-02 | Phase 5 | Pending |
 | CRO-03 | Phase 5 | Pending |
