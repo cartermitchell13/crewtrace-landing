@@ -62,6 +62,16 @@ node scripts/seo/check-production-ingestion-contract.mjs \
   --booked-events scripts/analytics/fixtures/production/booked-call-events.weekly.sample.ndjson
 ```
 
+Expected pass output:
+
+- `Production ingestion contract passed for <week_start>..<week_end>`
+- Row counts for `indexed`, `traffic`, and `booked_events`
+
+Expected failure output:
+
+- `Production ingestion contract check failed.`
+- Source label plus missing dataset/column/field details
+
 Run full ingestion and write normalized weekly artifacts:
 
 ```bash
@@ -80,4 +90,3 @@ node scripts/analytics/fetch-production-source-data.mjs \
 3. Inspect timestamp format and ensure rows fall within previous Monday-Sunday UTC.
 4. Confirm conversion keys are present for booked-call event rows.
 5. Re-run contract check before re-triggering scheduled report workflows.
-
