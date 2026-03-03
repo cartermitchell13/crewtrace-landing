@@ -34,10 +34,10 @@ export default function Home() {
         />
         <Hero />
         <FeatureGrid />
+        <TestimonialsSection />
+        <ProcessSection />
         <ComplianceAudit />
         <LiteSavingsCalculator />
-        <ProcessSection />
-        <TestimonialsSection />
         <FAQSection />
         <CTASection />
       </main>

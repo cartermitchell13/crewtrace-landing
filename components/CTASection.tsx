@@ -1,7 +1,11 @@
-import { CheckCircle2, Calculator, ShieldCheck } from "lucide-react";
-import React from "react";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import BookedCallLink from "@/components/BookedCallLink";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
+import {
+    getTemplateMessaging,
+    orderedPromiseLine,
+    publicIcpPhrase,
+} from "@/lib/messaging";
 
 type CTASectionProps = {
     cluster?: string;
@@ -14,73 +18,83 @@ export default function CTASection({
     templateType = "shared_cta",
     landingPath = "/",
 }: CTASectionProps) {
+    const messaging = getTemplateMessaging("home");
+
     return (
-        <section id="audit" className="pt-32 pb-52 px-6 relative bg-white overflow-hidden scroll-mt-32">
-            {/* Soft background accents */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+        <section id="audit" className="relative overflow-hidden bg-white px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
+            <div className="absolute right-0 top-0 h-[520px] w-[520px] translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/[0.06] blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-[480px] w-[480px] -translate-x-1/3 translate-y-1/3 rounded-full bg-primary/[0.05] blur-3xl" />
 
-            <div className="max-w-6xl mx-auto">
-                <div className="relative rounded-[3.5rem] bg-white border border-foreground/5 shadow-[0_32px_64px_-16px_rgba(47,39,206,0.08)] p-12 md:p-24 overflow-hidden">
-                    {/* Inner decorative gradients */}
-                    <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,rgba(47,39,206,0.05)_0%,transparent_50%)]" />
+            <div className="mx-auto max-w-6xl">
+                <div className="relative overflow-hidden rounded-[2.4rem] border border-foreground/10 bg-white p-8 shadow-[0_24px_64px_-28px_rgba(47,39,206,0.45)] md:p-12 lg:p-16">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(47,39,206,0.07)_0%,transparent_55%)]" />
 
-                    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
-                        <div className="flex-1 space-y-8 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
-                                <Calculator size={14} />
-                                <span>Free Profit Leak Audit</span>
-                            </div>
-
-                            <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                                Ready to stop the <br />
-                                <span className="text-primary italic">profit leakage?</span>
-                            </h2>
-
-                            <p className="text-xl text-foreground/50 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                                We do not want you to pay us unless we know we can save you money. On a free 15-minute call, we audit your current time tracking and payroll process to show what Crewtrace can do {publicIcpPhrase}. {orderedPromiseLine}
+                    <div className="relative z-10 grid gap-9 lg:grid-cols-[1.25fr_0.95fr] lg:items-center">
+                        <div className="space-y-6">
+                            <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                                {messaging.primaryCta}
                             </p>
 
-                            <div className="rounded-2xl border border-primary/15 bg-primary/[0.03] p-6 space-y-3 max-w-xl mx-auto lg:mx-0 text-left">
-                                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
+                            <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl">
+                                Book a short audit and leave with a clear payroll action plan.
+                            </h2>
+
+                            <p className="max-w-2xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                                We review your current time-tracking flow, show where leakage usually
+                                hides, and map the fastest rollout steps {publicIcpPhrase}.{" "}
+                                {orderedPromiseLine}
+                            </p>
+
+                            <div className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-5">
+                                <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
                                     <ShieldCheck size={14} />
-                                    <span>Profit Protection Guarantee</span>
-                                </div>
-                                <p className="text-sm md:text-base text-foreground/70 font-semibold leading-relaxed">
-                                    We guarantee your payroll leakage drops to near zero in the first 30 days.
+                                    Implementation fit check
                                 </p>
-                                <p className="text-sm md:text-base text-foreground/60 font-medium leading-relaxed">
-                                    If Crewtrace does not pay for itself in your first 6 months, we refund the difference. You cannot lose money on this deal.
+                                <p className="mt-2 text-sm leading-relaxed text-foreground/70 md:text-base">
+                                    If Crewtrace is not a fit for your workflow, we tell you directly.
+                                    If it is a fit, you get a rollout sequence your team can use.
                                 </p>
                             </div>
 
-                            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4 text-sm font-bold text-foreground/40">
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 size={18} className="text-primary" />
-                                    <span>Immediate ROI Analysis</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 size={18} className="text-primary" />
-                                    <span>Fit Check Before You Pay</span>
-                                </div>
+                            <div className="flex flex-wrap gap-5 text-sm font-semibold text-foreground/55">
+                                <p className="inline-flex items-center gap-2">
+                                    <CheckCircle2 size={16} className="text-primary" />
+                                    ROI signal in 15 minutes
+                                </p>
+                                <p className="inline-flex items-center gap-2">
+                                    <CheckCircle2 size={16} className="text-primary" />
+                                    No hard-sell close call
+                                </p>
                             </div>
                         </div>
 
-                        <div className="w-full lg:w-auto flex flex-col items-center gap-4">
+                        <div className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6">
                             <BookedCallLink
                                 asButton
                                 buttonSize="lg"
                                 cluster={cluster}
                                 templateType={templateType}
                                 landingPath={landingPath}
-                                ctaLabel="Secure Your Free Audit"
+                                ctaLabel={messaging.primaryCta}
                                 ctaLocation="lower_page"
+                                className="w-full"
                             >
-                                Secure Your Free Audit
+                                {messaging.primaryCta}
                             </BookedCallLink>
-                            <p className="text-sm font-bold text-foreground/30 uppercase tracking-widest">
-                                Limited spots available this week
+                            <p className="mt-4 text-center text-xs font-bold uppercase tracking-widest text-foreground/45">
+                                Calendar opens in a new tab
                             </p>
+                            <div className="mt-5 rounded-xl border border-foreground/10 bg-white px-4 py-3 text-sm leading-relaxed text-foreground/65">
+                                Want to prep first? Start on{" "}
+                                <Link href="/features" className="font-bold text-primary underline">
+                                    feature workflows
+                                </Link>{" "}
+                                and{" "}
+                                <Link href="/industries" className="font-bold text-primary underline">
+                                    industry playbooks
+                                </Link>
+                                .
+                            </div>
                         </div>
                     </div>
                 </div>

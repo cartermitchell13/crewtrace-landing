@@ -1,56 +1,78 @@
 import Image from "next/image";
-import Button from "@/components/Button";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
+import BookedCallLink from "@/components/BookedCallLink";
+import {
+    getTemplateMessaging,
+    orderedPromiseLine,
+    publicIcpPhrase,
+} from "@/lib/messaging";
+
+const homeMessaging = getTemplateMessaging("home");
 
 export default function Hero() {
     return (
-        <section id="hero" className="relative pt-32 md:pt-36 pb-20 px-6 overflow-hidden scroll-mt-32">
-            {/* Background decoration */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.05)_0%,transparent_50%)]" />
+        <section
+            id="hero"
+            className="relative overflow-hidden px-6 pb-18 pt-32 md:pb-22 md:pt-36 scroll-mt-32"
+        >
+            <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
 
-            <div className="max-w-7xl mx-auto text-center space-y-10">
-                {/* Social Proof Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-bold text-primary">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    Contractors are saving $1,200+/month in recovered wages
-                </div>
+            <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-4xl space-y-8 text-center">
+                    <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                        Payroll leakage prevention
+                    </p>
 
-                <div className="space-y-6 max-w-4xl mx-auto">
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-                        Add more money to your bottom line without selling a single extra job.
+                    <h1 className="text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-5xl md:text-7xl">
+                        {homeMessaging.intentHeadline}
                     </h1>
-                    <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Payroll leakage and inaccurate time entries are silently killing your margins for teams running multiple crews. Crewtrace is built {publicIcpPhrase}. {orderedPromiseLine}
+
+                    <p className="mx-auto max-w-3xl text-base font-medium leading-relaxed text-foreground/70 md:text-xl">
+                        Crewtrace is built {publicIcpPhrase}. {orderedPromiseLine}{" "}
+                        {homeMessaging.proofBody}
+                    </p>
+
+                    <div className="mx-auto grid max-w-2xl gap-4 rounded-3xl border border-foreground/10 bg-white p-4 md:grid-cols-2 md:p-5">
+                        <BookedCallLink
+                            asButton
+                            buttonSize="lg"
+                            cluster="home"
+                            templateType="homepage_hero"
+                            landingPath="/"
+                            ctaLabel={homeMessaging.primaryCta}
+                            ctaLocation="hero_primary"
+                            className="w-full"
+                        >
+                            {homeMessaging.primaryCta}
+                        </BookedCallLink>
+                        <BookedCallLink
+                            asButton
+                            buttonVariant="white"
+                            buttonSize="lg"
+                            cluster="home"
+                            templateType="homepage_hero"
+                            landingPath="/"
+                            ctaLabel={homeMessaging.secondaryCta}
+                            ctaLocation="hero_secondary"
+                            className="w-full border border-primary/20"
+                        >
+                            {homeMessaging.secondaryCta}
+                        </BookedCallLink>
+                    </div>
+
+                    <p className="text-sm font-semibold text-foreground/45">
+                        15-minute audit call. See your current leakage risk and next steps.
                     </p>
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="max-w-lg mx-auto space-y-4">
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button href="https://cal.com/crewtrace/15min" size="lg">
-                            Book a Free Profit Audit
-                        </Button>
-                        <Button href="https://cal.com/crewtrace/15min" variant="white" size="lg">
-                            See How It Works
-                        </Button>
-                    </div>
-                    <p className="text-sm text-foreground/40">
-                        Free 15-minute call. We will show you exactly how much payroll leakage is costing you.
-                    </p>
-                </div>
-
-                {/* Hero Image */}
-                <div className="pt-10 relative max-w-6xl mx-auto">
-                    <div className="relative">
-                        <Image
-                            src="/images/ct-hero-min (1).png"
-                            alt="Crewtrace Dashboard Mockup"
-                            width={1920}
-                            height={1080}
-                            className="w-full h-auto object-contain"
-                            priority
-                        />
-                    </div>
+                <div className="mx-auto mt-10 max-w-6xl rounded-[2rem] border border-foreground/10 bg-white p-3 shadow-[0_20px_70px_-24px_rgba(47,39,206,0.35)] md:mt-14 md:rounded-[2.6rem]">
+                    <Image
+                        src="/images/ct-hero-min (1).png"
+                        alt="Crewtrace dashboard with crew activity and payroll controls"
+                        width={1920}
+                        height={1080}
+                        className="h-auto w-full rounded-[1.4rem] object-cover md:rounded-[2.1rem]"
+                        priority
+                    />
                 </div>
             </div>
         </section>

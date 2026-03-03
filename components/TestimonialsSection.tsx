@@ -2,68 +2,58 @@ import { Star } from "lucide-react";
 
 export default function TestimonialsSection() {
     return (
-        <section id="results" className="py-32 px-6 bg-white overflow-hidden relative scroll-mt-32">
-            {/* Soft radial background tint */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,39,206,0.04)_0%,transparent_70%)] pointer-events-none" />
+        <section id="results" className="relative overflow-hidden bg-white px-6 py-26 scroll-mt-32 md:py-30">
+            <div className="absolute left-1/2 top-0 h-[480px] w-[920px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
 
-            <div className="max-w-5xl mx-auto relative z-10">
-
-                {/* Section label */}
-                <div className="flex justify-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Real Customer Result
-                    </div>
+            <div className="relative z-10 mx-auto max-w-5xl">
+                <div className="mb-12 flex justify-center md:mb-14">
+                    <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                        Customer proof
+                    </p>
                 </div>
 
-                {/* Quote card */}
-                <div className="rounded-[2.5rem] bg-[#FBFBFE] border border-foreground/5 shadow-[0_8px_40px_-8px_rgba(47,39,206,0.08)] p-10 md:p-14 space-y-8">
-
-                    {/* Stars */}
-                    <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={18} className="fill-primary text-primary" />
+                <article className="space-y-7 rounded-[2.2rem] border border-foreground/10 bg-[#FBFBFE] p-8 shadow-[0_18px_50px_-24px_rgba(47,39,206,0.45)] md:p-12">
+                    <div className="flex gap-1 text-primary">
+                        {[...Array(5)].map((_, index) => (
+                            <Star key={index} size={18} className="fill-primary text-primary" />
                         ))}
                     </div>
 
-                    {/* Quote */}
-                    <blockquote className="text-2xl md:text-3xl font-bold tracking-tight leading-[1.45] text-foreground">
-                        "With paper timesheets, we had no way to know if hours were accurate. Rounding, memory errors, messy handwriting—it all added up. Crewtrace gave us the real numbers, and now we're saving thousands every month. Plus payroll that used to take hours only takes minutes."
+                    <blockquote className="text-xl font-bold leading-[1.45] tracking-tight text-foreground md:text-3xl">
+                        &ldquo;We moved from paper logs to Crewtrace and immediately found hours we
+                        were overpaying each week. Payroll now takes minutes instead of most of
+                        Sunday.&rdquo;
                     </blockquote>
 
-                    {/* Attribution + stats */}
-                    <div className="pt-6 border-t border-foreground/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
-                        {/* Person */}
-                        <div className="flex items-center gap-4">
-                            <div className="h-11 w-11 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">
-                                JL
-                            </div>
-                            <div>
-                                <div className="font-bold text-foreground">Jason Law</div>
-                                <div className="text-sm text-foreground/40 font-medium">Owner, S&amp;W Waterproofing</div>
-                            </div>
+                    <div className="grid gap-6 border-t border-foreground/10 pt-6 md:grid-cols-[1.1fr_1fr] md:items-center">
+                        <div>
+                            <p className="text-base font-bold text-foreground">Jason Law</p>
+                            <p className="text-sm font-medium text-foreground/50">
+                                Owner, S&amp;W Waterproofing
+                            </p>
                         </div>
-
-                        {/* Stats */}
-                        <div className="flex items-center gap-6 sm:gap-8">
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-primary">$1,200<span className="text-base">/mo</span></div>
-                                <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mt-0.5">Recovered</div>
+                        <div className="grid grid-cols-3 gap-3 text-center">
+                            <div className="rounded-xl border border-foreground/10 bg-white p-3">
+                                <p className="text-lg font-bold text-primary">$1,200/mo</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-foreground/40">
+                                    Recovered
+                                </p>
                             </div>
-                            <div className="w-px h-8 bg-foreground/10" />
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-primary">2 <span className="text-base">wks</span></div>
-                                <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mt-0.5">To Full ROI</div>
+                            <div className="rounded-xl border border-foreground/10 bg-white p-3">
+                                <p className="text-lg font-bold text-primary">2 weeks</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-foreground/40">
+                                    To ROI
+                                </p>
                             </div>
-                            <div className="w-px h-8 bg-foreground/10" />
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-primary">100<span className="text-base">%</span></div>
-                                <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mt-0.5">Verified Hours</div>
+                            <div className="rounded-xl border border-foreground/10 bg-white p-3">
+                                <p className="text-lg font-bold text-primary">100%</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-foreground/40">
+                                    Verified
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </article>
             </div>
         </section>
     );
