@@ -13,6 +13,7 @@ import {
 import { caseStudyBySlug } from "@/lib/caseStudies";
 import { guideBySlug } from "@/lib/guides";
 import { industryBySlug } from "@/lib/industries";
+import { getTemplateMessaging } from "@/lib/messaging";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { featureBySlug } from "@/lib/solutions";
@@ -21,6 +22,8 @@ const FEATURE_LINK_LIMIT = 4;
 const INDUSTRY_LINK_LIMIT = 4;
 const GUIDE_LINK_LIMIT = 3;
 const CASE_STUDY_LINK_LIMIT = 3;
+
+const compareDetailMessaging = getTemplateMessaging("compare_detail");
 
 function toFeaturePath(slug: string) {
     return `/features/${slug}`;
@@ -45,88 +48,92 @@ function sortByLabel<T extends { label: string }>(entries: T[]): T[] {
 function toFeatureLinks(record: CompetitorRecord) {
     return sortByLabel(
         record.linkTargets.featureSlugs
-        .map((slug) => {
-            const feature = featureBySlug[slug];
-            if (!feature) {
-                return null;
-            }
-            return {
-                slug,
-                label: feature.name,
-                description: feature.tagline,
-                href: toFeaturePath(slug),
-            };
-        })
-        .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
-            Boolean(entry),
-        )
-        .slice(0, FEATURE_LINK_LIMIT),
+            .map((slug) => {
+                const feature = featureBySlug[slug];
+                if (!feature) {
+                    return null;
+                }
+                return {
+                    slug,
+                    label: feature.name,
+                    description: feature.tagline,
+                    href: toFeaturePath(slug),
+                };
+            })
+            .filter(
+                (entry): entry is { slug: string; label: string; description: string; href: string } =>
+                    Boolean(entry),
+            )
+            .slice(0, FEATURE_LINK_LIMIT),
     );
 }
 
 function toIndustryLinks(record: CompetitorRecord) {
     return sortByLabel(
         record.linkTargets.industrySlugs
-        .map((slug) => {
-            const industry = industryBySlug[slug];
-            if (!industry) {
-                return null;
-            }
-            return {
-                slug,
-                label: industry.name,
-                description: industry.hubDescription,
-                href: toIndustryPath(slug),
-            };
-        })
-        .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
-            Boolean(entry),
-        )
-        .slice(0, INDUSTRY_LINK_LIMIT),
+            .map((slug) => {
+                const industry = industryBySlug[slug];
+                if (!industry) {
+                    return null;
+                }
+                return {
+                    slug,
+                    label: industry.name,
+                    description: industry.hubDescription,
+                    href: toIndustryPath(slug),
+                };
+            })
+            .filter(
+                (entry): entry is { slug: string; label: string; description: string; href: string } =>
+                    Boolean(entry),
+            )
+            .slice(0, INDUSTRY_LINK_LIMIT),
     );
 }
 
 function toGuideLinks(record: CompetitorRecord) {
     return sortByLabel(
         record.linkTargets.guideSlugs
-        .map((slug) => {
-            const guide = guideBySlug[slug];
-            if (!guide) {
-                return null;
-            }
-            return {
-                slug,
-                label: guide.title,
-                description: guide.summary,
-                href: toGuidePath(slug),
-            };
-        })
-        .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
-            Boolean(entry),
-        )
-        .slice(0, GUIDE_LINK_LIMIT),
+            .map((slug) => {
+                const guide = guideBySlug[slug];
+                if (!guide) {
+                    return null;
+                }
+                return {
+                    slug,
+                    label: guide.title,
+                    description: guide.summary,
+                    href: toGuidePath(slug),
+                };
+            })
+            .filter(
+                (entry): entry is { slug: string; label: string; description: string; href: string } =>
+                    Boolean(entry),
+            )
+            .slice(0, GUIDE_LINK_LIMIT),
     );
 }
 
 function toCaseStudyLinks(record: CompetitorRecord) {
     return sortByLabel(
         record.linkTargets.caseStudySlugs
-        .map((slug) => {
-            const study = caseStudyBySlug[slug];
-            if (!study) {
-                return null;
-            }
-            return {
-                slug,
-                label: study.title,
-                description: study.summary,
-                href: toCaseStudyPath(slug),
-            };
-        })
-        .filter((entry): entry is { slug: string; label: string; description: string; href: string } =>
-            Boolean(entry),
-        )
-        .slice(0, CASE_STUDY_LINK_LIMIT),
+            .map((slug) => {
+                const study = caseStudyBySlug[slug];
+                if (!study) {
+                    return null;
+                }
+                return {
+                    slug,
+                    label: study.title,
+                    description: study.summary,
+                    href: toCaseStudyPath(slug),
+                };
+            })
+            .filter(
+                (entry): entry is { slug: string; label: string; description: string; href: string } =>
+                    Boolean(entry),
+            )
+            .slice(0, CASE_STUDY_LINK_LIMIT),
     );
 }
 
@@ -206,8 +213,8 @@ export default async function CompareDetailPage({
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
-            <main className="pt-32 pb-20 px-6">
-                <article className="max-w-5xl mx-auto">
+            <main className="px-6 pb-20 pt-32">
+                <article className="mx-auto max-w-5xl">
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -219,7 +226,7 @@ export default async function CompareDetailPage({
 
                     <Link
                         href="/compare"
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/60 hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/60 transition-colors hover:text-primary"
                     >
                         <span aria-hidden>{"<-"} </span>
                         Back to comparisons
@@ -229,20 +236,19 @@ export default async function CompareDetailPage({
                         <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                             {competitor.primaryKeyword}
                         </p>
-                        <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+                        <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
                             Crewtrace vs {competitor.name}
                         </h1>
-                        <p className="mt-4 text-lg text-foreground/60 leading-relaxed">
-                            {competitor.heroTagline}
+                        <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                            {compareDetailMessaging.intentHeadline} {competitor.heroTagline}
                         </p>
-                        <p className="mt-4 text-sm text-foreground/50 leading-relaxed">
-                            Last reviewed {competitor.lastReviewedOn}. Review cadence every{" "}
-                            {competitor.reviewCadenceDays} days (next review:{" "}
+                        <p className="mt-4 text-sm leading-relaxed text-foreground/50">
+                            Last reviewed {competitor.lastReviewedOn}. Next review{" "}
                             {getNextReviewDateLabel(
                                 competitor.lastReviewedOn,
                                 competitor.reviewCadenceDays,
                             )}
-                            ).
+                            .
                         </p>
                     </header>
 
@@ -250,7 +256,7 @@ export default async function CompareDetailPage({
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Intent map for this comparison
                         </h2>
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                             {competitor.keywordClusters.map((cluster) => (
                                 <div
                                     key={`${cluster.intentBucket}-${cluster.primaryTerms[0]}`}
@@ -259,11 +265,11 @@ export default async function CompareDetailPage({
                                     <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                                         {cluster.intentBucket}
                                     </p>
-                                    <p className="mt-2 text-sm text-foreground/80 leading-relaxed">
+                                    <p className="mt-2 text-sm leading-relaxed text-foreground/80">
                                         <span className="font-semibold">Primary terms:</span>{" "}
                                         {cluster.primaryTerms.join(", ")}
                                     </p>
-                                    <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
+                                    <p className="mt-2 text-sm leading-relaxed text-foreground/70">
                                         <span className="font-semibold">Secondary terms:</span>{" "}
                                         {cluster.secondaryTerms.join(", ")}
                                     </p>
@@ -281,7 +287,7 @@ export default async function CompareDetailPage({
                                 <h2 className="text-2xl font-bold tracking-tight text-foreground">
                                     {section.heading}
                                 </h2>
-                                <p className="mt-3 text-foreground/60 leading-relaxed">
+                                <p className="mt-3 max-w-3xl leading-relaxed text-foreground/70">
                                     {section.summary}
                                 </p>
                                 <ul className="mt-4 space-y-3 text-foreground/70">
@@ -300,12 +306,12 @@ export default async function CompareDetailPage({
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Related feature and industry paths
                         </h2>
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                             {featureLinks.map((link) => (
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 hover:border-primary/20 transition-colors"
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -315,7 +321,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 hover:border-primary/20 transition-colors"
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -328,12 +334,12 @@ export default async function CompareDetailPage({
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Proof and implementation resources
                         </h2>
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                             {guideLinks.map((link) => (
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 hover:border-primary/20 transition-colors"
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -343,7 +349,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 hover:border-primary/20 transition-colors"
+                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -368,22 +374,24 @@ export default async function CompareDetailPage({
                         </ul>
                     </section>
 
-                    <section className="mt-8 rounded-3xl bg-primary text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <section className="mt-8 flex flex-col gap-6 rounded-3xl bg-primary p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
                         <div>
                             <h2 className="text-2xl font-bold tracking-tight">
                                 {competitor.softCtaHeadline}
                             </h2>
-                            <p className="mt-2 text-white/80">{competitor.softCtaBody}</p>
+                            <p className="mt-2 max-w-2xl text-white/85">
+                                {competitor.softCtaBody}
+                            </p>
                         </div>
                         <BookedCallLink
                             cluster="compare"
                             templateType="competitor_detail"
                             landingPath={`/compare/${slug}`}
-                            ctaLabel="Book a free audit"
+                            ctaLabel={compareDetailMessaging.primaryCta}
                             ctaLocation="footer_cta"
                             className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
                         >
-                            Book a free audit
+                            {compareDetailMessaging.primaryCta}
                         </BookedCallLink>
                     </section>
                 </article>

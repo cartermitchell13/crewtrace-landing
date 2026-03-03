@@ -11,6 +11,9 @@ import {
 } from "@/lib/first-touch-attribution";
 import { sendSeoEvent } from "@/lib/event-transport";
 import { buildLeadFormEvent } from "@/lib/seo-events";
+import { getTemplateMessaging, publicIcpPhrase } from "@/lib/messaging";
+
+const contactMessaging = getTemplateMessaging("contact");
 
 export default function ContactPage() {
     const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -33,8 +36,7 @@ export default function ContactPage() {
             typeof window !== "undefined"
                 ? `${window.location.pathname}${window.location.search}`
                 : "/contact";
-        const firstTouch =
-            readFirstTouchAttribution() ?? captureFirstTouchAttribution();
+        const firstTouch = readFirstTouchAttribution() ?? captureFirstTouchAttribution();
 
         const payload: LeadPayload = {
             name: formData.name,
@@ -69,8 +71,7 @@ export default function ContactPage() {
             if (!response.ok || !leadResponse?.ok) {
                 setFormState("error");
                 setSubmitMessage(
-                    leadResponse?.message ||
-                    "We could not submit your request. Please try again.",
+                    leadResponse?.message || "We could not submit your request. Please try again.",
                 );
                 void sendSeoEvent(
                     buildLeadFormEvent(
@@ -101,9 +102,7 @@ export default function ContactPage() {
             );
         } catch {
             setFormState("error");
-            setSubmitMessage(
-                "Network error while submitting your request. Please retry.",
-            );
+            setSubmitMessage("Network error while submitting your request. Please retry.");
             void sendSeoEvent(
                 buildLeadFormEvent(
                     "failure",
@@ -122,7 +121,9 @@ export default function ContactPage() {
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => {
         setFormData((prev) => ({
             ...prev,
             [e.target.name]: e.target.value,
@@ -137,67 +138,63 @@ export default function ContactPage() {
                 cluster="company"
                 ctaLocation="cal_embed"
             />
-            <main className="pt-32 pb-20 px-6">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                        {/* Left Column - Info */}
-                        <div>
-                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-                                Let&apos;s talk about your payroll leaks
+            <main className="px-6 pb-20 pt-32">
+                <div className="mx-auto max-w-6xl">
+                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
+                        <section className="rounded-3xl border border-foreground/10 bg-white p-7 md:p-9">
+                            <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                                Contact
+                            </p>
+                            <h1 className="mt-5 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                                {contactMessaging.intentHeadline}
                             </h1>
-                            <p className="text-lg text-foreground/60 mb-8">
-                                Book a free 15-minute call with our team. We&apos;ll show you exactly
-                                how much you could save with GPS-verified time tracking.
+                            <p className="mt-4 text-base leading-relaxed text-foreground/70 md:text-lg">
+                                Tell us how your crews operate and where payroll friction shows up.
+                                We tailor the call to your setup {publicIcpPhrase}.
                             </p>
 
-                            {/* Benefits List */}
-                            <div className="space-y-4 mb-12">
+                            <div className="mt-7 space-y-3 rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5">
                                 {[
-                                    "No credit card required",
-                                    "Free ROI analysis for your business",
-                                    "See a live demo tailored to your trade",
-                                    "Get pricing customized to your crew size",
-                                ].map((benefit, index) => (
-                                    <div key={index} className="flex items-center gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                            <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                        <span className="text-foreground/70">{benefit}</span>
-                                    </div>
+                                    "No obligation sales call",
+                                    "Live workflow walkthrough",
+                                    "Specific next steps for your team",
+                                    "Timeline estimate for rollout",
+                                ].map((benefit) => (
+                                    <p key={benefit} className="flex items-start gap-3 text-sm text-foreground/70">
+                                        <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+                                            ✓
+                                        </span>
+                                        <span>{benefit}</span>
+                                    </p>
                                 ))}
                             </div>
 
-                            {/* Contact Info */}
-                            <div className="space-y-6">
-                                <div>
-                                    <h3 className="font-bold text-foreground mb-2">Email us directly</h3>
-                                    <a href="mailto:hello@crewtrace.com" className="text-primary hover:underline">
+                            <div className="mt-8 space-y-4 text-sm">
+                                <p className="font-semibold text-foreground/80">
+                                    Prefer email?{" "}
+                                    <a href="mailto:hello@crewtrace.com" className="text-primary underline">
                                         hello@crewtrace.com
                                     </a>
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-foreground mb-2">Call us</h3>
-                                    <a href="tel:+18005551234" className="text-primary hover:underline">
+                                </p>
+                                <p className="font-semibold text-foreground/80">
+                                    Want to call?{" "}
+                                    <a href="tel:+18005551234" className="text-primary underline">
                                         1-800-555-1234
                                     </a>
-                                </div>
+                                </p>
                             </div>
-                        </div>
+                        </section>
 
-                        {/* Right Column - Form */}
-                        <div className="bg-white border border-foreground/5 rounded-2xl p-8 shadow-xl">
+                        <section className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
                             {formState === "success" ? (
-                                <div className="text-center py-12">
-                                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                                        <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                        </svg>
+                                <div className="py-8 text-center md:py-12">
+                                    <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
+                                        ✓
                                     </div>
-                                    <h2 className="text-2xl font-bold text-foreground mb-2">We&apos;ll be in touch!</h2>
-                                    <p className="text-foreground/60 mb-6">
-                                        Someone from our team will reach out within 24 hours.
+                                    <h2 className="text-2xl font-bold text-foreground">Request received</h2>
+                                    <p className="mx-auto mt-3 max-w-sm text-foreground/65">
+                                        A Crewtrace specialist will follow up with next steps within one
+                                        business day.
                                     </p>
                                     <button
                                         onClick={() => {
@@ -211,18 +208,25 @@ export default function ContactPage() {
                                                 message: "",
                                             });
                                         }}
-                                        className="text-primary font-medium hover:underline"
+                                        className="mt-6 font-semibold text-primary underline"
                                     >
                                         Submit another request
                                     </button>
                                 </div>
                             ) : (
                                 <>
-                                    <h2 className="text-xl font-bold text-foreground mb-6">Book your free demo</h2>
-                                    <form onSubmit={handleSubmit} className="space-y-5">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <h2 className="text-xl font-bold text-foreground">
+                                        {contactMessaging.primaryCta}
+                                    </h2>
+                                    <p className="mt-2 text-sm text-foreground/60">
+                                        Share a few details so we can make the audit call useful from minute
+                                        one.
+                                    </p>
+
+                                    <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                             <div>
-                                                <label className="block text-sm font-medium text-foreground mb-2">
+                                                <label className="mb-2 block text-sm font-medium text-foreground">
                                                     Your name *
                                                 </label>
                                                 <input
@@ -231,12 +235,12 @@ export default function ContactPage() {
                                                     value={formData.name}
                                                     onChange={handleChange}
                                                     required
-                                                    className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all"
+                                                    className="w-full rounded-xl border border-foreground/10 px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
                                                     placeholder="John Smith"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-sm font-medium text-foreground mb-2">
+                                                <label className="mb-2 block text-sm font-medium text-foreground">
                                                     Email address *
                                                 </label>
                                                 <input
@@ -245,15 +249,15 @@ export default function ContactPage() {
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                     required
-                                                    className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all"
+                                                    className="w-full rounded-xl border border-foreground/10 px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
                                                     placeholder="john@company.com"
                                                 />
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                             <div>
-                                                <label className="block text-sm font-medium text-foreground mb-2">
+                                                <label className="mb-2 block text-sm font-medium text-foreground">
                                                     Phone number
                                                 </label>
                                                 <input
@@ -261,12 +265,12 @@ export default function ContactPage() {
                                                     name="phone"
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all"
+                                                    className="w-full rounded-xl border border-foreground/10 px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
                                                     placeholder="(555) 123-4567"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-sm font-medium text-foreground mb-2">
+                                                <label className="mb-2 block text-sm font-medium text-foreground">
                                                     Company name
                                                 </label>
                                                 <input
@@ -274,21 +278,21 @@ export default function ContactPage() {
                                                     name="company"
                                                     value={formData.company}
                                                     onChange={handleChange}
-                                                    className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all"
+                                                    className="w-full rounded-xl border border-foreground/10 px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
                                                     placeholder="ABC Roofing"
                                                 />
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                            <label className="mb-2 block text-sm font-medium text-foreground">
                                                 Crew size
                                             </label>
                                             <select
                                                 name="crewSize"
                                                 value={formData.crewSize}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all bg-white"
+                                                className="w-full rounded-xl border border-foreground/10 bg-white px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
                                             >
                                                 <option value="">Select crew size</option>
                                                 <option value="1-5">1-5 workers</option>
@@ -300,35 +304,25 @@ export default function ContactPage() {
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-foreground mb-2">
-                                                How can we help?
+                                            <label className="mb-2 block text-sm font-medium text-foreground">
+                                                Current challenge
                                             </label>
                                             <textarea
                                                 name="message"
                                                 value={formData.message}
                                                 onChange={handleChange}
                                                 rows={4}
-                                                className="w-full px-4 py-3 rounded-xl border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all resize-none"
-                                                placeholder="Tell us about your current time tracking challenges..."
+                                                className="w-full resize-none rounded-xl border border-foreground/10 px-4 py-3 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/10"
+                                                placeholder="Tell us what is slowing payroll review down right now."
                                             />
                                         </div>
 
                                         <button
                                             type="submit"
                                             disabled={formState === "submitting"}
-                                            className="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:translate-x-0"
+                                            className="w-full rounded-xl bg-primary py-4 font-bold text-white shadow-button transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-x-0 disabled:hover:translate-y-0"
                                         >
-                                            {formState === "submitting" ? (
-                                                <span className="flex items-center justify-center gap-2">
-                                                    <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                                                    </svg>
-                                                    Submitting...
-                                                </span>
-                                            ) : (
-                                                "Book My Free Demo"
-                                            )}
+                                            {formState === "submitting" ? "Submitting..." : contactMessaging.primaryCta}
                                         </button>
 
                                         {formState === "error" && submitMessage && (
@@ -337,14 +331,17 @@ export default function ContactPage() {
                                             </div>
                                         )}
 
-                                        <p className="text-xs text-foreground/40 text-center">
+                                        <p className="text-center text-xs text-foreground/45">
                                             By submitting this form, you agree to our{" "}
-                                            <a href="/privacy" className="underline">Privacy Policy</a>.
+                                            <a href="/privacy" className="underline">
+                                                Privacy Policy
+                                            </a>
+                                            .
                                         </p>
                                     </form>
                                 </>
                             )}
-                        </div>
+                        </section>
                     </div>
                 </div>
             </main>
