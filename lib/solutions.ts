@@ -20,7 +20,13 @@ export const featureRecords: FeatureRecord[] = [
             "Replace paper timesheets with GPS-verified clock-ins and clock-outs so payroll is based on where crews actually worked.",
         primaryKeyword: "gps time tracking for construction",
         primaryIntent: "gps-verified-contractor-time-tracking",
-        relatedIndustries: ["roofing", "plumbing", "landscaping", "construction"],
+        relatedIndustries: [
+            "roofing",
+            "plumbing",
+            "landscaping",
+            "construction",
+            "hvac",
+        ],
         challenges: [
             "Unverified clock-ins from the truck or parking lot",
             "Disputes over arrival and departure times",
@@ -51,6 +57,9 @@ export const featureRecords: FeatureRecord[] = [
             "hvac",
             "construction",
             "waterproofing",
+            "roofing",
+            "plumbing",
+            "landscaping",
         ],
         challenges: [
             "Small daily time inflation that compounds weekly",
@@ -76,7 +85,13 @@ export const featureRecords: FeatureRecord[] = [
             "Maintain defensible time records, approval history, and location context to support FLSA and DOL audit requirements.",
         primaryKeyword: "construction time tracking compliance",
         primaryIntent: "dol-flsa-contractor-timekeeping-compliance",
-        relatedIndustries: ["general-contractors", "roofing", "hvac", "construction"],
+        relatedIndustries: [
+            "general-contractors",
+            "roofing",
+            "hvac",
+            "construction",
+            "concrete",
+        ],
         challenges: [
             "Missing or incomplete time documentation",
             "Difficulty proving edits and approvals",

@@ -56,6 +56,49 @@ function findDuplicates(values) {
     return [...duplicates];
 }
 
+function countOverlap(values, comparison) {
+    const comparisonSet = new Set(comparison);
+    let overlap = 0;
+    for (const value of values) {
+        if (comparisonSet.has(value)) {
+            overlap += 1;
+        }
+    }
+    return overlap;
+}
+
+function getFeatureSiblings(feature, featureRecords) {
+    return featureRecords
+        .filter((candidate) => candidate.slug !== feature.slug)
+        .map((candidate) => ({
+            slug: candidate.slug,
+            overlap: countOverlap(feature.relatedIndustries, candidate.relatedIndustries),
+        }))
+        .filter((candidate) => candidate.overlap > 0)
+        .sort((left, right) => {
+            if (left.overlap !== right.overlap) {
+                return right.overlap - left.overlap;
+            }
+            return left.slug.localeCompare(right.slug);
+        });
+}
+
+function getIndustrySiblings(industry, industryRecords) {
+    return industryRecords
+        .filter((candidate) => candidate.slug !== industry.slug)
+        .map((candidate) => ({
+            slug: candidate.slug,
+            overlap: countOverlap(industry.relatedSolutions, candidate.relatedSolutions),
+        }))
+        .filter((candidate) => candidate.overlap > 0)
+        .sort((left, right) => {
+            if (left.overlap !== right.overlap) {
+                return right.overlap - left.overlap;
+            }
+            return left.slug.localeCompare(right.slug);
+        });
+}
+
 function assertRecords(records, requiredKeys, clusterName, errors) {
     ensure(Array.isArray(records) && records.length > 0, `${clusterName}: records must be non-empty`, errors);
 
@@ -140,6 +183,8 @@ function run() {
 
     const featureSlugSet = new Set(featureSlugs);
     const industrySlugSet = new Set(industrySlugs);
+    const featureBySlug = new Map(featureRecords.map((feature) => [feature.slug, feature]));
+    const industryBySlug = new Map(industryRecords.map((industry) => [industry.slug, industry]));
 
     for (const feature of featureRecords) {
         const missingIndustryLinks = feature.relatedIndustries.filter(
@@ -150,6 +195,24 @@ function run() {
             `feature "${feature.slug}" references missing industries: ${missingIndustryLinks.join(", ")}`,
             errors,
         );
+
+        const siblingFeatureLinks = getFeatureSiblings(feature, featureRecords);
+        ensure(
+            siblingFeatureLinks.length > 0,
+            `feature "${feature.slug}" has no sibling feature links (CLUS-04 parent/sibling coverage)`,
+            errors,
+        );
+
+        for (const industrySlug of feature.relatedIndustries) {
+            const industry = industryBySlug.get(industrySlug);
+            if (!industry || !industry.relatedSolutions.includes(feature.slug)) {
+                ensure(
+                    false,
+                    `feature "${feature.slug}" -> industry "${industrySlug}" is not reciprocal`,
+                    errors,
+                );
+            }
+        }
     }
 
     for (const industry of industryRecords) {
@@ -161,6 +224,24 @@ function run() {
             `industry "${industry.slug}" references missing features: ${missingFeatureLinks.join(", ")}`,
             errors,
         );
+
+        const siblingIndustryLinks = getIndustrySiblings(industry, industryRecords);
+        ensure(
+            siblingIndustryLinks.length > 0,
+            `industry "${industry.slug}" has no sibling industry links (CLUS-04 parent/sibling coverage)`,
+            errors,
+        );
+
+        for (const featureSlug of industry.relatedSolutions) {
+            const feature = featureBySlug.get(featureSlug);
+            if (!feature || !feature.relatedIndustries.includes(industry.slug)) {
+                ensure(
+                    false,
+                    `industry "${industry.slug}" -> feature "${featureSlug}" is not reciprocal`,
+                    errors,
+                );
+            }
+        }
     }
 
     for (const requiredSlug of requiredPriorityIndustrySlugs) {
@@ -190,6 +271,26 @@ function run() {
             errors,
         );
     }
+
+    const featureDetailTemplate = fs.readFileSync(
+        path.join(projectRoot, "app/features/[slug]/page.tsx"),
+        "utf8",
+    );
+    const industryDetailTemplate = fs.readFileSync(
+        path.join(projectRoot, "app/industries/[slug]/page.tsx"),
+        "utf8",
+    );
+
+    ensure(
+        featureDetailTemplate.includes("href={detailLinks.parentPath}"),
+        "feature detail template is missing parent hub path link (/features)",
+        errors,
+    );
+    ensure(
+        industryDetailTemplate.includes("href={detailLinks.parentPath}"),
+        "industry detail template is missing parent hub path link (/industries)",
+        errors,
+    );
 
     if (errors.length > 0) {
         console.error("Cluster content check failed:");

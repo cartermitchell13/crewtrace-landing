@@ -122,6 +122,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-leakage-prevention",
             "geofencing-time-clock",
+            "dol-compliance",
         ],
     },
     {
@@ -181,7 +182,12 @@ export const industryRecords: IndustryRecord[] = [
             { value: "18%", label: "More jobs completed per tech" },
             { value: "2 hrs", label: "Saved on scheduling daily" },
         ],
-        relatedSolutions: ["gps-time-tracking", "payroll-exports", "dol-compliance"],
+        relatedSolutions: [
+            "gps-time-tracking",
+            "payroll-exports",
+            "dol-compliance",
+            "payroll-leakage-prevention",
+        ],
     },
     {
         slug: "plumbing",
