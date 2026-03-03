@@ -23,6 +23,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
+import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import {
@@ -126,6 +127,12 @@ export default async function IndustryPage({
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                 />
+                <SeoLandingTracker
+                    templateType="industry_detail"
+                    cluster="industries"
+                    pageSlug={slug}
+                    pageUrl={`/industries/${slug}`}
+                />
 
                 <section className="relative pt-48 pb-20 px-6 overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.05)_0%,transparent_50%)]" />
@@ -158,6 +165,8 @@ export default async function IndustryPage({
                                         templateType="industry_detail"
                                         landingPath={`/industries/${slug}`}
                                         params={{ utm_medium: "organic" }}
+                                        ctaLabel="Book a Free Demo"
+                                        ctaLocation="hero"
                                         className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] text-lg"
                                     >
                                         Book a Free Demo <ArrowRight size={20} />

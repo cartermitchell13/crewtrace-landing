@@ -73,6 +73,8 @@ export default function CTASection({
                                 cluster={cluster}
                                 templateType={templateType}
                                 landingPath={landingPath}
+                                ctaLabel="Secure Your Free Audit"
+                                ctaLocation="lower_page"
                             >
                                 Secure Your Free Audit
                             </BookedCallLink>

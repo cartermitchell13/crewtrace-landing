@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerCleaner from "@/components/ServiceWorkerCleaner";
+import FirstTouchBootstrap from "@/components/FirstTouchBootstrap";
 import { siteConfig } from "@/lib/seo";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <FirstTouchBootstrap />
         <ServiceWorkerCleaner />
         {children}
       </body>

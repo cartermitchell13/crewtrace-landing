@@ -1,6 +1,14 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+"use client";
+
+import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 import Button from "@/components/Button";
 import { buildBookedCallUrl, type BookedCallUrlParams } from "@/lib/booked-call-url";
+import {
+    captureFirstTouchAttribution,
+    readFirstTouchAttribution,
+} from "@/lib/first-touch-attribution";
+import { sendSeoEvent } from "@/lib/event-transport";
+import { buildBookedCallCtaClickEvent } from "@/lib/seo-events";
 
 type BookedCallLinkProps = Omit<
     AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -15,6 +23,8 @@ type BookedCallLinkProps = Omit<
     buttonVariant?: "primary" | "white";
     buttonSize?: "md" | "lg";
     showArrow?: boolean;
+    ctaLabel?: string;
+    ctaLocation?: string;
 };
 
 export default function BookedCallLink({
@@ -30,6 +40,9 @@ export default function BookedCallLink({
     buttonVariant = "primary",
     buttonSize = "md",
     showArrow = false,
+    ctaLabel,
+    ctaLocation,
+    onClick,
     ...anchorProps
 }: BookedCallLinkProps) {
     const href = buildBookedCallUrl({
@@ -41,6 +54,35 @@ export default function BookedCallLink({
         },
     });
 
+    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+        onClick?.(event);
+
+        if (event.defaultPrevented) {
+            return;
+        }
+
+        const firstTouch =
+            readFirstTouchAttribution() ?? captureFirstTouchAttribution();
+        const pageUrl =
+            typeof window !== "undefined"
+                ? `${window.location.pathname}${window.location.search}`
+                : landingPath ?? "/";
+
+        const seoEvent = buildBookedCallCtaClickEvent(
+            {
+                templateType: templateType ?? "unknown",
+                cluster: cluster ?? "unknown",
+                pageUrl,
+                firstTouch,
+            },
+            {
+                ctaLabel,
+                ctaLocation,
+            },
+        );
+        void sendSeoEvent(seoEvent);
+    };
+
     if (asButton) {
         return (
             <Button
@@ -51,6 +93,7 @@ export default function BookedCallLink({
                 target={target}
                 rel={rel}
                 showArrow={showArrow}
+                onClick={handleClick}
                 {...anchorProps}
             >
                 {children}
@@ -66,6 +109,7 @@ export default function BookedCallLink({
             target={target}
             rel={finalRel}
             className={className}
+            onClick={handleClick}
             {...anchorProps}
         >
             {children}

@@ -4,6 +4,12 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { parseLeadApiResponse, type LeadPayload } from "@/lib/lead-contract";
+import {
+    captureFirstTouchAttribution,
+    readFirstTouchAttribution,
+} from "@/lib/first-touch-attribution";
+import { sendSeoEvent } from "@/lib/event-transport";
+import { buildLeadFormEvent } from "@/lib/seo-events";
 
 export default function ContactPage() {
     const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -22,6 +28,13 @@ export default function ContactPage() {
         setFormState("submitting");
         setSubmitMessage(null);
 
+        const pageUrl =
+            typeof window !== "undefined"
+                ? `${window.location.pathname}${window.location.search}`
+                : "/contact";
+        const firstTouch =
+            readFirstTouchAttribution() ?? captureFirstTouchAttribution();
+
         const payload: LeadPayload = {
             name: formData.name,
             email: formData.email,
@@ -30,6 +43,15 @@ export default function ContactPage() {
             crewSize: formData.crewSize,
             message: formData.message,
         };
+
+        void sendSeoEvent(
+            buildLeadFormEvent("attempt", {
+                templateType: "contact",
+                cluster: "company",
+                pageUrl,
+                firstTouch,
+            }),
+        );
 
         try {
             const response = await fetch("/api/lead", {
@@ -49,14 +71,52 @@ export default function ContactPage() {
                     leadResponse?.message ||
                     "We could not submit your request. Please try again.",
                 );
+                void sendSeoEvent(
+                    buildLeadFormEvent(
+                        "failure",
+                        {
+                            templateType: "contact",
+                            cluster: "company",
+                            pageUrl,
+                            firstTouch,
+                        },
+                        {
+                            errorCode: leadResponse?.errorCode ?? "request_failed",
+                            message: leadResponse?.message,
+                        },
+                    ),
+                );
                 return;
             }
 
             setFormState("success");
+            void sendSeoEvent(
+                buildLeadFormEvent("success", {
+                    templateType: "contact",
+                    cluster: "company",
+                    pageUrl,
+                    firstTouch,
+                }),
+            );
         } catch {
             setFormState("error");
             setSubmitMessage(
                 "Network error while submitting your request. Please retry.",
+            );
+            void sendSeoEvent(
+                buildLeadFormEvent(
+                    "failure",
+                    {
+                        templateType: "contact",
+                        cluster: "company",
+                        pageUrl,
+                        firstTouch,
+                    },
+                    {
+                        errorCode: "network_error",
+                        message: "Network error while submitting lead form",
+                    },
+                ),
             );
         }
     };

@@ -14,6 +14,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
+import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
@@ -99,6 +100,12 @@ export default async function FeatureDetailPage({
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                 />
+                <SeoLandingTracker
+                    templateType="feature_detail"
+                    cluster="features"
+                    pageSlug={slug}
+                    pageUrl={`/features/${slug}`}
+                />
                 {/* Hero Section */}
                 <section className="relative pt-40 pb-32 px-6 overflow-hidden bg-white">
                     {/* Soft glowing mesh background */}
@@ -128,6 +135,8 @@ export default async function FeatureDetailPage({
                                     templateType="feature_detail"
                                     landingPath={`/features/${slug}`}
                                     params={{ utm_medium: "organic" }}
+                                    ctaLabel="Book a Free Demo"
+                                    ctaLocation="hero"
                                     className="inline-flex justify-center items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(47,39,206,0.2)] hover:shadow-[0_12px_40px_rgba(47,39,206,0.3)] hover:translate-y-[-2px] transition-all duration-300 active:translate-y-[0px] text-lg"
                                 >
                                     Book a Free Demo <ArrowRight size={20} />
