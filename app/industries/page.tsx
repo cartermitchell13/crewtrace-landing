@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
     Droplets,
@@ -12,7 +12,11 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { createPageMetadata } from "@/lib/seo";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
+import {
+    getTemplateMessaging,
+    orderedPromiseLine,
+    publicIcpPhrase,
+} from "@/lib/messaging";
 import {
     getIndustrySummaries,
     requiredPriorityIndustrySlugs,
@@ -43,6 +47,8 @@ const iconByKey: Partial<Record<IndustryIconKey, LucideIcon>> = {
     layers: Layers,
 };
 
+const industriesMessaging = getTemplateMessaging("industries_hub");
+
 export const metadata: Metadata = createPageMetadata({
     title: "Industries | GPS Time Tracking for Contractors",
     description:
@@ -58,80 +64,94 @@ export default function IndustriesPage() {
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
-            <main className="pt-32 pb-20">
-                <section className="px-6 text-center mb-16">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
-                            Built for the trades that build America
-                        </h1>
-                        <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto">
-                            Crewtrace is designed specifically for construction and trade businesses.
-                            See how contractors in your industry reduce payroll overpayment first,
-                            improve compliance confidence second, and spend less payroll admin time every week.
+            <main className="pb-20 pt-32">
+                <section className="px-6">
+                    <div className="mx-auto max-w-6xl rounded-[2rem] border border-foreground/10 bg-white p-8 md:p-12">
+                        <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                            Industry hub
                         </p>
+                        <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+                            {industriesMessaging.intentHeadline}
+                        </h1>
+                        <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                            Start with your trade page, then open linked feature workflows to map an
+                            implementation sequence. {industriesMessaging.proofBody}
+                        </p>
+                        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/55 md:text-base">
+                            Built {publicIcpPhrase}. {orderedPromiseLine}
+                        </p>
+                        <div className="mt-6 flex flex-wrap gap-3">
+                            <Link
+                                href="/features"
+                                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-button transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0"
+                            >
+                                Explore feature workflows
+                                <span aria-hidden>{"->"}</span>
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 rounded-xl border border-foreground/15 bg-white px-5 py-3 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/30 hover:text-primary"
+                            >
+                                Get rollout advice
+                                <span aria-hidden>{"->"}</span>
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
-                <section className="px-6">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <section className="px-6 pt-10 md:pt-12">
+                    <div className="mx-auto max-w-6xl">
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                             {industrySummaries.map((industry) => {
                                 const IndustryIcon = iconByKey[industry.icon] ?? Layers;
                                 return (
                                     <article
                                         key={industry.slug}
-                                        className="group relative bg-white border border-foreground/5 rounded-2xl p-8 hover:border-primary/20 hover:shadow-xl transition-all duration-300"
+                                        className="group relative rounded-2xl border border-foreground/10 bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-xl"
                                     >
-                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <IndustryIcon size={28} />
+                                        <div className="mb-5 inline-flex h-13 w-13 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                                            <IndustryIcon size={24} />
                                         </div>
+
                                         <Link
                                             href={`/industries/${industry.slug}`}
-                                            className="inline-flex text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors"
+                                            className="inline-flex text-xl font-bold text-foreground transition-colors group-hover:text-primary"
                                         >
                                             {industry.name}
                                         </Link>
-                                        <p className="text-foreground/60 text-sm mb-4 leading-relaxed">
+
+                                        <p className="mt-3 text-sm leading-relaxed text-foreground/70">
                                             {industry.description}
                                         </p>
+
                                         {priorityTradeSet.has(industry.slug) && (
-                                            <p className="mb-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
-                                                Priority Trade
+                                            <p className="mt-4 inline-flex rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                                                Priority trade
                                             </p>
                                         )}
-                                        <div className="mb-5 flex flex-wrap gap-2">
+
+                                        <div className="mt-5 flex flex-wrap gap-2">
                                             {getIndustrySolutions(industry.relatedSolutions).map((solution) => (
                                                 <Link
                                                     key={solution.slug}
                                                     href={`/features/${solution.slug}`}
-                                                    className="rounded-full border border-foreground/10 px-2.5 py-1 text-[11px] font-semibold text-foreground/60 hover:border-primary/20 hover:text-primary transition-colors"
+                                                    className="rounded-full border border-foreground/10 px-2.5 py-1 text-[11px] font-semibold text-foreground/65 transition-colors hover:border-primary/20 hover:text-primary"
                                                 >
                                                     {solution.name}
                                                 </Link>
                                             ))}
                                         </div>
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">
+
+                                        <div className="mt-6 flex items-center justify-between">
+                                            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-emerald-700">
                                                 {industry.stats}
                                             </span>
                                             <Link
                                                 href={`/industries/${industry.slug}`}
-                                                className="inline-flex items-center gap-1 text-sm font-semibold text-foreground/50 group-hover:text-primary transition-colors"
+                                                className="inline-flex items-center gap-1 text-sm font-bold text-primary"
                                             >
                                                 View industry
-                                                <svg
-                                                    className="w-4 h-4 text-foreground/20 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                    />
-                                                </svg>
+                                                <span aria-hidden>{"->"}</span>
                                             </Link>
                                         </div>
                                     </article>
@@ -141,42 +161,22 @@ export default function IndustriesPage() {
                     </div>
                 </section>
 
-                <section className="px-6 mt-16">
-                    <div className="max-w-6xl mx-auto rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-8 md:p-10">
-                        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                            Pair your industry page with the right feature workflow
+                <section className="px-6 pt-12 md:pt-14">
+                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-8 md:p-10">
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                            Need a custom workflow for your trade mix?
                         </h2>
-                        <p className="mt-3 text-foreground/60 max-w-2xl">
-                            Start with your trade-specific page, then drill into features for compliance,
-                            geofencing, and payroll exports.
+                        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:text-base">
+                            If your crews span multiple trades, we can map a rollout order using your
+                            highest payroll-risk workflows first.
                         </p>
                         <Link
-                            href="/features"
-                            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-button"
+                            href="/contact"
+                            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-button transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0"
                         >
-                            Explore features
+                            Talk through your setup
                             <span aria-hidden>{"->"}</span>
                         </Link>
-                    </div>
-                </section>
-
-                <section className="px-6 mt-20">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
-                            Do not see your industry?
-                        </h2>
-                        <p className="text-foreground/60 mb-8">
-                            Crewtrace works for any trade that needs accurate time tracking.
-                            Let&apos;s talk about your specific needs.
-                        </p>
-                        <a
-                            href="https://cal.com/crewtrace/15min"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px]"
-                        >
-                            Contact Us
-                        </a>
                     </div>
                 </section>
             </main>
