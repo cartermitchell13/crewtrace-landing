@@ -45,11 +45,11 @@
 
 ### Quality and Operations
 
-- [ ] **OPS-01**: CI fails on duplicate title/description/canonical conflicts.
-- [ ] **OPS-02**: CI fails on broken internal links for indexable pages.
-- [ ] **OPS-03**: CI validates required structured data per template type.
-- [ ] **OPS-04**: Publishing workflow supports AI-assisted volume but blocks publication unless quality checks pass.
-- [ ] **OPS-05**: Weekly SEO report summarizes indexed pages, traffic trend, and booked calls by cluster.
+- [x] **OPS-01**: CI fails on duplicate title/description/canonical conflicts.
+- [x] **OPS-02**: CI fails on broken internal links for indexable pages.
+- [x] **OPS-03**: CI validates required structured data per template type.
+- [x] **OPS-04**: Publishing workflow supports AI-assisted volume but blocks publication unless quality checks pass.
+- [x] **OPS-05**: Weekly SEO report summarizes indexed pages, traffic trend, and booked calls by cluster.
 
 ## v2 Requirements
 
@@ -94,11 +94,11 @@
 | CRO-03 | Phase 5 | Complete |
 | CRO-04 | Phase 5 | Complete |
 | CRO-05 | Phase 5 | Complete |
-| OPS-01 | Phase 6 | Pending |
-| OPS-02 | Phase 6 | Pending |
-| OPS-03 | Phase 6 | Pending |
-| OPS-04 | Phase 6 | Pending |
-| OPS-05 | Phase 6 | Pending |
+| OPS-01 | Phase 6 | Complete |
+| OPS-02 | Phase 6 | Complete |
+| OPS-03 | Phase 6 | Complete |
+| OPS-04 | Phase 6 | Complete |
+| OPS-05 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 28 total
@@ -107,4 +107,4 @@
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after discovery interview refinement*
+*Last updated: 2026-03-03 after Phase 6 completion*
