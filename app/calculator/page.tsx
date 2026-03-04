@@ -9,7 +9,7 @@ export default function CalculatorPage() {
     return (
         <div className="min-h-screen bg-[#FBFBFE]">
             <Navbar />
-            
+
             <main className="pt-32 pb-20">
                 {/* Hero Header */}
                 <div className="max-w-7xl mx-auto px-6 mb-16">
@@ -18,14 +18,14 @@ export default function CalculatorPage() {
                             <Sparkles size={14} className="animate-pulse" />
                             <span>Free Profit Audit Tool</span>
                         </div>
-                        
+
                         <div className="space-y-4 max-w-3xl">
                             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.05]">
                                 Stop Guessing. <br />
                                 <span className="text-primary italic">Identify Potential Leakage.</span>
                             </h1>
                             <p className="text-xl text-foreground/50 font-medium leading-relaxed">
-                                Studies suggest most construction companies may be losing up to 4% of their annual revenue to payroll leakage. 
+                                Studies suggest most construction companies may be losing up to 4% of their annual revenue to payroll leakage.
                                 Use our industrial-grade audit tool to find where your profit might be slipping through.
                             </p>
                         </div>
