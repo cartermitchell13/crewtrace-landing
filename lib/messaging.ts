@@ -64,7 +64,7 @@ export const proofLedBodyHelpers = {
 } as const;
 
 export const ctaFramingVariants = {
-    primary: "Book a free 15-minute payroll leak audit",
+    primary: "Book Free Audit",
     secondary: "See the rollout workflow",
     compare: "Pressure-test our fit for your workflow",
     contact: "Send my team setup details",
