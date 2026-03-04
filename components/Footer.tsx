@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
-            <div className="max-w-7xl mx-auto p-12 md:p-24 relative z-10 flex flex-col items-center text-center">
+            <div className="max-w-7xl mx-auto p-12 md:p-24 relative z-10 flex flex-col items-center text-center text-white">
                 {/* Brand Section */}
                 <div className="space-y-8 mb-16">
                     <Link href="/" className="inline-block transform hover:scale-105 transition-transform duration-300">
@@ -20,9 +20,9 @@ export default function Footer() {
                             className="h-10 w-auto object-contain brightness-0 invert"
                         />
                     </Link>
-                    <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
+                    <div className="text-xl md:text-2xl !text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
                         The definitive crew tracking and management solution <br className="hidden md:block" /> for construction professionals.
-                    </p>
+                    </div>
                 </div>
 
                 {/* Navigation - Horizontal & Elegant */}
@@ -47,9 +47,9 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <p className="text-xs font-bold text-white/20 uppercase tracking-[0.2em]">
-                        © {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
-                    </p>
+                    <div className="text-xs font-bold !text-white/20 uppercase tracking-[0.2em]">
+                        (c) {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
+                    </div>
 
                     <div className="text-xs font-bold text-white/40 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/5">
                         Status: <span className="text-green-500">Operational</span>

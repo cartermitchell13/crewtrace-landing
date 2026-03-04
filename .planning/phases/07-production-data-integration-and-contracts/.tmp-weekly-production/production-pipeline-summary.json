@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-03T20:13:14.286Z",
+  "week": {
+    "week_start": "2026-02-23",
+    "week_end": "2026-03-01"
+  },
+  "inputs": {
+    "indexed": "scripts/analytics/fixtures/production/search-console-indexed.weekly.sample.csv",
+    "traffic": "scripts/analytics/fixtures/production/search-console-traffic.weekly.sample.csv",
+    "booked_events": "scripts/analytics/fixtures/production/booked-call-events.weekly.sample.ndjson",
+    "ga4": "scripts/analytics/fixtures/ga4/ga4-events.weekly.sample.csv"
+  },
+  "outputs": {
+    "ingestion": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\ingestion",
+    "booked_report": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\booked",
+    "weekly_report_json": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\weekly-seo-ops-report.json",
+    "weekly_report_csv": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\weekly-seo-ops-report.csv"
+  }
+}

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import vm from "node:vm";
 import ts from "typescript";
@@ -34,14 +35,21 @@ function loadTsModule(relativePath) {
     }).outputText;
 
     const moduleRef = { exports: {} };
+    const nodeRequire = createRequire(filePath);
 
     vm.runInNewContext(compiled, {
         module: moduleRef,
         exports: moduleRef.exports,
-        require: () => {
-            throw new Error(
-                `Unsupported runtime import in ${relativePath}. Route inventory expects data modules only.`,
-            );
+        require: (specifier) => {
+            try {
+                return nodeRequire(specifier);
+            } catch (error) {
+                const reason =
+                    error instanceof Error ? error.message : "Unknown module resolution error.";
+                throw new Error(
+                    `Unsupported runtime import "${specifier}" in ${relativePath}. ${reason}`,
+                );
+            }
         },
         __dirname: path.dirname(filePath),
         __filename: filePath,
@@ -125,4 +133,3 @@ export function buildRouteInventory() {
 export function normalizeInternalPath(pathValue) {
     return normalizePath(pathValue);
 }
-

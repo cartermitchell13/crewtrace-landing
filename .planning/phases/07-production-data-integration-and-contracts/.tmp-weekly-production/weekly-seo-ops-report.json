@@ -1,0 +1,157 @@
+{
+  "schema_version": "2.0.0",
+  "generated_at": "2026-03-03T20:13:14.238Z",
+  "input_files": {
+    "indexed": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\ingestion\\production-indexed.weekly.csv",
+    "traffic": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\ingestion\\production-traffic.weekly.csv",
+    "booked": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\booked\\booked-call-report.json"
+  },
+  "summary": {
+    "week_start": "2026-02-23",
+    "week_end": "2026-03-01",
+    "row_count": 8,
+    "normalization": {
+      "cluster": "mapUrlToCluster",
+      "template_type": "resolveCanonicalLandingDimensions",
+      "landing_url": "normalizeUrlPath"
+    }
+  },
+  "rows": [
+    {
+      "cluster": "company",
+      "template_type": "contact",
+      "landing_url": "/industries/construction",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 0,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 1,
+      "joinable_conversion_keys": 1
+    },
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/gps-time-tracking",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 24,
+        "impressions": 220
+      },
+      "booked_calls": 1,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 1
+    },
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/payroll-leakage-prevention",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 19,
+        "impressions": 201
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 0
+    },
+    {
+      "cluster": "industries",
+      "template_type": "industry_detail",
+      "landing_url": "/industries/construction",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 31,
+        "impressions": 284
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 1,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 1
+    },
+    {
+      "cluster": "compare",
+      "template_type": "competitor_detail",
+      "landing_url": "/compare/connecteam",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 12,
+        "impressions": 190
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 0
+    },
+    {
+      "cluster": "guides",
+      "template_type": "guide_detail",
+      "landing_url": "/guides/construction-time-tracking-implementation",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 15,
+        "impressions": 160
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 0
+    },
+    {
+      "cluster": "case-studies",
+      "template_type": "case_study_detail",
+      "landing_url": "/case-studies/chen-construction-multi-site-control",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 0,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 9,
+        "impressions": 120
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 0
+    },
+    {
+      "cluster": "blog",
+      "template_type": "blog_detail",
+      "landing_url": "/blog/gps-time-tracking-vs-paper-timesheets",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
+      "indexed_pages": 1,
+      "tracked_urls": 1,
+      "traffic_trend": {
+        "clicks": 18,
+        "impressions": 205
+      },
+      "booked_calls": 0,
+      "booked_call_embed_interactions": 0,
+      "lead_submits_success": 0,
+      "joinable_conversion_keys": 0
+    }
+  ]
+}

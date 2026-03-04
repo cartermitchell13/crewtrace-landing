@@ -1,0 +1,5 @@
+event_name,event_timestamp,conversion_key,landing_url,cluster,template_type
+seo_landing_view,2026-02-23T10:00:00.000Z,seo-7f145fc0,/features/gps-time-tracking,features,feature_detail
+booked_call_cta_click,2026-02-23T10:02:00.000Z,seo-7f145fc0,/features/gps-time-tracking,features,feature_detail
+booked_call_embed_interaction,2026-02-24T11:00:00.000Z,seo-8121bc20,/contact,company,contact
+seo_landing_view,2026-02-25T09:30:00.000Z,seo-aa31bc20,/industries/construction,industries,industry_detail

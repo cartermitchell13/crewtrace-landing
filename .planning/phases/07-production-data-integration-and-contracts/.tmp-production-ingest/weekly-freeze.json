@@ -1,0 +1,8 @@
+{
+  "freeze_key": "week-2026-02-23__2026-03-01",
+  "week_start": "2026-02-23",
+  "week_end": "2026-03-01",
+  "freeze_window_utc": "2026-02-23T00:00:00.000Z to 2026-03-01T23:59:59.999Z",
+  "frozen_at": "2026-03-03T20:03:54.285Z",
+  "policy": "first-successful-run-freezes-week"
+}

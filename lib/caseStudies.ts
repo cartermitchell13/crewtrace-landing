@@ -1,3 +1,30 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+const caseStudiesDirectory = path.join(process.cwd(), "content/case-studies");
+const requiredFrontmatterFields = [
+    "title",
+    "industry",
+    "summary",
+    "challenge",
+    "quote",
+    "author",
+    "company",
+] as const;
+
+type RequiredFrontmatterField = (typeof requiredFrontmatterFields)[number];
+type CaseStudyFrontmatter = Record<RequiredFrontmatterField, string> & {
+    lead?: string;
+    heroImage?: string;
+    heroImageAlt?: string;
+    resultsImage?: string;
+    resultsImageAlt?: string;
+    publishedOn?: string;
+    approach: string[];
+    outcomes: string[];
+};
+
 export interface CaseStudy {
     slug: string;
     title: string;
@@ -9,105 +36,163 @@ export interface CaseStudy {
     quote: string;
     author: string;
     company: string;
+    lead?: string;
+    heroImage?: string;
+    heroImageAlt?: string;
+    resultsImage?: string;
+    resultsImageAlt?: string;
+    publishedOn?: string;
+    content: string;
 }
 
-export const caseStudies: CaseStudy[] = [
-    {
-        slug: "sw-waterproofing-payroll-recovery",
-        title: "S&W Waterproofing recovered $1,200/month in payroll leakage",
-        industry: "Waterproofing",
-        summary:
-            "After replacing paper timesheets with GPS verification, S&W quickly identified recurring overpayment patterns and cut review time dramatically.",
-        challenge:
-            "The team relied on handwritten timesheets from multiple sites, causing repeated time disputes and delayed payroll every week.",
-        approach: [
-            "Configured geofenced clock-in zones for every active project",
-            "Introduced supervisor review alerts for early punch-ins and long breaks",
-            "Standardized payroll export flow for end-of-week approvals",
-        ],
-        outcomes: [
-            "$1,200/month in recovered payroll cost",
-            "Payroll prep reduced from hours to under 30 minutes",
-            "Fewer crew disputes due to location-verified records",
-        ],
-        quote:
-            "Once we had location-backed records, the arguments stopped. We finally trusted payroll again.",
-        author: "Jason Law",
-        company: "S&W Waterproofing",
-    },
-    {
-        slug: "chen-construction-multi-site-control",
-        title: "Chen Construction unified labor tracking across six active job sites",
-        industry: "General Contracting",
-        summary:
-            "Chen Construction used Crewtrace to standardize attendance verification across employees and subcontractors while reducing manual admin work.",
-        challenge:
-            "Project managers had no consistent way to verify who was on-site, resulting in billing disputes and unreliable labor reporting.",
-        approach: [
-            "Rolled out site-specific geofence rules by project",
-            "Enabled centralized attendance dashboard for office + field leads",
-            "Created recurring weekly labor variance review workflow",
-        ],
-        outcomes: [
-            "6+ hours/week saved on payroll processing",
-            "Improved visibility into crew movement between sites",
-            "Faster resolution of subcontractor hour disputes",
-        ],
-        quote:
-            "Before Crewtrace we were always reconciling conflicting timesheets. Now labor data is consistent every week.",
-        author: "David Chen",
-        company: "Chen Construction LLC",
-    },
-    {
-        slug: "ramirez-roofing-overtime-control",
-        title: "Ramirez Roofing reduced unverified overtime by 23%",
-        industry: "Roofing",
-        summary:
-            "By enforcing location-verified clock-ins and daily exception checks, Ramirez Roofing gained tighter control over overtime spending.",
-        challenge:
-            "Overtime claims regularly exceeded estimates, but the office lacked proof to validate reported hours.",
-        approach: [
-            "Implemented GPS verification for every roof site",
-            "Set automatic alerts for extended breaks and late departures",
-            "Used weekly trend reporting to coach foremen on schedule adherence",
-        ],
-        outcomes: [
-            "23% reduction in unverified overtime",
-            "More predictable labor cost forecasting",
-            "Cleaner end-of-week payroll approvals",
-        ],
-        quote:
-            "We stopped guessing and started managing with real numbers.",
-        author: "Mike Ramirez",
-        company: "Ramirez Roofing Co.",
-    },
-    {
-        slug: "summit-hvac-payroll-confidence",
-        title: "Summit HVAC reduced payroll disputes after a phased migration",
-        industry: "HVAC",
-        summary:
-            "Summit HVAC moved from fragmented field logs to location-verified time records and stabilized payroll approvals in three weeks.",
-        challenge:
-            "Technicians worked across multiple calls each day, and the office team spent hours reconciling conflicting records before payroll lock.",
-        approach: [
-            "Ran a one-crew pilot with geofenced clock zones and supervisor exception alerts",
-            "Introduced weekly migration checkpoints tied to payroll-close outcomes",
-            "Used proof-led guide workflows to train supervisors and office reviewers",
-        ],
-        outcomes: [
-            "42% reduction in payroll dispute tickets",
-            "Payroll review window shortened from 5 hours to under 2 hours weekly",
-            "Higher confidence in overtime approvals across field supervisors",
-        ],
-        quote:
-            "The phased rollout gave us confidence. We fixed payroll friction without creating chaos in the field.",
-        author: "Erin Delgado",
-        company: "Summit HVAC Services",
-    },
-];
+export interface CaseStudyDetail extends Omit<CaseStudy, "content"> {
+    contentHtml: string;
+}
+
+function asOptionalString(value: unknown): string | undefined {
+    if (typeof value !== "string") {
+        return undefined;
+    }
+
+    const normalized = value.trim();
+    return normalized.length > 0 ? normalized : undefined;
+}
+
+function asStringArray(value: unknown): string[] {
+    if (!Array.isArray(value)) {
+        return [];
+    }
+
+    return value
+        .map((item) => (typeof item === "string" ? item.trim() : ""))
+        .filter((item) => item.length > 0);
+}
+
+function parseCaseStudyFrontmatter(
+    rawData: Record<string, unknown>,
+): CaseStudyFrontmatter | null {
+    const requiredValues = {} as Record<RequiredFrontmatterField, string>;
+
+    for (const field of requiredFrontmatterFields) {
+        const value = asOptionalString(rawData[field]);
+        if (!value) {
+            return null;
+        }
+        requiredValues[field] = value;
+    }
+
+    const approach = asStringArray(rawData.approach);
+    const outcomes = asStringArray(rawData.outcomes);
+
+    if (approach.length === 0 || outcomes.length === 0) {
+        return null;
+    }
+
+    return {
+        ...requiredValues,
+        lead: asOptionalString(rawData.lead),
+        heroImage: asOptionalString(rawData.heroImage),
+        heroImageAlt: asOptionalString(rawData.heroImageAlt),
+        resultsImage: asOptionalString(rawData.resultsImage),
+        resultsImageAlt: asOptionalString(rawData.resultsImageAlt),
+        publishedOn: asOptionalString(rawData.publishedOn),
+        approach,
+        outcomes,
+    };
+}
+
+function loadCaseStudies(): CaseStudy[] {
+    if (!fs.existsSync(caseStudiesDirectory)) {
+        return [];
+    }
+
+    const fileNames = fs
+        .readdirSync(caseStudiesDirectory)
+        .filter((fileName) => fileName.endsWith(".md"))
+        .sort();
+
+    const studies = fileNames
+        .map((fileName) => {
+            const slug = fileName.replace(/\.md$/, "");
+            const fullPath = path.join(caseStudiesDirectory, fileName);
+            const fileContents = fs.readFileSync(fullPath, "utf8");
+            const { data, content } = matter(fileContents);
+            const frontmatter = parseCaseStudyFrontmatter(data as Record<string, unknown>);
+
+            if (!frontmatter) {
+                return null;
+            }
+
+            const study: CaseStudy = {
+                slug,
+                title: frontmatter.title,
+                industry: frontmatter.industry,
+                summary: frontmatter.summary,
+                challenge: frontmatter.challenge,
+                approach: frontmatter.approach,
+                outcomes: frontmatter.outcomes,
+                quote: frontmatter.quote,
+                author: frontmatter.author,
+                company: frontmatter.company,
+                content: content.trim(),
+            };
+
+            if (frontmatter.lead) {
+                study.lead = frontmatter.lead;
+            }
+            if (frontmatter.heroImage) {
+                study.heroImage = frontmatter.heroImage;
+            }
+            if (frontmatter.heroImageAlt) {
+                study.heroImageAlt = frontmatter.heroImageAlt;
+            }
+            if (frontmatter.resultsImage) {
+                study.resultsImage = frontmatter.resultsImage;
+            }
+            if (frontmatter.resultsImageAlt) {
+                study.resultsImageAlt = frontmatter.resultsImageAlt;
+            }
+            if (frontmatter.publishedOn) {
+                study.publishedOn = frontmatter.publishedOn;
+            }
+
+            return study;
+        })
+        .filter((study): study is CaseStudy => Boolean(study));
+
+    return studies.sort((left, right) => {
+        const leftDate = left.publishedOn ?? "";
+        const rightDate = right.publishedOn ?? "";
+        return rightDate.localeCompare(leftDate);
+    });
+}
+
+export const caseStudies: CaseStudy[] = loadCaseStudies();
 
 export const caseStudySlugs = caseStudies.map((study) => study.slug);
 
 export const caseStudyBySlug = Object.fromEntries(
-    caseStudies.map((study) => [study.slug, study])
+    caseStudies.map((study) => [study.slug, study]),
 ) as Record<string, CaseStudy>;
+
+export function getAllCaseStudies(): CaseStudy[] {
+    return caseStudies;
+}
+
+export async function getCaseStudy(slug: string): Promise<CaseStudyDetail | null> {
+    const study = caseStudyBySlug[slug];
+    if (!study) {
+        return null;
+    }
+
+    const [{ remark }, { default: html }] = await Promise.all([
+        import("remark"),
+        import("remark-html"),
+    ]);
+    const processedContent = await remark().use(html).process(study.content);
+
+    return {
+        ...study,
+        contentHtml: processedContent.toString(),
+    };
+}

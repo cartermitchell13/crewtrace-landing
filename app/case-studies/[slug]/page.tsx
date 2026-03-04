@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
-import { caseStudyBySlug, caseStudySlugs } from "@/lib/caseStudies";
+import { caseStudyBySlug, getAllCaseStudies, getCaseStudy } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import {
+    ArrowRight,
+    ArrowUpRight,
+    Building2,
+    CheckCircle2,
+    ChevronLeft,
+    Quote,
+} from "lucide-react";
 
 export function generateStaticParams() {
-    return caseStudySlugs.map((slug) => ({ slug }));
+    return getAllCaseStudies().map((study) => ({ slug: study.slug }));
 }
 
 export async function generateMetadata({
@@ -43,7 +52,7 @@ export default async function CaseStudyDetailPage({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const study = caseStudyBySlug[slug];
+    const study = await getCaseStudy(slug);
 
     if (!study) {
         notFound();
@@ -58,6 +67,7 @@ export default async function CaseStudyDetailPage({
         description: study.summary,
         path: `/case-studies/${slug}`,
         authorName: study.author,
+        datePublished: study.publishedOn,
     });
 
     const breadcrumbJsonLd = breadcrumbSchema([
@@ -67,118 +77,282 @@ export default async function CaseStudyDetailPage({
     ]);
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background selection:bg-primary/20 selection:text-primary">
             <Navbar />
-            <main className="pt-32 pb-20 px-6">
-                <article className="max-w-4xl mx-auto">
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-                    />
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-                    />
-                    <Link
-                        href="/case-studies"
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/60 hover:text-primary transition-colors"
-                    >
-                        <span aria-hidden>←</span>
-                        Back to case studies
-                    </Link>
+            <main className="pb-20">
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                />
 
-                    <header className="mt-6 rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
-                        <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
-                            {study.industry}
-                        </p>
-                        <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                            {study.title}
-                        </h1>
-                        <p className="mt-4 text-lg text-foreground/60 leading-relaxed">
-                            {study.summary}
-                        </p>
-                    </header>
+                <header className="relative w-full overflow-hidden border-b border-border/40 bg-[#050315] pb-20 pt-32 text-white lg:pb-28 lg:pt-40">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/40 to-transparent opacity-20 mix-blend-screen" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-primary/20 blur-[120px]" />
 
-                    <section className="mt-8 rounded-3xl border border-red-200 bg-red-50/40 p-8">
-                        <h2 className="text-2xl font-bold tracking-tight text-red-700">Challenge</h2>
-                        <p className="mt-3 text-red-800/90 leading-relaxed">{study.challenge}</p>
-                    </section>
+                    <div className="relative z-10 mx-auto max-w-6xl px-6">
+                        <div className="mb-10">
+                            <Link
+                                href="/case-studies"
+                                className="group inline-flex items-center gap-2 text-sm font-semibold text-white/50 transition-colors hover:text-white"
+                            >
+                                <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                                Back to Customer Stories
+                            </Link>
+                        </div>
 
-                    <section className="mt-8 rounded-3xl border border-primary/20 bg-primary/5 p-8">
-                        <h2 className="text-2xl font-bold tracking-tight text-primary">Approach</h2>
-                        <ul className="mt-4 space-y-3 text-foreground/70">
-                            {study.approach.map((step) => (
-                                <li key={step} className="flex gap-3">
-                                    <span aria-hidden>•</span>
-                                    <span>{step}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
+                        <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+                            <div className="max-w-3xl">
+                                <div className="mb-6 flex items-center gap-3">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-md">
+                                        <Building2 className="h-5 w-5 text-white" />
+                                    </div>
+                                    <div>
+                                        <div className="text-xs font-bold uppercase tracking-widest text-blue-200">
+                                            {study.industry}
+                                        </div>
+                                        <div className="text-base font-medium text-white">
+                                            {study.company}
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <section className="mt-8 rounded-3xl border border-emerald-200 bg-emerald-50/40 p-8">
-                        <h2 className="text-2xl font-bold tracking-tight text-emerald-700">Outcomes</h2>
-                        <ul className="mt-4 space-y-3 text-emerald-900/90">
-                            {study.outcomes.map((outcome) => (
-                                <li key={outcome} className="flex gap-3">
-                                    <span aria-hidden>•</span>
-                                    <span>{outcome}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
+                                <h1 className="mb-6 text-4xl font-black leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+                                    {study.title}
+                                </h1>
+                                <div className="max-w-2xl text-lg font-medium leading-relaxed text-slate-200 md:text-xl">
+                                    {study.summary}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
 
-                    <section className="mt-8 rounded-3xl bg-[#050315] text-white p-8 md:p-10">
-                        <p className="text-xl md:text-2xl font-bold leading-relaxed">“{study.quote}”</p>
-                        <p className="mt-4 text-white/70 font-semibold">
-                            {study.author} — {study.company}
-                        </p>
-                    </section>
-
-                    {relatedComparisons.length > 0 && (
-                        <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                                Compare your options from this proof point
-                            </h2>
-                            <p className="mt-3 text-foreground/60 leading-relaxed">
-                                Use these comparison pages if you want to map this result to your
-                                current stack decision.
+                <div className="mx-auto mt-16 max-w-6xl px-6 md:mt-24">
+                    <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+                        <article className="lg:col-span-8">
+                            <p className="mb-8 text-xl font-medium text-foreground/90 md:text-2xl">
+                                {study.lead ??
+                                    `${study.company} needed cleaner labor records and faster payroll approvals. This is how they implemented a repeatable system and proved impact quickly.`}
                             </p>
-                            <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {relatedComparisons.map((competitor) => (
-                                    <Link
-                                        key={competitor.slug}
-                                        href={`/compare/${competitor.slug}`}
-                                        className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] px-5 py-4 text-sm font-semibold text-foreground/80 hover:border-primary/20 hover:text-primary transition-colors"
-                                    >
-                                        Crewtrace vs {competitor.name}
-                                    </Link>
+
+                            <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-3xl border border-border/50 bg-foreground/5">
+                                {study.heroImage ? (
+                                    <Image
+                                        src={study.heroImage}
+                                        alt={study.heroImageAlt ?? `${study.company} case study hero image`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(min-width: 1024px) 66vw, 100vw"
+                                        priority
+                                    />
+                                ) : (
+                                    <div className="flex h-full items-center justify-center text-sm font-bold uppercase tracking-widest text-foreground/50">
+                                        Case Study Hero Image
+                                    </div>
+                                )}
+                            </div>
+
+                            <div
+                                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-foreground/80 prose-p:leading-relaxed prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-border/50 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl"
+                                dangerouslySetInnerHTML={{ __html: study.contentHtml }}
+                            />
+
+                            <blockquote className="my-10 rounded-r-2xl border-l-4 border-primary bg-primary/5 px-8 py-8 text-xl font-medium italic leading-relaxed text-foreground/80 md:text-2xl">
+                                <span aria-hidden>&ldquo;</span>
+                                {study.quote}
+                                <span aria-hidden>&rdquo;</span>
+                            </blockquote>
+
+                            <h2 className="mt-12 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                                Implementation Sequence
+                            </h2>
+                            <p className="mt-4 text-lg font-medium leading-relaxed text-foreground/70">
+                                The team rolled out the process in deliberate phases tied to payroll-close outcomes.
+                            </p>
+
+                            <div className="my-10 space-y-6">
+                                {study.approach.map((step, index) => (
+                                    <div key={step} className="group flex gap-6">
+                                        <div className="flex flex-col items-center">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-lg font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                                {index + 1}
+                                            </div>
+                                            {index !== study.approach.length - 1 && (
+                                                <div className="mt-2 h-full min-h-[40px] w-px bg-primary/20" />
+                                            )}
+                                        </div>
+                                        <div className="flex-1 pb-6 pt-2">
+                                            <p className="mb-3 text-xl font-bold tracking-tight text-foreground">
+                                                Phase {index + 1}
+                                            </p>
+                                            <p className="text-lg font-medium leading-relaxed text-foreground/70">
+                                                {step}
+                                            </p>
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
-                        </section>
-                    )}
 
-                    <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                        <div>
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                                Want similar outcomes in your business?
+                            <div className="relative my-12 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border/50 bg-foreground/5">
+                                {study.resultsImage ? (
+                                    <Image
+                                        src={study.resultsImage}
+                                        alt={study.resultsImageAlt ?? `${study.company} results dashboard image`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(min-width: 1024px) 66vw, 100vw"
+                                    />
+                                ) : (
+                                    <div className="flex h-full items-center justify-center text-sm font-bold uppercase tracking-widest text-foreground/50">
+                                        Results Dashboard Image
+                                    </div>
+                                )}
+                            </div>
+
+                            <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                                Measured Outcomes
                             </h2>
-                            <p className="mt-2 text-foreground/60">
-                                We can map your current process and show where leakage is happening.
+                            <p className="mt-4 text-lg font-medium leading-relaxed text-foreground/70">
+                                Verified improvements observed after rollout.
                             </p>
+
+                            <div className="my-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                {study.outcomes.map((outcome) => (
+                                    <div
+                                        key={outcome}
+                                        className="flex items-start gap-4 rounded-2xl border border-emerald-100/50 bg-emerald-50/50 p-6 transition-shadow hover:shadow-md dark:border-emerald-900/30 dark:bg-emerald-950/20"
+                                    >
+                                        <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-emerald-600" />
+                                        <p className="text-base font-semibold leading-snug text-emerald-900/90 dark:text-emerald-100">
+                                            {outcome}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-lg leading-relaxed text-foreground/75">
+                                {study.company} now operates with fewer payroll disputes, faster approvals, and a labor dataset the whole team can trust.
+                            </p>
+                        </article>
+
+                        <div className="space-y-8 lg:col-span-4">
+                            <div className="sticky top-32 space-y-8">
+                                <div className="relative overflow-hidden rounded-[2rem] bg-primary p-8 text-white shadow-xl">
+                                    <div className="absolute right-0 top-0 p-6 opacity-10">
+                                        <Quote className="h-24 w-24 rotate-180" />
+                                    </div>
+                                    <div className="relative z-10">
+                                        <Quote className="mb-6 h-8 w-8 fill-current text-white/40" />
+                                        <div className="mb-8 text-xl font-bold leading-normal text-white md:text-2xl">
+                                            <span aria-hidden>&ldquo;</span>
+                                            {study.quote}
+                                            <span aria-hidden>&rdquo;</span>
+                                        </div>
+                                        <div className="flex items-center gap-4 border-t border-white/20 pt-6">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-lg font-bold text-white">
+                                                {study.author.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <div className="font-bold tracking-tight text-white">
+                                                    {study.author}
+                                                </div>
+                                                <div className="text-sm font-medium text-slate-100">
+                                                    {study.company}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="rounded-3xl border border-border/50 bg-foreground/[0.03] p-8">
+                                    <h3 className="mb-6 text-xs font-black uppercase tracking-widest text-foreground/40">
+                                        Company Overview
+                                    </h3>
+                                    <dl className="space-y-4">
+                                        <div className="flex items-center justify-between border-b border-border/50 pb-4">
+                                            <dt className="text-sm font-medium text-foreground/60">
+                                                Industry
+                                            </dt>
+                                            <dd className="text-right text-sm font-bold text-foreground">
+                                                {study.industry}
+                                            </dd>
+                                        </div>
+                                        <div className="flex items-center justify-between border-b border-border/50 pb-4">
+                                            <dt className="text-sm font-medium text-foreground/60">
+                                                Company
+                                            </dt>
+                                            <dd className="text-right text-sm font-bold text-foreground">
+                                                {study.company}
+                                            </dd>
+                                        </div>
+                                        <div className="flex items-center justify-between pb-2">
+                                            <dt className="text-sm font-medium text-foreground/60">
+                                                Solution Used
+                                            </dt>
+                                            <dd className="text-right text-sm font-bold text-foreground">
+                                                Crewtrace Time and GPS
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </div>
+
+                                {relatedComparisons.length > 0 && (
+                                    <div className="rounded-3xl border border-border/60 bg-white p-8 shadow-sm dark:bg-[#0A0A0A]">
+                                        <h3 className="mb-3 text-lg font-bold tracking-tight text-foreground dark:text-white">
+                                            Evaluating your options?
+                                        </h3>
+                                        <p className="mb-6 text-sm leading-relaxed text-foreground/60 dark:text-white/60">
+                                            See how Crewtrace stacks up against other tools you might be considering.
+                                        </p>
+                                        <div className="space-y-3">
+                                            {relatedComparisons.map((competitor) => (
+                                                <Link
+                                                    key={competitor.slug}
+                                                    href={`/compare/${competitor.slug}`}
+                                                    className="group flex items-center justify-between rounded-xl border border-border/50 p-4 transition-all hover:border-primary/50 hover:bg-primary/5 dark:border-white/10 dark:bg-white/5"
+                                                >
+                                                    <span className="text-sm font-bold text-foreground transition-colors group-hover:text-primary dark:text-white">
+                                                        vs {competitor.name}
+                                                    </span>
+                                                    <ArrowUpRight className="h-4 w-4 text-foreground/30 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary dark:text-white/30" />
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <BookedCallLink
-                            cluster="case-studies"
-                            templateType="case_study_detail"
-                            landingPath={`/case-studies/${slug}`}
-                            ctaLabel="Book a free audit"
-                            ctaLocation="footer_cta"
-                            className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white"
-                        >
-                            Book a free audit
-                        </BookedCallLink>
-                    </section>
-                </article>
+                    </div>
+
+                    <div className="relative mb-10 mt-24 overflow-hidden rounded-[2.5rem] bg-primary text-white shadow-2xl md:mt-32">
+                        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] mix-blend-overlay" />
+                        <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-white/20 blur-[100px]" />
+
+                        <div className="relative z-10 flex flex-col items-center justify-center px-8 py-16 text-center md:px-16 md:py-20">
+                            <h2 className="mb-6 text-3xl font-black tracking-tight md:text-5xl">
+                                Deliver results like {study.company}
+                            </h2>
+                            <div className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-white/80 md:text-xl">
+                                Find out exactly where your business is leaking payroll dollars. Book a free, no-obligation audit with our team today.
+                            </div>
+                            <BookedCallLink
+                                cluster="case-studies"
+                                templateType="case_study_detail"
+                                landingPath={`/case-studies/${slug}`}
+                                ctaLabel="Book a free audit"
+                                ctaLocation="footer_cta"
+                                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+                            >
+                                Book Your Free Audit
+                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </BookedCallLink>
+                        </div>
+                    </div>
+                </div>
             </main>
             <Footer />
         </div>

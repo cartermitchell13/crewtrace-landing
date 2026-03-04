@@ -1,0 +1,15 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3F1D2E" />
+      <stop offset="1" stop-color="#7C2D12" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <circle cx="1320" cy="180" r="280" fill="#FDBA74" fill-opacity="0.2" />
+  <circle cx="260" cy="780" r="320" fill="#FB923C" fill-opacity="0.22" />
+  <rect x="170" y="180" width="1260" height="540" rx="30" fill="#1C1917" fill-opacity="0.58" stroke="#FDBA74" stroke-opacity="0.35" />
+  <text x="230" y="334" fill="#FFEDD5" font-size="54" font-family="Arial, sans-serif" font-weight="700">Ramirez Roofing Co.</text>
+  <text x="230" y="404" fill="#FED7AA" font-size="36" font-family="Arial, sans-serif" font-weight="500">Overtime control with verified punches</text>
+  <text x="230" y="536" fill="#FFF7ED" font-size="28" font-family="Arial, sans-serif">Daily exception review by foremen</text>
+</svg>

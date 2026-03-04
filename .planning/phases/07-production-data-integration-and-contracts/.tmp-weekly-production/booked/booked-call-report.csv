@@ -1,0 +1,4 @@
+cluster,template_type,landing_url,conversion_key,first_touch_landing_url,first_touch_cluster,first_touch_template_type,event_count,seo_landing_view_count,booked_call_cta_click_count,booked_call_embed_interaction_count,lead_form_submit_attempt_count,lead_form_submit_success_count,lead_form_submit_failure_count,booked_call_to_lead_success_rate
+company,contact,/industries/construction,seo-8121bc20,/industries/construction,industries,industry_detail,1,0,0,0,0,1,0,0
+features,feature_detail,/features/gps-time-tracking,seo-7f145fc0,/features/gps-time-tracking,features,feature_detail,2,1,1,0,0,0,0,0
+industries,industry_detail,/industries/construction,seo-8121bc20,/industries/construction,industries,industry_detail,1,0,0,1,0,0,0,0

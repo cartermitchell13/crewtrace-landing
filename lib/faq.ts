@@ -6,7 +6,7 @@ export type FaqItem = {
 export const homeFaqItems: FaqItem[] = [
     {
         question: "My guys can barely use their phones. Will they actually use this?",
-        answer: "Yes. We built this specifically for crews who do not want to download apps or remember passwords. They get a text link, tap it, and they are clocked in.",
+        answer: "Yes. We keep it simple for field crews. They install the iOS or Android app once, sign in, and clock in with a single tap.",
     },
     {
         question: "What if there is no cell reception on the job site?",
@@ -29,4 +29,3 @@ export const homeFaqItems: FaqItem[] = [
         answer: "You get notified and can adjust or flag for review. GPS verification removes most disputes over when someone actually arrived.",
     },
 ];
-

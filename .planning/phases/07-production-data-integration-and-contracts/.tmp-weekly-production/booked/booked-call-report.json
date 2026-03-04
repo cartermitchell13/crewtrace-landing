@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-02-24T11:03:00.000Z",
+  "input_file": ".planning\\phases\\07-production-data-integration-and-contracts\\.tmp-weekly-production\\ingestion\\production-booked-events.weekly.ndjson",
+  "dimensions": [
+    "cluster",
+    "template_type",
+    "landing_url"
+  ],
+  "totals": {
+    "event_count": 4,
+    "seo_landing_view_count": 1,
+    "booked_call_cta_click_count": 1,
+    "booked_call_embed_interaction_count": 1,
+    "lead_form_submit_attempt_count": 0,
+    "lead_form_submit_success_count": 1,
+    "lead_form_submit_failure_count": 0,
+    "rows_missing_conversion_key": 0
+  },
+  "join_diagnostics": {
+    "rows_missing_conversion_key": 0,
+    "requires_deterministic_key": true
+  },
+  "rows": [
+    {
+      "cluster": "company",
+      "template_type": "contact",
+      "landing_url": "/industries/construction",
+      "conversion_key": "seo-8121bc20",
+      "first_touch_landing_url": "/industries/construction",
+      "first_touch_cluster": "industries",
+      "first_touch_template_type": "industry_detail",
+      "event_count": 1,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 0,
+      "booked_call_embed_interaction_count": 0,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 1,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "features",
+      "template_type": "feature_detail",
+      "landing_url": "/features/gps-time-tracking",
+      "conversion_key": "seo-7f145fc0",
+      "first_touch_landing_url": "/features/gps-time-tracking",
+      "first_touch_cluster": "features",
+      "first_touch_template_type": "feature_detail",
+      "event_count": 2,
+      "seo_landing_view_count": 1,
+      "booked_call_cta_click_count": 1,
+      "booked_call_embed_interaction_count": 0,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    },
+    {
+      "cluster": "industries",
+      "template_type": "industry_detail",
+      "landing_url": "/industries/construction",
+      "conversion_key": "seo-8121bc20",
+      "first_touch_landing_url": "/industries/construction",
+      "first_touch_cluster": "industries",
+      "first_touch_template_type": "industry_detail",
+      "event_count": 1,
+      "seo_landing_view_count": 0,
+      "booked_call_cta_click_count": 0,
+      "booked_call_embed_interaction_count": 1,
+      "lead_form_submit_attempt_count": 0,
+      "lead_form_submit_success_count": 0,
+      "lead_form_submit_failure_count": 0,
+      "booked_call_to_lead_success_rate": 0
+    }
+  ]
+}

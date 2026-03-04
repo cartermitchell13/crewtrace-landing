@@ -1,0 +1,7 @@
+cluster,template_type,landing_url,conversion_key,first_touch_landing_url,first_touch_cluster,first_touch_template_type,event_count,seo_landing_view_count,booked_call_cta_click_count,booked_call_embed_interaction_count,lead_form_submit_attempt_count,lead_form_submit_success_count,lead_form_submit_failure_count,booked_call_to_lead_success_rate
+blog,blog_detail,/blog/5-signs-losing-money-payroll,seo-e65b645d,/blog/5-signs-losing-money-payroll,blog,blog_detail,1,0,1,0,0,0,0,0
+company,contact,/features/gps-time-tracking,seo-ec48fa6d,/features/gps-time-tracking,features,feature_detail,2,0,0,0,1,1,0,0
+company,contact,/industries/hvac,seo-1c7b9a69,/industries/hvac,industries,industry_detail,2,0,0,0,1,0,1,0
+compare,competitor_detail,/compare/connecteam,seo-421dd30a,/compare/connecteam,compare,competitor_detail,1,0,1,0,0,0,0,0
+features,feature_detail,/features/gps-time-tracking,seo-9272a0f9,/features/gps-time-tracking,features,feature_detail,2,1,1,0,0,0,0,0
+industries,industry_detail,/industries/hvac,seo-489f61d8,/industries/hvac,industries,industry_detail,2,1,1,0,0,0,0,0

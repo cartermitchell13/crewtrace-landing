@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   --font-sans: var(--font-crewtrace-sans), ui-sans-serif, system-ui, sans-serif;
@@ -51,9 +52,9 @@ h6 {
   text-wrap: balance;
 }
 
-p {
+:where(p) {
   max-width: var(--reading-max);
-  color: var(--text-body);
+  color: inherit;
 }
 
 a {

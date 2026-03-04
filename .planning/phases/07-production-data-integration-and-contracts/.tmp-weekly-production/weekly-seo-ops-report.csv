@@ -1,0 +1,9 @@
+cluster,template_type,landing_url,week_start,week_end,indexed_pages,tracked_urls,traffic_trend_clicks,traffic_trend_impressions,booked_calls,booked_call_embed_interactions,lead_submits_success,joinable_conversion_keys
+company,contact,/industries/construction,2026-02-23,2026-03-01,0,1,0,0,0,0,1,1
+features,feature_detail,/features/gps-time-tracking,2026-02-23,2026-03-01,1,1,24,220,1,0,0,1
+features,feature_detail,/features/payroll-leakage-prevention,2026-02-23,2026-03-01,1,1,19,201,0,0,0,0
+industries,industry_detail,/industries/construction,2026-02-23,2026-03-01,1,1,31,284,0,1,0,1
+compare,competitor_detail,/compare/connecteam,2026-02-23,2026-03-01,1,1,12,190,0,0,0,0
+guides,guide_detail,/guides/construction-time-tracking-implementation,2026-02-23,2026-03-01,1,1,15,160,0,0,0,0
+case-studies,case_study_detail,/case-studies/chen-construction-multi-site-control,2026-02-23,2026-03-01,0,1,9,120,0,0,0,0
+blog,blog_detail,/blog/gps-time-tracking-vs-paper-timesheets,2026-02-23,2026-03-01,1,1,18,205,0,0,0,0

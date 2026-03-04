@@ -24,6 +24,7 @@
     "content:check-publish": "node scripts/content/check-ai-publish-gate.mjs --input content/blog"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",

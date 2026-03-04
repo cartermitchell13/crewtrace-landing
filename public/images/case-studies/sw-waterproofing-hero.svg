@@ -1,0 +1,15 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B1024" />
+      <stop offset="1" stop-color="#123272" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <circle cx="1260" cy="-30" r="380" fill="#22D3EE" fill-opacity="0.18" />
+  <circle cx="420" cy="860" r="320" fill="#60A5FA" fill-opacity="0.18" />
+  <rect x="160" y="180" width="1280" height="540" rx="32" fill="#0F172A" fill-opacity="0.56" stroke="#93C5FD" stroke-opacity="0.35" />
+  <text x="220" y="340" fill="#DBEAFE" font-size="56" font-family="Arial, sans-serif" font-weight="700">S&amp;W Waterproofing</text>
+  <text x="220" y="410" fill="#BFDBFE" font-size="38" font-family="Arial, sans-serif" font-weight="500">Field check-ins by verified job zone</text>
+  <text x="220" y="540" fill="#E0F2FE" font-size="28" font-family="Arial, sans-serif">Payroll leakage visibility in real time</text>
+</svg>

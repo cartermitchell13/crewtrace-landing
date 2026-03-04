@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import vm from "node:vm";
 import ts from "typescript";
@@ -19,10 +20,17 @@ function loadTsModule(relativePath) {
 
     const moduleRef = { exports: {} };
     const dirname = path.dirname(filePath);
+    const nodeRequire = createRequire(filePath);
     const localRequire = (specifier) => {
-        throw new Error(
-            `Unsupported import "${specifier}" in ${relativePath}. Keep competitor contracts data-only.`,
-        );
+        try {
+            return nodeRequire(specifier);
+        } catch (error) {
+            const reason =
+                error instanceof Error ? error.message : "Unknown module resolution error.";
+            throw new Error(
+                `Unsupported import "${specifier}" in ${relativePath}. ${reason}`,
+            );
+        }
     };
 
     vm.runInNewContext(compiled, {

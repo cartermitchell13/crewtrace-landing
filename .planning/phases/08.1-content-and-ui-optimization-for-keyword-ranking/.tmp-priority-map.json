@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-03T22:42:28.578Z",
+  "total_items": 8,
+  "rows": [
+    {
+      "rank": 1,
+      "route": "/industries",
+      "template_type": "industries_hub",
+      "cluster": "industries",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 876.47,
+      "action_type": "update",
+      "owner": "growth-content",
+      "status": "ready",
+      "rationale": "industry intent consolidation and trade-specific paths; cluster=industries, opportunity_score=876.47, ctr=10.25%, index_coverage=2/2, booked_calls=17"
+    },
+    {
+      "rank": 2,
+      "route": "/industries/[slug]",
+      "template_type": "industry_detail",
+      "cluster": "industries",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 813.36,
+      "action_type": "cta-test",
+      "owner": "growth-content",
+      "status": "queued",
+      "rationale": "trade-specific pages with direct booked-call intent; cluster=industries, opportunity_score=813.36, ctr=10.25%, index_coverage=2/2, booked_calls=17"
+    },
+    {
+      "rank": 3,
+      "route": "/",
+      "template_type": "home",
+      "cluster": "features",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 765.77,
+      "action_type": "update",
+      "owner": "growth-content",
+      "status": "ready",
+      "rationale": "homepage revenue intent and highest entry visibility; cluster=features, opportunity_score=765.77, ctr=10.21%, index_coverage=2/2, booked_calls=14"
+    },
+    {
+      "rank": 4,
+      "route": "/features",
+      "template_type": "features_hub",
+      "cluster": "features",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 709.05,
+      "action_type": "update",
+      "owner": "growth-content",
+      "status": "ready",
+      "rationale": "hub route for feature-intent discovery and depth links; cluster=features, opportunity_score=709.05, ctr=10.21%, index_coverage=2/2, booked_calls=14"
+    },
+    {
+      "rank": 5,
+      "route": "/features/[slug]",
+      "template_type": "feature_detail",
+      "cluster": "features",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 669.34,
+      "action_type": "cta-test",
+      "owner": "growth-content",
+      "status": "queued",
+      "rationale": "high-intent feature detail conversion moments; cluster=features, opportunity_score=669.34, ctr=10.21%, index_coverage=2/2, booked_calls=14"
+    },
+    {
+      "rank": 6,
+      "route": "/contact",
+      "template_type": "contact",
+      "cluster": "features",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 623.96,
+      "action_type": "cta-test",
+      "owner": "revops",
+      "status": "queued",
+      "rationale": "booked-call conversion handoff from content templates; cluster=features, opportunity_score=623.96, ctr=10.21%, index_coverage=2/2, booked_calls=14"
+    },
+    {
+      "rank": 7,
+      "route": "/compare",
+      "template_type": "compare_hub",
+      "cluster": "compare",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 216.33,
+      "action_type": "update",
+      "owner": "seo-ops",
+      "status": "queued",
+      "rationale": "competitive-intent overview and decision framing; cluster=compare, opportunity_score=216.33, ctr=6.32%, index_coverage=1/1, booked_calls=4"
+    },
+    {
+      "rank": 8,
+      "route": "/compare/[slug]",
+      "template_type": "compare_detail",
+      "cluster": "compare",
+      "week_start": "2026-02-24",
+      "week_end": "2026-02-24",
+      "opportunity_score": 208.6,
+      "action_type": "link-fix",
+      "owner": "seo-ops",
+      "status": "queued",
+      "rationale": "proof-link routing for comparison decision support; cluster=compare, opportunity_score=208.6, ctr=6.32%, index_coverage=1/1, booked_calls=4"
+    }
+  ]
+}
