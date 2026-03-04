@@ -20,6 +20,9 @@ import {
     Users,
     Mail,
     ArrowRight,
+    Menu,
+    X,
+    ChevronDown,
 } from "lucide-react";
 
 // Industry data for mega menu
@@ -119,6 +122,8 @@ type MenuType = "features" | "industries" | "resources" | "company" | null;
 
 export default function Navbar() {
     const [activeMenu, setActiveMenu] = useState<MenuType>(null);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const navRef = useRef<HTMLDivElement>(null);
 
@@ -152,8 +157,8 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
-            <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-input rounded-2xl px-6 py-3 flex items-center justify-between">
+        <nav ref={navRef} className="fixed top-6 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50">
+            <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-input rounded-2xl px-5 md:px-6 py-3 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
@@ -230,9 +235,19 @@ export default function Navbar() {
                     >
                         Contact Sales
                     </a>
-                    <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px]">
+                    <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] items-center gap-2">
                         Get First Access
+                        <ArrowRight size={16} className="hidden lg:block" />
                     </a>
+
+                    <button
+                        type="button"
+                        aria-label="Toggle navigation menu"
+                        onClick={() => setMobileOpen((open) => !open)}
+                        className="md:hidden w-10 h-10 rounded-xl border border-foreground/10 bg-white/90 text-foreground flex items-center justify-center hover:bg-foreground/[0.03] transition-colors shadow-sm"
+                    >
+                        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
                 </div>
             </div>
 
@@ -426,9 +441,9 @@ export default function Navbar() {
                             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] p-6 flex flex-col border-l border-foreground/5">
                                 <span className="text-xs font-semibold text-primary uppercase tracking-wider">Latest Case Study</span>
                                 <h4 className="text-lg font-bold text-foreground mt-2">S&W Waterproofing Saves $4,200/Month</h4>
-                                    <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
-                                        Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
-                                    </p>
+                                <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
+                                    Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
+                                </p>
                                 <div className="mt-4">
                                     <Link
                                         href="/case-studies"
@@ -496,72 +511,30 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu Button - Hidden on desktop */}
-            <MobileMenu />
-        </nav>
-    );
-}
+            {/* Mobile Menu Dropdown Wrapper */}
+            <div className={`md:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-300 origin-top ${mobileOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"}`}>
+                <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-2xl overflow-hidden max-h-[80vh] overflow-y-auto w-full p-2">
 
-// Mobile Menu Component
-function MobileMenu() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
-
-    return (
-        <>
-            {/* Mobile Menu Toggle - Only visible on mobile */}
-            <button
-                className="md:hidden fixed top-8 right-8 z-[60] w-10 h-10 bg-white/90 backdrop-blur-md rounded-xl shadow-input flex items-center justify-center"
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {isOpen ? (
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                ) : (
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                )}
-            </button>
-
-            {/* Mobile Menu Overlay */}
-            <div
-                className={`md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-                onClick={() => setIsOpen(false)}
-            />
-
-            {/* Mobile Menu Panel */}
-            <div
-                className={`md:hidden fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white z-[56] shadow-2xl transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-            >
-                <div className="p-6 pt-20 h-full overflow-y-auto">
                     {/* Features Accordion */}
-                    <div className="border-b border-foreground/10">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between py-4"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "features" ? null : "features")}
                         >
-                            <span className="font-semibold text-foreground">Features</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-200 ${activeAccordion === "features" ? "rotate-180" : ""}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <span className="text-sm font-semibold text-foreground">Features</span>
+                            <ChevronDown className={`w-4 h-4 text-foreground/50 transition-transform duration-200 ${activeAccordion === "features" ? "rotate-180" : ""}`} />
                         </button>
-                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "features" ? "max-h-96 pb-4" : "max-h-0"}`}>
-                            <div className="space-y-1">
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "features" ? "max-h-96 opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
+                            <div className="px-2 space-y-0.5">
                                 {solutionItems.map((solution) => (
                                     <Link
                                         key={solution.slug}
                                         href={solution.slug}
-                                        className="block px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
                                     >
-                                        <span className="text-sm font-medium text-foreground/70">{solution.name}</span>
+                                        <solution.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
+                                        <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{solution.name}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -569,32 +542,25 @@ function MobileMenu() {
                     </div>
 
                     {/* Industries Accordion */}
-                    <div className="border-b border-foreground/10">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between py-4"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "industries" ? null : "industries")}
                         >
-                            <span className="font-semibold text-foreground">Industries</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-200 ${activeAccordion === "industries" ? "rotate-180" : ""}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <span className="text-sm font-semibold text-foreground">Industries</span>
+                            <ChevronDown className={`w-4 h-4 text-foreground/50 transition-transform duration-200 ${activeAccordion === "industries" ? "rotate-180" : ""}`} />
                         </button>
-                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "industries" ? "max-h-96 pb-4" : "max-h-0"}`}>
-                            <div className="space-y-1">
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "industries" ? "max-h-96 opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
+                            <div className="px-2 space-y-0.5">
                                 {industries.map((industry) => (
                                     <Link
                                         key={industry.slug}
                                         href={`/industries/${industry.slug}`}
-                                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
                                     >
-                                        <industry.Icon className="w-4 h-4 text-foreground/50" />
-                                        <span className="text-sm font-medium text-foreground/70">{industry.name}</span>
+                                        <industry.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
+                                        <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{industry.name}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -602,32 +568,25 @@ function MobileMenu() {
                     </div>
 
                     {/* Resources Accordion */}
-                    <div className="border-b border-foreground/10">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between py-4"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "resources" ? null : "resources")}
                         >
-                            <span className="font-semibold text-foreground">Resources</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-200 ${activeAccordion === "resources" ? "rotate-180" : ""}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <span className="text-sm font-semibold text-foreground">Resources</span>
+                            <ChevronDown className={`w-4 h-4 text-foreground/50 transition-transform duration-200 ${activeAccordion === "resources" ? "rotate-180" : ""}`} />
                         </button>
-                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "resources" ? "max-h-96 pb-4" : "max-h-0"}`}>
-                            <div className="space-y-1">
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "resources" ? "max-h-96 opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
+                            <div className="px-2 space-y-0.5">
                                 {resources.map((resource) => (
                                     <Link
                                         key={resource.slug}
                                         href={resource.slug}
-                                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
                                     >
-                                        <resource.Icon className="w-4 h-4 text-foreground/50" />
-                                        <span className="text-sm font-medium text-foreground/70">{resource.name}</span>
+                                        <resource.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
+                                        <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{resource.name}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -635,63 +594,64 @@ function MobileMenu() {
                     </div>
 
                     {/* Company Accordion */}
-                    <div className="border-b border-foreground/10">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between py-4"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "company" ? null : "company")}
                         >
-                            <span className="font-semibold text-foreground">Company</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-200 ${activeAccordion === "company" ? "rotate-180" : ""}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <span className="text-sm font-semibold text-foreground">Company</span>
+                            <ChevronDown className={`w-4 h-4 text-foreground/50 transition-transform duration-200 ${activeAccordion === "company" ? "rotate-180" : ""}`} />
                         </button>
-                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "company" ? "max-h-96 pb-4" : "max-h-0"}`}>
-                            <div className="space-y-1">
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "company" ? "max-h-96 opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
+                            <div className="px-2 space-y-0.5">
                                 {company.map((item) => (
                                     <Link
                                         key={item.slug}
                                         href={item.slug}
-                                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
                                     >
-                                        <item.Icon className="w-4 h-4 text-foreground/50" />
-                                        <span className="text-sm font-medium text-foreground/70">{item.name}</span>
+                                        <item.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
+                                        <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{item.name}</span>
                                     </Link>
                                 ))}
                             </div>
                         </div>
                     </div>
 
-                    {/* Calculator Link */}
+                    {/* ROI Calculator Link */}
                     <Link
                         href="/calculator"
-                        className="block py-4 font-semibold text-foreground border-b border-foreground/10"
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
                     >
                         ROI Calculator
                     </Link>
 
-                    {/* Mobile CTA */}
-                    <div className="mt-6 space-y-3">
-                        <a href="https://cal.com/crewtrace/15min" target="_blank" rel="noopener noreferrer" className="block w-full bg-primary text-white font-bold py-3 rounded-xl shadow-button text-center">
+                    {/* Mobile CTAs */}
+                    <div className="px-2 pt-2 border-t border-foreground/5 mt-1 pb-2">
+                        <a
+                            href="https://cal.com/crewtrace/15min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileOpen(false)}
+                            className="flex w-full items-center justify-center gap-2 bg-primary text-white text-sm font-bold px-4 py-3.5 rounded-xl shadow-button mb-2"
+                        >
                             Get First Access
+                            <ArrowRight size={16} />
                         </a>
                         <a
                             href="https://cal.com/crewtrace/15min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full text-center py-3 font-medium text-foreground/70"
+                            onClick={() => setMobileOpen(false)}
+                            className="flex w-full items-center justify-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                         >
                             Contact Sales
                         </a>
                     </div>
                 </div>
             </div>
-        </>
+        </nav>
     );
 }
