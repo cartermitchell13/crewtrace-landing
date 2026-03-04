@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, type PointerEvent } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef, type PointerEvent } from "react";
 import { Calculator, ArrowRight, TrendingDown } from "lucide-react";
 
 interface SliderProps {
@@ -93,6 +93,44 @@ export default function LiteSavingsCalculator() {
     const [crewSize, setCrewSize] = useState(12);
     const [avgHourlyRate, setAvgHourlyRate] = useState(25);
     const [adminHours, setAdminHours] = useState(5);
+    const [showAuditCue, setShowAuditCue] = useState(false);
+    const cueTimeoutRef = useRef<number | null>(null);
+
+    const triggerAuditCue = useCallback(() => {
+        setShowAuditCue(true);
+
+        if (cueTimeoutRef.current !== null) {
+            window.clearTimeout(cueTimeoutRef.current);
+        }
+
+        cueTimeoutRef.current = window.setTimeout(() => {
+            setShowAuditCue(false);
+            cueTimeoutRef.current = null;
+        }, 2200);
+    }, []);
+
+    const handleCrewSizeChange = useCallback((value: number) => {
+        setCrewSize(value);
+        triggerAuditCue();
+    }, [triggerAuditCue]);
+
+    const handleAvgHourlyRateChange = useCallback((value: number) => {
+        setAvgHourlyRate(value);
+        triggerAuditCue();
+    }, [triggerAuditCue]);
+
+    const handleAdminHoursChange = useCallback((value: number) => {
+        setAdminHours(value);
+        triggerAuditCue();
+    }, [triggerAuditCue]);
+
+    useEffect(() => {
+        return () => {
+            if (cueTimeoutRef.current !== null) {
+                window.clearTimeout(cueTimeoutRef.current);
+            }
+        };
+    }, []);
 
     const calculations = useMemo(() => {
         // Constants matching the main calculator's "Paper" baseline
@@ -166,7 +204,7 @@ export default function LiteSavingsCalculator() {
                                     max={100}
                                     step={1}
                                     unit=" workers"
-                                    onChange={setCrewSize}
+                                    onChange={handleCrewSizeChange}
                                 />
                                 <Slider
                                     label="Avg. Hourly Rate"
@@ -176,7 +214,7 @@ export default function LiteSavingsCalculator() {
                                     step={1}
                                     prefix="$"
                                     unit="/hr"
-                                    onChange={setAvgHourlyRate}
+                                    onChange={handleAvgHourlyRateChange}
                                 />
                                 <Slider
                                     label="Weekly Admin Time"
@@ -185,7 +223,7 @@ export default function LiteSavingsCalculator() {
                                     max={40}
                                     step={1}
                                     unit=" hrs"
-                                    onChange={setAdminHours}
+                                    onChange={handleAdminHoursChange}
                                 />
 
                                 <div className="pt-8 border-t border-foreground/5 mt-8">
@@ -198,19 +236,32 @@ export default function LiteSavingsCalculator() {
                                             ${calculations.totalYearlyLoss.toLocaleString()}
                                         </div>
                                         <div className="text-sm text-foreground/40 font-medium">
-                                            That's ~${calculations.monthlyLoss.toLocaleString()} per month in preventable losses.
+                                            That&apos;s ~${calculations.monthlyLoss.toLocaleString()} per month in preventable losses.
                                         </div>
                                     </div>
                                     
-                                    <a 
-                                        href="https://cal.com/crewtrace/15min"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full bg-white border-2 border-primary/10 text-primary font-bold py-4 rounded-xl hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm"
-                                    >
-                                        Book your free audit call
-                                        <ArrowRight size={16} />
-                                    </a>
+                                    <div className="relative">
+                                        <p
+                                            className={`pointer-events-none absolute -top-3 right-4 rounded-full bg-primary/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-primary transition-all duration-300 ${
+                                                showAuditCue ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+                                            }`}
+                                        >
+                                            Next best step
+                                        </p>
+                                        <a
+                                            href="https://cal.com/crewtrace/15min"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`w-full bg-white border-2 text-primary font-bold py-4 rounded-xl hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-sm ${
+                                                showAuditCue
+                                                    ? "border-primary/40 shadow-[0_0_0_6px_rgba(47,39,206,0.12)] animate-pulse"
+                                                    : "border-primary/10"
+                                            }`}
+                                        >
+                                            Book your free audit call
+                                            <ArrowRight size={16} />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

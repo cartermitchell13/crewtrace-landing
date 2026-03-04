@@ -1,4 +1,4 @@
-import { LucideIcon, Rocket, Link2, TrendingUp, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { LucideIcon, Rocket, Link2, TrendingUp, CheckCircle2, ShieldCheck } from "lucide-react";
 import React from "react";
 import Button from "@/components/Button";
 
@@ -57,7 +57,7 @@ export default function ProcessSection() {
                             We install it <span className="text-primary italic">for you.</span>
                         </h2>
                         <p className="text-xl text-foreground/50 font-medium leading-relaxed">
-                            You're busy running jobs, not learning software. That's why we handle the entire setup—so you can start saving money on day one, not day thirty.
+                            You&apos;re busy running jobs, not learning software. That&apos;s why we handle the entire setup-so you can start saving money on day one, not day thirty.
                         </p>
 
                         <div className="pt-6 space-y-4">
@@ -77,7 +77,7 @@ export default function ProcessSection() {
 
                         <div className="pt-4">
                             <Button href="https://cal.com/crewtrace/15min" size="lg">
-                                Start Your Implementation
+                                Book Audit to Plan Implementation
                             </Button>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ export default function ProcessSection() {
                         {/* Vertical line connector */}
                         <div className="absolute left-[23.5px] top-8 bottom-8 w-[1.5px] bg-gradient-to-b from-primary/20 via-primary/10 to-transparent hidden md:block" />
 
-                        {steps.map((step, index) => (
+                        {steps.map((step) => (
                             <div
                                 key={step.id}
                                 className="relative flex flex-col md:flex-row gap-6 group"
@@ -134,3 +134,4 @@ export default function ProcessSection() {
         </section>
     );
 }
+

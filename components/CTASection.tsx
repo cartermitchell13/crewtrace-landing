@@ -1,5 +1,4 @@
 import { CheckCircle2, ShieldCheck } from "lucide-react";
-import Link from "next/link";
 import BookedCallLink from "@/components/BookedCallLink";
 import {
     getTemplateMessaging,
@@ -85,15 +84,8 @@ export default function CTASection({
                                 Calendar opens in a new tab
                             </p>
                             <div className="mt-5 rounded-xl border border-foreground/10 bg-white px-4 py-3 text-sm leading-relaxed text-foreground/65">
-                                Want to prep first? Start on{" "}
-                                <Link href="/features" className="font-bold text-primary underline">
-                                    feature workflows
-                                </Link>{" "}
-                                and{" "}
-                                <Link href="/industries" className="font-bold text-primary underline">
-                                    industry playbooks
-                                </Link>
-                                .
+                                We cover workflow fit and rollout order in the same audit call, so
+                                you leave with one clear next step.
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
-import { LucideIcon, MapPin, BarChart3, FileCheck2, FileDown, Clock, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { LucideIcon, MapPin, BarChart3, FileCheck2, FileDown, Clock, CheckCircle2, ArrowUpRight, BellRing } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 import Button from "@/components/Button";
 
 interface BentoCardProps {
@@ -21,7 +22,7 @@ const BentoCard = ({
     badge,
     iconBgColor = "bg-primary/10"
 }: BentoCardProps) => (
-    <div className={`group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 flex flex-col justify-between ${className}`}>
+    <div className={`group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-6 md:p-7 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 flex flex-col justify-between ${className}`}>
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-0" />
 
         <div className="relative z-10">
@@ -73,15 +74,41 @@ export default function FeatureGrid() {
                         title="Verified Clock-ins"
                         description="GPS confirmation shows exactly when and where each crew starts work, so approvals are based on evidence."
                         icon={MapPin}
-                        className="md:col-span-2 md:row-span-2 min-h-[400px]"
+                        className="md:col-span-2 md:col-start-1 md:row-start-1 md:row-span-1 min-h-[270px] justify-start"
                         badge="GPS Verified"
                     >
-                        <div className="relative mt-4 w-full rounded-2xl overflow-hidden">
+                        <div className="relative mx-auto mt-4 w-full max-w-[720px] overflow-hidden rounded-2xl border border-foreground/10 bg-slate-50 p-1.5">
                             <img
                                 src="/images/gps-feature-image.png"
                                 alt="GPS geofence verification showing worker location on job site"
-                                className="w-full h-auto rounded-2xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500"
+                                className="h-56 w-full rounded-xl object-contain shadow-lg group-hover:scale-[1.01] transition-transform duration-500 md:h-60"
                             />
+                        </div>
+                    </BentoCard>
+
+                    <BentoCard
+                        title="Anomaly Alerts"
+                        description="Get notified when Crewtrace detects suspicious punch patterns, so admin can review issues before payroll errors compound."
+                        icon={BellRing}
+                        className="md:col-span-2 md:col-start-1 md:row-start-2 md:row-span-1"
+                        badge="Flagged for Review"
+                    >
+                        <div className="mt-3 space-y-2">
+                            {[
+                                { issue: "Early punch-in outside geofence", status: "Needs review" },
+                                { issue: "Unusually long break duration", status: "Investigate" },
+                                { issue: "Duplicate punch sequence", status: "Check record" },
+                            ].map((alert) => (
+                                <div
+                                    key={alert.issue}
+                                    className="flex items-center justify-between rounded-xl border border-amber-200/60 bg-amber-50/70 px-3 py-2"
+                                >
+                                    <span className="text-xs font-semibold text-foreground/75">{alert.issue}</span>
+                                    <span className="rounded-full bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">
+                                        {alert.status}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
                     </BentoCard>
 
@@ -89,7 +116,7 @@ export default function FeatureGrid() {
                         title="Live Labor Budgeting"
                         description="Watch labor dollars accumulate in real time and catch budget drift before payroll closes."
                         icon={BarChart3}
-                        className="md:col-span-2 md:row-span-1"
+                        className="md:col-span-2 md:col-start-3 md:row-start-1 md:row-span-1"
                         badge="Real-time"
                     >
                         <div className="flex items-end gap-1.5 h-12 mt-2">
@@ -119,7 +146,7 @@ export default function FeatureGrid() {
                         title="Flexible CSV Exports"
                         description="Export payroll-ready files in the format your payroll stack expects without manual reformatting."
                         icon={FileDown}
-                        className="md:col-span-1 md:row-span-1"
+                        className="md:col-span-1 md:col-start-3 md:row-start-2 md:row-span-1"
                     >
                         <div className="flex flex-col gap-1.5 mt-2">
                             {["Standard CSV", "ADP", "QuickBooks"].map((label) => (
@@ -135,7 +162,7 @@ export default function FeatureGrid() {
                         title="Instant Payroll Reports"
                         description="When the shift ends, your report is ready with hours, costs, and crew context already compiled."
                         icon={FileCheck2}
-                        className="md:col-span-1 md:row-span-1"
+                        className="md:col-span-1 md:col-start-4 md:row-start-2 md:row-span-1"
                     >
                         <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 group-hover:border-primary/20 transition-colors space-y-2">
                             <div className="flex items-center justify-between">
@@ -151,7 +178,7 @@ export default function FeatureGrid() {
                         </div>
                     </BentoCard>
 
-                    <div className="md:col-span-3 bg-primary rounded-[2.5rem] p-10 text-white relative overflow-hidden group">
+                    <div className="md:col-span-3 md:col-start-1 md:row-start-3 bg-primary rounded-[2.5rem] p-10 text-white relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors duration-700" />
                         <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
                             <div className="flex-1 space-y-6">
@@ -164,6 +191,31 @@ export default function FeatureGrid() {
                                 <p className="text-xl text-white/80 font-medium leading-relaxed italic">
                                     &ldquo;We moved off paper logs, found recurring overpayment fast, and cut payroll review time down to minutes.&rdquo;
                                 </p>
+                                <div className="rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+                                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">
+                                        How the savings were achieved
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-sm font-medium leading-relaxed text-white/90">
+                                        <li className="flex items-start gap-2">
+                                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-secondary" />
+                                            Configured geofenced clock-in zones across active projects.
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-secondary" />
+                                            Added supervisor alerts for early punch-ins and long breaks.
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-secondary" />
+                                            Standardized payroll exports for faster end-of-week approvals.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <Link
+                                    href="/case-studies/sw-waterproofing-payroll-recovery"
+                                    className="inline-flex text-sm font-bold text-white underline decoration-white/45 underline-offset-4 transition-colors hover:text-secondary"
+                                >
+                                    Read the full S&W case study
+                                </Link>
                             </div>
                             <div className="flex flex-col gap-4">
                                 <div className="p-6 bg-white/10 rounded-3xl backdrop-blur-md border border-white/10 text-center">
@@ -181,7 +233,7 @@ export default function FeatureGrid() {
                         title="Sundays Back"
                         description="Stop spending weekends reconciling timesheets and payroll corrections."
                         icon={Clock}
-                        className="md:col-span-1 md:row-span-1"
+                        className="md:col-span-1 md:col-start-4 md:row-start-3 md:row-span-1"
                         iconBgColor="bg-orange-500/10"
                     >
                         <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-100 group-hover:border-orange-200 transition-colors duration-500">

@@ -2,7 +2,6 @@ import Image from "next/image";
 import BookedCallLink from "@/components/BookedCallLink";
 import {
     getTemplateMessaging,
-    orderedPromiseLine,
     publicIcpPhrase,
 } from "@/lib/messaging";
 
@@ -27,11 +26,11 @@ export default function Hero() {
                     </h1>
 
                     <p className="mx-auto max-w-3xl text-base font-medium leading-relaxed text-foreground/70 md:text-xl">
-                        Crewtrace is built {publicIcpPhrase}. {orderedPromiseLine}{" "}
-                        {homeMessaging.proofBody}
+                        Built {publicIcpPhrase}, Crewtrace helps you catch payroll leakage
+                        before payroll close so you can protect margin faster.
                     </p>
 
-                    <div className="mx-auto grid max-w-2xl gap-4 rounded-3xl border border-foreground/10 bg-white p-4 md:grid-cols-2 md:p-5">
+                    <div className="mx-auto max-w-xl space-y-3 rounded-3xl border border-foreground/10 bg-white p-4 md:p-5">
                         <BookedCallLink
                             asButton
                             buttonSize="lg"
@@ -44,22 +43,15 @@ export default function Hero() {
                         >
                             {homeMessaging.primaryCta}
                         </BookedCallLink>
-                        <BookedCallLink
-                            asButton
-                            buttonVariant="white"
-                            buttonSize="lg"
-                            cluster="home"
-                            templateType="homepage_hero"
-                            landingPath="/"
-                            ctaLabel={homeMessaging.secondaryCta}
-                            ctaLocation="hero_secondary"
-                            className="w-full border border-primary/20"
+                        <a
+                            href="#process"
+                            className="inline-flex w-full items-center justify-center text-sm font-semibold text-primary/65 underline decoration-primary/35 underline-offset-4 transition-colors hover:text-primary"
                         >
                             {homeMessaging.secondaryCta}
-                        </BookedCallLink>
+                        </a>
                     </div>
 
-                    <p className="text-sm font-semibold text-foreground/45">
+                    <p className="mx-auto max-w-xl text-center text-sm font-semibold text-foreground/45">
                         15-minute audit call. See your current leakage risk and next steps.
                     </p>
                 </div>
