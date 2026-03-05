@@ -26,10 +26,10 @@ export default function ComplianceAudit() {
                         <span className="text-secondary opacity-90">You Can't Afford.</span>
                     </h2>
 
-                    <p className="text-xl text-white/80 font-medium leading-relaxed">
+                    <div className="text-xl text-white font-medium leading-relaxed">
                         One contractor faced a $50k fine because their records were "word of mouth."
-                        <span className="block mt-2 font-bold text-white">With Crewtrace, they achieved 100% compliance overnight.</span>
-                    </p>
+                        <div className="mt-2 font-bold text-white">With Crewtrace, they achieved 100% compliance overnight.</div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
