@@ -1,137 +1,134 @@
-import { LucideIcon, Rocket, Link2, TrendingUp, CheckCircle2, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import React from "react";
-import Button from "@/components/Button";
+// import Button from "@/components/Button"; // This import is no longer needed
 
-interface Step {
-    id: string;
-    number: string;
-    title: string;
-    description: string;
-    icon: LucideIcon;
-    benefit: string;
-}
+// interface Step {
+//     id: string;
+//     number: string;
+//     title: string;
+//     description: string;
+//     icon: LucideIcon;
+//     benefit: string;
+// }
 
-const steps: Step[] = [
+const steps = [
     {
-        id: "setup",
-        number: "01",
-        title: "White-Glove Setup",
-        description: "We handle the entire heavy lifting. We upload your roster, map your job sites, and set the geo-fence boundaries. You don't touch a thing.",
-        icon: ShieldCheck,
-        benefit: "0h Admin Time"
+        id: "clock-in",
+        title: "Clock In",
+        description: "Crew logs time via the mobile app with a single tap.",
+        imageSrc: "/images/process-clock-in.png",
     },
     {
-        id: "link",
-        number: "02",
-        title: "Crew Onboarding",
-        description: "Your crew gets a text with a download link. They install the iOS or Android app, create an account in under a minute, and they're ready to clock in — no training needed.",
-        icon: Link2,
-        benefit: "100% Adoption Rate"
+        id: "gps",
+        title: "GPS Verification",
+        description: "Location is instantly verified against site geofences.",
+        imageSrc: "/images/process-gps.png",
     },
     {
-        id: "results",
-        number: "03",
-        title: "Profit Protection",
-        description: "Review verified attendance from your phone. Approve payroll in one click. Watch as buddy-punching and rounding errors vanish.",
-        icon: TrendingUp,
-        benefit: "Instant ROI"
+        id: "compliance",
+        title: "Compliance Check",
+        description: "Breaks, overtime, and buddy punching are audited automatically.",
+        imageSrc: "/images/process-compliance.png",
+    },
+    {
+        id: "payroll",
+        title: "Export to Payroll",
+        description: "Verified timesheets sync to your payroll software in one click.",
+        imageSrc: "/images/process-payroll.png",
     }
 ];
 
 export default function ProcessSection() {
     return (
-        <section id="process" className="py-32 px-6 bg-white relative overflow-hidden scroll-mt-32">
-            {/* Decorative background circle */}
-            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/[0.02] rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2" />
+        <section id="process" className="py-24 md:py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
+            <style>{`
+                @keyframes dataFlow {
+                    0% { transform: translateX(-100%); opacity: 0; }
+                    20% { opacity: 1; }
+                    80% { opacity: 1; }
+                    100% { transform: translateX(100%); opacity: 0; }
+                }
+                @keyframes dataFlowVertical {
+                    0% { transform: translateY(-100%); opacity: 0; }
+                    20% { opacity: 1; }
+                    80% { opacity: 1; }
+                    100% { transform: translateY(100%); opacity: 0; }
+                }
+                .animate-data-flow {
+                    animation: dataFlow 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .animate-data-flow-vertical {
+                    animation: dataFlowVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            `}</style>
 
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+                <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+                    <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                        Autonomous Workflow
+                    </p>
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
+                        From the job site to payroll. <br className="hidden md:block" />
+                        <span className="text-primary italic">Without the manual entry.</span>
+                    </h2>
+                </div>
 
-                    {/* Left Side: Sticky Content */}
-                    <div className="lg:sticky lg:top-32 space-y-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
-                            <Rocket size={12} />
-                            <span>Onboarding</span>
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-                            We install it <span className="text-primary italic">for you.</span>
-                        </h2>
-                        <p className="text-xl text-foreground/50 font-medium leading-relaxed">
-                            You&apos;re busy running jobs, not learning software. That&apos;s why we handle the entire setup-so you can start saving money on day one, not day thirty.
-                        </p>
-
-                        <div className="pt-6 space-y-4">
-                            <div className="flex items-center gap-3 text-sm font-bold text-foreground/70">
-                                <CheckCircle2 size={18} className="text-primary" />
-                                <span>Payroll-Ready CSV Export</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-sm font-bold text-foreground/70">
-                                <CheckCircle2 size={18} className="text-primary" />
-                                <span>Custom Site Geofencing</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-sm font-bold text-foreground/70">
-                                <CheckCircle2 size={18} className="text-primary" />
-                                <span>1-on-1 Admin Training</span>
-                            </div>
-                        </div>
-
-                        <div className="pt-4">
-                            <Button href="https://cal.com/crewtrace/15min" size="lg">
-                                Book Audit to Plan Implementation
-                            </Button>
-                        </div>
+                <div className="relative">
+                    {/* Horizontal Connector Line (Desktop) */}
+                    <div className="hidden md:block absolute top-[4rem] left-[12.5%] right-[12.5%] h-[2px] bg-foreground/5 z-0 overflow-hidden rounded-full">
+                        <div className="w-full h-full bg-gradient-to-r from-transparent via-primary to-transparent animate-data-flow" />
                     </div>
 
-                    {/* Right Side: Interactive Steps */}
-                    <div className="w-full flex flex-col justify-between relative py-2">
-                        {/* Vertical line connector */}
-                        <div className="absolute left-[23.5px] top-8 bottom-8 w-[1.5px] bg-gradient-to-b from-primary/20 via-primary/10 to-transparent hidden md:block" />
+                    {/* Vertical Connector Line (Mobile) */}
+                    <div className="absolute md:hidden left-[4.5rem] top-10 bottom-10 w-[2px] bg-foreground/5 z-0 overflow-hidden rounded-full">
+                        <div className="w-full h-full bg-gradient-to-b from-transparent via-primary to-transparent animate-data-flow-vertical" />
+                    </div>
 
-                        {steps.map((step) => (
-                            <div
-                                key={step.id}
-                                className="relative flex flex-col md:flex-row gap-6 group"
-                            >
-                                {/* Step Number/Icon Connector */}
-                                <div className="relative z-10 flex-shrink-0">
-                                    <div className="w-12 h-12 rounded-xl bg-white border border-foreground/5 shadow-sm flex items-center justify-center text-primary group-hover:border-primary/20 group-hover:shadow-lg transition-all duration-500 overflow-hidden relative">
-                                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <step.icon size={20} className="relative z-10 transition-transform duration-500 group-hover:scale-110" />
-                                        <div className="absolute top-1 right-1 text-[10px] font-bold opacity-20">{step.number}</div>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+                        {steps.map((step, index) => (
+                            <div key={step.id} className="relative z-10 flex md:flex-col items-center gap-6 md:gap-8 group">
+                                {/* Image Node */}
+                                <div className="relative shrink-0 ml-3 md:ml-0">
+                                    {/* Pulse effect background */}
+                                    <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700" />
+
+                                    {/* Removed overflow-hidden from here so the badge is not clipped */}
+                                    <div className="relative w-32 h-32 md:w-36 md:h-36 bg-white border border-foreground/10 shadow-sm rounded-[2rem] flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:border-primary/30">
+
+                                        {/* Inner wrapper for the image with overflow-hidden */}
+                                        <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
+                                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+
+                                            <Image
+                                                src={step.imageSrc}
+                                                alt={step.title}
+                                                width={144}
+                                                height={144}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                        </div>
+
+                                        {/* Step number badge - safely sitting outside the overflow-hidden zone */}
+                                        <div className="absolute -top-2 -right-2 md:-right-3 md:-top-3 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md z-20">
+                                            {index + 1}
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Step Content Card */}
-                                <div className="flex-1 bg-white rounded-2xl p-5 md:p-6 border border-foreground/5 shadow-sm group-hover:shadow-2xl group-hover:shadow-primary/5 group-hover:-translate-y-0.5 transition-all duration-500 relative overflow-hidden">
-                                    {/* Abstract background shape */}
-                                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/[0.02] rounded-full blur-3xl group-hover:bg-primary/[0.05] transition-colors" />
-
-                                    <div className="flex justify-between items-start mb-2">
-                                        <h3 className="text-lg font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
-                                            {step.title}
-                                        </h3>
-                                        <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold uppercase tracking-widest">
-                                            {step.benefit}
-                                        </div>
-                                    </div>
-
-                                    <p className="text-sm text-foreground/50 font-medium leading-relaxed">
+                                {/* Text Content */}
+                                <div className="text-left md:text-center md:px-2 flex-1">
+                                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-sm font-medium text-foreground/60 leading-relaxed max-w-[280px] md:mx-auto">
                                         {step.description}
                                     </p>
-
-                                    {/* Step indicator for mobile */}
-                                    <div className="mt-8 flex items-center gap-2 md:hidden">
-                                        <div className="w-8 h-1 bg-primary rounded-full" />
-                                        <div className="text-[10px] font-bold uppercase text-primary tracking-widest">Step {step.number}</div>
-                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </section>
     );
 }
-
