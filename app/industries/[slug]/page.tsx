@@ -17,6 +17,9 @@ import {
     Trees,
     TrendingUp,
     Wind,
+    Target,
+    Zap,
+    Sparkles,
     type LucideIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -24,6 +27,9 @@ import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
+import FAQSection from "@/components/FAQSection";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
@@ -138,98 +144,130 @@ export default async function IndustryPage({
                     pageUrl={`/industries/${slug}`}
                 />
 
-                <section className="relative overflow-hidden px-6 pb-20 pt-36 md:pb-24 md:pt-40">
+                {/* Hero Section */}
+                <section className="relative overflow-hidden px-6 pb-20 pt-32 md:pb-32 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
-                    <div className="mx-auto max-w-6xl rounded-[2rem] border border-foreground/10 bg-white p-8 md:p-10">
-                        <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+
+                    <div className="mx-auto max-w-4xl text-center">
+                        <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
                             <IndustryIcon size={14} />
                             {industry.primaryKeyword}
                         </p>
-                        <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[4.5rem]">
                             {industry.heroTitle}
                         </h1>
-                        <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
-                            {industry.heroSubtitle} {industryMessaging.proofBody}
+                        <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
+                            {industry.heroSubtitle} Built {publicIcpPhrase}. {orderedPromiseLine}
                         </p>
-                        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/55 md:text-base">
-                            Built {publicIcpPhrase}. {orderedPromiseLine}
-                        </p>
-                        <div className="mt-7 flex flex-wrap gap-3">
-                            <BookedCallLink
-                                cluster="industries"
-                                templateType="industry_detail"
-                                landingPath={`/industries/${slug}`}
-                                params={{ utm_medium: "organic" }}
-                                ctaLabel={industryMessaging.primaryCta}
-                                ctaLocation="hero"
-                                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-button"
-                            >
-                                {industryMessaging.primaryCta}
-                            </BookedCallLink>
-                            <Link
-                                href={detailLinks.parentPath}
-                                className="inline-flex items-center justify-center rounded-xl border border-foreground/15 bg-white px-6 py-3 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/25 hover:text-primary"
-                            >
-                                Browse all industries
-                            </Link>
+
+                        <div className="mt-10 flex flex-col items-center gap-4">
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                                <BookedCallLink
+                                    cluster="industries"
+                                    templateType="industry_detail"
+                                    landingPath={`/industries/${slug}`}
+                                    params={{ utm_medium: "organic" }}
+                                    ctaLabel={industryMessaging.primaryCta}
+                                    ctaLocation="hero"
+                                    asButton
+                                    buttonSize="lg"
+                                    className="w-full sm:w-auto cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+                                >
+                                    {industryMessaging.primaryCta}
+                                </BookedCallLink>
+                                <Link
+                                    href={detailLinks.parentPath}
+                                    className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group"
+                                >
+                                    Browse all industries
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto mt-8 max-w-6xl rounded-3xl border border-foreground/10 bg-white p-3 shadow-[0_20px_70px_-24px_rgba(47,39,206,0.35)]">
-                        <Image
-                            src="/images/ct-hero-min (1).png"
-                            alt={`${industry.name} dashboard mockup`}
-                            width={1200}
-                            height={800}
-                            className="h-auto w-full rounded-2xl object-cover"
-                            priority
-                        />
+                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-[2rem] border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:rounded-[2.5rem] md:p-4">
+                        <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
+                            <Image
+                                src="/images/ct-hero-min (1).png"
+                                alt={`${industry.name} dashboard mockup`}
+                                width={1920}
+                                height={1080}
+                                className="h-auto w-full object-cover transition-transform duration-700 hover:scale-[1.01]"
+                                priority
+                            />
+                        </div>
                     </div>
                 </section>
 
-                <section className="bg-white px-6 pb-20">
-                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-8 md:p-10">
-                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                            What crews in {industry.name} usually struggle with
-                        </h2>
-                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+                <TestimonialsSection />
+
+                {/* Challenges and Solutions */}
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    {/* Soft background glow */}
+                    <div className="pointer-events-none absolute left-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(47,39,206,0.05)_0%,transparent_70%)] md:h-[800px] md:w-[800px]" />
+
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center flex flex-col items-center lg:items-center">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
+                                <AlertCircle size={14} />
+                                <span>Common Challenges</span>
+                            </div>
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl text-center">
+                                What crews in <span className="text-primary italic">{industry.name}</span> usually struggle with
+                            </h2>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-3">
                             {industry.painPoints.map((point) => (
                                 <article
                                     key={point.title}
-                                    className="rounded-2xl border border-red-200 bg-red-50/70 p-5"
+                                    className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
-                                    <h3 className="text-lg font-bold text-foreground">{point.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                                    <h3 className="text-xl font-bold text-foreground mb-4">{point.title}</h3>
+                                    <p className="text-base leading-relaxed text-foreground/70 font-medium">
                                         {point.description}
                                     </p>
+                                    <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-red-500/[0.03] blur-2xl group-hover:bg-red-500/[0.08] transition-colors duration-500" />
                                 </article>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                <section id="features" className="bg-[#FBFBFE] px-6 py-20">
-                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
-                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                            Recommended workflow stack for {industry.name}
-                        </h2>
-                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {/* Recommended Stack */}
+                <section id="features" className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="pointer-events-none absolute right-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.04)_0%,transparent_60%)] md:h-[800px] md:w-[800px]" />
+
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-600 backdrop-blur-sm mb-6">
+                                <Sparkles size={14} />
+                                <span>Solutions & Benefits</span>
+                            </div>
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl text-center">
+                                Recommended workflow stack for <span className="text-emerald-600 italic">{industry.name}</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-2">
                             {industry.benefits.map((benefit) => {
                                 const BenefitIcon = iconByKey[benefit.icon];
                                 return (
                                     <article
                                         key={benefit.title}
-                                        className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5"
+                                        className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                                            <BenefitIcon size={22} />
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50 transition-colors group-hover:bg-emerald-100">
+                                            <BenefitIcon size={26} />
                                         </div>
-                                        <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+                                        <h3 className="text-2xl font-bold tracking-tight text-foreground mb-4">
                                             {benefit.title}
                                         </h3>
-                                        <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                                        <p className="text-lg leading-relaxed text-foreground/70 font-medium">
                                             {benefit.description}
                                         </p>
+                                        <div className="absolute -right-16 -bottom-16 h-48 w-48 rounded-full bg-emerald-500/[0.03] blur-3xl group-hover:bg-emerald-500/[0.08] transition-colors duration-500" />
                                     </article>
                                 );
                             })}
@@ -237,69 +275,92 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
-                <section className="bg-white px-6 py-20">
-                    <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
-                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                                Related feature paths
-                            </h2>
-                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
-                                These feature pages are linked by deterministic overlap so teams can
-                                expand without losing focus.
-                            </p>
-                            <div className="mt-6 space-y-3">
-                                {relatedSolutions.map((solution) => (
-                                    <Link
-                                        key={solution.slug}
-                                        href={`/features/${solution.slug}`}
-                                        className="flex items-center justify-between rounded-2xl border border-foreground/10 bg-white p-4 transition-colors hover:border-primary/25"
-                                    >
-                                        <span className="font-semibold text-foreground">{solution.name}</span>
-                                        <ArrowRight size={16} className="text-primary" />
-                                    </Link>
-                                ))}
+                {/* Outcomes Section */}
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
+                                <TrendingUp size={14} />
+                                <span>Current Data</span>
                             </div>
-                        </article>
-
-                        <article className="rounded-3xl border border-foreground/10 bg-[#FBFBFE] p-7">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                                Related industries
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
+                                Current operating signals
                             </h2>
-                            <p className="mt-3 text-sm leading-relaxed text-foreground/65 md:text-base">
-                                Keep crawl depth and route continuity with these adjacent industry pages.
+                            <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/60 font-medium">
+                                Average metrics for companies implementing this stack in your industry.
                             </p>
-                            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
-                                {siblingIndustries.map((relatedIndustry) => (
-                                    <Link
-                                        key={relatedIndustry.slug}
-                                        href={`/industries/${relatedIndustry.slug}`}
-                                        className="rounded-2xl border border-foreground/10 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 transition-colors hover:border-primary/20 hover:text-primary"
-                                    >
-                                        {relatedIndustry.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </article>
-                    </div>
-                </section>
+                        </div>
 
-                <section className="bg-[#FBFBFE] px-6 py-20">
-                    <div className="mx-auto max-w-6xl rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
-                        <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                            Current operating signals
-                        </h2>
-                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                             {industry.stats.map((stat) => (
                                 <article
                                     key={stat.label}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 text-center"
+                                    className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-center flex flex-col items-center justify-center"
                                 >
-                                    <p className="text-3xl font-bold text-primary">{stat.value}</p>
-                                    <p className="mt-1 text-xs font-bold uppercase tracking-widest text-foreground/45">
+                                    <p className="text-4xl font-extrabold text-primary mb-3">{stat.value}</p>
+                                    <p className="text-sm font-bold uppercase tracking-widest text-foreground/50">
                                         {stat.label}
                                     </p>
+                                    <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-primary/[0.02] blur-2xl group-hover:bg-primary/[0.06] transition-colors duration-500" />
                                 </article>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                <LiteSavingsCalculator />
+
+                <FAQSection />
+
+                {/* Ecosystem Links */}
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="grid gap-8 lg:grid-cols-2">
+                            {/* Features */}
+                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                                <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+                                    Related feature paths
+                                </h2>
+                                <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
+                                    These feature pages are linked by deterministic overlap so teams can expand without losing focus.
+                                </p>
+                                <div className="space-y-4">
+                                    {relatedSolutions.map((solution) => (
+                                        <Link
+                                            key={solution.slug}
+                                            href={`/features/${solution.slug}`}
+                                            className="group flex items-center justify-between rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        >
+                                            <span className="font-bold text-foreground group-hover:text-primary transition-colors">{solution.name}</span>
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                                                <ArrowRight size={18} />
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Industries */}
+                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                                <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+                                    Related industries
+                                </h2>
+                                <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
+                                    Keep crawl depth and route continuity with these adjacent industry pages.
+                                </p>
+                                <div className="flex flex-wrap gap-3">
+                                    {siblingIndustries.map((relatedIndustry) => (
+                                        <Link
+                                            key={relatedIndustry.slug}
+                                            href={`/industries/${relatedIndustry.slug}`}
+                                            className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-foreground/10 bg-white px-5 py-3 text-sm font-bold text-foreground/70 shadow-sm transition-all hover:border-primary/20 hover:text-primary hover:shadow-md hover:-translate-y-0.5"
+                                        >
+                                            {relatedIndustry.name}
+                                            <ArrowRight size={14} className="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -22,7 +22,7 @@ export default function Hero() {
                     {/* Left Column - Copy & CTAs */}
                     <div className="max-w-2xl text-left">
                         <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
-                            Payroll leakage prevention
+                            Get a 360° Profit Leakage Report
                         </p>
 
                         <h1 className="mb-8 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5rem]">

@@ -8,6 +8,9 @@ import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
+import FAQSection from "@/components/FAQSection";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
@@ -106,18 +109,18 @@ export default async function FeatureDetailPage({
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
 
                     <div className="mx-auto max-w-4xl text-center">
-                        <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                        <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
                             {solution.primaryKeyword}
                         </p>
-                        <h1 className="mt-8 text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-5xl md:text-7xl">
+                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[4.5rem]">
                             {solution.name}
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            {solution.description} {detailMessaging.proofBody}
+                            {solution.description}
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4">
-                            <div className="w-full max-w-md space-y-3 rounded-3xl border border-foreground/10 bg-white p-4 shadow-xl shadow-primary/5">
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                                 <BookedCallLink
                                     cluster="features"
                                     templateType="feature_detail"
@@ -127,93 +130,106 @@ export default async function FeatureDetailPage({
                                     ctaLocation="hero"
                                     asButton
                                     buttonSize="lg"
-                                    className="w-full"
+                                    className="w-full sm:w-auto cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
                                 >
                                     {detailMessaging.primaryCta}
                                 </BookedCallLink>
                                 <Link
                                     href={detailLinks.parentPath}
-                                    className="inline-flex w-full items-center justify-center text-sm font-semibold text-primary/65 underline decoration-primary/35 underline-offset-4 transition-colors hover:text-primary"
+                                    className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group"
                                 >
                                     Browse all features
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto mt-16 max-w-6xl rounded-[2.5rem] border border-foreground/10 bg-white p-3 shadow-panel md:mt-20">
-                        <Image
-                            src="/images/ct-hero-min (1).png"
-                            alt={`${solution.name} dashboard mockup`}
-                            width={1920}
-                            height={1080}
-                            className="h-auto w-full rounded-[1.8rem] object-cover"
-                            priority
-                        />
+                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-[2rem] border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:rounded-[2.5rem] md:p-4">
+                        <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
+                            <Image
+                                src="/images/ct-hero-min (1).png"
+                                alt={`${solution.name} dashboard mockup`}
+                                width={1920}
+                                height={1080}
+                                className="h-auto w-full object-cover transition-transform duration-700 hover:scale-[1.01]"
+                                priority
+                            />
+                        </div>
                     </div>
                 </section>
 
+                <TestimonialsSection />
+
                 {/* Challenges and Solutions */}
-                <section className="bg-white px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="mb-16 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
-                                <Sparkles size={12} />
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    {/* Soft background glow */}
+                    <div className="pointer-events-none absolute left-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(47,39,206,0.05)_0%,transparent_70%)] md:h-[800px] md:w-[800px]" />
+
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center lg:text-left flex flex-col items-center lg:items-start">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
+                                <Sparkles size={14} />
                                 <span>The Workflow Transformation</span>
                             </div>
-                            <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
                                 From chaos to <span className="text-primary italic">control.</span>
                             </h2>
                         </div>
 
                         <div className="grid gap-8 lg:grid-cols-2">
-                            <div className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-[#FBFBFE] p-8 md:p-10 transition-all duration-500 hover:shadow-2xl">
-                                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600 ring-1 ring-red-200/50">
+                            {/* Challenges Card */}
+                            <div className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl">
+                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600 ring-1 ring-red-200/50">
                                     <XCircle size={28} />
                                 </div>
-                                <h3 className="text-2xl font-bold tracking-tight mb-6">Common failure points</h3>
-                                <ul className="space-y-4">
+                                <h3 className="text-2xl font-bold tracking-tight mb-8">Common failure points</h3>
+                                <ul className="space-y-5">
                                     {solution.challenges.map((challenge) => (
-                                        <li key={challenge} className="flex gap-4 text-foreground/60 font-medium leading-relaxed">
-                                            <span className="flex-shrink-0 mt-1 h-1.5 w-1.5 rounded-full bg-red-400" />
+                                        <li key={challenge} className="flex gap-4 text-foreground/70 font-medium leading-relaxed">
+                                            <span className="flex-shrink-0 mt-2 h-1.5 w-1.5 rounded-full bg-red-400" />
                                             <span>{challenge}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-red-100/20 blur-3xl" />
+                                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-red-100/30 blur-3xl" />
                             </div>
 
-                            <div className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
-                                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50">
+                            {/* Solutions Card */}
+                            <div className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
+                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50">
                                     <CheckCircle2 size={28} />
                                 </div>
-                                <h3 className="text-2xl font-bold tracking-tight mb-6 text-emerald-600">What changes after rollout</h3>
-                                <ul className="space-y-4">
+                                <h3 className="text-2xl font-bold tracking-tight mb-8 text-emerald-600">What changes after rollout</h3>
+                                <ul className="space-y-5">
                                     {solution.capabilities.map((capability) => (
-                                        <li key={capability} className="flex gap-4 text-foreground/75 font-medium leading-relaxed">
-                                            <CheckCircle2 size={18} className="mt-0.5 flex-shrink-0 text-emerald-500" />
+                                        <li key={capability} className="flex gap-4 text-foreground/80 font-semibold leading-relaxed">
+                                            <CheckCircle2 size={20} className="mt-0.5 flex-shrink-0 text-emerald-500" />
                                             <span>{capability}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-100/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-emerald-100/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Outcomes Section */}
-                <section className="bg-[#FBFBFE] px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="mb-16 text-center">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">
-                                <TrendingUp size={12} />
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="pointer-events-none absolute right-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.04)_0%,transparent_60%)] md:h-[800px] md:w-[800px]" />
+
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
+                                <TrendingUp size={14} />
                                 <span>ROI & Impact</span>
                             </div>
-                            <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
                                 Expected outcomes
                             </h2>
-                            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/50 font-medium">
+                            <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/60 font-medium">
                                 Companies using this workflow typically see these operational improvements within 30 days.
                             </p>
                         </div>
@@ -224,13 +240,13 @@ export default async function FeatureDetailPage({
                                 return (
                                     <div
                                         key={outcome}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary ring-1 ring-primary/10">
-                                            <Icon size={20} />
+                                        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
+                                            <Icon size={24} />
                                         </div>
-                                        <p className="text-lg font-bold tracking-tight text-foreground leading-snug">{outcome}</p>
-                                        <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-primary/[0.02] blur-2xl group-hover:bg-primary/[0.05] transition-colors" />
+                                        <p className="text-xl font-bold tracking-tight text-foreground leading-snug">{outcome}</p>
+                                        <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-primary/[0.02] blur-2xl group-hover:bg-primary/[0.06] transition-colors duration-500" />
                                     </div>
                                 );
                             })}
@@ -238,15 +254,20 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
+                <LiteSavingsCalculator />
+
+                <FAQSection />
+
                 {/* Ecosystem Links */}
-                <section className="bg-white px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="mx-auto max-w-6xl relative z-10">
                         <div className="grid gap-8 lg:grid-cols-2">
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-[#FBFBFE] p-8 md:p-10">
-                                <h2 className="text-2xl font-bold tracking-tight text-foreground mb-4">
+                            {/* Industries */}
+                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                                <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Related industries
                                 </h2>
-                                <p className="mb-8 text-base text-foreground/50 font-medium leading-relaxed">
+                                <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
                                     Trade-specific implementation details for this workflow across your core service lines.
                                 </p>
                                 <div className="flex flex-wrap gap-3">
@@ -254,7 +275,7 @@ export default async function FeatureDetailPage({
                                         <Link
                                             key={industrySlug}
                                             href={`/industries/${industrySlug}`}
-                                            className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-foreground/10 bg-white px-5 py-2.5 text-sm font-bold text-foreground/70 transition-all hover:border-primary/20 hover:text-primary hover:shadow-md"
+                                            className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-foreground/10 bg-white px-5 py-3 text-sm font-bold text-foreground/70 shadow-sm transition-all hover:border-primary/20 hover:text-primary hover:shadow-md hover:-translate-y-0.5"
                                         >
                                             {toIndustryName(industrySlug)}
                                             <ArrowRight size={14} className="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
@@ -263,11 +284,12 @@ export default async function FeatureDetailPage({
                                 </div>
                             </div>
 
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-[#FBFBFE] p-8 md:p-10">
-                                <h2 className="text-2xl font-bold tracking-tight text-foreground mb-4">
+                            {/* Adjacent Features */}
+                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                                <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Adjacent workflows
                                 </h2>
-                                <p className="mb-8 text-base text-foreground/50 font-medium leading-relaxed">
+                                <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
                                     Build depth with related controls ranked by operational overlap and data flow.
                                 </p>
                                 <div className="space-y-4">
@@ -275,11 +297,11 @@ export default async function FeatureDetailPage({
                                         <Link
                                             key={related.slug}
                                             href={`/features/${related.slug}`}
-                                            className="group flex items-center justify-between rounded-2xl border border-foreground/5 bg-white p-5 transition-all duration-300 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/5"
+                                            className="group flex items-center justify-between rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                         >
                                             <span className="font-bold text-foreground group-hover:text-primary transition-colors">{related.name}</span>
-                                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0">
-                                                <ArrowRight size={16} />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                                                <ArrowRight size={18} />
                                             </div>
                                         </Link>
                                     ))}
