@@ -25,7 +25,7 @@ export default function Hero() {
                             Payroll leakage prevention
                         </p>
 
-                        <h1 className="mb-8 text-4xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[4rem]">
+                        <h1 className="mb-8 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5rem]">
                             {homeMessaging.intentHeadline}
                         </h1>
 

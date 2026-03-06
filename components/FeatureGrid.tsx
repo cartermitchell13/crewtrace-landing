@@ -54,14 +54,14 @@ const BentoCard = ({
 
 export default function FeatureGrid() {
     return (
-        <section id="features" className="py-32 px-6 bg-[#FBFBFE] scroll-mt-32">
+        <section id="features" className="py-32 px-6 bg-background scroll-mt-32">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-sm font-bold">
                         <CheckCircle2 size={16} />
                         <span>Payroll Risk Control</span>
                     </div>
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
                         The Crew Time and Payroll <span className="text-primary">Control System</span>
                     </h2>
                     <p className="text-xl text-foreground/60 font-medium leading-relaxed">

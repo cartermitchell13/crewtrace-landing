@@ -445,7 +445,7 @@ export default function ComplianceAuditTool() {
 
     if (phase === "intro") {
         return (
-            <section id="compliance-audit" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+            <section id="compliance-audit" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-3xl mx-auto relative z-10">
@@ -525,7 +525,7 @@ export default function ComplianceAuditTool() {
     if (phase === "questions") {
         const CategoryIcon = currentQuestion.categoryIcon;
         return (
-            <section id="compliance-audit" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+            <section id="compliance-audit" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-2xl mx-auto relative z-10">
@@ -612,7 +612,7 @@ export default function ComplianceAuditTool() {
 
     if (phase === "analyzing") {
         return (
-            <section id="compliance-audit" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+            <section id="compliance-audit" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-xl mx-auto relative z-10">
@@ -670,7 +670,7 @@ export default function ComplianceAuditTool() {
     const atRiskCount = results.areas.filter(a => a.status === "at-risk").length;
 
     return (
-        <section id="compliance-audit" className="py-20 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+        <section id="compliance-audit" className="py-20 px-6 bg-background relative overflow-hidden scroll-mt-32">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div ref={resultsRef} className="max-w-5xl mx-auto relative z-10 space-y-6">

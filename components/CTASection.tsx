@@ -20,7 +20,7 @@ export default function CTASection({
     const messaging = getTemplateMessaging("home");
 
     return (
-        <section id="audit" className="relative overflow-hidden bg-[#FBFBFE] px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
+        <section id="audit" className="relative overflow-hidden bg-background px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
             <div className="mx-auto max-w-6xl">
                 <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0A0E17] border border-white/10 p-8 md:p-12 lg:p-16 shadow-[0_24px_80px_-20px_rgba(47,39,206,0.6)]">
 
@@ -34,7 +34,7 @@ export default function CTASection({
                                 {messaging.primaryCta}
                             </div>
 
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.05] tracking-tight text-white">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-white">
                                 Book a short audit and leave with a clear payroll action plan.
                             </h2>
 

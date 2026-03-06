@@ -186,7 +186,7 @@ export default function LiteSavingsCalculator() {
                             <Calculator size={14} />
                             <span>Savings Estimator</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.05]">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.05]">
                             Stop leaking profit from your field operations.
                         </h2>
                         <p className="text-xl text-foreground/60 font-medium leading-relaxed">

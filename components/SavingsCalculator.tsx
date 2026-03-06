@@ -418,7 +418,7 @@ export default function SavingsCalculator() {
 
     if (phase === "input") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+            <section id="calculator" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-4xl mx-auto relative z-10">
@@ -574,7 +574,7 @@ export default function SavingsCalculator() {
 
     if (phase === "generating") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+            <section id="calculator" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-2xl mx-auto relative z-10">
@@ -618,7 +618,7 @@ export default function SavingsCalculator() {
     // ─── PHASE: Report ───────────────────────────────────────────
 
     return (
-        <section id="calculator" className="py-20 px-6 bg-[#FBFBFE] relative overflow-hidden scroll-mt-32">
+        <section id="calculator" className="py-20 px-6 bg-background relative overflow-hidden scroll-mt-32">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-5xl mx-auto relative z-10 space-y-8">
