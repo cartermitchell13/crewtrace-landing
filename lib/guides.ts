@@ -19,6 +19,8 @@ export interface Guide {
     readTime: string;
     category: string;
     sections: GuideSection[];
+    /** If true, the guide is hidden from production builds */
+    hidden?: boolean;
 }
 
 export const guides: Guide[] = [
@@ -297,6 +299,7 @@ export const guides: Guide[] = [
     },
     {
         slug: "geofencing-best-practices-for-job-sites",
+        hidden: true,
         title: "Geofencing Best Practices for Multi-Site Crews",
         summary:
             "Set reliable geofence boundaries for crews that move across multiple projects each day.",
@@ -331,6 +334,7 @@ export const guides: Guide[] = [
     },
     {
         slug: "payroll-export-workflow-for-contractors",
+        hidden: true,
         title: "Payroll Export Workflow for Contractors",
         summary:
             "Create a weekly payroll workflow that reduces manual edits and keeps labor data consistent from field to payroll.",
@@ -365,6 +369,7 @@ export const guides: Guide[] = [
     },
     {
         slug: "crew-time-tracking-migration-risk-checklist",
+        hidden: true,
         title: "Crew Time Tracking Migration Risk Checklist for Field Teams",
         summary:
             "Use this checklist to reduce rollout risk when switching from a legacy time app to a payroll-confidence workflow.",
@@ -399,8 +404,10 @@ export const guides: Guide[] = [
     },
 ];
 
-export const guideSlugs = guides.map((guide) => guide.slug);
+export const visibleGuides = guides.filter((g) => !g.hidden);
+
+export const guideSlugs = visibleGuides.map((guide) => guide.slug);
 
 export const guideBySlug = Object.fromEntries(
-    guides.map((guide) => [guide.slug, guide])
+    visibleGuides.map((guide) => [guide.slug, guide])
 ) as Record<string, Guide>;
