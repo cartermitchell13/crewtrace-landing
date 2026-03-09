@@ -140,6 +140,15 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         titlePattern: "Terms of Service",
         descriptionPattern: "Legal policy page.",
     },
+    {
+        path: "/tools/true-cost-calculator",
+        pageKind: "utility",
+        indexable: true,
+        titlePattern: "True Cost of a Construction Employee Calculator | Free Tool",
+        descriptionPattern: "Calculate the real cost of your construction employees — including payroll taxes, insurance, time theft, and hidden overhead.",
+        changeFrequency: "monthly",
+        priority: 0.8,
+    },
 ];
 
 const dynamicPolicyPrefixes = [
@@ -149,6 +158,7 @@ const dynamicPolicyPrefixes = [
     "/blog/",
     "/guides/",
     "/case-studies/",
+    "/tools/",
 ] as const;
 
 function normalizePath(path: string): string {
