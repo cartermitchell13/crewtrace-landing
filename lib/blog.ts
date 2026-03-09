@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkGfm from "remark-gfm";
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
 const requiredFrontmatterFields = ["title", "excerpt", "date", "category", "readTime"] as const;
@@ -11,6 +12,8 @@ type RequiredFrontmatterField = (typeof requiredFrontmatterFields)[number];
 type BlogFrontmatter = Record<RequiredFrontmatterField, string> & {
     author?: string;
     icon?: string;
+    coverImage?: string;
+    coverImageAlt?: string;
 };
 
 export interface BlogPost {
@@ -22,6 +25,8 @@ export interface BlogPost {
     readTime: string;
     author?: string;
     icon?: string;
+    coverImage?: string;
+    coverImageAlt?: string;
     content: string;
 }
 
@@ -33,6 +38,8 @@ export interface BlogPostMeta {
     category: string;
     readTime: string;
     icon?: string;
+    coverImage?: string;
+    coverImageAlt?: string;
 }
 
 function asOptionalString(value: unknown): string | undefined {
@@ -59,6 +66,8 @@ function parseBlogFrontmatter(rawData: Record<string, unknown>): BlogFrontmatter
         ...requiredValues,
         author: asOptionalString(rawData.author),
         icon: asOptionalString(rawData.icon),
+        coverImage: asOptionalString(rawData.coverImage),
+        coverImageAlt: asOptionalString(rawData.coverImageAlt),
     };
 }
 
@@ -91,6 +100,8 @@ export async function getAllBlogPosts(): Promise<BlogPostMeta[]> {
                     category: frontmatter.category,
                     readTime: frontmatter.readTime,
                     icon: frontmatter.icon,
+                    coverImage: frontmatter.coverImage,
+                    coverImageAlt: frontmatter.coverImageAlt,
                 };
 
                 return post;
@@ -124,7 +135,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
         }
 
         // Convert markdown to HTML
-        const processedContent = await remark().use(html).process(content);
+        const processedContent = await remark().use(remarkGfm).use(html).process(content);
         const contentHtml = processedContent.toString();
 
         return {
@@ -136,6 +147,8 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
             readTime: frontmatter.readTime,
             author: frontmatter.author,
             icon: frontmatter.icon,
+            coverImage: frontmatter.coverImage,
+            coverImageAlt: frontmatter.coverImageAlt,
             content: contentHtml,
         };
     } catch {

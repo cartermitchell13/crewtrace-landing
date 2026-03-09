@@ -101,7 +101,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* ── 2. FOUNDER STORY ────────────────────────────────── */}
-                <section className="bg-white px-6 py-20 md:py-28">
+                <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
 
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* ── 3. MISSION ──────────────────────────────────────── */}
-                <section className="px-6 py-20 bg-[#FBFBFE] md:py-28">
+                <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="rounded-[2rem] border border-foreground/10 bg-white p-10 md:p-14 shadow-[0_18px_55px_-28px_rgba(47,39,206,0.18)]">
                             <div className="mx-auto max-w-3xl text-center space-y-6">
@@ -234,7 +234,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* ── 4. HOW THE PRODUCT HELPS ────────────────────────── */}
-                <section className="bg-white px-6 py-20 md:py-28">
+                <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="text-center max-w-3xl mx-auto mb-16 space-y-5">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-sm font-bold">
@@ -279,7 +279,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* ── 5. VALUES / PHILOSOPHY ──────────────────────────── */}
-                <section className="bg-[#FBFBFE] px-6 py-20 md:py-28">
+                <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
                             <p className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -315,7 +315,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* ── 6. CLOSING CTA ──────────────────────────────────── */}
-                <section className="relative overflow-hidden bg-white px-6 pb-28 pt-20 md:pb-36 md:pt-28">
+                <section className="relative overflow-hidden bg-background px-6 pb-28 pt-20 md:pb-36 md:pt-28">
                     <div className="absolute right-0 top-0 h-[520px] w-[520px] translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/[0.06] blur-3xl" />
                     <div className="absolute bottom-0 left-0 h-[480px] w-[480px] -translate-x-1/3 translate-y-1/3 rounded-full bg-primary/[0.05] blur-3xl" />
 

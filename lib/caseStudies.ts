@@ -185,11 +185,12 @@ export async function getCaseStudy(slug: string): Promise<CaseStudyDetail | null
         return null;
     }
 
-    const [{ remark }, { default: html }] = await Promise.all([
+    const [{ remark }, { default: html }, { default: remarkGfm }] = await Promise.all([
         import("remark"),
         import("remark-html"),
+        import("remark-gfm"),
     ]);
-    const processedContent = await remark().use(html).process(study.content);
+    const processedContent = await remark().use(remarkGfm).use(html).process(study.content);
 
     return {
         ...study,

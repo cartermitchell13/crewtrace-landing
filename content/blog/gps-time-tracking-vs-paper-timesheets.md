@@ -4,8 +4,10 @@ excerpt: "Paper timesheets are 'free' but the hidden costs add up fast. Here's a
 date: "2026-01-28"
 category: "Time Tracking"
 readTime: "7 min read"
-author: "Crewtrace Team"
+author: "Carter Mitchell"
 icon: "📊"
+coverImage: "/images/blog/gps-vs-paper-cover.png"
+coverImageAlt: "Paper timesheet with pencil contrasted with a smartphone showing GPS time tracking on a construction site"
 ---
 
 "Why should I pay for time tracking software when paper timesheets are free?"

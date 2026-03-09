@@ -318,6 +318,21 @@ export default async function GuideDetailPage({
                             ))}
                         </div>
 
+                        {/* ─── Author Bio ─── */}
+                        <div className="mt-16 md:mt-20 flex flex-col sm:flex-row items-start gap-6 p-8 rounded-3xl bg-secondary/30 border border-border/50">
+                            <img
+                                src="/images/headshot.jpg"
+                                alt="Carter Mitchell"
+                                className="w-20 h-20 rounded-full object-cover flex-shrink-0 shadow-sm border-2 border-primary/20"
+                            />
+                            <div>
+                                <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">Written by Carter Mitchell</h3>
+                                <p className="text-foreground/70 text-base leading-relaxed max-w-2xl">
+                                    Carter is the founder of Crewtrace. He built Crewtrace to help construction and field service companies eliminate payroll leaks, automate GPS time tracking, and protect their bottom line.
+                                </p>
+                            </div>
+                        </div>
+
                         {/* ─── Related Comparisons ─── */}
                         {relatedComparisons.length > 0 && (
                             <section className="mt-20 md:mt-24 pt-16 border-t border-foreground/10">

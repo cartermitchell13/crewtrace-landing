@@ -39,10 +39,20 @@ export default async function BlogPage() {
                                     href={`/blog/${post.slug}`}
                                     className="group bg-white border border-foreground/5 rounded-2xl overflow-hidden hover:border-primary/20 hover:shadow-xl transition-all duration-300"
                                 >
-                                    {/* Placeholder Image */}
-                                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                                        <span className="text-4xl">{post.icon || "📝"}</span>
-                                    </div>
+                                    {/* Cover Image */}
+                                    {post.coverImage ? (
+                                        <div className="aspect-video overflow-hidden">
+                                            <img
+                                                src={post.coverImage}
+                                                alt={post.coverImageAlt || post.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                                            <span className="text-4xl">{post.icon || "📝"}</span>
+                                        </div>
+                                    )}
                                     <div className="p-6">
                                         <div className="flex items-center gap-2 text-xs text-foreground/50 mb-3">
                                             <span className="bg-primary/10 text-primary font-medium px-2 py-0.5 rounded">

@@ -6,7 +6,8 @@ import BookedCallLink from "@/components/BookedCallLink";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
-import { ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Calendar, Clock, Tag } from "lucide-react";
+import { ChevronLeft, Calendar, Clock, Tag } from "lucide-react";
+import ShareButtons from "@/components/ShareButtons";
 
 export async function generateStaticParams() {
     const posts = await getAllBlogPosts();
@@ -92,13 +93,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                         {post.author && (
                             <div className="flex items-center justify-center gap-4 pt-4 border-t border-border/40 max-w-xs mx-auto">
-                                <div className="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 flex items-center justify-center text-xl font-bold text-primary shadow-sm">
-                                    {post.author.charAt(0)}
-                                </div>
+                                <img
+                                    src="/images/headshot.jpg"
+                                    alt={post.author}
+                                    className="w-12 h-12 rounded-full border-2 border-primary/20 object-cover shadow-sm"
+                                />
                                 <div className="text-left flex flex-col">
                                     <span className="font-bold text-foreground text-base tracking-tight">{post.author}</span>
-                                    <span className="text-sm text-foreground/50 font-medium">Crewtrace Team</span>
+                                    <span className="text-sm text-foreground/50 font-medium">Founder, Crewtrace</span>
                                 </div>
+                            </div>
+                        )}
+
+                        {post.coverImage && (
+                            <div className="mt-12 max-w-4xl mx-auto">
+                                <img
+                                    src={post.coverImage}
+                                    alt={post.coverImageAlt || post.title}
+                                    className="w-full rounded-2xl shadow-2xl border border-border/30"
+                                />
                             </div>
                         )}
                     </div>
@@ -119,26 +132,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                             <div className="pt-8 border-t border-border/40">
                                 <h4 className="text-xs font-bold text-foreground/40 mb-5 uppercase tracking-widest">Share this article</h4>
-                                <div className="flex flex-col gap-4">
-                                    <button className="flex items-center gap-3 text-sm font-medium text-foreground/60 hover:text-[#1DA1F2] transition-colors group">
-                                        <div className="w-8 h-8 rounded-full bg-foreground/5 group-hover:bg-[#1DA1F2]/10 flex items-center justify-center transition-colors">
-                                            <Twitter className="w-4 h-4" />
-                                        </div>
-                                        Twitter
-                                    </button>
-                                    <button className="flex items-center gap-3 text-sm font-medium text-foreground/60 hover:text-[#0A66C2] transition-colors group">
-                                        <div className="w-8 h-8 rounded-full bg-foreground/5 group-hover:bg-[#0A66C2]/10 flex items-center justify-center transition-colors">
-                                            <Linkedin className="w-4 h-4" />
-                                        </div>
-                                        LinkedIn
-                                    </button>
-                                    <button className="flex items-center gap-3 text-sm font-medium text-foreground/60 hover:text-primary transition-colors group">
-                                        <div className="w-8 h-8 rounded-full bg-foreground/5 group-hover:bg-primary/10 flex items-center justify-center transition-colors">
-                                            <LinkIcon className="w-4 h-4" />
-                                        </div>
-                                        Copy Link
-                                    </button>
-                                </div>
+                                <ShareButtons title={post.title} slug={slug} variant="sidebar" />
                             </div>
                         </div>
                     </aside>
@@ -178,7 +172,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 prose-ol:text-foreground/80
                                 prose-li:my-2
                                 prose-img:rounded-2xl prose-img:shadow-lg prose-img:border prose-img:border-border/50
-                                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground/70 prose-blockquote:font-medium prose-blockquote:italic"
+                                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground/70 prose-blockquote:font-medium prose-blockquote:italic
+                                prose-table:border-collapse prose-table:w-full prose-table:rounded-xl prose-table:overflow-hidden prose-table:border prose-table:border-border/50 prose-table:text-base
+                                prose-thead:bg-foreground/5 prose-thead:border-b prose-thead:border-border/50
+                                prose-th:px-5 prose-th:py-3 prose-th:text-left prose-th:font-bold prose-th:text-foreground prose-th:text-sm prose-th:uppercase prose-th:tracking-wider
+                                prose-td:px-5 prose-td:py-3.5 prose-td:text-foreground/80 prose-td:border-b prose-td:border-border/30
+                                prose-tr:even:bg-foreground/[0.02]"
                             dangerouslySetInnerHTML={{ __html: post.content }}
                         />
 
@@ -187,22 +186,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         {/* Mobile Share Actions */}
                         <div className="lg:hidden flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 p-6 rounded-2xl bg-foreground/5">
                             <span className="text-sm font-bold text-foreground/60 uppercase tracking-widest">Share this article</span>
-                            <div className="flex gap-4">
-                                <button className="w-10 h-10 rounded-full bg-white dark:bg-black border border-border shadow-sm flex items-center justify-center text-foreground hover:text-[#1DA1F2] transition-colors"><Twitter className="w-4 h-4" /></button>
-                                <button className="w-10 h-10 rounded-full bg-white dark:bg-black border border-border shadow-sm flex items-center justify-center text-foreground hover:text-[#0A66C2] transition-colors"><Linkedin className="w-4 h-4" /></button>
-                                <button className="w-10 h-10 rounded-full bg-white dark:bg-black border border-border shadow-sm flex items-center justify-center text-foreground hover:text-primary transition-colors"><LinkIcon className="w-4 h-4" /></button>
-                            </div>
+                            <ShareButtons title={post.title} slug={slug} variant="inline" />
                         </div>
 
                         {/* Author Bio Section */}
                         <div className="flex flex-col sm:flex-row items-start gap-6 p-8 rounded-3xl bg-secondary/30 border border-border/50">
-                            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-3xl font-bold text-primary flex-shrink-0 shadow-sm border border-primary/20">
-                                {post.author ? post.author.charAt(0) : "C"}
-                            </div>
+                            <img
+                                src="/images/headshot.jpg"
+                                alt={post.author || "Carter Mitchell"}
+                                className="w-20 h-20 rounded-full object-cover flex-shrink-0 shadow-sm border-2 border-primary/20"
+                            />
                             <div>
-                                <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">Written by {post.author || "Crewtrace Team"}</h3>
+                                <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">Written by {post.author || "Carter Mitchell"}</h3>
                                 <p className="text-foreground/70 text-base leading-relaxed max-w-2xl">
-                                    Crewtrace helps construction and field service companies eliminate payroll leaks, automate GPS time tracking, and streamline their bottom line operations.
+                                    Carter is the founder of Crewtrace. He built Crewtrace to help construction and field service companies eliminate payroll leaks, automate GPS time tracking, and protect their bottom line.
                                 </p>
                             </div>
                         </div>

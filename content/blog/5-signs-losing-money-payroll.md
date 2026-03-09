@@ -4,8 +4,10 @@ excerpt: "Most construction contractors are losing $200-400 per week on time the
 date: "2026-02-04"
 category: "Payroll"
 readTime: "5 min read"
-author: "Crewtrace Team"
+author: "Carter Mitchell"
 icon: "💸"
+coverImage: "/images/blog/payroll-signs-cover.png"
+coverImageAlt: "Construction contractor at desk with paper timesheets and calculator, representing payroll loss"
 ---
 
 If you're running a construction crew, there's a good chance you're losing money every single week—and you might not even know it.
