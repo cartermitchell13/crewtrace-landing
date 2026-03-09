@@ -86,6 +86,21 @@ const resources = [
     },
 ];
 
+const tools = [
+    {
+        name: "True Cost Calculator",
+        slug: "/tools/true-cost-calculator",
+        description: "Calculate the real hourly cost of your crews",
+        Icon: Wrench,
+    },
+    {
+        name: "Payroll Audit Checklist",
+        slug: "/tools/payroll-audit-checklist",
+        description: "Test your FLSA compliance readiness",
+        Icon: ShieldCheck,
+    },
+];
+
 const company = [
     {
         name: "About Us",
@@ -421,19 +436,28 @@ export default function Navbar() {
                                 </div>
 
                                 <div className="mt-4 pt-4 border-t border-foreground/5">
-                                    <h3 className="text-xs font-semibold text-foreground/40 uppercase tracking-wider mb-3">Resources</h3>
-                                    <Link
-                                        href="/blog"
-                                        className="group flex items-center gap-3 p-3 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors"
-                                    >
-                                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                                            <FileText className="w-5 h-5 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-sm font-semibold text-primary">Industry Blog</h4>
-                                            <p className="text-xs text-foreground/50 mt-0.5">Insights and best practices</p>
-                                        </div>
-                                    </Link>
+                                    <h3 className="text-xs font-semibold text-foreground/40 uppercase tracking-wider mb-3">Tools</h3>
+                                    <div className="space-y-1">
+                                        {tools.map((tool) => (
+                                            <Link
+                                                key={tool.slug}
+                                                href={tool.slug}
+                                                className="group flex items-start gap-3 p-3 rounded-xl bg-primary/5 hover:bg-primary/10 transition-all duration-150"
+                                            >
+                                                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 transition-colors">
+                                                    <tool.Icon className="w-5 h-5 text-primary transition-colors" />
+                                                </div>
+                                                <div className="min-w-0">
+                                                    <h4 className="text-sm font-semibold text-primary transition-colors">
+                                                        {tool.name}
+                                                    </h4>
+                                                    <p className="text-xs text-foreground/50 mt-0.5 leading-relaxed">
+                                                        {tool.description}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
@@ -576,8 +600,11 @@ export default function Navbar() {
                             <span className="text-sm font-semibold text-foreground">Resources</span>
                             <ChevronDown className={`w-4 h-4 text-foreground/50 transition-transform duration-200 ${activeAccordion === "resources" ? "rotate-180" : ""}`} />
                         </button>
-                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "resources" ? "max-h-96 opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
+                        <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === "resources" ? "max-h-[500px] opacity-100 pb-2" : "max-h-0 opacity-0"}`}>
                             <div className="px-2 space-y-0.5">
+                                <div className="px-3 py-1.5">
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/40">Learn</span>
+                                </div>
                                 {resources.map((resource) => (
                                     <Link
                                         key={resource.slug}
@@ -587,6 +614,20 @@ export default function Navbar() {
                                     >
                                         <resource.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{resource.name}</span>
+                                    </Link>
+                                ))}
+                                <div className="px-3 py-1.5 mt-1 border-t border-foreground/5 pt-2.5">
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/40">Tools</span>
+                                </div>
+                                {tools.map((tool) => (
+                                    <Link
+                                        key={tool.slug}
+                                        href={tool.slug}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                    >
+                                        <tool.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
+                                        <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{tool.name}</span>
                                     </Link>
                                 ))}
                             </div>

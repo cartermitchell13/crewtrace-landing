@@ -68,8 +68,8 @@ export default function ProcessSection() {
                         Autonomous Workflow
                     </p>
                     <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
-                        From the job site to payroll. <br className="hidden md:block" />
-                        <span className="text-primary italic">Without the manual entry.</span>
+                        How Our Time Clock App Works. <br className="hidden md:block" />
+                        <span className="text-primary italic">Job site to payroll in four steps.</span>
                     </h2>
                 </div>
 

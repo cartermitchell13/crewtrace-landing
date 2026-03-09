@@ -30,8 +30,9 @@ export default function Hero() {
                         </h1>
 
                         <p className="mb-10 max-w-xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            Built {publicIcpPhrase}, Crewtrace helps you catch payroll leakage
-                            before payroll close so you can protect margin faster.
+                            Construction time tracking software with GPS verification and
+                            geofencing. Your crew clocks in on the job site, hours sync to payroll,
+                            and you stop losing money to time theft.
                         </p>
 
                         {/* CTA Box styling modernized */}

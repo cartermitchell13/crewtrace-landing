@@ -46,6 +46,30 @@ export function websiteSchema() {
     };
 }
 
+export function softwareApplicationSchema() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Crewtrace",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web, iOS, Android",
+        url: siteConfig.url,
+        description: siteConfig.description,
+        featureList: [
+            "GPS Time Tracking",
+            "Geofenced Clock-ins",
+            "Automated Breaks and Overtime",
+            "Payroll Export",
+        ],
+        offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            description: "Custom pricing based on crew size. Free audit call available.",
+        },
+    };
+}
+
 export function faqSchema(items: Array<{ question: string; answer: string }>) {
     return {
         "@context": "https://schema.org",

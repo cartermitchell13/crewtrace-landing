@@ -268,7 +268,7 @@ export default function LiteSavingsCalculator() {
                                         ${calculations.totalYearlyLoss.toLocaleString()}
                                     </div>
                                     <div className="text-base text-white/40 font-medium">
-                                        That&apos;s <span className="text-primary italic font-bold">~${calculations.monthlyLoss.toLocaleString()}</span> per month in preventable losses.
+                                        That&apos;s <span className="text-[#B2ACFF] italic font-bold">~${calculations.monthlyLoss.toLocaleString()}</span> per month in preventable losses.
                                     </div>
                                 </div>
 

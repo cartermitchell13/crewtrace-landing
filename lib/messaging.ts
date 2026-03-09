@@ -22,15 +22,14 @@ export const disallowedPublicQualifierPhrases = [
 
 export const intentHeadlineOptions = {
     home: [
-        "End payroll leakage.",
+        "Construction time tracking, GPS verified.",
+        "GPS time tracking software built for construction crews.",
         "Stop paying for honor-system hours.",
         "Your crews moving. Verified and budgeted.",
-        "GPS verified time. Profit protected.",
         "Clock in. Get verified. Get paid.",
         "Stop payroll errors before they compound.",
         "Field evidence. Payroll confidence.",
         "Protect every labor dollar.",
-        "Stop payroll leakage before it hits payroll close.",
     ],
     features_hub: [
         "Choose the workflow that protects labor margin first.",

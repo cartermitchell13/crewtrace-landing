@@ -28,7 +28,7 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/",
         pageKind: "home",
         indexable: true,
-        titlePattern: "Crewtrace | GPS Time Tracking for Construction Crews",
+        titlePattern: "Construction Time Tracking Software — GPS Verified | Crewtrace",
         descriptionPattern: "Core conversion message for U.S. multi-crew businesses.",
         changeFrequency: "weekly",
         priority: 1,

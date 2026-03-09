@@ -62,10 +62,10 @@ export default function FeatureGrid() {
                         <span>Payroll Risk Control</span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-                        The Crew Time and Payroll <span className="text-primary">Control System</span>
+                        GPS Time Tracking and <span className="text-primary">Payroll Controls</span> for Construction
                     </h2>
                     <p className="text-xl text-foreground/60 font-medium leading-relaxed">
-                        Replace paper logs and guesswork with verified workflows your team can trust every week.
+                        Replace paper timesheets and guesswork with GPS-verified employee time tracking your team can trust every week.
                     </p>
                 </div>
 

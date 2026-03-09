@@ -12,17 +12,18 @@ import Footer from "@/components/Footer";
 import { homeFaqItems } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/seo";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "GPS Time Tracking for Construction Crews",
+  title: "Construction Time Tracking Software | GPS Time Clock App",
   description:
-    `Crewtrace helps contractors ${publicIcpPhrase}: ${orderedPromiseLine}`,
+    "GPS-verified construction time tracking software and time clock app for contractors. Eliminate time theft, automate timesheets, and export payroll-ready reports with geofencing verification.",
   path: "/",
 });
 
 export default function Home() {
   const homeFaqJsonLd = faqSchema(homeFaqItems);
+  const softwareAppJsonLd = softwareApplicationSchema();
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,6 +32,10 @@ export default function Home() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
         />
         <Hero />
         <FeatureGrid />

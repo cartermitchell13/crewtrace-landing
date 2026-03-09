@@ -22,8 +22,8 @@ export default function ComplianceAudit() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-white">
-                        The $50,000 Audit <br />
-                        <span className="text-secondary opacity-90">You Can't Afford.</span>
+                        DOL Compliance for <br />
+                        <span className="text-secondary opacity-90">Construction Timekeeping.</span>
                     </h2>
 
                     <div className="text-xl text-white font-medium leading-relaxed">

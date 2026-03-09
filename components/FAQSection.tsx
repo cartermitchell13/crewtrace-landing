@@ -22,7 +22,7 @@ export default function FAQSection() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.1]">
-                        Frequently Asked Questions
+                        Construction Time Tracking FAQ
                     </h2>
                     <p className="text-xl text-foreground/60 font-medium leading-relaxed max-w-2xl mx-auto">
                         Everything you need to know about modernizing crew tracking {publicIcpPhrase}.

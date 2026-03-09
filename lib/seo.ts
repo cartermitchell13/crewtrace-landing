@@ -4,9 +4,9 @@ import { getStaticSeoPolicy } from "@/lib/seoPolicy";
 export const siteConfig = {
     name: "Crewtrace",
     url: "https://getcrewtrace.com",
-    title: "Crewtrace | GPS Time Tracking for Construction Crews",
+    title: "Construction Time Tracking Software — GPS Verified | Crewtrace",
     description:
-        "Crewtrace helps construction companies eliminate payroll leakage with GPS-verified time tracking, geofencing, and audit-ready labor records.",
+        "Crewtrace is GPS-verified construction time tracking software that eliminates payroll errors, prevents time theft, and generates audit-ready labor records for contractors running field crews.",
     ogImage: "/images/og-ct.png",
 };
 
@@ -66,9 +66,9 @@ export function createPageMetadata({
         },
         robots: isNoIndex
             ? {
-                  index: false,
-                  follow: false,
-              }
+                index: false,
+                follow: false,
+            }
             : undefined,
     };
 }
