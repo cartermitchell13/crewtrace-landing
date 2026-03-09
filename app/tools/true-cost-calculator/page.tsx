@@ -14,6 +14,7 @@ import {
     AlertTriangle,
     CheckCircle2,
     ArrowRight,
+    ArrowDown,
     Calculator,
 } from "lucide-react";
 
@@ -149,7 +150,7 @@ export default function TrueCostCalculatorPage() {
                             className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
                         >
                             Use the Calculator
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                         </a>
                     </div>
                 </header>

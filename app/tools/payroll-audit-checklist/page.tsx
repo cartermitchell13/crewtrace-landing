@@ -13,6 +13,7 @@ import {
     Scale,
     Shield,
     ArrowRight,
+    ArrowDown,
     Calculator,
 } from "lucide-react";
 
@@ -124,10 +125,10 @@ export default function PayrollAuditChecklistPage() {
 
                         <a
                             href="#checklist"
-                            className="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-lg"
+                            className="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-lg group"
                         >
                             Start the Audit Risk Test
-                            <ArrowRight className="w-5 h-5" />
+                            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                         </a>
                     </div>
                 </header>
