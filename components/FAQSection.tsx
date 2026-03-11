@@ -5,7 +5,17 @@ import { Plus, Minus, HelpCircle } from "lucide-react";
 import { homeFaqItems } from "@/lib/faq";
 import { publicIcpPhrase } from "@/lib/messaging";
 
-export default function FAQSection() {
+type FAQSectionProps = {
+    eyebrow?: string;
+    title?: string;
+    description?: string;
+};
+
+export default function FAQSection({
+    eyebrow = "Support & Help",
+    title = "Construction Time Tracking FAQ",
+    description = `Everything you need to know about modernizing crew tracking ${publicIcpPhrase}.`,
+}: FAQSectionProps) {
     // We open the first FAQ item by default to encourage engagement and show the premium formatting
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -18,14 +28,14 @@ export default function FAQSection() {
                 <div className="text-center mb-16 md:mb-20 space-y-6">
                     <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-primary">
                         <HelpCircle size={14} className="text-primary" />
-                        <span>Support & Help</span>
+                        <span>{eyebrow}</span>
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.1]">
-                        Construction Time Tracking FAQ
+                        {title}
                     </h2>
                     <p className="text-xl text-foreground/60 font-medium leading-relaxed max-w-2xl mx-auto">
-                        Everything you need to know about modernizing crew tracking {publicIcpPhrase}.
+                        {description}
                     </p>
                 </div>
 
@@ -42,7 +52,10 @@ export default function FAQSection() {
                             >
                                 <button
                                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                                    className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none"
+                                    aria-expanded={isOpen}
+                                    aria-controls={`faq-panel-${index}`}
+                                    id={`faq-trigger-${index}`}
+                                    className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 >
                                     <span className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${isOpen ? "text-primary" : "text-foreground group-hover:text-primary/80"}`}>
                                         {faq.question}
@@ -59,6 +72,9 @@ export default function FAQSection() {
                                     </div>
                                 </button>
                                 <div
+                                    id={`faq-panel-${index}`}
+                                    role="region"
+                                    aria-labelledby={`faq-trigger-${index}`}
                                     className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                                         }`}
                                 >

@@ -1,7 +1,7 @@
 "use client";
 
-import { ShieldCheck, AlertTriangle, FileText, UserCheck, ArrowRight } from "lucide-react";
-import Button from "@/components/Button";
+import { ShieldCheck, AlertTriangle, FileText, UserCheck } from "lucide-react";
+import BookedCallLink from "@/components/BookedCallLink";
 
 export default function ComplianceAudit() {
     return (
@@ -27,7 +27,7 @@ export default function ComplianceAudit() {
                     </h2>
 
                     <div className="text-xl text-white font-medium leading-relaxed">
-                        One contractor faced a $50k fine because their records were "word of mouth."
+                        One contractor faced a $50k fine because their records were &ldquo;word of mouth.&rdquo;
                         <div className="mt-2 font-bold text-white">With Crewtrace, they achieved 100% compliance overnight.</div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ export default function ComplianceAudit() {
                             </p>
                             <div className="pt-4 border-t border-slate-100">
                                 <p className="text-sm font-bold text-primary italic">
-                                    "When the auditor saw our reports, the conversation changed instantly. We were done in 15 minutes."
+                                    &ldquo;When the auditor saw our reports, the conversation changed instantly. We were done in 15 minutes.&rdquo;
                                 </p>
                             </div>
                         </div>
@@ -79,9 +79,18 @@ export default function ComplianceAudit() {
                 </div>
 
                 <div className="mt-16 flex justify-center">
-                    <Button href="https://cal.com/crewtrace/15min" variant="white" size="lg">
+                    <BookedCallLink
+                        asButton
+                        buttonVariant="white"
+                        buttonSize="lg"
+                        cluster="home"
+                        templateType="homepage_compliance"
+                        landingPath="/"
+                        ctaLabel="Protect Your Business Now"
+                        ctaLocation="compliance"
+                    >
                         Protect Your Business Now
-                    </Button>
+                    </BookedCallLink>
                 </div>
             </div>
         </section>

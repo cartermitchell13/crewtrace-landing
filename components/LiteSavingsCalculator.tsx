@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect, useRef, type PointerEvent } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef, useId, type PointerEvent } from "react";
 import { Calculator, ArrowRight, TrendingDown } from "lucide-react";
+import BookedCallLink from "@/components/BookedCallLink";
 
 interface SliderProps {
     label: string;
@@ -16,6 +17,7 @@ interface SliderProps {
 
 const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange }: SliderProps) => {
     const percentage = ((value - min) / (max - min)) * 100;
+    const inputId = useId();
 
     const updateValueFromPointer = useCallback(
         (clientX: number, container: HTMLDivElement) => {
@@ -58,7 +60,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
     return (
         <div className="space-y-4">
             <div className="flex justify-between items-end">
-                <label className="text-[11px] font-bold text-white/80 uppercase tracking-widest">
+                <label htmlFor={inputId} className="text-[11px] font-bold text-white/80 uppercase tracking-widest">
                     {label}
                 </label>
                 <div className="text-2xl md:text-3xl font-bold tabular-nums text-white">
@@ -78,6 +80,7 @@ const Slider = ({ label, value, min, max, step, unit = "", prefix = "", onChange
                     style={{ left: `calc(${percentage}% - 16px)` }}
                 />
                 <input
+                    id={inputId}
                     type="range"
                     min={min}
                     max={max}
@@ -279,10 +282,12 @@ export default function LiteSavingsCalculator() {
                                     >
                                         Next best step
                                     </p>
-                                    <a
-                                        href="https://cal.com/crewtrace/15min"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <BookedCallLink
+                                        cluster="home"
+                                        templateType="homepage_savings_calculator"
+                                        landingPath="/"
+                                        ctaLabel="Book your free audit call"
+                                        ctaLocation="savings_calculator"
                                         className={`w-full bg-white text-[#0A0E17] font-bold py-5 md:py-6 rounded-2xl hover:bg-white/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg border-2 ${showAuditCue
                                             ? "border-primary shadow-[0_0_0_8px_rgba(47,39,206,0.2)] animate-[pulse_2s_ease-in-out_infinite]"
                                             : "border-transparent"
@@ -290,7 +295,7 @@ export default function LiteSavingsCalculator() {
                                     >
                                         Book your free audit call
                                         <ArrowRight size={20} />
-                                    </a>
+                                    </BookedCallLink>
                                 </div>
                             </div>
                         </div>
@@ -300,4 +305,3 @@ export default function LiteSavingsCalculator() {
         </section>
     );
 }
-

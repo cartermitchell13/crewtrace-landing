@@ -61,14 +61,14 @@ export const industryRecords: IndustryRecord[] = [
         icon: "home",
         primaryKeyword: "roofing contractor time tracking",
         primaryIntent: "roofing-payroll-time-tracking",
-        metaTitle: "Crewtrace for Roofing Contractors",
+        metaTitle: "Roofing Contractor Time Tracking Software | Crewtrace",
         metaDescription:
-            "GPS-verified time tracking for roofing crews to reduce payroll leakage and improve compliance confidence.",
-        heroTitle: "Stop paying roofers for hours they did not work",
+            "Roofing contractor time tracking software with a GPS time clock, mobile timesheets, and payroll-ready records for field crews.",
+        heroTitle: "Roofing contractor time tracking with a GPS time clock",
         heroSubtitle:
-            "Roofing crews start early and move fast. Crewtrace gives you GPS-verified proof of every hour before payroll approvals.",
+            "Keep every crew honest from the first arrival to the last wrap-up. Crewtrace gives you a clean, verified record before payroll is approved.",
         hubDescription:
-            "Track when roofing crews actually arrive, start, and wrap each site with verified clock events.",
+            "Track when roofing crews actually arrive, start, and wrap each site with verified clock events and payroll-ready timesheets.",
         hubStat: "Avg. $1,400/mo saved",
         painPoints: [
             {
@@ -130,16 +130,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "hvac",
         name: "HVAC",
         icon: "wind",
-        primaryKeyword: "hvac technician time tracking",
+        primaryKeyword: "hvac time tracking",
         primaryIntent: "hvac-service-time-tracking",
-        metaTitle: "Crewtrace for HVAC Teams",
+        metaTitle: "HVAC Time Tracking Software for Service Teams | Crewtrace",
         metaDescription:
-            "Track HVAC technicians across service calls with verified field time and cleaner payroll workflows.",
-        heroTitle: "Track HVAC technicians across every service call",
+            "HVAC time tracking software for service teams that need verified stops, cleaner dispatch visibility, and payroll-ready records.",
+        heroTitle: "HVAC time tracking for technicians in the field",
         heroSubtitle:
-            "Your technicians visit multiple locations daily. Crewtrace verifies time at each stop so payroll and dispatch stay aligned.",
+            "See where each technician worked, how long the stop took, and what should be paid. Crewtrace keeps dispatch, payroll, and job costing on the same page.",
         hubDescription:
-            "Track technicians across service calls with verified time logs and cleaner payroll handoff.",
+            "Track technicians across service calls with verified time logs, mobile clock-ins, and cleaner payroll handoff.",
         hubStat: "Avg. $1,200/mo saved",
         painPoints: [
             {
@@ -195,16 +195,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "plumbing",
         name: "Plumbing",
         icon: "droplets",
-        primaryKeyword: "plumbing crew time tracking",
+        primaryKeyword: "plumbing contractor time tracking",
         primaryIntent: "plumbing-job-time-verification",
-        metaTitle: "Crewtrace for Plumbing Contractors",
+        metaTitle: "Plumbing Contractor Time Tracking Software | Crewtrace",
         metaDescription:
-            "Verified field time for plumbing teams across residential, commercial, and emergency jobs.",
-        heroTitle: "Know exactly when plumbers arrive and leave",
+            "Plumbing contractor time tracking software for residential, commercial, and emergency crews that need verified field hours and payroll-ready records.",
+        heroTitle: "Plumbing contractor time tracking with verified field stops",
         heroSubtitle:
-            "Emergency calls, residential jobs, and commercial contracts need clean records. Crewtrace verifies the minutes that should be paid.",
+            "From emergency calls to scheduled jobs, Crewtrace shows what time was actually worked so payroll, billing, and overtime decisions are easier to trust.",
         hubDescription:
-            "See when plumbers clock in, leave, and return so overtime and billing decisions hold up.",
+            "See when plumbers clock in, leave, and return so overtime, billing, and payroll time tracking hold up.",
         hubStat: "Avg. $1,100/mo saved",
         painPoints: [
             {
@@ -258,16 +258,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "construction",
         name: "Construction",
         icon: "hard-hat",
-        primaryKeyword: "construction crew time tracking",
+        primaryKeyword: "construction time tracking",
         primaryIntent: "construction-crew-time-and-payroll-control",
-        metaTitle: "Crewtrace for Construction Crews",
+        metaTitle: "Construction Time Tracking Software | Crewtrace",
         metaDescription:
-            "Track construction crew hours with verified field data to reduce overpayment and payroll friction.",
-        heroTitle: "Control labor costs across active construction sites",
+            "Construction time tracking software with GPS time clocks, mobile timesheets, and payroll-ready exports for active job sites.",
+        heroTitle: "Construction time tracking software for field crews",
         heroSubtitle:
-            "Construction leaders need one verified source across changing sites. Crewtrace keeps payroll and field ops using the same record.",
+            "Give supervisors and payroll one version of the truth across every active site. Crewtrace turns daily clock events into records you can approve with confidence.",
         hubDescription:
-            "Track field time across active construction sites with verified clock events and cleaner payroll workflows.",
+            "Track field time across active construction sites with verified clock events, cleaner payroll workflows, and construction-ready reporting.",
         hubStat: "Avg. $2,100/mo saved",
         painPoints: [
             {
@@ -324,16 +324,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "general-contractors",
         name: "General Contractors",
         icon: "hard-hat",
-        primaryKeyword: "general contractor crew time tracking",
+        primaryKeyword: "contractor time tracking app",
         primaryIntent: "general-contractor-multi-crew-time-visibility",
-        metaTitle: "Crewtrace for General Contractors",
+        metaTitle: "Contractor Time Tracking App for General Contractors | Crewtrace",
         metaDescription:
-            "Track multiple crews and projects with one contractor-focused time tracking and payroll workflow.",
-        heroTitle: "Manage multiple crews across every job site",
+            "A contractor time tracking app for general contractors managing employees, subcontractors, multiple sites, and payroll in one workflow.",
+        heroTitle: "A contractor time tracking app for general contractors",
         heroSubtitle:
-            "When you are juggling subcontractors, employees, and multiple projects, Crewtrace gives one accountable record before payroll.",
+            "Keep employees, subcontractors, and site leads working from the same record. Crewtrace helps you close payroll faster without chasing down timesheets.",
         hubDescription:
-            "Manage multiple crews across different sites with one source of verified labor time.",
+            "Manage multiple crews across different sites with one source of verified labor time and subcontractor visibility.",
         hubStat: "Avg. $2,500/mo saved",
         painPoints: [
             {
@@ -388,16 +388,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "waterproofing",
         name: "Waterproofing",
         icon: "droplets",
-        primaryKeyword: "waterproofing crew time tracking",
+        primaryKeyword: "waterproofing contractor time tracking",
         primaryIntent: "waterproofing-job-time-and-crew-control",
-        metaTitle: "Crewtrace for Waterproofing Contractors",
+        metaTitle: "Waterproofing Contractor Time Tracking Software | Crewtrace",
         metaDescription:
-            "Track waterproofing crews across rotating jobs with verified start/stop records and payroll-ready outputs.",
-        heroTitle: "Keep waterproofing crews accountable across every job",
+            "Waterproofing contractor time tracking software with geofencing time tracking, mobile timesheets, and payroll-ready records.",
+        heroTitle: "Waterproofing contractor time tracking for rotating crews",
         heroSubtitle:
-            "Waterproofing teams move between inspections, prep, and install work quickly. Crewtrace verifies where time was worked before payroll.",
+            "Track prep, travel, and install work without the usual guesswork. Crewtrace gives you verified time records before small gaps turn into payroll disputes.",
         hubDescription:
-            "Verified time tracking for waterproofing crews rotating across commercial and residential properties.",
+            "Verified time tracking for waterproofing crews rotating across commercial and residential properties with geofenced clock-ins.",
         hubStat: "Avg. $1,500/mo saved",
         painPoints: [
             {
@@ -453,16 +453,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "landscaping",
         name: "Landscaping",
         icon: "trees",
-        primaryKeyword: "landscaping crew gps time tracking",
+        primaryKeyword: "landscaping time tracking",
         primaryIntent: "landscaping-multi-stop-time-tracking",
-        metaTitle: "Crewtrace for Landscaping Teams",
+        metaTitle: "Landscaping Time Tracking Software | Crewtrace",
         metaDescription:
-            "GPS time tracking for landscaping crews that move across properties all day.",
-        heroTitle: "GPS tracking for crews that move all day",
+            "Landscaping time tracking software with a GPS time clock, route visibility, and payroll-ready records for crews moving property to property.",
+        heroTitle: "Landscaping time tracking with a GPS time clock",
         heroSubtitle:
-            "Landscaping crews can hit many properties daily. Crewtrace verifies time per stop so route and payroll decisions stay grounded.",
+            "Know how long each stop took, where crews actually worked, and what hours should be paid. Crewtrace keeps routes, labor, and payroll grounded in real field activity.",
         hubDescription:
-            "GPS verification for outdoor job sites built for crews that move between locations.",
+            "GPS verification for outdoor job sites built for crews that move between locations and need cleaner payroll time tracking.",
         hubStat: "Avg. $900/mo saved",
         painPoints: [
             {
@@ -515,16 +515,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "concrete",
         name: "Concrete",
         icon: "layers",
-        primaryKeyword: "concrete crew labor time tracking",
+        primaryKeyword: "concrete contractor time tracking",
         primaryIntent: "concrete-pour-labor-time-accuracy",
-        metaTitle: "Crewtrace for Concrete Contractors",
+        metaTitle: "Concrete Contractor Time Tracking Software | Crewtrace",
         metaDescription:
-            "Track concrete labor hours against pour schedules with verified, payroll-ready data.",
-        heroTitle: "Accurate time tracking for pour schedules",
+            "Concrete contractor time tracking software for pour schedules, wait-time visibility, and payroll-ready labor records.",
+        heroTitle: "Concrete contractor time tracking that keeps every pour on budget",
         heroSubtitle:
-            "Concrete work runs on tight timelines. Crewtrace helps you separate active labor from wait time and delays.",
+            "Track prep time, wait time, and productive labor without the usual payroll guesswork. Crewtrace gives you cleaner records for every pour day.",
         hubDescription:
-            "Accurate time tracking for pour schedules so labor costs stay aligned to field reality.",
+            "Accurate time tracking for pour schedules so labor costs, wait time, and field reality stay aligned.",
         hubStat: "Avg. $1,300/mo saved",
         painPoints: [
             {
@@ -578,16 +578,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "electrical",
         name: "Electrical",
         icon: "alert-circle",
-        primaryKeyword: "electrical contractor overtime tracking",
+        primaryKeyword: "electrical contractor time tracking",
         primaryIntent: "electrical-overtime-and-compliance-control",
-        metaTitle: "Crewtrace for Electrical Contractors",
+        metaTitle: "Electrical Contractor Time Tracking Software | Crewtrace",
         metaDescription:
-            "Control overtime and compliance risk for electrical crews with verified field time and proactive alerts.",
-        heroTitle: "Reduce overtime leakage on electrical jobs",
+            "Electrical contractor time tracking software with overtime alerts, audit-ready records, and payroll-ready field data.",
+        heroTitle: "Electrical contractor time tracking with overtime control",
         heroSubtitle:
-            "Electrical projects can run long with last-minute scope shifts. Crewtrace alerts your team before overtime becomes a payroll surprise.",
+            "Catch overtime problems early and keep every edit tied to a clear field record. Crewtrace helps you stay ahead of payroll surprises on fast-moving jobs.",
         hubDescription:
-            "Verified time tracking and overtime exception control for electrical contractors.",
+            "Verified time tracking and overtime exception control for electrical contractors that need stronger payroll confidence.",
         hubStat: "Avg. $1,600/mo saved",
         painPoints: [
             {

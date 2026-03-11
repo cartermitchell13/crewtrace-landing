@@ -24,6 +24,31 @@ import { featureBySlug, featureSlugs, getFeaturesBySlugs } from "@/lib/solutions
 
 const detailMessaging = getTemplateMessaging("feature_detail");
 
+const supportKeywordByFeatureSlug: Record<string, string[]> = {
+    "gps-time-tracking": ["time clock app with gps", "gps time tracking app", "gps employee tracking app"],
+    "payroll-leakage-prevention": ["payroll time tracking", "construction payroll software", "employee time clock"],
+    "dol-compliance": ["department of labor time clock rules", "labor laws clocking in and out", "audit-ready time records"],
+    "geofencing-time-clock": ["geofencing time tracking", "geofence time clock", "clock in app with gps"],
+    "payroll-exports": ["payroll time tracking software", "construction payroll software", "time tracking payroll"],
+    "overtime-alerts": ["overtime tracking", "overtime tracking software", "employee time tracking"],
+};
+
+function joinKeywordList(items: string[]) {
+    if (items.length === 0) {
+        return "";
+    }
+
+    if (items.length === 1) {
+        return items[0];
+    }
+
+    if (items.length === 2) {
+        return `${items[0]} and ${items[1]}`;
+    }
+
+    return `${items.slice(0, -1).join(", ")}, and ${items.at(-1)}`;
+}
+
 function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
 }
@@ -50,8 +75,8 @@ export async function generateMetadata({
     }
 
     return createPageMetadata({
-        title: `${solution.name} Feature for Contractors`,
-        description: solution.description,
+        title: solution.metaTitle,
+        description: solution.metaDescription,
         path: `/features/${slug}`,
     });
 }
@@ -73,8 +98,8 @@ export default async function FeatureDetailPage({
         crossClusterLimit: 5,
     });
     const articleJsonLd = articleSchema({
-        headline: solution.name,
-        description: solution.description,
+        headline: solution.metaTitle,
+        description: solution.metaDescription,
         path: `/features/${slug}`,
     });
     const breadcrumbJsonLd = breadcrumbSchema([
@@ -84,6 +109,8 @@ export default async function FeatureDetailPage({
     ]);
 
     const relatedFeatures = getFeaturesBySlugs(detailLinks.siblingFeatureSlugs);
+    const supportKeywordLine = joinKeywordList(supportKeywordByFeatureSlug[solution.slug] ?? []);
+    const faqDescription = `Answers to common questions about ${solution.primaryKeyword}, rollout expectations, and how Crewtrace fits payroll and field operations.`;
 
     return (
         <div className="min-h-screen bg-background">
@@ -113,10 +140,10 @@ export default async function FeatureDetailPage({
                             {solution.primaryKeyword}
                         </p>
                         <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[4.5rem]">
-                            {solution.name}
+                            {solution.heroTitle}
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            {solution.description}
+                            {solution.heroSubtitle} Built {publicIcpPhrase}. {orderedPromiseLine}
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4">
@@ -173,8 +200,11 @@ export default async function FeatureDetailPage({
                                 <span>The Workflow Transformation</span>
                             </div>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                From chaos to <span className="text-primary italic">control.</span>
+                                Why teams buy <span className="text-primary italic">{solution.primaryKeyword}</span>
                             </h2>
+                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center lg:text-left">
+                                Buyers are not looking for another isolated feature. They want a workflow that fixes the field problem and gives payroll something they can actually trust.
+                            </p>
                         </div>
 
                         <div className="grid gap-8 lg:grid-cols-2">
@@ -227,10 +257,10 @@ export default async function FeatureDetailPage({
                                 <span>ROI & Impact</span>
                             </div>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                Expected outcomes
+                                What better {solution.primaryKeyword} should change
                             </h2>
                             <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/60 font-medium">
-                                Companies using this workflow typically see these operational improvements within 30 days.
+                                Teams that replace manual workarounds with this workflow usually see these operating gains first.
                             </p>
                         </div>
 
@@ -256,7 +286,11 @@ export default async function FeatureDetailPage({
 
                 <LiteSavingsCalculator />
 
-                <FAQSection />
+                <FAQSection
+                    eyebrow={`${solution.name} FAQ`}
+                    title={`${solution.name} FAQ`}
+                    description={faqDescription}
+                />
 
                 {/* Ecosystem Links */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -268,7 +302,7 @@ export default async function FeatureDetailPage({
                                     Related industries
                                 </h2>
                                 <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
-                                    Trade-specific implementation details for this workflow across your core service lines.
+                                    See how this workflow gets applied across the trades most likely to buy {solution.primaryKeyword}.
                                 </p>
                                 <div className="flex flex-wrap gap-3">
                                     {detailLinks.relatedIndustrySlugs.map((industrySlug) => (
@@ -290,16 +324,23 @@ export default async function FeatureDetailPage({
                                     Adjacent workflows
                                 </h2>
                                 <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
-                                    Build depth with related controls ranked by operational overlap and data flow.
+                                    Buyers evaluating {solution.primaryKeyword} often compare it with {supportKeywordLine || "adjacent controls that tighten the same workflow"}.
                                 </p>
                                 <div className="space-y-4">
                                     {relatedFeatures.map((related) => (
                                         <Link
                                             key={related.slug}
                                             href={`/features/${related.slug}`}
-                                            className="group flex items-center justify-between rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                            className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                         >
-                                            <span className="font-bold text-foreground group-hover:text-primary transition-colors">{related.name}</span>
+                                            <div>
+                                                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                                                    {related.name}
+                                                </p>
+                                                <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-foreground/60">
+                                                    {related.description}
+                                                </p>
+                                            </div>
                                             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                                                 <ArrowRight size={18} />
                                             </div>

@@ -62,6 +62,54 @@ const iconByKey: Record<IndustryIconKey, LucideIcon> = {
     "shield-check": ShieldCheck,
 };
 
+const supportKeywordByFeatureSlug: Record<string, string> = {
+    "gps-time-tracking": "gps time clock",
+    "geofencing-time-clock": "geofencing time tracking",
+    "payroll-leakage-prevention": "payroll time tracking",
+    "payroll-exports": "mobile timesheet app",
+    "dol-compliance": "audit-ready time records",
+    "overtime-alerts": "overtime tracking",
+};
+
+const supportKeywordByIndustrySlug: Record<string, string[]> = {
+    roofing: ["mobile time clock", "time clock app with gps"],
+    hvac: ["field service time tracking", "mobile time clock"],
+    plumbing: ["field service time tracking", "payroll time tracking"],
+    construction: ["construction time tracking software", "construction timesheet app"],
+    "general-contractors": ["contractor time tracking app", "subcontractor time tracking"],
+    waterproofing: ["geofencing time tracking", "mobile timesheet app"],
+    landscaping: ["landscaping time tracking software", "time clock app with gps"],
+    concrete: ["mobile timesheet app", "construction time clock"],
+    electrical: ["payroll time tracking", "employee time tracking app"],
+};
+
+function joinKeywordList(items: string[]) {
+    if (items.length === 0) {
+        return "";
+    }
+
+    if (items.length === 1) {
+        return items[0];
+    }
+
+    if (items.length === 2) {
+        return `${items[0]} and ${items[1]}`;
+    }
+
+    return `${items.slice(0, -1).join(", ")}, and ${items.at(-1)}`;
+}
+
+function getSupportKeywords(industry: IndustryRecord, relatedFeatureSlugs: string[]) {
+    return Array.from(
+        new Set([
+            ...(supportKeywordByIndustrySlug[industry.slug] ?? []),
+            ...relatedFeatureSlugs
+                .map((featureSlug) => supportKeywordByFeatureSlug[featureSlug])
+                .filter((keyword): keyword is string => Boolean(keyword)),
+        ]),
+    ).slice(0, 4);
+}
+
 const industryMessaging = getTemplateMessaging("industry_detail");
 
 export function generateStaticParams() {
@@ -109,8 +157,8 @@ export default async function IndustryPage({
         crossClusterLimit: 5,
     });
     const articleJsonLd = articleSchema({
-        headline: `Crewtrace for ${industry.name}`,
-        description: industry.heroSubtitle,
+        headline: industry.metaTitle,
+        description: industry.metaDescription,
         path: `/industries/${slug}`,
     });
     const breadcrumbJsonLd = breadcrumbSchema([
@@ -124,6 +172,29 @@ export default async function IndustryPage({
     const siblingIndustries: IndustryRecord[] = detailLinks.siblingIndustrySlugs
         .map((siblingSlug) => industryBySlug[siblingSlug])
         .filter((record): record is IndustryRecord => Boolean(record));
+    const supportKeywords = getSupportKeywords(industry, detailLinks.relatedFeatureSlugs);
+    const supportKeywordLine = joinKeywordList(supportKeywords);
+    const evaluationPoints = [
+        {
+            title: `Pick ${industry.primaryKeyword} that verifies each job site`,
+            description:
+                `A strong ${industry.primaryKeyword} workflow should confirm where crews actually started, moved, and wrapped so supervisors are not approving hours from memory.`,
+            icon: MapPin,
+        },
+        {
+            title: "Keep payroll time tracking tied to field evidence",
+            description:
+                "Paper timesheets and back-office edits create labor leakage. Crewtrace keeps approved hours, breaks, and overtime connected to the same field record your payroll team reviews.",
+            icon: ShieldCheck,
+        },
+        {
+            title: "Use a contractor time tracking app crews adopt fast",
+            description:
+                "Fast mobile clock-ins, clear job switching, and simple exception review matter more than feature bloat when you need consistent adoption across busy crews.",
+            icon: Target,
+        },
+    ];
+    const faqDescription = `Answers to common questions about ${industry.primaryKeyword}, ${supportKeywordLine || "gps time clocks"}, and payroll-ready workflows for ${industry.name.toLowerCase()} teams.`;
 
     return (
         <div className="min-h-screen bg-background">
@@ -214,8 +285,11 @@ export default async function IndustryPage({
                                 <span>Common Challenges</span>
                             </div>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl text-center">
-                                What crews in <span className="text-primary italic">{industry.name}</span> usually struggle with
+                                Why <span className="text-primary italic">{industry.primaryKeyword}</span> breaks down on real jobs
                             </h2>
+                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center">
+                                Most teams do not lose money because they lack a timer. They lose it when clock-ins, site changes, breaks, and payroll approvals live in separate systems.
+                            </p>
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-3">
@@ -246,8 +320,11 @@ export default async function IndustryPage({
                                 <span>Solutions & Benefits</span>
                             </div>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl text-center">
-                                Recommended workflow stack for <span className="text-emerald-600 italic">{industry.name}</span>
+                                {industry.name} time tracking software that payroll and field leads can trust
                             </h2>
+                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center">
+                                Use Crewtrace as your {supportKeywordLine || "mobile time clock and payroll time tracking workflow"} so hours, locations, and exceptions stay attached to one defensible record.
+                            </p>
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-2">
@@ -275,6 +352,46 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06)_0%,transparent_65%)]" />
+
+                    <div className="mx-auto max-w-6xl relative z-10">
+                        <div className="mb-16 text-center flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
+                                <Zap size={14} />
+                                <span>What To Look For</span>
+                            </div>
+                            <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl text-center">
+                                What buyers expect from {industry.primaryKeyword}
+                            </h2>
+                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center">
+                                Search demand shows buyers are comparing more than a basic timecard. They want location proof, mobile adoption, and payroll-ready outputs in the same system.
+                            </p>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-3">
+                            {evaluationPoints.map((point) => {
+                                const PointIcon = point.icon;
+                                return (
+                                    <article
+                                        key={point.title}
+                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                    >
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
+                                            <PointIcon size={24} />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-foreground mb-4">{point.title}</h3>
+                                        <p className="text-base leading-relaxed text-foreground/70 font-medium">
+                                            {point.description}
+                                        </p>
+                                        <div className="absolute -right-12 -bottom-12 h-36 w-36 rounded-full bg-primary/[0.03] blur-3xl group-hover:bg-primary/[0.07] transition-colors duration-500" />
+                                    </article>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
                 {/* Outcomes Section */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl relative z-10">
@@ -284,10 +401,10 @@ export default async function IndustryPage({
                                 <span>Current Data</span>
                             </div>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                Current operating signals
+                                What better {industry.primaryKeyword} should change
                             </h2>
                             <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/60 font-medium">
-                                Average metrics for companies implementing this stack in your industry.
+                                Average operating signals for teams replacing paper logs or disconnected apps with verified payroll time tracking.
                             </p>
                         </div>
 
@@ -310,7 +427,11 @@ export default async function IndustryPage({
 
                 <LiteSavingsCalculator />
 
-                <FAQSection />
+                <FAQSection
+                    eyebrow={`${industry.name} FAQ`}
+                    title={`${industry.name} Time Tracking FAQ`}
+                    description={faqDescription}
+                />
 
                 {/* Ecosystem Links */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -322,16 +443,23 @@ export default async function IndustryPage({
                                     Related feature paths
                                 </h2>
                                 <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
-                                    These feature pages are linked by deterministic overlap so teams can expand without losing focus.
+                                    These feature pages deepen the supporting topics buyers search alongside {industry.primaryKeyword}, including {supportKeywordLine || "gps time clocks and payroll time tracking"}.
                                 </p>
                                 <div className="space-y-4">
                                     {relatedSolutions.map((solution) => (
                                         <Link
                                             key={solution.slug}
                                             href={`/features/${solution.slug}`}
-                                            className="group flex items-center justify-between rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                            className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                         >
-                                            <span className="font-bold text-foreground group-hover:text-primary transition-colors">{solution.name}</span>
+                                            <div>
+                                                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                                                    {solution.name}
+                                                </p>
+                                                <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-foreground/60">
+                                                    {solution.description}
+                                                </p>
+                                            </div>
                                             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                                                 <ArrowRight size={18} />
                                             </div>
@@ -346,7 +474,7 @@ export default async function IndustryPage({
                                     Related industries
                                 </h2>
                                 <p className="mb-8 text-lg text-foreground/60 font-medium leading-relaxed">
-                                    Keep crawl depth and route continuity with these adjacent industry pages.
+                                    Explore adjacent trade pages that reinforce topical authority around contractor time tracking, GPS verification, and payroll control.
                                 </p>
                                 <div className="flex flex-wrap gap-3">
                                     {siblingIndustries.map((relatedIndustry) => (

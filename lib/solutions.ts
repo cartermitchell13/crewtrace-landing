@@ -5,6 +5,10 @@ export interface FeatureRecord {
     description: string;
     primaryKeyword: string;
     primaryIntent: string;
+    metaTitle: string;
+    metaDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
     relatedIndustries: string[];
     challenges: string[];
     capabilities: string[];
@@ -17,9 +21,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "GPS Time Tracking",
         tagline: "Tie every clock event to the actual job site in real time.",
         description:
-            "Replace paper timesheets with GPS-verified clock-ins and clock-outs so payroll decisions start from field evidence, not memory.",
-        primaryKeyword: "gps time tracking for construction",
+            "Give supervisors a GPS-verified record of where crews clocked in and out so payroll starts from field proof, not memory.",
+        primaryKeyword: "gps time clock",
         primaryIntent: "gps-verified-contractor-time-tracking",
+        metaTitle: "GPS Time Clock for Construction Crews | Crewtrace",
+        metaDescription:
+            "GPS time clock with jobsite verification, mobile clock-ins, and cleaner payroll approvals for contractors running field crews.",
+        heroTitle: "A GPS time clock built for moving crews",
+        heroSubtitle:
+            "See where crews clocked in, when they left, and what hours should be paid. Crewtrace gives supervisors a field record they can trust before payroll closes.",
         relatedIndustries: [
             "roofing",
             "plumbing",
@@ -48,9 +58,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "Payroll Leakage Prevention",
         tagline: "Find and correct labor leakage during the week, not after payroll.",
         description:
-            "Identify hidden overpayment patterns including early punch-ins, long breaks, and unverified overtime before they compound.",
-        primaryKeyword: "reduce payroll leakage construction",
+            "Find early punch-ins, long breaks, and overtime leaks before payroll day so labor costs stop drifting.",
+        primaryKeyword: "construction payroll software",
         primaryIntent: "construction-payroll-overpayment-prevention",
+        metaTitle: "Construction Payroll Software for Labor Cost Control | Crewtrace",
+        metaDescription:
+            "Construction payroll software that helps contractors catch early punch-ins, long breaks, and overtime leaks before they turn into overpayment.",
+        heroTitle: "Construction payroll software starts with clean field time",
+        heroSubtitle:
+            "If your team is fixing timesheets on payroll day, the real problem starts earlier. Crewtrace helps you catch small leaks before they turn into expensive overpayment.",
         relatedIndustries: [
             "general-contractors",
             "concrete",
@@ -83,9 +99,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "DOL Compliance Tracking",
         tagline: "Maintain audit-ready time records for wage and hour reviews.",
         description:
-            "Maintain defensible time records, approval history, and location context so compliance reviews are straightforward and traceable.",
-        primaryKeyword: "construction time tracking compliance",
+            "Keep defensible time records, approval history, and location context in one place so wage and hour reviews are easier to handle.",
+        primaryKeyword: "department of labor time clock rules",
         primaryIntent: "dol-flsa-contractor-timekeeping-compliance",
+        metaTitle: "Department of Labor Time Clock Rules and Audit Records | Crewtrace",
+        metaDescription:
+            "Track the records behind department of labor time clock rules with edit history, approvals, and jobsite context built for contractors.",
+        heroTitle: "Stay ready for DOL time clock reviews",
+        heroSubtitle:
+            "Keep each edit, approval, and location record in one place so wage and hour questions do not turn into a last-minute scramble.",
         relatedIndustries: [
             "general-contractors",
             "roofing",
@@ -115,9 +137,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "Geofencing Time Clock",
         tagline: "Set clock-in boundaries that match how jobs are actually staffed.",
         description:
-            "Use custom geofence zones per project so workers can only clock in when physically inside approved work areas.",
-        primaryKeyword: "geofence time clock",
+            "Use custom geofence zones so crews can only clock in when they are physically inside the right work area.",
+        primaryKeyword: "geofencing time tracking",
         primaryIntent: "jobsite-geofenced-time-clock",
+        metaTitle: "Geofencing Time Tracking for Job Sites | Crewtrace",
+        metaDescription:
+            "Geofencing time tracking for contractors who need on-site clock-ins, fewer off-site punches, and cleaner project records.",
+        heroTitle: "Geofencing time tracking that matches the real job site",
+        heroSubtitle:
+            "Allow crews to clock in only where they are supposed to work. Crewtrace helps you stop off-site punches without slowing the day down.",
         relatedIndustries: ["landscaping", "concrete", "roofing", "waterproofing"],
         challenges: [
             "Crews moving between multiple sites in one day",
@@ -140,9 +168,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "Payroll Exports",
         tagline: "Send payroll-ready files without last-minute reformatting.",
         description:
-            "Export approved hours in payroll-friendly formats so payroll teams can finalize runs faster and with fewer corrections.",
-        primaryKeyword: "construction payroll export",
+            "Move approved hours into payroll faster with exports your back office can use without last-minute cleanup.",
+        primaryKeyword: "payroll time tracking software",
         primaryIntent: "contractor-payroll-export-workflow",
+        metaTitle: "Payroll Time Tracking Software for Faster Exports | Crewtrace",
+        metaDescription:
+            "Payroll time tracking software that turns approved field hours into payroll-ready exports with fewer corrections and less admin work.",
+        heroTitle: "Payroll time tracking software without last-minute cleanup",
+        heroSubtitle:
+            "Give payroll a cleaner handoff from the field. Crewtrace helps your team move approved hours faster and with fewer corrections.",
         relatedIndustries: [
             "plumbing",
             "hvac",
@@ -170,9 +204,15 @@ export const featureRecords: FeatureRecord[] = [
         name: "Overtime Alerts",
         tagline: "Catch overtime spikes early enough to intervene the same day.",
         description:
-            "Track overtime risk in real time with configurable alerts so field leads can correct schedule and labor issues before payroll closes.",
-        primaryKeyword: "construction overtime alert software",
+            "Track overtime risk in real time so field leads can fix schedule and labor problems before payroll closes.",
+        primaryKeyword: "overtime tracking",
         primaryIntent: "construction-overtime-risk-alerts",
+        metaTitle: "Overtime Tracking for Field Crews | Crewtrace",
+        metaDescription:
+            "Overtime tracking for contractors who need earlier alerts, faster supervisor action, and fewer payroll surprises on active jobs.",
+        heroTitle: "Overtime tracking before payroll gets expensive",
+        heroSubtitle:
+            "Give supervisors time to fix schedule overruns the same day. Crewtrace flags overtime risk early enough to change the outcome.",
         relatedIndustries: ["construction", "hvac", "roofing", "electrical"],
         challenges: [
             "Unexpected overtime spikes discovered only at payroll close",
