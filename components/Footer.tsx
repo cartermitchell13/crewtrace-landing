@@ -40,12 +40,9 @@ export default function Footer() {
                     {/* Bottom Metadata */}
                     <div className="mt-16 w-full flex flex-col md:flex-row justify-between items-center gap-8">
                         <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-all cursor-pointer group hover:-translate-y-1">
-                                <span className="text-white/40 group-hover:text-white text-xs font-bold">X</span>
-                            </div>
-                            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-all cursor-pointer group hover:-translate-y-1">
+                            <Link href="https://www.linkedin.com/in/cartermitchell98" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary transition-all group hover:-translate-y-1">
                                 <span className="text-white/40 group-hover:text-white text-xs font-bold">In</span>
-                            </div>
+                            </Link>
                         </div>
 
                         <div className="text-xs font-bold !text-white/20 uppercase tracking-[0.2em]">
