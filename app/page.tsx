@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import PricingSection from "@/components/PricingSection";
 import { homeFaqItems } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/seo";
 import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
@@ -43,6 +44,7 @@ export default function Home() {
         <ProcessSection />
         <ComplianceAudit />
         <LiteSavingsCalculator />
+        <PricingSection />
         <FAQSection />
         <CTASection />
       </main>

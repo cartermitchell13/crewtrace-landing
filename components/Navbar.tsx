@@ -515,9 +515,9 @@ export default function Navbar() {
                             {/* Right: Get Started CTA */}
                             <div className="bg-gradient-to-br from-primary to-primary/90 p-6 flex flex-col justify-center border-l border-foreground/5">
                                 <h4 className="text-lg font-bold text-white">Ready to get started?</h4>
-                                <p className="text-sm text-white/80 mt-2 leading-relaxed">
+                                <div className="text-sm text-white mt-2 leading-relaxed">
                                     Book a free demo and see how Crewtrace can save you thousands every month.
-                                </p>
+                                </div>
                                 <div className="mt-4">
                                     <a
                                         href="https://cal.com/crewtrace/15min"
