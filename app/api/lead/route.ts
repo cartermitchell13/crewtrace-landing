@@ -128,6 +128,7 @@ function buildLeadSmsMessage(lead: LeadPayload) {
 async function sendLeadSmsNotification(lead: LeadPayload): Promise<boolean> {
     const twilio = getTwilioConfig();
     if (!twilio) {
+        console.error("Twilio SMS notification skipped: missing Twilio configuration.");
         return false;
     }
 
@@ -152,6 +153,15 @@ async function sendLeadSmsNotification(lead: LeadPayload): Promise<boolean> {
             body: body.toString(),
         },
     );
+
+    if (!response.ok) {
+        const errorBody = await response.text().catch(() => "");
+        console.error("Twilio SMS notification failed.", {
+            status: response.status,
+            statusText: response.statusText,
+            body: errorBody,
+        });
+    }
 
     return response.ok;
 }
@@ -232,7 +242,10 @@ export async function POST(request: Request) {
     }
 
     if (persisted) {
-        await sendLeadSmsNotification(validated.data).catch(() => false);
+        await sendLeadSmsNotification(validated.data).catch((error) => {
+            console.error("Twilio SMS notification threw an error.", error);
+            return false;
+        });
     }
 
     if (forwardingUrl) {
