@@ -1,8 +1,8 @@
 import Image from "next/image";
-import BookedCallLink from "@/components/BookedCallLink";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
     getTemplateMessaging,
-    publicIcpPhrase,
 } from "@/lib/messaging";
 
 const homeMessaging = getTemplateMessaging("home");
@@ -22,7 +22,7 @@ export default function Hero() {
                     {/* Left Column - Copy & CTAs */}
                     <div className="max-w-2xl text-left">
                         <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
-                            Get a 360° Profit Leakage Report
+                            Get a personalized demo + quote
                         </p>
 
                         <h1 className="mb-8 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5rem]">
@@ -37,18 +37,13 @@ export default function Hero() {
 
                         {/* CTA Box styling modernized */}
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <BookedCallLink
-                                asButton
-                                buttonSize="lg"
-                                cluster="home"
-                                templateType="homepage_hero"
-                                landingPath="/"
-                                ctaLabel={homeMessaging.primaryCta}
-                                ctaLocation="hero_primary"
-                                className="w-full sm:w-auto cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl transition-all hover:-translate-y-0.5"
+                            <Link
+                                href="/contact"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5"
                             >
-                                {homeMessaging.primaryCta}
-                            </BookedCallLink>
+                                Get a Personalized Demo
+                                <ArrowRight size={18} />
+                            </Link>
                             <a
                                 href="#process"
                                 className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group"
@@ -83,7 +78,7 @@ export default function Hero() {
                                 </svg>
                             </span>
                             <p className="text-sm font-medium text-foreground/60">
-                                15-minute audit call. <span className="text-foreground/80">See your current leakage risk and next steps.</span>
+                                No sales call required. <span className="text-foreground/80">Get a tailored walkthrough and quote in one business day.</span>
                             </p>
                         </div>
                     </div>

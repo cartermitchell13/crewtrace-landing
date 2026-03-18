@@ -56,8 +56,8 @@ export const intentHeadlineOptions = {
         "Use proof-linked comparisons instead of feature-checklist guesses.",
     ],
     contact: [
-        "Get a 15-minute payroll leakage audit for your crew setup.",
-        "Talk through your rollout plan before you commit budget.",
+        "See how CrewTrace fits your operation.",
+        "Get a personalized demo and pricing guidance for your crew setup.",
     ],
 } as const;
 
@@ -70,10 +70,10 @@ export const proofLedBodyHelpers = {
 } as const;
 
 export const ctaFramingVariants = {
-    primary: "Book Free Audit",
+    primary: "Get a Personalized Demo",
     secondary: "See the rollout workflow",
     compare: "Pressure-test our fit for your workflow",
-    contact: "Send my team setup details",
+    contact: "Get Your Personalized Demo",
 } as const;
 
 export type MessagingTemplate =

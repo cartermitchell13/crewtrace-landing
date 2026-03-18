@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookedCallLink from "@/components/BookedCallLink";
 import {
     competitorBySlug,
     competitorSlugs,
@@ -383,16 +382,12 @@ export default async function CompareDetailPage({
                                 {competitor.softCtaBody}
                             </p>
                         </div>
-                        <BookedCallLink
-                            cluster="compare"
-                            templateType="competitor_detail"
-                            landingPath={`/compare/${slug}`}
-                            ctaLabel={compareDetailMessaging.primaryCta}
-                            ctaLocation="footer_cta"
+                        <Link
+                            href="/contact"
                             className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
                         >
                             {compareDetailMessaging.primaryCta}
-                        </BookedCallLink>
+                        </Link>
                     </section>
                 </article>
             </main>

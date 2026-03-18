@@ -1,7 +1,6 @@
 import { CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
-import BookedCallLink from "@/components/BookedCallLink";
+import Link from "next/link";
 import {
-    getTemplateMessaging,
     orderedPromiseLine,
     publicIcpPhrase,
 } from "@/lib/messaging";
@@ -13,12 +12,10 @@ type CTASectionProps = {
 };
 
 export default function CTASection({
-    cluster = "home",
-    templateType = "shared_cta",
-    landingPath = "/",
+    cluster: _cluster = "home",
+    templateType: _templateType = "shared_cta",
+    landingPath: _landingPath = "/",
 }: CTASectionProps) {
-    const messaging = getTemplateMessaging("home");
-
     return (
         <section id="audit" className="relative overflow-hidden bg-background px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
             <div className="mx-auto max-w-7xl">
@@ -31,16 +28,16 @@ export default function CTASection({
                     <div className="relative z-10 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-[#B2ACFF] backdrop-blur-md">
-                                {messaging.primaryCta}
+                                Get a personalized demo + quote
                             </div>
 
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-white">
-                                Book a short audit and leave with a clear payroll action plan.
+                                See exactly how CrewTrace fits your operation.
                             </h2>
 
                             <div className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-slate-300">
-                                We review your time-tracking flow to identify hidden leakage and map
-                                the fastest rollout steps {publicIcpPhrase}.{" "}
+                                Answer a few quick questions and we&apos;ll send back a
+                                tailored demo walkthrough and pricing guidance {publicIcpPhrase}.{" "}
                                 {orderedPromiseLine}
                             </div>
 
@@ -49,13 +46,13 @@ export default function CTASection({
                                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1c223b] text-primary">
                                         <CheckCircle2 size={14} />
                                     </span>
-                                    ROI signal in 15 minutes
+                                    Personalized walkthrough
                                 </div>
                                 <div className="inline-flex items-center gap-3">
                                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1c223b] text-primary">
                                         <CheckCircle2 size={14} />
                                     </span>
-                                    No hard-sell close call
+                                    No hard-sell call
                                 </div>
                             </div>
                         </div>
@@ -71,28 +68,23 @@ export default function CTASection({
                                 </div>
 
                                 <div className="text-base font-medium leading-relaxed text-slate-200 mb-8">
-                                    If Crewtrace is not a fit for your workflow, we tell you directly.
+                                    If CrewTrace is not a fit for your workflow, we tell you directly.
                                     If it is a fit, you get a rollout sequence your team can use.
                                 </div>
 
-                                <BookedCallLink
-                                    asButton={false}
-                                    cluster={cluster}
-                                    templateType={templateType}
-                                    landingPath={landingPath}
-                                    ctaLabel={messaging.primaryCta}
-                                    ctaLocation="lower_page"
+                                <Link
+                                    href="/contact"
                                     className="w-full bg-white text-[#0A0E17] font-bold py-5 md:py-6 rounded-2xl hover:bg-white/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg border-2 border-transparent shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:scale-[1.01]"
                                 >
-                                    {messaging.primaryCta}
+                                    Get a Personalized Demo
                                     <ArrowRight size={20} />
-                                </BookedCallLink>
+                                </Link>
 
                                 <div className="mt-6 flex items-start gap-3">
                                     <div className="mt-1 h-2 w-2 rounded-full bg-primary animate-pulse shrink-0" />
                                     <div className="text-xs leading-relaxed text-slate-400">
-                                        We cover workflow fit and rollout order in the same audit call, so
-                                        you leave with one clear next step. Calendar opens in a new tab.
+                                        Takes about 60 seconds. We respond within one business day
+                                        with a walkthrough tailored to your crew setup.
                                     </div>
                                 </div>
                             </div>

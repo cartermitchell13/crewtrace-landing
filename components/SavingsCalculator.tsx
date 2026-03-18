@@ -862,12 +862,10 @@ export default function SavingsCalculator() {
                             </p>
                         </div>
                         <a
-                            href="https://cal.com/crewtrace/15min"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/contact"
                             className="bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 text-base group whitespace-nowrap shrink-0"
                         >
-                            Book a Free Audit Call
+                            Get a Personalized Demo
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </div>

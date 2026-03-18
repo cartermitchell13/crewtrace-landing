@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookedCallLink from "@/components/BookedCallLink";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
@@ -220,16 +219,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 <p className="text-lg md:text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed balance-text">
                                     Book a free demo and see exactly how Crewtrace can save your business thousands of dollars every single month.
                                 </p>
-                                <BookedCallLink
-                                    cluster="blog"
-                                    templateType="blog_detail"
-                                    landingPath={`/blog/${slug}`}
-                                    ctaLabel="Book Your Free Demo"
-                                    ctaLocation="footer_cta"
+                                <Link
+                                    href="/contact"
                                     className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-xl shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
                                 >
-                                    Book Your Free Demo
-                                </BookedCallLink>
+                                    Get a Personalized Demo
+                                </Link>
                             </div>
                         </div>
 

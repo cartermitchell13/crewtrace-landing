@@ -1,7 +1,6 @@
 import { LucideIcon, MapPin, BarChart3, FileCheck2, FileDown, Clock, CheckCircle2, ArrowUpRight, BellRing } from "lucide-react";
 import React from "react";
 import Link from "next/link";
-import BookedCallLink from "@/components/BookedCallLink";
 
 interface BentoCardProps {
     title: string;
@@ -222,18 +221,12 @@ export default function FeatureGrid() {
                                     <div className="text-4xl font-bold text-secondary mb-1">2 Weeks</div>
                                     <div className="text-sm font-bold opacity-80 uppercase tracking-widest">Time to ROI</div>
                                 </div>
-                                <BookedCallLink
-                                    asButton
-                                    buttonVariant="white"
-                                    buttonSize="lg"
-                                    cluster="home"
-                                    templateType="homepage_feature_grid"
-                                    landingPath="/"
-                                    ctaLabel="Calculate Your ROI"
-                                    ctaLocation="feature_grid_case_study"
+                                <Link
+                                    href="/calculator"
+                                    className="inline-flex items-center justify-center gap-2 font-bold rounded-xl shadow-button transition-all whitespace-nowrap hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg"
                                 >
                                     Calculate Your ROI
-                                </BookedCallLink>
+                                </Link>
                             </div>
                         </div>
                     </div>

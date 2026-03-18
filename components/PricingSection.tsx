@@ -1,5 +1,5 @@
 import { Check, ArrowRight, Clock, Zap } from "lucide-react";
-import BookedCallLink from "@/components/BookedCallLink";
+import Link from "next/link";
 
 export default function PricingSection() {
     return (
@@ -53,20 +53,18 @@ export default function PricingSection() {
                                 </div>
                             </div>
 
-                            <BookedCallLink
-                                asButton={false}
-                                ctaLabel="Claim Founding Offer"
-                                ctaLocation="pricing"
+                            <Link
+                                href="/contact"
                                 className="group/btn relative w-full overflow-hidden bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-primary/25 text-lg"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     Claim Founding Offer
                                     <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                                 </span>
-                            </BookedCallLink>
+                            </Link>
 
                             <div className="text-center text-slate-500 text-sm mt-4 font-medium">
-                                No credit card required to book your implementation call.
+                                No credit card required. Get a personalized demo first.
                             </div>
                         </div>
 

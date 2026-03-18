@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SavingsCalculator from "@/components/SavingsCalculator";
-import BookedCallLink from "@/components/BookedCallLink";
 import Link from "next/link";
 import {
     DollarSign,
@@ -428,17 +427,13 @@ export default function TrueCostCalculatorPage() {
                             <p className="text-xl md:text-2xl text-background/60 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
                                 Book a free demo and see exactly how GPS-verified time tracking can reduce your true labor costs.
                             </p>
-                            <BookedCallLink
-                                cluster="tools"
-                                templateType="tool_page"
-                                landingPath="/tools/true-cost-calculator"
-                                ctaLabel="Book Your Free Demo"
-                                ctaLocation="footer_cta"
+                            <Link
+                                href="/contact"
                                 className="inline-flex items-center justify-center bg-white text-foreground font-bold px-10 py-5 rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
                             >
-                                Book Your Free Demo
+                                Get a Personalized Demo
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </BookedCallLink>
+                            </Link>
                         </div>
                     </section>
                 </div>

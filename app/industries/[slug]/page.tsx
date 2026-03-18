@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -233,19 +232,13 @@ export default async function IndustryPage({
 
                         <div className="mt-10 flex flex-col items-center gap-4">
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                                <BookedCallLink
-                                    cluster="industries"
-                                    templateType="industry_detail"
-                                    landingPath={`/industries/${slug}`}
-                                    params={{ utm_medium: "organic" }}
-                                    ctaLabel={industryMessaging.primaryCta}
-                                    ctaLocation="hero"
-                                    asButton
-                                    buttonSize="lg"
-                                    className="w-full sm:w-auto cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
                                 >
                                     {industryMessaging.primaryCta}
-                                </BookedCallLink>
+                                    <ArrowRight size={18} />
+                                </Link>
                                 <Link
                                     href={detailLinks.parentPath}
                                     className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group"

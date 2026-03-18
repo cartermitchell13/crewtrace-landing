@@ -1,0 +1,311 @@
+"use client";
+
+import { useState, useRef, type FormEvent } from "react";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import {
+    type LeadApiResponse,
+    type LeadPayload,
+    parseLeadApiResponse,
+} from "@/lib/lead-contract";
+import {
+    captureFirstTouchAttribution,
+    readFirstTouchAttribution,
+} from "@/lib/first-touch-attribution";
+import { sendSeoEvent } from "@/lib/event-transport";
+import { buildLeadFormEvent } from "@/lib/seo-events";
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+const CREW_SIZE_OPTIONS = [
+    "1–5",
+    "6–15",
+    "16–30",
+    "31–50",
+    "51–100",
+    "100+",
+] as const;
+
+type DemoRequestFormProps = {
+    onSuccess?: () => void;
+};
+
+function getEventContext() {
+    const pageUrl =
+        typeof window !== "undefined"
+            ? `${window.location.pathname}${window.location.search}`
+            : "/contact";
+    const firstTouch =
+        readFirstTouchAttribution() ?? captureFirstTouchAttribution();
+
+    return {
+        templateType: "contact",
+        cluster: "company",
+        pageUrl,
+        firstTouch,
+    };
+}
+
+export default function DemoRequestForm({ onSuccess }: DemoRequestFormProps) {
+    const [status, setStatus] = useState<FormStatus>("idle");
+    const [errorMessage, setErrorMessage] = useState("");
+    const formRef = useRef<HTMLFormElement>(null);
+
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        if (status === "submitting") return;
+
+        setStatus("submitting");
+        setErrorMessage("");
+
+        const formData = new FormData(event.currentTarget);
+        const payload: LeadPayload = {
+            name: (formData.get("name") as string) ?? "",
+            email: (formData.get("email") as string) ?? "",
+            phone: (formData.get("phone") as string) || undefined,
+            company: (formData.get("company") as string) || undefined,
+            crewSize: (formData.get("crewSize") as string) || undefined,
+            currentSoftware:
+                (formData.get("currentSoftware") as string) || undefined,
+            message: (formData.get("message") as string) || undefined,
+        };
+
+        const ctx = getEventContext();
+        void sendSeoEvent(buildLeadFormEvent("attempt", ctx));
+
+        try {
+            const response = await fetch("/api/lead", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            const body = await response.json().catch(() => null);
+            const parsed: LeadApiResponse | null = parseLeadApiResponse(body);
+
+            if (parsed?.ok) {
+                setStatus("success");
+                void sendSeoEvent(buildLeadFormEvent("success", ctx));
+                onSuccess?.();
+            } else {
+                const msg =
+                    parsed?.message ??
+                    "Something went wrong. Please try again.";
+                setErrorMessage(msg);
+                setStatus("error");
+                void sendSeoEvent(
+                    buildLeadFormEvent("failure", ctx, {
+                        errorCode: parsed?.errorCode,
+                        message: msg,
+                    }),
+                );
+            }
+        } catch {
+            setErrorMessage(
+                "Could not reach our server. Please check your connection and retry.",
+            );
+            setStatus("error");
+            void sendSeoEvent(
+                buildLeadFormEvent("failure", ctx, {
+                    errorCode: "network_error",
+                }),
+            );
+        }
+    }
+
+    if (status === "success") {
+        return (
+            <div className="flex flex-col items-center justify-center text-center py-12 px-6 animate-fade-in">
+                <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-6">
+                    <CheckCircle2 className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                    Request received
+                </h3>
+                <p className="text-foreground/60 max-w-md leading-relaxed font-medium">
+                    We&apos;ll review your details and send back a personalized
+                    demo walkthrough and pricing guidance within one business
+                    day.
+                </p>
+                <div className="mt-8 pt-6 border-t border-foreground/10 w-full max-w-sm">
+                    <p className="text-sm font-semibold text-foreground/50 mb-3">
+                        Want to talk sooner?
+                    </p>
+                    <a
+                        href="https://cal.com/crewtrace/15min"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
+                    >
+                        Book a 15-minute call
+                        <ArrowRight size={14} />
+                    </a>
+                </div>
+            </div>
+        );
+    }
+
+    const inputBase =
+        "w-full rounded-xl border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10 focus:shadow-input";
+    const labelBase = "block text-sm font-semibold text-foreground/70 mb-1.5";
+
+    return (
+        <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-5"
+            noValidate
+        >
+            {/* Name + Email row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label htmlFor="dr-name" className={labelBase}>
+                        Name <span className="text-primary">*</span>
+                    </label>
+                    <input
+                        id="dr-name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        placeholder="John Davis"
+                        className={inputBase}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="dr-email" className={labelBase}>
+                        Work email <span className="text-primary">*</span>
+                    </label>
+                    <input
+                        id="dr-email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        placeholder="john@acmeconstruction.com"
+                        className={inputBase}
+                    />
+                </div>
+            </div>
+
+            {/* Company + Phone row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label htmlFor="dr-company" className={labelBase}>
+                        Company name
+                    </label>
+                    <input
+                        id="dr-company"
+                        name="company"
+                        type="text"
+                        autoComplete="organization"
+                        placeholder="Acme Construction"
+                        className={inputBase}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="dr-phone" className={labelBase}>
+                        Phone{" "}
+                        <span className="text-foreground/40 font-normal">
+                            (optional)
+                        </span>
+                    </label>
+                    <input
+                        id="dr-phone"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        placeholder="(555) 123-4567"
+                        className={inputBase}
+                    />
+                </div>
+            </div>
+
+            {/* Crew size + Current software row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label htmlFor="dr-crewSize" className={labelBase}>
+                        Crew size
+                    </label>
+                    <select
+                        id="dr-crewSize"
+                        name="crewSize"
+                        className={`${inputBase} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23666%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_14px_center] bg-no-repeat pr-10`}
+                        defaultValue=""
+                    >
+                        <option value="" disabled>
+                            Select crew size
+                        </option>
+                        {CREW_SIZE_OPTIONS.map((option) => (
+                            <option key={option} value={option}>
+                                {option} workers
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="dr-currentSoftware" className={labelBase}>
+                        Current software{" "}
+                        <span className="text-foreground/40 font-normal">
+                            (if any)
+                        </span>
+                    </label>
+                    <input
+                        id="dr-currentSoftware"
+                        name="currentSoftware"
+                        type="text"
+                        placeholder="Excel, T-Sheets, Procore..."
+                        className={inputBase}
+                    />
+                </div>
+            </div>
+
+            {/* Message */}
+            <div>
+                <label htmlFor="dr-message" className={labelBase}>
+                    What are you looking to fix?{" "}
+                    <span className="text-foreground/40 font-normal">
+                        (optional)
+                    </span>
+                </label>
+                <textarea
+                    id="dr-message"
+                    name="message"
+                    rows={3}
+                    placeholder="E.g. buddy punching, payroll disputes, no GPS verification..."
+                    className={`${inputBase} resize-none`}
+                />
+            </div>
+
+            {/* Error */}
+            {status === "error" && errorMessage && (
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                    {errorMessage}
+                </div>
+            )}
+
+            {/* Submit */}
+            <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-white text-base font-bold px-8 py-4 rounded-xl shadow-button transition-all hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] disabled:opacity-70 disabled:pointer-events-none"
+            >
+                {status === "submitting" ? (
+                    <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Sending...
+                    </>
+                ) : (
+                    <>
+                        Get Your Personalized Demo
+                        <ArrowRight size={18} />
+                    </>
+                )}
+            </button>
+
+            <p className="text-center text-xs text-foreground/40 font-medium">
+                No sales call required. We&apos;ll respond within one business
+                day.
+            </p>
+        </form>
+    );
+}

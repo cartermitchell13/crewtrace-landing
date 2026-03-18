@@ -869,16 +869,14 @@ export default function ComplianceAuditTool() {
                         <div className="flex flex-col gap-4 shrink-0 w-full md:w-auto">
                             <a
                                 id="audit-cta-book-call"
-                                href="https://cal.com/crewtrace/15min"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href="/contact"
                                 className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-5 rounded-2xl shadow-button hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-y-0 active:translate-x-0 transition-all text-base whitespace-nowrap"
                             >
                                 <PhoneCall size={18} />
-                                Book a Free 15-Min Call
+                                Get a Personalized Demo
                             </a>
                             <p className="text-center text-white/40 text-[11px] font-medium">
-                                No pressure. We'll walk through your specific gaps.
+                                No pressure. Takes 60 seconds.
                             </p>
                         </div>
                     </div>

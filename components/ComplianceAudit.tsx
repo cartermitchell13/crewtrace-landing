@@ -1,7 +1,8 @@
 "use client";
 
 import { ShieldCheck, AlertTriangle, FileText, UserCheck } from "lucide-react";
-import BookedCallLink from "@/components/BookedCallLink";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function ComplianceAudit() {
     return (
@@ -86,18 +87,13 @@ export default function ComplianceAudit() {
                 </div>
 
                 <div className="mt-16 flex justify-center">
-                    <BookedCallLink
-                        asButton
-                        buttonVariant="white"
-                        buttonSize="lg"
-                        cluster="home"
-                        templateType="homepage_compliance"
-                        landingPath="/"
-                        ctaLabel="Protect Your Business Now"
-                        ctaLocation="compliance"
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl shadow-button transition-all whitespace-nowrap hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg"
                     >
                         Protect Your Business Now
-                    </BookedCallLink>
+                        <ArrowRight size={20} />
+                    </Link>
                 </div>
             </div>
         </section>

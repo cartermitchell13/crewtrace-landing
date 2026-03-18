@@ -19,6 +19,7 @@ export type LeadPayload = {
     phone?: string;
     company?: string;
     crewSize?: string;
+    currentSoftware?: string;
     message?: string;
 };
 
@@ -100,6 +101,7 @@ export function validateLeadPayload(value: unknown): LeadValidationResult {
             phone: toOptionalString(payload.phone),
             company: toOptionalString(payload.company),
             crewSize: toOptionalString(payload.crewSize),
+            currentSoftware: toOptionalString(payload.currentSoftware),
             message: toOptionalString(payload.message, MAX_MESSAGE_LENGTH),
         },
     };

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookedCallLink from "@/components/BookedCallLink";
 import { getCompetitorsByGuideSlug } from "@/lib/competitors";
 import { guideBySlug, guideSlugs } from "@/lib/guides";
 import type { GuideSection } from "@/lib/guides";
@@ -388,19 +387,15 @@ export default async function GuideDetailPage({
                                 </p>
                             </div>
                             <div className="shrink-0 pt-4 md:pt-0">
-                                <BookedCallLink
-                                    cluster="guides"
-                                    templateType="guide_detail"
-                                    landingPath={`/guides/${slug}`}
-                                    ctaLabel="Book a free audit"
-                                    ctaLocation="footer_cta"
+                                <Link
+                                    href="/contact"
                                     className="group inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
                                 >
-                                    Book a free audit
+                                    Get a Personalized Demo
                                     <span className="group-hover:translate-x-1 transition-transform inline-block">
                                         &rarr;
                                     </span>
-                                </BookedCallLink>
+                                </Link>
                             </div>
                         </div>
                     </section>

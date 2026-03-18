@@ -350,14 +350,12 @@ export default function AboutPage() {
                                 </div>
 
                                 <div className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6 space-y-3">
-                                    <a
-                                        href="https://cal.com/crewtrace/15min"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <Link
+                                        href="/contact"
                                         className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-6 py-4 text-sm font-bold text-white shadow-button transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                                     >
-                                        Book a free audit call
-                                    </a>
+                                        Get a Personalized Demo
+                                    </Link>
                                     <Link
                                         href="/calculator"
                                         className="inline-flex w-full items-center justify-center rounded-xl border border-foreground/15 bg-white px-6 py-4 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/30 hover:text-primary"
@@ -365,7 +363,7 @@ export default function AboutPage() {
                                         Run the Payroll Leakage Calculator
                                     </Link>
                                     <p className="text-center text-xs font-bold uppercase tracking-widest text-foreground/40">
-                                        Calendar opens in a new tab
+                                        No sales call required
                                     </p>
                                 </div>
                             </div>

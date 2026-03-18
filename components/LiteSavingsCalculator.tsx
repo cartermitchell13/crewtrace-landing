@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef, useId, type PointerEvent } from "react";
 import { Calculator, ArrowRight, TrendingDown } from "lucide-react";
-import BookedCallLink from "@/components/BookedCallLink";
+import Link from "next/link";
 
 interface SliderProps {
     label: string;
@@ -282,20 +282,16 @@ export default function LiteSavingsCalculator() {
                                     >
                                         Next best step
                                     </p>
-                                    <BookedCallLink
-                                        cluster="home"
-                                        templateType="homepage_savings_calculator"
-                                        landingPath="/"
-                                        ctaLabel="Book your free audit call"
-                                        ctaLocation="savings_calculator"
+                                    <Link
+                                        href="/contact"
                                         className={`w-full bg-white text-[#0A0E17] font-bold py-5 md:py-6 rounded-2xl hover:bg-white/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg border-2 ${showAuditCue
                                             ? "border-primary shadow-[0_0_0_8px_rgba(47,39,206,0.2)] animate-[pulse_2s_ease-in-out_infinite]"
                                             : "border-transparent"
                                             }`}
                                     >
-                                        Book your free audit call
+                                        Get a Personalized Demo
                                         <ArrowRight size={20} />
-                                    </BookedCallLink>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

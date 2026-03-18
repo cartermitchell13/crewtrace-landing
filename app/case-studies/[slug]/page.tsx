@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookedCallLink from "@/components/BookedCallLink";
 import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
 import { caseStudyBySlug, getAllCaseStudies, getCaseStudy } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
@@ -339,17 +338,13 @@ export default async function CaseStudyDetailPage({
                             <div className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-white/80 md:text-xl">
                                 Find out exactly where your business is leaking payroll dollars. Book a free, no-obligation audit with our team today.
                             </div>
-                            <BookedCallLink
-                                cluster="case-studies"
-                                templateType="case_study_detail"
-                                landingPath={`/case-studies/${slug}`}
-                                ctaLabel="Book a free audit"
-                                ctaLocation="footer_cta"
+                            <Link
+                                href="/contact"
                                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                             >
-                                Book Your Free Audit
+                                Get a Personalized Demo
                                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </BookedCallLink>
+                            </Link>
                         </div>
                     </div>
                 </div>
