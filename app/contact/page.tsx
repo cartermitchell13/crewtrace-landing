@@ -15,8 +15,8 @@ export const metadata: Metadata = createPageMetadata({
 const benefits = [
     {
         icon: Zap,
-        title: "Personalized demo",
-        description: "A walkthrough tailored to your crew size, trade, and workflow",
+        title: "Personalized video demo",
+        description: "A recorded walkthrough built around your crew size, trade, and workflow — sent straight to your inbox",
     },
     {
         icon: Shield,
@@ -48,9 +48,10 @@ export default function ContactPage() {
                             See how CrewTrace fits your operation
                         </h1>
                         <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">
-                            Answer a few quick questions and we&apos;ll send back the
-                            best-fit rollout path and pricing guidance for your crew
-                            setup.
+                            Answer a few quick questions and we&apos;ll send you a
+                            personalized video demo walkthrough — plus pricing
+                            guidance matched to your crew size and trade. No sales
+                            call required.
                         </p>
                     </div>
 
