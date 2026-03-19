@@ -48,9 +48,9 @@ export default function PricingSection() {
                                     </span>
                                     <span className="text-slate-500 text-lg">/ month</span>
                                 </div>
-                                <div className="text-sm font-medium text-slate-400 mt-2">
-                                    *Includes up to 50 employees. $2/mo per additional user.
-                                </div>
+                                <p className="text-sm font-medium text-slate-500 mt-3 max-w-md leading-relaxed">
+                                    Flat-rate pricing: one number every month, whether you&apos;re a tight crew or running multiple teams—no per-seat math, no surprise bumps as you grow.
+                                </p>
                             </div>
 
                             <Link
