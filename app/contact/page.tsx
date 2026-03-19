@@ -88,7 +88,7 @@ export default function ContactPage() {
                             {/* Proof / trust */}
                             <div className="rounded-2xl border border-foreground/[0.06] bg-white p-6">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                                    <CheckCircle2 className="h-5 w-5 text-green-500" />
                                     <span className="text-sm font-bold text-foreground">
                                         Trusted by construction owners
                                     </span>
@@ -99,10 +99,16 @@ export default function ContactPage() {
                                     crews, and we&apos;ll send back a personalized video
                                     walkthrough you can review on your own time.
                                 </p>
-                                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/40">
-                                    No pressure. No calendar ping-pong. Just the info
-                                    you need.
-                                </p>
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {["No pressure", "No calendar ping-pong", "Just the info you need"].map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="rounded-full bg-foreground/[0.04] px-3 py-1 text-xs font-semibold text-foreground/50"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Alternative contact */}
