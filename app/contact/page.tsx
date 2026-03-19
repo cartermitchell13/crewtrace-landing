@@ -92,14 +92,15 @@ export default function ContactPage() {
                                         Trusted by construction owners
                                     </span>
                                 </div>
-                                <blockquote className="text-sm italic leading-relaxed text-foreground/60">
-                                    &ldquo;I didn&apos;t want another sales pitch.
-                                    CrewTrace sent me a walkthrough specific to my
-                                    roofing crews and I knew within 5 minutes it was
-                                    the right fit.&rdquo;
-                                </blockquote>
-                                <p className="mt-3 text-xs font-semibold text-foreground/40">
-                                    — Operations Manager, 35-crew roofing company
+                                <p className="text-sm leading-relaxed text-foreground/60">
+                                    We hate unnecessary meetings too. That&apos;s why
+                                    we keep this simple: tell us a bit about your
+                                    crews, and we&apos;ll send back a personalized video
+                                    walkthrough you can review on your own time.
+                                </p>
+                                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/40">
+                                    No pressure. No calendar ping-pong. Just the info
+                                    you need.
                                 </p>
                             </div>
 

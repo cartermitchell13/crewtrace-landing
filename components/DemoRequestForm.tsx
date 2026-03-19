@@ -204,19 +204,20 @@ export default function DemoRequestForm({ onSuccess }: DemoRequestFormProps) {
                 </div>
                 <div>
                     <label htmlFor="dr-phone" className={labelBase}>
-                        Phone{" "}
-                        <span className="text-foreground/40 font-normal">
-                            (optional)
-                        </span>
+                        Phone <span className="text-primary">*</span>
                     </label>
                     <input
                         id="dr-phone"
                         name="phone"
                         type="tel"
+                        required
                         autoComplete="tel"
                         placeholder="(555) 123-4567"
                         className={inputBase}
                     />
+                    <p className="mt-1.5 text-xs font-normal leading-relaxed text-foreground/40">
+                        We&apos;ll only use your number to text your personalized video link.
+                    </p>
                 </div>
             </div>
 
