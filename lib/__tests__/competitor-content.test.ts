@@ -6,7 +6,7 @@ import {
     getCompetitorsByGuideSlug,
     requiredCompetitorSlugs,
 } from "@/lib/competitors";
-import { caseStudySlugs } from "@/lib/caseStudies";
+import { getCaseStudySlugs } from "@/lib/caseStudies";
 import { guideSlugs } from "@/lib/guides";
 import { industrySlugs } from "@/lib/industries";
 import { featureSlugs } from "@/lib/solutions";
@@ -74,7 +74,7 @@ describe("competitor content contracts", () => {
         const featureSet = new Set(featureSlugs);
         const industrySet = new Set(industrySlugs);
         const guideSet = new Set(guideSlugs);
-        const caseStudySet = new Set(caseStudySlugs);
+        const caseStudySet = new Set(getCaseStudySlugs());
 
         for (const competitor of competitorRecords) {
             expect(competitor.linkTargets.featureSlugs.length).toBeGreaterThan(0);

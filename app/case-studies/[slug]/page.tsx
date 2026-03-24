@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
-import { caseStudyBySlug, getAllCaseStudies, getCaseStudy } from "@/lib/caseStudies";
+import { getAllCaseStudies, getCaseStudy, getCaseStudyBySlug } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import {
@@ -27,7 +27,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const study = caseStudyBySlug[slug];
+    const study = getCaseStudyBySlug(slug);
 
     if (!study) {
         return createPageMetadata({
@@ -88,9 +88,13 @@ export default async function CaseStudyDetailPage({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                 />
 
-                <header className="relative w-full overflow-hidden border-b border-border/40 bg-[#050315] pb-20 pt-32 text-white lg:pb-28 lg:pt-40">
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/40 to-transparent opacity-20 mix-blend-screen" />
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-primary/20 blur-[120px]" />
+                <header className="relative w-full overflow-hidden border-b border-border/40 pb-20 pt-32 text-white lg:pb-28 lg:pt-40">
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#050315]" />
+                    <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat"
+                    />
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050315]/55 via-[#050315]/35 to-[#050315]/50" />
 
                     <div className="relative z-10 mx-auto max-w-6xl px-6">
                         <div className="mb-10">
@@ -153,6 +157,34 @@ export default async function CaseStudyDetailPage({
                                         Case Study Hero Image
                                     </div>
                                 )}
+                                {study.heroLogo ? (
+                                    <>
+                                        <div
+                                            aria-hidden
+                                            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/20 to-transparent"
+                                        />
+                                        <div className="absolute inset-0 z-[2] flex flex-col justify-center px-8 py-8 text-white md:px-12 md:py-10">
+                                            <div className="mb-5 inline-flex w-fit max-w-[min(100%,20rem)] rounded-2xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/10">
+                                                <Image
+                                                    src={study.heroLogo}
+                                                    alt={`${study.company} logo`}
+                                                    width={320}
+                                                    height={96}
+                                                    className="h-11 w-auto max-w-full object-contain object-left sm:h-12"
+                                                    priority
+                                                />
+                                            </div>
+                                            {study.heroCardEyebrow ? (
+                                                <span className="block text-xs font-bold uppercase tracking-[0.2em] !text-white">
+                                                    {study.heroCardEyebrow}
+                                                </span>
+                                            ) : null}
+                                            <h2 className="mt-2 max-w-2xl text-2xl font-black leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-3xl md:text-4xl">
+                                                {study.heroCardTitle ?? study.title}
+                                            </h2>
+                                        </div>
+                                    </>
+                                ) : null}
                             </div>
 
                             <div

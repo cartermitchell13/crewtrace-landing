@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
                                     <TrendingUp size={24} strokeWidth={2.5} />
                                 </div>
                                 <div>
-                                    <p className="text-2xl font-extrabold text-foreground">$1,200/mo</p>
+                                        <p className="text-2xl font-extrabold text-foreground">$2,100/mo</p>
                                     <p className="text-[11px] font-bold uppercase tracking-wider text-foreground/50">
                                         Capital Recovered
                                     </p>

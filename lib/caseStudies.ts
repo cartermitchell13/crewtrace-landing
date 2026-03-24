@@ -18,6 +18,10 @@ type CaseStudyFrontmatter = Record<RequiredFrontmatterField, string> & {
     lead?: string;
     heroImage?: string;
     heroImageAlt?: string;
+    /** Logo + heading overlaid on heroImage (e.g. ct-grid-bg.png). */
+    heroLogo?: string;
+    heroCardEyebrow?: string;
+    heroCardTitle?: string;
     resultsImage?: string;
     resultsImageAlt?: string;
     publishedOn?: string;
@@ -39,6 +43,9 @@ export interface CaseStudy {
     lead?: string;
     heroImage?: string;
     heroImageAlt?: string;
+    heroLogo?: string;
+    heroCardEyebrow?: string;
+    heroCardTitle?: string;
     resultsImage?: string;
     resultsImageAlt?: string;
     publishedOn?: string;
@@ -93,6 +100,9 @@ function parseCaseStudyFrontmatter(
         lead: asOptionalString(rawData.lead),
         heroImage: asOptionalString(rawData.heroImage),
         heroImageAlt: asOptionalString(rawData.heroImageAlt),
+        heroLogo: asOptionalString(rawData.heroLogo),
+        heroCardEyebrow: asOptionalString(rawData.heroCardEyebrow),
+        heroCardTitle: asOptionalString(rawData.heroCardTitle),
         resultsImage: asOptionalString(rawData.resultsImage),
         resultsImageAlt: asOptionalString(rawData.resultsImageAlt),
         publishedOn: asOptionalString(rawData.publishedOn),
@@ -146,6 +156,15 @@ function loadCaseStudies(): CaseStudy[] {
             if (frontmatter.heroImageAlt) {
                 study.heroImageAlt = frontmatter.heroImageAlt;
             }
+            if (frontmatter.heroLogo) {
+                study.heroLogo = frontmatter.heroLogo;
+            }
+            if (frontmatter.heroCardEyebrow) {
+                study.heroCardEyebrow = frontmatter.heroCardEyebrow;
+            }
+            if (frontmatter.heroCardTitle) {
+                study.heroCardTitle = frontmatter.heroCardTitle;
+            }
             if (frontmatter.resultsImage) {
                 study.resultsImage = frontmatter.resultsImage;
             }
@@ -167,20 +186,21 @@ function loadCaseStudies(): CaseStudy[] {
     });
 }
 
-export const caseStudies: CaseStudy[] = loadCaseStudies();
-
-export const caseStudySlugs = caseStudies.map((study) => study.slug);
-
-export const caseStudyBySlug = Object.fromEntries(
-    caseStudies.map((study) => [study.slug, study]),
-) as Record<string, CaseStudy>;
-
+/** Always reads from disk so content/frontmatter edits apply without restarting the dev server. */
 export function getAllCaseStudies(): CaseStudy[] {
-    return caseStudies;
+    return loadCaseStudies();
+}
+
+export function getCaseStudySlugs(): string[] {
+    return getAllCaseStudies().map((study) => study.slug);
+}
+
+export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
+    return getAllCaseStudies().find((study) => study.slug === slug);
 }
 
 export async function getCaseStudy(slug: string): Promise<CaseStudyDetail | null> {
-    const study = caseStudyBySlug[slug];
+    const study = getCaseStudyBySlug(slug);
     if (!study) {
         return null;
     }

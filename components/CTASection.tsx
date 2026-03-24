@@ -58,7 +58,7 @@ export default function CTASection({
                         </div>
 
                         {/* Right side card */}
-                        <div className="relative flex flex-col rounded-2xl border border-white/15 bg-white/10 p-8 overflow-hidden">
+                        <div className="relative flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/15 p-8 backdrop-blur-xl">
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/70 mb-4">
                                     <ShieldCheck size={16} />
@@ -80,7 +80,7 @@ export default function CTASection({
 
                                 <div className="mt-6 flex items-start gap-3">
                                     <div className="mt-1 h-2 w-2 rounded-full bg-white/40 shrink-0" />
-                                    <div className="text-xs leading-relaxed text-white/50">
+                                    <div className="text-xs leading-relaxed text-white/60">
                                         Takes about 60 seconds. We respond within one business day
                                         with a walkthrough tailored to your crew setup.
                                     </div>

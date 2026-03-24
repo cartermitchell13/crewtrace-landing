@@ -460,7 +460,7 @@ export default function Navbar() {
                             {/* Right: Featured Case Study */}
                             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] p-6 flex flex-col border-l border-foreground/5">
                                 <span className="text-xs font-semibold text-primary uppercase tracking-wider">Latest Case Study</span>
-                                <h4 className="text-lg font-bold text-foreground mt-2">S&W Waterproofing Saves $4,200/Month</h4>
+                                <h4 className="text-lg font-bold text-foreground mt-2">S&W Waterproofing Saves $2,100/Month</h4>
                                 <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
                                     Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
                                 </p>

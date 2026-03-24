@@ -182,7 +182,7 @@ export default function FeatureGrid() {
                                     Case Study: S&W Waterproofing
                                 </div>
                                 <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-                                    Recovered <span className="text-secondary tracking-tight">$1,200</span> in the first 30 days.
+                                    Recovered <span className="text-secondary tracking-tight">$2,100</span> in the first 30 days.
                                 </h3>
                                 <p className="text-xl text-white/80 font-medium leading-relaxed italic">
                                     &ldquo;We moved off paper logs, found recurring overpayment fast, and cut payroll review time down to minutes.&rdquo;

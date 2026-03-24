@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
-import { caseStudySlugs } from "@/lib/caseStudies";
+import { getCaseStudySlugs } from "@/lib/caseStudies";
 import { competitorSlugs } from "@/lib/competitors";
 import { guideSlugs } from "@/lib/guides";
 import { industrySlugs } from "@/lib/industries";
@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    const caseStudyEntries: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
+    const caseStudyEntries: MetadataRoute.Sitemap = getCaseStudySlugs().map((slug) => ({
         url: `${siteConfig.url}/case-studies/${slug}`,
         lastModified: now,
         changeFrequency: "monthly",

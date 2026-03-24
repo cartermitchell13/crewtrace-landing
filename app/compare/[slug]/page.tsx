@@ -9,7 +9,7 @@ import {
     type CompetitorRecord,
     type CompetitorSlug,
 } from "@/lib/competitors";
-import { caseStudyBySlug } from "@/lib/caseStudies";
+import { getCaseStudyBySlug } from "@/lib/caseStudies";
 import { guideBySlug } from "@/lib/guides";
 import { industryBySlug } from "@/lib/industries";
 import { getTemplateMessaging } from "@/lib/messaging";
@@ -117,7 +117,7 @@ function toCaseStudyLinks(record: CompetitorRecord) {
     return sortByLabel(
         record.linkTargets.caseStudySlugs
             .map((slug) => {
-                const study = caseStudyBySlug[slug];
+                const study = getCaseStudyBySlug(slug);
                 if (!study) {
                     return null;
                 }

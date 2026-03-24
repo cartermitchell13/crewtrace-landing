@@ -1,5 +1,5 @@
 ---
-title: "S&W Waterproofing recovered $1,200/month in payroll leakage"
+title: "S&W Waterproofing recovered $2,100/month in payroll leakage"
 industry: "Waterproofing"
 summary: "After replacing paper timesheets with GPS verification, S&W quickly identified recurring overpayment patterns and cut review time dramatically."
 challenge: "The team relied on handwritten timesheets from multiple sites, causing repeated time disputes and delayed payroll every week."
@@ -7,8 +7,10 @@ quote: "Once we had location-backed records, the arguments stopped. We finally t
 author: "Jason Law"
 company: "S&W Waterproofing"
 lead: "Before moving to Crewtrace, S&W Waterproofing was spending valuable field and office time every week reconciling payroll noise instead of running jobs."
-heroImage: "/images/case-studies/sw-waterproofing-hero.svg"
-heroImageAlt: "S&W Waterproofing field crew checking in on site"
+heroImage: "/images/ct-grid-bg.png"
+heroImageAlt: "Grid texture background for S&W Waterproofing case study"
+heroLogo: "/images/sw-logo.png"
+heroCardEyebrow: "Customer story"
 resultsImage: "/images/case-studies/sw-waterproofing-results.svg"
 resultsImageAlt: "S&W Waterproofing payroll and labor variance dashboard"
 publishedOn: "2026-02-24"
@@ -17,7 +19,7 @@ approach:
   - "Introduced supervisor review alerts for early punch-ins and long breaks"
   - "Standardized payroll export flow for end-of-week approvals"
 outcomes:
-  - "$1,200/month in recovered payroll cost"
+  - "$2,100/month in recovered payroll cost"
   - "Payroll prep reduced from hours to under 30 minutes"
   - "Fewer crew disputes due to location-verified records"
 ---
