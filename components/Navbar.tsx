@@ -244,11 +244,11 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                     <Link
                         href="/contact"
-                        className="hidden sm:block text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+                        className="hidden sm:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                         Contact Sales
                     </Link>
-                    <Link href="/contact" className="hidden md:inline-flex bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] items-center gap-2">
+                    <Link href="/contact" className="hidden md:inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                         Get a Demo
                         <ArrowRight size={16} className="hidden lg:block" />
                     </Link>
@@ -257,7 +257,7 @@ export default function Navbar() {
                         type="button"
                         aria-label="Toggle navigation menu"
                         onClick={() => setMobileOpen((open) => !open)}
-                        className="md:hidden w-10 h-10 rounded-xl border border-foreground/10 bg-white/90 text-foreground flex items-center justify-center hover:bg-foreground/[0.03] transition-colors shadow-sm"
+                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-foreground/10 bg-white/90 text-foreground shadow-sm transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
                     >
                         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
@@ -321,7 +321,7 @@ export default function Navbar() {
                                     </Link>
                                     <Link
                                         href="/calculator"
-                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all hover:-translate-y-0.5"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                                     >
                                         Estimate your savings
                                         <ArrowRight className="w-4 h-4" />
@@ -391,7 +391,7 @@ export default function Navbar() {
                                     </div>
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all hover:-translate-y-0.5"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -517,7 +517,7 @@ export default function Navbar() {
                                 <div className="mt-4">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 bg-white text-primary text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-all hover:-translate-y-0.5"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-primary transition-all hover:bg-white/90 motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -668,7 +668,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setMobileOpen(false)}
-                            className="flex w-full items-center justify-center gap-2 bg-primary text-white text-sm font-bold px-4 py-3.5 rounded-xl mb-2 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)]"
+                            className="mb-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             Get a Personalized Demo
                             <ArrowRight size={16} />

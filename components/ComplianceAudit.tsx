@@ -8,7 +8,7 @@ export default function ComplianceAudit() {
     return (
         <section
             id="compliance"
-            className="py-24 px-6 relative scroll-mt-32 bg-[#F8F8FC]"
+            className="py-24 md:py-32 px-6 relative scroll-mt-32 bg-[#F8F8FC]"
         >
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
@@ -74,7 +74,7 @@ export default function ComplianceAudit() {
                 <div className="mt-16 flex justify-center">
                     <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap hover:-translate-y-0.5 bg-primary text-white hover:bg-primary/90 px-10 py-5 text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)]"
+                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-primary text-white hover:bg-primary/90 px-10 py-5 text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8FC]"
                     >
                         Protect Your Business Now
                         <ArrowRight size={20} />

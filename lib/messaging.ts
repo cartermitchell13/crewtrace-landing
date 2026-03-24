@@ -56,7 +56,7 @@ export const intentHeadlineOptions = {
         "Use proof-linked comparisons instead of feature-checklist guesses.",
     ],
     contact: [
-        "See how CrewTrace fits your operation.",
+        "See how Crewtrace fits your operation.",
         "Get a personalized demo and pricing guidance for your crew setup.",
     ],
 } as const;

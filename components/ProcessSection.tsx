@@ -1,15 +1,5 @@
 import Image from "next/image";
 import React from "react";
-// import Button from "@/components/Button"; // This import is no longer needed
-
-// interface Step {
-//     id: string;
-//     number: string;
-//     title: string;
-//     description: string;
-//     icon: LucideIcon;
-//     benefit: string;
-// }
 
 const steps = [
     {
@@ -59,6 +49,12 @@ export default function ProcessSection() {
                 }
                 .animate-data-flow-vertical {
                     animation: dataFlowVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .animate-data-flow,
+                    .animate-data-flow-vertical {
+                        animation: none !important;
+                    }
                 }
             `}</style>
 

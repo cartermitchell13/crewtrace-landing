@@ -52,7 +52,7 @@ export default function PricingSection() {
 
                             <Link
                                 href="/contact"
-                                className="relative w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] text-lg"
+                                className="relative w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                             >
                                 <span className="flex items-center gap-2">
                                     Claim Founding Offer

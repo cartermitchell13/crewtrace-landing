@@ -1,5 +1,6 @@
 import { LucideIcon, MapPin, BarChart3, FileCheck2, FileDown, Clock, CheckCircle2, BellRing } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BentoCardProps {
@@ -71,10 +72,13 @@ export default function FeatureGrid() {
                         badge="GPS Verified"
                     >
                         <div className="relative mx-auto mt-4 w-full max-w-[720px] overflow-hidden rounded-xl border border-foreground/10 bg-slate-50 p-1.5">
-                            <img
+                            <Image
                                 src="/images/gps-feature-image.png"
                                 alt="GPS geofence verification showing worker location on job site"
+                                width={720}
+                                height={360}
                                 className="h-56 w-full rounded-lg object-contain md:h-60"
+                                sizes="(max-width: 768px) 100vw, 720px"
                             />
                         </div>
                     </BentoCard>
@@ -204,7 +208,7 @@ export default function FeatureGrid() {
                                 </div>
                                 <Link
                                     href="/case-studies/sw-waterproofing-payroll-recovery"
-                                    className="inline-flex text-sm font-bold text-white underline decoration-white/45 underline-offset-4 transition-colors hover:text-secondary"
+                                    className="inline-flex text-sm font-bold text-white underline decoration-white/45 underline-offset-4 transition-colors hover:text-secondary rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                 >
                                     Read the full S&W case study
                                 </Link>
@@ -216,7 +220,7 @@ export default function FeatureGrid() {
                                 </div>
                                 <Link
                                     href="/calculator"
-                                    className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap hover:-translate-y-0.5 bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg"
+                                    className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                 >
                                     Calculate Your ROI
                                 </Link>

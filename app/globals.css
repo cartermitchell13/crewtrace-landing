@@ -121,6 +121,13 @@ a {
   box-shadow: 0 2px 8px rgba(47, 39, 206, 0.25);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .savings-slider::-webkit-slider-thumb:active,
+  .savings-slider::-moz-range-thumb:active {
+    transform: none;
+  }
+}
+
 /* Thumb - Firefox */
 .savings-slider::-moz-range-thumb {
   width: var(--slider-thumb-size);

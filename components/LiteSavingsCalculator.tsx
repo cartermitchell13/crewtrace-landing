@@ -257,7 +257,7 @@ export default function LiteSavingsCalculator() {
                                     </p>
                                     <Link
                                         href="/calculator"
-                                        className={`w-full bg-primary text-white font-bold py-5 md:py-6 rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] border-2 ${showAuditCue
+                                        className={`w-full bg-primary text-white font-bold py-5 md:py-6 rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${showAuditCue
                                             ? "border-primary/40 shadow-[0_0_0_6px_rgba(47,39,206,0.1)]"
                                             : "border-transparent"
                                             }`}
