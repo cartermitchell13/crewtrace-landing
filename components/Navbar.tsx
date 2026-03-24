@@ -248,7 +248,7 @@ export default function Navbar() {
                     >
                         Contact Sales
                     </Link>
-                    <Link href="/contact" className="hidden md:inline-flex bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] items-center gap-2">
+                    <Link href="/contact" className="hidden md:inline-flex bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] items-center gap-2">
                         Get a Demo
                         <ArrowRight size={16} className="hidden lg:block" />
                     </Link>
@@ -321,7 +321,7 @@ export default function Navbar() {
                                     </Link>
                                     <Link
                                         href="/calculator"
-                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-button hover:translate-y-[-1px] hover:translate-x-[-1px] transition-all"
+                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all hover:-translate-y-0.5"
                                     >
                                         Estimate your savings
                                         <ArrowRight className="w-4 h-4" />
@@ -391,7 +391,7 @@ export default function Navbar() {
                                     </div>
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-button hover:translate-y-[-1px] hover:translate-x-[-1px] transition-all"
+                                        className="inline-flex items-center gap-2 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all hover:-translate-y-0.5"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -517,7 +517,7 @@ export default function Navbar() {
                                 <div className="mt-4">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 bg-white text-primary text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors"
+                                        className="inline-flex items-center gap-2 bg-white text-primary text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-all hover:-translate-y-0.5"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -668,7 +668,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setMobileOpen(false)}
-                            className="flex w-full items-center justify-center gap-2 bg-primary text-white text-sm font-bold px-4 py-3.5 rounded-xl shadow-button mb-2"
+                            className="flex w-full items-center justify-center gap-2 bg-primary text-white text-sm font-bold px-4 py-3.5 rounded-xl mb-2 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)]"
                         >
                             Get a Personalized Demo
                             <ArrowRight size={16} />

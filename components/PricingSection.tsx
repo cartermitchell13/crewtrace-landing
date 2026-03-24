@@ -19,10 +19,7 @@ export default function PricingSection() {
 
                 <div className="relative">
                     {/* Clean White Card with internal blue gradient */}
-                    <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-r from-white via-blue-50/50 to-blue-100 p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
-
-                        {/* Interactive Light Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+                    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)] lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
 
                         {/* Left Side: Info & Price */}
                         <div className="flex-1 relative z-10 flex flex-col justify-center">
@@ -55,11 +52,11 @@ export default function PricingSection() {
 
                             <Link
                                 href="/contact"
-                                className="group/btn relative w-full overflow-hidden bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-primary/25 text-lg"
+                                className="relative w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] text-lg"
                             >
-                                <span className="relative z-10 flex items-center gap-2">
+                                <span className="flex items-center gap-2">
                                     Claim Founding Offer
-                                    <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                                    <ArrowRight size={20} />
                                 </span>
                             </Link>
 

@@ -39,7 +39,7 @@ export default function Hero() {
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)]"
                             >
                                 Get a Personalized Demo
                                 <ArrowRight size={18} />
@@ -85,34 +85,16 @@ export default function Hero() {
 
                     {/* Right Column - Image Mockup */}
                     <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-                        {/* Decorative background shape behind the image */}
-                        <div className="absolute -inset-4 z-0 rounded-3xl bg-gradient-to-tr from-primary/10 to-transparent blur-2xl" />
-
-                        <div className="surface-panel relative z-10 rounded-[2rem] border border-foreground/5 bg-white/50 p-2 backdrop-blur-md md:rounded-[2.5rem] md:p-4">
-                            <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
+                        <div className="surface-panel relative rounded-2xl border border-foreground/5 bg-white p-2 md:p-3">
+                            <div className="overflow-hidden rounded-xl border border-foreground/5 bg-white">
                                 <Image
                                     src="/images/ct-hero-map-mockup.png"
                                     alt="Crewtrace construction GPS time tracking map view"
                                     width={1200}
                                     height={900}
-                                    className="h-auto w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                                    className="h-auto w-full object-cover"
                                     priority
                                 />
-                            </div>
-                        </div>
-
-                        {/* Floating elements to enhance the glassmorphic feel */}
-                        <div className="surface-panel absolute -right-6 bottom-12 z-20 hidden animate-[bounce_3s_infinite] rounded-2xl border border-white/40 bg-white/90 p-4 backdrop-blur-xl md:block">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-foreground">Crew Clocked In</p>
-                                    <p className="text-xs font-semibold text-foreground/60">18 out of 24 active</p>
-                                </div>
                             </div>
                         </div>
                     </div>

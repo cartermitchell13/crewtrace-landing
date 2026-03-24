@@ -86,25 +86,19 @@ export default function ProcessSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
                         {steps.map((step, index) => (
-                            <div key={step.id} className="relative z-10 flex md:flex-col items-center gap-6 md:gap-8 group">
+                            <div key={step.id} className="relative z-10 flex md:flex-col items-center gap-6 md:gap-8">
                                 {/* Image Node */}
                                 <div className="relative shrink-0 ml-3 md:ml-0">
-                                    {/* Pulse effect background */}
-                                    <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700" />
+                                    <div className="relative w-32 h-32 md:w-36 md:h-36 bg-white border border-foreground/10 shadow-sm rounded-2xl flex items-center justify-center">
 
-                                    {/* Removed overflow-hidden from here so the badge is not clipped */}
-                                    <div className="relative w-32 h-32 md:w-36 md:h-36 bg-white border border-foreground/10 shadow-sm rounded-[2rem] flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:border-primary/30">
-
-                                        {/* Inner wrapper for the image with overflow-hidden */}
-                                        <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
-                                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                                        <div className="absolute inset-0 rounded-2xl overflow-hidden">
 
                                             <Image
                                                 src={step.imageSrc}
                                                 alt={step.title}
                                                 width={144}
                                                 height={144}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                className="w-full h-full object-cover"
                                             />
                                         </div>
 
@@ -117,7 +111,7 @@ export default function ProcessSection() {
 
                                 {/* Text Content */}
                                 <div className="text-left md:text-center md:px-2 flex-1">
-                                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                    <h3 className="text-xl font-bold text-foreground mb-2">
                                         {step.title}
                                     </h3>
                                     <p className="text-sm font-medium text-foreground/60 leading-relaxed max-w-[280px] md:mx-auto">

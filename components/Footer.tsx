@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="w-full bg-[#050315] rounded-t-[3rem] md:rounded-t-[5rem] relative overflow-hidden">
+            <div className="w-full bg-[#050315] rounded-t-2xl md:rounded-t-3xl relative overflow-hidden">
                 {/* Visual Decorations */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />

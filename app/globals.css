@@ -16,9 +16,9 @@
   --radius-md: 8px;
   --radius-sm: 4px;
 
-  --shadow-button: 2px 2px 0px 1px rgb(5, 3, 21);
-  --shadow-input: 0px 0px 29.1px 0px rgba(67, 59, 255, 0.25);
-  --shadow-panel: 0 18px 55px -28px rgba(47, 39, 206, 0.35);
+  --shadow-button: none;
+  --shadow-input: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-panel: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
 }
 
 :root {
@@ -97,10 +97,6 @@ a {
     --slider-hit-height: 32px;
     --slider-thumb-size: 24px;
   }
-}
-
-.cta-highlight {
-  box-shadow: var(--shadow-button);
 }
 
 .surface-panel {

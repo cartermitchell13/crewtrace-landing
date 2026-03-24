@@ -45,9 +45,9 @@ export default function FAQSection({
                         return (
                             <div
                                 key={index}
-                                className={`group rounded-[1.5rem] bg-white border outline-none transition-[border-color,box-shadow] duration-300 overflow-hidden shadow-sm transform-gpu will-change-[grid-template-rows] ${isOpen
-                                    ? "border-primary/20 shadow-lg shadow-primary/5"
-                                    : "border-foreground/5 hover:border-primary/20 hover:shadow-md"
+                                className={`group rounded-2xl bg-white border outline-none transition-[border-color,box-shadow] duration-300 overflow-hidden shadow-sm transform-gpu will-change-[grid-template-rows] ${isOpen
+                                    ? "border-primary/20 shadow-md shadow-primary/5"
+                                    : "border-foreground/5"
                                     }`}
                             >
                                 <button

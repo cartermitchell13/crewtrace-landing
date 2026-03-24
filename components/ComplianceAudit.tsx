@@ -8,63 +8,49 @@ export default function ComplianceAudit() {
     return (
         <section
             id="compliance"
-            // Added clip-path to ensure the fixed background strictly stays within this section's "window"
-            className="py-24 px-6 relative scroll-mt-32"
-            style={{ clipPath: "inset(0)" }}
+            className="py-24 px-6 relative scroll-mt-32 bg-[#F8F8FC]"
         >
-            {/* Fixed Background Layer */}
-            <div 
-                className="fixed top-0 left-0 w-full h-[100vh] -z-10"
-                style={{ backgroundColor: '#2F27CE' }}
-            >
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 -skew-x-12 translate-x-1/4" />
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-            </div>
-
-            {/* Foreground Content */}
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-bold">
-                        <AlertTriangle size={16} className="text-red-400" />
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200/60 text-red-700 text-sm font-bold">
+                        <AlertTriangle size={16} />
                         <span>Compliance & Audit Protection</span>
                     </div>
 
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-white">
-                        DOL Compliance for <br />
-                        <span className="text-secondary opacity-90">Construction Timekeeping.</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-foreground">
+                        DOL Compliance for{" "}
+                        <span className="text-primary">Construction Timekeeping.</span>
                     </h2>
 
-                    <div className="text-xl text-white font-medium leading-relaxed">
+                    <div className="text-xl text-foreground/60 font-medium leading-relaxed max-w-2xl mx-auto">
                         One contractor faced a $50k fine because their records were &ldquo;word of mouth.&rdquo;
-                        <div className="mt-2 font-bold text-white">With Crewtrace, they achieved 100% compliance overnight.</div>
+                        <span className="block mt-2 font-bold text-foreground">With Crewtrace, they achieved 100% compliance overnight.</span>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                    {/* The Danger - Pain card (High Contrast Off-white) */}
-                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-white/20 text-slate-900 flex flex-col justify-between shadow-xl transition-all duration-300">
+                    <div className="p-10 rounded-2xl bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
                         <div className="space-y-6">
-                            <div className="h-14 w-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-600">
-                                <FileText size={28} />
+                            <div className="h-12 w-12 rounded-xl bg-red-50 flex items-center justify-center text-red-600">
+                                <FileText size={24} />
                             </div>
                             <h3 className="text-2xl font-bold">Paper Chaos</h3>
-                            <p className="text-slate-600 font-medium leading-relaxed">
+                            <p className="text-foreground/60 font-medium leading-relaxed">
                                 Paper time cards are easily lost, impossible to verify, and a red flag for DOL investigators.
                             </p>
                         </div>
                     </div>
 
-                    {/* The Transformation - Focus card (Pure White) */}
-                    <div className="p-10 rounded-[2.5rem] bg-white text-primary flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.3)] lg:scale-105 relative z-20">
+                    <div className="p-10 rounded-2xl bg-white border-2 border-primary/20 text-foreground flex flex-col justify-between shadow-md lg:scale-[1.03] relative z-20">
                         <div className="space-y-6">
-                            <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                                <ShieldCheck size={28} />
+                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <ShieldCheck size={24} />
                             </div>
-                            <h3 className="text-2xl font-bold text-[#000000]">100% Digital Proof</h3>
-                            <p className="text-slate-600 font-medium leading-relaxed">
+                            <h3 className="text-2xl font-bold">100% Digital Proof</h3>
+                            <p className="text-foreground/60 font-medium leading-relaxed">
                                 Geofenced clock-ins and real-time logs create an airtight defense. No more guessing, no more fines.
                             </p>
-                            <div className="pt-4 border-t border-slate-100">
+                            <div className="pt-4 border-t border-foreground/5">
                                 <p className="text-sm font-bold text-primary italic">
                                     &ldquo;When the auditor saw our reports, the conversation changed instantly. We were done in 15 minutes.&rdquo;
                                 </p>
@@ -72,14 +58,13 @@ export default function ComplianceAudit() {
                         </div>
                     </div>
 
-                    {/* The Result - Success card (High Contrast Off-white) */}
-                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-white/20 text-slate-900 flex flex-col justify-between shadow-xl transition-all duration-300">
+                    <div className="p-10 rounded-2xl bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
                         <div className="space-y-6">
-                            <div className="h-14 w-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                                <UserCheck size={28} />
+                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <UserCheck size={24} />
                             </div>
                             <h3 className="text-2xl font-bold">Absolute Certainty</h3>
-                            <p className="text-slate-600 font-medium leading-relaxed">
+                            <p className="text-foreground/60 font-medium leading-relaxed">
                                 Stop relying on the honor system. Know exactly when your crew starts and ends, with proof.
                             </p>
                         </div>
@@ -89,7 +74,7 @@ export default function ComplianceAudit() {
                 <div className="mt-16 flex justify-center">
                     <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl shadow-button transition-all whitespace-nowrap hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg"
+                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap hover:-translate-y-0.5 bg-primary text-white hover:bg-primary/90 px-10 py-5 text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)]"
                     >
                         Protect Your Business Now
                         <ArrowRight size={20} />
