@@ -191,7 +191,7 @@ export default function LiteSavingsCalculator() {
                             </div>
 
                             <div
-                                className="relative min-h-[220px] overflow-hidden rounded-3xl bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat sm:min-h-[240px] lg:min-h-0 lg:flex-1 lg:rounded-none lg:rounded-b-3xl lg:-mt-[calc(5.5rem-0.875rem)] lg:[clip-path:polygon(0_5.5rem,100%_0,100%_100%,0_100%)]"
+                                className="relative min-h-[220px] overflow-hidden rounded-3xl bg-[url('/images/ct-grid-bg.png')] bg-cover bg-center bg-no-repeat sm:min-h-[240px] lg:min-h-0 lg:flex-1 lg:rounded-none lg:rounded-b-3xl lg:-mt-[calc(5.5rem-0.875rem)] lg:[clip-path:polygon(0_5.5rem,100%_0,100%_100%,0_100%)]"
                                 aria-hidden
                             />
                         </div>
