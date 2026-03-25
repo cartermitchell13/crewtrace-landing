@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, type FormEvent } from "react";
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
 import {
     type LeadApiResponse,
     type LeadPayload,
@@ -114,33 +115,93 @@ export default function DemoRequestForm({ onSuccess }: DemoRequestFormProps) {
 
     if (status === "success") {
         return (
-            <div className="flex flex-col items-center justify-center text-center py-12 px-6 animate-fade-in">
-                <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-6">
-                    <CheckCircle2 className="w-8 h-8 text-green-600" />
+            <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                className="flex flex-col items-center justify-center text-center py-12 px-6"
+            >
+                <div className="relative w-20 h-20 mb-8">
+                    {/* Background pulse effect */}
+                    <motion.div 
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1.5, opacity: 0 }}
+                        transition={{ 
+                            duration: 2, 
+                            ease: "easeOut",
+                            repeat: Infinity,
+                            repeatDelay: 0.5
+                        }}
+                        className="absolute inset-0 rounded-full bg-green-500/20"
+                    />
+                    
+                    {/* Main circle */}
+                    <motion.div 
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ 
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20,
+                            delay: 0.1
+                        }}
+                        className="relative z-10 flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg shadow-green-500/30"
+                    >
+                        <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <motion.path 
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ 
+                                    duration: 0.6, 
+                                    ease: [0.25, 1, 0.5, 1],
+                                    delay: 0.3
+                                }}
+                                d="M20 6L9 17l-5-5"
+                            />
+                        </svg>
+                    </motion.div>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3">
+
+                <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                    className="text-3xl font-extrabold text-foreground mb-4 tracking-tight"
+                >
                     Request received
-                </h3>
-                <p className="text-foreground/60 max-w-md leading-relaxed font-medium">
+                </motion.h3>
+                
+                <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                    className="text-foreground/60 max-w-md leading-relaxed font-medium text-lg"
+                >
                     We&apos;ll review your details and send back a personalized
                     demo walkthrough and pricing guidance within one business
                     day.
-                </p>
-                <div className="mt-8 pt-6 border-t border-foreground/10 w-full max-w-sm">
-                    <p className="text-sm font-semibold text-foreground/50 mb-3">
+                </motion.p>
+                
+                <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                    className="mt-10 pt-8 border-t border-foreground/10 w-full max-w-sm flex flex-col items-center"
+                >
+                    <p className="text-sm font-semibold text-foreground/50 mb-4 uppercase tracking-wider">
                         Want to talk sooner?
                     </p>
                     <a
                         href="https://cal.com/crewtrace/15min"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
+                        className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary/10 px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary/20 hover:scale-[1.02] active:scale-[0.98]"
                     >
                         Book a 15-minute call
-                        <ArrowRight size={14} />
+                        <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                     </a>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         );
     }
 
