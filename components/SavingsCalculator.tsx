@@ -418,10 +418,8 @@ export default function SavingsCalculator() {
 
     if (phase === "input") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                <div className="max-w-4xl mx-auto relative z-10">
+            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
+                <div className="max-w-4xl mx-auto">
                     <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
 
                         {/* Header */}
@@ -574,10 +572,8 @@ export default function SavingsCalculator() {
 
     if (phase === "generating") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                <div className="max-w-2xl mx-auto relative z-10">
+            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
+                <div className="max-w-2xl mx-auto">
                     <div ref={generatingCardRef} className="bg-white rounded-[2.5rem] border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
                             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
@@ -618,10 +614,8 @@ export default function SavingsCalculator() {
     // ─── PHASE: Report ───────────────────────────────────────────
 
     return (
-        <section id="calculator" className="py-20 px-6 bg-background relative overflow-hidden scroll-mt-32">
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-            <div className="max-w-5xl mx-auto relative z-10 space-y-8">
+        <section id="calculator" className="py-20 px-6 bg-background scroll-mt-32">
+            <div className="max-w-5xl mx-auto space-y-8">
 
                 {/* Report Header */}
                 <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">

@@ -33,31 +33,13 @@ export default function Hero() {
                             and you stop losing money to time theft. Built {publicIcpPhrase}.
                         </p>
 
-                        {/* CTA Box styling modernized */}
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <Link
-                                href="/contact"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                            >
-                                Get a Personalized Demo
-                                <ArrowRight size={18} />
-                            </Link>
-                            <a
-                                href="#process"
-                                className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                            >
-                                {homeMessaging.secondaryCta}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
-                        </div>
+                        <Link
+                            href="/contact"
+                            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        >
+                            Get a Personalized Demo
+                            <ArrowRight size={18} />
+                        </Link>
 
                         <div className="mt-8 flex items-center gap-3">
                             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
