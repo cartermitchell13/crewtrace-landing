@@ -3,7 +3,7 @@ import { getStaticSeoPolicy } from "@/lib/seoPolicy";
 
 export const siteConfig = {
     name: "Crewtrace",
-    url: "https://getcrewtrace.com",
+    url: "https://getCrewtrace.com",
     title: "Construction Time Tracking Software — GPS Verified | Crewtrace",
     description:
         "Crewtrace is GPS-verified construction time tracking software that eliminates payroll errors, prevents time theft, and generates audit-ready labor records for contractors running field crews.",
@@ -81,7 +81,7 @@ export const organizationJsonLd = {
     contactPoint: {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "carter@getcrewtrace.com",
+        email: "carter@getCrewtrace.com",
         availableLanguage: ["en"],
     },
 };

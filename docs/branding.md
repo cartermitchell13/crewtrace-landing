@@ -96,7 +96,7 @@
   ],
   "__llm_logo_reasoning": {
     "selectedIndex": 1,
-    "reasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'CrewTrace'.",
+    "reasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'Crewtrace'.",
     "confidence": 0.9,
     "source": "llm"
   },
@@ -134,7 +134,7 @@
       "finalSource": "llm",
       "rawLogoSelection": {
         "selectedLogoIndex": 0,
-        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'CrewTrace'.",
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'Crewtrace'.",
         "confidence": 0.9
       }
     },

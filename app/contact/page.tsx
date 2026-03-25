@@ -9,7 +9,7 @@ import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
 // Lead analytics use buildLeadFormEvent from DemoRequestForm (see @/lib/seo-events).
 
 export const metadata: Metadata = createPageMetadata({
-    title: "Get a Personalized Demo + Quote | CrewTrace",
+    title: "Get a Personalized Demo + Quote | Crewtrace",
     description:
         `Answer a few quick questions about your operation and we\u2019ll send back a personalized demo walkthrough and pricing guidance. No sales call required. ${publicIcpPhrase}`,
     path: "/contact",
@@ -48,7 +48,7 @@ export default function ContactPage() {
                             Get a personalized demo + quote
                         </p>
                         <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                            See how CrewTrace fits your operation
+                            See how Crewtrace fits your operation
                         </h1>
                         <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">
                             Answer a few quick questions and we&apos;ll send you a
@@ -119,7 +119,7 @@ export default function ContactPage() {
                                 <p className="font-semibold text-foreground/60">
                                     Prefer a live call?{" "}
                                     <a
-                                        href="https://cal.com/crewtrace/15min"
+                                        href="https://cal.com/Crewtrace/15min"
                                         className="text-primary underline underline-offset-2"
                                     >
                                         Book 15 minutes

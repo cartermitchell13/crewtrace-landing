@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --font-sans: var(--font-crewtrace-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-crewtrace-heading), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-Crewtrace-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-Crewtrace-heading), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme {

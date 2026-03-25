@@ -192,7 +192,7 @@ export default function DemoRequestForm({ onSuccess }: DemoRequestFormProps) {
                         Want to talk sooner?
                     </p>
                     <a
-                        href="https://cal.com/crewtrace/15min"
+                        href="https://cal.com/Crewtrace/15min"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary/10 px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary/20 hover:scale-[1.02] active:scale-[0.98]"

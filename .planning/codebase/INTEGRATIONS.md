@@ -6,12 +6,12 @@
 
 **Scheduling / lead capture:**
 - Cal.com booking links are used for primary CTA flows.
-  - Integration method: direct outbound links (`https://cal.com/crewtrace/15min`).
+  - Integration method: direct outbound links (`https://cal.com/Crewtrace/15min`).
   - Locations: multiple page components and nav/footer CTAs.
 
 **Email and phone contact:**
 - Direct `mailto:` and `tel:` links on contact/legal pages.
-  - Example: `mailto:hello@crewtrace.com`.
+  - Example: `mailto:hello@Crewtrace.com`.
 
 ## Data Storage
 

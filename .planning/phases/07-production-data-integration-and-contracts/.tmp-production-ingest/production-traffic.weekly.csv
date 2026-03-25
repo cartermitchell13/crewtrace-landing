@@ -1,8 +1,8 @@
 date,occurred_at,url,landing_url,cluster,template_type,clicks,impressions
-2026-02-23,2026-02-23T00:00:00.000Z,https://getcrewtrace.com/features/gps-time-tracking,/features/gps-time-tracking,features,feature_detail,24,220
-2026-02-24,2026-02-24T00:00:00.000Z,https://getcrewtrace.com/features/payroll-leakage-prevention,/features/payroll-leakage-prevention,features,feature_detail,19,201
-2026-02-25,2026-02-25T00:00:00.000Z,https://getcrewtrace.com/industries/construction,/industries/construction,industries,industry_detail,31,284
-2026-02-26,2026-02-26T00:00:00.000Z,https://getcrewtrace.com/compare/connecteam,/compare/connecteam,compare,competitor_detail,12,190
-2026-02-27,2026-02-27T00:00:00.000Z,https://getcrewtrace.com/guides/construction-time-tracking-implementation,/guides/construction-time-tracking-implementation,guides,guide_detail,15,160
-2026-02-28,2026-02-28T00:00:00.000Z,https://getcrewtrace.com/blog/gps-time-tracking-vs-paper-timesheets,/blog/gps-time-tracking-vs-paper-timesheets,blog,blog_detail,18,205
-2026-03-01,2026-03-01T00:00:00.000Z,https://getcrewtrace.com/case-studies/chen-construction-multi-site-control,/case-studies/chen-construction-multi-site-control,case-studies,case_study_detail,9,120
+2026-02-23,2026-02-23T00:00:00.000Z,https://getCrewtrace.com/features/gps-time-tracking,/features/gps-time-tracking,features,feature_detail,24,220
+2026-02-24,2026-02-24T00:00:00.000Z,https://getCrewtrace.com/features/payroll-leakage-prevention,/features/payroll-leakage-prevention,features,feature_detail,19,201
+2026-02-25,2026-02-25T00:00:00.000Z,https://getCrewtrace.com/industries/construction,/industries/construction,industries,industry_detail,31,284
+2026-02-26,2026-02-26T00:00:00.000Z,https://getCrewtrace.com/compare/connecteam,/compare/connecteam,compare,competitor_detail,12,190
+2026-02-27,2026-02-27T00:00:00.000Z,https://getCrewtrace.com/guides/construction-time-tracking-implementation,/guides/construction-time-tracking-implementation,guides,guide_detail,15,160
+2026-02-28,2026-02-28T00:00:00.000Z,https://getCrewtrace.com/blog/gps-time-tracking-vs-paper-timesheets,/blog/gps-time-tracking-vs-paper-timesheets,blog,blog_detail,18,205
+2026-03-01,2026-03-01T00:00:00.000Z,https://getCrewtrace.com/case-studies/chen-construction-multi-site-control,/case-studies/chen-construction-multi-site-control,case-studies,case_study_detail,9,120

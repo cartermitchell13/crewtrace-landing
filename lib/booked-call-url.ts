@@ -1,4 +1,4 @@
-export const BOOKED_CALL_BASE_URL = "https://cal.com/crewtrace/15min";
+export const BOOKED_CALL_BASE_URL = "https://cal.com/Crewtrace/15min";
 
 export const bookedCallAttributionParamKeys = [
     "utm_source",

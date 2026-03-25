@@ -16,9 +16,9 @@ The source of truth is `lib/competitors.ts`. This document is an operator-facing
 
 | Competitor | Intent category | Primary terms | Secondary terms | Safe-claim posture | Review cadence |
 |---|---|---|---|---|---|
-| Connecteam | comparison | `crewtrace vs connecteam`, `connecteam alternative` | `connecteam time tracking for construction`, `connecteam payroll export` | Verified product-doc and customer-proof claims only; migration framing uses cautious inference language | Every 30 days (`lastReviewedOn: 2026-03-03`) |
+| Connecteam | comparison | `Crewtrace vs connecteam`, `connecteam alternative` | `connecteam time tracking for construction`, `connecteam payroll export` | Verified product-doc and customer-proof claims only; migration framing uses cautious inference language | Every 30 days (`lastReviewedOn: 2026-03-03`) |
 | Connecteam | pricing | `connecteam pricing alternatives` | `connecteam cost for contractors` | Pricing references must be timestamped and sourced; no evergreen guarantees | Every 30 days (`lastReviewedOn: 2026-03-03`) |
-| Workyard | comparison | `crewtrace vs workyard`, `workyard alternative` | `workyard payroll tracking`, `workyard for contractors` | Verified product-doc and customer-proof claims only; neutral side-by-side framing | Every 30 days (`lastReviewedOn: 2026-03-03`) |
+| Workyard | comparison | `Crewtrace vs workyard`, `workyard alternative` | `workyard payroll tracking`, `workyard for contractors` | Verified product-doc and customer-proof claims only; neutral side-by-side framing | Every 30 days (`lastReviewedOn: 2026-03-03`) |
 | Workyard | reviews | `workyard reviews for contractors` | `workyard overtime tracking alternative` | Use first-party evidence and avoid unverifiable parity/superiority language | Every 30 days (`lastReviewedOn: 2026-03-03`) |
 
 ## Notes

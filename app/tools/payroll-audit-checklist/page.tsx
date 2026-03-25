@@ -79,9 +79,9 @@ export default function PayrollAuditChecklistPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://getcrewtrace.com/" },
-            { "@type": "ListItem", position: 2, name: "Tools", item: "https://getcrewtrace.com/tools" },
-            { "@type": "ListItem", position: 3, name: "Payroll Audit Checklist", item: "https://getcrewtrace.com/tools/payroll-audit-checklist" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://getCrewtrace.com/" },
+            { "@type": "ListItem", position: 2, name: "Tools", item: "https://getCrewtrace.com/tools" },
+            { "@type": "ListItem", position: 3, name: "Payroll Audit Checklist", item: "https://getCrewtrace.com/tools/payroll-audit-checklist" },
         ],
     };
 

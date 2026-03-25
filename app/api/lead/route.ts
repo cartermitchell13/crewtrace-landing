@@ -112,7 +112,7 @@ function truncateSmsMessage(value: string): string {
 
 function buildLeadSmsMessage(lead: LeadPayload) {
     const parts = [
-        `New CrewTrace lead`,
+        `New Crewtrace lead`,
         `Name: ${lead.name}`,
         `Email: ${lead.email}`,
         lead.phone ? `Phone: ${lead.phone}` : null,
@@ -143,7 +143,7 @@ async function sendBrrrLeadNotification(lead: LeadPayload): Promise<boolean> {
     ].filter(Boolean);
 
     const body = {
-        title: "New CrewTrace lead",
+        title: "New Crewtrace lead",
         message: detailLines.join("\n"),
         "interruption-level": "active" as const,
     };
@@ -226,7 +226,7 @@ async function persistLead(
                 Prefer: "return=minimal",
             },
             body: JSON.stringify({
-                source: "crewtrace-landing",
+                source: "Crewtrace-landing",
                 source_page: "/contact",
                 submitted_at: new Date().toISOString(),
                 name: lead.name,

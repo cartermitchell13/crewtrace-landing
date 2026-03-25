@@ -25,7 +25,7 @@
 - Root cause: placeholder async timeout implementation.
 
 **Potential brand inconsistency:**
-- Symptoms: mixed spelling/casing appears in demo metadata copy (`CrewTrace` vs `Crewtrace`).
+- Symptoms: mixed spelling/casing appears in demo metadata copy (`Crewtrace` vs `Crewtrace`).
 - Trigger: reading `app/demo/page.tsx` metadata and hero copy.
 - Impact: weak brand consistency and possible SERP snippet inconsistency.
 

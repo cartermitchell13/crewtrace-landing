@@ -67,7 +67,7 @@ Turn SEO traffic into measurable booked calls by (1) replacing simulated lead ca
 
 ### Established Patterns
 - Dynamic SEO pages are contract-driven from typed `lib/*` records and slug exports.
-- Most booked-call CTAs are direct external links to `https://cal.com/crewtrace/15min`.
+- Most booked-call CTAs are direct external links to `https://cal.com/Crewtrace/15min`.
 - Utility routes (`/calculator`, `/compliance-audit`, `/demo`) are intentionally noindex and can be excluded from SEO conversion denominators when needed.
 - Metadata and crawl policy are centralized; Phase 5 should follow this contract-first pattern for conversion instrumentation.
 

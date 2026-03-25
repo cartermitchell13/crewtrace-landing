@@ -41,7 +41,7 @@ export default function TermsPage() {
                         <section className="space-y-4">
                             <h2 className="text-2xl font-bold tracking-tight text-foreground">2. Description of Services</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
-                                Crewtrace provides a GPS-verified time tracking and workforce management platform designed for the construction industry, accessible via our website at getcrewtrace.com and our application hosted at crewtrace.app. Our Services include, but are not limited to:
+                                Crewtrace provides a GPS-verified time tracking and workforce management platform designed for the construction industry, accessible via our website at getCrewtrace.com and our application hosted at Crewtrace.app. Our Services include, but are not limited to:
                             </p>
                             <ul className="list-disc pl-6 space-y-2 text-foreground/70 font-medium leading-relaxed">
                                 <li>GPS geofenced clock-in and clock-out functionality</li>
@@ -133,7 +133,7 @@ export default function TermsPage() {
                         <section className="space-y-4">
                             <h2 className="text-2xl font-bold tracking-tight text-foreground">10. Limitation of Liability</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
-                                TO THE FULLEST EXTENT PERMITTED BY LAW, CREWTRACE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION LOST PROFITS, DATA LOSS, OR BUSINESS INTERRUPTION, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICES, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY.
+                                TO THE FULLEST EXTENT PERMITTED BY LAW, Crewtrace SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION LOST PROFITS, DATA LOSS, OR BUSINESS INTERRUPTION, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICES, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY.
                             </p>
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 Our total liability for any claims arising under these Terms shall not exceed the amount you paid to us during the twelve (12) months immediately preceding the event giving rise to the claim.
@@ -179,11 +179,11 @@ export default function TermsPage() {
                             <div className="bg-white border border-foreground/5 rounded-2xl p-6 space-y-3">
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Email:</strong>{" "}
-                                    <a href="mailto:carter@getcrewtrace.com" className="text-primary hover:underline">carter@getcrewtrace.com</a>
+                                    <a href="mailto:carter@getCrewtrace.com" className="text-primary hover:underline">carter@getCrewtrace.com</a>
                                 </p>
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Website:</strong>{" "}
-                                    <a href="https://getcrewtrace.com" className="text-primary hover:underline">getcrewtrace.com</a>
+                                    <a href="https://getCrewtrace.com" className="text-primary hover:underline">getCrewtrace.com</a>
                                 </p>
                             </div>
                         </section>

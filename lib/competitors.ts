@@ -73,10 +73,10 @@ export const competitorRecords: CompetitorRecord[] = [
         pageSummary:
             "Neutral comparison for payroll-focused teams that need location-verified time, cleaner approvals, and lower implementation risk.",
         heroTagline: "Compare through a payroll-confidence lens, not a feature checklist.",
-        primaryKeyword: "crewtrace vs connecteam",
+        primaryKeyword: "Crewtrace vs connecteam",
         keywordClusters: [
             {
-                primaryTerms: ["crewtrace vs connecteam", "connecteam alternative"],
+                primaryTerms: ["Crewtrace vs connecteam", "connecteam alternative"],
                 secondaryTerms: ["connecteam time tracking for construction", "connecteam payroll export"],
                 intentBucket: "comparison",
                 canonicalOwner: "competitor-page",
@@ -90,7 +90,7 @@ export const competitorRecords: CompetitorRecord[] = [
         ],
         intentTargets: [
             {
-                query: "crewtrace vs connecteam",
+                query: "Crewtrace vs connecteam",
                 intentBucket: "comparison",
                 ownershipNotes:
                     "Owned by /compare/connecteam and positioned as factual side-by-side decision support.",
@@ -190,10 +190,10 @@ export const competitorRecords: CompetitorRecord[] = [
         pageSummary:
             "Factual comparison for teams evaluating GPS time tracking, overtime controls, and implementation confidence.",
         heroTagline: "Choose the model that protects labor margin and keeps payroll review predictable.",
-        primaryKeyword: "crewtrace vs workyard",
+        primaryKeyword: "Crewtrace vs workyard",
         keywordClusters: [
             {
-                primaryTerms: ["crewtrace vs workyard", "workyard alternative"],
+                primaryTerms: ["Crewtrace vs workyard", "workyard alternative"],
                 secondaryTerms: ["workyard payroll tracking", "workyard for contractors"],
                 intentBucket: "comparison",
                 canonicalOwner: "competitor-page",
@@ -207,7 +207,7 @@ export const competitorRecords: CompetitorRecord[] = [
         ],
         intentTargets: [
             {
-                query: "crewtrace vs workyard",
+                query: "Crewtrace vs workyard",
                 intentBucket: "comparison",
                 ownershipNotes:
                     "Owned by /compare/workyard with neutral framing and proof-link pathways.",

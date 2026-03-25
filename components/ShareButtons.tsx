@@ -9,7 +9,7 @@ interface ShareButtonsProps {
     variant?: "sidebar" | "inline";
 }
 
-const BASE_URL = "https://getcrewtrace.com";
+const BASE_URL = "https://getCrewtrace.com";
 
 export default function ShareButtons({ title, slug, variant = "sidebar" }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false);

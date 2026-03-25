@@ -1,4 +1,4 @@
-export const FIRST_TOUCH_STORAGE_KEY = "crewtrace:first-touch:v1";
+export const FIRST_TOUCH_STORAGE_KEY = "Crewtrace:first-touch:v1";
 
 export const firstTouchParamKeys = [
     "utm_source",

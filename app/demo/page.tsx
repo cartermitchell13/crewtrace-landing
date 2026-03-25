@@ -10,9 +10,9 @@ const VIDEO_SRC = "/videos/demo.mp4";
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = createPageMetadata({
-    title: "See CrewTrace in Action | Demo",
+    title: "See Crewtrace in Action | Demo",
     description:
-        "Watch a quick walkthrough of how CrewTrace stops payroll leakage for construction crews — no sales call required.",
+        "Watch a quick walkthrough of how Crewtrace stops payroll leakage for construction crews — no sales call required.",
     path: "/demo",
     noIndex: true,
 });
@@ -39,7 +39,7 @@ export default function DemoPage() {
 
                         <div className="space-y-6">
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] animate-slide-up delay-100">
-                                See exactly how CrewTrace <br className="hidden md:block" />
+                                See exactly how Crewtrace <br className="hidden md:block" />
                                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">stops payroll leakage</span>
                             </h1>
                             <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-medium animate-slide-up delay-200">

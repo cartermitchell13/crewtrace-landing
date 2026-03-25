@@ -31,7 +31,7 @@ export function organizationSchema() {
         contactPoint: {
             "@type": "ContactPoint",
             contactType: "sales",
-            email: "carter@getcrewtrace.com",
+            email: "carter@getCrewtrace.com",
             availableLanguage: ["en"],
         },
     };

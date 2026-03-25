@@ -35,7 +35,7 @@ describe("schema builders", () => {
 
         expect(schema["@type"]).toBe("BreadcrumbList");
         expect(schema.itemListElement[0].position).toBe(1);
-        expect(schema.itemListElement[0].item).toBe("https://getcrewtrace.com");
+        expect(schema.itemListElement[0].item).toBe("https://getCrewtrace.com");
         expect(schema.itemListElement[1].item).toContain("/blog");
     });
 

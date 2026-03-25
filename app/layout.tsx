@@ -7,13 +7,13 @@ import { siteConfig } from "@/lib/seo";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const geistSans = Geist({
-  variable: "--font-crewtrace-heading",
+  variable: "--font-Crewtrace-heading",
   subsets: ["latin"],
   display: "swap",
 });
 
 const inter = Inter({
-  variable: "--font-crewtrace-sans",
+  variable: "--font-Crewtrace-sans",
   subsets: ["latin"],
   display: "swap",
 });

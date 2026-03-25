@@ -5,7 +5,7 @@
 ## Directory Layout
 
 ```text
-crewtrace-landing/
+Crewtrace-landing/
 |-- app/                # App Router pages, layouts, metadata endpoints
 |-- components/         # Reusable UI and interactive conversion components
 |   `-- __tests__/      # Component-level tests
