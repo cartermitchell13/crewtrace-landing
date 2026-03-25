@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import FAQSection from "@/components/FAQSection";
 import {
@@ -191,7 +191,9 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
-                <TestimonialsSection />
+                <TestimonialTextureShell>
+                    <TestimonialsSection />
+                </TestimonialTextureShell>
 
                 {/* Challenges and Solutions */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">

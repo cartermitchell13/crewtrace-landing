@@ -5,7 +5,7 @@ import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import ProcessSection from "@/components/ProcessSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -40,8 +40,10 @@ export default function Home() {
         />
         <Hero />
         <FeatureGrid />
-        <TestimonialsSection />
-        <ProcessSection />
+        <TestimonialTextureShell>
+          <TestimonialsSection />
+          <ProcessSection variant="texture" />
+        </TestimonialTextureShell>
         <ComplianceAudit />
         <LiteSavingsCalculator />
         <PricingSection />

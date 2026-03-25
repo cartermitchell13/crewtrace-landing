@@ -28,9 +28,29 @@ const steps = [
     }
 ];
 
-export default function ProcessSection() {
+type ProcessSectionProps = {
+    /** Use on the home page when this block sits on the shared testimonial texture background. */
+    variant?: "default" | "texture";
+};
+
+export default function ProcessSection({ variant = "default" }: ProcessSectionProps) {
+    const isTexture = variant === "texture";
+    /* On the home texture band: read as a "workflow / diagram" zone — tinted, soft edge — not a second white proof card like TestimonialsSection. */
+    const contentShell =
+        isTexture
+            ? "max-w-7xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-b from-secondary/55 via-secondary/20 to-background/90 p-8 shadow-sm ring-1 ring-inset ring-white/40 sm:px-10 sm:py-16 md:rounded-3xl md:px-14 md:py-20"
+            : "max-w-7xl mx-auto";
+    const lineTrack = isTexture ? "bg-primary/15" : "bg-foreground/5";
+    const stepBodyClass = isTexture ? "text-foreground/70" : "text-foreground/60";
+    const stepTileClass = isTexture
+        ? "border-primary/10 bg-white shadow-sm ring-1 ring-primary/10"
+        : "border-foreground/10 bg-white shadow-sm";
+
     return (
-        <section id="process" className="py-24 md:py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
+        <section
+            id="process"
+            className={`relative z-10 overflow-hidden scroll-mt-32 py-24 md:py-32 ${isTexture ? "bg-transparent px-0" : "bg-background px-6"}`}
+        >
             <style>{`
                 @keyframes dataFlow {
                     0% { transform: translateX(-100%); opacity: 0; }
@@ -38,54 +58,46 @@ export default function ProcessSection() {
                     80% { opacity: 1; }
                     100% { transform: translateX(100%); opacity: 0; }
                 }
-                @keyframes dataFlowVertical {
-                    0% { transform: translateY(-100%); opacity: 0; }
-                    20% { opacity: 1; }
-                    80% { opacity: 1; }
-                    100% { transform: translateY(100%); opacity: 0; }
-                }
                 .animate-data-flow {
                     animation: dataFlow 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
                 }
-                .animate-data-flow-vertical {
-                    animation: dataFlowVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
-                }
                 @media (prefers-reduced-motion: reduce) {
-                    .animate-data-flow,
-                    .animate-data-flow-vertical {
+                    .animate-data-flow {
                         animation: none !important;
                     }
                 }
             `}</style>
 
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+            <div className={contentShell}>
+                <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
                     <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                         Autonomous Workflow
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
-                        How Our Time Clock App Works. <br className="hidden md:block" />
-                        <span className="text-primary italic">Job site to payroll in four steps.</span>
+                    <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
+                        Job site to payroll{" "}
+                        <span className="font-extrabold italic text-primary">in four easy steps.</span>
                     </h2>
                 </div>
 
                 <div className="relative">
                     {/* Horizontal Connector Line (Desktop) */}
-                    <div className="hidden md:block absolute top-[4rem] left-[12.5%] right-[12.5%] h-[2px] bg-foreground/5 z-0 overflow-hidden rounded-full">
-                        <div className="w-full h-full bg-gradient-to-r from-transparent via-primary to-transparent animate-data-flow" />
+                    <div
+                        className={`absolute left-[12.5%] right-[12.5%] top-[4rem] z-0 hidden h-[2px] overflow-hidden rounded-full md:block ${lineTrack}`}
+                    >
+                        <div className="h-full w-full animate-data-flow bg-gradient-to-r from-transparent via-primary to-transparent" />
                     </div>
 
-                    {/* Vertical Connector Line (Mobile) */}
-                    <div className="absolute md:hidden left-[4.5rem] top-10 bottom-10 w-[2px] bg-foreground/5 z-0 overflow-hidden rounded-full">
-                        <div className="w-full h-full bg-gradient-to-b from-transparent via-primary to-transparent animate-data-flow-vertical" />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+                    <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-8">
                         {steps.map((step, index) => (
-                            <div key={step.id} className="relative z-10 flex md:flex-col items-center gap-6 md:gap-8">
+                            <div
+                                key={step.id}
+                                className="relative z-10 flex flex-col items-center gap-5 text-center md:gap-8"
+                            >
                                 {/* Image Node */}
-                                <div className="relative shrink-0 ml-3 md:ml-0">
-                                    <div className="relative w-32 h-32 md:w-36 md:h-36 bg-white border border-foreground/10 shadow-sm rounded-2xl flex items-center justify-center">
+                                <div className="relative shrink-0">
+                                    <div
+                                        className={`relative flex h-32 w-32 items-center justify-center rounded-2xl border md:h-36 md:w-36 ${stepTileClass}`}
+                                    >
 
                                         <div className="absolute inset-0 rounded-2xl overflow-hidden">
 
@@ -106,11 +118,11 @@ export default function ProcessSection() {
                                 </div>
 
                                 {/* Text Content */}
-                                <div className="text-left md:text-center md:px-2 flex-1">
-                                    <h3 className="text-xl font-bold text-foreground mb-2">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-sm font-medium text-foreground/60 leading-relaxed max-w-[280px] md:mx-auto">
+                                <div className="w-full flex-1 px-1 md:px-2 md:text-center">
+                                    <h3 className="mb-2 text-xl font-bold text-foreground">{step.title}</h3>
+                                    <p
+                                        className={`mx-auto max-w-[280px] text-sm font-medium leading-relaxed ${stepBodyClass}`}
+                                    >
                                         {step.description}
                                     </p>
                                 </div>
