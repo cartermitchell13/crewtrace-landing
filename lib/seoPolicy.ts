@@ -149,6 +149,16 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         changeFrequency: "monthly",
         priority: 0.8,
     },
+    {
+        path: "/tools/payroll-audit-checklist",
+        pageKind: "utility",
+        indexable: true,
+        titlePattern: "Payroll Audit Checklist | FLSA Compliance Readiness",
+        descriptionPattern:
+            "Walk through FLSA-focused payroll audit steps for construction crews — timekeeping proof, overtime, classification, and record retention.",
+        changeFrequency: "monthly",
+        priority: 0.8,
+    },
 ];
 
 const dynamicPolicyPrefixes = [

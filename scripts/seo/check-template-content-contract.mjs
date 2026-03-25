@@ -88,10 +88,18 @@ const templateContracts = [
         template: "contact",
         filePath: "app/contact/page.tsx",
         requiredTokens: [
+            "<DemoRequestForm",
+            "<h1",
+            "publicIcpPhrase",
+        ],
+    },
+    {
+        template: "contact_form",
+        filePath: "components/DemoRequestForm.tsx",
+        requiredTokens: [
             "<form",
             "buildLeadFormEvent",
             "fetch(\"/api/lead\"",
-            "<h1",
         ],
     },
 ];

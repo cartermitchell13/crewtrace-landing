@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import {
-    getTemplateMessaging,
-} from "@/lib/messaging";
+import { getTemplateMessaging, publicIcpPhrase } from "@/lib/messaging";
 
 const homeMessaging = getTemplateMessaging("home");
 
@@ -32,7 +30,7 @@ export default function Hero() {
                         <p className="mb-10 max-w-xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
                             Construction time tracking software with GPS verification and
                             geofencing. Your crew clocks in on the job site, hours sync to payroll,
-                            and you stop losing money to time theft.
+                            and you stop losing money to time theft. Built {publicIcpPhrase}.
                         </p>
 
                         {/* CTA Box styling modernized */}

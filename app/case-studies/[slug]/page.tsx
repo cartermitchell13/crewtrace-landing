@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
@@ -370,13 +371,23 @@ export default async function CaseStudyDetailPage({
                             <div className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-white/80 md:text-xl">
                                 Find out exactly where your business is leaking payroll dollars. Book a free, no-obligation audit with our team today.
                             </div>
-                            <Link
-                                href="/contact"
-                                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
-                            >
-                                Get a Personalized Demo
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
+                            <div className="flex flex-col items-center gap-4">
+                                <Link
+                                    href="/contact"
+                                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+                                >
+                                    Get a Personalized Demo
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                                <BookedCallLink
+                                    templateType="case_study_detail"
+                                    cluster="case-studies"
+                                    landingPath={`/case-studies/${study.slug}`}
+                                    className="text-base font-semibold text-white/90 underline-offset-2 hover:text-white hover:underline"
+                                >
+                                    Book a 15-minute call
+                                </BookedCallLink>
+                            </div>
                         </div>
                     </div>
                 </div>

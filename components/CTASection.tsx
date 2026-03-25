@@ -1,9 +1,12 @@
 import { CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import {
+    getTemplateMessaging,
     orderedPromiseLine,
     publicIcpPhrase,
 } from "@/lib/messaging";
+
+const contactCtaMessaging = getTemplateMessaging("contact");
 
 type CTASectionProps = {
     cluster?: string;
@@ -32,7 +35,7 @@ export default function CTASection({
                     <div className="relative z-10 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
                         <div className="space-y-8">
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-white">
-                                See exactly how Crewtrace fits your operation.
+                                {contactCtaMessaging.intentHeadline}
                             </h2>
 
                             <div className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-white/80">

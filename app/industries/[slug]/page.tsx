@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -247,6 +248,17 @@ export default async function IndustryPage({
                                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
+                            <p className="text-center text-sm text-foreground/55">
+                                Prefer to talk live?{" "}
+                                <BookedCallLink
+                                    templateType="industry_detail"
+                                    cluster="industries"
+                                    landingPath={`/industries/${slug}`}
+                                    className="font-semibold text-primary underline-offset-2 hover:underline"
+                                >
+                                    Book a 15-minute call
+                                </BookedCallLink>
+                            </p>
                         </div>
                     </div>
 

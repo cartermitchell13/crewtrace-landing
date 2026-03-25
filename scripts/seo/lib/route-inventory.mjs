@@ -97,7 +97,10 @@ export function buildRouteInventory() {
     const industrySlugs = industriesModule.industrySlugs ?? [];
     const competitorSlugs = competitorsModule.competitorSlugs ?? [];
     const guideSlugs = guidesModule.guideSlugs ?? [];
-    const caseStudySlugs = caseStudiesModule.caseStudySlugs ?? [];
+    const caseStudySlugs =
+        typeof caseStudiesModule.getCaseStudySlugs === "function"
+            ? caseStudiesModule.getCaseStudySlugs()
+            : caseStudiesModule.caseStudySlugs ?? [];
     const blogSlugs = collectBlogSlugs();
 
     const dynamicPaths = [

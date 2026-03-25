@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DemoRequestForm from "@/components/DemoRequestForm";
+import { publicIcpPhrase } from "@/lib/messaging";
 import { createPageMetadata } from "@/lib/seo";
 import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
+
+// Lead analytics use buildLeadFormEvent from DemoRequestForm (see @/lib/seo-events).
 
 export const metadata: Metadata = createPageMetadata({
     title: "Get a Personalized Demo + Quote | CrewTrace",
     description:
-        "Answer a few quick questions about your operation and we\u2019ll send back a personalized demo walkthrough and pricing guidance. No sales call required.",
+        `Answer a few quick questions about your operation and we\u2019ll send back a personalized demo walkthrough and pricing guidance. No sales call required. ${publicIcpPhrase}`,
     path: "/contact",
 });
 

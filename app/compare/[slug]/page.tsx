@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -23,6 +24,8 @@ const GUIDE_LINK_LIMIT = 3;
 const CASE_STUDY_LINK_LIMIT = 3;
 
 const compareDetailMessaging = getTemplateMessaging("compare_detail");
+
+/** Registered template: templateType="competitor_detail" (compare_detail messaging bundle). */
 
 function toFeaturePath(slug: string) {
     return `/features/${slug}`;
@@ -382,12 +385,22 @@ export default async function CompareDetailPage({
                                 {competitor.softCtaBody}
                             </p>
                         </div>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
-                        >
-                            {compareDetailMessaging.primaryCta}
-                        </Link>
+                        <div className="flex flex-col gap-3 sm:items-end">
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
+                            >
+                                {compareDetailMessaging.primaryCta}
+                            </Link>
+                            <BookedCallLink
+                                templateType="competitor_detail"
+                                cluster="compare"
+                                landingPath={`/compare/${slug}`}
+                                className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white hover:bg-white/15"
+                            >
+                                Book a 15-minute call
+                            </BookedCallLink>
+                        </div>
                     </section>
                 </article>
             </main>

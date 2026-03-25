@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getCompetitorsByGuideSlug } from "@/lib/competitors";
@@ -386,7 +387,7 @@ export default async function GuideDetailPage({
                                     streamline it with the right tools.
                                 </p>
                             </div>
-                            <div className="shrink-0 pt-4 md:pt-0">
+                            <div className="shrink-0 flex flex-col items-stretch gap-4 pt-4 md:items-end md:pt-0">
                                 <Link
                                     href="/contact"
                                     className="group inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
@@ -396,6 +397,14 @@ export default async function GuideDetailPage({
                                         &rarr;
                                     </span>
                                 </Link>
+                                <BookedCallLink
+                                    templateType="guide_detail"
+                                    cluster="guides"
+                                    landingPath={`/guides/${slug}`}
+                                    className="text-center text-base font-bold text-white/90 underline-offset-2 hover:text-white hover:underline md:text-right"
+                                >
+                                    Book a 15-minute call
+                                </BookedCallLink>
                             </div>
                         </div>
                     </section>
