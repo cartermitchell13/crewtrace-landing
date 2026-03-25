@@ -125,6 +125,46 @@ function buildLeadSmsMessage(lead: LeadPayload) {
     return truncateSmsMessage(parts.join("\n"));
 }
 
+/** Optional push via https://brrr.now/docs/ — set BRRR_WEBHOOK_URL to the full webhook URL from the app. */
+async function sendBrrrLeadNotification(lead: LeadPayload): Promise<boolean> {
+    const webhookUrl = process.env.BRRR_WEBHOOK_URL?.trim();
+    if (!webhookUrl) {
+        return false;
+    }
+
+    const detailLines = [
+        lead.name,
+        lead.email,
+        lead.phone ? `Phone: ${lead.phone}` : null,
+        lead.company ? `Company: ${lead.company}` : null,
+        lead.crewSize ? `Crew: ${lead.crewSize}` : null,
+        lead.currentSoftware ? `Software: ${lead.currentSoftware}` : null,
+        lead.message ? `Message: ${lead.message}` : null,
+    ].filter(Boolean);
+
+    const body = {
+        title: "New CrewTrace lead",
+        message: detailLines.join("\n"),
+        "interruption-level": "active" as const,
+    };
+
+    const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+        const errText = await response.text().catch(() => "");
+        console.error("brrr notification failed.", {
+            status: response.status,
+            body: errText,
+        });
+    }
+
+    return response.ok;
+}
+
 async function sendLeadSmsNotification(lead: LeadPayload): Promise<boolean> {
     const twilio = getTwilioConfig();
     if (!twilio) {
@@ -279,6 +319,11 @@ export async function POST(request: Request) {
             );
         }
     }
+
+    await sendBrrrLeadNotification(validated.data).catch((error) => {
+        console.error("brrr notification threw an error.", error);
+        return false;
+    });
 
     return toJson({
         ok: true,
