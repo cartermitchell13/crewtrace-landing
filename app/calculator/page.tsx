@@ -7,7 +7,7 @@ import { CheckCircle2, Lock, TrendingUp, Sparkles } from "lucide-react";
 
 export default function CalculatorPage() {
     return (
-        <div className="min-h-screen bg-[#FBFBFE]">
+        <div className="min-h-screen bg-background">
             <Navbar />
 
             <main className="pt-32 pb-20">
@@ -48,11 +48,8 @@ export default function CalculatorPage() {
                 </div>
 
                 {/* The Calculator */}
-                <div className="relative">
-                    <div className="absolute inset-0 bg-primary/[0.01] -skew-y-3 z-0" />
-                    <div className="relative z-10">
-                        <SavingsCalculator />
-                    </div>
+                <div className="relative z-10">
+                    <SavingsCalculator />
                 </div>
             </main>
 
