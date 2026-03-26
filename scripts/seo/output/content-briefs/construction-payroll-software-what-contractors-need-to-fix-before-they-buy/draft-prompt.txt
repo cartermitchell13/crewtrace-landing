@@ -1,0 +1,23 @@
+Write a Crewtrace SEO article for the target keyword "construction payroll software".
+
+Read these documents first:
+- Research brief: C:\projects\crewtrace-landing\scripts\seo\output\content-briefs\construction-payroll-software-what-contractors-need-to-fix-before-they-buy\research-brief.md
+- Crewtrace point of view: C:\projects\crewtrace-landing\docs\seo\crewtrace-category-point-of-view.md
+
+Write the final draft directly to content/blog/construction-payroll-software-what-contractors-need-to-fix-before-they-buy.md.
+
+Hard requirements:
+- Keep the frontmatter fields exactly: title, excerpt, date, category, readTime, author.
+- Use this frontmatter seed:
+  title: "Construction Payroll Software: What Contractors Need to Fix Before They Buy"
+  date: "2026-03-26"
+  category: "Payroll"
+  author: "Carter Mitchell"
+- Write in plain markdown.
+- Include at least 3 H2 sections so the publish gate passes.
+- Avoid unsupported guarantees and banned phrases from scripts/content/lib/publish-quality-rules.mjs.
+- Use cautious sourcing language for anything learned from competitor pages or external sources.
+- Blend Crewtrace's point of view with what ranking pages cover, but do not copy their structure or wording.
+- End with a CTA that points to /contact.
+
+After writing, run: npm run content:check-publish -- --input content/blog/construction-payroll-software-what-contractors-need-to-fix-before-they-buy.md
