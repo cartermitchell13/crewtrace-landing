@@ -2,21 +2,23 @@
 
 import { useState } from "react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
-import { homeFaqItems } from "@/lib/faq";
+import { homeFaqItems, type FaqItem } from "@/lib/faq";
 import { publicIcpPhrase } from "@/lib/messaging";
 
 type FAQSectionProps = {
     eyebrow?: string;
     title?: string;
     description?: string;
+    items?: FaqItem[];
 };
 
 export default function FAQSection({
     eyebrow = "Support & Help",
     title = "Construction Time Tracking FAQ",
     description = `Everything you need to know about modernizing crew tracking ${publicIcpPhrase}.`,
+    items,
 }: FAQSectionProps) {
-    // We open the first FAQ item by default to encourage engagement and show the premium formatting
+    const faqItems = items ?? homeFaqItems;
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
@@ -40,7 +42,7 @@ export default function FAQSection({
                 </div>
 
                 <div className="space-y-4">
-                    {homeFaqItems.map((faq, index) => {
+                    {faqItems.map((faq, index) => {
                         const isOpen = openIndex === index;
                         return (
                             <div

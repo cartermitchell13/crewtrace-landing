@@ -297,6 +297,7 @@ export default async function FeatureDetailPage({
                     eyebrow={`${solution.name} FAQ`}
                     title={`${solution.name} FAQ`}
                     description={faqDescription}
+                    items={solution.faqItems}
                 />
 
                 {/* Ecosystem Links */}

@@ -174,26 +174,11 @@ export default async function IndustryPage({
         .filter((record): record is IndustryRecord => Boolean(record));
     const supportKeywords = getSupportKeywords(industry, detailLinks.relatedFeatureSlugs);
     const supportKeywordLine = joinKeywordList(supportKeywords);
-    const evaluationPoints = [
-        {
-            title: `Pick ${industry.primaryKeyword} that verifies each job site`,
-            description:
-                `A strong ${industry.primaryKeyword} workflow should confirm where crews actually started, moved, and wrapped so supervisors are not approving hours from memory.`,
-            icon: MapPin,
-        },
-        {
-            title: "Keep payroll time tracking tied to field evidence",
-            description:
-                "Paper timesheets and back-office edits create labor leakage. Crewtrace keeps approved hours, breaks, and overtime connected to the same field record your payroll team reviews.",
-            icon: ShieldCheck,
-        },
-        {
-            title: "Use a contractor time tracking app crews adopt fast",
-            description:
-                "Fast mobile clock-ins, clear job switching, and simple exception review matter more than feature bloat when you need consistent adoption across busy crews.",
-            icon: Target,
-        },
-    ];
+    const evaluationIcons = [MapPin, ShieldCheck, Target];
+    const evaluationPoints = industry.evaluationPoints.map((point, index) => ({
+        ...point,
+        icon: evaluationIcons[index % evaluationIcons.length],
+    }));
     const faqDescription = `Answers to common questions about ${industry.primaryKeyword}, ${supportKeywordLine || "gps time clocks"}, and payroll-ready workflows for ${industry.name.toLowerCase()} teams.`;
 
     return (
@@ -438,6 +423,7 @@ export default async function IndustryPage({
                     eyebrow={`${industry.name} FAQ`}
                     title={`${industry.name} Time Tracking FAQ`}
                     description={faqDescription}
+                    items={industry.faqItems}
                 />
 
                 {/* Ecosystem Links */}

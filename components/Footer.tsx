@@ -1,17 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const footerLinkClass =
+    "text-sm text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md";
+
+const columnHeadingClass =
+    "text-xs font-bold uppercase tracking-widest text-white/20 mb-4";
+
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
             <div className="w-full bg-[#050315] rounded-t-2xl md:rounded-t-3xl relative overflow-hidden">
-                {/* Visual Decorations */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
-                <div className="max-w-7xl mx-auto px-12 pb-12 pt-20 md:px-24 md:pb-24 md:pt-28 relative z-10 flex flex-col items-center text-center text-white">
-                    {/* Brand Section */}
-                    <div className="space-y-8 mb-16">
+                <div className="max-w-7xl mx-auto px-8 pb-12 pt-20 md:px-16 md:pb-20 md:pt-28 relative z-10 text-white">
+                    {/* Top: Logo + tagline */}
+                    <div className="mb-16 text-center">
                         <Link
                             href="/"
                             className="inline-block rounded-md transition-transform duration-300 motion-safe:hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
@@ -24,59 +29,79 @@ export default function Footer() {
                                 className="h-10 w-auto object-contain brightness-0 invert"
                             />
                         </Link>
-                        <div className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
-                            The definitive crew tracking and management solution <br className="hidden md:block" /> for construction professionals.
+                        <p className="mt-6 text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
+                            GPS-verified time tracking and payroll control<br className="hidden md:block" /> for construction professionals.
+                        </p>
+                    </div>
+
+                    {/* Link columns */}
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 py-10 border-y border-white/5">
+                        {/* Features */}
+                        <div>
+                            <h3 className={columnHeadingClass}>Features</h3>
+                            <ul className="space-y-2.5">
+                                <li><Link href="/features" className={footerLinkClass}>All Features</Link></li>
+                                <li><Link href="/features/gps-time-tracking" className={footerLinkClass}>GPS Time Tracking</Link></li>
+                                <li><Link href="/features/geofencing-time-clock" className={footerLinkClass}>Geofencing Time Clock</Link></li>
+                                <li><Link href="/features/payroll-leakage-prevention" className={footerLinkClass}>Payroll Leakage Prevention</Link></li>
+                                <li><Link href="/features/payroll-exports" className={footerLinkClass}>Payroll Exports</Link></li>
+                                <li><Link href="/features/overtime-alerts" className={footerLinkClass}>Overtime Alerts</Link></li>
+                                <li><Link href="/features/dol-compliance" className={footerLinkClass}>DOL Compliance</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Industries */}
+                        <div>
+                            <h3 className={columnHeadingClass}>Industries</h3>
+                            <ul className="space-y-2.5">
+                                <li><Link href="/industries" className={footerLinkClass}>All Industries</Link></li>
+                                <li><Link href="/industries/construction" className={footerLinkClass}>Construction</Link></li>
+                                <li><Link href="/industries/roofing" className={footerLinkClass}>Roofing</Link></li>
+                                <li><Link href="/industries/hvac" className={footerLinkClass}>HVAC</Link></li>
+                                <li><Link href="/industries/plumbing" className={footerLinkClass}>Plumbing</Link></li>
+                                <li><Link href="/industries/landscaping" className={footerLinkClass}>Landscaping</Link></li>
+                                <li><Link href="/industries/concrete" className={footerLinkClass}>Concrete</Link></li>
+                                <li><Link href="/industries/waterproofing" className={footerLinkClass}>Waterproofing</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Resources */}
+                        <div>
+                            <h3 className={columnHeadingClass}>Resources</h3>
+                            <ul className="space-y-2.5">
+                                <li><Link href="/blog" className={footerLinkClass}>Blog</Link></li>
+                                <li><Link href="/guides" className={footerLinkClass}>Guides</Link></li>
+                                <li><Link href="/guides/construction-time-tracking-implementation" className={footerLinkClass}>Implementation Guide</Link></li>
+                                <li><Link href="/guides/dol-audit-ready-time-records" className={footerLinkClass}>DOL Audit Guide</Link></li>
+                                <li><Link href="/case-studies" className={footerLinkClass}>Case Studies</Link></li>
+                                <li><Link href="/tools/true-cost-calculator" className={footerLinkClass}>True Cost Calculator</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Compare */}
+                        <div>
+                            <h3 className={columnHeadingClass}>Compare</h3>
+                            <ul className="space-y-2.5">
+                                <li><Link href="/compare" className={footerLinkClass}>All Comparisons</Link></li>
+                                <li><Link href="/compare/connecteam" className={footerLinkClass}>vs Connecteam</Link></li>
+                                <li><Link href="/compare/workyard" className={footerLinkClass}>vs Workyard</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Company */}
+                        <div>
+                            <h3 className={columnHeadingClass}>Company</h3>
+                            <ul className="space-y-2.5">
+                                <li><Link href="/about" className={footerLinkClass}>About</Link></li>
+                                <li><Link href="/contact" className={footerLinkClass}>Get a Demo</Link></li>
+                                <li><Link href="/privacy" className={footerLinkClass}>Privacy</Link></li>
+                                <li><Link href="/terms" className={footerLinkClass}>Terms</Link></li>
+                            </ul>
                         </div>
                     </div>
 
-                    {/* Navigation - Horizontal & Elegant */}
-                    <div className="w-full max-w-3xl py-8 border-y border-white/5 flex flex-wrap justify-center gap-x-10 gap-y-3 sm:gap-x-12 sm:gap-y-4">
-                        <Link
-                            href="/industries"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Industries
-                        </Link>
-                        <Link
-                            href="/features/gps-time-tracking"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Features
-                        </Link>
-                        <Link
-                            href="/blog"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Blog
-                        </Link>
-                        <Link
-                            href="/guides"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Guides
-                        </Link>
-                        <Link
-                            href="/case-studies"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Case Studies
-                        </Link>
-                        <Link
-                            href="/privacy"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Privacy
-                        </Link>
-                        <Link
-                            href="/terms"
-                            className="inline-flex min-h-11 items-center px-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md"
-                        >
-                            Terms
-                        </Link>
-                    </div>
-
-                    {/* Bottom Metadata */}
-                    <div className="mt-16 w-full flex flex-col md:flex-row justify-between items-center gap-8">
+                    {/* Bottom bar */}
+                    <div className="mt-10 w-full flex flex-col md:flex-row justify-between items-center gap-8">
                         <div className="flex items-center gap-4">
                             <Link
                                 href="https://www.linkedin.com/in/cartermitchell98"
@@ -90,7 +115,7 @@ export default function Footer() {
                         </div>
 
                         <div className="text-xs font-bold text-white/20 uppercase tracking-[0.2em]">
-                            (c) {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
+                            &copy; {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
                         </div>
 
                         <div className="text-xs font-bold text-white/40 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/5">
