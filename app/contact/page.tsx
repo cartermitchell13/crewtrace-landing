@@ -11,25 +11,27 @@ import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
 export const metadata: Metadata = createPageMetadata({
     title: "Get a Personalized Demo + Quote | Crewtrace",
     description:
-        `Answer a few quick questions about your operation and we\u2019ll send back a personalized demo walkthrough and pricing guidance. No sales call required. ${publicIcpPhrase}`,
+        `Answer a few quick questions about your operation and we\u2019ll send one personalized video with your demo and quote—watch it on your own time. No sales call required. ${publicIcpPhrase}`,
     path: "/contact",
 });
 
 const benefits = [
     {
         icon: Zap,
-        title: "Personalized video demo",
-        description: "A recorded walkthrough built around your crew size, trade, and workflow — sent straight to your inbox",
+        title: "Personalized demo + quote",
+        description:
+            "One video walkthrough of Crewtrace for your operation, with your quote built in—watch whenever it fits",
     },
     {
         icon: Shield,
         title: "No hard-sell call",
-        description: "We respond async so you review on your own time",
+        description:
+            "We email one link—watch the full walkthrough and pricing on your schedule, no live pitch",
     },
     {
         icon: Clock,
         title: "One business day",
-        description: "Expect a detailed response within 24 hours",
+        description: "Expect your video link within 24 hours",
     },
 ];
 
@@ -51,10 +53,10 @@ export default function ContactPage() {
                             See how Crewtrace fits your operation
                         </h1>
                         <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">
-                            Answer a few quick questions and we&apos;ll send you a
-                            personalized video demo walkthrough — plus pricing
-                            guidance matched to your crew size and trade. No sales
-                            call required.
+                            Answer a few quick questions and we&apos;ll email you one
+                            personalized video with your demo and quote—watch it on
+                            your own time, matched to your crew size and trade. No
+                            sales call required.
                         </p>
                     </div>
 
@@ -99,8 +101,9 @@ export default function ContactPage() {
                                 <p className="text-sm leading-relaxed text-foreground/60">
                                     We hate unnecessary meetings too. That&apos;s why
                                     we keep this simple: tell us a bit about your
-                                    crews, and we&apos;ll send back a personalized video
-                                    walkthrough you can review on your own time.
+                                    crews, and we&apos;ll send one video with your demo
+                                    and quote—watch it whenever you want—no call
+                                    required.
                                 </p>
                                 <div className="mt-4 flex flex-wrap gap-2">
                                     {["No pressure", "No calendar ping-pong", "Just the info you need"].map((tag) => (
@@ -132,7 +135,7 @@ export default function ContactPage() {
                         <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
                             <div className="mb-7">
                                 <h2 className="text-xl font-bold text-foreground">
-                                    Request your personalized demo
+                                    Request your personalized demo + quote
                                 </h2>
                                 <p className="mt-1.5 text-sm text-foreground/50 leading-relaxed">
                                     Takes about 60 seconds. No commitment.

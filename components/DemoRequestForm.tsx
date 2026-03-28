@@ -177,9 +177,8 @@ export default function DemoRequestForm({ onSuccess }: DemoRequestFormProps) {
                     transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 1, 0.5, 1] }}
                     className="text-foreground/60 max-w-md leading-relaxed font-medium text-lg"
                 >
-                    We&apos;ll review your details and send back a personalized
-                    demo walkthrough and pricing guidance within one business
-                    day.
+                    We&apos;ll review your details and send one personalized video
+                    with your demo and quote within one business day.
                 </motion.p>
                 
                 <motion.div 
