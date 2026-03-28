@@ -11,7 +11,7 @@ import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
 export const metadata: Metadata = createPageMetadata({
     title: "Get a Personalized Demo + Quote | Crewtrace",
     description:
-        `Answer a few quick questions about your operation and we\u2019ll send one personalized video with your demo and quote—watch it on your own time. No sales call required. ${publicIcpPhrase}`,
+        `Answer a few quick questions about your operation and we\u2019ll send one personalized video with your demo and quote. Watch it on your own time. No sales call required. ${publicIcpPhrase}`,
     path: "/contact",
 });
 
@@ -20,13 +20,13 @@ const benefits = [
         icon: Zap,
         title: "Personalized demo + quote",
         description:
-            "One video walkthrough of Crewtrace for your operation, with your quote built in—watch whenever it fits",
+            "One video walkthrough of Crewtrace for your operation, with your quote built in. Watch whenever it fits",
     },
     {
         icon: Shield,
         title: "No hard-sell call",
         description:
-            "We email one link—watch the full walkthrough and pricing on your schedule, no live pitch",
+            "We email one link. Watch the full walkthrough and pricing on your schedule, no live pitch",
     },
     {
         icon: Clock,
@@ -54,7 +54,7 @@ export default function ContactPage() {
                         </h1>
                         <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">
                             Answer a few quick questions and we&apos;ll email you one
-                            personalized video with your demo and quote—watch it on
+                            personalized video with your demo and quote. Watch it on
                             your own time, matched to your crew size and trade. No
                             sales call required.
                         </p>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                                     We hate unnecessary meetings too. That&apos;s why
                                     we keep this simple: tell us a bit about your
                                     crews, and we&apos;ll send one video with your demo
-                                    and quote—watch it whenever you want—no call
+                                    and quote. Watch it whenever you want. No call
                                     required.
                                 </p>
                                 <div className="mt-4 flex flex-wrap gap-2">

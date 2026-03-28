@@ -747,7 +747,7 @@ export default function SavingsCalculator() {
                     <div className="space-y-5">
                         {[
                             { label: "Time Rounding & Discrepancies", yearly: calculations.yearlyInaccuracyLoss, monthly: calculations.monthlyInaccuracyLoss, desc: "Estimated daily rounding errors across your crew (avg 12 min/day per affected worker)" },
-                            { label: "Buddy Punching", yearly: calculations.yearlyBuddyPunchLoss, monthly: calculations.monthlyBuddyPunchLoss, desc: "Workers clocking in for absent crew members — common with paper & honor-system setups" },
+                            { label: "Buddy Punching", yearly: calculations.yearlyBuddyPunchLoss, monthly: calculations.monthlyBuddyPunchLoss, desc: "Workers clocking in for absent crew members, common with paper & honor-system setups" },
                             { label: "Payroll Processing Errors", yearly: calculations.yearlyPayrollErrors, monthly: calculations.monthlyPayrollErrors, desc: "Data entry mistakes, miscalculations, and manual processing overhead" },
                             { label: "Overtime Misclassification", yearly: calculations.yearlyOTLoss, monthly: calculations.monthlyOTLoss, desc: "OT hours not properly tracked, leading to incorrect pay or compliance risk" },
                         ].map((cat) => {
@@ -784,7 +784,7 @@ export default function SavingsCalculator() {
                         <div>
                             <div className="text-sm font-bold text-foreground">Administrative Overhead</div>
                             <div className="text-[11px] text-foreground/40 font-medium mt-0.5">
-                                Your team spends ~{hoursPerWeekOnPayroll} hrs/week on manual timesheet processing — that is an estimated <span className="text-amber-600 font-bold">${calculations.yearlyAdminCost.toLocaleString()}/yr</span> in admin labor alone, on top of the direct leakage above.
+                                Your team spends ~{hoursPerWeekOnPayroll} hrs/week on manual timesheet processing. That is an estimated <span className="text-amber-600 font-bold">${calculations.yearlyAdminCost.toLocaleString()}/yr</span> in admin labor alone, on top of the direct leakage above.
                             </div>
                         </div>
                     </div>
@@ -852,14 +852,14 @@ export default function SavingsCalculator() {
                                 Want to see if these numbers hold up for your operation?
                             </h3>
                             <p className="text-sm text-foreground/50 font-medium leading-relaxed">
-                                On a free 15-minute call, we will walk through your specific setup and tell you exactly what Crewtrace can recover — no commitment, no pressure.
+                                Tell us about your setup and we&apos;ll send one personalized video with your demo and quote, tailored to your operation and what Crewtrace can recover for numbers like these. Watch it on your own time. No commitment, no pressure.
                             </p>
                         </div>
                         <a
                             href="/contact"
                             className="bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 text-base group whitespace-nowrap shrink-0"
                         >
-                            Get a Personalized Demo
+                            Get a demo + quote
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </div>
