@@ -3,10 +3,12 @@
 import { useState, useMemo, useEffect, useCallback, useRef, type PointerEvent } from "react";
 import {
     Calculator, DollarSign, Clock, TrendingDown, TrendingUp,
-    ArrowRight, AlertCircle, CheckCircle2, Users, MapPin,
+    ArrowRight, AlertCircle, CheckCircle2,
     FileSpreadsheet, HardHat, Zap, BarChart3, Shield,
-    ChevronRight, Loader2, Truck, PiggyBank, CalendarDays
+    ChevronRight, Loader2, Truck, PiggyBank, CalendarDays,
+    Sparkles, Check,
 } from "lucide-react";
+import DemoRequestForm from "@/components/DemoRequestForm";
 
 // ─── Sub-components ─────────────────────────────────────────────
 
@@ -218,6 +220,30 @@ const OVERTIME_OPTIONS: { value: OvertimeLevel; label: string; description: stri
     { value: "high", label: "Frequently", description: "15%+ of total hours", icon: Clock },
 ];
 
+function crewSizeToLeadBucket(crewSize: number): string {
+    if (crewSize <= 5) return "1–5";
+    if (crewSize <= 15) return "6–15";
+    if (crewSize <= 30) return "16–30";
+    if (crewSize <= 50) return "31–50";
+    if (crewSize <= 100) return "51–100";
+    return "100+";
+}
+
+function trackingMethodLabel(method: TrackingMethod): string {
+    switch (method) {
+        case "paper":
+            return "paper timesheets";
+        case "spreadsheet":
+            return "spreadsheets";
+        case "basic-app":
+            return "a basic clock app";
+        case "none":
+            return "no formal tracking";
+        default:
+            return method;
+    }
+}
+
 
 // ─── Main Component ─────────────────────────────────────────────
 
@@ -372,6 +398,17 @@ export default function SavingsCalculator() {
             workersAffected: workersWithDiscrepancies,
         };
     }, [crewSize, avgHourlyRate, hoursPerWeekOnPayroll, jobSites, tradeType, trackingMethod, overtimeLevel, siteMultiplier]);
+
+    const calculatorLeadMessage = useMemo(
+        () =>
+            `Profit audit (calculator): ~$${calculations.totalYearlyLoss.toLocaleString()}/yr estimated annual leakage; ${crewSize}-person crew; ${trackingMethodLabel(trackingMethod)}; ${jobSites} active site${jobSites === 1 ? "" : "s"}. I'd like a personalized demo and quote to help plug these gaps.`,
+        [
+            calculations.totalYearlyLoss,
+            crewSize,
+            trackingMethod,
+            jobSites,
+        ],
+    );
 
     const handleGenerate = useCallback(() => {
         setPhase("generating");
@@ -841,27 +878,93 @@ export default function SavingsCalculator() {
                                 </div>
                             </div>
                         </div>
+
+                        <a
+                            href="#calculator-next-step"
+                            className="mt-10 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-white/20"
+                        >
+                            Get a demo matched to these numbers
+                            <ChevronRight className="size-4 opacity-90" />
+                        </a>
                     </div>
                 </div>
 
-                {/* Soft CTA */}
-                <div className="bg-white rounded-[2rem] border border-foreground/5 p-8 md:p-10 shadow-sm">
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="flex-1 space-y-3">
-                            <h3 className="text-xl font-bold tracking-tight text-foreground">
-                                Want to see if these numbers hold up for your operation?
-                            </h3>
-                            <p className="text-sm text-foreground/50 font-medium leading-relaxed">
-                                Tell us about your setup and we&apos;ll send one personalized video with your demo and quote, tailored to your operation and what Crewtrace can recover for numbers like these. Watch it on your own time. No commitment, no pressure.
-                            </p>
+                {/* Next step: same demo request as /contact */}
+                <div
+                    id="calculator-next-step"
+                    className="scroll-mt-28 rounded-[2.5rem] border border-primary/15 bg-gradient-to-br from-primary/[0.06] via-background to-primary/[0.04] p-1 shadow-xl shadow-primary/5"
+                >
+                    <div className="rounded-[calc(2.5rem-4px)] bg-background/80 p-8 backdrop-blur-sm md:p-10 lg:p-12">
+                        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                            <div className="space-y-3">
+                                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                                    <Sparkles className="size-3.5" />
+                                    Your next step
+                                </div>
+                                <h3 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                                    Plug the gaps—get a plan built for your crew
+                                </h3>
+                                <p className="max-w-xl text-base font-medium leading-relaxed text-foreground/55">
+                                    You&apos;ve seen where leakage may be coming from. Tell us a bit about your operation and we&apos;ll send one personalized video with a Crewtrace walkthrough and your quote—no sales call, watch on your time.
+                                </p>
+                            </div>
                         </div>
-                        <a
-                            href="/contact"
-                            className="bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 text-base group whitespace-nowrap shrink-0"
-                        >
-                            Get a demo + quote
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
+
+                        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] lg:gap-12 xl:gap-14">
+                            <div className="flex flex-col gap-6">
+                                <p className="text-xs font-bold uppercase tracking-wider text-foreground/40">
+                                    What you&apos;ll get
+                                </p>
+                                <ul className="space-y-4">
+                                    {[
+                                        "One video tailored to your crew size and how you track time today",
+                                        "Pricing and recovery context grounded in audits like the one you just ran",
+                                        "A reply within one business day—no calendar ping-pong",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3 text-sm font-medium leading-relaxed text-foreground/70">
+                                            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                                                <Check className="size-3" strokeWidth={3} />
+                                            </span>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="rounded-2xl border border-foreground/[0.06] bg-white/90 p-5 text-sm text-foreground/55">
+                                    <span className="font-semibold text-foreground/70">Prefer a live conversation? </span>
+                                    <a
+                                        href="https://cal.com/Crewtrace/15min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="font-bold text-primary underline underline-offset-2"
+                                    >
+                                        Book 15 minutes
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
+                                <div className="mb-7">
+                                    <h4 className="text-xl font-bold text-foreground">
+                                        Request your personalized demo + quote
+                                    </h4>
+                                    <p className="mt-1.5 text-sm text-foreground/50 leading-relaxed">
+                                        Same form as our contact page—about 60 seconds. We&apos;ve pre-filled a short note from your audit; edit anything you like.
+                                    </p>
+                                </div>
+                                <DemoRequestForm
+                                    key={`${crewSize}-${jobSites}-${trackingMethod}-${calculations.totalYearlyLoss}`}
+                                    defaultCrewSize={crewSizeToLeadBucket(crewSize)}
+                                    defaultMessage={calculatorLeadMessage}
+                                />
+                            </div>
+                        </div>
+
+                        <p className="mt-8 text-center text-xs text-foreground/40">
+                            Want the full page layout?{" "}
+                            <a href="/contact" className="font-semibold text-primary underline underline-offset-2">
+                                Open the contact page
+                            </a>
+                        </p>
                     </div>
                 </div>
 
