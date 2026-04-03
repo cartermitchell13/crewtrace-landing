@@ -927,13 +927,6 @@ export default function SavingsCalculator() {
                             />
                         </div>
                     </div>
-
-                    <p className="mt-10 text-center text-xs text-foreground/40">
-                        Prefer the full-page experience?{" "}
-                        <a href="/contact" className="font-semibold text-primary underline underline-offset-2">
-                            Open the contact page
-                        </a>
-                    </p>
                 </div>
 
                 {/* Methodology Footer */}
