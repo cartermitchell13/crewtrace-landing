@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactDemoValueColumn from "@/components/ContactDemoValueColumn";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import { publicIcpPhrase } from "@/lib/messaging";
 import { createPageMetadata } from "@/lib/seo";
-import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
 
 // Lead analytics use buildLeadFormEvent from DemoRequestForm (see @/lib/seo-events).
 
@@ -14,26 +14,6 @@ export const metadata: Metadata = createPageMetadata({
         `Answer a few quick questions about your operation and we\u2019ll send one personalized video with your demo and quote. Watch it on your own time. No sales call required. ${publicIcpPhrase}`,
     path: "/contact",
 });
-
-const benefits = [
-    {
-        icon: Zap,
-        title: "Personalized demo + quote",
-        description:
-            "One video walkthrough of Crewtrace for your operation, with your quote built in. Watch whenever it fits",
-    },
-    {
-        icon: Shield,
-        title: "No hard-sell call",
-        description:
-            "We email one link. Watch the full walkthrough and pricing on your schedule, no live pitch",
-    },
-    {
-        icon: Clock,
-        title: "One business day",
-        description: "Expect your video link within 24 hours",
-    },
-];
 
 export default function ContactPage() {
     return (
@@ -61,75 +41,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
-                        {/* Left: Benefits + trust signals */}
-                        <div className="flex flex-col gap-8">
-                            {/* What you get */}
-                            <div className="space-y-5">
-                                <h2 className="text-sm font-bold uppercase tracking-wider text-foreground/40">
-                                    What you&apos;ll get
-                                </h2>
-                                <div className="space-y-4">
-                                    {benefits.map((benefit) => (
-                                        <div
-                                            key={benefit.title}
-                                            className="flex items-start gap-4 rounded-2xl border border-foreground/[0.06] bg-white p-5 transition-colors hover:border-primary/10"
-                                        >
-                                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                                                <benefit.icon className="h-5 w-5 text-primary" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-sm font-bold text-foreground">
-                                                    {benefit.title}
-                                                </h3>
-                                                <p className="mt-0.5 text-sm text-foreground/50 leading-relaxed">
-                                                    {benefit.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Proof / trust */}
-                            <div className="rounded-2xl border border-foreground/[0.06] bg-white p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                                    <span className="text-sm font-bold text-foreground">
-                                        Trusted by construction owners
-                                    </span>
-                                </div>
-                                <p className="text-sm leading-relaxed text-foreground/60">
-                                    We hate unnecessary meetings too. That&apos;s why
-                                    we keep this simple: tell us a bit about your
-                                    crews, and we&apos;ll send one video with your demo
-                                    and quote. Watch it whenever you want. No call
-                                    required.
-                                </p>
-                                <div className="mt-4 flex flex-wrap gap-2">
-                                    {["No pressure", "No calendar ping-pong", "Just the info you need"].map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="rounded-full bg-foreground/[0.04] px-3 py-1 text-xs font-semibold text-foreground/50"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Alternative contact */}
-                            <div className="space-y-3 text-sm">
-                                <p className="font-semibold text-foreground/60">
-                                    Prefer a live call?{" "}
-                                    <a
-                                        href="https://cal.com/Crewtrace/15min"
-                                        className="text-primary underline underline-offset-2"
-                                    >
-                                        Book 15 minutes
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
+                        <ContactDemoValueColumn />
 
                         {/* Right: The form */}
                         <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">

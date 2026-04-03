@@ -6,8 +6,8 @@ import {
     ArrowRight, AlertCircle, CheckCircle2,
     FileSpreadsheet, HardHat, Zap, BarChart3, Shield,
     ChevronRight, Loader2, Truck, PiggyBank, CalendarDays,
-    Sparkles, Check,
 } from "lucide-react";
+import ContactDemoValueColumn from "@/components/ContactDemoValueColumn";
 import DemoRequestForm from "@/components/DemoRequestForm";
 
 // ─── Sub-components ─────────────────────────────────────────────
@@ -652,7 +652,7 @@ export default function SavingsCalculator() {
 
     return (
         <section id="calculator" className="py-20 px-6 bg-background scroll-mt-32">
-            <div className="max-w-5xl mx-auto space-y-8">
+            <div className="max-w-6xl mx-auto space-y-8">
 
                 {/* Report Header */}
                 <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
@@ -889,83 +889,51 @@ export default function SavingsCalculator() {
                     </div>
                 </div>
 
-                {/* Next step: same demo request as /contact */}
-                <div
-                    id="calculator-next-step"
-                    className="scroll-mt-28 rounded-[2.5rem] border border-primary/15 bg-gradient-to-br from-primary/[0.06] via-background to-primary/[0.04] p-1 shadow-xl shadow-primary/5"
-                >
-                    <div className="rounded-[calc(2.5rem-4px)] bg-background/80 p-8 backdrop-blur-sm md:p-10 lg:p-12">
-                        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                            <div className="space-y-3">
-                                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                                    <Sparkles className="size-3.5" />
-                                    Your next step
-                                </div>
-                                <h3 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl">
-                                    Plug the gaps—get a plan built for your crew
-                                </h3>
-                                <p className="max-w-xl text-base font-medium leading-relaxed text-foreground/55">
-                                    You&apos;ve seen where leakage may be coming from. Tell us a bit about your operation and we&apos;ll send one personalized video with a Crewtrace walkthrough and your quote—no sales call, watch on your time.
-                                </p>
-                            </div>
-                        </div>
+                {/* Next step: same value props + form as /contact */}
+                <div id="calculator-next-step" className="relative scroll-mt-28">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[480px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_70%)]" />
 
-                        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] lg:gap-12 xl:gap-14">
-                            <div className="flex flex-col gap-6">
-                                <p className="text-xs font-bold uppercase tracking-wider text-foreground/40">
-                                    What you&apos;ll get
-                                </p>
-                                <ul className="space-y-4">
-                                    {[
-                                        "One video tailored to your crew size and how you track time today",
-                                        "Pricing and recovery context grounded in audits like the one you just ran",
-                                        "A reply within one business day—no calendar ping-pong",
-                                    ].map((item) => (
-                                        <li key={item} className="flex gap-3 text-sm font-medium leading-relaxed text-foreground/70">
-                                            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                                                <Check className="size-3" strokeWidth={3} />
-                                            </span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="rounded-2xl border border-foreground/[0.06] bg-white/90 p-5 text-sm text-foreground/55">
-                                    <span className="font-semibold text-foreground/70">Prefer a live conversation? </span>
-                                    <a
-                                        href="https://cal.com/Crewtrace/15min"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-bold text-primary underline underline-offset-2"
-                                    >
-                                        Book 15 minutes
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
-                                <div className="mb-7">
-                                    <h4 className="text-xl font-bold text-foreground">
-                                        Request your personalized demo + quote
-                                    </h4>
-                                    <p className="mt-1.5 text-sm text-foreground/50 leading-relaxed">
-                                        Same form as our contact page—about 60 seconds. We&apos;ve pre-filled a short note from your audit; edit anything you like.
-                                    </p>
-                                </div>
-                                <DemoRequestForm
-                                    key={`${crewSize}-${jobSites}-${trackingMethod}-${calculations.totalYearlyLoss}`}
-                                    defaultCrewSize={crewSizeToLeadBucket(crewSize)}
-                                    defaultMessage={calculatorLeadMessage}
-                                />
-                            </div>
-                        </div>
-
-                        <p className="mt-8 text-center text-xs text-foreground/40">
-                            Want the full page layout?{" "}
-                            <a href="/contact" className="font-semibold text-primary underline underline-offset-2">
-                                Open the contact page
-                            </a>
+                    <div className="relative mb-10 max-w-2xl">
+                        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                            Get a personalized demo + quote
+                        </p>
+                        <h3 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+                            See how Crewtrace fits your operation
+                        </h3>
+                        <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">
+                            You just ran the profit audit—now tell us a bit about your crews and we&apos;ll email one personalized video with your demo and quote, matched to your crew size and trade. Watch on your own time. No sales call required.
                         </p>
                     </div>
+
+                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
+                        <ContactDemoValueColumn />
+
+                        <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
+                            <div className="mb-7">
+                                <h2 className="text-xl font-bold text-foreground">
+                                    Request your personalized demo + quote
+                                </h2>
+                                <p className="mt-1.5 text-sm text-foreground/50 leading-relaxed">
+                                    Takes about 60 seconds. No commitment.
+                                </p>
+                                <p className="mt-3 text-sm text-foreground/45 leading-relaxed">
+                                    We&apos;ve pre-filled crew size and a short note from your audit—you can edit before you send.
+                                </p>
+                            </div>
+                            <DemoRequestForm
+                                key={`${crewSize}-${jobSites}-${trackingMethod}-${calculations.totalYearlyLoss}`}
+                                defaultCrewSize={crewSizeToLeadBucket(crewSize)}
+                                defaultMessage={calculatorLeadMessage}
+                            />
+                        </div>
+                    </div>
+
+                    <p className="mt-10 text-center text-xs text-foreground/40">
+                        Prefer the full-page experience?{" "}
+                        <a href="/contact" className="font-semibold text-primary underline underline-offset-2">
+                            Open the contact page
+                        </a>
+                    </p>
                 </div>
 
                 {/* Methodology Footer */}
