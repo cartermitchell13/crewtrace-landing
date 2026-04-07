@@ -21,6 +21,8 @@ export type LeadPayload = {
     crewSize?: string;
     currentSoftware?: string;
     message?: string;
+    /** Pathname where the form was submitted (e.g. /calculator). Server-validated. */
+    sourcePage?: string;
 };
 
 type LeadValidationResult =
@@ -69,6 +71,24 @@ function toOptionalString(value: unknown, maxLength = MAX_FIELD_LENGTH): string 
     return trimmed.slice(0, maxLength);
 }
 
+/** Accepts only same-origin pathnames; strips unsafe values. */
+function normalizeSourcePage(value: unknown): string | undefined {
+    if (typeof value !== "string") {
+        return undefined;
+    }
+
+    const trimmed = value.trim();
+    if (!trimmed.startsWith("/") || trimmed.length > 300) {
+        return undefined;
+    }
+
+    if (trimmed.includes("..") || trimmed.includes("://") || trimmed.includes("\0")) {
+        return undefined;
+    }
+
+    return trimmed;
+}
+
 export function validateLeadPayload(value: unknown): LeadValidationResult {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
         return createLeadError(
@@ -93,6 +113,9 @@ export function validateLeadPayload(value: unknown): LeadValidationResult {
         return createLeadError(422, "Email format is invalid.", "invalid_email");
     }
 
+    const sourcePageRaw = payload.sourcePage ?? payload.source_page;
+    const sourcePage = normalizeSourcePage(sourcePageRaw);
+
     return {
         ok: true,
         data: {
@@ -103,6 +126,7 @@ export function validateLeadPayload(value: unknown): LeadValidationResult {
             crewSize: toOptionalString(payload.crewSize),
             currentSoftware: toOptionalString(payload.currentSoftware),
             message: toOptionalString(payload.message, MAX_MESSAGE_LENGTH),
+            ...(sourcePage ? { sourcePage } : {}),
         },
     };
 }

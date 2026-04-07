@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import SavingsCalculator from "@/components/SavingsCalculator";
 import Footer from "@/components/Footer";
-import { CheckCircle2, Lock, TrendingUp, Sparkles } from "lucide-react";
+import { CheckCircle2, TrendingUp, Sparkles } from "lucide-react";
 
 export default function CalculatorPage() {
     return (
@@ -34,10 +34,6 @@ export default function CalculatorPage() {
                             <div className="flex items-center gap-2 text-sm font-bold text-foreground/40">
                                 <CheckCircle2 size={18} className="text-primary" />
                                 <span>100% Free — No Strings</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm font-bold text-foreground/40">
-                                <Lock size={18} className="text-primary" />
-                                <span>No Email Required</span>
                             </div>
                             <div className="flex items-center gap-2 text-sm font-bold text-foreground/40">
                                 <TrendingUp size={18} className="text-primary" />

@@ -1,14 +1,19 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback, useRef, type PointerEvent } from "react";
+import { useState, useMemo, useEffect, useCallback, useRef, type PointerEvent, type FormEvent } from "react";
 import {
     Calculator, DollarSign, Clock, TrendingDown, TrendingUp,
     ArrowRight, AlertCircle, CheckCircle2,
     FileSpreadsheet, HardHat, Zap, BarChart3, Shield,
     ChevronRight, Loader2, Truck, PiggyBank, CalendarDays,
+    Mail,
 } from "lucide-react";
 import ContactDemoValueColumn from "@/components/ContactDemoValueColumn";
 import DemoRequestForm from "@/components/DemoRequestForm";
+import {
+    type CalculatorSubmissionApiResponse,
+    parseCalculatorSubmissionResponse,
+} from "@/lib/calculator-submission-contract";
 
 // ─── Sub-components ─────────────────────────────────────────────
 
@@ -198,7 +203,7 @@ const ReportStat = ({ label, value, sublabel, icon: Icon, variant = "neutral" }:
 type TradeType = "residential" | "commercial" | "industrial" | "mixed";
 type TrackingMethod = "paper" | "spreadsheet" | "basic-app" | "none";
 type OvertimeLevel = "low" | "moderate" | "high";
-type Phase = "input" | "generating" | "report";
+type Phase = "input" | "email-gate" | "generating" | "report";
 
 const TRADE_OPTIONS: { value: TradeType; label: string; description: string; icon: React.ElementType }[] = [
     { value: "residential", label: "Residential", description: "Single/multi-family homes", icon: HardHat },
@@ -260,6 +265,21 @@ export default function SavingsCalculator() {
     const [tradeType, setTradeType] = useState<TradeType>("residential");
     const [trackingMethod, setTrackingMethod] = useState<TrackingMethod>("paper");
     const [overtimeLevel, setOvertimeLevel] = useState<OvertimeLevel>("moderate");
+
+    const [emailGateEmail, setEmailGateEmail] = useState("");
+    const [emailGateStatus, setEmailGateStatus] = useState<"idle" | "submitting" | "error">("idle");
+    const [emailGateError, setEmailGateError] = useState("");
+
+    const [utmParams] = useState<Record<string, string>>(() => {
+        if (typeof window === "undefined") return {};
+        const params = new URLSearchParams(window.location.search);
+        const utm: Record<string, string> = {};
+        for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]) {
+            const val = params.get(key);
+            if (val) utm[key] = val;
+        }
+        return utm;
+    });
 
     const LOADING_STEPS = [
         "Analyzing your crew configuration...",
@@ -411,8 +431,7 @@ export default function SavingsCalculator() {
     );
 
     const handleGenerate = useCallback(() => {
-        setPhase("generating");
-        setLoadingStep(0);
+        setPhase("email-gate");
     }, []);
 
     // Loading sequence timer
@@ -432,7 +451,71 @@ export default function SavingsCalculator() {
     const handleReset = useCallback(() => {
         setPhase("input");
         setLoadingStep(0);
+        setEmailGateStatus("idle");
+        setEmailGateError("");
     }, []);
+
+    const handleEmailGateSubmit = useCallback(
+        async (event: FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            if (emailGateStatus === "submitting") return;
+
+            const email = emailGateEmail.trim();
+            if (!email) {
+                setEmailGateError("Please enter your email address.");
+                setEmailGateStatus("error");
+                return;
+            }
+
+            setEmailGateStatus("submitting");
+            setEmailGateError("");
+
+            try {
+                const response = await fetch("/api/calculator-submission", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email,
+                        crewSize,
+                        avgHourlyRate,
+                        hoursPerWeekOnPayroll,
+                        jobSites,
+                        tradeType,
+                        trackingMethod,
+                        overtimeLevel,
+                        totalYearlyLoss: calculations.totalYearlyLoss,
+                        totalMonthlyLoss: calculations.totalMonthlyLoss,
+                        yearlyRecovery: calculations.yearlyRecovery,
+                        riskScore: calculations.riskScore,
+                        riskLevel: calculations.riskLevel,
+                        utmSource: utmParams.utm_source,
+                        utmMedium: utmParams.utm_medium,
+                        utmCampaign: utmParams.utm_campaign,
+                        utmContent: utmParams.utm_content,
+                        utmTerm: utmParams.utm_term,
+                    }),
+                });
+
+                const body = await response.json().catch(() => null);
+                const parsed: CalculatorSubmissionApiResponse | null =
+                    parseCalculatorSubmissionResponse(body);
+
+                if (parsed?.ok) {
+                    setPhase("generating");
+                    setLoadingStep(0);
+                } else {
+                    setEmailGateError(
+                        parsed?.message ?? "Something went wrong. Please try again.",
+                    );
+                    setEmailGateStatus("error");
+                }
+            } catch {
+                setEmailGateError("Could not reach our server. Please check your connection.");
+                setEmailGateStatus("error");
+            }
+        },
+        [emailGateEmail, emailGateStatus, crewSize, avgHourlyRate, hoursPerWeekOnPayroll, jobSites, tradeType, trackingMethod, overtimeLevel, calculations, utmParams],
+    );
 
     useEffect(() => {
         if (phase !== "generating") return;
@@ -599,6 +682,89 @@ export default function SavingsCalculator() {
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    // ─── PHASE: Email Gate ────────────────────────────────────────
+
+    if (phase === "email-gate") {
+        return (
+            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
+                <div className="max-w-lg mx-auto">
+                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                        <div className="flex flex-col items-center text-center mb-10">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                                <Mail size={24} className="text-primary" />
+                            </div>
+                            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3">
+                                Where should we send your audit?
+                            </h2>
+                            <p className="text-sm text-foreground/50 font-medium leading-relaxed max-w-sm">
+                                Your personalized profit leakage report is ready. Enter your email and we&apos;ll send you a copy — and show it on screen right now.
+                            </p>
+                        </div>
+
+                        <form onSubmit={handleEmailGateSubmit} className="space-y-4">
+                            <div>
+                                <label htmlFor="calc-email" className="block text-sm font-semibold text-foreground/70 mb-1.5">
+                                    Work email <span className="text-primary">*</span>
+                                </label>
+                                <input
+                                    id="calc-email"
+                                    type="email"
+                                    required
+                                    autoComplete="email"
+                                    placeholder="you@company.com"
+                                    value={emailGateEmail}
+                                    onChange={(e) => setEmailGateEmail(e.target.value)}
+                                    className="w-full rounded-xl border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10"
+                                    autoFocus
+                                />
+                            </div>
+
+                            {emailGateStatus === "error" && emailGateError && (
+                                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                                    {emailGateError}
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={emailGateStatus === "submitting"}
+                                className="w-full bg-primary text-white font-bold py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-base group disabled:opacity-70 disabled:pointer-events-none"
+                            >
+                                {emailGateStatus === "submitting" ? (
+                                    <>
+                                        <Loader2 size={18} className="animate-spin" />
+                                        Generating your audit...
+                                    </>
+                                ) : (
+                                    <>
+                                        <BarChart3 size={18} />
+                                        Show My Profit Audit
+                                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
+                            </button>
+                        </form>
+
+                        <div className="mt-6 flex items-start gap-3">
+                            <AlertCircle size={14} className="text-foreground/25 mt-0.5 shrink-0" />
+                            <p className="text-[11px] text-foreground/35 leading-normal font-medium">
+                                We&apos;ll only use your email to send your report and follow up about Crewtrace. No spam. Unsubscribe anytime.
+                            </p>
+                        </div>
+
+                        <button
+                            onClick={() => setPhase("input")}
+                            className="mt-6 text-sm font-bold text-foreground/40 hover:text-primary transition-colors flex items-center gap-1.5 mx-auto"
+                        >
+                            <ArrowRight size={14} className="rotate-180" />
+                            Edit my inputs
+                        </button>
                     </div>
                 </div>
             </section>

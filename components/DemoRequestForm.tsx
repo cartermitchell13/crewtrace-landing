@@ -67,6 +67,11 @@ export default function DemoRequestForm({
         setErrorMessage("");
 
         const formData = new FormData(event.currentTarget);
+        const pathname =
+            typeof window !== "undefined"
+                ? window.location.pathname
+                : "/contact";
+
         const payload: LeadPayload = {
             name: (formData.get("name") as string) ?? "",
             email: (formData.get("email") as string) ?? "",
@@ -76,6 +81,7 @@ export default function DemoRequestForm({
             currentSoftware:
                 (formData.get("currentSoftware") as string) || undefined,
             message: (formData.get("message") as string) || undefined,
+            sourcePage: pathname,
         };
 
         const ctx = getEventContext();

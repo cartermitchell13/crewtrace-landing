@@ -227,7 +227,7 @@ async function persistLead(
             },
             body: JSON.stringify({
                 source: "Crewtrace-landing",
-                source_page: "/contact",
+                source_page: lead.sourcePage ?? "/contact",
                 submitted_at: new Date().toISOString(),
                 name: lead.name,
                 email: lead.email,
