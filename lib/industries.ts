@@ -177,14 +177,14 @@ export const industryRecords: IndustryRecord[] = [
         icon: "wind",
         primaryKeyword: "hvac time tracking",
         primaryIntent: "hvac-service-time-tracking",
-        metaTitle: "HVAC Time Tracking Software for Service Teams | Crewtrace",
+        metaTitle: "HVAC Time Tracking Software & Digital Timesheets | Crewtrace",
         metaDescription:
-            "HVAC time tracking software for service teams that need verified stops, cleaner dispatch visibility, and payroll-ready records.",
-        heroTitle: "HVAC time tracking for technicians in the field",
+            "HVAC time tracking software with digital timesheets, mobile GPS clock-ins per stop, and payroll-ready hours for residential and commercial service teams.",
+        heroTitle: "HVAC time tracking and digital timesheets for field service crews",
         heroSubtitle:
-            "See where each technician worked, how long the stop took, and what should be paid. Crewtrace keeps dispatch, payroll, and job costing on the same page.",
+            "See where each technician worked, how long the stop took, and what should be paid—from digital HVAC timesheets to payroll export. Crewtrace keeps dispatch, payroll, and job costing on the same page.",
         hubDescription:
-            "Track technicians across service calls with verified time logs, mobile clock-ins, and cleaner payroll handoff.",
+            "HVAC time tracking and digital timesheets for service calls—verified time logs, mobile clock-ins, and cleaner payroll handoff.",
         hubStat: "Avg. $1,200/mo saved",
         painPoints: [
             {
@@ -222,6 +222,12 @@ export const industryRecords: IndustryRecord[] = [
                 description: "Send accurate ETAs to customers.",
                 icon: "check-circle-2",
             },
+            {
+                title: "Digital HVAC timesheets",
+                description:
+                    "Replace paper logs with digital HVAC timesheets that capture verified clock-ins, drive gaps, and on-site hours in one record payroll can trust.",
+                icon: "shield-check",
+            },
         ],
         stats: [
             { value: "$1,200", label: "Average monthly savings" },
@@ -256,6 +262,18 @@ export const industryRecords: IndustryRecord[] = [
                 question: "What if an HVAC technician forgets to clock out at a job?",
                 answer: "Crewtrace sends a reminder notification. If the technician still does not clock out, the supervisor can review the gap and make an adjustment. Every edit is logged with a reason so the record stays defensible.",
             },
+            {
+                question: "What are digital HVAC timesheets and why switch from paper?",
+                answer: "Digital HVAC timesheets are app-based time records tied to each job or geofence, with clock-in and clock-out proof. Paper timesheets create rounding disputes, illegible entries, and weekend data entry. Digital timesheets give you one approved record before payroll runs—especially important when techs run many short stops per day.",
+            },
+            {
+                question: "Do HVAC companies use Crewtrace as an HVAC time clock?",
+                answer: "Yes. Technicians use Crewtrace as their HVAC time clock on mobile: they tap to clock in when they arrive at a customer location and clock out when the job ends. Hours roll into digital timesheets supervisors can approve and export.",
+            },
+            {
+                question: "How should we evaluate HVAC time tracking software for mixed residential and commercial work?",
+                answer: "Look for per-stop verification, clean separation of drive time versus on-site time, and exports that match how you run payroll. Crewtrace is built for mixed workloads—geofences scale from single addresses to large commercial sites—so the same workflow covers small service calls and longer projects.",
+            },
         ],
         evaluationPoints: [
             {
@@ -269,6 +287,11 @@ export const industryRecords: IndustryRecord[] = [
             {
                 title: "Feed clean hours to payroll without manual reconciliation",
                 description: "HVAC teams running 15–30 calls per day generate a lot of time data. Look for a system that approves and exports hours in one workflow instead of requiring back-office re-entry.",
+            },
+            {
+                title: "Move from paper to digital HVAC timesheets without losing auditability",
+                description:
+                    "Teams searching for digital HVAC timesheets still need defensible records. Pick a workflow where edits, approvals, and exports stay linked to verified clock events—not a spreadsheet pasted together on Friday afternoon.",
             },
         ],
     },
@@ -875,16 +898,16 @@ export const industryRecords: IndustryRecord[] = [
         slug: "electrical",
         name: "Electrical",
         icon: "alert-circle",
-        primaryKeyword: "electrical contractor time tracking",
+        primaryKeyword: "electrician time tracking",
         primaryIntent: "electrical-overtime-and-compliance-control",
-        metaTitle: "Electrical Contractor Time Tracking Software | Crewtrace",
+        metaTitle: "Electrician Time Tracking Software | GPS-Verified Job Sites | Crewtrace",
         metaDescription:
-            "Electrical contractor time tracking software with overtime alerts, audit-ready records, and payroll-ready field data.",
-        heroTitle: "Electrical contractor time tracking with overtime control",
+            "Electrician time tracking software for service and project work—GPS-verified clock-ins, overtime alerts, audit-ready edits, and payroll-ready exports for electrical contractors.",
+        heroTitle: "Electrician time tracking with overtime control and verified job sites",
         heroSubtitle:
-            "Catch overtime problems early and keep every edit tied to a clear field record. Crewtrace helps you stay ahead of payroll surprises on fast-moving jobs.",
+            "From service van calls to multi-week commercial builds, catch overtime early and keep every edit tied to a clear field record. Crewtrace helps electrical contractors stay ahead of payroll surprises.",
         hubDescription:
-            "Verified time tracking and overtime exception control for electrical contractors that need stronger payroll confidence.",
+            "Electrician time tracking with verified job sites, overtime alerts, and payroll-ready exports for electrical contractors.",
         hubStat: "Avg. $1,600/mo saved",
         painPoints: [
             {
@@ -936,6 +959,10 @@ export const industryRecords: IndustryRecord[] = [
             "dol-compliance",
         ],
         faqItems: [
+            {
+                question: "Is Crewtrace electrician time tracking software?",
+                answer: "Yes. Crewtrace is built for electrician time tracking on job sites and service calls: electricians clock in with GPS-verified events tied to each location, and supervisors approve hours before payroll. The same workflow supports small residential shops and larger commercial electrical contractors.",
+            },
             {
                 question: "How does Crewtrace help electrical contractors control overtime?",
                 answer: "Crewtrace fires alerts when any worker approaches a configurable overtime threshold — for example, at 38 hours on a Thursday. This gives supervisors time to reassign work or authorize the overtime intentionally, instead of discovering a $2,000 surprise on payroll day.",

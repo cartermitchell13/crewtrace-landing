@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Twitter, Linkedin, Link as LinkIcon, Check } from "lucide-react";
+import { siteConfig } from "@/lib/seo";
 
 interface ShareButtonsProps {
     title: string;
@@ -14,7 +15,7 @@ const BASE_URL = "https://getCrewtrace.com";
 export default function ShareButtons({ title, slug, variant = "sidebar" }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false);
 
-    const url = `${BASE_URL}/blog/${slug}`;
+    const url = `${siteConfig.url}/blog/${slug}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
 

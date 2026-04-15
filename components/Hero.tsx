@@ -28,9 +28,9 @@ export default function Hero() {
                         </h1>
 
                         <p className="mb-10 max-w-xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            Construction time tracking software with GPS verification and
-                            geofencing. Your crew clocks in on the job site, hours sync to payroll,
-                            and you stop losing money to time theft. Built {publicIcpPhrase}.
+                            Crew location tracking and construction time tracking software with GPS
+                            verification and geofencing. Crews clock in at the job site, hours sync to
+                            payroll, and you stop losing money to time theft. Built {publicIcpPhrase}.
                         </p>
 
                         <Link

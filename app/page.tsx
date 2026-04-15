@@ -15,9 +15,9 @@ import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Construction Time Tracking Software | GPS Time Clock App",
+  title: "Crew Tracking & Construction Time Tracking Software | GPS Verified",
   description:
-    "GPS-verified construction time tracking software and time clock app for contractors. Eliminate time theft, automate timesheets, and export payroll-ready reports with geofencing verification.",
+    "GPS-verified crew tracking and construction time tracking software for job sites. Crew location tracking at clock-in, geofenced time clock app, payroll-ready exports—built for contractors running field crews.",
   path: "/",
 });
 

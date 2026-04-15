@@ -9,6 +9,10 @@ export const homeFaqItems: FaqItem[] = [
         answer: "Workers download the Crewtrace app on their phone and clock in with a single tap when they arrive at the job site. The app records their GPS location and verifies they are within the designated work zone. When they clock out, the same verification happens. All hours are automatically calculated and ready for payroll export.",
     },
     {
+        question: "Is Crewtrace crew tracking and crew location tracking software?",
+        answer: "Yes. Crewtrace is built for crew tracking on job sites: clock-ins are tied to verified locations so you can see when crews arrived, how long they stayed on site, and where time exceptions occurred. GPS is used to validate clock events—not to track people continuously when they are off the clock.",
+    },
+    {
         question: "What is geofencing and how does it prevent time theft?",
         answer: "Geofencing creates a virtual boundary around your job site. Workers can only clock in when their phone's GPS confirms they are physically within that boundary. This eliminates buddy punching, early clock-ins from the parking lot, and inflated hours — the most common forms of construction time theft.",
     },

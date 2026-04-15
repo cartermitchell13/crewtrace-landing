@@ -73,14 +73,24 @@ const supportKeywordByFeatureSlug: Record<string, string> = {
 
 const supportKeywordByIndustrySlug: Record<string, string[]> = {
     roofing: ["mobile time clock", "time clock app with gps"],
-    hvac: ["field service time tracking", "mobile time clock"],
+    hvac: [
+        "digital hvac timesheets",
+        "hvac time tracking software",
+        "field service time tracking",
+        "mobile time clock",
+    ],
     plumbing: ["field service time tracking", "payroll time tracking"],
     construction: ["construction time tracking software", "construction timesheet app"],
     "general-contractors": ["contractor time tracking app", "subcontractor time tracking"],
     waterproofing: ["geofencing time tracking", "mobile timesheet app"],
     landscaping: ["landscaping time tracking software", "time clock app with gps"],
     concrete: ["mobile timesheet app", "construction time clock"],
-    electrical: ["payroll time tracking", "employee time tracking app"],
+    electrical: [
+        "electrician time tracking software",
+        "electrical contractor time tracking",
+        "payroll time tracking",
+        "employee time tracking app",
+    ],
 };
 
 function joinKeywordList(items: string[]) {

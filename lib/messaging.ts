@@ -22,7 +22,7 @@ export const disallowedPublicQualifierPhrases = [
 
 export const intentHeadlineOptions = {
     home: [
-        "Construction time tracking, GPS verified.",
+        "Crew tracking and GPS time tracking for construction job sites.",
         "GPS time tracking software built for construction crews.",
         "Stop paying for honor-system hours.",
         "Your crews moving. Verified and budgeted.",
