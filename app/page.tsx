@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
+import IndustryLinks from "@/components/IndustryLinks";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
@@ -44,6 +45,7 @@ export default function Home() {
           <ProcessSection variant="texture" />
         </TestimonialTextureShell>
         <ComplianceAudit />
+        <IndustryLinks />
         <LiteSavingsCalculator />
         <FAQSection />
         <CTASection />

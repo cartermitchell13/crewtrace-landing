@@ -58,6 +58,7 @@ export default function Footer() {
                                 <li><Link href="/industries/construction" className={footerLinkClass}>Construction</Link></li>
                                 <li><Link href="/industries/roofing" className={footerLinkClass}>Roofing</Link></li>
                                 <li><Link href="/industries/hvac" className={footerLinkClass}>HVAC</Link></li>
+                                <li><Link href="/industries/electrical" className={footerLinkClass}>Electrical</Link></li>
                                 <li><Link href="/industries/plumbing" className={footerLinkClass}>Plumbing</Link></li>
                                 <li><Link href="/industries/landscaping" className={footerLinkClass}>Landscaping</Link></li>
                                 <li><Link href="/industries/concrete" className={footerLinkClass}>Concrete</Link></li>

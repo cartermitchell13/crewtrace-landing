@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/seo";
-import { getDisallowedStaticPaths } from "@/lib/seoPolicy";
+import { getRobotsDisallowPaths } from "@/lib/seoPolicy";
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "*",
                 allow: "/",
-                disallow: getDisallowedStaticPaths(),
+                disallow: getRobotsDisallowPaths(),
             },
         ],
         sitemap: `${siteConfig.url}/sitemap.xml`,

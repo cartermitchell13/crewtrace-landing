@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
     getStaticSeoPolicy,
     getDisallowedStaticPaths,
+    getRobotsDisallowPaths,
     getSitemapStaticPolicies,
     isIndexablePath,
     staticSeoPolicies,
@@ -48,5 +49,11 @@ describe("seo policy", () => {
 
     it("does not mark unknown routes as indexable by default", () => {
         expect(isIndexablePath("/unknown-route")).toBe(false);
+    });
+
+    it("blocks privacy policy URLs in robots disallow list", () => {
+        const disallow = getRobotsDisallowPaths();
+        expect(disallow).toContain("/privacy");
+        expect(disallow).toContain("/privacy-policy");
     });
 });

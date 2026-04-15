@@ -16,9 +16,9 @@ import Footer from "@/components/Footer";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-    title: "About Crewtrace | Why We Built GPS Time Tracking for Field Crews",
+    title: "About Crewtrace | GPS Time Tracking Built for Contractors",
     description:
-        "Crewtrace was built by a software developer who kept seeing the same problem: contractors losing money to inaccurate time tracking. Learn the founder story and mission.",
+        "Crewtrace was founded to solve a problem every contractor knows: inaccurate crew hours and payroll leakage. Learn the founder story and how we help field teams track time with GPS verification.",
     path: "/about",
 });
 
@@ -365,6 +365,28 @@ export default function AboutPage() {
                                     <p className="text-center text-xs font-bold uppercase tracking-widest text-foreground/40">
                                         No sales call required
                                     </p>
+                                    <div className="pt-3 border-t border-foreground/5">
+                                        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40 text-center">
+                                            Explore by trade
+                                        </p>
+                                        <div className="flex flex-wrap justify-center gap-1.5">
+                                            {[
+                                                { name: "HVAC", slug: "hvac" },
+                                                { name: "Electrical", slug: "electrical" },
+                                                { name: "Roofing", slug: "roofing" },
+                                                { name: "Construction", slug: "construction" },
+                                                { name: "Plumbing", slug: "plumbing" },
+                                            ].map((trade) => (
+                                                <Link
+                                                    key={trade.slug}
+                                                    href={`/industries/${trade.slug}`}
+                                                    className="rounded-full border border-foreground/10 bg-white px-3 py-1.5 text-xs font-semibold text-foreground/60 transition-colors hover:border-primary/30 hover:text-primary"
+                                                >
+                                                    {trade.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

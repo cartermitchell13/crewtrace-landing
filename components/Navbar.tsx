@@ -23,21 +23,28 @@ import {
     Menu,
     X,
     ChevronDown,
+    Zap,
 } from "lucide-react";
 
 // Industry data for mega menu
 const industries = [
     {
+        name: "HVAC",
+        slug: "hvac",
+        description: "Track technicians across service calls",
+        Icon: Thermometer,
+    },
+    {
+        name: "Electrical",
+        slug: "electrical",
+        description: "GPS time tracking for electricians",
+        Icon: Zap,
+    },
+    {
         name: "Roofing",
         slug: "roofing",
         description: "Stop guessing when crews arrive",
         Icon: Home,
-    },
-    {
-        name: "HVAC",
-        slug: "hvac",
-        description: "Track technicians across calls",
-        Icon: Thermometer,
     },
     {
         name: "Plumbing",

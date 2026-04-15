@@ -3,15 +3,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactDemoValueColumn from "@/components/ContactDemoValueColumn";
 import DemoRequestForm from "@/components/DemoRequestForm";
-import { publicIcpPhrase } from "@/lib/messaging";
 import { createPageMetadata } from "@/lib/seo";
 
 // Lead analytics use buildLeadFormEvent from DemoRequestForm (see @/lib/seo-events).
 
 export const metadata: Metadata = createPageMetadata({
-    title: "Get a Personalized Demo + Quote | Crewtrace",
+    title: "Get a Free Demo & Quote for Your Crew | Crewtrace",
     description:
-        `Answer a few quick questions about your operation and we\u2019ll send one personalized video with your demo and quote. Watch it on your own time. No sales call required. ${publicIcpPhrase}`,
+        "Request a personalized Crewtrace demo tailored to your trade and crew size. Get a video walkthrough and quote in one business day — no sales call required.",
     path: "/contact",
 });
 

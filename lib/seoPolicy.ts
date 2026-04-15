@@ -28,9 +28,9 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/",
         pageKind: "home",
         indexable: true,
-        titlePattern: "Crew Tracking & Construction Time Tracking Software | GPS Verified | Crewtrace",
+        titlePattern: "Crew Tracking & Construction Time Tracking Software | GPS Verified",
         descriptionPattern:
-            "GPS-verified crew tracking and job site time tracking for contractors—geofenced clock-in, payroll-ready exports.",
+            "GPS-verified crew tracking and construction time tracking software for job sites. Crew location tracking at clock-in, geofenced time clock app, payroll-ready exports.",
         changeFrequency: "weekly",
         priority: 1,
     },
@@ -65,8 +65,8 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/guides",
         pageKind: "hub",
         indexable: true,
-        titlePattern: "Construction Time Tracking Guides",
-        descriptionPattern: "Implementation playbooks for field operations.",
+        titlePattern: "Construction Time Tracking Guides | GPS, Payroll & Compliance",
+        descriptionPattern: "Step-by-step guides for rolling out GPS time tracking, geofenced clock-ins, payroll exports, and DOL compliance workflows on construction job sites.",
         changeFrequency: "monthly",
         priority: 0.8,
     },
@@ -92,8 +92,8 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/about",
         pageKind: "company",
         indexable: true,
-        titlePattern: "About Crewtrace",
-        descriptionPattern: "Company mission and operating approach.",
+        titlePattern: "About Crewtrace | GPS Time Tracking Built for Contractors",
+        descriptionPattern: "Founder story and mission behind Crewtrace — GPS-verified time tracking built to eliminate payroll leakage for field crews.",
         changeFrequency: "monthly",
         priority: 0.7,
     },
@@ -101,8 +101,8 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/contact",
         pageKind: "company",
         indexable: true,
-        titlePattern: "Contact Crewtrace",
-        descriptionPattern: "Book a free audit call.",
+        titlePattern: "Get a Free Demo & Quote for Your Crew | Crewtrace",
+        descriptionPattern: "Request a personalized Crewtrace demo tailored to your trade and crew size. Video walkthrough and quote in one business day.",
         changeFrequency: "monthly",
         priority: 0.7,
     },
@@ -198,6 +198,13 @@ export function isIndexablePath(path: string): boolean {
 
 export function getDisallowedStaticPaths(): string[] {
     return staticSeoPolicies.filter((policy) => !policy.indexable).map((policy) => policy.path);
+}
+
+/** Paths listed under `Disallow` in robots.txt — non-indexable static routes plus legacy aliases. */
+export function getRobotsDisallowPaths(): string[] {
+    const fromPolicies = getDisallowedStaticPaths();
+    const legacyAliases = ["/privacy-policy"];
+    return [...new Set([...fromPolicies, ...legacyAliases])].sort();
 }
 
 export function getSitemapStaticPolicies(): SeoRoutePolicy[] {

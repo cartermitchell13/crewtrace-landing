@@ -6,9 +6,9 @@ import { visibleGuides as guides } from "@/lib/guides";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-    title: "Construction Time Tracking Guides",
+    title: "Construction Time Tracking Guides | GPS, Payroll & Compliance",
     description:
-        "Actionable implementation guides for GPS time tracking, geofencing, payroll exports, and compliance workflows.",
+        "Step-by-step guides for rolling out GPS time tracking, geofenced clock-ins, payroll exports, and DOL compliance workflows on construction job sites.",
     path: "/guides",
 });
 

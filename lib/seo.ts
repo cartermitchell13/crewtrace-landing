@@ -4,9 +4,9 @@ import { getStaticSeoPolicy } from "@/lib/seoPolicy";
 export const siteConfig = {
     name: "Crewtrace",
     url: "https://getcrewtrace.com",
-    title: "Crew Tracking & Construction Time Tracking Software — GPS Verified | Crewtrace",
+    title: "Crew Tracking & Construction Time Tracking Software | GPS Verified | Crewtrace",
     description:
-        "Crewtrace is GPS-verified crew tracking and construction time tracking software that eliminates payroll errors, prevents time theft, and generates audit-ready labor records for contractors running field crews.",
+        "GPS-verified crew tracking and construction time tracking software. Crew location tracking at clock-in, geofenced time clock, payroll-ready exports — built for contractors running field crews.",
     ogImage: "/images/og-ct.png",
 };
 
