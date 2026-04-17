@@ -5,6 +5,8 @@ date: "2026-03-26"
 category: "Time Tracking"
 readTime: "8 min read"
 author: "Carter Mitchell"
+coverImage: "/images/blog/gps-time-tracking-metrics-cover.png"
+coverImageAlt: "Editorial illustration of a GPS time tracking phone interface surrounded by geofence, job code, edit trail, break tracking, and payroll export callouts"
 ---
 
 GPS time tracking has become the default recommendation for construction companies trying to move off paper timesheets. Search for it and you will find dozens of listicles ranking apps by star rating, pricing tiers, and feature checklists. Most of that content treats GPS tracking as a convenience upgrade—a nicer way to clock in.

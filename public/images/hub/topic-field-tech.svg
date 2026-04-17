@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <rect width="480" height="320" fill="#F0FDF4"/>
+  <rect x="1" y="1" width="478" height="318" rx="12" fill="none" stroke="#BBF7D0" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="240" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#16A34A">Field Technology Topic</text>
+  <text x="240" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#22C55E">GPS, geofencing, mobile clock-in</text>
+  <text x="240" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#86EFAC">480 × 320</text>
+</svg>

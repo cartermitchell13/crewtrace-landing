@@ -35,7 +35,7 @@ export default function Footer() {
                     </div>
 
                     {/* Link columns */}
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 py-10 border-y border-white/5">
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 py-10 border-y border-white/5">
                         {/* Features */}
                         <div>
                             <h3 className={columnHeadingClass}>Features</h3>
@@ -76,16 +76,6 @@ export default function Footer() {
                                 <li><Link href="/guides/dol-audit-ready-time-records" className={footerLinkClass}>DOL Audit Guide</Link></li>
                                 <li><Link href="/case-studies" className={footerLinkClass}>Case Studies</Link></li>
                                 <li><Link href="/tools/true-cost-calculator" className={footerLinkClass}>True Cost Calculator</Link></li>
-                            </ul>
-                        </div>
-
-                        {/* Compare */}
-                        <div>
-                            <h3 className={columnHeadingClass}>Compare</h3>
-                            <ul className="space-y-2.5">
-                                <li><Link href="/compare" className={footerLinkClass}>All Comparisons</Link></li>
-                                <li><Link href="/compare/connecteam" className={footerLinkClass}>vs Connecteam</Link></li>
-                                <li><Link href="/compare/workyard" className={footerLinkClass}>vs Workyard</Link></li>
                             </ul>
                         </div>
 

@@ -5,6 +5,8 @@ date: "2026-03-26"
 category: "Payroll"
 readTime: "9 min read"
 author: "Carter Mitchell"
+coverImage: "/images/blog/construction-payroll-software-cover.png"
+coverImageAlt: "Editorial illustration showing messy paper time records flowing into a clean construction payroll dashboard"
 ---
 
 If you search for construction payroll software right now, you will find listicles ranking eight or ten platforms by feature set, pricing, and star rating. You will read about certified payroll reports, prevailing wage automation, multi-state tax compliance, and ERP integrations. All of that is real and relevant.

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#FEF3C7"/>
+  <rect x="1" y="1" width="638" height="358" rx="12" fill="none" stroke="#FDE68A" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="320" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#92400E">DOL Audit Evaluation Context</text>
+  <text x="320" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#B45309">What inspectors look for in time records</text>
+  <text x="320" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#FBBF24">640 × 360</text>
+</svg>

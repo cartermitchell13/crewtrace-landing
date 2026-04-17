@@ -180,6 +180,7 @@ export async function generateMetadata({
         title: competitor.pageTitle,
         description: competitor.pageSummary,
         path: `/compare/${slug}`,
+        noIndex: true,
     });
 }
 
