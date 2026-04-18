@@ -19,12 +19,11 @@ export default function Hero() {
                 <div className="mx-auto max-w-4xl text-center">
                     <div className="mb-4 sm:mb-6 inline-flex max-w-[calc(100vw-2rem)] items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">
                         <span className="inline-flex shrink-0 items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary sm:px-2 sm:text-[10px]">
-                            Soon
+                            New
                         </span>
                         <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                         <span className="whitespace-nowrap">
-                            <span className="sm:hidden">QuickBooks &amp; Gusto sync</span>
-                            <span className="hidden sm:inline">One-click sync with QuickBooks &amp; Gusto</span>
+                            <span>One Click Sync to Quickbooks</span>
                         </span>
                     </div>
 
