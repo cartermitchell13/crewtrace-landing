@@ -12,7 +12,6 @@ import {
     Trees,
     Construction,
     MapPin,
-    ShieldCheck,
     Clock,
     FileText,
     BarChart3,
@@ -24,6 +23,8 @@ import {
     X,
     ChevronDown,
     Zap,
+    CalendarDays,
+    ShieldCheck,
 } from "lucide-react";
 
 // Industry data for mega menu
@@ -125,10 +126,8 @@ const company = [
 
 const solutionIconsBySlug = {
     "gps-time-tracking": MapPin,
-    "payroll-leakage-prevention": BarChart3,
-    "dol-compliance": ShieldCheck,
     "geofencing-time-clock": Clock,
-    "payroll-exports": FileText,
+    "scheduling": CalendarDays,
 } as const;
 
 const solutionItems = getSolutionSummaries().map((solution) => ({

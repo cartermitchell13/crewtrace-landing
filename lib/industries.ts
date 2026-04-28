@@ -240,6 +240,7 @@ export const industryRecords: IndustryRecord[] = [
             "dol-compliance",
             "payroll-leakage-prevention",
             "overtime-alerts",
+            "scheduling",
         ],
         faqItems: [
             {
@@ -356,6 +357,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-exports",
             "payroll-leakage-prevention",
+            "scheduling",
         ],
         faqItems: [
             {
@@ -457,6 +459,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-leakage-prevention",
             "dol-compliance",
+            "scheduling",
             "overtime-alerts",
         ],
         faqItems: [
@@ -558,7 +561,7 @@ export const industryRecords: IndustryRecord[] = [
             author: "David Chen",
             company: "Chen Construction LLC",
         },
-        relatedSolutions: ["payroll-leakage-prevention", "dol-compliance", "payroll-exports"],
+        relatedSolutions: ["payroll-leakage-prevention", "dol-compliance", "payroll-exports", "scheduling"],
         faqItems: [
             {
                 question: "How does Crewtrace help general contractors track subcontractor hours?",
@@ -757,6 +760,7 @@ export const industryRecords: IndustryRecord[] = [
             "geofencing-time-clock",
             "gps-time-tracking",
             "payroll-leakage-prevention",
+            "scheduling",
         ],
         faqItems: [
             {
@@ -957,6 +961,7 @@ export const industryRecords: IndustryRecord[] = [
             "overtime-alerts",
             "payroll-leakage-prevention",
             "dol-compliance",
+            "scheduling",
         ],
         faqItems: [
             {

@@ -31,7 +31,14 @@ const supportKeywordByFeatureSlug: Record<string, string[]> = {
     "geofencing-time-clock": ["geofencing time tracking", "geofence time clock", "clock in app with gps"],
     "payroll-exports": ["payroll time tracking software", "construction payroll software", "time tracking payroll"],
     "overtime-alerts": ["overtime tracking", "overtime tracking software", "employee time tracking"],
+    "scheduling": ["crew scheduling software", "construction scheduling software", "contractor scheduling app"],
 };
+
+const heroImageByFeatureSlug: Record<string, string> = {
+    scheduling: "/images/sheduling/scheduling-hero.png",
+};
+
+const DEFAULT_HERO_IMAGE = "/images/ct-hero-min (1).png";
 
 function joinKeywordList(items: string[]) {
     if (items.length === 0) {
@@ -53,8 +60,12 @@ function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
 }
 
+const CUSTOM_FEATURE_SLUGS = new Set(["scheduling", "gps-time-tracking", "geofencing-time-clock"]);
+
 export function generateStaticParams() {
-    return featureSlugs.map((slug) => ({ slug }));
+    return featureSlugs
+        .filter((slug) => !CUSTOM_FEATURE_SLUGS.has(slug))
+        .map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -180,7 +191,7 @@ export default async function FeatureDetailPage({
                     <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-[2rem] border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:rounded-[2.5rem] md:p-4">
                         <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
                             <Image
-                                src="/images/ct-hero-min (1).png"
+                                src={heroImageByFeatureSlug[solution.slug] ?? DEFAULT_HERO_IMAGE}
                                 alt={`${solution.name} dashboard mockup`}
                                 width={1920}
                                 height={1080}
@@ -201,7 +212,7 @@ export default async function FeatureDetailPage({
                     <div className="pointer-events-none absolute left-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(47,39,206,0.05)_0%,transparent_70%)] md:h-[800px] md:w-[800px]" />
 
                     <div className="mx-auto max-w-6xl relative z-10">
-                        <div className="mb-16 text-center lg:text-left flex flex-col items-center lg:items-start">
+                        <div className="mb-16 text-center flex flex-col items-center">
                             <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
                                 <Sparkles size={14} />
                                 <span>The Workflow Transformation</span>
@@ -209,7 +220,7 @@ export default async function FeatureDetailPage({
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
                                 Why teams buy <span className="text-primary italic">{solution.primaryKeyword}</span>
                             </h2>
-                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center lg:text-left">
+                            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed text-center">
                                 Buyers are not looking for another isolated feature. They want a workflow that fixes the field problem and gives payroll something they can actually trust.
                             </p>
                         </div>

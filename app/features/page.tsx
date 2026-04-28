@@ -3,18 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import {
     ArrowRight,
-    BellRing,
+    CalendarDays,
     CheckCircle2,
     Clock,
-    FileDown,
     FileText,
     MapPin,
-    ShieldCheck,
-    Zap,
-    BarChart3,
+    Workflow,
     AlertTriangle,
     Users,
-    Workflow,
+    Zap,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -43,28 +40,19 @@ const featuresMessaging = getTemplateMessaging("features_hub");
 const featureImageMap: Record<string, string> = {
     "gps-time-tracking": "/images/gps-feature-image.png",
     "geofencing-time-clock": "/images/hub/geofencing-preview.svg",
-    "payroll-leakage-prevention": "/images/hub/payroll-leakage-preview.svg",
-    "dol-compliance": "/images/guides/audit-records.png",
-    "payroll-exports": "/images/hub/payroll-exports-preview.svg",
-    "overtime-alerts": "/images/hub/overtime-alerts-preview.svg",
+    "scheduling": "/images/sheduling/scheduling-hero.png",
 };
 
 const featureIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
     "gps-time-tracking": MapPin,
     "geofencing-time-clock": MapPin,
-    "payroll-leakage-prevention": BarChart3,
-    "dol-compliance": ShieldCheck,
-    "payroll-exports": FileDown,
-    "overtime-alerts": BellRing,
+    "scheduling": CalendarDays,
 };
 
 const workflowNodes = [
-    { slug: "gps-time-tracking", label: "GPS Time Tracking", step: 1 },
-    { slug: "geofencing-time-clock", label: "Geofencing", step: 2 },
-    { slug: "overtime-alerts", label: "Overtime Alerts", step: 3 },
-    { slug: "payroll-leakage-prevention", label: "Leakage Prevention", step: 4 },
-    { slug: "payroll-exports", label: "Payroll Exports", step: 5 },
-    { slug: "dol-compliance", label: "DOL Compliance", step: 6 },
+    { slug: "scheduling", label: "Scheduling", step: 1 },
+    { slug: "gps-time-tracking", label: "GPS Time Tracking", step: 2 },
+    { slug: "geofencing-time-clock", label: "Geofencing", step: 3 },
 ];
 
 const scenarioCards = [
@@ -78,20 +66,20 @@ const scenarioCards = [
         color: "red",
     },
     {
-        title: "DOL audit letter just arrived?",
+        title: "Crews clocking in from the wrong location?",
         context:
-            "Your records are a mix of paper time cards and text messages. The inspector wants two years of defensible time records, edit history, and proof of hours worked.",
-        solution: "Start with DOL Compliance",
-        solutionSlug: "dol-compliance",
+            "Workers are punching in before reaching the job site or from unauthorized areas, creating payroll disputes and inaccurate project cost tracking.",
+        solution: "Start with Geofencing Time Clock",
+        solutionSlug: "geofencing-time-clock",
         image: "/images/hub/scenario-dol-audit.svg",
         color: "amber",
     },
     {
-        title: "Payroll takes all of Thursday?",
+        title: "Schedules in spreadsheets go stale by Monday?",
         context:
-            "Your payroll admin spends 5+ hours every week chasing timesheets, fixing cross-outs, reconciling missing job codes, and reformatting data for the payroll processor.",
-        solution: "Start with Payroll Exports",
-        solutionSlug: "payroll-exports",
+            "Your weekly schedule is built in Excel but never reaches the right crews. Job changes happen in group chats and the field never gets the update.",
+        solution: "Start with Crew Scheduling",
+        solutionSlug: "scheduling",
         image: "/images/hub/scenario-payroll-admin.svg",
         color: "primary",
     },
@@ -244,7 +232,7 @@ export default function FeaturesPage() {
                                 How They Connect
                             </p>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                Six workflows. One data pipeline.
+                                Three workflows. One data pipeline.
                             </h2>
                             <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed">
                                 These features are not isolated tools. They compose into a single field-to-payroll pipeline where each workflow feeds the next. Start anywhere. Expand when ready.
@@ -258,7 +246,7 @@ export default function FeaturesPage() {
                                 </div>
                             </div>
 
-                            <div className="relative z-10 grid grid-cols-2 gap-4 md:grid-cols-6">
+                            <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-3">
                                 {workflowNodes.map((node) => {
                                     const Icon = featureIconMap[node.slug] ?? Zap;
                                     const isStart = node.step === 1;
@@ -301,7 +289,7 @@ export default function FeaturesPage() {
                                 Pick the problem that costs you the most
                             </h2>
                             <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed">
-                                You do not need all six features on day one. Start with the one that addresses your biggest payroll risk right now.
+                                You do not need all three features on day one. Start with the one that addresses your biggest payroll risk right now.
                             </p>
                         </div>
 
@@ -362,9 +350,9 @@ export default function FeaturesPage() {
 
                         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
                             {[
-                                { value: "6", label: "Integrated workflows", icon: Workflow },
+                                { value: "3", label: "Integrated workflows", icon: Workflow },
                                 { value: "8", label: "Industry paths", icon: Users },
-                                { value: "4", label: "Step rollout", icon: Zap },
+                                { value: "3", label: "Step rollout", icon: Zap },
                                 { value: "2 wk", label: "Avg time to ROI", icon: Clock },
                             ].map((stat) => {
                                 const Icon = stat.icon;

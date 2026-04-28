@@ -43,10 +43,7 @@ export default function Footer() {
                                 <li><Link href="/features" className={footerLinkClass}>All Features</Link></li>
                                 <li><Link href="/features/gps-time-tracking" className={footerLinkClass}>GPS Time Tracking</Link></li>
                                 <li><Link href="/features/geofencing-time-clock" className={footerLinkClass}>Geofencing Time Clock</Link></li>
-                                <li><Link href="/features/payroll-leakage-prevention" className={footerLinkClass}>Payroll Leakage Prevention</Link></li>
-                                <li><Link href="/features/payroll-exports" className={footerLinkClass}>Payroll Exports</Link></li>
-                                <li><Link href="/features/overtime-alerts" className={footerLinkClass}>Overtime Alerts</Link></li>
-                                <li><Link href="/features/dol-compliance" className={footerLinkClass}>DOL Compliance</Link></li>
+                                <li><Link href="/features/scheduling" className={footerLinkClass}>Crew Scheduling</Link></li>
                             </ul>
                         </div>
 

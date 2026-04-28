@@ -79,129 +79,6 @@ export const featureRecords: FeatureRecord[] = [
         ],
     },
     {
-        slug: "payroll-leakage-prevention",
-        name: "Payroll Leakage Prevention",
-        tagline: "Find and correct labor leakage during the week, not after payroll.",
-        description:
-            "Find early punch-ins, long breaks, and overtime leaks before payroll day so labor costs stop drifting.",
-        primaryKeyword: "construction payroll software",
-        primaryIntent: "construction-payroll-overpayment-prevention",
-        metaTitle: "Construction Payroll Software for Labor Cost Control | Crewtrace",
-        metaDescription:
-            "Construction payroll software that helps contractors catch early punch-ins, long breaks, and overtime leaks before they turn into overpayment.",
-        heroTitle: "Construction payroll software starts with clean field time",
-        heroSubtitle:
-            "If your team is fixing timesheets on payroll day, the real problem starts earlier. Crewtrace helps you catch small leaks before they turn into expensive overpayment.",
-        relatedIndustries: [
-            "general-contractors",
-            "concrete",
-            "hvac",
-            "construction",
-            "waterproofing",
-            "roofing",
-            "plumbing",
-            "landscaping",
-            "electrical",
-        ],
-        challenges: [
-            "Small daily time inflation that compounds weekly",
-            "No system for spotting repeated overpayment patterns",
-            "Payroll reviews done too late to correct issues",
-        ],
-        capabilities: [
-            "Exception flags for early/late activity",
-            "Overtime and break pattern monitoring",
-            "Labor-cost trend reporting by crew",
-        ],
-        outcomes: [
-            "Lower recurring overpayment risk",
-            "Faster payroll review cycles",
-            "More predictable labor margin control",
-        ],
-        faqItems: [
-            {
-                question: "How much payroll leakage does the average contractor actually lose?",
-                answer: "Industry estimates range from 1–7% of total labor spend depending on crew size, number of sites, and how timesheets are currently managed. For a contractor running 20 field workers, that can mean $800–$3,000 per month in early punch-ins, extended breaks, and unverified overtime alone.",
-            },
-            {
-                question: "What types of payroll leakage does Crewtrace catch?",
-                answer: "The most common patterns are early clock-ins before crews reach the site, extended or unreported breaks, overtime hours that were not pre-approved, and small daily time inflation that compounds weekly. Crewtrace flags these as exceptions before payroll is finalized, not after.",
-            },
-            {
-                question: "How quickly will I see payroll savings after rolling out Crewtrace?",
-                answer: "Most contractors identify measurable leakage patterns within the first full pay period — usually one to two weeks. The savings compound as supervisors start reviewing flagged exceptions in real time instead of discovering problems after payroll has already been submitted.",
-            },
-            {
-                question: "Does this replace my existing payroll software?",
-                answer: "No. Crewtrace is not payroll software — it sits upstream and gives your payroll team cleaner, verified time data to work with. You still run payroll through your existing provider; Crewtrace just makes sure the hours going in are accurate.",
-            },
-            {
-                question: "Can I see which crews or job sites have the most leakage?",
-                answer: "Yes. Crewtrace provides crew-level and site-level labor reporting so you can see where overpayment patterns concentrate. This helps you address specific behavioral issues rather than applying blanket policy changes.",
-            },
-        ],
-    },
-    {
-        slug: "dol-compliance",
-        name: "DOL Compliance Tracking",
-        tagline: "Maintain audit-ready time records for wage and hour reviews.",
-        description:
-            "Keep defensible time records, approval history, and location context in one place so wage and hour reviews are easier to handle.",
-        primaryKeyword: "department of labor time clock rules",
-        primaryIntent: "dol-flsa-contractor-timekeeping-compliance",
-        metaTitle: "Department of Labor Time Clock Rules and Audit Records | Crewtrace",
-        metaDescription:
-            "Track the records behind department of labor time clock rules with edit history, approvals, and jobsite context built for contractors.",
-        heroTitle: "Stay ready for DOL time clock reviews",
-        heroSubtitle:
-            "Keep each edit, approval, and location record in one place so wage and hour questions do not turn into a last-minute scramble.",
-        relatedIndustries: [
-            "general-contractors",
-            "roofing",
-            "hvac",
-            "construction",
-            "concrete",
-            "electrical",
-        ],
-        challenges: [
-            "Missing or incomplete time documentation",
-            "Difficulty proving edits and approvals",
-            "Risk exposure during labor disputes or audits",
-        ],
-        capabilities: [
-            "Centralized digital time records",
-            "Edit and approval audit trail",
-            "Policy-driven record retention",
-        ],
-        outcomes: [
-            "Stronger documentation posture",
-            "Less last-minute audit scramble",
-            "Higher confidence in compliance reporting",
-        ],
-        faqItems: [
-            {
-                question: "What time records does the Department of Labor actually require from contractors?",
-                answer: "Under FLSA, employers must retain records showing each employee's hours worked per day, total hours per week, regular and overtime pay rates, and total wages. For contractors, that also means being able to show how hours were calculated, who approved edits, and what evidence supports the final numbers. Crewtrace keeps all of this in one audit-ready trail.",
-            },
-            {
-                question: "How does Crewtrace help during a DOL wage and hour audit?",
-                answer: "Crewtrace stores every clock event, edit, approval, and location record in a centralized history. If an auditor asks why a worker was paid a specific amount, you can pull the full record chain — original clock-in, any supervisor edits, and the final approval — without digging through paper files or email threads.",
-            },
-            {
-                question: "What is the difference between DOL compliance and just tracking time?",
-                answer: "Tracking time tells you how many hours someone worked. DOL compliance means you can prove it — with edit history, approval records, and supporting evidence like GPS location. Many time tracking apps record hours but do not preserve the documentation trail that matters during an audit.",
-            },
-            {
-                question: "How long do I need to keep time records for DOL purposes?",
-                answer: "The FLSA requires payroll records to be kept for at least three years, and supplemental records (like time cards and schedules) for at least two years. Crewtrace stores records digitally with no manual archiving required, so your documentation stays accessible as long as you need it.",
-            },
-            {
-                question: "Can Crewtrace help prevent wage and hour lawsuits?",
-                answer: "It reduces your exposure significantly. Most wage disputes stem from missing or inconsistent records that make it hard to prove what was actually worked. When every shift has a GPS-verified clock event and an approval chain, there is far less room for he-said-she-said disputes.",
-            },
-        ],
-    },
-    {
         slug: "geofencing-time-clock",
         name: "Geofencing Time Clock",
         tagline: "Set clock-in boundaries that match how jobs are actually staffed.",
@@ -255,113 +132,62 @@ export const featureRecords: FeatureRecord[] = [
         ],
     },
     {
-        slug: "payroll-exports",
-        name: "Payroll Exports",
-        tagline: "Send payroll-ready files without last-minute reformatting.",
+        slug: "scheduling",
+        name: "Crew Scheduling",
+        tagline: "Plan crews, jobs, and shifts without juggling spreadsheets.",
         description:
-            "Move approved hours into payroll faster with exports your back office can use without last-minute cleanup.",
-        primaryKeyword: "payroll time tracking software",
-        primaryIntent: "contractor-payroll-export-workflow",
-        metaTitle: "Payroll Time Tracking Software for Faster Exports | Crewtrace",
+            "Build the week's schedule in minutes, send assignments to crews, and keep field changes synced with the time records payroll uses.",
+        primaryKeyword: "crew scheduling software",
+        primaryIntent: "construction-crew-scheduling-and-dispatch",
+        metaTitle: "Crew Scheduling Software for Contractors | Crewtrace",
         metaDescription:
-            "Payroll time tracking software that turns approved field hours into payroll-ready exports with fewer corrections and less admin work.",
-        heroTitle: "Payroll time tracking software without last-minute cleanup",
+            "Crew scheduling software that lets contractors plan jobs, assign workers, and keep field changes in sync with time tracking and payroll.",
+        heroTitle: "Crew scheduling that stays in sync with the field",
         heroSubtitle:
-            "Give payroll a cleaner handoff from the field. Crewtrace helps your team move approved hours faster and with fewer corrections.",
+            "Plan the week, assign crews to jobs, and push changes to the field in seconds. Crewtrace keeps schedules, clock events, and payroll working from the same record.",
         relatedIndustries: [
-            "plumbing",
             "hvac",
+            "plumbing",
+            "electrical",
+            "landscaping",
             "general-contractors",
-            "waterproofing",
+            "construction",
         ],
         challenges: [
-            "Manual re-entry from timesheets into payroll software",
-            "Formatting mismatches between systems",
-            "Last-minute payroll delays from data cleanup",
+            "Schedules built in spreadsheets that go stale by Monday morning",
+            "Last-minute job changes that never reach the right crew",
+            "Disconnect between who was scheduled and who actually clocked in",
         ],
         capabilities: [
-            "Standardized CSV export workflows",
-            "Field mapping support for payroll systems",
-            "Approval-first export process",
+            "Drag-and-drop weekly schedule by crew or job",
+            "Assignment notifications pushed to worker phones",
+            "Schedule vs. actual hours visibility tied to time records",
         ],
         outcomes: [
-            "Faster payroll processing",
-            "Reduced weekly admin effort",
-            "Fewer payroll correction cycles",
+            "Fewer missed assignments and dispatch mistakes",
+            "Less time spent rebuilding the schedule each week",
+            "Cleaner reconciliation between planned and worked hours",
         ],
         faqItems: [
             {
-                question: "What payroll systems does Crewtrace export to?",
-                answer: "Crewtrace exports to standardized CSV files that work with most payroll providers including QuickBooks, ADP, Gusto, Paychex, and others. If your provider accepts CSV imports, Crewtrace can feed it directly. For custom formats, field mapping support is available during onboarding.",
+                question: "How is Crewtrace scheduling different from a spreadsheet or calendar?",
+                answer: "A spreadsheet shows intent. Crewtrace scheduling is connected to the same record that captures clock events, GPS location, and approvals. When a crew is reassigned, the new job is reflected on their phone, and when they clock in, you immediately see scheduled hours versus actual hours instead of reconciling two different systems.",
             },
             {
-                question: "How much time does automated payroll export actually save?",
-                answer: "Contractors who switch from manual timesheet entry typically save 3–5 hours per pay period on data entry alone, plus another 1–2 hours that were spent resolving discrepancies. The bigger win is fewer correction cycles after payroll has been submitted.",
+                question: "Can crews see their schedule on their phones?",
+                answer: "Yes. Once a worker is assigned to a job, they see the date, location, and reporting time directly in the Crewtrace mobile app. Schedule changes pushed by the office update on the worker's device automatically, so there is no group chat scramble when a job moves.",
             },
             {
-                question: "Can I review and approve hours before they are exported?",
-                answer: "Yes. Crewtrace uses an approval-first workflow. Supervisors review flagged exceptions and approve the final hours before any export is generated. Payroll only receives data that has already been verified and signed off.",
+                question: "How do schedule changes work when jobs get pushed or canceled?",
+                answer: "Supervisors can move a crew between jobs, swap workers, or cancel a shift directly from the schedule. Affected workers are notified, and the schedule history is preserved so you can see what was originally planned and what actually happened.",
             },
             {
-                question: "What if my payroll provider needs a specific file format?",
-                answer: "During onboarding, Crewtrace maps your export fields to match your provider's import requirements. If your payroll system needs specific column headers, date formats, or cost-code breakdowns, those are configured once and applied to every future export.",
+                question: "Does Crewtrace scheduling integrate with time tracking and payroll?",
+                answer: "Yes. Scheduling, time tracking, and payroll exports all run on the same record. Scheduled hours can be compared to verified clock events, and the approved hours flow into your payroll export with no double entry.",
             },
             {
-                question: "Does the export include overtime and break breakdowns?",
-                answer: "Yes. Exports include regular hours, overtime hours, break durations, and job-site or cost-code assignments. This gives your payroll team a complete picture without needing to cross-reference separate spreadsheets.",
-            },
-        ],
-    },
-    {
-        slug: "overtime-alerts",
-        name: "Overtime Alerts",
-        tagline: "Catch overtime spikes early enough to intervene the same day.",
-        description:
-            "Track overtime risk in real time so field leads can fix schedule and labor problems before payroll closes.",
-        primaryKeyword: "overtime tracking",
-        primaryIntent: "construction-overtime-risk-alerts",
-        metaTitle: "Overtime Tracking for Field Crews | Crewtrace",
-        metaDescription:
-            "Overtime tracking for contractors who need earlier alerts, faster supervisor action, and fewer payroll surprises on active jobs.",
-        heroTitle: "Overtime tracking before payroll gets expensive",
-        heroSubtitle:
-            "Give supervisors time to fix schedule overruns the same day. Crewtrace flags overtime risk early enough to change the outcome.",
-        relatedIndustries: ["construction", "hvac", "roofing", "electrical"],
-        challenges: [
-            "Unexpected overtime spikes discovered only at payroll close",
-            "No live trigger when crews exceed scheduled labor windows",
-            "Late interventions that still result in avoidable overpayment",
-        ],
-        capabilities: [
-            "Configurable overtime thresholds by crew or job",
-            "Same-day alerts for overtime and break anomalies",
-            "Exception queue for supervisor review before approval",
-        ],
-        outcomes: [
-            "Earlier correction of labor overrun patterns",
-            "Lower overtime-related payroll leakage",
-            "Faster escalation of timekeeping exceptions",
-        ],
-        faqItems: [
-            {
-                question: "How early does Crewtrace alert supervisors about overtime?",
-                answer: "Alerts fire as soon as a worker crosses a configurable threshold — for example, when a crew member hits 38 hours on a Thursday. This gives the field lead enough runway to reassign work, adjust the schedule, or authorize the overtime intentionally rather than discovering it on payroll day.",
-            },
-            {
-                question: "Can I set different overtime thresholds for different crews or jobs?",
-                answer: "Yes. Thresholds are configurable by crew, job site, or worker. Some contractors set tighter limits on cost-sensitive projects and looser ones on jobs with built-in overtime budgets. Each threshold triggers its own alert independently.",
-            },
-            {
-                question: "What is the difference between overtime tracking and overtime alerts?",
-                answer: "Overtime tracking tells you after the fact how many overtime hours were worked. Overtime alerts notify you before or as it happens, so you can intervene. The distinction matters because most payroll overruns are discovered too late to change the outcome.",
-            },
-            {
-                question: "Do overtime alerts also catch extended break patterns?",
-                answer: "Yes. Crewtrace flags both overtime threshold breaches and break anomalies — like breaks that run significantly longer than policy. These are surfaced in the same exception queue so supervisors can review them together.",
-            },
-            {
-                question: "How do supervisors receive overtime alerts?",
-                answer: "Alerts are delivered through the Crewtrace app and can be configured to send push notifications. Supervisors see a prioritized exception queue that highlights which workers or sites need attention, so they can act quickly without sifting through raw data.",
+                question: "Can I schedule by job site, by crew, or by individual worker?",
+                answer: "All three. Most contractors build the week by job site first, then assign crews or individuals to that job. You can also pivot the view to see one worker's full week or one crew's coverage across multiple sites.",
             },
         ],
     },
@@ -371,7 +197,7 @@ export type FeatureSlug = FeatureRecord["slug"];
 
 export const featureSlugs: FeatureSlug[] = featureRecords.map((feature) => feature.slug);
 
-export const expansionFeatureSlugs = ["overtime-alerts"] as const;
+export const expansionFeatureSlugs: string[] = [];
 
 export const featureBySlug: Record<string, FeatureRecord> = Object.fromEntries(
     featureRecords.map((feature) => [feature.slug, feature]),
