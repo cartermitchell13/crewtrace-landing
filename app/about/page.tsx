@@ -16,9 +16,9 @@ import Footer from "@/components/Footer";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-    title: "About Crewtrace | GPS Time Tracking Built for Contractors",
+    title: "About Crewtrace | Stop Payroll Leakage for Field Crews",
     description:
-        "Crewtrace was founded to solve a problem every contractor knows: inaccurate crew hours and payroll leakage. Learn the founder story and how we help field teams track time with GPS verification.",
+        "Meet Crewtrace, GPS time tracking software built to verify crew hours, reduce payroll leakage, and replace paper timesheets with payroll-ready records.",
     path: "/about",
 });
 

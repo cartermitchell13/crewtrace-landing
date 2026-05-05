@@ -5,6 +5,7 @@ import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
 import IndustryLinks from "@/components/IndustryLinks";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
+import PricingSection from "@/components/PricingSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
@@ -12,7 +13,6 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { homeFaqItems } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/seo";
-import { orderedPromiseLine, publicIcpPhrase } from "@/lib/messaging";
 import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createPageMetadata({
@@ -48,6 +48,7 @@ export default function Home() {
         <IndustryLinks />
         <LiteSavingsCalculator />
         <FAQSection />
+        <PricingSection />
         <CTASection />
       </main>
       <Footer />

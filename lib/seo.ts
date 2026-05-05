@@ -3,7 +3,7 @@ import { getStaticSeoPolicy } from "@/lib/seoPolicy";
 
 export const siteConfig = {
     name: "Crewtrace",
-    url: "https://getcrewtrace.com",
+    url: "https://www.getcrewtrace.com",
     title: "Crew Tracking & Construction Time Tracking Software | GPS Verified | Crewtrace",
     description:
         "GPS-verified crew tracking and construction time tracking software. Crew location tracking at clock-in, geofenced time clock, payroll-ready exports — built for contractors running field crews.",

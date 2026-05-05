@@ -41,12 +41,14 @@ const featureImageMap: Record<string, string> = {
     "gps-time-tracking": "/images/gps-feature-image.png",
     "geofencing-time-clock": "/images/hub/geofencing-preview.svg",
     "scheduling": "/images/sheduling/scheduling-hero.png",
+    "payroll-sync-quickbooks": "/images/quickbooks/quickbooks-hero.png",
 };
 
 const featureIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
     "gps-time-tracking": MapPin,
     "geofencing-time-clock": MapPin,
     "scheduling": CalendarDays,
+    "payroll-sync-quickbooks": FileText,
 };
 
 const workflowNodes = [

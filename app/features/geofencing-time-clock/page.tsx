@@ -39,7 +39,7 @@ import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FAQSection";
 import FeatureComparison from "@/components/FeatureComparison";
 import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug } from "@/lib/solutions";
 
 const SLUG = "geofencing-time-clock";
@@ -369,6 +369,7 @@ export default function GeofencingTimeClockFeaturePage() {
         { name: "Features", path: "/features" },
         { name: solution.name, path: PATH },
     ]);
+    const faqJsonLd = faqSchema(solution.faqItems);
 
     return (
         <div className="min-h-screen bg-background">
@@ -381,6 +382,10 @@ export default function GeofencingTimeClockFeaturePage() {
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
                 />
                 <SeoLandingTracker
                     templateType="feature_detail"
@@ -428,7 +433,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                 href="/contact"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                             >
-                                See it on your sites
+                                See geofencing in action
                                 <ArrowRight size={18} />
                             </Link>
                             <BookedCallLink

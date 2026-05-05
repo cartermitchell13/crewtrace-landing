@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ServiceWorkerCleaner from "@/components/ServiceWorkerCleaner";
 import FirstTouchBootstrap from "@/components/FirstTouchBootstrap";
 import { siteConfig } from "@/lib/seo";
@@ -93,6 +94,7 @@ export default function RootLayout({
         />
         <FirstTouchBootstrap />
         <ServiceWorkerCleaner />
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

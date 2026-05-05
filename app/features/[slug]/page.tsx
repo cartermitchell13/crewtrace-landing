@@ -19,7 +19,7 @@ import {
 import { industryBySlug } from "@/lib/industries";
 import { getFeatureDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug, featureSlugs, getFeaturesBySlugs } from "@/lib/solutions";
 
 const detailMessaging = getTemplateMessaging("feature_detail");
@@ -32,6 +32,7 @@ const supportKeywordByFeatureSlug: Record<string, string[]> = {
     "payroll-exports": ["payroll time tracking software", "construction payroll software", "time tracking payroll"],
     "overtime-alerts": ["overtime tracking", "overtime tracking software", "employee time tracking"],
     "scheduling": ["crew scheduling software", "construction scheduling software", "contractor scheduling app"],
+    "payroll-sync-quickbooks": ["quickbooks payroll sync", "quickbooks time tracking", "construction payroll software"],
 };
 
 const heroImageByFeatureSlug: Record<string, string> = {
@@ -60,7 +61,7 @@ function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
 }
 
-const CUSTOM_FEATURE_SLUGS = new Set(["scheduling", "gps-time-tracking", "geofencing-time-clock"]);
+const CUSTOM_FEATURE_SLUGS = new Set(["scheduling", "gps-time-tracking", "geofencing-time-clock", "payroll-sync-quickbooks"]);
 
 export function generateStaticParams() {
     return featureSlugs
@@ -118,6 +119,7 @@ export default async function FeatureDetailPage({
         { name: "Features", path: "/features" },
         { name: solution.name, path: `/features/${slug}` },
     ]);
+    const faqJsonLd = faqSchema(solution.faqItems);
 
     const relatedFeatures = getFeaturesBySlugs(detailLinks.siblingFeatureSlugs);
     const supportKeywordLine = joinKeywordList(supportKeywordByFeatureSlug[solution.slug] ?? []);
@@ -134,6 +136,10 @@ export default async function FeatureDetailPage({
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
                 />
                 <SeoLandingTracker
                     templateType="feature_detail"

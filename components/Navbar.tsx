@@ -14,6 +14,7 @@ import {
     MapPin,
     Clock,
     FileText,
+    Receipt,
     BarChart3,
     BookOpen,
     Users,
@@ -128,6 +129,7 @@ const solutionIconsBySlug = {
     "gps-time-tracking": MapPin,
     "geofencing-time-clock": Clock,
     "scheduling": CalendarDays,
+    "payroll-sync-quickbooks": Receipt,
 } as const;
 
 const solutionItems = getSolutionSummaries().map((solution) => ({
@@ -243,6 +245,12 @@ export default function Navbar() {
                         className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-lg transition-all duration-200"
                     >
                         ROI Calculator
+                    </Link>
+                    <Link
+                        href="/#pricing"
+                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-lg transition-all duration-200"
+                    >
+                        Pricing
                     </Link>
                 </div>
 
@@ -667,6 +675,13 @@ export default function Navbar() {
                         className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
                     >
                         ROI Calculator
+                    </Link>
+                    <Link
+                        href="/#pricing"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
+                    >
+                        Pricing
                     </Link>
 
                     {/* Mobile CTAs */}

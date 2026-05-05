@@ -4,27 +4,28 @@ import Link from "next/link";
 import {
     ArrowRight,
     ArrowUpRight,
-    MapPin,
-    Satellite,
-    Smartphone,
-    ShieldCheck,
-    Eye,
+    ArrowLeftRight,
     CheckCircle2,
     XCircle,
     AlertTriangle,
-    Clock,
     Sparkles,
-    FileCheck2,
-    Navigation,
-    Signal,
-    Battery,
-    Users,
-    Building2,
-    Wrench,
-    TreePine,
+    Clock,
+    ShieldCheck,
+    Receipt,
+    RefreshCcw,
     Zap,
+    FileSpreadsheet,
+    Users,
+    Briefcase,
+    History,
+    Plug,
+    Building2,
     Hammer,
-    Radar,
+    Wrench,
+    HardHat,
+    Layers,
+    MousePointerClick,
+    BadgeCheck,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -37,7 +38,7 @@ import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug } from "@/lib/solutions";
 
-const SLUG = "gps-time-tracking";
+const SLUG = "payroll-sync-quickbooks";
 const PATH = `/features/${SLUG}`;
 const solution = featureBySlug[SLUG]!;
 
@@ -47,346 +48,230 @@ export const metadata: Metadata = createPageMetadata({
     path: PATH,
 });
 
-type PlaceholderTone = "primary" | "emerald" | "amber" | "slate" | "rose" | "sky";
-
-type PlaceholderProps = {
-    label: string;
-    sublabel?: string;
-    aspect?: string;
-    tone?: PlaceholderTone;
-    variant?: "grid" | "map" | "phone" | "radar";
-    className?: string;
-};
-
-function ImagePlaceholder({
-    label,
-    sublabel,
-    aspect = "aspect-[16/10]",
-    tone = "primary",
-    variant = "grid",
-    className = "",
-}: PlaceholderProps) {
-    const toneMap: Record<PlaceholderTone, string> = {
-        primary: "from-primary/15 via-primary/5 to-white",
-        emerald: "from-emerald-200/40 via-emerald-50 to-white",
-        amber: "from-amber-200/40 via-amber-50 to-white",
-        slate: "from-slate-200/60 via-slate-50 to-white",
-        rose: "from-rose-200/40 via-rose-50 to-white",
-        sky: "from-sky-200/40 via-sky-50 to-white",
-    };
-    const dotMap: Record<PlaceholderTone, string> = {
-        primary: "bg-primary/40",
-        emerald: "bg-emerald-500/50",
-        amber: "bg-amber-500/50",
-        slate: "bg-slate-500/40",
-        rose: "bg-rose-500/50",
-        sky: "bg-sky-500/50",
-    };
-
-    return (
-        <div
-            className={`relative w-full overflow-hidden rounded-[1.75rem] border border-foreground/5 bg-gradient-to-br ${toneMap[tone]} ${aspect} ${className}`}
-            role="img"
-            aria-label={label}
-        >
-            {variant === "grid" && (
-                <div
-                    className="absolute inset-0 opacity-[0.35]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)",
-                        backgroundSize: "32px 32px",
-                    }}
-                />
-            )}
-            {variant === "map" && (
-                <>
-                    <div
-                        className="absolute inset-0 opacity-[0.4]"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(115deg, rgba(15,23,42,0.08) 1px, transparent 1px), linear-gradient(65deg, rgba(15,23,42,0.08) 1px, transparent 1px)",
-                            backgroundSize: "48px 48px",
-                        }}
-                    />
-                    <div className="absolute left-[18%] top-[28%] h-40 w-40 rounded-full border-2 border-dashed border-primary/50 bg-primary/10" />
-                    <div className="absolute left-[30%] top-[42%] h-3 w-3 rounded-full bg-primary shadow-[0_0_0_6px_rgba(47,39,206,0.18)]" />
-                    <div className="absolute right-[22%] top-[58%] h-28 w-28 rounded-full border-2 border-dashed border-emerald-500/50 bg-emerald-500/10" />
-                    <div className="absolute right-[30%] top-[66%] h-3 w-3 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,0.18)]" />
-                </>
-            )}
-            {variant === "phone" && (
-                <div
-                    className="absolute inset-0 opacity-[0.25]"
-                    style={{
-                        backgroundImage:
-                            "radial-gradient(circle at 30% 20%, rgba(47,39,206,0.25) 0%, transparent 40%), radial-gradient(circle at 75% 80%, rgba(16,185,129,0.2) 0%, transparent 40%)",
-                    }}
-                />
-            )}
-            {variant === "radar" && (
-                <>
-                    <div className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/25" />
-                    <div className="absolute left-1/2 top-1/2 h-[40%] w-[40%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/30" />
-                    <div className="absolute left-1/2 top-1/2 h-[20%] w-[20%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/40" />
-                    <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
-                </>
-            )}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-6">
-                <span className={`flex h-2 w-2 rounded-full ${dotMap[tone]}`} />
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/45">
-                    Image placeholder
-                </p>
-                <p className="max-w-md text-sm font-semibold text-foreground/70">{label}</p>
-                {sublabel && (
-                    <p className="max-w-md text-xs font-medium text-foreground/45">{sublabel}</p>
-                )}
-            </div>
-        </div>
-    );
-}
+const PLACEHOLDER_BASE = "/images/quickbooks";
 
 const painPoints = [
     {
-        title: "The parking-lot clock-in",
+        title: "The Thursday timesheet grind",
         description:
-            "Workers punch in from the cab on the drive over. The timesheet says 7:00 but the crew didn't touch the job site until 7:45.",
-        icon: Navigation,
+            "Every pay period, somebody loses three hours retyping approved hours into QuickBooks line by line — and a single typo means a wrong paycheck.",
+        icon: Clock,
         tone: "rose" as const,
     },
     {
-        title: "\"I was there, I swear\"",
+        title: "CSV imports that almost work",
         description:
-            "A supervisor flags a short day. The worker insists the hours are right. With no location record, the argument wins over the truth.",
-        icon: AlertTriangle,
+            "One mismatched name, one renamed job, and the whole import either fails or quietly posts the wrong hours to the wrong customer.",
+        icon: FileSpreadsheet,
         tone: "amber" as const,
     },
     {
-        title: "Payroll built on memory",
+        title: "Job costing that doesn't match",
         description:
-            "Paper logs get transcribed, errors get guessed at, and by Thursday nobody remembers which site crew #3 actually worked Tuesday.",
-        icon: Clock,
+            "Field hours live in one system, QuickBooks lives in another, and the labor numbers on the project P&L never quite tie out.",
+        icon: AlertTriangle,
         tone: "slate" as const,
     },
 ];
 
 const spotlights = [
     {
-        eyebrow: "Geofence verification",
-        title: "Every clock event tied to a real job site.",
+        eyebrow: "One click sync",
+        title: "Approve. Click sync. Walk away.",
         description:
-            "Draw a geofence around each job. When a worker taps clock in, Crewtrace checks their GPS against that boundary and stamps the event with a location and a confidence score. No boundary match, no silent pass-through.",
+            "Once your hours are approved in Crewtrace, a single Sync to QuickBooks button does the rest — pulling each entry, matching it to the right employee and job, and posting it directly into QuickBooks with the right pay items attached.",
         bullets: [
-            "Custom geofence per project or address",
-            "Pass / fail / review status on every clock event",
-            "Location confidence score stored with each record",
+            "Push approved hours by pay period or by date range",
+            "Real-time progress with a per-entry status",
+            "Automatic retry on transient connection errors",
         ],
         image: {
-            src: "/images/gps/geofence.png",
-            alt: "Crewtrace geofence overlay on a job-site map with a verified GPS clock-in pin",
+            src: `${PLACEHOLDER_BASE}/sync-console.png`,
+            alt: "Crewtrace sync console pushing approved hours into QuickBooks Online",
         },
-        icon: Radar,
+        icon: MousePointerClick,
         reverse: false,
     },
     {
-        eyebrow: "Mobile clock in / out",
-        title: "One tap. One timestamp. One verified location.",
+        eyebrow: "Smart mapping",
+        title: "Employees and jobs mapped once.",
         description:
-            "Crews clock in and out from the same phone they already carry. Location is captured at the exact moment of the tap — not before, not as background tracking — so you get proof without killing a battery or a privacy conversation.",
+            "Crewtrace pulls your QuickBooks employees and customers the moment you connect. Map Crewtrace employees to QuickBooks employees and Crewtrace jobs to QuickBooks customers once, and new hires or new jobs surface as a quick review step before the next sync — never silently.",
         bullets: [
-            "Works on iOS and Android, online or offline",
-            "Event-only location — no continuous tracking",
-            "Photo and job-selection prompts at clock-in",
+            "Crewtrace Employees to QuickBooks Employees",
+            "Crewtrace Jobs to QuickBooks Customers",
+            "New record review step before anything posts",
         ],
         image: {
-            src: "/images/gps/phone.png",
-            alt: "Crewtrace mobile app showing a GPS-verified clock-in on a crew phone",
+            src: `${PLACEHOLDER_BASE}/mapping.png`,
+            alt: "Crewtrace mapping screen connecting Crewtrace workers and jobs to QuickBooks records",
         },
-        icon: Smartphone,
+        icon: ArrowLeftRight,
         reverse: true,
     },
     {
-        eyebrow: "Live attendance",
-        title: "See the whole field, right now.",
+        eyebrow: "Pre-flight check",
+        title: "Catch bad data before QuickBooks ever sees it.",
         description:
-            "Supervisors open Crewtrace and see every active crew on a map — who's on site, who's off, who clocked in from the wrong address. Catch issues during the day instead of untangling them on payroll day.",
+            "Every sync runs a pre-flight check. Missing pay items, unmapped employees, jobs that no longer exist in QuickBooks — they all surface in one review screen with a recommended fix. Nothing posts until the issues are clean, so you never end up with half an import to undo.",
         bullets: [
-            "Live site-by-site attendance map",
-            "Exception flags for off-site or late clock-ins",
-            "Daily roll-up of planned vs. verified hours",
+            "Single review screen for all blocking issues",
+            "Recommended matches based on past syncs",
+            "Bulk-fix actions for repeating issues",
         ],
         image: {
-            src: "/images/gps/map.png",
-            alt: "Crewtrace live attendance map with multiple active crews across job sites",
+            src: `${PLACEHOLDER_BASE}/preflight.png`,
+            alt: "Pre-flight validation screen flagging unmapped employees and jobs before sync",
         },
-        icon: Eye,
+        icon: ShieldCheck,
         reverse: false,
     },
+];
+
+const mappingTiles = [
     {
-        eyebrow: "Defensible records",
-        title: "A time record your payroll team can actually defend.",
+        title: "Crewtrace Employees to QuickBooks Employees",
         description:
-            "Every clock event keeps its GPS coordinates, confidence score, device, and edit history. When a dispute or a DOL question comes up, you pull one record \u2014 not a stack of paper and a hope.",
-        bullets: [
-            "Immutable clock-event history with edit trail",
-            "GPS coordinate + accuracy stamped to each event",
-            "One-click export for payroll, disputes, and audits",
-        ],
-        image: {
-            src: "/images/gps/defensible.png",
-            alt: "Crewtrace audit-ready time record with GPS metadata and edit history",
-        },
-        icon: FileCheck2,
-        reverse: true,
+            "Match every Crewtrace employee to the right QuickBooks employee once. New hires surface for review before the next sync.",
+        icon: Users,
+        accent: "primary" as const,
+    },
+    {
+        title: "Crewtrace Jobs to QuickBooks Customers",
+        description:
+            "Link each Crewtrace job to its QuickBooks customer so synced labor lands on the right customer record.",
+        icon: Briefcase,
+        accent: "emerald" as const,
     },
 ];
 
 const capabilities = [
     {
-        title: "Precise geofencing",
-        description: "10–30 ft boundary accuracy with a confidence score on every clock event.",
-        icon: Radar,
+        title: "QuickBooks Online + Desktop",
+        description: "Native QBO API integration plus a Desktop connector for Pro, Premier, Enterprise, and Contractor.",
+        icon: Plug,
     },
     {
-        title: "Event-only location",
-        description: "Captured at clock in / out only — no background tracking, no battery drain.",
-        icon: Battery,
+        title: "One-click pay-period sync",
+        description: "Push an entire pay period — or a custom date range — to QuickBooks in a single action.",
+        icon: Zap,
     },
     {
-        title: "Offline resilience",
-        description: "Clock events save on the device and sync when signal returns with a reduced-confidence flag.",
-        icon: Signal,
-    },
-    {
-        title: "Exception flagging",
-        description: "Off-site, late, or no-GPS events surface for supervisor review automatically.",
-        icon: AlertTriangle,
-    },
-    {
-        title: "Live attendance map",
-        description: "A single view of who's on site, who's off, and where the variance is right now.",
-        icon: MapPin,
-    },
-    {
-        title: "Audit-ready records",
-        description: "GPS coordinates, device ID, edits, and approvals stored on every record.",
+        title: "Pre-flight validation",
+        description: "Unmapped employees, missing jobs, or stale pay items get caught before anything is written.",
         icon: ShieldCheck,
     },
-];
-
-const workflowSteps = [
     {
-        step: "01",
-        title: "Draw the geofence",
-        description: "Drop the boundary around each site. Save it as a template for repeat jobs.",
-        icon: MapPin,
+        title: "Job-costed labor",
+        description: "Every entry posts with its customer, job, and service item attached so job-cost reports match the field.",
+        icon: Briefcase,
     },
     {
-        step: "02",
-        title: "Crew clocks in",
-        description: "Worker taps clock in from the jobsite. GPS verifies they're inside the boundary.",
-        icon: Smartphone,
+        title: "Overtime calculated upstream",
+        description: "Crewtrace applies your overtime rules and posts each portion to the matching QuickBooks pay item.",
+        icon: Clock,
     },
     {
-        step: "03",
-        title: "Supervisors watch live",
-        description: "Live attendance map flags off-site or late clock-ins while the day is still fixable.",
-        icon: Eye,
-    },
-    {
-        step: "04",
-        title: "Payroll closes clean",
-        description: "Verified hours flow into approvals and exports with the full location trail attached.",
-        icon: ShieldCheck,
+        title: "Batch audit & rollback",
+        description: "Every sync is a single batch with a complete log and a one-click rollback for the whole pay period.",
+        icon: History,
     },
 ];
 
 const useCases = [
     {
-        industry: "Roofing",
-        slug: "roofing",
-        scenario: "Early-morning starts across rotating residential sites",
-        outcome: "Prove arrival times at each address without calling supervisors to confirm.",
-        icon: Hammer,
-    },
-    {
-        industry: "Plumbing",
-        slug: "plumbing",
-        scenario: "Service techs hitting 6–10 stops a day",
-        outcome: "Tie every clock event to an address so billing and payroll agree.",
-        icon: Wrench,
-    },
-    {
-        industry: "Landscaping",
-        slug: "landscaping",
-        scenario: "Multi-stop crew routes with seasonal workers",
-        outcome: "Verify time per property without training crews on new software.",
-        icon: TreePine,
-    },
-    {
-        industry: "HVAC",
-        slug: "hvac",
-        scenario: "Dispatchers pushing calls mid-day",
-        outcome: "See when techs actually arrive vs. when dispatch assumed they did.",
-        icon: Zap,
-    },
-    {
         industry: "Construction",
         slug: "construction",
-        scenario: "Multi-site weeks with shifting crews and subs",
-        outcome: "Keep a per-site labor record even when crews move between jobs.",
-        icon: Building2,
+        scenario: "Multi-site weeks with crews split across customers and jobs",
+        outcome: "Labor lands on the correct customer and sub-job in QuickBooks every pay period.",
+        icon: HardHat,
     },
     {
         industry: "General Contractors",
         slug: "general-contractors",
-        scenario: "Employees and subs working the same project",
-        outcome: "One verified time record per worker, per site, per day.",
-        icon: Users,
+        scenario: "Mix of W-2 employees and subs across active projects",
+        outcome: "Sync employee hours to QuickBooks and keep sub records cleanly separated.",
+        icon: Building2,
+    },
+    {
+        industry: "HVAC",
+        slug: "hvac",
+        scenario: "Service techs hitting six to ten calls a day",
+        outcome: "Each call ties to the right customer and pay item with no manual entry.",
+        icon: Zap,
+    },
+    {
+        industry: "Plumbing",
+        slug: "plumbing",
+        scenario: "Service plus new construction running side by side",
+        outcome: "Two job streams, one QuickBooks file, one click to sync the week.",
+        icon: Wrench,
+    },
+    {
+        industry: "Electrical",
+        slug: "electrical",
+        scenario: "Phased rollouts with overtime that creeps late in the week",
+        outcome: "Overtime calculates in Crewtrace and posts to the right QuickBooks pay item.",
+        icon: Sparkles,
+    },
+    {
+        industry: "Roofing",
+        slug: "roofing",
+        scenario: "Crews rotating across residential addresses each day",
+        outcome: "Every address ties to a QuickBooks customer for clean job-cost reporting.",
+        icon: Hammer,
     },
 ];
 
 const compareRows = [
     {
-        capability: "Where the clock-in happened",
-        icon: MapPin,
-        left: "Whatever the worker wrote down",
-        right: "GPS coordinate + confidence score",
+        capability: "How hours get into QuickBooks",
+        icon: RefreshCcw,
+        left: "Type each entry by hand",
+        right: "One-click sync of approved hours",
     },
     {
-        capability: "Off-site clock-ins",
-        icon: AlertTriangle,
-        left: "Invisible until someone complains",
-        right: "Flagged automatically for review",
-    },
-    {
-        capability: "Disputes over arrival time",
+        capability: "Pay-period close time",
         icon: Clock,
-        left: "Your word vs. theirs",
-        right: "Full event record with location",
+        left: "Hours of retyping every week",
+        right: "Minutes — most of it is review",
     },
     {
-        capability: "Audit or DOL request",
-        icon: FileCheck2,
-        left: "Hunt through binders",
-        right: "One-click export with full trail",
+        capability: "Mismatched names or jobs",
+        icon: AlertTriangle,
+        left: "Silent miscoding and broken reports",
+        right: "Pre-flight blocks the sync until clean",
     },
     {
-        capability: "Battery / privacy impact",
-        icon: Battery,
-        left: "N/A",
-        right: "Location only at clock-in / out",
+        capability: "Job costing accuracy",
+        icon: Briefcase,
+        left: "Field record vs. QuickBooks rarely tie",
+        right: "Same record drives both",
+    },
+    {
+        capability: "Undo a bad pay period",
+        icon: History,
+        left: "Hunt and delete entries one by one",
+        right: "Roll back the whole batch in one click",
     },
 ];
 
 const stats = [
-    { value: "10–30 ft", label: "Typical geofence accuracy on active sites" },
-    { value: "0", label: "Continuous background tracking events" },
-    { value: "100%", label: "Clock events stamped with location metadata" },
-    { value: "1", label: "Record chain from clock-in to payroll" },
+    { value: "1 click", label: "From approved hours to QuickBooks" },
+    { value: "0", label: "CSV files in the new payroll workflow" },
+    { value: "~3 hrs", label: "Saved per pay period on a 25-person crew" },
+    { value: "100%", label: "Of synced entries job-costed automatically" },
 ];
 
-export default function GpsTimeTrackingFeaturePage() {
+const integrationBadges = [
+    { label: "QuickBooks Online" },
+    { label: "QuickBooks Desktop Pro" },
+    { label: "QuickBooks Desktop Premier" },
+    { label: "QuickBooks Enterprise" },
+    { label: "QuickBooks Contractor" },
+];
+
+export default function PayrollSyncQuickbooksFeaturePage() {
     const articleJsonLd = articleSchema({
         headline: solution.metaTitle,
         description: solution.metaDescription,
@@ -431,18 +316,18 @@ export default function GpsTimeTrackingFeaturePage() {
                     <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
                         <div className="mb-4 sm:mb-6 inline-flex max-w-[calc(100vw-2rem)] items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">
                             <span className="inline-flex shrink-0 items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary sm:px-2 sm:text-[10px]">
-                                Feature
+                                New
                             </span>
                             <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
-                            <span className="whitespace-nowrap">GPS Time Tracking for Contractors</span>
+                            <span className="whitespace-nowrap">Payroll sync to QuickBooks</span>
                         </div>
                         <h1 className="mt-7 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                            A GPS time clock
+                            One click. Approved hours
                             <br />
-                            <span className="text-primary italic">crews can&apos;t fake.</span>
+                            <span className="text-primary italic">straight into QuickBooks.</span>
                         </h1>
                         <p className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            Tie every clock in and out to the real job site. Stop paying for parking-lot hours, windshield time, and &quot;I&apos;m pretty sure I was there.&quot;
+                            Approve crew hours in Crewtrace, hit sync, and watch them land in QuickBooks Online or Desktop with the right employee, job, and pay item already mapped. No CSVs. No copy-paste. No more Thursday timesheet grind.
                         </p>
 
                         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -450,7 +335,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                 href="/contact"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                             >
-                                See GPS tracking in action
+                                See the sync in action
                                 <ArrowRight size={18} />
                             </Link>
                             <BookedCallLink
@@ -463,12 +348,29 @@ export default function GpsTimeTrackingFeaturePage() {
                                 <ArrowUpRight size={16} />
                             </BookedCallLink>
                         </div>
+
+                        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs font-bold uppercase tracking-[0.16em] text-foreground/45">
+                            <span className="inline-flex items-center gap-2">
+                                <Plug size={14} className="text-primary/70" />
+                                QuickBooks Online
+                            </span>
+                            <span className="hidden h-1 w-1 rounded-full bg-foreground/20 sm:inline-block" />
+                            <span className="inline-flex items-center gap-2">
+                                <Plug size={14} className="text-primary/70" />
+                                QuickBooks Desktop
+                            </span>
+                            <span className="hidden h-1 w-1 rounded-full bg-foreground/20 sm:inline-block" />
+                            <span className="inline-flex items-center gap-2">
+                                <ShieldCheck size={14} className="text-emerald-500/80" />
+                                OAuth-secured
+                            </span>
+                        </div>
                     </div>
 
                     <div className="relative mx-auto mt-16 w-full max-w-7xl md:mt-20">
                         <Image
-                            src="/images/gps/gps-hero.png"
-                            alt="Crewtrace GPS time tracking hero showing job-site map with active geofences, live crew pins, and a clock-in event highlighted"
+                            src={`${PLACEHOLDER_BASE}/quickbooks-hero.png`}
+                            alt="Crewtrace sync console pushing a pay period of approved hours into QuickBooks with mapped employees, jobs, and pay items"
                             width={1920}
                             height={1080}
                             className="h-auto w-full rounded-[1.5rem] md:rounded-[2.5rem] shadow-xl"
@@ -483,13 +385,13 @@ export default function GpsTimeTrackingFeaturePage() {
                         <div className="flex flex-col items-center text-center mb-16">
                             <p className="inline-flex items-center gap-2 rounded-full border border-rose-500/15 bg-rose-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600 backdrop-blur-sm">
                                 <AlertTriangle size={14} />
-                                The hours you&apos;re actually paying for
+                                The Thursday timesheet ritual
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                Where time leaks out of a field crew.
+                                Why payroll day still takes a whole afternoon.
                             </h2>
                             <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                Most contractor payroll problems aren&apos;t fraud — they&apos;re a missing record. Without location context, every timesheet is a story you can&apos;t check.
+                                Most contractors don&apos;t have a payroll problem. They have a <span className="font-bold text-foreground/80">data-handoff</span> problem — and QuickBooks is where it shows up.
                             </p>
                         </div>
 
@@ -524,16 +426,65 @@ export default function GpsTimeTrackingFeaturePage() {
                     </div>
                 </section>
 
+                {/* BEFORE / AFTER VISUAL */}
+                <section className="relative overflow-hidden px-6 pb-24 md:pb-32">
+                    <div className="mx-auto max-w-7xl">
+                        <div className="relative grid gap-6 rounded-[2.5rem] border border-foreground/5 bg-gradient-to-br from-white to-slate-50/80 p-6 shadow-lg md:grid-cols-2 md:p-10">
+                            <div className="relative overflow-hidden rounded-[1.75rem] border border-rose-200/40 bg-rose-50/40 p-6">
+                                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600">
+                                    <XCircle size={14} />
+                                    Before — CSV chaos
+                                </div>
+                                <Image
+                                    src={`${PLACEHOLDER_BASE}/before-csv.png`}
+                                    alt="A messy spreadsheet of approved hours being copy-pasted into QuickBooks"
+                                    width={1200}
+                                    height={800}
+                                    className="mt-5 h-auto w-full rounded-[1.25rem] border border-rose-200/40 shadow-md"
+                                />
+                                <ul className="mt-5 space-y-2 text-sm font-semibold text-foreground/70">
+                                    <li className="flex gap-2"><XCircle size={16} className="mt-0.5 flex-shrink-0 text-rose-500" /> Hours retyped from approvals into QB</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="mt-0.5 flex-shrink-0 text-rose-500" /> Names mismatch — silent miscoding</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="mt-0.5 flex-shrink-0 text-rose-500" /> Job costs that never tie out</li>
+                                </ul>
+                            </div>
+
+                            <div className="relative overflow-hidden rounded-[1.75rem] border border-emerald-200/40 bg-emerald-50/40 p-6">
+                                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
+                                    <Sparkles size={14} />
+                                    After — One-click sync
+                                </div>
+                                <Image
+                                    src={`${PLACEHOLDER_BASE}/after-sync.png`}
+                                    alt="Crewtrace sync console showing approved hours being pushed to QuickBooks in a single click"
+                                    width={1200}
+                                    height={800}
+                                    className="mt-5 h-auto w-full rounded-[1.25rem] border border-emerald-200/40 shadow-md"
+                                />
+                                <ul className="mt-5 space-y-2 text-sm font-semibold text-foreground/80">
+                                    <li className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" /> Approved hours sync straight to QuickBooks</li>
+                                    <li className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" /> Pre-flight catches issues before posting</li>
+                                    <li className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" /> Job-cost reports match the field record</li>
+                                </ul>
+                            </div>
+
+                            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-foreground/5 md:flex">
+                                <ArrowRight size={22} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* FEATURE SPOTLIGHTS */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/60 px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-7xl">
                         <div className="flex flex-col items-center text-center mb-20">
                             <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
                                 <Sparkles size={14} />
-                                Inside Crewtrace GPS Time Tracking
+                                Inside the QuickBooks sync
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                Location proof, built into every clock event.
+                                Built so payroll day stops costing you a day.
                             </h2>
                         </div>
 
@@ -576,7 +527,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                             src={s.image.src}
                                             alt={s.image.alt}
                                             width={1600}
-                                            height={1200}
+                                            height={1100}
                                             className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
                                         />
                                     </div>
@@ -586,17 +537,73 @@ export default function GpsTimeTrackingFeaturePage() {
                     </div>
                 </section>
 
-                {/* CAPABILITIES GRID */}
+                {/* MAPPING TILES */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
                     <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_30%,rgba(47,39,206,0.06)_0%,transparent_60%)]" />
                     <div className="mx-auto max-w-7xl">
                         <div className="flex flex-col items-center text-center mb-16">
                             <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
-                                <Satellite size={14} />
+                                <ArrowLeftRight size={14} />
+                                Mapping that holds up
+                            </p>
+                            <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
+                                Two mappings. Set them once.
+                            </h2>
+                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
+                                Crewtrace keeps the two records payroll depends on aligned: employees and jobs. New hires and new jobs surface as a quick review — never as a silent miscode.
+                            </p>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-2">
+                            {mappingTiles.map((tile) => {
+                                const Icon = tile.icon;
+                                const accentClasses: Record<typeof tile.accent, string> = {
+                                    primary: "bg-primary/10 text-primary ring-primary/15",
+                                    emerald: "bg-emerald-50 text-emerald-600 ring-emerald-200/60",
+                                };
+                                return (
+                                    <div
+                                        key={tile.title}
+                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                    >
+                                        <div
+                                            className={`flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${accentClasses[tile.accent]}`}
+                                        >
+                                            <Icon size={22} />
+                                        </div>
+                                        <h3 className="mt-6 text-xl font-bold tracking-tight text-foreground">
+                                            {tile.title}
+                                        </h3>
+                                        <p className="mt-3 text-base font-medium leading-relaxed text-foreground/65">
+                                            {tile.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        <div className="mt-14 mx-auto w-full max-w-6xl">
+                            <Image
+                                src={`${PLACEHOLDER_BASE}/mapping-diagram.png`}
+                                alt="Diagram mapping Crewtrace employees to QuickBooks employees and Crewtrace jobs to QuickBooks customers"
+                                width={2400}
+                                height={1100}
+                                className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                {/* CAPABILITIES GRID */}
+                <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/60 px-6 py-24 md:py-32">
+                    <div className="mx-auto max-w-7xl">
+                        <div className="flex flex-col items-center text-center mb-16">
+                            <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
+                                <Receipt size={14} />
                                 What&apos;s in the box
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                Six GPS capabilities contractors actually use.
+                                Six things the QuickBooks sync does for you.
                             </h2>
                         </div>
 
@@ -625,139 +632,97 @@ export default function GpsTimeTrackingFeaturePage() {
                 </section>
 
                 {/* CONNECTED WORKFLOW */}
-                <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/60 px-6 py-24 md:py-32">
+                <section className="relative overflow-hidden px-6 py-24 md:py-32">
+                    <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_30%,rgba(47,39,206,0.06)_0%,transparent_60%)]" />
                     <div className="mx-auto max-w-7xl">
                         <div className="flex flex-col items-center text-center mb-16">
                             <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
-                                <Radar size={14} />
-                                From boundary to payroll
+                                <Layers size={14} />
+                                From approval to QuickBooks
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                Four steps from geofence to clean payroll.
+                                Four steps from field hours to a clean payroll run.
                             </h2>
-                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                GPS isn&apos;t a gimmick in Crewtrace. It&apos;s the first link in the record chain that ends with a payroll export you can defend.
-                            </p>
                         </div>
 
-                        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                            {workflowSteps.map((step, i) => {
-                                const Icon = step.icon;
-                                return (
-                                    <div
-                                        key={step.step}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
-                                                <Icon size={22} />
-                                            </span>
-                                            <span className="text-xs font-extrabold tracking-widest text-foreground/30">
-                                                {step.step}
-                                            </span>
-                                        </div>
-                                        <h3 className="mt-6 text-lg font-bold tracking-tight text-foreground">
-                                            {step.title}
-                                        </h3>
-                                        <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/60">
-                                            {step.description}
-                                        </p>
-                                        {i < workflowSteps.length - 1 && (
-                                            <div className="pointer-events-none absolute right-[-10px] top-1/2 hidden -translate-y-1/2 text-primary/30 lg:block">
-                                                <ArrowRight size={20} />
-                                            </div>
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-
-                        <div className="mt-16 mx-auto w-full max-w-7xl">
+                        <div className="mx-auto w-full max-w-7xl">
                             <Image
-                                src="/images/gps/four-steps.png"
-                                alt="End-to-end diagram: geofence to mobile clock-in to live attendance to payroll export"
+                                src={`${PLACEHOLDER_BASE}/workflow-diagram.png`}
+                                alt="End-to-end flow: Crewtrace approvals to pre-flight to QuickBooks sync to job-cost reports"
                                 width={2400}
-                                height={900}
+                                height={1350}
                                 className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
                             />
                         </div>
                     </div>
                 </section>
 
-                {/* PRIVACY / ACCURACY CALLOUT */}
+                {/* SUPPORTED EDITIONS */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
                             <div>
                                 <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-600 backdrop-blur-sm">
-                                    <ShieldCheck size={14} />
-                                    Built for the field, not surveillance
+                                    <Plug size={14} />
+                                    Works with the QuickBooks you already run
                                 </p>
                                 <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-                                    GPS that your crew will actually agree to use.
+                                    Online or Desktop. Same one-click sync.
                                 </h2>
                                 <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/65">
-                                    Crewtrace only captures location at the moment of a clock event — not all day, not in the background. Crews keep their privacy. Supervisors get the proof they need. Everybody wins the argument before it starts.
+                                    QuickBooks Online connects with a one-time OAuth handshake. QuickBooks Desktop installs a lightweight Web Connector that pushes approved hours on demand or on a schedule. Either way, the Crewtrace experience is identical.
                                 </p>
-                                <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                                    {[
-                                        { label: "Event-only location", icon: MapPin },
-                                        { label: "No always-on tracking", icon: XCircle },
-                                        { label: "No measurable battery drain", icon: Battery },
-                                        { label: "Clear worker-facing policy", icon: ShieldCheck },
-                                    ].map((item) => {
-                                        const Icon = item.icon;
-                                        return (
-                                            <li
-                                                key={item.label}
-                                                className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 shadow-sm"
-                                            >
-                                                <Icon size={16} className="text-primary" />
-                                                {item.label}
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
+                                <div className="mt-7 flex flex-wrap gap-2.5">
+                                    {integrationBadges.map((badge) => (
+                                        <span
+                                            key={badge.label}
+                                            className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground/70 shadow-sm"
+                                        >
+                                            <BadgeCheck size={14} className="text-emerald-500" />
+                                            {badge.label}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
 
                             <Image
-                                src="/images/gps/privacy.png"
-                                alt="Crewtrace worker-facing privacy and GPS policy screen on the mobile app"
-                                width={1200}
-                                height={1500}
-                                className="mx-auto h-auto w-full max-w-md rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                src={`${PLACEHOLDER_BASE}/quickbooks-editions.png`}
+                                alt="Supported QuickBooks editions: Online, Desktop Pro, Premier, Enterprise, and Contractor"
+                                width={1400}
+                                height={1100}
+                                className="mx-auto h-auto w-full max-w-xl rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
                             />
                         </div>
                     </div>
                 </section>
 
                 <FeatureComparison
-                    eyebrow="Paper time sheets vs. Crewtrace"
-                    eyebrowIcon={FileCheck2}
+                    eyebrow="CSV imports vs. Crewtrace sync"
+                    eyebrowIcon={FileSpreadsheet}
                     title="Same hours."
-                    subtitle="Very different record."
+                    subtitle="Two very different payroll days."
                     leftColumn={{
-                        label: "Week one",
-                        sublabel: "Paper time sheets",
+                        label: "Today",
+                        sublabel: "CSV exports & retyping",
                         icon: XCircle,
                     }}
                     rightColumn={{
-                        label: "Week two",
-                        sublabel: "Running on Crewtrace",
+                        label: "After rollout",
+                        sublabel: "One-click QuickBooks sync",
                         icon: Sparkles,
-                        badge: "Verified",
+                        badge: "Synced",
                     }}
                     rows={compareRows}
-                    firstRowAnnotation="verified"
+                    firstRowAnnotation="one click"
                     leftSummary={{
                         icon: Clock,
-                        highlight: "~4 hrs/week",
-                        text: "reconciling disputes and hunting records",
+                        highlight: "~3 hrs/period",
+                        text: "retyping, fixing imports, reconciling",
                     }}
                     rightSummary={{
-                        icon: ShieldCheck,
+                        icon: RefreshCcw,
                         text: "One record. ",
-                        highlight: "GPS proof from clock-in to payroll.",
+                        highlight: "Approved hours straight into QuickBooks.",
                     }}
                 />
 
@@ -770,7 +735,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                 Built for the trades
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                GPS time tracking that fits how your trade actually runs.
+                                Payroll sync that fits how your trade actually bills.
                             </h2>
                         </div>
 
@@ -815,10 +780,10 @@ export default function GpsTimeTrackingFeaturePage() {
                         <div className="flex flex-col items-center text-center mb-14">
                             <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
                                 <Sparkles size={14} />
-                                What changes on day one
+                                What changes on payroll day
                             </p>
                             <h2 className="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl max-w-3xl">
-                                Location proof where there used to be none.
+                                Less retyping. Cleaner job costs. Same QuickBooks file.
                             </h2>
                         </div>
                         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -839,9 +804,9 @@ export default function GpsTimeTrackingFeaturePage() {
 
                 {/* FAQ */}
                 <FAQSection
-                    eyebrow="GPS Time Tracking FAQ"
-                    title="GPS time clock questions, answered"
-                    description={`Answers to common questions about ${solution.primaryKeyword}, accuracy, privacy, and how GPS time tracking connects to payroll.`}
+                    eyebrow="QuickBooks Payroll Sync FAQ"
+                    title="QuickBooks sync questions, answered"
+                    description={`Answers to common questions about ${solution.primaryKeyword}, supported editions, mapping, and how the sync fits into payroll day.`}
                     items={solution.faqItems}
                 />
 

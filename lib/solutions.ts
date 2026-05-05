@@ -132,6 +132,66 @@ export const featureRecords: FeatureRecord[] = [
         ],
     },
     {
+        slug: "payroll-sync-quickbooks",
+        name: "One-Click Payroll Sync to QuickBooks",
+        tagline: "Push approved hours into QuickBooks in a single click — no CSVs, no re-keying.",
+        description:
+            "Send approved Crewtrace timesheets straight into QuickBooks Online or Desktop with mapped employees, jobs, and pay items so payroll runs in minutes.",
+        primaryKeyword: "quickbooks payroll sync",
+        primaryIntent: "one-click-quickbooks-payroll-export",
+        metaTitle: "One-Click Payroll Sync to QuickBooks | Crewtrace",
+        metaDescription:
+            "Push approved hours from Crewtrace into QuickBooks Online or Desktop in one click. Mapped employees, jobs, and pay items — no CSVs, no re-keying.",
+        heroTitle: "One-click payroll sync to QuickBooks",
+        heroSubtitle:
+            "Approve hours in Crewtrace, hit sync, and watch them land in QuickBooks with the right employee, job, and pay item already mapped. No CSV exports. No copy-paste.",
+        relatedIndustries: [
+            "construction",
+            "general-contractors",
+            "hvac",
+            "plumbing",
+            "electrical",
+            "roofing",
+        ],
+        challenges: [
+            "Re-keying timesheets into QuickBooks every Thursday",
+            "CSV imports that break on a single mismatched name",
+            "Job costing that never matches the field record",
+        ],
+        capabilities: [
+            "One-click push of approved hours to QuickBooks",
+            "Employee, job, and pay item mapping kept in sync",
+            "Per-pay-period sync history with rollback",
+        ],
+        outcomes: [
+            "Payroll closed in minutes instead of hours",
+            "Job-costed labor that matches the field record",
+            "Zero re-keyed timesheets after rollout",
+        ],
+        faqItems: [
+            {
+                question: "Does Crewtrace work with QuickBooks Online and QuickBooks Desktop?",
+                answer: "Yes. Crewtrace syncs with QuickBooks Online via the official API and supports QuickBooks Desktop (Pro, Premier, Enterprise, and Contractor editions) through a lightweight connector. Both paths push approved hours with the same employee, job, and pay item mapping.",
+            },
+            {
+                question: "How does the employee and job mapping stay in sync?",
+                answer: "When you connect QuickBooks, Crewtrace pulls in your employee list, customers, jobs, service items, and payroll items. You map each Crewtrace worker and job once, and after that new hires and new jobs surface as a quick review step before sync — so the mapping never drifts silently.",
+            },
+            {
+                question: "What happens if a name or pay item does not match?",
+                answer: "The sync runs a pre-flight check before anything is written to QuickBooks. Any unmapped employee, job, or pay item is surfaced in a single review screen with a recommended match. Nothing posts to QuickBooks until the issues are resolved, which prevents the partial imports that CSV uploads usually create.",
+            },
+            {
+                question: "Can I undo a sync if something goes wrong?",
+                answer: "Yes. Every sync is recorded as a single batch with a full log of which time entries were sent, what they mapped to, and which QuickBooks records were created or updated. You can roll a batch back from Crewtrace and re-run it after corrections.",
+            },
+            {
+                question: "Does the sync include job costing and overtime?",
+                answer: "Yes. Approved hours are sent with the job, service item, and pay item attached, so QuickBooks job-cost reports reflect the same labor your supervisors approved in the field. Overtime is calculated on the Crewtrace side using your overtime rules and posted to QuickBooks with the correct pay items.",
+            },
+        ],
+    },
+    {
         slug: "scheduling",
         name: "Crew Scheduling",
         tagline: "Plan crews, jobs, and shifts without juggling spreadsheets.",

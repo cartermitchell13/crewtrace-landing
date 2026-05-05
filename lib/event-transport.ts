@@ -8,9 +8,39 @@ export type SeoEventSendResult = {
     status?: number;
 };
 
+type GtagEventParams = Record<string, string | number | boolean>;
+
+type Gtag = {
+    (command: "event", eventName: string, params?: GtagEventParams): void;
+};
+
+type WindowWithGtag = Window & {
+    gtag?: Gtag;
+};
+
+function sendGoogleAnalyticsEvent(event: SeoEventPayload) {
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const gtag = (window as WindowWithGtag).gtag;
+    if (typeof gtag !== "function") {
+        return;
+    }
+
+    const { event: eventName, ...payload } = event;
+    const eventParams = Object.fromEntries(
+        Object.entries(payload).filter(([, value]) => value !== undefined),
+    ) as GtagEventParams;
+
+    gtag("event", eventName, eventParams);
+}
+
 export async function sendSeoEvent(
     event: SeoEventPayload,
 ): Promise<SeoEventSendResult> {
+    sendGoogleAnalyticsEvent(event);
+
     const payload = JSON.stringify({ event });
 
     if (

@@ -44,6 +44,7 @@ export default function Footer() {
                                 <li><Link href="/features/gps-time-tracking" className={footerLinkClass}>GPS Time Tracking</Link></li>
                                 <li><Link href="/features/geofencing-time-clock" className={footerLinkClass}>Geofencing Time Clock</Link></li>
                                 <li><Link href="/features/scheduling" className={footerLinkClass}>Crew Scheduling</Link></li>
+                                <li><Link href="/features/payroll-sync-quickbooks" className={footerLinkClass}>QuickBooks Payroll Sync</Link></li>
                             </ul>
                         </div>
 

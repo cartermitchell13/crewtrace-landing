@@ -43,7 +43,7 @@ import {
 } from "@/lib/industries";
 import { getIndustryDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { getFeaturesBySlugs } from "@/lib/solutions";
 
 const iconByKey: Record<IndustryIconKey, LucideIcon> = {
@@ -176,6 +176,7 @@ export default async function IndustryPage({
         { name: "Industries", path: "/industries" },
         { name: industry.name, path: `/industries/${slug}` },
     ]);
+    const faqJsonLd = faqSchema(industry.faqItems);
 
     const IndustryIcon = iconByKey[industry.icon];
     const relatedSolutions = getFeaturesBySlugs(detailLinks.relatedFeatureSlugs);
@@ -202,6 +203,10 @@ export default async function IndustryPage({
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
                 />
                 <SeoLandingTracker
                     templateType="industry_detail"
