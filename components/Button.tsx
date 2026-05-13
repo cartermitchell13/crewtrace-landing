@@ -23,7 +23,7 @@ export default function Button({
     ...anchorProps
 }: ButtonProps) {
     const base =
-        "inline-flex items-center justify-center gap-2 font-bold rounded-xl shadow-button transition-all whitespace-nowrap hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px]";
+        "inline-flex items-center justify-center gap-2 font-bold rounded-md shadow-button transition-all whitespace-nowrap hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px]";
 
     const variants = {
         primary: "bg-primary text-white",

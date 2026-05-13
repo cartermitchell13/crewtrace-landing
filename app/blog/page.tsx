@@ -71,7 +71,7 @@ export default async function BlogPage() {
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
                             >
                                 Get a personalized demo
                                 <ArrowRight size={18} />
@@ -272,7 +272,7 @@ export default async function BlogPage() {
                             </p>
                             <Link
                                 href="/"
-                                className="inline-flex bg-primary text-white font-bold px-6 py-3 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all"
+                                className="inline-flex bg-primary text-white font-bold px-6 py-3 rounded-md shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all"
                             >
                                 Back to Home
                             </Link>

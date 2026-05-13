@@ -43,7 +43,7 @@ export default function LandingNavbar() {
                 <div className="hidden md:flex items-center gap-3">
                     <Link
                         href="/contact"
-                        className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] inline-flex items-center gap-2"
+                        className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-md shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] inline-flex items-center gap-2"
                     >
                         Get a Demo
                         <ArrowRight size={16} />
@@ -54,7 +54,7 @@ export default function LandingNavbar() {
                     type="button"
                     aria-label="Toggle navigation menu"
                     onClick={() => setMobileOpen((open) => !open)}
-                    className="md:hidden w-10 h-10 rounded-xl border border-foreground/10 bg-white text-foreground flex items-center justify-center"
+                    className="md:hidden w-10 h-10 rounded-md border border-foreground/10 bg-white text-foreground flex items-center justify-center"
                 >
                     {mobileOpen ? <X size={18} /> : <Menu size={18} />}
                 </button>
@@ -67,7 +67,7 @@ export default function LandingNavbar() {
                             key={link.href}
                             href={link.href}
                             onClick={() => setMobileOpen(false)}
-                            className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03] transition-colors"
+                            className="block px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03] transition-colors"
                         >
                             {link.label}
                         </Link>
@@ -75,7 +75,7 @@ export default function LandingNavbar() {
                     <Link
                         href="/contact"
                         onClick={() => setMobileOpen(false)}
-                        className="mt-2 w-full bg-primary text-white text-sm font-bold px-4 py-3 rounded-xl shadow-button inline-flex items-center justify-center gap-2"
+                        className="mt-2 w-full bg-primary text-white text-sm font-bold px-4 py-3 rounded-md shadow-button inline-flex items-center justify-center gap-2"
                     >
                         Get a Demo
                         <ArrowRight size={16} />

@@ -22,7 +22,7 @@ export default function CTASection({
     return (
         <section id="audit" className="relative overflow-hidden bg-background px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
             <div className="mx-auto max-w-7xl">
-                <div className="relative overflow-hidden rounded-2xl bg-primary p-8 md:p-12 lg:p-16">
+                <div className="relative overflow-hidden rounded-md bg-primary p-8 md:p-12 lg:p-16">
                     <div
                         aria-hidden
                         className="pointer-events-none absolute inset-0 bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat"
@@ -61,7 +61,7 @@ export default function CTASection({
                         </div>
 
                         {/* Right side card */}
-                        <div className="relative flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/15 p-8 backdrop-blur-xl">
+                        <div className="relative flex flex-col overflow-hidden rounded-md border border-white/20 bg-black/15 p-8 backdrop-blur-xl">
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/70 mb-4">
                                     <ShieldCheck size={16} />
@@ -75,7 +75,7 @@ export default function CTASection({
 
                                 <Link
                                     href="/contact"
-                                    className="flex w-full items-center justify-center gap-3 rounded-xl bg-white py-5 text-base font-bold text-primary transition-all hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:py-6 md:text-lg"
+                                    className="flex w-full items-center justify-center gap-3 rounded-md bg-white py-5 text-base font-bold text-primary transition-all hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:py-6 md:text-lg"
                                 >
                                     Request Your Custom Demo
                                     <ArrowRight size={20} />

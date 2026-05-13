@@ -352,13 +352,13 @@ export default function AboutPage() {
                                 <div className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6 space-y-3">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-6 py-4 text-sm font-bold text-white shadow-button transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
+                                        className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-4 text-sm font-bold text-white shadow-button transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                                     >
                                         Get a Personalized Demo
                                     </Link>
                                     <Link
                                         href="/calculator"
-                                        className="inline-flex w-full items-center justify-center rounded-xl border border-foreground/15 bg-white px-6 py-4 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/30 hover:text-primary"
+                                        className="inline-flex w-full items-center justify-center rounded-md border border-foreground/15 bg-white px-6 py-4 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/30 hover:text-primary"
                                     >
                                         Run the Payroll Leakage Calculator
                                     </Link>

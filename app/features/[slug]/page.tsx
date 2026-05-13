@@ -167,7 +167,7 @@ export default async function FeatureDetailPage({
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                                 <Link
                                     href="/contact"
-                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
                                 >
                                     {detailMessaging.primaryCta}
                                     <ArrowRight size={18} />

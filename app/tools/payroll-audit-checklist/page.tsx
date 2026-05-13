@@ -124,7 +124,7 @@ export default function PayrollAuditChecklistPage() {
 
                         <a
                             href="#checklist"
-                            className="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-lg group"
+                            className="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-md shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-lg group"
                         >
                             Start the Audit Risk Test
                             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -343,7 +343,7 @@ export default function PayrollAuditChecklistPage() {
                             </p>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-xl shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
+                                className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-md shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
                             >
                                 Get a Personalized Demo
                             </Link>

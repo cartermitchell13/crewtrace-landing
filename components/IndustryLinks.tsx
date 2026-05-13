@@ -55,9 +55,9 @@ export default function IndustryLinks() {
                             <Link
                                 key={trade.slug}
                                 href={`/industries/${trade.slug}`}
-                                className="group relative flex flex-col items-center gap-3 rounded-2xl border border-foreground/5 bg-white p-6 text-center transition-all hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
+                                className="group relative flex flex-col items-center gap-3 rounded-md border border-foreground/5 bg-white p-6 text-center transition-all hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
                             >
-                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
                                     <Icon size={24} />
                                 </div>
                                 <h3 className="text-base font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">

@@ -370,7 +370,7 @@ export default function DemoRequestForm({
             <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-white text-base font-bold px-8 py-4 rounded-xl shadow-button transition-all hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] disabled:opacity-70 disabled:pointer-events-none"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-white text-base font-bold px-8 py-4 rounded-md shadow-button transition-all hover:translate-y-[-2px] hover:translate-x-[-2px] active:translate-y-[0px] active:translate-x-[0px] disabled:opacity-70 disabled:pointer-events-none"
             >
                 {status === "submitting" ? (
                     <>

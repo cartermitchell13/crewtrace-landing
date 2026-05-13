@@ -181,7 +181,7 @@ export default function Navbar() {
 
     return (
         <nav ref={navRef} className="fixed top-6 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50">
-            <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-input rounded-2xl px-5 md:px-6 py-3 flex items-center justify-between">
+            <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-input rounded-md px-5 md:px-6 py-3 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
@@ -201,7 +201,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("features")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${activeMenu === "features" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "features" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Features
                         </button>
                     </div>
@@ -212,7 +212,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("industries")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${activeMenu === "industries" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "industries" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Industries
                         </button>
                     </div>
@@ -223,7 +223,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("resources")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${activeMenu === "resources" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "resources" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Resources
                         </button>
                     </div>
@@ -234,7 +234,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("company")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${activeMenu === "company" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "company" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Company
                         </button>
                     </div>
@@ -242,13 +242,13 @@ export default function Navbar() {
                     {/* Calculator Link */}
                     <Link
                         href="/calculator"
-                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-lg transition-all duration-200"
+                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
                     >
                         ROI Calculator
                     </Link>
                     <Link
                         href="/#pricing"
-                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-lg transition-all duration-200"
+                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
                     >
                         Pricing
                     </Link>
@@ -262,7 +262,7 @@ export default function Navbar() {
                     >
                         Contact Sales
                     </Link>
-                    <Link href="/contact" className="hidden md:inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                    <Link href="/contact" className="hidden md:inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                         Get a Demo
                         <ArrowRight size={16} className="hidden lg:block" />
                     </Link>
@@ -271,7 +271,7 @@ export default function Navbar() {
                         type="button"
                         aria-label="Toggle navigation menu"
                         onClick={() => setMobileOpen((open) => !open)}
-                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-foreground/10 bg-white/90 text-foreground shadow-sm transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
+                        className="flex h-11 w-11 items-center justify-center rounded-md border border-foreground/10 bg-white/90 text-foreground shadow-sm transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
                     >
                         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
@@ -284,7 +284,7 @@ export default function Navbar() {
                 onMouseEnter={handleDropdownMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-2xl overflow-hidden">
+                <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-md overflow-hidden">
                     {/* Features Mega Menu */}
                     {activeMenu === "features" && (
                         <div className="grid grid-cols-[1fr_320px]">
@@ -298,9 +298,9 @@ export default function Navbar() {
                                         <Link
                                             key={solution.slug}
                                             href={solution.slug}
-                                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-foreground/[0.03] transition-all duration-150"
+                                            className="group flex items-start gap-3 p-3 rounded-md hover:bg-foreground/[0.03] transition-all duration-150"
                                         >
-                                            <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                            <div className="w-10 h-10 rounded-md bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
                                                 <solution.Icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                                             </div>
                                             <div className="min-w-0">
@@ -335,7 +335,7 @@ export default function Navbar() {
                                     </Link>
                                     <Link
                                         href="/calculator"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                                        className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                                     >
                                         Estimate your savings
                                         <ArrowRight className="w-4 h-4" />
@@ -358,9 +358,9 @@ export default function Navbar() {
                                         <Link
                                             key={industry.slug}
                                             href={`/industries/${industry.slug}`}
-                                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-foreground/[0.03] transition-all duration-150"
+                                            className="group flex items-start gap-3 p-3 rounded-md hover:bg-foreground/[0.03] transition-all duration-150"
                                         >
-                                            <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                            <div className="w-10 h-10 rounded-md bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
                                                 <industry.Icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                                             </div>
                                             <div className="min-w-0">
@@ -395,7 +395,7 @@ export default function Navbar() {
                                     </p>
                                 </div>
                                 <div className="mt-4">
-                                    <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-foreground/5 mb-4">
+                                    <div className="relative aspect-[16/10] rounded-md overflow-hidden bg-foreground/5 mb-4">
                                         <Image
                                             src="/images/ct-hero-min (1).png"
                                             alt="Crewtrace App Preview"
@@ -405,7 +405,7 @@ export default function Navbar() {
                                     </div>
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                                        className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -428,9 +428,9 @@ export default function Navbar() {
                                         <Link
                                             key={resource.slug}
                                             href={resource.slug}
-                                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-foreground/[0.03] transition-all duration-150"
+                                            className="group flex items-start gap-3 p-3 rounded-md hover:bg-foreground/[0.03] transition-all duration-150"
                                         >
-                                            <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                            <div className="w-10 h-10 rounded-md bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
                                                 <resource.Icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                                             </div>
                                             <div className="min-w-0">
@@ -452,9 +452,9 @@ export default function Navbar() {
                                             <Link
                                                 key={tool.slug}
                                                 href={tool.slug}
-                                                className="group flex items-start gap-3 p-3 rounded-xl bg-primary/5 hover:bg-primary/10 transition-all duration-150"
+                                                className="group flex items-start gap-3 p-3 rounded-md bg-primary/5 hover:bg-primary/10 transition-all duration-150"
                                             >
-                                                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 transition-colors">
+                                                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center shrink-0 transition-colors">
                                                     <tool.Icon className="w-5 h-5 text-primary transition-colors" />
                                                 </div>
                                                 <div className="min-w-0">
@@ -504,9 +504,9 @@ export default function Navbar() {
                                         <Link
                                             key={item.slug}
                                             href={item.slug}
-                                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-foreground/[0.03] transition-all duration-150"
+                                            className="group flex items-start gap-3 p-3 rounded-md hover:bg-foreground/[0.03] transition-all duration-150"
                                         >
-                                            <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                            <div className="w-10 h-10 rounded-md bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
                                                 <item.Icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                                             </div>
                                             <div className="min-w-0">
@@ -531,7 +531,7 @@ export default function Navbar() {
                                 <div className="mt-4">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-primary transition-all hover:bg-white/90 motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                                        className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-bold text-primary transition-all hover:bg-white/90 motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                     >
                                         Get a Demo
                                         <ArrowRight className="w-4 h-4" />
@@ -545,12 +545,12 @@ export default function Navbar() {
 
             {/* Mobile Menu Dropdown Wrapper */}
             <div className={`md:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-300 origin-top ${mobileOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"}`}>
-                <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-2xl overflow-hidden max-h-[80vh] overflow-y-auto w-full p-2">
+                <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-md overflow-hidden max-h-[80vh] overflow-y-auto w-full p-2">
 
                     {/* Features Accordion */}
-                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-md bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "features" ? null : "features")}
                         >
                             <span className="text-sm font-semibold text-foreground">Features</span>
@@ -563,7 +563,7 @@ export default function Navbar() {
                                         key={solution.slug}
                                         href={solution.slug}
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-primary/5 transition-colors group"
                                     >
                                         <solution.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{solution.name}</span>
@@ -574,9 +574,9 @@ export default function Navbar() {
                     </div>
 
                     {/* Industries Accordion */}
-                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-md bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "industries" ? null : "industries")}
                         >
                             <span className="text-sm font-semibold text-foreground">Industries</span>
@@ -589,7 +589,7 @@ export default function Navbar() {
                                         key={industry.slug}
                                         href={`/industries/${industry.slug}`}
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-primary/5 transition-colors group"
                                     >
                                         <industry.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{industry.name}</span>
@@ -600,9 +600,9 @@ export default function Navbar() {
                     </div>
 
                     {/* Resources Accordion */}
-                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-md bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "resources" ? null : "resources")}
                         >
                             <span className="text-sm font-semibold text-foreground">Resources</span>
@@ -618,7 +618,7 @@ export default function Navbar() {
                                         key={resource.slug}
                                         href={resource.slug}
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-primary/5 transition-colors group"
                                     >
                                         <resource.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{resource.name}</span>
@@ -632,7 +632,7 @@ export default function Navbar() {
                                         key={tool.slug}
                                         href={tool.slug}
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-primary/5 transition-colors group"
                                     >
                                         <tool.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{tool.name}</span>
@@ -643,9 +643,9 @@ export default function Navbar() {
                     </div>
 
                     {/* Company Accordion */}
-                    <div className="border-b border-foreground/5 last:border-0 rounded-xl bg-white/50 mb-1">
+                    <div className="border-b border-foreground/5 last:border-0 rounded-md bg-white/50 mb-1">
                         <button
-                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors"
+                            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors"
                             onClick={() => setActiveAccordion(activeAccordion === "company" ? null : "company")}
                         >
                             <span className="text-sm font-semibold text-foreground">Company</span>
@@ -658,7 +658,7 @@ export default function Navbar() {
                                         key={item.slug}
                                         href={item.slug}
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors group"
+                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-primary/5 transition-colors group"
                                     >
                                         <item.Icon className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors" />
                                         <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">{item.name}</span>
@@ -672,14 +672,14 @@ export default function Navbar() {
                     <Link
                         href="/calculator"
                         onClick={() => setMobileOpen(false)}
-                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
+                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
                     >
                         ROI Calculator
                     </Link>
                     <Link
                         href="/#pricing"
                         onClick={() => setMobileOpen(false)}
-                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-xl transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
+                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
                     >
                         Pricing
                     </Link>
@@ -689,7 +689,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setMobileOpen(false)}
-                            className="mb-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            className="mb-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             Get a Personalized Demo
                             <ArrowRight size={16} />

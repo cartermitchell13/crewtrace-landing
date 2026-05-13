@@ -1,107 +1,230 @@
-import { Check, ArrowRight, Clock, Zap } from "lucide-react";
-import Link from "next/link";
+import { Check, X } from "lucide-react";
+import BookedCallLink from "@/components/BookedCallLink";
+import {
+    buildSelfServeSignupUrl,
+    selfServePlatformFeatures,
+    selfServePricingTiers,
+} from "@/lib/pricing-plans";
+
+const selfServeCtaClassName =
+    "inline-flex w-full items-center justify-center gap-2 rounded-md px-6 py-3.5 text-sm font-bold tracking-tight text-white shadow-[0_2px_8px_rgba(47,39,206,0.18)] transition-all duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_16px_rgba(47,39,206,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 sm:py-4 sm:text-base";
+
+const selfServeCtaPrimary = `${selfServeCtaClassName} bg-primary`;
+
+/** Padding/typography/shadow to match Start free trial while using BookedCallLink → Button (md arrow). */
+const bookedCallCtaMatchSelfServe =
+    "w-full justify-center !px-6 !py-3.5 !text-sm font-bold tracking-tight shadow-[0_2px_8px_rgba(47,39,206,0.18)] transition-all duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_16px_rgba(47,39,206,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:!py-4 sm:!text-base";
+
+const guidedBullets = [
+    "Collaborative onboarding for rollout, migrations, or a tailored workspace setup.",
+    "Training-focused support so field and office teams get comfortable quickly.",
+];
 
 export default function PricingSection() {
     return (
-        <section id="pricing" className="relative overflow-hidden bg-background px-6 py-28 scroll-mt-32 md:py-36">
-            {/* Subtle background pattern */}
-            <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]" />
+        <section
+            id="pricing"
+            className="relative overflow-hidden bg-background px-6 py-24 scroll-mt-32 md:py-32"
+            aria-labelledby="pricing-heading"
+        >
+            {/* Atmospheric depth */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(47,39,206,0.07),transparent)]"
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.022] bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:22px_22px]"
+            />
 
             <div className="relative z-10 mx-auto max-w-7xl">
-                <div className="mb-16 text-center">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6">
-                        Simple pricing.<br className="sm:hidden" /> <span className="text-primary">Massive ROI.</span>
-                    </h2>
-                    <p className="max-w-2xl mx-auto text-lg text-muted-foreground font-medium">
-                        Stop losing thousands to time theft and manual data entry. Get a fast return on investment with our founding client offer.
-                    </p>
-                </div>
+                {/* Single premium panel */}
+                <div className="relative overflow-hidden rounded-md border border-slate-200/90 bg-white shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_-12px_rgba(15,23,42,0.12),0_12px_32px_-8px_rgba(47,39,206,0.06)]">
+                    <div
+                        aria-hidden
+                        className="h-px w-full bg-gradient-to-r from-transparent via-primary/35 to-transparent"
+                    />
 
-                <div className="relative">
-                    {/* Clean White Card with internal blue gradient */}
-                    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)] lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
+                    <div className="grid grid-cols-1 xl:grid-cols-4">
+                        {/* Self-serve tiers row */}
+                        <div className="col-span-1 grid grid-cols-1 gap-5 p-5 sm:p-6 md:grid-cols-3 md:p-7 xl:col-span-3 xl:p-8">
+                            <header className="col-span-full max-w-4xl pb-2 text-left md:col-span-3 md:pb-4">
+                                <div className="mb-4 sm:mb-5 inline-flex max-w-full items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">
+                                    <span className="inline-flex shrink-0 items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary sm:px-2 sm:text-[10px]">
+                                        Flat rate
+                                    </span>
+                                    <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
+                                    <span className="min-w-0 whitespace-nowrap">
+                                        <span className="sm:hidden">No per-seat fees.</span>
+                                        <span className="hidden sm:inline">
+                                            No per-seat fees. Scales with your crew.
+                                        </span>
+                                    </span>
+                                </div>
 
-                        {/* Left Side: Info & Price */}
-                        <div className="flex-1 relative z-10 flex flex-col justify-center">
-                            <div className="mb-6">
-                                <h3 className="text-3xl font-bold text-slate-900 mb-2">
-                                    Founding Clients
+                                <h2
+                                    id="pricing-heading"
+                                    className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.08]"
+                                >
+                                    Transparent pricing, no surprises.
+                                </h2>
+                            </header>
+                            {selfServePricingTiers.map((tier) => {
+                                const signupHref = buildSelfServeSignupUrl(tier.id);
+                                return (
+                                    <article
+                                        key={tier.id}
+                                        className="relative flex h-full min-h-0 flex-col rounded-sm border border-slate-200/80 bg-white p-6 shadow-[0_1px_4px_rgba(15,23,42,0.04)] transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(15,23,42,0.08)] sm:p-7 lg:p-8"
+                                        aria-label={`${tier.name} plan`}
+                                    >
+                                        <div className="mb-7 border-b border-slate-100 pb-7">
+                                            <h3 className="text-[1.2rem] font-bold tracking-tight text-slate-900 sm:text-[1.35rem]">
+                                                {tier.name}
+                                            </h3>
+                                            <p className="mt-1.5 text-[13px] font-medium leading-relaxed text-slate-500">
+                                                {tier.employeeRangeLabel}
+                                            </p>
+                                            <div className="mt-6 flex items-baseline gap-1">
+                                                <span className="text-[2.1rem] font-bold tabular-nums tracking-tight text-slate-900 sm:text-[2.4rem]">
+                                                    ${tier.priceMonthlyUsd}
+                                                </span>
+                                                <span className="text-sm font-medium text-slate-400">
+                                                    /mo
+                                                </span>
+                                            </div>
+                                            <p className="mt-1.5 text-[11px] font-medium text-slate-400">
+                                                Billed monthly after your trial ends.
+                                            </p>
+                                        </div>
+
+                                        <div className="flex flex-1 flex-col">
+                                            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+                                                Included
+                                            </p>
+                                            <ul
+                                                className="mt-3.5 space-y-2 text-[12.5px] font-medium leading-snug text-slate-600 sm:text-[13px]"
+                                                aria-label={`Features included with ${tier.name}`}
+                                            >
+                                                {selfServePlatformFeatures.map((line) => (
+                                                    <li key={line} className="flex gap-2">
+                                                        <span className="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-primary/[0.08] text-primary">
+                                                            <Check className="h-2.5 w-2.5" strokeWidth={3} />
+                                                        </span>
+                                                        <span>{line}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+
+                                            <div className="mt-5 flex gap-2 border-t border-slate-100 pt-5 text-[12.5px] font-medium leading-snug sm:text-[13px]">
+                                                {tier.bracketCallout.variant === "included" ? (
+                                                    <span className="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-primary/[0.08] text-primary">
+                                                        <Check className="h-2.5 w-2.5" strokeWidth={3} aria-hidden />
+                                                    </span>
+                                                ) : (
+                                                    <span className="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+                                                        <X className="h-2.5 w-2.5" strokeWidth={3} aria-hidden />
+                                                    </span>
+                                                )}
+                                                <span
+                                                    className={
+                                                        tier.bracketCallout.variant === "included"
+                                                            ? "text-slate-600"
+                                                            : "text-slate-500"
+                                                    }
+                                                >
+                                                    {tier.bracketCallout.variant === "included" ? (
+                                                        <>
+                                                            <span className="sr-only">Included: </span>
+                                                            {tier.bracketCallout.label}
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <span className="sr-only">Not included: </span>
+                                                            {tier.bracketCallout.label}
+                                                        </>
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <a
+                                            href={signupHref}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${selfServeCtaPrimary} mt-8 shrink-0`}
+                                        >
+                                            Start free trial
+                                        </a>
+                                    </article>
+                                );
+                            })}
+                        </div>
+
+                        {/* Guided onboarding column */}
+                        <article
+                            className="relative flex h-full min-h-0 flex-col justify-center border-t border-slate-100 bg-gradient-to-b from-[#fafaff] via-white to-white p-7 sm:p-8 xl:border-l xl:border-t-0 xl:p-9"
+                            aria-label="Done-for-you onboarding tier, most popular"
+                        >
+                            <div
+                                aria-hidden
+                                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent xl:inset-x-auto xl:inset-y-0 xl:left-0 xl:h-auto xl:w-px xl:bg-gradient-to-b"
+                            />
+
+                            <p className="mb-4 inline-flex w-fit items-center rounded-full border border-primary/25 bg-white/90 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-primary shadow-[0_1px_3px_rgba(15,23,42,0.06)] backdrop-blur-sm">
+                                Most popular
+                            </p>
+
+                            <div className="mb-7 border-b border-primary/10 pb-7">
+                                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80">
+                                    Hands-on setup
+                                </p>
+                                <h3 className="mt-3.5 text-[1.2rem] font-bold tracking-tight text-slate-900 sm:text-[1.35rem]">
+                                    Done-for-you onboarding
                                 </h3>
-                                <div className="text-slate-500 font-medium flex items-center gap-2">
-                                    <Zap size={16} className="text-primary" /> Full platform access
-                                </div>
-                            </div>
-
-                            <div className="mb-8">
-                                <div className="text-slate-900 font-medium mb-1 flex items-baseline gap-2">
-                                    <span className="text-5xl lg:text-6xl font-bold tracking-tight text-slate-900">
-                                        $999
-                                    </span>
-                                    <span className="text-slate-500 text-lg">setup</span>
-                                </div>
-                                <div className="font-medium flex items-baseline gap-2">
-                                    <span className="text-3xl lg:text-4xl font-bold tracking-tight text-primary">
-                                        +$99
-                                    </span>
-                                    <span className="text-slate-500 text-lg">/ month</span>
-                                </div>
-                                <p className="text-sm font-medium text-slate-500 mt-3 max-w-md leading-relaxed">
-                                    Flat-rate pricing: one number every month, whether you&apos;re a tight crew or running multiple teams—no per-seat math, no surprise bumps as you grow.
+                                <p className="mt-2 text-[13px] font-medium leading-relaxed text-slate-500 sm:text-sm">
+                                    Hands-on rollout for teams that need migrations, structured
+                                    site and crew setup, and live training so adoption sticks and
+                                    payroll week one stays under control.
                                 </p>
                             </div>
 
-                            <Link
-                                href="/contact"
-                                className="relative w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                            >
-                                <span className="flex items-center gap-2">
-                                    Claim Founding Offer
-                                    <ArrowRight size={20} />
-                                </span>
-                            </Link>
-
-                            <div className="text-center text-slate-500 text-sm mt-4 font-medium">
-                                No credit card required. Get a personalized demo first.
-                            </div>
-                        </div>
-
-                        {/* Divider for desktop */}
-                        <div className="hidden lg:block w-px bg-slate-200" />
-                        {/* Divider for mobile */}
-                        <div className="block lg:hidden h-px w-full bg-slate-200" />
-
-                        {/* Right Side: Features & Scarcity */}
-                        <div className="flex-[1.2] relative z-10 flex flex-col justify-center">
-                            {/* Scarcity Banner */}
-                            <div className="flex items-start gap-4 bg-primary/5 border border-primary/20 rounded-xl p-5 mb-8">
-                                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                    <Clock size={16} />
-                                </div>
-                                <div>
-                                    <div className="text-slate-900 font-bold tracking-tight text-lg">Only for the next 5 companies</div>
-                                    <div className="text-slate-600 font-medium mt-0.5">After these 5 spots, pricing increases</div>
-                                </div>
-                            </div>
-
-                            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-5 text-slate-600">
-                                {[
-                                    "GPS-verified time tracking",
-                                    "Automated timesheets",
-                                    "White-glove onboarding",
-                                    "Unlimited projects",
-                                    "Dedicated support channel",
-                                    "Payroll report exports",
-                                ].map((feature, i) => (
-                                    <li key={i} className="flex items-center gap-3 font-medium">
-                                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/20">
-                                            <Check size={14} strokeWidth={3} />
+                            <ul className="space-y-2 text-[12.5px] font-medium leading-snug text-slate-600 sm:text-[13px]">
+                                {guidedBullets.map((line) => (
+                                    <li key={line} className="flex gap-2">
+                                        <span className="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-primary/[0.08] text-primary">
+                                            <Check className="h-2.5 w-2.5" strokeWidth={3} />
                                         </span>
-                                        {feature}
+                                        <span>{line}</span>
                                     </li>
                                 ))}
                             </ul>
-                        </div>
 
+                            <div className="mt-7 flex flex-col gap-5 border-t border-slate-200/60 pt-7">
+                                <div>
+                                    <p className="text-xl font-bold tabular-nums tracking-tight text-slate-900 sm:text-2xl">
+                                        Custom pricing
+                                    </p>
+                                    <p className="mt-1.5 text-[13px] font-medium text-slate-500 sm:text-sm">
+                                        Let&apos;s talk scope. We&apos;ll recommend the right mix of
+                                        services.
+                                    </p>
+                                </div>
+
+                                <BookedCallLink
+                                    asButton
+                                    buttonSize="md"
+                                    templateType="pricing"
+                                    cluster="guided_onboarding"
+                                    landingPath="/"
+                                    ctaLabel="Book a call"
+                                    ctaLocation="pricing_guided_card"
+                                    className={bookedCallCtaMatchSelfServe}
+                                    showArrow
+                                >
+                                    Book a call
+                                </BookedCallLink>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>

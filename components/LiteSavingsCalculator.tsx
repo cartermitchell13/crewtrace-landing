@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect, useRef, useId, type PointerEvent } from "react";
+import { useState, useMemo, useCallback, useId, type PointerEvent } from "react";
 import { Calculator, ArrowRight, TrendingDown } from "lucide-react";
 import Link from "next/link";
 
@@ -96,43 +96,17 @@ export default function LiteSavingsCalculator() {
     const [crewSize, setCrewSize] = useState(12);
     const [avgHourlyRate, setAvgHourlyRate] = useState(25);
     const [adminHours, setAdminHours] = useState(5);
-    const [showAuditCue, setShowAuditCue] = useState(false);
-    const cueTimeoutRef = useRef<number | null>(null);
-
-    const triggerAuditCue = useCallback(() => {
-        setShowAuditCue(true);
-
-        if (cueTimeoutRef.current !== null) {
-            window.clearTimeout(cueTimeoutRef.current);
-        }
-
-        cueTimeoutRef.current = window.setTimeout(() => {
-            setShowAuditCue(false);
-            cueTimeoutRef.current = null;
-        }, 2200);
-    }, []);
 
     const handleCrewSizeChange = useCallback((value: number) => {
         setCrewSize(value);
-        triggerAuditCue();
-    }, [triggerAuditCue]);
+    }, []);
 
     const handleAvgHourlyRateChange = useCallback((value: number) => {
         setAvgHourlyRate(value);
-        triggerAuditCue();
-    }, [triggerAuditCue]);
+    }, []);
 
     const handleAdminHoursChange = useCallback((value: number) => {
         setAdminHours(value);
-        triggerAuditCue();
-    }, [triggerAuditCue]);
-
-    useEffect(() => {
-        return () => {
-            if (cueTimeoutRef.current !== null) {
-                window.clearTimeout(cueTimeoutRef.current);
-            }
-        };
     }, []);
 
     const calculations = useMemo(() => {
@@ -176,8 +150,8 @@ export default function LiteSavingsCalculator() {
                 <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] gap-10 lg:gap-12 xl:gap-16 items-stretch">
                     {/* Left: diagonal split on lg — copy top, image slot bottom */}
                     <div className="flex flex-col min-h-0 w-full lg:h-full">
-                        <div className="flex flex-col gap-4 lg:gap-0 h-full overflow-hidden rounded-3xl lg:overflow-visible lg:rounded-none">
-                            <div className="rounded-3xl bg-[#0f0f12] px-8 py-10 sm:px-10 sm:py-12 text-white lg:flex-[1.65] lg:min-h-[400px] lg:rounded-none lg:rounded-t-3xl lg:pb-20 lg:pt-12 lg:[clip-path:polygon(0_0,100%_0,100%_calc(100%-5.5rem),0_100%)]">
+                        <div className="flex flex-col gap-4 lg:gap-0 h-full overflow-hidden rounded-md lg:overflow-visible lg:rounded-none">
+                            <div className="rounded-md bg-[#0f0f12] px-8 py-10 sm:px-10 sm:py-12 text-white lg:flex-[1.65] lg:min-h-[400px] lg:rounded-none lg:rounded-t-md lg:pb-20 lg:pt-12 lg:[clip-path:polygon(0_0,100%_0,100%_calc(100%-5.5rem),0_100%)]">
                                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/90 text-[10px] font-bold uppercase tracking-widest mb-8">
                                     <Calculator size={14} className="opacity-90" />
                                     <span>Savings Estimator</span>
@@ -191,15 +165,15 @@ export default function LiteSavingsCalculator() {
                             </div>
 
                             <div
-                                className="relative min-h-[220px] overflow-hidden rounded-3xl bg-[url('/images/ct-grid-bg.png')] bg-cover bg-center bg-no-repeat sm:min-h-[240px] lg:min-h-0 lg:flex-1 lg:rounded-none lg:rounded-b-3xl lg:-mt-[calc(5.5rem-0.875rem)] lg:[clip-path:polygon(0_5.5rem,100%_0,100%_100%,0_100%)]"
+                                className="relative min-h-[220px] overflow-hidden rounded-md bg-[url('/images/ct-grid-bg.png')] bg-cover bg-center bg-no-repeat sm:min-h-[240px] lg:min-h-0 lg:flex-1 lg:rounded-none lg:rounded-b-md lg:-mt-[calc(5.5rem-0.875rem)] lg:[clip-path:polygon(0_5.5rem,100%_0,100%_100%,0_100%)]"
                                 aria-hidden
                             />
                         </div>
                     </div>
 
                     {/* Right: Calculator Card */}
-                    <div className="relative w-full flex flex-col justify-center lg:min-h-full rounded-3xl bg-secondary/35 p-1 sm:p-2 lg:p-3">
-                        <div className="bg-white rounded-2xl border border-foreground/10 p-6 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)] relative z-10 flex flex-col gap-10">
+                    <div className="relative w-full flex flex-col justify-center lg:min-h-full rounded-md bg-secondary/35 p-1 sm:p-2 lg:p-3">
+                        <div className="bg-white rounded-md border border-foreground/10 p-6 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)] relative z-10 flex flex-col gap-10">
 
                             {/* Sliders Area */}
                             <div className="space-y-8">
@@ -248,19 +222,10 @@ export default function LiteSavingsCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="relative mt-10">
-                                    <p
-                                        className={`pointer-events-none absolute -top-4 right-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 z-20 ${showAuditCue ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
-                                            }`}
-                                    >
-                                        Next best step
-                                    </p>
+                                <div className="mt-10">
                                     <Link
                                         href="/calculator"
-                                        className={`w-full bg-primary text-white font-bold py-5 md:py-6 rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${showAuditCue
-                                            ? "border-primary/40 shadow-[0_0_0_6px_rgba(47,39,206,0.1)]"
-                                            : "border-transparent"
-                                            }`}
+                                        className="w-full bg-primary text-white font-bold py-5 md:py-6 rounded-md hover:bg-primary/90 transition-all flex items-center justify-center gap-3 text-base md:text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] border-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                     >
                                         See Your Full Savings Breakdown
                                         <ArrowRight size={20} />

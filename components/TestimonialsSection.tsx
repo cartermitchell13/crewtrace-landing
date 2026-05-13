@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 /** Shared texture + glow for the testimonial block; wrap ProcessSection here on the home page so one background spans both. */
 export function TestimonialTextureShell({ children }: { children: ReactNode }) {
     return (
-        <div className="relative overflow-hidden rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6 md:rounded-[3.5rem]">
+        <div className="relative overflow-hidden rounded-2xl bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6 md:rounded-3xl">
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
             {children}
         </div>
@@ -19,7 +19,7 @@ export default function TestimonialsSection() {
             className="relative z-10 py-16 sm:py-24 md:py-28"
         >
             <div className="relative z-10 mx-auto max-w-7xl">
-                <article className="surface-panel relative z-10 grid min-h-[580px] grid-cols-1 overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-xl md:min-h-[640px] md:rounded-[2.75rem] lg:min-h-[680px] lg:grid-cols-2">
+                <article className="surface-panel relative z-10 grid min-h-[580px] grid-cols-1 overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl md:min-h-[640px] lg:min-h-[680px] lg:grid-cols-2">
                     <div className="col-span-full border-b border-foreground/5 px-9 pb-10 pt-10 text-center sm:px-[3.25rem] sm:pb-12 sm:pt-12 md:px-[5.25rem] md:pb-16 md:pt-16">
                         <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
                             Customer proof
@@ -81,8 +81,8 @@ export default function TestimonialsSection() {
                         </h3>
                         <div className="flex flex-col gap-3 sm:gap-5">
                             {/* Metric Card 1 */}
-                            <div className="flex min-w-0 items-center gap-3 rounded-2xl border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                            <div className="flex min-w-0 items-center gap-3 rounded-sm border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
+                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-600">
                                     <TrendingUp size={24} strokeWidth={2.5} />
                                 </div>
                                 <div className="min-w-0">
@@ -94,8 +94,8 @@ export default function TestimonialsSection() {
                             </div>
 
                             {/* Metric Card 2 */}
-                            <div className="flex min-w-0 items-center gap-3 rounded-2xl border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                            <div className="flex min-w-0 items-center gap-3 rounded-sm border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
+                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600">
                                     <Clock size={24} strokeWidth={2.5} />
                                 </div>
                                 <div className="min-w-0">
@@ -107,8 +107,8 @@ export default function TestimonialsSection() {
                             </div>
 
                             {/* Metric Card 3 */}
-                            <div className="flex min-w-0 items-center gap-3 rounded-2xl border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary">
+                            <div className="flex min-w-0 items-center gap-3 rounded-sm border border-foreground/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5">
+                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary/5 text-primary">
                                     <CheckCircle2 size={24} strokeWidth={2.5} />
                                 </div>
                                 <div className="min-w-0">

@@ -10,7 +10,7 @@ const columnHeadingClass =
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="w-full bg-[#050315] rounded-t-2xl md:rounded-t-3xl relative overflow-hidden">
+            <div className="w-full bg-[#050315] rounded-t-2xl relative overflow-hidden md:rounded-t-3xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
@@ -96,7 +96,7 @@ export default function Footer() {
                                 href="https://www.linkedin.com/in/cartermitchell98"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all group hover:bg-primary motion-safe:group-hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
+                                className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-white/5 transition-all group hover:bg-primary motion-safe:group-hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
                                 aria-label="Carter Mitchell on LinkedIn"
                             >
                                 <span className="text-white/40 group-hover:text-white text-xs font-bold">In</span>

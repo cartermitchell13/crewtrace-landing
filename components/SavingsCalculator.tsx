@@ -675,7 +675,7 @@ export default function SavingsCalculator() {
 
                             <button
                                 onClick={handleGenerate}
-                                className="w-full bg-primary text-white font-bold py-5 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-lg group"
+                                className="w-full bg-primary text-white font-bold py-5 rounded-md shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-lg group"
                             >
                                 <BarChart3 size={20} />
                                 Generate My Profit Audit
@@ -734,7 +734,7 @@ export default function SavingsCalculator() {
                             <button
                                 type="submit"
                                 disabled={emailGateStatus === "submitting"}
-                                className="w-full bg-primary text-white font-bold py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-base group disabled:opacity-70 disabled:pointer-events-none"
+                                className="w-full bg-primary text-white font-bold py-4 rounded-md shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-base group disabled:opacity-70 disabled:pointer-events-none"
                             >
                                 {emailGateStatus === "submitting" ? (
                                     <>

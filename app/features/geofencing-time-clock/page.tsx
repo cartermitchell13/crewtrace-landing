@@ -431,7 +431,7 @@ export default function GeofencingTimeClockFeaturePage() {
                         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                             >
                                 See geofencing in action
                                 <ArrowRight size={18} />
@@ -440,7 +440,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                 templateType="feature_detail"
                                 cluster="features"
                                 landingPath={PATH}
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-4 rounded-xl border border-foreground/10 bg-white text-sm font-semibold text-foreground/80 hover:text-primary hover:border-primary/30 transition-colors"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-4 rounded-md border border-foreground/10 bg-white text-sm font-semibold text-foreground/80 hover:text-primary hover:border-primary/30 transition-colors"
                             >
                                 Book a 15-minute call
                                 <ArrowUpRight size={16} />

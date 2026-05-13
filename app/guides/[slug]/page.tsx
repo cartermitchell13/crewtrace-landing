@@ -390,7 +390,7 @@ export default async function GuideDetailPage({
                             <div className="shrink-0 flex flex-col items-stretch gap-4 pt-4 md:items-end md:pt-0">
                                 <Link
                                     href="/contact"
-                                    className="group inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
+                                    className="group inline-flex items-center justify-center gap-3 rounded-md bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
                                 >
                                     Get a Personalized Demo
                                     <span className="group-hover:translate-x-1 transition-transform inline-block">

@@ -146,7 +146,7 @@ export default function TrueCostCalculatorPage() {
 
                         <a
                             href="#calculator"
-                            className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
+                            className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-md shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
                         >
                             Use the Calculator
                             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -429,7 +429,7 @@ export default function TrueCostCalculatorPage() {
                             </p>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center bg-white text-foreground font-bold px-10 py-5 rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
+                                className="inline-flex items-center justify-center bg-white text-foreground font-bold px-10 py-5 rounded-md shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
                             >
                                 Get a Personalized Demo
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

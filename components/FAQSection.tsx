@@ -47,7 +47,7 @@ export default function FAQSection({
                         return (
                             <div
                                 key={index}
-                                className={`group rounded-2xl bg-white border outline-none transition-[border-color,box-shadow] duration-300 overflow-hidden shadow-sm transform-gpu will-change-[grid-template-rows] ${isOpen
+                                className={`group rounded-md bg-white border outline-none transition-[border-color,box-shadow] duration-300 overflow-hidden shadow-sm transform-gpu will-change-[grid-template-rows] ${isOpen
                                     ? "border-primary/20 shadow-md shadow-primary/5"
                                     : "border-foreground/5"
                                     }`}

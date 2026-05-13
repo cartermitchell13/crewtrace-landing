@@ -503,7 +503,7 @@ export default function ComplianceAuditTool() {
                             <button
                                 id="start-compliance-audit"
                                 onClick={() => setPhase("questions")}
-                                className="w-full bg-primary text-white font-bold py-5 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-lg group"
+                                className="w-full bg-primary text-white font-bold py-5 rounded-md shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-lg group"
                             >
                                 <ShieldCheck size={20} />
                                 Run My Compliance Audit
@@ -588,7 +588,7 @@ export default function ComplianceAuditTool() {
                         <div className="flex gap-3">
                             <button
                                 onClick={handleBack}
-                                className="px-6 py-4 rounded-2xl border border-foreground/10 text-sm font-bold text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 transition-all"
+                                className="px-6 py-4 rounded-md border border-foreground/10 text-sm font-bold text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 transition-all"
                             >
                                 Back
                             </button>
@@ -596,7 +596,7 @@ export default function ComplianceAuditTool() {
                                 id={`audit-next-q${currentQ + 1}`}
                                 onClick={handleNext}
                                 disabled={!selectedAnswer}
-                                className="flex-1 bg-primary text-white font-bold py-4 rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 group"
+                                className="flex-1 bg-primary text-white font-bold py-4 rounded-md shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 group"
                             >
                                 {currentQ < QUESTIONS.length - 1 ? "Next Question" : "Run My Audit"}
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform group-disabled:translate-x-0" />
@@ -870,7 +870,7 @@ export default function ComplianceAuditTool() {
                             <a
                                 id="audit-cta-book-call"
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-5 rounded-2xl shadow-button hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-y-0 active:translate-x-0 transition-all text-base whitespace-nowrap"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-5 rounded-md shadow-button hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-y-0 active:translate-x-0 transition-all text-base whitespace-nowrap"
                             >
                                 <PhoneCall size={18} />
                                 Get a Personalized Demo

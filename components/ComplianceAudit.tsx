@@ -29,9 +29,9 @@ export default function ComplianceAudit() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                    <div className="p-10 rounded-2xl bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
+                    <div className="p-10 rounded-md bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
                         <div className="space-y-6">
-                            <div className="h-12 w-12 rounded-xl bg-red-50 flex items-center justify-center text-red-600">
+                            <div className="h-12 w-12 rounded-md bg-red-50 flex items-center justify-center text-red-600">
                                 <FileText size={24} />
                             </div>
                             <h3 className="text-2xl font-bold">Paper Chaos</h3>
@@ -41,9 +41,9 @@ export default function ComplianceAudit() {
                         </div>
                     </div>
 
-                    <div className="p-10 rounded-2xl bg-white border-2 border-primary/20 text-foreground flex flex-col justify-between shadow-md lg:scale-[1.03] relative z-20">
+                    <div className="p-10 rounded-md bg-white border-2 border-primary/20 text-foreground flex flex-col justify-between shadow-md lg:scale-[1.03] relative z-20">
                         <div className="space-y-6">
-                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                            <div className="h-12 w-12 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                                 <ShieldCheck size={24} />
                             </div>
                             <h3 className="text-2xl font-bold">100% Digital Proof</h3>
@@ -58,9 +58,9 @@ export default function ComplianceAudit() {
                         </div>
                     </div>
 
-                    <div className="p-10 rounded-2xl bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
+                    <div className="p-10 rounded-md bg-white border border-foreground/5 text-foreground flex flex-col justify-between shadow-sm">
                         <div className="space-y-6">
-                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                            <div className="h-12 w-12 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                                 <UserCheck size={24} />
                             </div>
                             <h3 className="text-2xl font-bold">Absolute Certainty</h3>
@@ -74,7 +74,7 @@ export default function ComplianceAudit() {
                 <div className="mt-16 flex justify-center">
                     <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-primary text-white hover:bg-primary/90 px-10 py-5 text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="inline-flex items-center justify-center gap-2 font-bold rounded-md transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-primary text-white hover:bg-primary/90 px-10 py-5 text-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                         Protect Your Business Now
                         <ArrowRight size={20} />

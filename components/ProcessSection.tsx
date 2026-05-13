@@ -38,7 +38,7 @@ export default function ProcessSection({ variant = "default" }: ProcessSectionPr
     /* On the home texture band: read as a "workflow / diagram" zone — tinted, soft edge — not a second white proof card like TestimonialsSection. */
     const contentShell =
         isTexture
-            ? "max-w-7xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-b from-secondary/55 via-secondary/20 to-background/90 p-8 shadow-sm ring-1 ring-inset ring-white/40 sm:px-10 sm:py-16 md:rounded-3xl md:px-14 md:py-20"
+            ? "max-w-7xl mx-auto rounded-md border border-primary/20 bg-gradient-to-b from-secondary/55 via-secondary/20 to-background/90 p-8 shadow-sm ring-1 ring-inset ring-white/40 sm:px-10 sm:py-16 md:px-14 md:py-20"
             : "max-w-7xl mx-auto";
     const lineTrack = isTexture ? "bg-primary/15" : "bg-foreground/5";
     const stepBodyClass = isTexture ? "text-foreground/70" : "text-foreground/60";
@@ -96,10 +96,10 @@ export default function ProcessSection({ variant = "default" }: ProcessSectionPr
                                 {/* Image Node */}
                                 <div className="relative shrink-0">
                                     <div
-                                        className={`relative flex h-32 w-32 items-center justify-center rounded-2xl border md:h-36 md:w-36 ${stepTileClass}`}
+                                        className={`relative flex h-32 w-32 items-center justify-center rounded-md border md:h-36 md:w-36 ${stepTileClass}`}
                                     >
 
-                                        <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                                        <div className="absolute inset-0 rounded-md overflow-hidden">
 
                                             <Image
                                                 src={step.imageSrc}

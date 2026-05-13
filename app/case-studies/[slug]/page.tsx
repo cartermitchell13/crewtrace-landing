@@ -374,7 +374,7 @@ export default async function CaseStudyDetailPage({
                             <div className="flex flex-col items-center gap-4">
                                 <Link
                                     href="/contact"
-                                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+                                    className="group inline-flex items-center justify-center gap-2 rounded-md bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                                 >
                                     Get a Personalized Demo
                                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

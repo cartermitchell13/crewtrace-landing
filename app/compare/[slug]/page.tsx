@@ -389,7 +389,7 @@ export default async function CompareDetailPage({
                         <div className="flex flex-col gap-3 sm:items-end">
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary"
+                                className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-bold text-primary"
                             >
                                 {compareDetailMessaging.primaryCta}
                             </Link>
@@ -397,7 +397,7 @@ export default async function CompareDetailPage({
                                 templateType="competitor_detail"
                                 cluster="compare"
                                 landingPath={`/compare/${slug}`}
-                                className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white hover:bg-white/15"
+                                className="inline-flex items-center justify-center rounded-md border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white hover:bg-white/15"
                             >
                                 Book a 15-minute call
                             </BookedCallLink>

@@ -22,10 +22,10 @@ const BentoCard = ({
     badge,
     iconBgColor = "bg-primary/10"
 }: BentoCardProps) => (
-    <div className={`relative overflow-hidden rounded-2xl border border-foreground/5 bg-white p-6 md:p-7 flex flex-col justify-between ${className}`}>
+    <div className={`relative overflow-hidden rounded-md border border-foreground/5 bg-white p-6 md:p-7 flex flex-col justify-between ${className}`}>
         <div className="relative z-10">
             <div className="flex justify-between items-start mb-6">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${iconBgColor} text-primary`}>
+                <div className={`flex h-12 w-12 items-center justify-center rounded-md ${iconBgColor} text-primary`}>
                     <Icon size={24} />
                 </div>
                 {badge && (
@@ -71,13 +71,13 @@ export default function FeatureGrid() {
                         className="md:col-span-2 md:col-start-1 md:row-start-1 md:row-span-1 min-h-[270px] justify-start"
                         badge="GPS Verified"
                     >
-                        <div className="relative mx-auto mt-4 w-full max-w-[720px] overflow-hidden rounded-xl border border-foreground/10 bg-slate-50 p-1.5">
+                        <div className="relative mx-auto mt-4 w-full max-w-[720px] overflow-hidden rounded-md border border-foreground/10 bg-slate-50 p-1.5">
                             <Image
                                 src="/images/gps-feature-image.png"
                                 alt="GPS geofence verification showing worker location on job site"
                                 width={720}
                                 height={360}
-                                className="h-56 w-full rounded-lg object-contain md:h-60"
+                                className="h-56 w-full rounded-sm object-contain md:h-60"
                                 sizes="(max-width: 768px) 100vw, 720px"
                             />
                         </div>
@@ -98,7 +98,7 @@ export default function FeatureGrid() {
                             ].map((alert) => (
                                 <div
                                     key={alert.issue}
-                                    className="flex items-center justify-between rounded-xl border border-amber-200/60 bg-amber-50/70 px-3 py-2"
+                                    className="flex items-center justify-between rounded-sm border border-amber-200/60 bg-amber-50/70 px-3 py-2"
                                 >
                                     <span className="text-xs font-semibold text-foreground/75">{alert.issue}</span>
                                     <span className="rounded-full bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">
@@ -147,7 +147,7 @@ export default function FeatureGrid() {
                     >
                         <div className="flex flex-col gap-1.5 mt-2">
                             {["Standard CSV", "ADP", "QuickBooks"].map((label) => (
-                                <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-sm bg-slate-50 border border-slate-100">
                                     <div className="h-1.5 w-1.5 rounded-full bg-primary/50" />
                                     <span className="text-xs font-semibold text-foreground/60">{label}</span>
                                 </div>
@@ -161,7 +161,7 @@ export default function FeatureGrid() {
                         icon={FileCheck2}
                         className="md:col-span-1 md:col-start-4 md:row-start-2 md:row-span-1"
                     >
-                        <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+                        <div className="mt-4 p-3 rounded-sm bg-slate-50 border border-slate-100 space-y-2">
                             <div className="flex items-center justify-between">
                                 <div className="space-y-1">
                                     <div className="h-2 w-20 bg-slate-200 rounded-full" />
@@ -175,7 +175,7 @@ export default function FeatureGrid() {
                         </div>
                     </BentoCard>
 
-                    <div className="md:col-span-3 md:col-start-1 md:row-start-3 bg-primary rounded-2xl p-10 text-white relative overflow-hidden">
+                    <div className="md:col-span-3 md:col-start-1 md:row-start-3 bg-primary rounded-md p-10 text-white relative overflow-hidden">
                         <div className="flex flex-col md:flex-row items-center gap-10">
                             <div className="flex-1 space-y-6">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-bold tracking-wider uppercase">
@@ -187,7 +187,7 @@ export default function FeatureGrid() {
                                 <p className="text-xl text-white/80 font-medium leading-relaxed italic">
                                     &ldquo;We moved off paper logs, found recurring overpayment fast, and cut payroll review time down to minutes.&rdquo;
                                 </p>
-                                <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                                <div className="rounded-sm border border-white/15 bg-white/5 p-4">
                                     <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">
                                         How the savings were achieved
                                     </p>
@@ -214,13 +214,13 @@ export default function FeatureGrid() {
                                 </Link>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <div className="p-6 bg-white/10 rounded-2xl border border-white/10 text-center">
+                                <div className="p-6 bg-white/10 rounded-sm border border-white/10 text-center">
                                     <div className="text-4xl font-bold text-secondary mb-1">2 Weeks</div>
                                     <div className="text-sm font-bold opacity-80 uppercase tracking-widest">Time to ROI</div>
                                 </div>
                                 <Link
                                     href="/calculator"
-                                    className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                                    className="inline-flex items-center justify-center gap-2 font-bold rounded-md transition-all whitespace-nowrap motion-safe:hover:-translate-y-0.5 bg-white text-primary hover:bg-white/90 px-10 py-5 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                 >
                                     Calculate Your ROI
                                 </Link>
@@ -235,7 +235,7 @@ export default function FeatureGrid() {
                         className="md:col-span-1 md:col-start-4 md:row-start-3 md:row-span-1"
                         iconBgColor="bg-orange-500/10"
                     >
-                        <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <div className="mt-3 p-3 rounded-sm bg-slate-50 border border-slate-100">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Friday</div>

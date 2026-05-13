@@ -223,7 +223,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 <div className="flex flex-col items-center gap-4">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-xl shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
+                                        className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-md shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
                                     >
                                         Get a Personalized Demo
                                     </Link>
