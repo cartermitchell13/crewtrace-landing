@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendBrrrNotification } from "@/lib/brrr-webhook";
 import {
     type CalculatorSubmissionApiResponse,
     type CalculatorSubmissionPayload,
@@ -77,6 +78,30 @@ async function persistSubmission(
     return response.ok;
 }
 
+function buildBrrrCalculatorMessage(data: CalculatorSubmissionPayload): string {
+    const lines = [
+        data.email,
+        `Est. annual leakage: $${data.totalYearlyLoss.toLocaleString("en-US")}`,
+        `Est. monthly leakage: $${data.totalMonthlyLoss.toLocaleString("en-US")}`,
+        `Recovery potential: $${data.yearlyRecovery.toLocaleString("en-US")}/yr`,
+        `Risk: ${data.riskLevel} (${data.riskScore})`,
+        `Crew: ${data.crewSize}, $${data.avgHourlyRate}/hr avg, ${data.hoursPerWeekOnPayroll} hrs/wk on payroll`,
+        `Job sites: ${data.jobSites}`,
+        `Trade: ${data.tradeType}, tracking: ${data.trackingMethod}, OT load: ${data.overtimeLevel}`,
+    ];
+    const utmParts = [
+        data.utmSource,
+        data.utmMedium,
+        data.utmCampaign,
+        data.utmContent,
+        data.utmTerm,
+    ].filter(Boolean);
+    if (utmParts.length) {
+        lines.push(`UTM: ${utmParts.join(" / ")}`);
+    }
+    return lines.join("\n");
+}
+
 export async function POST(request: Request) {
     let body: unknown;
 
@@ -106,6 +131,14 @@ export async function POST(request: Request) {
             500,
         );
     }
+
+    await sendBrrrNotification(
+        "New Crewtrace calculator submission",
+        buildBrrrCalculatorMessage(validated.data),
+    ).catch((error) => {
+        console.error("brrr notification threw an error.", error);
+        return false;
+    });
 
     return toJson({ ok: true, message: "Submission recorded." });
 }

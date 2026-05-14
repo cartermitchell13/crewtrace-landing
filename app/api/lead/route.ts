@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendBrrrNotification } from "@/lib/brrr-webhook";
 import {
     type LeadApiResponse,
     type LeadPayload,
@@ -125,13 +126,7 @@ function buildLeadSmsMessage(lead: LeadPayload) {
     return truncateSmsMessage(parts.join("\n"));
 }
 
-/** Optional push via https://brrr.now/docs/ — set BRRR_WEBHOOK_URL to the full webhook URL from the app. */
 async function sendBrrrLeadNotification(lead: LeadPayload): Promise<boolean> {
-    const webhookUrl = process.env.BRRR_WEBHOOK_URL?.trim();
-    if (!webhookUrl) {
-        return false;
-    }
-
     const detailLines = [
         lead.name,
         lead.email,
@@ -142,27 +137,7 @@ async function sendBrrrLeadNotification(lead: LeadPayload): Promise<boolean> {
         lead.message ? `Message: ${lead.message}` : null,
     ].filter(Boolean);
 
-    const body = {
-        title: "New Crewtrace lead",
-        message: detailLines.join("\n"),
-        "interruption-level": "active" as const,
-    };
-
-    const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-        const errText = await response.text().catch(() => "");
-        console.error("brrr notification failed.", {
-            status: response.status,
-            body: errText,
-        });
-    }
-
-    return response.ok;
+    return sendBrrrNotification("New Crewtrace lead", detailLines.join("\n"));
 }
 
 async function sendLeadSmsNotification(lead: LeadPayload): Promise<boolean> {
