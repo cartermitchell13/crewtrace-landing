@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 <img
                                     src={post.coverImage}
                                     alt={post.coverImageAlt || post.title}
-                                    className="w-full rounded-2xl shadow-2xl border border-border/30"
+                                    className="w-full rounded-md shadow-2xl border border-border/30"
                                 />
                             </div>
                         )}
@@ -171,9 +171,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 prose-ul:text-foreground/80
                                 prose-ol:text-foreground/80
                                 prose-li:my-2
-                                prose-img:rounded-2xl prose-img:shadow-lg prose-img:border prose-img:border-border/50
+                                prose-img:rounded-md prose-img:shadow-lg prose-img:border prose-img:border-border/50
                                 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground/70 prose-blockquote:font-medium prose-blockquote:italic
-                                prose-table:border-collapse prose-table:w-full prose-table:rounded-xl prose-table:overflow-hidden prose-table:border prose-table:border-border/50 prose-table:text-base
+                                prose-table:border-collapse prose-table:w-full prose-table:rounded-md prose-table:overflow-hidden prose-table:border prose-table:border-border/50 prose-table:text-base
                                 prose-thead:bg-foreground/5 prose-thead:border-b prose-thead:border-border/50
                                 prose-th:px-5 prose-th:py-3 prose-th:text-left prose-th:font-bold prose-th:text-foreground prose-th:text-sm prose-th:uppercase prose-th:tracking-wider
                                 prose-td:px-5 prose-td:py-3.5 prose-td:text-foreground/80 prose-td:border-b prose-td:border-border/30
@@ -184,13 +184,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <hr className="my-16 border-border/40" />
 
                         {/* Mobile Share Actions */}
-                        <div className="lg:hidden flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 p-6 rounded-2xl bg-foreground/5">
+                        <div className="lg:hidden flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 p-6 rounded-md bg-foreground/5">
                             <span className="text-sm font-bold text-foreground/60 uppercase tracking-widest">Share this article</span>
                             <ShareButtons title={post.title} slug={slug} variant="inline" />
                         </div>
 
                         {/* Author Bio Section */}
-                        <div className="flex flex-col sm:flex-row items-start gap-6 p-8 rounded-3xl bg-secondary/30 border border-border/50">
+                        <div className="flex flex-col sm:flex-row items-start gap-6 p-8 rounded-md bg-secondary/30 border border-border/50">
                             <img
                                 src="/images/headshot.jpg"
                                 alt={post.author || "Carter Mitchell"}
@@ -205,7 +205,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         </div>
 
                         {/* Beautiful CTA Module */}
-                        <div className="mt-20 relative overflow-hidden rounded-[2rem] bg-foreground text-background">
+                        <div className="mt-20 relative overflow-hidden rounded-md bg-foreground text-background">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/3 z-0"></div>
                             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20 translate-y-1/3 -translate-x-1/3 z-0"></div>
 

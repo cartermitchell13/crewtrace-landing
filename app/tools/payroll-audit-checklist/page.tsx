@@ -173,10 +173,10 @@ export default function PayrollAuditChecklistPage() {
                                 return (
                                     <div
                                         key={risk.title}
-                                        className="group p-6 rounded-2xl border border-border/50 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-300"
+                                        className="group p-6 rounded-md border border-border/50 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-300"
                                     >
                                         <div className="flex items-start gap-4 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
+                                            <div className="w-10 h-10 rounded-md bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
                                                 <Icon className="w-5 h-5 text-red-500" />
                                             </div>
                                             <h3 className="font-bold text-foreground text-lg tracking-tight self-center leading-tight">
@@ -223,7 +223,7 @@ export default function PayrollAuditChecklistPage() {
                                     A Department of Labor (DOL) audit is reactive. If the DOL initiates a <strong className="text-foreground">timekeeping audit</strong> due to an employee complaint, they will comb through three years of records. If they find violations, you will owe back wages, liquidated damages (double the back wages), and potentially severe civil money penalties.
                                 </p>
                             </div>
-                            <div className="p-8 md:p-10 rounded-[2rem] bg-secondary/30 border border-border/50">
+                            <div className="p-8 md:p-10 rounded-md bg-secondary/30 border border-border/50">
                                 <h3 className="text-xl font-bold text-foreground mb-6">Common Payroll Audit Questions</h3>
                                 <ul className="space-y-5 text-foreground/70 font-medium list-none pl-0">
                                     <li className="flex gap-4">
@@ -277,7 +277,7 @@ export default function PayrollAuditChecklistPage() {
                                     text: "Ensure you have uneditable, accurate records of all hours worked, pay rates, and payroll dates for at least the last three years, as required by the Fair Labor Standards Act.",
                                 },
                             ].map((step) => (
-                                <div key={step.title} className="flex flex-col gap-3 p-8 rounded-[2rem] bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all">
+                                <div key={step.title} className="flex flex-col gap-3 p-8 rounded-md bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all">
                                     <strong className="text-foreground text-xl tracking-tight">{step.title}</strong>
                                     <span className="text-foreground/60 font-medium leading-relaxed text-base">{step.text}</span>
                                 </div>
@@ -312,7 +312,7 @@ export default function PayrollAuditChecklistPage() {
                                 <Link
                                     key={article.href}
                                     href={article.href}
-                                    className="group flex items-start gap-3 p-5 rounded-2xl border border-border/50 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-300"
+                                    className="group flex items-start gap-3 p-5 rounded-md border border-border/50 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-300"
                                 >
                                     <span className="text-2xl flex-shrink-0">{article.icon}</span>
                                     <span className="font-semibold text-foreground/80 group-hover:text-primary transition-colors text-sm leading-snug">
@@ -326,7 +326,7 @@ export default function PayrollAuditChecklistPage() {
 
                 {/* Full-width CTA */}
                 <div className="max-w-4xl mx-auto px-6">
-                    <section className="relative overflow-hidden rounded-[2rem] bg-foreground text-background">
+                    <section className="relative overflow-hidden rounded-md bg-foreground text-background">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/3 z-0" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500 rounded-full blur-[100px] opacity-20 translate-y-1/3 -translate-x-1/3 z-0" />
 

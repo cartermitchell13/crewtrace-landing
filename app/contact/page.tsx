@@ -43,7 +43,7 @@ export default function ContactPage() {
                         <ContactDemoValueColumn />
 
                         {/* Right: The form */}
-                        <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
+                        <div className="rounded-md border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
                             <div className="mb-7">
                                 <h2 className="text-xl font-bold text-foreground">
                                     Request your personalized demo + quote

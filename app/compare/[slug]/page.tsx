@@ -235,7 +235,7 @@ export default async function CompareDetailPage({
                         Back to comparisons
                     </Link>
 
-                    <header className="mt-6 rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
+                    <header className="mt-6 rounded-md border border-foreground/10 bg-white p-8 md:p-10">
                         <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                             {competitor.primaryKeyword}
                         </p>
@@ -255,7 +255,7 @@ export default async function CompareDetailPage({
                         </p>
                     </header>
 
-                    <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8">
+                    <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Intent map for this comparison
                         </h2>
@@ -263,7 +263,7 @@ export default async function CompareDetailPage({
                             {competitor.keywordClusters.map((cluster) => (
                                 <div
                                     key={`${cluster.intentBucket}-${cluster.primaryTerms[0]}`}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5"
+                                    className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5"
                                 >
                                     <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                                         {cluster.intentBucket}
@@ -285,7 +285,7 @@ export default async function CompareDetailPage({
                         {competitor.comparisonSections.map((section) => (
                             <div
                                 key={section.id}
-                                className="rounded-3xl border border-foreground/10 bg-white p-8"
+                                className="rounded-md border border-foreground/10 bg-white p-8"
                             >
                                 <h2 className="text-2xl font-bold tracking-tight text-foreground">
                                     {section.heading}
@@ -305,7 +305,7 @@ export default async function CompareDetailPage({
                         ))}
                     </section>
 
-                    <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8">
+                    <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Related feature and industry paths
                         </h2>
@@ -314,7 +314,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
+                                    className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -324,7 +324,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
+                                    className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -333,7 +333,7 @@ export default async function CompareDetailPage({
                         </div>
                     </section>
 
-                    <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8">
+                    <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Proof and implementation resources
                         </h2>
@@ -342,7 +342,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
+                                    className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -352,7 +352,7 @@ export default async function CompareDetailPage({
                                 <Link
                                     key={link.slug}
                                     href={link.href}
-                                    className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
+                                    className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 transition-colors hover:border-primary/20"
                                 >
                                     <p className="text-lg font-semibold text-foreground">{link.label}</p>
                                     <p className="mt-2 text-sm text-foreground/60">{link.description}</p>
@@ -361,7 +361,7 @@ export default async function CompareDetailPage({
                         </div>
                     </section>
 
-                    <section className="mt-8 rounded-3xl border border-foreground/10 bg-white p-8 md:p-10">
+                    <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8 md:p-10">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Claim-safety and review policy
                         </h2>
@@ -377,7 +377,7 @@ export default async function CompareDetailPage({
                         </ul>
                     </section>
 
-                    <section className="mt-8 flex flex-col gap-6 rounded-3xl bg-primary p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
+                    <section className="mt-8 flex flex-col gap-6 rounded-md bg-primary p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
                         <div>
                             <h2 className="text-2xl font-bold tracking-tight">
                                 {competitor.softCtaHeadline}

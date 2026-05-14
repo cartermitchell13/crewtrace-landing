@@ -122,13 +122,13 @@ const OptionCard = ({ label, description, icon: Icon, selected, onClick }: Optio
     <button
         type="button"
         onClick={onClick}
-        className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-200 ${selected
+        className={`w-full text-left p-4 rounded-md border-2 transition-all duration-200 ${selected
             ? "border-primary bg-primary/5 shadow-sm"
             : "border-foreground/5 bg-white hover:border-foreground/10 hover:bg-foreground/[0.02]"
             }`}
     >
         <div className="flex items-start gap-3">
-            <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${selected ? "bg-primary text-white" : "bg-foreground/5 text-foreground/40"}`}>
+            <div className={`w-9 h-9 rounded-md flex items-center justify-center shrink-0 ${selected ? "bg-primary text-white" : "bg-foreground/5 text-foreground/40"}`}>
                 <Icon size={16} />
             </div>
             <div>
@@ -187,8 +187,8 @@ const ReportStat = ({ label, value, sublabel, icon: Icon, variant = "neutral" }:
         saving: "text-primary",
     };
     return (
-        <div className={`bg-white rounded-2xl border ${variant === "loss" ? "border-red-100" : variant === "saving" ? "border-primary/10" : "border-foreground/5"} p-5 shadow-sm`}>
-            <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${colors[variant]}`}>
+        <div className={`bg-white rounded-md border ${variant === "loss" ? "border-red-100" : variant === "saving" ? "border-primary/10" : "border-foreground/5"} p-5 shadow-sm`}>
+            <div className={`w-9 h-9 rounded-md flex items-center justify-center mb-3 ${colors[variant]}`}>
                 <Icon size={16} />
             </div>
             <div className={`text-2xl font-bold tracking-tight mb-0.5 ${textColors[variant]}`}>{value}</div>
@@ -540,7 +540,7 @@ export default function SavingsCalculator() {
         return (
             <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
 
                         {/* Header */}
                         <div className="space-y-4 mb-12">
@@ -694,9 +694,9 @@ export default function SavingsCalculator() {
         return (
             <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
                 <div className="max-w-lg mx-auto">
-                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
-                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center mb-6">
                                 <Mail size={24} className="text-primary" />
                             </div>
                             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3">
@@ -720,13 +720,13 @@ export default function SavingsCalculator() {
                                     placeholder="you@company.com"
                                     value={emailGateEmail}
                                     onChange={(e) => setEmailGateEmail(e.target.value)}
-                                    className="w-full rounded-xl border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10"
+                                    className="w-full rounded-md border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10"
                                     autoFocus
                                 />
                             </div>
 
                             {emailGateStatus === "error" && emailGateError && (
-                                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                                <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
                                     {emailGateError}
                                 </div>
                             )}
@@ -777,9 +777,9 @@ export default function SavingsCalculator() {
         return (
             <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
                 <div className="max-w-2xl mx-auto">
-                    <div ref={generatingCardRef} className="bg-white rounded-[2.5rem] border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
+                    <div ref={generatingCardRef} className="bg-white rounded-md border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
-                            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <div className="w-16 h-16 rounded-md bg-primary/10 flex items-center justify-center mb-6">
                                 <Loader2 size={28} className="text-primary animate-spin" />
                             </div>
                             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2">
@@ -821,7 +821,7 @@ export default function SavingsCalculator() {
             <div className="max-w-6xl mx-auto space-y-8">
 
                 {/* Report Header */}
-                <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-8">
                         <div className="space-y-4">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
@@ -848,7 +848,7 @@ export default function SavingsCalculator() {
                 {/* Risk Score + Annual Loss Hero */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Risk Score */}
-                    <div className="bg-white rounded-[2rem] border border-foreground/5 p-8 shadow-sm flex flex-col items-center justify-center text-center">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 shadow-sm flex flex-col items-center justify-center text-center">
                         <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-4">Leakage Risk Score</div>
                         <div className="relative w-28 h-28 mb-4">
                             <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -871,7 +871,7 @@ export default function SavingsCalculator() {
                     </div>
 
                     {/* Annual Loss */}
-                    <div className="md:col-span-2 bg-white rounded-[2rem] border-2 border-red-500/20 p-8 md:p-10 relative overflow-hidden">
+                    <div className="md:col-span-2 bg-white rounded-md border-2 border-red-500/20 p-8 md:p-10 relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-6 text-red-500/10">
                             <TrendingDown size={140} strokeWidth={1} />
                         </div>
@@ -902,11 +902,11 @@ export default function SavingsCalculator() {
                 </div>
 
                 {/* "That's equivalent to..." */}
-                <div className="bg-foreground/[0.02] rounded-[2rem] border border-foreground/5 p-6 md:p-8">
+                <div className="bg-foreground/[0.02] rounded-md border border-foreground/5 p-6 md:p-8">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-5">To put that in perspective...</div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 rounded-md bg-red-50 flex items-center justify-center shrink-0">
                                 <Truck size={18} className="text-red-500" />
                             </div>
                             <div>
@@ -915,7 +915,7 @@ export default function SavingsCalculator() {
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 rounded-md bg-red-50 flex items-center justify-center shrink-0">
                                 <PiggyBank size={18} className="text-red-500" />
                             </div>
                             <div>
@@ -924,7 +924,7 @@ export default function SavingsCalculator() {
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 rounded-md bg-red-50 flex items-center justify-center shrink-0">
                                 <CalendarDays size={18} className="text-red-500" />
                             </div>
                             <div>
@@ -936,9 +936,9 @@ export default function SavingsCalculator() {
                 </div>
 
                 {/* Category Breakdown */}
-                <div className="bg-white rounded-[2rem] border border-foreground/5 p-8 md:p-10 shadow-sm">
+                <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-10 shadow-sm">
                     <div className="flex items-center gap-3 mb-8">
-                        <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-md bg-foreground/5 flex items-center justify-center">
                             <BarChart3 size={18} className="text-foreground/60" />
                         </div>
                         <div>
@@ -981,7 +981,7 @@ export default function SavingsCalculator() {
 
                     {/* Admin overhead callout */}
                     <div className="mt-8 pt-6 border-t border-foreground/5 flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-md bg-amber-50 flex items-center justify-center shrink-0">
                             <Clock size={18} className="text-amber-500" />
                         </div>
                         <div>
@@ -994,7 +994,7 @@ export default function SavingsCalculator() {
                 </div>
 
                 {/* Recovery Forecast */}
-                <div className="bg-primary rounded-[2rem] p-8 md:p-10 text-white relative overflow-hidden shadow-2xl shadow-primary/20">
+                <div className="bg-primary rounded-md p-8 md:p-10 text-white relative overflow-hidden shadow-2xl shadow-primary/20">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
 
                     <div className="relative z-10">
@@ -1012,14 +1012,14 @@ export default function SavingsCalculator() {
                                 <div className="text-sm opacity-60 font-medium mt-1">${calculations.monthlyRecovery.toLocaleString()}/month recovered</div>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-2xl border border-white/10">
+                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-md border border-white/10">
                                     <Clock size={18} className="text-secondary shrink-0" />
                                     <div>
                                         <div className="text-lg font-bold">{calculations.hoursSavedPerYear}h saved</div>
                                         <div className="text-xs opacity-50 font-medium">Admin time recovered per year</div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-2xl border border-white/10">
+                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-md border border-white/10">
                                     <DollarSign size={18} className="text-secondary shrink-0" />
                                     <div>
                                         <div className="text-lg font-bold">${calculations.adminSavingsPerYear.toLocaleString()}</div>
@@ -1028,14 +1028,14 @@ export default function SavingsCalculator() {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-2xl border border-white/10">
+                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-md border border-white/10">
                                     <Shield size={18} className="text-secondary shrink-0" />
                                     <div>
                                         <div className="text-lg font-bold">95%+ accuracy</div>
                                         <div className="text-xs opacity-50 font-medium">GPS-verified time tracking</div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-2xl border border-white/10">
+                                <div className="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-md border border-white/10">
                                     <Zap size={18} className="text-secondary shrink-0" />
                                     <div>
                                         <div className="text-lg font-bold">Week 1 ROI</div>
@@ -1074,7 +1074,7 @@ export default function SavingsCalculator() {
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
                         <ContactDemoValueColumn />
 
-                        <div className="rounded-3xl border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
+                        <div className="rounded-md border border-foreground/10 bg-white p-7 shadow-xl md:p-9">
                             <div className="mb-7">
                                 <h2 className="text-xl font-bold text-foreground">
                                     Request your personalized demo + quote

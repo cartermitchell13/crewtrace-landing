@@ -85,7 +85,7 @@ function ImagePlaceholder({
 
     return (
         <div
-            className={`relative w-full overflow-hidden rounded-[1.75rem] border border-foreground/5 bg-gradient-to-br ${toneMap[tone]} ${aspect} ${className}`}
+            className={`relative w-full overflow-hidden rounded-md border border-foreground/5 bg-gradient-to-br ${toneMap[tone]} ${aspect} ${className}`}
             role="img"
             aria-label={label}
         >
@@ -471,7 +471,7 @@ export default function GpsTimeTrackingFeaturePage() {
                             alt="Crewtrace GPS time tracking hero showing job-site map with active geofences, live crew pins, and a clock-in event highlighted"
                             width={1920}
                             height={1080}
-                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2.5rem] shadow-xl"
+                            className="h-auto w-full rounded-md shadow-xl"
                             priority
                         />
                     </div>
@@ -504,10 +504,10 @@ export default function GpsTimeTrackingFeaturePage() {
                                 return (
                                     <article
                                         key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${toneClasses[pain.tone]}`}
+                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
                                         >
                                             <Icon size={22} />
                                         </div>
@@ -549,7 +549,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                     >
                                         <div>
                                             <div className="flex items-center gap-3">
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                     <Icon size={20} />
                                                 </span>
                                                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary/80">
@@ -577,7 +577,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                             alt={s.image.alt}
                                             width={1600}
                                             height={1200}
-                                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                            className="h-auto w-full rounded-md shadow-xl"
                                         />
                                     </div>
                                 );
@@ -606,9 +606,9 @@ export default function GpsTimeTrackingFeaturePage() {
                                 return (
                                     <div
                                         key={cap.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[1.75rem] border border-foreground/5 bg-white p-6 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-6 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                             <Icon size={20} />
                                         </div>
                                         <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground">
@@ -646,10 +646,10 @@ export default function GpsTimeTrackingFeaturePage() {
                                 return (
                                     <div
                                         key={step.step}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                            <span className="flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                 <Icon size={22} />
                                             </span>
                                             <span className="text-xs font-extrabold tracking-widest text-foreground/30">
@@ -678,7 +678,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                 alt="End-to-end diagram: geofence to mobile clock-in to live attendance to payroll export"
                                 width={2400}
                                 height={900}
-                                className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                className="h-auto w-full rounded-md shadow-xl"
                             />
                         </div>
                     </div>
@@ -710,7 +710,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                         return (
                                             <li
                                                 key={item.label}
-                                                className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 shadow-sm"
+                                                className="flex items-center gap-3 rounded-md border border-foreground/5 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 shadow-sm"
                                             >
                                                 <Icon size={16} className="text-primary" />
                                                 {item.label}
@@ -725,7 +725,7 @@ export default function GpsTimeTrackingFeaturePage() {
                                 alt="Crewtrace worker-facing privacy and GPS policy screen on the mobile app"
                                 width={1200}
                                 height={1500}
-                                className="mx-auto h-auto w-full max-w-md rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                className="mx-auto h-auto w-full max-w-md rounded-md shadow-xl"
                             />
                         </div>
                     </div>
@@ -781,10 +781,10 @@ export default function GpsTimeTrackingFeaturePage() {
                                     <Link
                                         key={u.slug}
                                         href={`/industries/${u.slug}`}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                 <Icon size={20} />
                                             </span>
                                             <span className="text-xs font-bold uppercase tracking-[0.18em] text-foreground/40 group-hover:text-primary transition-colors">
@@ -825,7 +825,7 @@ export default function GpsTimeTrackingFeaturePage() {
                             {stats.map((s) => (
                                 <div
                                     key={s.label}
-                                    className="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
+                                    className="rounded-md border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
                                 >
                                     <p className="text-4xl font-extrabold tracking-tight md:text-5xl">{s.value}</p>
                                     <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/75 leading-snug">

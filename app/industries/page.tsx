@@ -138,7 +138,7 @@ export default function IndustriesPage() {
                         ].map((stat) => {
                             const Icon = stat.icon;
                             return (
-                                <div key={stat.label} className="rounded-2xl border border-foreground/5 bg-white p-5 text-center shadow-sm">
+                                <div key={stat.label} className="rounded-md border border-foreground/5 bg-white p-5 text-center shadow-sm">
                                     <Icon size={18} className="mx-auto mb-2 text-primary/60" />
                                     <p className="text-2xl font-extrabold text-foreground">{stat.value}</p>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-foreground/45">{stat.label}</p>
@@ -156,9 +156,9 @@ export default function IndustriesPage() {
                                 return (
                                     <article
                                         key={industry.slug}
-                                        className="group relative rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="group relative rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-5 inline-flex h-13 w-13 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                                        <div className="mb-5 inline-flex h-13 w-13 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
                                             <IndustryIcon size={24} />
                                         </div>
 
@@ -228,7 +228,7 @@ export default function IndustriesPage() {
 
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr]">
                             <div className="space-y-6">
-                                <div className="rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md">
+                                <div className="rounded-md border border-foreground/5 bg-white p-8 shadow-md">
                                     <h3 className="text-xl font-bold tracking-tight text-foreground mb-4">
                                         A roofing crew running 3 active re-roofs
                                     </h3>
@@ -246,7 +246,7 @@ export default function IndustriesPage() {
                                     </ul>
                                 </div>
 
-                                <div className="rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md">
+                                <div className="rounded-md border border-foreground/5 bg-white p-8 shadow-md">
                                     <h3 className="text-xl font-bold tracking-tight text-foreground mb-4">
                                         A landscaping team hitting 15 residential stops a day
                                     </h3>
@@ -265,7 +265,7 @@ export default function IndustriesPage() {
                                 </div>
                             </div>
 
-                            <div className="overflow-hidden rounded-[2.5rem] border border-foreground/5">
+                            <div className="overflow-hidden rounded-md border border-foreground/5">
                                 <Image
                                     src="/images/hub/trade-comparison-split.svg"
                                     alt="Trade-specific workflow comparison showing different field operation patterns"
@@ -280,7 +280,7 @@ export default function IndustriesPage() {
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6 md:rounded-[3.5rem]">
+                        <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
                             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
 
                             <div className="relative z-10 py-16 sm:py-20 md:py-24">
@@ -299,8 +299,8 @@ export default function IndustriesPage() {
                                     </div>
 
                                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                                        <div className="rounded-[2rem] border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
-                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                                        <div className="rounded-md border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
+                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-600">
                                                 <TrendingUp size={24} strokeWidth={2.5} />
                                             </div>
                                             <div>
@@ -309,8 +309,8 @@ export default function IndustriesPage() {
                                             </div>
                                         </div>
 
-                                        <div className="rounded-[2rem] border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
-                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                                        <div className="rounded-md border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
+                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600">
                                                 <Clock size={24} strokeWidth={2.5} />
                                             </div>
                                             <div>
@@ -319,8 +319,8 @@ export default function IndustriesPage() {
                                             </div>
                                         </div>
 
-                                        <div className="rounded-[2rem] border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
-                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary">
+                                        <div className="rounded-md border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg flex items-center gap-5">
+                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-primary/5 text-primary">
                                                 <CheckCircle2 size={24} strokeWidth={2.5} />
                                             </div>
                                             <div>
@@ -330,7 +330,7 @@ export default function IndustriesPage() {
                                         </div>
                                     </div>
 
-                                    <div className="mt-8 rounded-2xl border border-white/20 bg-white/90 backdrop-blur-sm p-6 flex items-center gap-5">
+                                    <div className="mt-8 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm p-6 flex items-center gap-5">
                                         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-primary/10 shadow-md">
                                             <Image
                                                 src="/images/jason-headshot-p-500.jpeg"
@@ -382,7 +382,7 @@ export default function IndustriesPage() {
                                 <Link
                                     key={spotlight.slug}
                                     href={`/industries/${spotlight.slug}`}
-                                    className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+                                    className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
                                 >
                                     <div className="overflow-hidden">
                                         <Image
@@ -429,7 +429,7 @@ export default function IndustriesPage() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Feature workflows
                                 </h3>
@@ -454,7 +454,7 @@ export default function IndustriesPage() {
                                 </div>
                             </div>
 
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Compare platforms
                                 </h3>
@@ -464,7 +464,7 @@ export default function IndustriesPage() {
                                 <div className="space-y-3">
                                     <Link
                                         href="/compare/connecteam"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Connecteam</p>
@@ -476,7 +476,7 @@ export default function IndustriesPage() {
                                     </Link>
                                     <Link
                                         href="/compare/workyard"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Workyard</p>

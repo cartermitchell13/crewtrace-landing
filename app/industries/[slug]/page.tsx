@@ -262,8 +262,8 @@ export default async function IndustryPage({
                         </div>
                     </div>
 
-                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-[2rem] border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:rounded-[2.5rem] md:p-4">
-                        <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
+                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-md border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:p-4">
+                        <div className="overflow-hidden rounded-md border border-foreground/5 bg-white shadow-inner">
                             <Image
                                 src="/images/ct-hero-min (1).png"
                                 alt={`${industry.name} dashboard mockup`}
@@ -303,7 +303,7 @@ export default async function IndustryPage({
                             {industry.painPoints.map((point) => (
                                 <article
                                     key={point.title}
-                                    className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                    className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
                                     <h3 className="text-xl font-bold text-foreground mb-4">{point.title}</h3>
                                     <p className="text-base leading-relaxed text-foreground/70 font-medium">
@@ -340,9 +340,9 @@ export default async function IndustryPage({
                                 return (
                                     <article
                                         key={benefit.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50 transition-colors group-hover:bg-emerald-100">
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50 transition-colors group-hover:bg-emerald-100">
                                             <BenefitIcon size={26} />
                                         </div>
                                         <h3 className="text-2xl font-bold tracking-tight text-foreground mb-4">
@@ -382,9 +382,9 @@ export default async function IndustryPage({
                                 return (
                                     <article
                                         key={point.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
                                             <PointIcon size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold text-foreground mb-4">{point.title}</h3>
@@ -419,7 +419,7 @@ export default async function IndustryPage({
                             {industry.stats.map((stat) => (
                                 <article
                                     key={stat.label}
-                                    className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-center flex flex-col items-center justify-center"
+                                    className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-center flex flex-col items-center justify-center"
                                 >
                                     <p className="text-4xl font-extrabold text-primary mb-3">{stat.value}</p>
                                     <p className="text-sm font-bold uppercase tracking-widest text-foreground/50">
@@ -446,7 +446,7 @@ export default async function IndustryPage({
                     <div className="mx-auto max-w-6xl relative z-10">
                         <div className="grid gap-8 lg:grid-cols-2">
                             {/* Features */}
-                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                            <div className="surface-panel rounded-md border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
                                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Related feature paths
                                 </h2>
@@ -458,7 +458,7 @@ export default async function IndustryPage({
                                         <Link
                                             key={solution.slug}
                                             href={`/features/${solution.slug}`}
-                                            className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                            className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                         >
                                             <div>
                                                 <p className="font-bold text-foreground group-hover:text-primary transition-colors">
@@ -477,7 +477,7 @@ export default async function IndustryPage({
                             </div>
 
                             {/* Industries */}
-                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                            <div className="surface-panel rounded-md border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
                                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Related industries
                                 </h2>

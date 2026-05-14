@@ -194,8 +194,8 @@ export default async function FeatureDetailPage({
                         </div>
                     </div>
 
-                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-[2rem] border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:rounded-[2.5rem] md:p-4">
-                        <div className="overflow-hidden rounded-[1.5rem] border border-foreground/5 bg-white shadow-inner md:rounded-[2rem]">
+                    <div className="surface-panel relative mx-auto mt-16 max-w-6xl rounded-md border border-foreground/5 bg-white/50 p-2 shadow-2xl backdrop-blur-md md:mt-20 md:p-4">
+                        <div className="overflow-hidden rounded-md border border-foreground/5 bg-white shadow-inner">
                             <Image
                                 src={heroImageByFeatureSlug[solution.slug] ?? DEFAULT_HERO_IMAGE}
                                 alt={`${solution.name} dashboard mockup`}
@@ -233,8 +233,8 @@ export default async function FeatureDetailPage({
 
                         <div className="grid gap-8 lg:grid-cols-2">
                             {/* Challenges Card */}
-                            <div className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl">
-                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600 ring-1 ring-red-200/50">
+                            <div className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl">
+                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-md bg-red-50 text-red-600 ring-1 ring-red-200/50">
                                     <XCircle size={28} />
                                 </div>
                                 <h3 className="text-2xl font-bold tracking-tight mb-8">Common failure points</h3>
@@ -250,8 +250,8 @@ export default async function FeatureDetailPage({
                             </div>
 
                             {/* Solutions Card */}
-                            <div className="surface-panel group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
-                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50">
+                            <div className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-12 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
+                                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-md bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50">
                                     <CheckCircle2 size={28} />
                                 </div>
                                 <h3 className="text-2xl font-bold tracking-tight mb-8 text-emerald-600">What changes after rollout</h3>
@@ -294,9 +294,9 @@ export default async function FeatureDetailPage({
                                 return (
                                     <div
                                         key={outcome}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
+                                        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-md bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
                                             <Icon size={24} />
                                         </div>
                                         <p className="text-xl font-bold tracking-tight text-foreground leading-snug">{outcome}</p>
@@ -322,7 +322,7 @@ export default async function FeatureDetailPage({
                     <div className="mx-auto max-w-6xl relative z-10">
                         <div className="grid gap-8 lg:grid-cols-2">
                             {/* Industries */}
-                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                            <div className="surface-panel rounded-md border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
                                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Related industries
                                 </h2>
@@ -344,7 +344,7 @@ export default async function FeatureDetailPage({
                             </div>
 
                             {/* Adjacent Features */}
-                            <div className="surface-panel rounded-[2.5rem] border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
+                            <div className="surface-panel rounded-md border border-foreground/5 bg-white shadow-xl p-8 md:p-12">
                                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
                                     Adjacent workflows
                                 </h2>
@@ -356,7 +356,7 @@ export default async function FeatureDetailPage({
                                         <Link
                                             key={related.slug}
                                             href={`/features/${related.slug}`}
-                                            className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                            className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-gray-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                         >
                                             <div>
                                                 <p className="font-bold text-foreground group-hover:text-primary transition-colors">

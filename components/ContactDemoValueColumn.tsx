@@ -35,9 +35,9 @@ export default function ContactDemoValueColumn() {
                     {benefits.map((benefit) => (
                         <div
                             key={benefit.title}
-                            className="flex items-start gap-4 rounded-2xl border border-foreground/[0.06] bg-white p-5 transition-colors hover:border-primary/10"
+                            className="flex items-start gap-4 rounded-md border border-foreground/[0.06] bg-white p-5 transition-colors hover:border-primary/10"
                         >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10">
                                 <benefit.icon className="h-5 w-5 text-primary" />
                             </div>
                             <div>
@@ -53,7 +53,7 @@ export default function ContactDemoValueColumn() {
                 </div>
             </div>
 
-            <div className="rounded-2xl border border-foreground/[0.06] bg-white p-6">
+            <div className="rounded-md border border-foreground/[0.06] bg-white p-6">
                 <div className="mb-4 flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-500" />
                     <span className="text-sm font-bold text-foreground">

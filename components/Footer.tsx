@@ -2,15 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinkClass =
-    "text-sm text-white/40 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md";
+    "text-sm leading-6 text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md";
 
 const columnHeadingClass =
-    "text-xs font-bold uppercase tracking-widest text-white/20 mb-4";
+    "text-xs font-bold uppercase tracking-widest text-white/55 mb-4";
 
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="w-full bg-[#050315] rounded-t-2xl relative overflow-hidden md:rounded-t-3xl">
+            <div className="w-full bg-[#050315] rounded-t-3xl md:rounded-t-[2.75rem] relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
@@ -29,17 +29,17 @@ export default function Footer() {
                                 className="h-10 w-auto object-contain brightness-0 invert"
                             />
                         </Link>
-                        <p className="mt-6 text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium">
                             GPS-verified time tracking and payroll control<br className="hidden md:block" /> for construction professionals.
                         </p>
                     </div>
 
                     {/* Link columns */}
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 py-10 border-y border-white/5">
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 py-10 border-y border-white/10">
                         {/* Features */}
                         <div>
                             <h3 className={columnHeadingClass}>Features</h3>
-                            <ul className="space-y-2.5">
+                            <ul className="space-y-3">
                                 <li><Link href="/features" className={footerLinkClass}>All Features</Link></li>
                                 <li><Link href="/features/gps-time-tracking" className={footerLinkClass}>GPS Time Tracking</Link></li>
                                 <li><Link href="/features/geofencing-time-clock" className={footerLinkClass}>Geofencing Time Clock</Link></li>
@@ -51,7 +51,7 @@ export default function Footer() {
                         {/* Industries */}
                         <div>
                             <h3 className={columnHeadingClass}>Industries</h3>
-                            <ul className="space-y-2.5">
+                            <ul className="space-y-3">
                                 <li><Link href="/industries" className={footerLinkClass}>All Industries</Link></li>
                                 <li><Link href="/industries/construction" className={footerLinkClass}>Construction</Link></li>
                                 <li><Link href="/industries/roofing" className={footerLinkClass}>Roofing</Link></li>
@@ -67,7 +67,7 @@ export default function Footer() {
                         {/* Resources */}
                         <div>
                             <h3 className={columnHeadingClass}>Resources</h3>
-                            <ul className="space-y-2.5">
+                            <ul className="space-y-3">
                                 <li><Link href="/blog" className={footerLinkClass}>Blog</Link></li>
                                 <li><Link href="/guides" className={footerLinkClass}>Guides</Link></li>
                                 <li><Link href="/guides/construction-time-tracking-implementation" className={footerLinkClass}>Implementation Guide</Link></li>
@@ -80,7 +80,7 @@ export default function Footer() {
                         {/* Company */}
                         <div>
                             <h3 className={columnHeadingClass}>Company</h3>
-                            <ul className="space-y-2.5">
+                            <ul className="space-y-3">
                                 <li><Link href="/about" className={footerLinkClass}>About</Link></li>
                                 <li><Link href="/contact" className={footerLinkClass}>Get a Demo</Link></li>
                                 <li><Link href="/privacy" className={footerLinkClass}>Privacy</Link></li>
@@ -99,16 +99,16 @@ export default function Footer() {
                                 className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-white/5 transition-all group hover:bg-primary motion-safe:group-hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
                                 aria-label="Carter Mitchell on LinkedIn"
                             >
-                                <span className="text-white/40 group-hover:text-white text-xs font-bold">In</span>
+                                <span className="text-white/70 group-hover:text-white text-xs font-bold">In</span>
                             </Link>
                         </div>
 
-                        <div className="text-xs font-bold text-white/20 uppercase tracking-[0.2em]">
+                        <div className="text-center text-xs sm:text-sm font-semibold text-white/55 uppercase tracking-[0.15em] max-w-xl md:max-w-none leading-relaxed">
                             &copy; {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
                         </div>
 
-                        <div className="text-xs font-bold text-white/40 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/5">
-                            Status: <span className="text-green-500">Operational</span>
+                        <div className="text-xs font-semibold text-white/60 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                            Status: <span className="text-emerald-400">Operational</span>
                         </div>
                     </div>
                 </div>

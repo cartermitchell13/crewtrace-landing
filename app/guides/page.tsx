@@ -129,7 +129,7 @@ export default function GuidesPage() {
                         {guides.map((guide) => (
                             <article
                                 key={guide.slug}
-                                className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                             >
                                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/80">
                                     <span>{guide.category}</span>
@@ -142,7 +142,7 @@ export default function GuidesPage() {
                                 <p className="mt-3 text-sm leading-relaxed text-foreground/60 font-medium">
                                     {guide.summary}
                                 </p>
-                                <div className="mt-6 rounded-xl border border-foreground/5 bg-slate-50/50 p-4">
+                                <div className="mt-6 rounded-md border border-foreground/5 bg-slate-50/50 p-4">
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-2">What you will learn</p>
                                     <ul className="space-y-1.5">
                                         {guide.sections.slice(0, 4).map((section) => (
@@ -187,7 +187,7 @@ export default function GuidesPage() {
                                 return (
                                     <div
                                         key={item.title}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="overflow-hidden">
                                             <Image
@@ -199,7 +199,7 @@ export default function GuidesPage() {
                                             />
                                         </div>
                                         <div className="p-8">
-                                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
                                                 <Icon size={22} />
                                             </div>
                                             <h3 className="text-xl font-bold tracking-tight text-foreground mb-3">
@@ -237,9 +237,9 @@ export default function GuidesPage() {
                                 return (
                                     <div
                                         key={persona.title}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col"
+                                        className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col"
                                     >
-                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 ring-1 ring-amber-200/50 transition-colors group-hover:bg-amber-100">
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-amber-50 text-amber-600 ring-1 ring-amber-200/50 transition-colors group-hover:bg-amber-100">
                                             <Icon size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold tracking-tight text-foreground mb-4">
@@ -249,7 +249,7 @@ export default function GuidesPage() {
                                             {persona.scenario}
                                         </p>
 
-                                        <div className="mt-6 rounded-xl border border-foreground/5 bg-slate-50/50 p-4 text-center">
+                                        <div className="mt-6 rounded-md border border-foreground/5 bg-slate-50/50 p-4 text-center">
                                             <p className="text-3xl font-extrabold text-primary">{persona.stat}</p>
                                             <p className="mt-1 text-xs font-bold uppercase tracking-widest text-foreground/45">
                                                 {persona.statLabel}
@@ -320,9 +320,9 @@ export default function GuidesPage() {
                                 return (
                                     <div
                                         key={item.stat}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-center"
+                                        className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-center"
                                     >
-                                        <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-500 ring-1 ring-red-200/50">
+                                        <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-md bg-red-50 text-red-500 ring-1 ring-red-200/50">
                                             <Icon size={24} />
                                         </div>
                                         <p className="text-4xl font-extrabold text-foreground mb-2">{item.stat}</p>

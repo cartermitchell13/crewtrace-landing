@@ -120,7 +120,7 @@ export default function CaseStudiesPage() {
 
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6 md:rounded-[3.5rem]">
+                        <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
                             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
 
                             <div className="relative z-10 py-16 sm:py-20 md:py-24">
@@ -136,9 +136,9 @@ export default function CaseStudiesPage() {
                                             return (
                                                 <div
                                                     key={stat.label}
-                                                    className="rounded-[2rem] border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg text-center"
+                                                    className="rounded-md border border-white/20 bg-white/90 backdrop-blur-sm p-8 shadow-lg text-center"
                                                 >
-                                                    <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${colorMap[stat.color]}`}>
+                                                    <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md ${colorMap[stat.color]}`}>
                                                         <Icon size={24} strokeWidth={2.5} />
                                                     </div>
                                                     <p className="text-4xl font-extrabold text-foreground mb-1">{stat.value}</p>
@@ -163,7 +163,7 @@ export default function CaseStudiesPage() {
                         {studies.map((study) => (
                             <article
                                 key={study.slug}
-                                className="group overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                className="group overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                             >
                                 <div className="relative aspect-[16/9] w-full bg-foreground/5">
                                     {study.heroImage ? (
@@ -237,7 +237,7 @@ export default function CaseStudiesPage() {
                                             className="group relative flex flex-col items-center text-center"
                                         >
                                             <div className="relative mb-6">
-                                                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-foreground/5 bg-white shadow-md ring-1 ring-primary/10 transition-all group-hover:shadow-lg group-hover:ring-primary/20">
+                                                <div className="flex h-16 w-16 items-center justify-center rounded-md border border-foreground/5 bg-white shadow-md ring-1 ring-primary/10 transition-all group-hover:shadow-lg group-hover:ring-primary/20">
                                                     <Icon size={24} className="text-primary" />
                                                 </div>
                                                 <div className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white text-xs font-bold shadow-md">
@@ -260,7 +260,7 @@ export default function CaseStudiesPage() {
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.5rem] bg-primary p-10 md:p-16">
+                        <div className="relative overflow-hidden rounded-md bg-primary p-10 md:p-16">
                             <div
                                 aria-hidden
                                 className="pointer-events-none absolute inset-0 bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat"
@@ -296,7 +296,7 @@ export default function CaseStudiesPage() {
                                 </div>
 
                                 <div className="relative flex flex-col gap-4">
-                                    <div className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm text-center">
+                                    <div className="rounded-md border border-white/15 bg-white/5 p-6 backdrop-blur-sm text-center">
                                         <div className="flex items-center justify-center gap-4 mb-4">
                                             <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-white/20">
                                                 <Image
@@ -341,7 +341,7 @@ export default function CaseStudiesPage() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Implementation guides
                                 </h3>
@@ -351,7 +351,7 @@ export default function CaseStudiesPage() {
                                 <div className="space-y-3">
                                     <Link
                                         href="/guides/construction-time-tracking-implementation"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Complete Implementation Guide</p>
@@ -363,7 +363,7 @@ export default function CaseStudiesPage() {
                                     </Link>
                                     <Link
                                         href="/guides/dol-audit-ready-time-records"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">DOL Audit-Ready Time Records</p>
@@ -376,7 +376,7 @@ export default function CaseStudiesPage() {
                                 </div>
                             </div>
 
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Compare with competitors
                                 </h3>
@@ -386,7 +386,7 @@ export default function CaseStudiesPage() {
                                 <div className="space-y-3">
                                     <Link
                                         href="/compare/connecteam"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Connecteam</p>
@@ -398,7 +398,7 @@ export default function CaseStudiesPage() {
                                     </Link>
                                     <Link
                                         href="/compare/workyard"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Workyard</p>

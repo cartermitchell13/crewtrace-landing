@@ -158,9 +158,9 @@ export default function AboutPage() {
 
                             {/* Photo / visual side */}
                             <div className="lg:sticky lg:top-32">
-                                <div className="relative overflow-hidden rounded-[2rem] border border-foreground/10 bg-[#FBFBFE] p-8 shadow-[0_18px_55px_-28px_rgba(47,39,206,0.2)]">
+                                <div className="relative overflow-hidden rounded-md border border-foreground/10 bg-[#FBFBFE] p-8 shadow-[0_18px_55px_-28px_rgba(47,39,206,0.2)]">
                                     {/* Founder Photo */}
-                                    <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center overflow-hidden rounded-[1.5rem] border border-foreground/10">
+                                    <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center overflow-hidden rounded-md border border-foreground/10">
                                         <Image
                                             src="/images/headshot.jpg"
                                             alt="Carter Mitchell, Founder of Crewtrace"
@@ -171,7 +171,7 @@ export default function AboutPage() {
                                     </div>
 
                                     {/* Pull quote */}
-                                    <div className="mt-6 rounded-2xl border border-primary/15 bg-primary/[0.04] p-5">
+                                    <div className="mt-6 rounded-md border border-primary/15 bg-primary/[0.04] p-5">
                                         <p className="text-sm leading-relaxed text-foreground/70 italic">
                                             &ldquo;The business owner had a gut feeling something was off — but no
                                             clean way to verify what was actually happening on site.&rdquo;
@@ -180,13 +180,13 @@ export default function AboutPage() {
 
                                     {/* Stats row */}
                                     <div className="mt-5 grid grid-cols-2 gap-3">
-                                        <div className="rounded-xl border border-foreground/10 bg-white p-4 text-center">
+                                        <div className="rounded-md border border-foreground/10 bg-white p-4 text-center">
                                             <div className="text-2xl font-bold text-primary">GPS</div>
                                             <div className="mt-1 text-[10px] font-bold uppercase tracking-widest text-foreground/50">
                                                 Verified Clock-ins
                                             </div>
                                         </div>
-                                        <div className="rounded-xl border border-foreground/10 bg-white p-4 text-center">
+                                        <div className="rounded-md border border-foreground/10 bg-white p-4 text-center">
                                             <div className="text-2xl font-bold text-primary">$0</div>
                                             <div className="mt-1 text-[10px] font-bold uppercase tracking-widest text-foreground/50">
                                                 Payroll Guesswork
@@ -202,7 +202,7 @@ export default function AboutPage() {
                 {/* ── 3. MISSION ──────────────────────────────────────── */}
                 <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
-                        <div className="rounded-[2rem] border border-foreground/10 bg-white p-10 md:p-14 shadow-[0_18px_55px_-28px_rgba(47,39,206,0.18)]">
+                        <div className="rounded-md border border-foreground/10 bg-white p-10 md:p-14 shadow-[0_18px_55px_-28px_rgba(47,39,206,0.18)]">
                             <div className="mx-auto max-w-3xl text-center space-y-6">
                                 <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                                     Our Mission
@@ -257,11 +257,11 @@ export default function AboutPage() {
                                 return (
                                     <div
                                         key={item.title}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-[#FBFBFE] p-8 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-0.5"
+                                        className="group relative overflow-hidden rounded-md border border-foreground/5 bg-[#FBFBFE] p-8 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-0.5"
                                     >
                                         <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/[0.03] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="relative z-10 space-y-4">
-                                            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                                            <div className="flex h-14 w-14 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                                                 <Icon size={26} />
                                             </div>
                                             <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
@@ -296,9 +296,9 @@ export default function AboutPage() {
                                 return (
                                     <article
                                         key={value.title}
-                                        className="group relative rounded-2xl border border-foreground/10 bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-xl"
+                                        className="group relative rounded-md border border-foreground/10 bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-xl"
                                     >
-                                        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
+                                        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
                                             <Icon size={22} />
                                         </div>
                                         <h3 className="text-base font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">
@@ -320,7 +320,7 @@ export default function AboutPage() {
                     <div className="absolute bottom-0 left-0 h-[480px] w-[480px] -translate-x-1/3 translate-y-1/3 rounded-full bg-primary/[0.05] blur-3xl" />
 
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.4rem] border border-foreground/10 bg-white p-8 shadow-[0_24px_64px_-28px_rgba(47,39,206,0.45)] md:p-12 lg:p-16">
+                        <div className="relative overflow-hidden rounded-md border border-foreground/10 bg-white p-8 shadow-[0_24px_64px_-28px_rgba(47,39,206,0.45)] md:p-12 lg:p-16">
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(47,39,206,0.07)_0%,transparent_55%)]" />
 
                             <div className="relative z-10 grid gap-9 lg:grid-cols-[1.35fr_0.9fr] lg:items-center">
@@ -337,7 +337,7 @@ export default function AboutPage() {
                                         business could be recovering.
                                     </p>
 
-                                    <div className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-5">
+                                    <div className="rounded-md border border-primary/15 bg-primary/[0.04] p-5">
                                         <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
                                             <ShieldCheck size={14} />
                                             15-minute audit call
@@ -349,7 +349,7 @@ export default function AboutPage() {
                                     </div>
                                 </div>
 
-                                <div className="rounded-2xl border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6 space-y-3">
+                                <div className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6 space-y-3">
                                     <Link
                                         href="/contact"
                                         className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-4 text-sm font-bold text-white shadow-button transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"

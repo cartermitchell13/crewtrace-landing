@@ -181,7 +181,7 @@ export default function CompareHubPage() {
                         {sortedCompetitors.map((competitor) => (
                             <article
                                 key={competitor.slug}
-                                className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                             >
                                 <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                                     {competitor.primaryKeyword}
@@ -193,7 +193,7 @@ export default function CompareHubPage() {
                                     {competitor.pageSummary}
                                 </p>
 
-                                <div className="mt-6 rounded-xl border border-foreground/5 bg-slate-50/50 p-4">
+                                <div className="mt-6 rounded-md border border-foreground/5 bg-slate-50/50 p-4">
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-2">Comparison sections</p>
                                     <ul className="space-y-1.5">
                                         {competitor.comparisonSections.map((section) => (
@@ -247,9 +247,9 @@ export default function CompareHubPage() {
                                     return (
                                         <div
                                             key={step.title}
-                                            className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                            className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                         >
-                                            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
+                                            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
                                                 <Icon size={24} />
                                             </div>
                                             <h3 className="text-xl font-bold tracking-tight text-foreground mb-4">
@@ -282,7 +282,7 @@ export default function CompareHubPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-xl">
+                        <div className="overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl">
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <thead>
@@ -331,7 +331,7 @@ export default function CompareHubPage() {
                             </div>
                         </div>
 
-                        <div className="mt-8 overflow-hidden rounded-2xl border border-foreground/5 bg-white">
+                        <div className="mt-8 overflow-hidden rounded-md border border-foreground/5 bg-white">
                             <Image
                                 src="/images/hub/compare-product-screens.svg"
                                 alt="Side-by-side platform comparison screenshots"
@@ -364,9 +364,9 @@ export default function CompareHubPage() {
                                 return (
                                     <div
                                         key={item.question}
-                                        className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 ring-1 ring-amber-200/50 transition-colors group-hover:bg-amber-100">
+                                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-amber-50 text-amber-600 ring-1 ring-amber-200/50 transition-colors group-hover:bg-amber-100">
                                             <Icon size={24} />
                                         </div>
                                         <h3 className="text-lg font-bold tracking-tight text-foreground mb-3">
@@ -381,7 +381,7 @@ export default function CompareHubPage() {
                             })}
                         </div>
 
-                        <div className="mt-8 overflow-hidden rounded-2xl border border-foreground/5">
+                        <div className="mt-8 overflow-hidden rounded-md border border-foreground/5">
                             <Image
                                 src="/images/hub/compare-audit-context.svg"
                                 alt="DOL audit evaluation context for construction time tracking"
@@ -409,7 +409,7 @@ export default function CompareHubPage() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Implementation guides
                                 </h3>
@@ -419,7 +419,7 @@ export default function CompareHubPage() {
                                 <div className="space-y-3">
                                     <Link
                                         href="/guides/construction-time-tracking-implementation"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">Complete Implementation Guide</p>
@@ -431,7 +431,7 @@ export default function CompareHubPage() {
                                     </Link>
                                     <Link
                                         href="/guides/dol-audit-ready-time-records"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">DOL Audit-Ready Time Records</p>
@@ -444,7 +444,7 @@ export default function CompareHubPage() {
                                 </div>
                             </div>
 
-                            <div className="rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
+                            <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
                                     Case study evidence
                                 </h3>
@@ -454,7 +454,7 @@ export default function CompareHubPage() {
                                 <div className="space-y-3">
                                     <Link
                                         href="/case-studies/sw-waterproofing-payroll-recovery"
-                                        className="group flex items-center justify-between gap-4 rounded-2xl border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
                                     >
                                         <div>
                                             <p className="font-bold text-foreground group-hover:text-primary transition-colors">S&amp;W Waterproofing</p>

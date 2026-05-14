@@ -306,7 +306,7 @@ const OptionButton = ({ label, description, selected, onClick }: OptionButtonPro
     <button
         type="button"
         onClick={onClick}
-        className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-200 group ${selected
+        className={`w-full text-left p-4 rounded-md border-2 transition-all duration-200 group ${selected
             ? "border-primary bg-primary/5 shadow-sm"
             : "border-foreground/8 bg-white hover:border-foreground/15 hover:bg-foreground/[0.02]"
             }`}
@@ -449,7 +449,7 @@ export default function ComplianceAuditTool() {
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-3xl mx-auto relative z-10">
-                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-14 shadow-sm ring-1 ring-foreground/5">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-14 shadow-sm ring-1 ring-foreground/5">
                         <div className="space-y-8">
                             {/* Badge */}
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-600 text-[10px] font-bold uppercase tracking-widest">
@@ -475,8 +475,8 @@ export default function ComplianceAuditTool() {
                                     { icon: AlertTriangle, label: "Risk Findings", desc: "Specific violations you may be committing" },
                                     { icon: Zap, label: "Fix Roadmap", desc: "Exactly what to do to get compliant" },
                                 ].map(({ icon: Icon, label, desc }) => (
-                                    <div key={label} className="p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5">
-                                        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-3">
+                                    <div key={label} className="p-4 rounded-md bg-foreground/[0.02] border border-foreground/5">
+                                        <div className="w-9 h-9 rounded-md bg-primary/10 flex items-center justify-center text-primary mb-3">
                                             <Icon size={16} />
                                         </div>
                                         <div className="text-sm font-bold text-foreground">{label}</div>
@@ -529,7 +529,7 @@ export default function ComplianceAuditTool() {
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-2xl mx-auto relative z-10">
-                    <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
 
                         {/* Progress */}
                         <div className="mb-10">
@@ -551,7 +551,7 @@ export default function ComplianceAuditTool() {
 
                         {/* Category */}
                         <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                            <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                                 <CategoryIcon size={15} />
                             </div>
                             <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">
@@ -616,9 +616,9 @@ export default function ComplianceAuditTool() {
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-xl mx-auto relative z-10">
-                    <div ref={analyzerRef} className="bg-white rounded-[2.5rem] border border-foreground/5 p-10 md:p-14 shadow-sm ring-1 ring-foreground/5">
+                    <div ref={analyzerRef} className="bg-white rounded-md border border-foreground/5 p-10 md:p-14 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
-                            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <div className="w-16 h-16 rounded-md bg-primary/10 flex items-center justify-center mb-6">
                                 <Loader2 size={28} className="text-primary animate-spin" />
                             </div>
                             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2">
@@ -676,7 +676,7 @@ export default function ComplianceAuditTool() {
             <div ref={resultsRef} className="max-w-5xl mx-auto relative z-10 space-y-6">
 
                 {/* Report Header */}
-                <div className="bg-white rounded-[2.5rem] border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
+                <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-6">
                         <div className="space-y-3">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
@@ -704,7 +704,7 @@ export default function ComplianceAuditTool() {
                 {/* Score + Risk Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Compliance Score */}
-                    <div className="bg-white rounded-[2rem] border border-foreground/5 p-8 shadow-sm flex flex-col items-center justify-center text-center">
+                    <div className="bg-white rounded-md border border-foreground/5 p-8 shadow-sm flex flex-col items-center justify-center text-center">
                         <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-4">Compliance Score</div>
                         <div className="relative w-32 h-32 mb-4">
                             <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -734,7 +734,7 @@ export default function ComplianceAuditTool() {
                     </div>
 
                     {/* Verdict */}
-                    <div className="md:col-span-2 rounded-[2rem] border-2 p-8 md:p-10 relative overflow-hidden"
+                    <div className="md:col-span-2 rounded-md border-2 p-8 md:p-10 relative overflow-hidden"
                         style={{ borderColor: `${scoreColor}30`, backgroundColor: `${scoreColor}05` }}>
                         <div className="absolute top-0 right-0 p-6 opacity-10">
                             <ScoreIcon size={120} strokeWidth={1} style={{ color: scoreColor }} />
@@ -766,8 +766,8 @@ export default function ComplianceAuditTool() {
 
                 {/* Fine Exposure */}
                 {(results.riskLevel === "High" || results.riskLevel === "Critical" || results.riskLevel === "Moderate") && (
-                    <div className="bg-white rounded-[2rem] border-2 border-red-100 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
-                        <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center shrink-0">
+                    <div className="bg-white rounded-md border-2 border-red-100 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div className="w-12 h-12 rounded-md bg-red-50 flex items-center justify-center shrink-0">
                             <AlertTriangle size={22} className="text-red-500" />
                         </div>
                         <div className="flex-1">
@@ -784,7 +784,7 @@ export default function ComplianceAuditTool() {
                 )}
 
                 {/* Compliance Area Breakdown */}
-                <div className="bg-white rounded-[2rem] border border-foreground/5 p-8 md:p-10 shadow-sm space-y-6">
+                <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-10 shadow-sm space-y-6">
                     <div>
                         <h3 className="text-xl font-bold tracking-tight text-foreground">Findings by Compliance Area</h3>
                         <p className="text-sm text-foreground/40 font-medium mt-1">Each area reviewed against federal DOL standards</p>
@@ -794,7 +794,7 @@ export default function ComplianceAuditTool() {
                         {results.areas.map((area) => {
                             const AreaIcon = area.icon;
                             return (
-                                <div key={area.name} className="rounded-2xl border border-foreground/5 overflow-hidden">
+                                <div key={area.name} className="rounded-md border border-foreground/5 overflow-hidden">
                                     {/* Area Header */}
                                     <div className={`flex items-center justify-between p-5 ${area.status === "non-compliant"
                                         ? "bg-red-50/50"
@@ -803,7 +803,7 @@ export default function ComplianceAuditTool() {
                                             : "bg-emerald-50/30"
                                         }`}>
                                         <div className="flex items-center gap-3">
-                                            <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${area.status === "non-compliant"
+                                            <div className={`w-9 h-9 rounded-md flex items-center justify-center ${area.status === "non-compliant"
                                                 ? "bg-red-100 text-red-600"
                                                 : area.status === "at-risk"
                                                     ? "bg-amber-100 text-amber-600"
@@ -840,7 +840,7 @@ export default function ComplianceAuditTool() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="bg-primary rounded-[2rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-primary/20">
+                <div className="bg-primary rounded-md p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-primary/20">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
                     <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8">
                         <div className="flex-1 space-y-4">

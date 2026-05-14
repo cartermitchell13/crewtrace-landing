@@ -83,9 +83,9 @@ export default function FeatureComparison({
                 <div className="relative">
                     {/* Column headers */}
                     <div className="grid grid-cols-2 gap-3 md:gap-6 mb-3 md:mb-4">
-                        <div className="rounded-2xl border border-rose-200/60 bg-gradient-to-br from-rose-50 to-white px-5 py-4 md:px-7 md:py-5">
+                        <div className="rounded-md border border-rose-200/60 bg-gradient-to-br from-rose-50 to-white px-5 py-4 md:px-7 md:py-5">
                             <div className="flex items-center gap-2.5">
-                                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-rose-100 text-rose-600 ring-1 ring-rose-200/80">
+                                <span className="flex h-8 w-8 items-center justify-center rounded-md bg-rose-100 text-rose-600 ring-1 ring-rose-200/80">
                                     <LeftIcon size={15} />
                                 </span>
                                 <div>
@@ -98,9 +98,9 @@ export default function FeatureComparison({
                                 </div>
                             </div>
                         </div>
-                        <div className="relative rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.07] via-white to-emerald-50/40 px-5 py-4 md:px-7 md:py-5 shadow-[0_8px_30px_-12px_rgba(47,39,206,0.25)]">
+                        <div className="relative rounded-md border border-primary/20 bg-gradient-to-br from-primary/[0.07] via-white to-emerald-50/40 px-5 py-4 md:px-7 md:py-5 shadow-[0_8px_30px_-12px_rgba(47,39,206,0.25)]">
                             <div className="flex items-center gap-2.5">
-                                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20">
+                                <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/20">
                                     <RightIcon size={15} />
                                 </span>
                                 <div>
@@ -121,7 +121,7 @@ export default function FeatureComparison({
                     </div>
 
                     {/* Rows */}
-                    <div className="surface-panel overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-xl">
+                    <div className="surface-panel overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl">
                         {rows.map((row, i) => {
                             const Icon = row.icon;
                             return (
@@ -204,8 +204,8 @@ export default function FeatureComparison({
                     {(leftSummary || rightSummary) && (
                         <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6">
                             {leftSummary && LeftSummaryIcon && (
-                                <div className="flex items-center gap-3 rounded-2xl border border-rose-200/50 bg-rose-50/40 px-5 py-4 text-sm">
-                                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-white text-rose-500 ring-1 ring-rose-200">
+                                <div className="flex items-center gap-3 rounded-md border border-rose-200/50 bg-rose-50/40 px-5 py-4 text-sm">
+                                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-white text-rose-500 ring-1 ring-rose-200">
                                         <LeftSummaryIcon size={16} />
                                     </span>
                                     <p className="font-semibold text-foreground/70">
@@ -214,8 +214,8 @@ export default function FeatureComparison({
                                 </div>
                             )}
                             {rightSummary && RightSummaryIcon && (
-                                <div className="flex items-center gap-3 rounded-2xl border border-primary/15 bg-gradient-to-r from-primary/[0.06] to-emerald-50/40 px-5 py-4 text-sm shadow-[0_8px_30px_-12px_rgba(47,39,206,0.25)]">
-                                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-white text-primary ring-1 ring-primary/20">
+                                <div className="flex items-center gap-3 rounded-md border border-primary/15 bg-gradient-to-r from-primary/[0.06] to-emerald-50/40 px-5 py-4 text-sm shadow-[0_8px_30px_-12px_rgba(47,39,206,0.25)]">
+                                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-white text-primary ring-1 ring-primary/20">
                                         <RightSummaryIcon size={16} />
                                     </span>
                                     <p className="font-bold text-foreground">

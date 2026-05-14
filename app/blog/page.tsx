@@ -96,7 +96,7 @@ export default async function BlogPage() {
                                         <Link
                                             key={post.slug}
                                             href={`/blog/${post.slug}`}
-                                            className="group overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                            className="group overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                         >
                                             <div className="relative aspect-video overflow-hidden">
                                                 {post.coverImage ? (
@@ -156,7 +156,7 @@ export default async function BlogPage() {
                                         return (
                                             <div
                                                 key={topic.title}
-                                                className="group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                                className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                             >
                                                 <div className="overflow-hidden">
                                                     <Image
@@ -168,7 +168,7 @@ export default async function BlogPage() {
                                                     />
                                                 </div>
                                                 <div className="p-8">
-                                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
                                                         <Icon size={22} />
                                                     </div>
                                                     <h3 className="text-xl font-bold tracking-tight text-foreground mb-3">
@@ -198,14 +198,14 @@ export default async function BlogPage() {
                                 </div>
 
                                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                                    <div className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+                                    <div className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
                                         <div className="mb-4">
                                             <Image
                                                 src="/images/guides/geofence-jobsite.png"
                                                 alt="Geofence jobsite implementation guide preview"
                                                 width={720}
                                                 height={400}
-                                                className="h-48 w-full rounded-2xl object-cover"
+                                                className="h-48 w-full rounded-md object-cover"
                                             />
                                         </div>
                                         <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-primary mb-4">
@@ -227,14 +227,14 @@ export default async function BlogPage() {
                                         </Link>
                                     </div>
 
-                                    <div className="group relative overflow-hidden rounded-[2.5rem] border border-foreground/5 bg-white p-8 md:p-10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+                                    <div className="group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
                                         <div className="mb-4">
                                             <Image
                                                 src="/images/case-studies/sw-waterproofing-hero.svg"
                                                 alt="S&W Waterproofing case study hero"
                                                 width={720}
                                                 height={400}
-                                                className="h-48 w-full rounded-2xl object-cover"
+                                                className="h-48 w-full rounded-md object-cover"
                                             />
                                         </div>
                                         <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-600 mb-4">

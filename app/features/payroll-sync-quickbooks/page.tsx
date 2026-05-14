@@ -373,7 +373,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                             alt="Crewtrace sync console pushing a pay period of approved hours into QuickBooks with mapped employees, jobs, and pay items"
                             width={1920}
                             height={1080}
-                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2.5rem] shadow-xl"
+                            className="h-auto w-full rounded-md shadow-xl"
                             priority
                         />
                     </div>
@@ -406,10 +406,10 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 return (
                                     <article
                                         key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${toneClasses[pain.tone]}`}
+                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
                                         >
                                             <Icon size={22} />
                                         </div>
@@ -429,8 +429,8 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                 {/* BEFORE / AFTER VISUAL */}
                 <section className="relative overflow-hidden px-6 pb-24 md:pb-32">
                     <div className="mx-auto max-w-7xl">
-                        <div className="relative grid gap-6 rounded-[2.5rem] border border-foreground/5 bg-gradient-to-br from-white to-slate-50/80 p-6 shadow-lg md:grid-cols-2 md:p-10">
-                            <div className="relative overflow-hidden rounded-[1.75rem] border border-rose-200/40 bg-rose-50/40 p-6">
+                        <div className="relative grid gap-6 rounded-md border border-foreground/5 bg-gradient-to-br from-white to-slate-50/80 p-6 shadow-lg md:grid-cols-2 md:p-10">
+                            <div className="relative overflow-hidden rounded-md border border-rose-200/40 bg-rose-50/40 p-6">
                                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600">
                                     <XCircle size={14} />
                                     Before — CSV chaos
@@ -440,7 +440,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                     alt="A messy spreadsheet of approved hours being copy-pasted into QuickBooks"
                                     width={1200}
                                     height={800}
-                                    className="mt-5 h-auto w-full rounded-[1.25rem] border border-rose-200/40 shadow-md"
+                                    className="mt-5 h-auto w-full rounded-md border border-rose-200/40 shadow-md"
                                 />
                                 <ul className="mt-5 space-y-2 text-sm font-semibold text-foreground/70">
                                     <li className="flex gap-2"><XCircle size={16} className="mt-0.5 flex-shrink-0 text-rose-500" /> Hours retyped from approvals into QB</li>
@@ -449,7 +449,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 </ul>
                             </div>
 
-                            <div className="relative overflow-hidden rounded-[1.75rem] border border-emerald-200/40 bg-emerald-50/40 p-6">
+                            <div className="relative overflow-hidden rounded-md border border-emerald-200/40 bg-emerald-50/40 p-6">
                                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
                                     <Sparkles size={14} />
                                     After — One-click sync
@@ -459,7 +459,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                     alt="Crewtrace sync console showing approved hours being pushed to QuickBooks in a single click"
                                     width={1200}
                                     height={800}
-                                    className="mt-5 h-auto w-full rounded-[1.25rem] border border-emerald-200/40 shadow-md"
+                                    className="mt-5 h-auto w-full rounded-md border border-emerald-200/40 shadow-md"
                                 />
                                 <ul className="mt-5 space-y-2 text-sm font-semibold text-foreground/80">
                                     <li className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" /> Approved hours sync straight to QuickBooks</li>
@@ -500,7 +500,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                     >
                                         <div>
                                             <div className="flex items-center gap-3">
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                     <Icon size={20} />
                                                 </span>
                                                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary/80">
@@ -528,7 +528,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                             alt={s.image.alt}
                                             width={1600}
                                             height={1100}
-                                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                            className="h-auto w-full rounded-md shadow-xl"
                                         />
                                     </div>
                                 );
@@ -564,10 +564,10 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 return (
                                     <div
                                         key={tile.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div
-                                            className={`flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${accentClasses[tile.accent]}`}
+                                            className={`flex h-12 w-12 items-center justify-center rounded-md ring-1 ${accentClasses[tile.accent]}`}
                                         >
                                             <Icon size={22} />
                                         </div>
@@ -588,7 +588,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 alt="Diagram mapping Crewtrace employees to QuickBooks employees and Crewtrace jobs to QuickBooks customers"
                                 width={2400}
                                 height={1100}
-                                className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                className="h-auto w-full rounded-md shadow-xl"
                             />
                         </div>
                     </div>
@@ -613,9 +613,9 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 return (
                                     <div
                                         key={cap.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[1.75rem] border border-foreground/5 bg-white p-6 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-6 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                             <Icon size={20} />
                                         </div>
                                         <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground">
@@ -651,7 +651,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 alt="End-to-end flow: Crewtrace approvals to pre-flight to QuickBooks sync to job-cost reports"
                                 width={2400}
                                 height={1350}
-                                className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                className="h-auto w-full rounded-md shadow-xl"
                             />
                         </div>
                     </div>
@@ -690,7 +690,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                 alt="Supported QuickBooks editions: Online, Desktop Pro, Premier, Enterprise, and Contractor"
                                 width={1400}
                                 height={1100}
-                                className="mx-auto h-auto w-full max-w-xl rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                className="mx-auto h-auto w-full max-w-xl rounded-md shadow-xl"
                             />
                         </div>
                     </div>
@@ -746,10 +746,10 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                                     <Link
                                         key={u.slug}
                                         href={`/industries/${u.slug}`}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                 <Icon size={20} />
                                             </span>
                                             <span className="text-xs font-bold uppercase tracking-[0.18em] text-foreground/40 group-hover:text-primary transition-colors">
@@ -790,7 +790,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                             {stats.map((s) => (
                                 <div
                                     key={s.label}
-                                    className="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
+                                    className="rounded-md border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
                                 >
                                     <p className="text-4xl font-extrabold tracking-tight md:text-5xl">{s.value}</p>
                                     <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/75 leading-snug">

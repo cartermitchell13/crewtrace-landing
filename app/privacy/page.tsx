@@ -149,7 +149,7 @@ export default function PrivacyPage() {
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 If you have any questions about this Privacy Policy or our data practices, please contact us:
                             </p>
-                            <div className="bg-white border border-foreground/5 rounded-2xl p-6 space-y-3">
+                            <div className="bg-white border border-foreground/5 rounded-md p-6 space-y-3">
                                 <p className="text-foreground/70 font-medium">
                                     <strong className="text-foreground">Email:</strong>{" "}
                                     <a href="mailto:carter@getCrewtrace.com" className="text-primary hover:underline">carter@getCrewtrace.com</a>

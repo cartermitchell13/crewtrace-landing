@@ -219,7 +219,7 @@ export default function DemoRequestForm({
     }
 
     const inputBase =
-        "w-full rounded-xl border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10 focus:shadow-input";
+        "w-full rounded-md border border-foreground/10 bg-white px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/40 outline-none transition-all focus:border-primary/40 focus:ring-2 focus:ring-primary/10 focus:shadow-input";
     const labelBase = "block text-sm font-semibold text-foreground/70 mb-1.5";
 
     return (
@@ -361,7 +361,7 @@ export default function DemoRequestForm({
 
             {/* Error */}
             {status === "error" && errorMessage && (
-                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
                     {errorMessage}
                 </div>
             )}

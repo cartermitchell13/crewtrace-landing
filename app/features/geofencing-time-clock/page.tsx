@@ -454,7 +454,7 @@ export default function GeofencingTimeClockFeaturePage() {
                             alt="Crewtrace geofencing dashboard showing multiple job sites with active boundaries and live clock-in pins"
                             width={1920}
                             height={1080}
-                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2.5rem] shadow-xl"
+                            className="h-auto w-full rounded-md shadow-xl"
                             priority
                         />
                     </div>
@@ -487,10 +487,10 @@ export default function GeofencingTimeClockFeaturePage() {
                                 return (
                                     <article
                                         key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${toneClasses[pain.tone]}`}
+                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
                                         >
                                             <Icon size={22} />
                                         </div>
@@ -526,7 +526,7 @@ export default function GeofencingTimeClockFeaturePage() {
                         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-center">
                             {/* Annotated diagram */}
                             <div className="relative">
-                                <div className="relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-xl">
+                                <div className="relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl">
                                     <Image
                                         src={IMG.anatomy}
                                         alt="Anatomy of a Crewtrace geofence: boundary, site assignment, and clock-in pin annotated on a satellite view"
@@ -544,10 +544,10 @@ export default function GeofencingTimeClockFeaturePage() {
                                     return (
                                         <li
                                             key={c.number}
-                                            className="group relative flex gap-5 rounded-2xl border border-foreground/5 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                                            className="group relative flex gap-5 rounded-md border border-foreground/5 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                                         >
                                             <div className="flex flex-col items-center">
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-[11px] font-extrabold tracking-widest text-primary ring-1 ring-primary/20">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-[11px] font-extrabold tracking-widest text-primary ring-1 ring-primary/20">
                                                     {c.number}
                                                 </span>
                                                 <span className="mt-2 h-full w-px flex-1 bg-gradient-to-b from-primary/20 to-transparent group-last:hidden" />
@@ -595,7 +595,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                 return (
                                     <article
                                         key={state.label}
-                                        className={`surface-panel group relative overflow-hidden rounded-[2rem] border bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${a.border}`}
+                                        className={`surface-panel group relative overflow-hidden rounded-md border bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${a.border}`}
                                     >
                                         {/* top colored rail */}
                                         <div className={`absolute inset-x-0 top-0 h-1.5 ${a.dot}`} />
@@ -613,7 +613,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                             <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-foreground">
                                                 {state.label}
                                             </h3>
-                                            <div className="mt-6 overflow-hidden rounded-2xl border border-foreground/5 bg-white">
+                                            <div className="mt-6 overflow-hidden rounded-md border border-foreground/5 bg-white">
                                                 <Image
                                                     src={state.image}
                                                     alt={state.alt}
@@ -660,7 +660,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                     >
                                         <div>
                                             <div className="flex items-center gap-3">
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                     <Icon size={20} />
                                                 </span>
                                                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary/80">
@@ -688,7 +688,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                             alt={s.alt}
                                             width={1600}
                                             height={1200}
-                                            className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-xl"
+                                            className="h-auto w-full rounded-md shadow-xl"
                                         />
                                     </div>
                                 );
@@ -728,7 +728,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                 return (
                                     <article
                                         key={rule.name}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="grid gap-0 md:grid-cols-[1fr_1.2fr]">
                                             <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.06] via-white to-emerald-50/30">
@@ -744,7 +744,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                                 </span>
                                             </div>
                                             <div className="p-7">
-                                                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                                <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                     <Icon size={20} />
                                                 </div>
                                                 <h3 className="mt-5 text-xl font-extrabold tracking-tight text-foreground">
@@ -761,7 +761,7 @@ export default function GeofencingTimeClockFeaturePage() {
                         </div>
 
                         {/* Enforcement modes strip */}
-                        <div className="mt-14 rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md md:p-10">
+                        <div className="mt-14 rounded-md border border-foreground/5 bg-white p-7 shadow-md md:p-10">
                             <div className="mb-6 flex flex-col items-start justify-between gap-3 md:flex-row md:items-center">
                                 <div>
                                     <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary/80">Per-site enforcement</p>
@@ -780,9 +780,9 @@ export default function GeofencingTimeClockFeaturePage() {
                                     return (
                                         <div
                                             key={mode.label}
-                                            className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all hover:-translate-y-0.5 hover:shadow-md ${a.border}`}
+                                            className={`group relative overflow-hidden rounded-md border bg-white p-5 transition-all hover:-translate-y-0.5 hover:shadow-md ${a.border}`}
                                         >
-                                            <div className={`flex h-10 w-10 items-center justify-center rounded-xl ring-1 ${a.badge}`}>
+                                            <div className={`flex h-10 w-10 items-center justify-center rounded-md ring-1 ${a.badge}`}>
                                                 <Icon size={18} />
                                             </div>
                                             <p className={`mt-4 text-sm font-bold uppercase tracking-[0.14em] ${a.text}`}>
@@ -825,7 +825,7 @@ export default function GeofencingTimeClockFeaturePage() {
                                         return (
                                             <li
                                                 key={i.label}
-                                                className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 shadow-sm"
+                                                className="flex items-center gap-3 rounded-md border border-foreground/5 bg-white px-4 py-3 text-sm font-semibold text-foreground/80 shadow-sm"
                                             >
                                                 <Icon size={16} className="text-primary" />
                                                 {i.label}
@@ -836,7 +836,7 @@ export default function GeofencingTimeClockFeaturePage() {
                             </div>
 
                             <div className="relative">
-                                <div className="relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-xl">
+                                <div className="relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl">
                                     <Image
                                         src={IMG.multisite}
                                         alt="Multi-site geofencing dashboard with live status badges across 12 active job sites"
@@ -900,10 +900,10 @@ export default function GeofencingTimeClockFeaturePage() {
                                     <Link
                                         key={u.slug}
                                         href={`/industries/${u.slug}`}
-                                        className="surface-panel group relative overflow-hidden rounded-[2rem] border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-7 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                                            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
                                                 <Icon size={20} />
                                             </span>
                                             <span className="text-xs font-bold uppercase tracking-[0.18em] text-foreground/40 group-hover:text-primary transition-colors">
@@ -953,7 +953,7 @@ export default function GeofencingTimeClockFeaturePage() {
                             {stats.map((s) => (
                                 <div
                                     key={s.label}
-                                    className="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
+                                    className="rounded-md border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
                                 >
                                     <p className="text-4xl font-extrabold tracking-tight md:text-5xl">{s.value}</p>
                                     <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/75 leading-snug">

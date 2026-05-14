@@ -50,7 +50,7 @@ function slugify(text: string) {
 
 function SectionImage({ src, alt }: { src: string; alt: string }) {
     return (
-        <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-foreground/10 mb-8 md:mb-10 bg-white">
+        <div className="relative w-full aspect-[16/9] rounded-md overflow-hidden border border-foreground/10 mb-8 md:mb-10 bg-white">
             <Image
                 src={src}
                 alt={alt}
@@ -64,9 +64,9 @@ function SectionImage({ src, alt }: { src: string; alt: string }) {
 
 function StatCallout({ stat, label }: { stat: string; label: string }) {
     return (
-        <div className="relative my-8 md:my-10 rounded-2xl border border-primary/15 bg-primary/[0.04] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 overflow-hidden">
+        <div className="relative my-8 md:my-10 rounded-md border border-primary/15 bg-primary/[0.04] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 overflow-hidden">
             {/* decorative accent */}
-            <div className="absolute top-0 left-0 w-1 h-full bg-primary rounded-l-2xl" />
+            <div className="absolute top-0 left-0 w-1 h-full bg-primary rounded-l-md" />
             <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight whitespace-nowrap pl-4 sm:pl-3">
                 {stat}
             </span>
@@ -110,7 +110,7 @@ function NumberedList({ points }: { points: string[] }) {
         <ol className="space-y-6">
             {points.map((point, i) => (
                 <li key={point} className="flex gap-5 group">
-                    <div className="mt-0.5 shrink-0 flex items-center justify-center w-8 h-8 rounded-xl bg-foreground/[0.06] text-foreground/80 font-bold text-sm transition-colors group-hover:bg-primary group-hover:text-white">
+                    <div className="mt-0.5 shrink-0 flex items-center justify-center w-8 h-8 rounded-md bg-foreground/[0.06] text-foreground/80 font-bold text-sm transition-colors group-hover:bg-primary group-hover:text-white">
                         {i + 1}
                     </div>
                     <span className="text-base md:text-lg text-foreground/70 leading-relaxed group-hover:text-foreground/90 transition-colors pt-0.5">
@@ -143,7 +143,7 @@ function GuideSection({
 
             {/* Section number + heading */}
             <div className="flex items-start gap-4 mb-5 md:mb-6">
-                <span className="hidden md:flex shrink-0 items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary font-bold text-sm mt-1">
+                <span className="hidden md:flex shrink-0 items-center justify-center w-10 h-10 rounded-md bg-primary/10 text-primary font-bold text-sm mt-1">
                     {String(index + 1).padStart(2, "0")}
                 </span>
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground leading-tight">
@@ -319,7 +319,7 @@ export default async function GuideDetailPage({
                         </div>
 
                         {/* ─── Author Bio ─── */}
-                        <div className="mt-16 md:mt-20 flex flex-col sm:flex-row items-start gap-6 p-8 rounded-3xl bg-secondary/30 border border-border/50">
+                        <div className="mt-16 md:mt-20 flex flex-col sm:flex-row items-start gap-6 p-8 rounded-md bg-secondary/30 border border-border/50">
                             <img
                                 src="/images/headshot.jpg"
                                 alt="Carter Mitchell"
@@ -349,7 +349,7 @@ export default async function GuideDetailPage({
                                         <Link
                                             key={competitor.slug}
                                             href={`/compare/${competitor.slug}`}
-                                            className="group relative flex items-center justify-between p-5 rounded-2xl border border-foreground/10 bg-white hover:border-primary/30 hover:shadow-sm transition-all overflow-hidden"
+                                            className="group relative flex items-center justify-between p-5 rounded-md border border-foreground/10 bg-white hover:border-primary/30 hover:shadow-sm transition-all overflow-hidden"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                                             <span className="font-semibold text-foreground/80 group-hover:text-primary transition-colors relative z-10 w-full pr-6">
@@ -368,7 +368,7 @@ export default async function GuideDetailPage({
 
                 {/* ─── Full-width CTA ─── */}
                 <div className="max-w-7xl mx-auto mt-24 md:mt-32">
-                    <section className="relative overflow-hidden rounded-[2rem] bg-primary text-white p-10 md:p-16 lg:p-20 shadow-xl">
+                    <section className="relative overflow-hidden rounded-md bg-primary text-white p-10 md:p-16 lg:p-20 shadow-xl">
                         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 opacity-20 pointer-events-none">
                             <div className="w-[400px] h-[400px] rounded-full bg-white/30 blur-3xl" />
                         </div>

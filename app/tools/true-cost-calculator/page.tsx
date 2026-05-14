@@ -187,7 +187,7 @@ export default function TrueCostCalculatorPage() {
                         </div>
 
                         {/* Premium Stat callout */}
-                        <div className="relative my-12 rounded-[2rem] border border-primary/20 bg-primary/5 p-8 md:p-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 overflow-hidden shadow-sm">
+                        <div className="relative my-12 rounded-md border border-primary/20 bg-primary/5 p-8 md:p-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 overflow-hidden shadow-sm">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[60px] pointer-events-none" />
                             <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
                             <span className="text-5xl md:text-6xl font-extrabold text-primary tracking-tight whitespace-nowrap pl-4 sm:pl-0 shrink-0">
@@ -216,14 +216,14 @@ export default function TrueCostCalculatorPage() {
                                 return (
                                     <div
                                         key={item.title}
-                                        className="group relative p-8 rounded-[2rem] bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all duration-300 overflow-hidden"
+                                        className="group relative p-8 rounded-md bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all duration-300 overflow-hidden"
                                     >
                                         <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500">
                                             <Icon size={140} className="text-foreground -rotate-12 translate-x-4 -translate-y-4" />
                                         </div>
                                         <div className="relative z-10">
                                             <div className="flex items-center justify-between mb-6">
-                                                <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                                                <div className="w-12 h-12 rounded-md bg-primary/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
                                                     <Icon className="w-6 h-6 text-primary" />
                                                 </div>
                                                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/5 text-primary text-sm font-bold border border-primary/10">
@@ -292,7 +292,7 @@ export default function TrueCostCalculatorPage() {
                             {INDUSTRY_BENCHMARKS.map((item) => (
                                 <div
                                     key={item.label}
-                                    className="flex flex-col p-6 rounded-2xl bg-foreground/[0.02] border border-border/40 hover:bg-foreground/[0.04] transition-colors"
+                                    className="flex flex-col p-6 rounded-md bg-foreground/[0.02] border border-border/40 hover:bg-foreground/[0.04] transition-colors"
                                 >
                                     <CheckCircle2 className="w-6 h-6 text-primary mb-4" />
                                     <p className="text-2xl font-bold text-foreground tracking-tight mb-2">{item.value}</p>
@@ -332,8 +332,8 @@ export default function TrueCostCalculatorPage() {
                                     text: "Set up alerts when workers approach 40 hours so you can make staffing decisions before overtime kicks in — not after.",
                                 },
                             ].map((step, i) => (
-                                <div key={step.title} className="flex gap-5 p-6 rounded-2xl bg-white border border-foreground/5 shadow-sm">
-                                    <div className="mt-1 shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary font-bold text-lg">
+                                <div key={step.title} className="flex gap-5 p-6 rounded-md bg-white border border-foreground/5 shadow-sm">
+                                    <div className="mt-1 shrink-0 flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 text-primary font-bold text-lg">
                                         {i + 1}
                                     </div>
                                     <div>
@@ -382,7 +382,7 @@ export default function TrueCostCalculatorPage() {
                                 <Link
                                     key={article.href}
                                     href={article.href}
-                                    className="group flex flex-col p-8 rounded-[2rem] bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all duration-300"
+                                    className="group flex flex-col p-8 rounded-md bg-white border border-foreground/5 shadow-sm hover:shadow-md hover:border-foreground/15 transition-all duration-300"
                                 >
                                     <span className="text-3xl mb-5 block">{article.icon}</span>
                                     <span className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors leading-snug tracking-tight">
@@ -397,7 +397,7 @@ export default function TrueCostCalculatorPage() {
                     </section>
 
                     {/* Author Bio */}
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-8 md:p-10 rounded-[2rem] bg-secondary/30 border border-border/50 mb-20">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-8 md:p-10 rounded-md bg-secondary/30 border border-border/50 mb-20">
                         <img
                             src="/images/headshot.jpg"
                             alt="Carter Mitchell"
@@ -415,7 +415,7 @@ export default function TrueCostCalculatorPage() {
 
                 {/* Premium Full-width CTA */}
                 <div className="max-w-6xl mx-auto px-6">
-                    <section className="relative overflow-hidden rounded-[3rem] bg-foreground text-background border border-foreground/10 shadow-2xl">
+                    <section className="relative overflow-hidden rounded-md bg-foreground text-background border border-foreground/10 shadow-2xl">
                         {/* Premium Glow Effects */}
                         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary rounded-full blur-[140px] opacity-[0.25] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
                         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[120px] opacity-20 translate-y-1/3 -translate-x-1/3 pointer-events-none" />

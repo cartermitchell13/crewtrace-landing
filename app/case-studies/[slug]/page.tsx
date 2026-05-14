@@ -111,7 +111,7 @@ export default async function CaseStudyDetailPage({
                         <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
                             <div className="max-w-3xl">
                                 <div className="mb-6 flex items-center gap-3">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-md">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/10 backdrop-blur-md">
                                         <Building2 className="h-5 w-5 text-white" />
                                     </div>
                                     <div>
@@ -143,7 +143,7 @@ export default async function CaseStudyDetailPage({
                                     `${study.company} needed cleaner labor records and faster payroll approvals. This is how they implemented a repeatable system and proved impact quickly.`}
                             </p>
 
-                            <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-3xl border border-border/50 bg-foreground/5">
+                            <div className="relative mb-12 aspect-[21/9] w-full overflow-hidden rounded-md border border-border/50 bg-foreground/5">
                                 {study.heroImage ? (
                                     <Image
                                         src={study.heroImage}
@@ -165,7 +165,7 @@ export default async function CaseStudyDetailPage({
                                             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/20 to-transparent"
                                         />
                                         <div className="absolute inset-0 z-[2] flex flex-col justify-center px-8 py-8 text-white md:px-12 md:py-10">
-                                            <div className="mb-5 inline-flex w-fit max-w-[min(100%,20rem)] rounded-2xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/10">
+                                            <div className="mb-5 inline-flex w-fit max-w-[min(100%,20rem)] rounded-md bg-white px-4 py-3 shadow-lg ring-1 ring-black/10">
                                                 <Image
                                                     src={study.heroLogo}
                                                     alt={`${study.company} logo`}
@@ -189,7 +189,7 @@ export default async function CaseStudyDetailPage({
                             </div>
 
                             <div
-                                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-foreground/80 prose-p:leading-relaxed prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-border/50 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl"
+                                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-foreground/80 prose-p:leading-relaxed prose-img:rounded-md prose-img:shadow-xl prose-img:border prose-img:border-border/50 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl"
                                 dangerouslySetInnerHTML={{ __html: study.contentHtml }}
                             />
 
@@ -229,7 +229,7 @@ export default async function CaseStudyDetailPage({
                                 ))}
                             </div>
 
-                            <div className="relative my-12 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border/50 bg-foreground/5">
+                            <div className="relative my-12 aspect-[16/9] w-full overflow-hidden rounded-md border border-border/50 bg-foreground/5">
                                 {study.resultsImage ? (
                                     <Image
                                         src={study.resultsImage}
@@ -256,7 +256,7 @@ export default async function CaseStudyDetailPage({
                                 {study.outcomes.map((outcome) => (
                                     <div
                                         key={outcome}
-                                        className="flex items-start gap-4 rounded-2xl border border-emerald-100/50 bg-emerald-50/50 p-6 transition-shadow hover:shadow-md dark:border-emerald-900/30 dark:bg-emerald-950/20"
+                                        className="flex items-start gap-4 rounded-md border border-emerald-100/50 bg-emerald-50/50 p-6 transition-shadow hover:shadow-md dark:border-emerald-900/30 dark:bg-emerald-950/20"
                                     >
                                         <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-emerald-600" />
                                         <p className="text-base font-semibold leading-snug text-emerald-900/90 dark:text-emerald-100">
@@ -273,7 +273,7 @@ export default async function CaseStudyDetailPage({
 
                         <div className="space-y-8 lg:col-span-4">
                             <div className="sticky top-32 space-y-8">
-                                <div className="relative overflow-hidden rounded-[2rem] bg-primary p-8 text-white shadow-xl">
+                                <div className="relative overflow-hidden rounded-md bg-primary p-8 text-white shadow-xl">
                                     <div className="absolute right-0 top-0 p-6 opacity-10">
                                         <Quote className="h-24 w-24 rotate-180" />
                                     </div>
@@ -300,7 +300,7 @@ export default async function CaseStudyDetailPage({
                                     </div>
                                 </div>
 
-                                <div className="rounded-3xl border border-border/50 bg-foreground/[0.03] p-8">
+                                <div className="rounded-md border border-border/50 bg-foreground/[0.03] p-8">
                                     <h3 className="mb-6 text-xs font-black uppercase tracking-widest text-foreground/40">
                                         Company Overview
                                     </h3>
@@ -333,7 +333,7 @@ export default async function CaseStudyDetailPage({
                                 </div>
 
                                 {relatedComparisons.length > 0 && (
-                                    <div className="rounded-3xl border border-border/60 bg-white p-8 shadow-sm dark:bg-[#0A0A0A]">
+                                    <div className="rounded-md border border-border/60 bg-white p-8 shadow-sm dark:bg-[#0A0A0A]">
                                         <h3 className="mb-3 text-lg font-bold tracking-tight text-foreground dark:text-white">
                                             Evaluating your options?
                                         </h3>
@@ -345,7 +345,7 @@ export default async function CaseStudyDetailPage({
                                                 <Link
                                                     key={competitor.slug}
                                                     href={`/compare/${competitor.slug}`}
-                                                    className="group flex items-center justify-between rounded-xl border border-border/50 p-4 transition-all hover:border-primary/50 hover:bg-primary/5 dark:border-white/10 dark:bg-white/5"
+                                                    className="group flex items-center justify-between rounded-md border border-border/50 p-4 transition-all hover:border-primary/50 hover:bg-primary/5 dark:border-white/10 dark:bg-white/5"
                                                 >
                                                     <span className="text-sm font-bold text-foreground transition-colors group-hover:text-primary dark:text-white">
                                                         vs {competitor.name}
@@ -360,7 +360,7 @@ export default async function CaseStudyDetailPage({
                         </div>
                     </div>
 
-                    <div className="relative mb-10 mt-24 overflow-hidden rounded-[2.5rem] bg-primary text-white shadow-2xl md:mt-32">
+                    <div className="relative mb-10 mt-24 overflow-hidden rounded-md bg-primary text-white shadow-2xl md:mt-32">
                         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] mix-blend-overlay" />
                         <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-white/20 blur-[100px]" />
 
