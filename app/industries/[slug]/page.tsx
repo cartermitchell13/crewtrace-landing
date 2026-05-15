@@ -30,11 +30,7 @@ import CTASection from "@/components/CTASection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import FAQSection from "@/components/FAQSection";
-import {
-    getTemplateMessaging,
-    orderedPromiseLine,
-    publicIcpPhrase,
-} from "@/lib/messaging";
+import { getTemplateMessaging } from "@/lib/messaging";
 import {
     industryBySlug,
     industrySlugs,
@@ -228,7 +224,7 @@ export default async function IndustryPage({
                             {industry.heroTitle}
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
-                            {industry.heroSubtitle} Built {publicIcpPhrase}. {orderedPromiseLine}
+                            {industry.heroSubtitle}
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4">

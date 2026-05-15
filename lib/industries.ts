@@ -182,7 +182,7 @@ export const industryRecords: IndustryRecord[] = [
             "HVAC time tracking software with digital timesheets, mobile GPS clock-ins per stop, and payroll-ready hours for residential and commercial service teams.",
         heroTitle: "HVAC time tracking and digital timesheets for field service crews",
         heroSubtitle:
-            "See where each technician worked, how long the stop took, and what should be paid—from digital HVAC timesheets to payroll export. Crewtrace keeps dispatch, payroll, and job costing on the same page.",
+            "See where techs were, how long each stop took, and what belongs in payroll—one verified record instead of Friday guesswork.",
         hubDescription:
             "HVAC time tracking and digital timesheets for service calls—verified time logs, mobile clock-ins, and cleaner payroll handoff.",
         hubStat: "Avg. $1,200/mo saved",
