@@ -114,7 +114,7 @@ export default function PayrollAuditChecklistPage() {
                             <span>Audit Risk Calculator</span>
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1]">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-extrabold tracking-tight text-foreground mb-6 leading-[1.1]">
                             The FLSA & Payroll Audit Checklist
                         </h1>
 

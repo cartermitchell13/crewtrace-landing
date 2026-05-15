@@ -38,7 +38,7 @@ export default function DemoPage() {
                         </div>
 
                         <div className="space-y-6">
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] animate-slide-up delay-100">
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-foreground leading-[1.1] animate-slide-up delay-100">
                                 See exactly how Crewtrace <br className="hidden md:block" />
                                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">stops payroll leakage</span>
                             </h1>

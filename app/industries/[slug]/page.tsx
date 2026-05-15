@@ -224,7 +224,7 @@ export default async function IndustryPage({
                             <IndustryIcon size={14} />
                             {industry.primaryKeyword}
                         </p>
-                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[4.5rem]">
+                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             {industry.heroTitle}
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">

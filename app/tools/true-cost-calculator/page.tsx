@@ -135,7 +135,7 @@ export default function TrueCostCalculatorPage() {
                             <span>Free Industry Tool</span>
                         </div>
 
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-8 leading-[1.05] text-balance">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-extrabold tracking-tight text-foreground mb-8 leading-[1.05] text-balance">
                             The <span className="text-primary italic">True Cost</span> of a <br className="hidden md:block" /> Construction Employee
                         </h1>
 

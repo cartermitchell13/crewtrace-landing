@@ -28,7 +28,7 @@ export default function ContactPage() {
                         <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                             Get a personalized demo + quote
                         </p>
-                        <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             See how Crewtrace fits your operation
                         </h1>
                         <p className="mt-5 text-lg font-medium leading-relaxed text-foreground/60 md:text-xl">

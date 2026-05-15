@@ -27,7 +27,7 @@ export default function Hero() {
                         </span>
                     </div>
 
-                    <h1 className="mb-5 sm:mb-8 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[5rem]">
+                    <h1 className="mb-5 sm:mb-8 text-4xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                         {homeMessaging.intentHeadline}
                     </h1>
 

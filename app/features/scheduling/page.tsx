@@ -336,7 +336,7 @@ export default function SchedulingFeaturePage() {
                             <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                             <span className="whitespace-nowrap">Crew Scheduling for Contractors</span>
                         </div>
-                        <h1 className="mt-7 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+                        <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             Schedule the week.
                             <br />
                             <span className="text-primary italic">Lose the spreadsheet.</span>

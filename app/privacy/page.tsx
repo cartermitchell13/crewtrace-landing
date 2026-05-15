@@ -19,7 +19,7 @@ export default function PrivacyPage() {
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
                             <span>Legal</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-foreground mb-4">
                             Privacy Policy
                         </h1>
                         <p className="text-foreground/50 font-medium">

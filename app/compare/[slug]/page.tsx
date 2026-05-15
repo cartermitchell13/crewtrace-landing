@@ -239,7 +239,7 @@ export default async function CompareDetailPage({
                         <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                             {competitor.primaryKeyword}
                         </p>
-                        <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+                        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             Crewtrace vs {competitor.name}
                         </h1>
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">

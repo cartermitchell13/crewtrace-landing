@@ -321,7 +321,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                             <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                             <span className="whitespace-nowrap">Payroll sync to QuickBooks</span>
                         </div>
-                        <h1 className="mt-7 text-5xl font-extrabold !leading-[1.08] tracking-tight text-foreground sm:!leading-[1.06] sm:text-6xl md:text-7xl md:!leading-[1.05] lg:!leading-[1.04] lg:text-[5.25rem]">
+                        <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             One click. Approved hours{" "}
                             <span className="text-primary italic">straight into QuickBooks.</span>
                         </h1>

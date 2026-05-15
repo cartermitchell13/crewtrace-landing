@@ -436,7 +436,7 @@ export default function GpsTimeTrackingFeaturePage() {
                             <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                             <span className="whitespace-nowrap">GPS Time Tracking for Contractors</span>
                         </div>
-                        <h1 className="mt-7 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+                        <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             A GPS time clock
                             <br />
                             <span className="text-primary italic">crews can&apos;t fake.</span>

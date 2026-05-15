@@ -124,7 +124,7 @@ export default async function CaseStudyDetailPage({
                                     </div>
                                 </div>
 
-                                <h1 className="mb-6 text-4xl font-black leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+                                <h1 className="mb-6 text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                                     {study.title}
                                 </h1>
                                 <div className="max-w-2xl text-lg font-medium leading-relaxed text-slate-200 md:text-xl">

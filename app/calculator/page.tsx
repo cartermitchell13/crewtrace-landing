@@ -20,7 +20,7 @@ export default function CalculatorPage() {
                         </div>
 
                         <div className="space-y-4 max-w-3xl">
-                            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.05]">
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-foreground leading-[1.05]">
                                 Stop Guessing. <br />
                                 <span className="text-primary italic">Identify Potential Leakage.</span>
                             </h1>

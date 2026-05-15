@@ -123,7 +123,7 @@ export default function FeaturesPage() {
                             <Workflow size={14} />
                             Feature hub
                         </p>
-                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-7xl">
+                        <h1 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             {featuresMessaging.intentHeadline}
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">

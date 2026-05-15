@@ -89,7 +89,7 @@ export default function AboutPage() {
                         <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                             About Crewtrace
                         </p>
-                        <h1 className="text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-5xl md:text-7xl">
+                        <h1 className="text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
                             Why We Built Crewtrace
                         </h1>
                         <p className="mx-auto max-w-3xl text-base font-medium leading-relaxed text-foreground/70 md:text-xl">
