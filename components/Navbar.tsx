@@ -260,10 +260,13 @@ export default function Navbar() {
                         href="/contact"
                         className="hidden sm:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                        Contact Sales
+                        Request a demo
                     </Link>
-                    <Link href="/contact" className="hidden md:inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
-                        Get a Demo
+                    <Link
+                        href="https://www.crewtrace.app/signup"
+                        className="hidden md:inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    >
+                        Sign up
                         <ArrowRight size={16} className="hidden lg:block" />
                     </Link>
 
@@ -687,11 +690,11 @@ export default function Navbar() {
                     {/* Mobile CTAs */}
                     <div className="px-2 pt-2 border-t border-foreground/5 mt-1 pb-2">
                         <Link
-                            href="/contact"
+                            href="https://www.crewtrace.app/signup"
                             onClick={() => setMobileOpen(false)}
                             className="mb-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            Get a Personalized Demo
+                            Sign up
                             <ArrowRight size={16} />
                         </Link>
                         <Link
@@ -699,7 +702,7 @@ export default function Navbar() {
                             onClick={() => setMobileOpen(false)}
                             className="flex w-full items-center justify-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                         >
-                            Contact Sales
+                            Request a demo
                         </Link>
                     </div>
                 </div>

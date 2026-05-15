@@ -43,9 +43,15 @@ export default function LandingNavbar() {
                 <div className="hidden md:flex items-center gap-3">
                     <Link
                         href="/contact"
+                        className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors px-2"
+                    >
+                        Request a demo
+                    </Link>
+                    <Link
+                        href="https://www.crewtrace.app/signup"
                         className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-md shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] inline-flex items-center gap-2"
                     >
-                        Get a Demo
+                        Sign up
                         <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -73,12 +79,19 @@ export default function LandingNavbar() {
                         </Link>
                     ))}
                     <Link
-                        href="/contact"
+                        href="https://www.crewtrace.app/signup"
                         onClick={() => setMobileOpen(false)}
                         className="mt-2 w-full bg-primary text-white text-sm font-bold px-4 py-3 rounded-md shadow-button inline-flex items-center justify-center gap-2"
                     >
-                        Get a Demo
+                        Sign up
                         <ArrowRight size={16} />
+                    </Link>
+                    <Link
+                        href="/contact"
+                        onClick={() => setMobileOpen(false)}
+                        className="mt-2 block w-full text-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                    >
+                        Request a demo
                     </Link>
                 </div>
             </div>
