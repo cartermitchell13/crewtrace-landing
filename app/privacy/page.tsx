@@ -15,7 +15,7 @@ export default function PrivacyPage() {
             <LandingNavbar />
             <main className="pt-32 pb-20 px-6">
                 <div className="max-w-3xl mx-auto">
-                    <div className="mb-12">
+                    <div id="hero" className="mb-12">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
                             <span>Legal</span>
                         </div>

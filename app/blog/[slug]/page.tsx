@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <Navbar />
             <main className="pb-20">
                 {/* Hero Section */}
-                <header className="relative w-full overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-primary/[0.02] to-background pt-32 pb-16 lg:pt-40 lg:pb-24">
+                <header id="hero" className="relative w-full overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-primary/[0.02] to-background pt-32 pb-16 lg:pt-40 lg:pb-24">
                     <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay"></div>
                     <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
                         <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-foreground/60 mb-8 font-medium">
@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         {/* Article Content Body */}
                         <div
                             className="prose prose-lg md:prose-xl max-w-none 
-                                prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+                                prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground
                                 prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-3xl
                                 prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-2xl
                                 prose-p:text-foreground/80 prose-p:leading-relaxed prose-p:mb-6

@@ -24,7 +24,7 @@ export default function ContactPage() {
 
                 <div className="mx-auto max-w-6xl">
                     {/* Page header */}
-                    <div className="mb-12 max-w-2xl">
+                    <div id="hero" className="mb-12 max-w-2xl">
                         <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                             Get a personalized demo + quote
                         </p>

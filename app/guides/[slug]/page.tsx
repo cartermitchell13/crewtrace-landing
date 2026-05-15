@@ -284,7 +284,7 @@ export default async function GuideDetailPage({
                         </Link>
 
                         {/* ─── Article Header ─── */}
-                        <header className="mb-14 md:mb-18">
+                        <header id="hero" className="mb-14 md:mb-18">
                             <div className="flex flex-wrap items-center gap-3 text-sm font-bold mb-6">
                                 <span className="px-3 py-1 rounded-full bg-primary/10 text-primary uppercase tracking-wide text-xs">
                                     {guide.category}

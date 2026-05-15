@@ -91,7 +91,7 @@ export default function GuidesPage() {
         <div className="min-h-screen bg-background">
             <Navbar />
             <main>
-                <section className="relative overflow-hidden px-6 pb-20 pt-32 md:pb-32 md:pt-40">
+                <section id="hero" className="relative overflow-hidden px-6 pb-20 pt-32 md:pb-32 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
 
                     <div className="mx-auto max-w-4xl text-center">

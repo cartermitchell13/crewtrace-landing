@@ -308,12 +308,12 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                 />
 
                 {/* HERO */}
-                <section className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
+                <section id="hero" className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.10)_0%,transparent_60%)]" />
                     <div className="pointer-events-none absolute -left-32 top-40 -z-10 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
                     <div className="pointer-events-none absolute -right-32 top-72 -z-10 h-[420px] w-[420px] rounded-full bg-emerald-300/15 blur-3xl" />
 
-                    <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+                    <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
                         <div className="mb-4 sm:mb-6 inline-flex max-w-[calc(100vw-2rem)] items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">
                             <span className="inline-flex shrink-0 items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary sm:px-2 sm:text-[10px]">
                                 New
@@ -321,9 +321,8 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                             <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                             <span className="whitespace-nowrap">Payroll sync to QuickBooks</span>
                         </div>
-                        <h1 className="mt-7 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                            One click. Approved hours
-                            <br />
+                        <h1 className="mt-7 text-5xl font-extrabold !leading-[1.08] tracking-tight text-foreground sm:!leading-[1.06] sm:text-6xl md:text-7xl md:!leading-[1.05] lg:!leading-[1.04] lg:text-[5.25rem]">
+                            One click. Approved hours{" "}
                             <span className="text-primary italic">straight into QuickBooks.</span>
                         </h1>
                         <p className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">

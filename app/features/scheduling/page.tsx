@@ -323,7 +323,7 @@ export default function SchedulingFeaturePage() {
                 />
 
                 {/* HERO */}
-                <section className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
+                <section id="hero" className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.10)_0%,transparent_60%)]" />
                     <div className="pointer-events-none absolute -left-32 top-40 -z-10 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
                     <div className="pointer-events-none absolute -right-32 top-72 -z-10 h-[420px] w-[420px] rounded-full bg-emerald-300/15 blur-3xl" />

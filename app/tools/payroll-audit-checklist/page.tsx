@@ -100,7 +100,7 @@ export default function PayrollAuditChecklistPage() {
                 />
 
                 {/* Hero Section */}
-                <header className="relative w-full overflow-hidden bg-gradient-to-b from-primary/5 via-primary/[0.02] to-background pt-32 pb-16 lg:pt-40 lg:pb-24">
+                <header id="hero" className="relative w-full overflow-hidden bg-gradient-to-b from-primary/5 via-primary/[0.02] to-background pt-32 pb-16 lg:pt-40 lg:pb-24">
                     <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
                     <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
                         <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-foreground/60 mb-8 font-medium">

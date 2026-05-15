@@ -40,18 +40,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  text-wrap: balance;
-}
-
 :where(p) {
   max-width: var(--reading-max);
   color: inherit;
@@ -68,6 +56,38 @@ a {
   ::before {
     border-color: var(--color-foreground);
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+}
+
+/*
+ * Headings: keep semibold + 100% line-height site-wide.
+ * Classed headings need higher specificity than utility classes (e.g. font-extrabold).
+ * Prose markdown headings need to beat @tailwindcss/typography defaults.
+ */
+:is(h1, h2, h3, h4, h5, h6)[class] {
+  font-weight: 600;
+  line-height: 100%;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  line-height: 100%;
+}
+
+#hero :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 90%;
 }
 
 /* Native range input styling for Savings Calculator */

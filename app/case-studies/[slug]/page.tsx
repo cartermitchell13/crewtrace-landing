@@ -89,7 +89,7 @@ export default async function CaseStudyDetailPage({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                 />
 
-                <header className="relative w-full overflow-hidden border-b border-border/40 pb-20 pt-32 text-white lg:pb-28 lg:pt-40">
+                <header id="hero" className="relative w-full overflow-hidden border-b border-border/40 pb-20 pt-32 text-white lg:pb-28 lg:pt-40">
                     <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#050315]" />
                     <div
                         aria-hidden
@@ -189,7 +189,7 @@ export default async function CaseStudyDetailPage({
                             </div>
 
                             <div
-                                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-foreground/80 prose-p:leading-relaxed prose-img:rounded-md prose-img:shadow-xl prose-img:border prose-img:border-border/50 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl"
+                                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-foreground/80 prose-p:leading-relaxed prose-img:rounded-md prose-img:shadow-xl prose-img:border prose-img:border-border/50 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl"
                                 dangerouslySetInnerHTML={{ __html: study.contentHtml }}
                             />
 

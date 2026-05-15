@@ -30,7 +30,7 @@ export default function DemoPage() {
 
                 <div className="max-w-screen-2xl mx-auto flex flex-col items-center">
                     {/* Hero Section */}
-                    <div className="text-center space-y-8 mb-16 max-w-4xl mx-auto">
+                    <div id="hero" className="text-center space-y-8 mb-16 max-w-4xl mx-auto">
                         {/* Eye-catching Eyebrow */}
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-bold text-primary animate-slide-up">
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />

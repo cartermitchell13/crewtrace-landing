@@ -235,7 +235,7 @@ export default async function CompareDetailPage({
                         Back to comparisons
                     </Link>
 
-                    <header className="mt-6 rounded-md border border-foreground/10 bg-white p-8 md:p-10">
+                    <header id="hero" className="mt-6 rounded-md border border-foreground/10 bg-white p-8 md:p-10">
                         <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
                             {competitor.primaryKeyword}
                         </p>

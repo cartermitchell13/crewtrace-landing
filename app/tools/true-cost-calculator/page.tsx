@@ -126,7 +126,7 @@ export default function TrueCostCalculatorPage() {
                 />
 
                 {/* Hero Section */}
-                <header className="relative w-full overflow-visible pt-32 pb-24 lg:pt-40 lg:pb-32 flex flex-col items-center justify-center">
+                <header id="hero" className="relative w-full overflow-visible pt-32 pb-24 lg:pt-40 lg:pb-32 flex flex-col items-center justify-center">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/[0.06] blur-[100px] rounded-full pointer-events-none" />
 
                     <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
