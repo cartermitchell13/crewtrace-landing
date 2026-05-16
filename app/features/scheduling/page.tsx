@@ -29,6 +29,7 @@ import FeatureComparison from "@/components/FeatureComparison";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug } from "@/lib/solutions";
+import SectionDivider from "@/components/SectionDivider";
 
 const SLUG = "scheduling";
 const PATH = `/features/${SLUG}`;
@@ -377,6 +378,8 @@ export default function SchedulingFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* PAIN POINTS */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -423,6 +426,8 @@ export default function SchedulingFeaturePage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* FEATURE SPOTLIGHTS */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/60 px-6 py-24 md:py-32">
@@ -486,6 +491,8 @@ export default function SchedulingFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* CONNECTED WORKFLOW */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
                     <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_30%,rgba(47,39,206,0.06)_0%,transparent_60%)]" />
@@ -548,6 +555,8 @@ export default function SchedulingFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <FeatureComparison
                     eyebrow="Spreadsheet vs. Crewtrace"
                     eyebrowIcon={Repeat}
@@ -577,6 +586,8 @@ export default function SchedulingFeaturePage() {
                         highlight: "Schedule, clock, and payroll in sync.",
                     }}
                 />
+
+                <SectionDivider />
 
                 {/* USE CASES BY INDUSTRY */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
@@ -625,6 +636,8 @@ export default function SchedulingFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* STATS */}
                 <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary to-primary/90 px-6 py-24 md:py-28 text-white">
                     <div className="pointer-events-none absolute inset-0 opacity-30 mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.25) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 40%)" }} />
@@ -654,6 +667,8 @@ export default function SchedulingFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* FAQ */}
                 <FAQSection
                     eyebrow="Crew Scheduling FAQ"
@@ -662,8 +677,11 @@ export default function SchedulingFeaturePage() {
                     items={solution.faqItems}
                 />
 
+                <SectionDivider />
+
                 <CTASection cluster="features" templateType="feature_detail" landingPath={PATH} />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

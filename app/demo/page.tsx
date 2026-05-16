@@ -3,6 +3,7 @@ import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 const LINKEDIN_URL = "https://www.linkedin.com/in/cartermitchell98/";
@@ -102,6 +103,7 @@ export default function DemoPage() {
                 </div>
             </main>
 
+            <SectionDivider />
             <Footer />
 
             <style>{`

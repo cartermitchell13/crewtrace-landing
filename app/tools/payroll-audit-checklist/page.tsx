@@ -15,6 +15,7 @@ import {
     ArrowDown,
     Calculator,
 } from "lucide-react";
+import SectionDivider from "@/components/SectionDivider";
 
 const COMPLIANCE_RISKS = [
     {
@@ -132,6 +133,8 @@ export default function PayrollAuditChecklistPage() {
                     </div>
                 </header>
 
+                <SectionDivider />
+
                 <div className="max-w-5xl mx-auto px-6 mt-16 lg:mt-20">
 
                     {/* The Interactive Checklist */}
@@ -147,6 +150,8 @@ export default function PayrollAuditChecklistPage() {
 
                         <ComplianceAuditTool />
                     </section>
+
+                    <SectionDivider />
 
                     {/* Why The DOL Targets Construction */}
                     <section className="mb-16 lg:mb-24">
@@ -192,6 +197,8 @@ export default function PayrollAuditChecklistPage() {
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* What is a Compliance Audit */}
                     <section className="mb-24 lg:mb-32">
                         <div className="max-w-3xl border-l-4 border-primary pl-8 py-2 mb-12">
@@ -208,6 +215,8 @@ export default function PayrollAuditChecklistPage() {
                             </div>
                         </div>
                     </section>
+
+                    <SectionDivider />
 
                     {/* Internal Audit vs DOL */}
                     <section className="mb-24 lg:mb-32">
@@ -246,6 +255,8 @@ export default function PayrollAuditChecklistPage() {
                             </div>
                         </div>
                     </section>
+
+                    <SectionDivider />
 
                     {/* Core Procedures */}
                     <section className="mb-24 lg:mb-32">
@@ -286,6 +297,8 @@ export default function PayrollAuditChecklistPage() {
                     </section>
 
 
+                    <SectionDivider />
+
                     {/* Related Content */}
                     <section className="mb-16 lg:mb-20 pt-10 border-t border-border/40">
                         <h3 className="text-xl font-bold tracking-tight text-foreground mb-6">
@@ -324,6 +337,8 @@ export default function PayrollAuditChecklistPage() {
                     </section>
                 </div>
 
+                <SectionDivider />
+
                 {/* Full-width CTA */}
                 <div className="max-w-4xl mx-auto px-6">
                     <section className="relative overflow-hidden rounded-md bg-foreground text-background">
@@ -352,6 +367,7 @@ export default function PayrollAuditChecklistPage() {
                 </div>
             </main>
 
+            <SectionDivider />
             <Footer />
         </div>
     );

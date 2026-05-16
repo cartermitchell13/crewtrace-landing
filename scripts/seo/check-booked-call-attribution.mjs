@@ -29,11 +29,6 @@ const checks = [
         description: "Industry detail template uses shared CTA + landing tracker",
     },
     {
-        file: "app/compare/[slug]/page.tsx",
-        patterns: ['from "@/components/BookedCallLink"', "<BookedCallLink"],
-        description: "Compare detail template routes CTA through shared booked-call link",
-    },
-    {
         file: "app/guides/[slug]/page.tsx",
         patterns: ['from "@/components/BookedCallLink"', "<BookedCallLink"],
         description: "Guide detail template routes CTA through shared booked-call link",

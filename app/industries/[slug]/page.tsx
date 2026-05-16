@@ -41,6 +41,7 @@ import { getIndustryDetailLinks } from "@/lib/cluster-link-graph";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { getFeaturesBySlugs } from "@/lib/solutions";
+import SectionDivider from "@/components/SectionDivider";
 
 const iconByKey: Record<IndustryIconKey, LucideIcon> = {
     home: Home,
@@ -272,9 +273,13 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <TestimonialTextureShell>
                     <TestimonialsSection />
                 </TestimonialTextureShell>
+
+                <SectionDivider />
 
                 {/* Challenges and Solutions */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -311,6 +316,8 @@ export default async function IndustryPage({
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* Recommended Stack */}
                 <section id="features" className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -355,6 +362,8 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
                     <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06)_0%,transparent_65%)]" />
 
@@ -395,6 +404,8 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* Outcomes Section */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl relative z-10">
@@ -428,7 +439,11 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <LiteSavingsCalculator />
+
+                <SectionDivider />
 
                 <FAQSection
                     eyebrow={`${industry.name} FAQ`}
@@ -436,6 +451,8 @@ export default async function IndustryPage({
                     description={faqDescription}
                     items={industry.faqItems}
                 />
+
+                <SectionDivider />
 
                 {/* Ecosystem Links */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -497,8 +514,11 @@ export default async function IndustryPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <CTASection cluster="industries" templateType="industry_detail" landingPath={`/industries/${slug}`} />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

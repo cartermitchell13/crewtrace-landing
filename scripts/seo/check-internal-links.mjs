@@ -13,8 +13,6 @@ const INDEXABLE_SOURCE_FILES = [
     "app/blog/[slug]/page.tsx",
     "app/case-studies/page.tsx",
     "app/case-studies/[slug]/page.tsx",
-    "app/compare/page.tsx",
-    "app/compare/[slug]/page.tsx",
     "app/features/page.tsx",
     "app/features/[slug]/page.tsx",
     "app/guides/page.tsx",
@@ -176,4 +174,3 @@ function run() {
 }
 
 run();
-

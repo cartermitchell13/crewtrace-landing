@@ -21,6 +21,7 @@ import FAQSection from "@/components/FAQSection";
 import { visibleGuides as guides } from "@/lib/guides";
 import { createPageMetadata } from "@/lib/seo";
 import { guidesHubFaqItems } from "@/lib/faq";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata: Metadata = createPageMetadata({
     title: "Construction Time Tracking Guides | GPS, Payroll & Compliance",
@@ -124,6 +125,8 @@ export default function GuidesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
                         {guides.map((guide) => (
@@ -165,6 +168,8 @@ export default function GuidesPage() {
                         ))}
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -215,6 +220,8 @@ export default function GuidesPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -295,6 +302,8 @@ export default function GuidesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -335,6 +344,8 @@ export default function GuidesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <FAQSection
                     eyebrow="Guide FAQ"
                     title="Frequently asked questions about our guides"
@@ -344,6 +355,7 @@ export default function GuidesPage() {
 
                 <CTASection templateType="guides_hub" landingPath="/guides" />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

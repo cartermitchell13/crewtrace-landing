@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 import {
     competitorBySlug,
-    competitorSlugs,
     type CompetitorRecord,
     type CompetitorSlug,
 } from "@/lib/competitors";
@@ -156,7 +156,7 @@ function getNextReviewDateLabel(lastReviewedOn: string, reviewCadenceDays: numbe
 }
 
 export function generateStaticParams() {
-    return competitorSlugs.map((slug) => ({ slug }));
+    return [];
 }
 
 export async function generateMetadata({
@@ -189,6 +189,8 @@ export default async function CompareDetailPage({
 }: {
     params: Promise<{ slug: string }>;
 }) {
+    notFound();
+
     const { slug } = await params;
     const competitor = competitorBySlug[slug as CompetitorSlug];
 
@@ -255,6 +257,8 @@ export default async function CompareDetailPage({
                         </p>
                     </header>
 
+                    <SectionDivider />
+
                     <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Intent map for this comparison
@@ -281,6 +285,8 @@ export default async function CompareDetailPage({
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     <section className="mt-8 space-y-5">
                         {competitor.comparisonSections.map((section) => (
                             <div
@@ -304,6 +310,8 @@ export default async function CompareDetailPage({
                             </div>
                         ))}
                     </section>
+
+                    <SectionDivider />
 
                     <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
@@ -333,6 +341,8 @@ export default async function CompareDetailPage({
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Proof and implementation resources
@@ -361,6 +371,8 @@ export default async function CompareDetailPage({
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     <section className="mt-8 rounded-md border border-foreground/10 bg-white p-8 md:p-10">
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">
                             Claim-safety and review policy
@@ -376,6 +388,8 @@ export default async function CompareDetailPage({
                             ))}
                         </ul>
                     </section>
+
+                    <SectionDivider />
 
                     <section className="mt-8 flex flex-col gap-6 rounded-md bg-primary p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
                         <div>
@@ -405,6 +419,7 @@ export default async function CompareDetailPage({
                     </section>
                 </article>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

@@ -13,6 +13,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { homeFaqItems } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createPageMetadata({
@@ -39,18 +40,27 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
         />
         <Hero />
+        <SectionDivider />
         <FeatureGrid />
+        <SectionDivider />
         <TestimonialTextureShell>
           <TestimonialsSection />
           <ProcessSection variant="texture" />
         </TestimonialTextureShell>
+        <SectionDivider />
         <ComplianceAudit />
+        <SectionDivider />
         <IndustryLinks />
+        <SectionDivider />
         <LiteSavingsCalculator />
+        <SectionDivider />
         <FAQSection />
+        <SectionDivider />
         <PricingSection />
+        <SectionDivider />
         <CTASection />
       </main>
+      <SectionDivider />
       <Footer />
     </div>
   );

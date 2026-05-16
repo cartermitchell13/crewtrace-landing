@@ -2,6 +2,7 @@ import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata: Metadata = createPageMetadata({
     title: "Privacy Policy",
@@ -163,6 +164,7 @@ export default function PrivacyPage() {
                     </div>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

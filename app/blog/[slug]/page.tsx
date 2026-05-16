@@ -8,6 +8,7 @@ import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { ChevronLeft, Calendar, Clock, Tag } from "lucide-react";
 import ShareButtons from "@/components/ShareButtons";
+import SectionDivider from "@/components/SectionDivider";
 
 export async function generateStaticParams() {
     const posts = await getAllBlogPosts();
@@ -242,6 +243,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </article>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

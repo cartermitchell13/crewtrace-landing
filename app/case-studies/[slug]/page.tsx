@@ -5,13 +5,12 @@ import { notFound } from "next/navigation";
 import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getCompetitorsByCaseStudySlug } from "@/lib/competitors";
 import { getAllCaseStudies, getCaseStudy, getCaseStudyBySlug } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import SectionDivider from "@/components/SectionDivider";
 import {
     ArrowRight,
-    ArrowUpRight,
     Building2,
     CheckCircle2,
     ChevronLeft,
@@ -57,10 +56,6 @@ export default async function CaseStudyDetailPage({
     if (!study) {
         notFound();
     }
-
-    const relatedComparisons = getCompetitorsByCaseStudySlug(study.slug).sort((left, right) =>
-        left.name.localeCompare(right.name),
-    );
 
     const articleJsonLd = articleSchema({
         headline: study.title,
@@ -332,30 +327,6 @@ export default async function CaseStudyDetailPage({
                                     </dl>
                                 </div>
 
-                                {relatedComparisons.length > 0 && (
-                                    <div className="rounded-md border border-border/60 bg-white p-8 shadow-sm dark:bg-[#0A0A0A]">
-                                        <h3 className="mb-3 text-lg font-bold tracking-tight text-foreground dark:text-white">
-                                            Evaluating your options?
-                                        </h3>
-                                        <p className="mb-6 text-sm leading-relaxed text-foreground/60 dark:text-white/60">
-                                            See how Crewtrace stacks up against other tools you might be considering.
-                                        </p>
-                                        <div className="space-y-3">
-                                            {relatedComparisons.map((competitor) => (
-                                                <Link
-                                                    key={competitor.slug}
-                                                    href={`/compare/${competitor.slug}`}
-                                                    className="group flex items-center justify-between rounded-md border border-border/50 p-4 transition-all hover:border-primary/50 hover:bg-primary/5 dark:border-white/10 dark:bg-white/5"
-                                                >
-                                                    <span className="text-sm font-bold text-foreground transition-colors group-hover:text-primary dark:text-white">
-                                                        vs {competitor.name}
-                                                    </span>
-                                                    <ArrowUpRight className="h-4 w-4 text-foreground/30 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary dark:text-white/30" />
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -392,6 +363,7 @@ export default async function CaseStudyDetailPage({
                     </div>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

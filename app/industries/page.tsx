@@ -34,6 +34,7 @@ import {
 } from "@/lib/industries";
 import { getFeaturesBySlugs } from "@/lib/solutions";
 import { industriesHubFaqItems } from "@/lib/faq";
+import SectionDivider from "@/components/SectionDivider";
 
 const priorityTradeSet = new Set<string>(requiredPriorityIndustrySlugs);
 const industrySummaries = getIndustrySummaries().sort((a, b) => {
@@ -148,6 +149,8 @@ export default function IndustriesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -210,6 +213,8 @@ export default function IndustriesPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -277,6 +282,8 @@ export default function IndustriesPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -362,6 +369,8 @@ export default function IndustriesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -416,6 +425,8 @@ export default function IndustriesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -456,41 +467,29 @@ export default function IndustriesPage() {
 
                             <div className="rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-xl">
                                 <h3 className="text-2xl font-bold tracking-tight text-foreground mb-3">
-                                    Compare platforms
+                                    Proof before rollout
                                 </h3>
                                 <p className="mb-6 text-base text-foreground/60 font-medium leading-relaxed">
-                                    See how Crewtrace compares to Connecteam and Workyard across GPS verification, payroll exports, and compliance support.
+                                    Review case studies and implementation guides before changing how crews track time, approve hours, and close payroll.
                                 </p>
-                                <div className="space-y-3">
-                                    <Link
-                                        href="/compare/connecteam"
-                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
-                                    >
-                                        <div>
-                                            <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Connecteam</p>
-                                            <p className="mt-1 text-sm font-medium text-foreground/60">Payroll-confidence comparison</p>
-                                        </div>
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                                            <ArrowRight size={18} />
-                                        </div>
-                                    </Link>
-                                    <Link
-                                        href="/compare/workyard"
-                                        className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
-                                    >
-                                        <div>
-                                            <p className="font-bold text-foreground group-hover:text-primary transition-colors">Crewtrace vs Workyard</p>
-                                            <p className="mt-1 text-sm font-medium text-foreground/60">Field visibility and overtime comparison</p>
-                                        </div>
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                                            <ArrowRight size={18} />
-                                        </div>
-                                    </Link>
-                                </div>
+                                <Link
+                                    href="/case-studies"
+                                    className="group flex items-center justify-between gap-4 rounded-md border border-foreground/5 bg-slate-50/50 p-5 transition-all duration-300 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5"
+                                >
+                                    <div>
+                                        <p className="font-bold text-foreground group-hover:text-primary transition-colors">Read customer outcomes</p>
+                                        <p className="mt-1 text-sm font-medium text-foreground/60">Payroll recovery and rollout evidence</p>
+                                    </div>
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                                        <ArrowRight size={18} />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <FAQSection
                     eyebrow="Industry FAQ"
@@ -499,8 +498,11 @@ export default function IndustriesPage() {
                     items={industriesHubFaqItems}
                 />
 
+                <SectionDivider />
+
                 <CTASection cluster="industries" templateType="industries_hub" landingPath="/industries" />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

@@ -62,35 +62,11 @@ const templateContracts = [
         ],
     },
     {
-        template: "compare_hub",
-        filePath: "app/compare/page.tsx",
-        requiredTokens: [
-            "createPageMetadata",
-            "path: \"/compare\"",
-            "<h1",
-            "/compare/${competitor.slug}",
-        ],
-    },
-    {
-        template: "compare_detail",
-        filePath: "app/compare/[slug]/page.tsx",
-        requiredTokens: [
-            "createPageMetadata",
-            "path: `/compare/${slug}`",
-            "templateType=\"competitor_detail\"",
-            "/features/${slug}",
-            "/industries/${slug}",
-            "/guides/${slug}",
-            "/case-studies/${slug}",
-        ],
-    },
-    {
         template: "contact",
         filePath: "app/contact/page.tsx",
         requiredTokens: [
             "<DemoRequestForm",
             "<h1",
-            "publicIcpPhrase",
         ],
     },
     {

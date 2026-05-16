@@ -41,6 +41,7 @@ import FeatureComparison from "@/components/FeatureComparison";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug } from "@/lib/solutions";
+import SectionDivider from "@/components/SectionDivider";
 
 const SLUG = "geofencing-time-clock";
 const PATH = `/features/${SLUG}`;
@@ -460,6 +461,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* PAIN POINTS */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -506,6 +509,8 @@ export default function GeofencingTimeClockFeaturePage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* ANATOMY OF A GEOFENCE — unique annotated diagram */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50/60 to-white px-6 py-24 md:py-32">
@@ -571,6 +576,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* THREE STATES OF A CLOCK-IN — unique */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
                     <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_30%,rgba(47,39,206,0.06)_0%,transparent_60%)]" />
@@ -635,6 +642,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* FEATURE SPOTLIGHTS */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/60 px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-7xl">
@@ -696,6 +705,8 @@ export default function GeofencingTimeClockFeaturePage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* RULE BUILDER — unique section */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
@@ -799,6 +810,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* MULTI-SITE COMMAND — unique section */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-slate-50/60 to-white px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-7xl">
@@ -850,6 +863,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <FeatureComparison
                     eyebrow="Open clock-in vs. Geofenced"
                     eyebrowIcon={Ban}
@@ -879,6 +894,8 @@ export default function GeofencingTimeClockFeaturePage() {
                         highlight: "checked against the rule, not the handbook.",
                     }}
                 />
+
+                <SectionDivider />
 
                 {/* USE CASES */}
                 <section className="relative overflow-hidden px-6 py-24 md:py-32">
@@ -927,6 +944,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* STATS */}
                 <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary to-primary/90 px-6 py-24 md:py-28 text-white">
                     <div className="pointer-events-none absolute inset-0 opacity-30 mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.25) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 40%)" }} />
@@ -965,6 +984,8 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* FAQ */}
                 <FAQSection
                     eyebrow="Geofencing Time Clock FAQ"
@@ -973,8 +994,11 @@ export default function GeofencingTimeClockFeaturePage() {
                     items={solution.faqItems}
                 />
 
+                <SectionDivider />
+
                 <CTASection cluster="features" templateType="feature_detail" landingPath={PATH} />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

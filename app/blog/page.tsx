@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { getAllBlogPosts } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata = createPageMetadata({
     title: "Construction Payroll & Time Tracking Blog",
@@ -89,6 +90,8 @@ export default async function BlogPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {posts.length > 0 ? (
                     <>
                         <section className="pb-24 md:pb-32">
@@ -138,6 +141,8 @@ export default async function BlogPage() {
                             </div>
                             </div>
                         </section>
+
+                        <SectionDivider />
 
                         <section className="py-24 md:py-32">
                             <div className="layout-shell">
@@ -190,6 +195,8 @@ export default async function BlogPage() {
                             </div>
                             </div>
                         </section>
+
+                        <SectionDivider />
 
                         <section className="py-24 md:py-32">
                             <div className="layout-shell">
@@ -290,8 +297,11 @@ export default async function BlogPage() {
                     </section>
                 )}
 
+                <SectionDivider />
+
                 <CTASection templateType="blog_hub" landingPath="/blog" />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

@@ -2,6 +2,7 @@ import LandingNavbar from "@/components/LandingNavbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata: Metadata = createPageMetadata({
     title: "Terms of Service",
@@ -190,6 +191,7 @@ export default function TermsPage() {
                     </div>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

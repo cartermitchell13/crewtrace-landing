@@ -17,6 +17,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FAQSection";
+import SectionDivider from "@/components/SectionDivider";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
@@ -164,6 +165,8 @@ export default function FeaturesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
                         {featureSummaries.map((feature) => {
@@ -226,6 +229,8 @@ export default function FeaturesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -279,6 +284,8 @@ export default function FeaturesPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -338,6 +345,8 @@ export default function FeaturesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -375,6 +384,8 @@ export default function FeaturesPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -447,12 +458,6 @@ export default function FeaturesPage() {
                                 </div>
                                 <div className="mt-6 flex flex-wrap gap-3">
                                     <Link
-                                        href="/compare"
-                                        className="rounded-full border border-foreground/10 px-4 py-2 text-xs font-semibold text-foreground/65 transition-colors hover:border-primary/20 hover:text-primary"
-                                    >
-                                        Compare platforms
-                                    </Link>
-                                    <Link
                                         href="/industries"
                                         className="rounded-full border border-foreground/10 px-4 py-2 text-xs font-semibold text-foreground/65 transition-colors hover:border-primary/20 hover:text-primary"
                                     >
@@ -464,6 +469,8 @@ export default function FeaturesPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <FAQSection
                     eyebrow="Feature FAQ"
                     title="Choosing the right feature workflow"
@@ -471,8 +478,11 @@ export default function FeaturesPage() {
                     items={featuresHubFaqItems}
                 />
 
+                <SectionDivider />
+
                 <CTASection cluster="features" templateType="features_hub" landingPath="/features" />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

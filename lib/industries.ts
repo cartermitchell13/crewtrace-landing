@@ -129,10 +129,8 @@ export const industryRecords: IndustryRecord[] = [
         },
         relatedSolutions: [
             "gps-time-tracking",
-            "payroll-leakage-prevention",
             "geofencing-time-clock",
-            "dol-compliance",
-            "overtime-alerts",
+            "payroll-sync-quickbooks",
         ],
         faqItems: [
             {
@@ -236,10 +234,7 @@ export const industryRecords: IndustryRecord[] = [
         ],
         relatedSolutions: [
             "gps-time-tracking",
-            "payroll-exports",
-            "dol-compliance",
-            "payroll-leakage-prevention",
-            "overtime-alerts",
+            "payroll-sync-quickbooks",
             "scheduling",
         ],
         faqItems: [
@@ -355,8 +350,7 @@ export const industryRecords: IndustryRecord[] = [
         ],
         relatedSolutions: [
             "gps-time-tracking",
-            "payroll-exports",
-            "payroll-leakage-prevention",
+            "payroll-sync-quickbooks",
             "scheduling",
         ],
         faqItems: [
@@ -457,10 +451,8 @@ export const industryRecords: IndustryRecord[] = [
         ],
         relatedSolutions: [
             "gps-time-tracking",
-            "payroll-leakage-prevention",
-            "dol-compliance",
+            "payroll-sync-quickbooks",
             "scheduling",
-            "overtime-alerts",
         ],
         faqItems: [
             {
@@ -561,7 +553,7 @@ export const industryRecords: IndustryRecord[] = [
             author: "David Chen",
             company: "Chen Construction LLC",
         },
-        relatedSolutions: ["payroll-leakage-prevention", "dol-compliance", "payroll-exports", "scheduling"],
+        relatedSolutions: ["payroll-sync-quickbooks", "scheduling"],
         faqItems: [
             {
                 question: "How does Crewtrace help general contractors track subcontractor hours?",
@@ -660,8 +652,6 @@ export const industryRecords: IndustryRecord[] = [
         ],
         relatedSolutions: [
             "geofencing-time-clock",
-            "payroll-leakage-prevention",
-            "payroll-exports",
         ],
         faqItems: [
             {
@@ -759,7 +749,6 @@ export const industryRecords: IndustryRecord[] = [
         relatedSolutions: [
             "geofencing-time-clock",
             "gps-time-tracking",
-            "payroll-leakage-prevention",
             "scheduling",
         ],
         faqItems: [
@@ -858,8 +847,6 @@ export const industryRecords: IndustryRecord[] = [
         ],
         relatedSolutions: [
             "geofencing-time-clock",
-            "payroll-leakage-prevention",
-            "dol-compliance",
         ],
         faqItems: [
             {
@@ -958,9 +945,7 @@ export const industryRecords: IndustryRecord[] = [
             { value: "3 hrs", label: "Saved on weekly payroll exception review" },
         ],
         relatedSolutions: [
-            "overtime-alerts",
-            "payroll-leakage-prevention",
-            "dol-compliance",
+            "payroll-sync-quickbooks",
             "scheduling",
         ],
         faqItems: [

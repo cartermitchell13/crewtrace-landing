@@ -16,6 +16,7 @@ import {
     ArrowDown,
     Calculator,
 } from "lucide-react";
+import SectionDivider from "@/components/SectionDivider";
 
 const COST_BREAKDOWN = [
     {
@@ -161,6 +162,8 @@ export default function TrueCostCalculatorPage() {
                     </section>
                 </div>
 
+                <SectionDivider />
+
                 {/* Guide Content */}
                 <div className="max-w-5xl mx-auto px-6">
 
@@ -198,6 +201,8 @@ export default function TrueCostCalculatorPage() {
                             </span>
                         </div>
                     </section>
+
+                    <SectionDivider />
 
                     {/* Section 2: Cost Breakdown Bento Grid */}
                     <section className="mb-24 lg:mb-32">
@@ -243,6 +248,8 @@ export default function TrueCostCalculatorPage() {
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* Section 4: The Hidden Costs */}
                     <section className="mb-24 lg:mb-32">
                         <div className="max-w-3xl border-l-4 border-primary pl-8 py-2 mb-12">
@@ -277,6 +284,8 @@ export default function TrueCostCalculatorPage() {
                         </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* Section 3: Industry Benchmarks */}
                     <section className="mb-24 lg:mb-32">
                         <div className="max-w-3xl mb-10">
@@ -301,6 +310,8 @@ export default function TrueCostCalculatorPage() {
                             ))}
                         </div>
                     </section>
+
+                    <SectionDivider />
 
                     {/* What To Do Next Section */}
                     <section className="mb-24 lg:mb-32">
@@ -344,6 +355,8 @@ export default function TrueCostCalculatorPage() {
                             ))}
                         </div>
                     </section>
+
+                    <SectionDivider />
 
                     {/* Related Articles Cards */}
                     <section className="mb-24 lg:mb-32">
@@ -413,6 +426,8 @@ export default function TrueCostCalculatorPage() {
                     </div>
                 </div>
 
+                <SectionDivider />
+
                 {/* Premium Full-width CTA */}
                 <div className="max-w-6xl mx-auto px-6">
                     <section className="relative overflow-hidden rounded-md bg-foreground text-background border border-foreground/10 shadow-2xl">
@@ -439,6 +454,7 @@ export default function TrueCostCalculatorPage() {
                 </div>
             </main>
 
+            <SectionDivider />
             <Footer />
         </div>
     );

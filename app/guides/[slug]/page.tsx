@@ -5,11 +5,11 @@ import { notFound } from "next/navigation";
 import BookedCallLink from "@/components/BookedCallLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getCompetitorsByGuideSlug } from "@/lib/competitors";
 import { guideBySlug, guideSlugs } from "@/lib/guides";
 import type { GuideSection } from "@/lib/guides";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import SectionDivider from "@/components/SectionDivider";
 
 export function generateStaticParams() {
     return guideSlugs.map((slug) => ({ slug }));
@@ -199,10 +199,6 @@ export default async function GuideDetailPage({
         notFound();
     }
 
-    const relatedComparisons = getCompetitorsByGuideSlug(guide.slug).sort(
-        (left, right) => left.name.localeCompare(right.name)
-    );
-
     const articleJsonLd = articleSchema({
         headline: guide.title,
         description: guide.summary,
@@ -334,35 +330,6 @@ export default async function GuideDetailPage({
                         </div>
 
                         {/* ─── Related Comparisons ─── */}
-                        {relatedComparisons.length > 0 && (
-                            <section className="mt-20 md:mt-24 pt-16 border-t border-foreground/10">
-                                <h3 className="text-xl font-bold tracking-tight text-foreground mb-3">
-                                    Compare vendor options
-                                </h3>
-                                <p className="text-foreground/60 mb-8 max-w-2xl">
-                                    Evaluating solutions? Use these neutral
-                                    comparison pages to connect this
-                                    implementation guidance with a decision path.
-                                </p>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    {relatedComparisons.map((competitor) => (
-                                        <Link
-                                            key={competitor.slug}
-                                            href={`/compare/${competitor.slug}`}
-                                            className="group relative flex items-center justify-between p-5 rounded-md border border-foreground/10 bg-white hover:border-primary/30 hover:shadow-sm transition-all overflow-hidden"
-                                        >
-                                            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                            <span className="font-semibold text-foreground/80 group-hover:text-primary transition-colors relative z-10 w-full pr-6">
-                                                Crewtrace vs {competitor.name}
-                                            </span>
-                                            <span className="text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all relative z-10 font-bold">
-                                                &rarr;
-                                            </span>
-                                        </Link>
-                                    ))}
-                                </div>
-                            </section>
-                        )}
                     </article>
                 </div>
 
@@ -410,6 +377,7 @@ export default async function GuideDetailPage({
                     </section>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

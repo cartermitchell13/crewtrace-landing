@@ -11,6 +11,7 @@ import CTASection from "@/components/CTASection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import FAQSection from "@/components/FAQSection";
+import SectionDivider from "@/components/SectionDivider";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
@@ -208,9 +209,13 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <TestimonialTextureShell>
                     <TestimonialsSection />
                 </TestimonialTextureShell>
+
+                <SectionDivider />
 
                 {/* Challenges and Solutions */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -270,6 +275,8 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* Outcomes Section */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
                     <div className="pointer-events-none absolute right-0 top-1/2 -z-10 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.04)_0%,transparent_60%)] md:h-[800px] md:w-[800px]" />
@@ -308,7 +315,11 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <LiteSavingsCalculator />
+
+                <SectionDivider />
 
                 <FAQSection
                     eyebrow={`${solution.name} FAQ`}
@@ -316,6 +327,8 @@ export default async function FeatureDetailPage({
                     description={faqDescription}
                     items={solution.faqItems}
                 />
+
+                <SectionDivider />
 
                 {/* Ecosystem Links */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
@@ -377,8 +390,11 @@ export default async function FeatureDetailPage({
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <CTASection cluster="features" templateType="feature_detail" landingPath={`/features/${slug}`} />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

@@ -1,18 +1,10 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactDemoValueColumn from "@/components/ContactDemoValueColumn";
 import DemoRequestForm from "@/components/DemoRequestForm";
-import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 // Lead analytics use buildLeadFormEvent from DemoRequestForm (see @/lib/seo-events).
-
-export const metadata: Metadata = createPageMetadata({
-    title: "Get a Free Demo & Quote for Your Crew | Crewtrace",
-    description:
-        "Request a personalized Crewtrace demo tailored to your trade and crew size. Get a video walkthrough and quote in one business day — no sales call required.",
-    path: "/contact",
-});
 
 export default function ContactPage() {
     return (
@@ -59,6 +51,7 @@ export default function ContactPage() {
                 </div>
                 </div>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

@@ -4,6 +4,7 @@ import ComplianceAuditTool from "@/components/ComplianceAuditTool";
 import Footer from "@/components/Footer";
 import { ShieldCheck, Lock, Scale, AlertTriangle } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata: Metadata = createPageMetadata({
     title: "Free Compliance Audit",
@@ -63,6 +64,7 @@ export default function ComplianceAuditPage() {
                 </div>
             </main>
 
+            <SectionDivider />
             <Footer />
         </div>
     );

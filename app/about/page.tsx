@@ -14,6 +14,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { createPageMetadata } from "@/lib/seo";
+import SectionDivider from "@/components/SectionDivider";
 
 export const metadata: Metadata = createPageMetadata({
     title: "About Crewtrace | Stop Payroll Leakage for Field Crews",
@@ -99,6 +100,8 @@ export default function AboutPage() {
                         </p>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* ── 2. FOUNDER STORY ────────────────────────────────── */}
                 <section className="bg-background px-6 py-20 md:py-28">
@@ -199,6 +202,8 @@ export default function AboutPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* ── 3. MISSION ──────────────────────────────────────── */}
                 <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
@@ -232,6 +237,8 @@ export default function AboutPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* ── 4. HOW THE PRODUCT HELPS ────────────────────────── */}
                 <section className="bg-background px-6 py-20 md:py-28">
@@ -278,6 +285,8 @@ export default function AboutPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 {/* ── 5. VALUES / PHILOSOPHY ──────────────────────────── */}
                 <section className="bg-background px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-6xl">
@@ -313,6 +322,8 @@ export default function AboutPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 {/* ── 6. CLOSING CTA ──────────────────────────────────── */}
                 <section className="relative overflow-hidden bg-background px-6 pb-28 pt-20 md:pb-36 md:pt-28">
@@ -393,6 +404,7 @@ export default function AboutPage() {
                     </div>
                 </section>
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

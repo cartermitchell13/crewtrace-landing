@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
     ArrowRight,
     CheckCircle2,
@@ -21,6 +22,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FAQSection";
+import SectionDivider from "@/components/SectionDivider";
 import { competitorRecords } from "@/lib/competitors";
 import {
     getTemplateMessaging,
@@ -131,6 +133,8 @@ const evaluationCriteria = [
 ];
 
 export default function CompareHubPage() {
+    notFound();
+
     const sortedCompetitors = [...competitorRecords].sort((left, right) =>
         left.name.localeCompare(right.name),
     );
@@ -175,6 +179,8 @@ export default function CompareHubPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
@@ -221,6 +227,8 @@ export default function CompareHubPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -266,6 +274,8 @@ export default function CompareHubPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -343,6 +353,8 @@ export default function CompareHubPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
@@ -392,6 +404,8 @@ export default function CompareHubPage() {
                         </div>
                     </div>
                 </section>
+
+                <SectionDivider />
 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
@@ -484,6 +498,8 @@ export default function CompareHubPage() {
                     </div>
                 </section>
 
+                <SectionDivider />
+
                 <FAQSection
                     eyebrow="Comparison FAQ"
                     title="Frequently asked questions about our comparison process"
@@ -491,8 +507,11 @@ export default function CompareHubPage() {
                     items={compareHubFaqItems}
                 />
 
+                <SectionDivider />
+
                 <CTASection cluster="compare" templateType="compare_hub" landingPath="/compare" />
             </main>
+            <SectionDivider />
             <Footer />
         </div>
     );

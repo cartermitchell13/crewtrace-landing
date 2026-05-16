@@ -17,6 +17,9 @@ This policy defines canonical ownership and indexability rules for the Crewtrace
   - `/compliance-audit`
   - `/privacy`
   - `/terms`
+- Shelved draft routes stay out of sitemap, route policy, and internal navigation until they are production-ready:
+  - `/compare`
+  - `/compare/*`
 - Not-found metadata fallbacks should always set `noIndex: true`.
 
 ## Source of Truth
@@ -26,4 +29,3 @@ This policy defines canonical ownership and indexability rules for the Crewtrace
 ## QA Requirements
 - Duplicate title/description/canonical conflicts fail the SEO contract check.
 - Any new static route must be added to `lib/seoPolicy.ts` before release.
-

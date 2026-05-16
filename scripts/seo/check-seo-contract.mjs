@@ -9,7 +9,6 @@ const staticMetadataContracts = [
     { filePath: "app/about/page.tsx", path: "/about", indexable: true },
     { filePath: "app/blog/page.tsx", path: "/blog", indexable: true },
     { filePath: "app/case-studies/page.tsx", path: "/case-studies", indexable: true },
-    { filePath: "app/compare/page.tsx", path: "/compare", indexable: true },
     { filePath: "app/guides/page.tsx", path: "/guides", indexable: true },
     { filePath: "app/features/page.tsx", path: "/features", indexable: true },
     { filePath: "app/industries/page.tsx", path: "/industries", indexable: true },
@@ -31,11 +30,6 @@ const dynamicMetadataContracts = [
         filePath: "app/industries/[slug]/page.tsx",
         dynamicPath: "/industries/${slug}",
         fallbackPath: "/industries",
-    },
-    {
-        filePath: "app/compare/[slug]/page.tsx",
-        dynamicPath: "/compare/${slug}",
-        fallbackPath: "/compare",
     },
     {
         filePath: "app/blog/[slug]/page.tsx",
@@ -301,7 +295,7 @@ function run() {
         }
     }
 
-    for (const dynamicPrefix of ["/features/", "/industries/", "/compare/", "/blog/", "/guides/", "/case-studies/"]) {
+    for (const dynamicPrefix of ["/features/", "/industries/", "/blog/", "/guides/", "/case-studies/"]) {
         const prefixPattern = new RegExp(`["'\`]${dynamicPrefix.replace("/", "\\/")}["'\`]`);
         if (!prefixPattern.test(policyText)) {
             errors.push(`SEO policy dynamic prefixes must include "${dynamicPrefix}".`);

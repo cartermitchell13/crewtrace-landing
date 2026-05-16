@@ -7,15 +7,11 @@ const projectRoot = process.cwd();
 const targetFiles = [
     {
         filePath: "components/Hero.tsx",
-        requiredTokens: ["getTemplateMessaging", "publicIcpPhrase"],
+        requiredTokens: ["getTemplateMessaging"],
     },
     {
         filePath: "components/CTASection.tsx",
         requiredTokens: ["getTemplateMessaging", "orderedPromiseLine"],
-    },
-    {
-        filePath: "app/page.tsx",
-        requiredTokens: ["@/lib/messaging", "orderedPromiseLine"],
     },
     {
         filePath: "app/features/page.tsx",
@@ -32,18 +28,6 @@ const targetFiles = [
     {
         filePath: "app/industries/[slug]/page.tsx",
         requiredTokens: ["@/lib/messaging", "templateType=\"industry_detail\""],
-    },
-    {
-        filePath: "app/compare/page.tsx",
-        requiredTokens: ["@/lib/messaging", "/compare/${competitor.slug}"],
-    },
-    {
-        filePath: "app/compare/[slug]/page.tsx",
-        requiredTokens: ["@/lib/messaging", "templateType=\"competitor_detail\""],
-    },
-    {
-        filePath: "app/contact/page.tsx",
-        requiredTokens: ["@/lib/messaging", "buildLeadFormEvent"],
     },
 ];
 

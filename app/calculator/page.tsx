@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import SavingsCalculator from "@/components/SavingsCalculator";
 import Footer from "@/components/Footer";
 import { CheckCircle2, TrendingUp, Sparkles } from "lucide-react";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function CalculatorPage() {
     return (
@@ -43,12 +44,15 @@ export default function CalculatorPage() {
                     </div>
                 </div>
 
+                <SectionDivider />
+
                 {/* The Calculator */}
                 <div className="relative z-10">
                     <SavingsCalculator />
                 </div>
             </main>
 
+            <SectionDivider />
             <Footer />
         </div>
     );
