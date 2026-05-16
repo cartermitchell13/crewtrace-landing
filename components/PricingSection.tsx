@@ -24,7 +24,7 @@ export default function PricingSection() {
     return (
         <section
             id="pricing"
-            className="relative overflow-hidden bg-background px-6 py-24 scroll-mt-32 md:py-32"
+            className="relative scroll-mt-32 overflow-hidden bg-background py-24 md:py-32"
             aria-labelledby="pricing-heading"
         >
             {/* Atmospheric depth */}
@@ -37,7 +37,7 @@ export default function PricingSection() {
                 className="pointer-events-none absolute inset-0 opacity-[0.022] bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:22px_22px]"
             />
 
-            <div className="relative z-10 mx-auto max-w-7xl">
+            <div className="relative z-10 layout-shell">
                 {/* Single premium panel */}
                 <div className="relative overflow-hidden rounded-md border border-slate-200/90 bg-white shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_-12px_rgba(15,23,42,0.12),0_12px_32px_-8px_rgba(47,39,206,0.06)]">
                     <div

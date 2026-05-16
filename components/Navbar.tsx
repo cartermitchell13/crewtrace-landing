@@ -194,14 +194,14 @@ export default function Navbar() {
                 </Link>
 
                 {/* Navigation Links */}
-                <div className="hidden md:flex items-center gap-1">
+                <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
                     {/* Features Dropdown */}
                     <div
                         className="relative"
                         onMouseEnter={() => handleMouseEnter("features")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "features" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "features" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Features
                         </button>
                     </div>
@@ -212,7 +212,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("industries")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "industries" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "industries" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Industries
                         </button>
                     </div>
@@ -223,7 +223,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("resources")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "resources" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "resources" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Resources
                         </button>
                     </div>
@@ -234,7 +234,7 @@ export default function Navbar() {
                         onMouseEnter={() => handleMouseEnter("company")}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "company" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
+                        <button className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${activeMenu === "company" ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}>
                             Company
                         </button>
                     </div>
@@ -242,39 +242,39 @@ export default function Navbar() {
                     {/* Calculator Link */}
                     <Link
                         href="/calculator"
-                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
+                        className="px-2.5 xl:px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200 whitespace-nowrap"
                     >
                         ROI Calculator
                     </Link>
                     <Link
                         href="/#pricing"
-                        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
+                        className="px-2.5 xl:px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
                     >
                         Pricing
                     </Link>
                 </div>
 
                 {/* CTA */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 lg:gap-3">
                     <Link
                         href="/contact"
-                        className="hidden sm:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="hidden lg:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                         Request a demo
                     </Link>
                     <Link
                         href="https://www.crewtrace.app/signup"
-                        className="hidden md:inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary px-4 xl:px-6 py-2.5 text-sm font-bold text-white whitespace-nowrap shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                         Sign up
-                        <ArrowRight size={16} className="hidden lg:block" />
+                        <ArrowRight size={16} className="hidden xl:block" />
                     </Link>
 
                     <button
                         type="button"
                         aria-label="Toggle navigation menu"
                         onClick={() => setMobileOpen((open) => !open)}
-                        className="flex h-11 w-11 items-center justify-center rounded-md border border-foreground/10 bg-white/90 text-foreground shadow-sm transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
+                        className="flex h-11 w-11 items-center justify-center rounded-md border border-foreground/10 bg-white/90 text-foreground shadow-sm transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:hidden"
                     >
                         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
@@ -477,7 +477,7 @@ export default function Navbar() {
                             {/* Right: Featured Case Study */}
                             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] p-6 flex flex-col border-l border-foreground/5">
                                 <span className="text-xs font-semibold text-primary uppercase tracking-wider">Latest Case Study</span>
-                                <h4 className="text-lg font-bold text-foreground mt-2">S&W Waterproofing Saves $2,100/Month</h4>
+                                <h4 className="text-lg font-bold text-foreground mt-2 leading-normal">S&W Waterproofing Saves $2,100/Month</h4>
                                 <p className="text-sm text-foreground/60 mt-2 leading-relaxed flex-1">
                                     Learn how this waterproofing contractor eliminated buddy punching and recovered thousands in lost wages within the first month.
                                 </p>
@@ -547,7 +547,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Dropdown Wrapper */}
-            <div className={`md:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-300 origin-top ${mobileOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"}`}>
+            <div className={`lg:hidden absolute left-0 right-0 top-full mt-2 transition-all duration-300 origin-top ${mobileOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"}`}>
                 <div className="bg-white/95 backdrop-blur-xl border border-foreground/10 shadow-2xl rounded-md overflow-hidden max-h-[80vh] overflow-y-auto w-full p-2">
 
                     {/* Features Accordion */}

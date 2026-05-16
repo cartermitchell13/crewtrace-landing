@@ -32,8 +32,8 @@ const trades: TradeLink[] = [
 
 export default function IndustryLinks() {
     return (
-        <section className="bg-background px-6 py-24 md:py-32">
-            <div className="mx-auto max-w-7xl">
+        <section className="bg-background py-24 md:py-32">
+            <div className="layout-shell">
                 <div className="mx-auto mb-14 max-w-3xl space-y-5 text-center">
                     <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                         Built for your trade

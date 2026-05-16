@@ -538,8 +538,9 @@ export default function SavingsCalculator() {
 
     if (phase === "input") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
-                <div className="max-w-4xl mx-auto">
+            <section id="calculator" className="scroll-mt-32 bg-background py-32">
+                <div className="layout-shell">
+                    <div className="mx-auto max-w-4xl">
                     <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
 
                         {/* Header */}
@@ -684,6 +685,7 @@ export default function SavingsCalculator() {
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
         );
     }
@@ -692,8 +694,9 @@ export default function SavingsCalculator() {
 
     if (phase === "email-gate") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
-                <div className="max-w-lg mx-auto">
+            <section id="calculator" className="scroll-mt-32 bg-background py-32">
+                <div className="layout-shell">
+                    <div className="mx-auto max-w-lg">
                     <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
                             <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center mb-6">
@@ -767,6 +770,7 @@ export default function SavingsCalculator() {
                         </button>
                     </div>
                 </div>
+                </div>
             </section>
         );
     }
@@ -775,8 +779,9 @@ export default function SavingsCalculator() {
 
     if (phase === "generating") {
         return (
-            <section id="calculator" className="py-32 px-6 bg-background scroll-mt-32">
-                <div className="max-w-2xl mx-auto">
+            <section id="calculator" className="scroll-mt-32 bg-background py-32">
+                <div className="layout-shell">
+                    <div className="mx-auto max-w-2xl">
                     <div ref={generatingCardRef} className="bg-white rounded-md border border-foreground/5 p-10 md:p-16 shadow-sm ring-1 ring-foreground/5">
                         <div className="flex flex-col items-center text-center mb-10">
                             <div className="w-16 h-16 rounded-md bg-primary/10 flex items-center justify-center mb-6">
@@ -810,6 +815,7 @@ export default function SavingsCalculator() {
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
         );
     }
@@ -817,8 +823,9 @@ export default function SavingsCalculator() {
     // ─── PHASE: Report ───────────────────────────────────────────
 
     return (
-        <section id="calculator" className="py-20 px-6 bg-background scroll-mt-32">
-            <div className="max-w-6xl mx-auto space-y-8">
+        <section id="calculator" className="scroll-mt-32 bg-background py-20">
+            <div className="layout-shell">
+                <div className="mx-auto max-w-6xl space-y-8">
 
                 {/* Report Header */}
                 <div className="bg-white rounded-md border border-foreground/5 p-8 md:p-12 shadow-sm ring-1 ring-foreground/5">
@@ -1124,6 +1131,7 @@ export default function SavingsCalculator() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     );

@@ -270,7 +270,7 @@ export default function CaseStudiesPage() {
                                 className="pointer-events-none absolute inset-0 bg-primary/40"
                             />
 
-                            <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+                            <div className="relative z-10 grid grid-cols-1 gap-12 text-white lg:grid-cols-[1.2fr_1fr] lg:items-center">
                                 <div className="space-y-6">
                                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-white">
                                         Could your team be the next case study?

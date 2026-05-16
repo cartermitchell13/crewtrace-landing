@@ -145,8 +145,8 @@ export default function LiteSavingsCalculator() {
     }, [crewSize, avgHourlyRate, adminHours]);
 
     return (
-        <section className="py-24 md:py-32 px-6 bg-background overflow-hidden relative scroll-mt-32">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative scroll-mt-32 overflow-hidden bg-background py-24 md:py-32">
+            <div className="layout-shell">
                 <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] gap-10 lg:gap-12 xl:gap-16 items-stretch">
                     {/* Left: diagonal split on lg — copy top, image slot bottom */}
                     <div className="flex flex-col min-h-0 w-full lg:h-full">

@@ -14,7 +14,7 @@ export default function Footer() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 
-                <div className="max-w-7xl mx-auto px-8 pb-12 pt-20 md:px-16 md:pb-20 md:pt-28 relative z-10 text-white">
+                <div className="layout-shell relative z-10 px-8 pb-12 pt-20 text-white md:px-16 md:pb-20 md:pt-28">
                     {/* Top: Logo + tagline */}
                     <div className="mb-16 text-center">
                         <Link

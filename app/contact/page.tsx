@@ -18,11 +18,12 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
-            <main className="px-6 pb-24 pt-36 md:pt-40">
+            <main className="relative pb-24 pt-36 md:pt-40">
                 {/* Background decoration */}
                 <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_70%)]" />
 
-                <div className="mx-auto max-w-6xl">
+                <div className="layout-shell">
+                    <div className="mx-auto max-w-6xl">
                     {/* Page header */}
                     <div id="hero" className="mb-12 max-w-2xl">
                         <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -55,6 +56,7 @@ export default function ContactPage() {
                             <DemoRequestForm />
                         </div>
                     </div>
+                </div>
                 </div>
             </main>
             <Footer />

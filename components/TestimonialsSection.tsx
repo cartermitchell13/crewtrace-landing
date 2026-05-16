@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 /** Shared texture + glow for the testimonial block; wrap ProcessSection here on the home page so one background spans both. */
 export function TestimonialTextureShell({ children }: { children: ReactNode }) {
     return (
-        <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
+        <div className="relative w-full overflow-hidden rounded-[1.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat md:rounded-[2.75rem]">
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
             {children}
         </div>
@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
             id="results"
             className="relative z-10 py-16 sm:py-24 md:py-28"
         >
-            <div className="relative z-10 mx-auto max-w-7xl">
+            <div className="relative z-10 layout-shell">
                 <article className="surface-panel relative z-10 grid min-h-[580px] grid-cols-1 overflow-hidden rounded-md border border-foreground/5 bg-white shadow-xl md:min-h-[640px] lg:min-h-[680px] lg:grid-cols-2">
                     <div className="col-span-full border-b border-foreground/5 px-9 pb-10 pt-10 text-center sm:px-[3.25rem] sm:pb-12 sm:pt-12 md:px-[5.25rem] md:pb-16 md:pt-16">
                         <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">

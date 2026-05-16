@@ -22,11 +22,12 @@ export default function FAQSection({
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section id="faq" className="py-24 md:py-32 px-6 bg-background relative overflow-hidden scroll-mt-32">
+        <section id="faq" className="relative scroll-mt-32 overflow-hidden bg-background py-24 md:py-32">
             {/* Background Accents */}
             <div className="absolute left-1/2 top-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
 
-            <div className="max-w-4xl mx-auto relative z-10">
+            <div className="relative z-10 layout-shell">
+                <div className="mx-auto max-w-4xl">
                 <div className="text-center mb-16 md:mb-20 space-y-6">
                     <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-primary">
                         <HelpCircle size={14} className="text-primary" />
@@ -89,6 +90,7 @@ export default function FAQSection({
                             </div>
                         );
                     })}
+                </div>
                 </div>
             </div>
         </section>

@@ -20,8 +20,8 @@ export default function CTASection({
     landingPath: _landingPath = "/",
 }: CTASectionProps) {
     return (
-        <section id="audit" className="relative overflow-hidden bg-background px-6 pb-28 pt-20 scroll-mt-32 md:pb-36 md:pt-28">
-            <div className="mx-auto max-w-7xl">
+        <section id="audit" className="relative scroll-mt-32 overflow-hidden bg-background pb-28 pt-20 md:pb-36 md:pt-28">
+            <div className="layout-shell">
                 <div className="relative overflow-hidden rounded-md bg-primary p-8 md:p-12 lg:p-16">
                     <div
                         aria-hidden

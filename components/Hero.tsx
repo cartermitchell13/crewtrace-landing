@@ -8,13 +8,13 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="relative overflow-hidden bg-background px-6 pb-16 pt-28 md:pb-32 md:pt-40 scroll-mt-32"
+            className="relative overflow-hidden bg-background pb-16 pt-28 md:pb-32 md:pt-40 scroll-mt-32"
         >
             {/* Subtle blue gradient overlay */}
             <div className="absolute top-0 right-0 -z-10 h-full w-[80%] translate-x-1/3 bg-[radial-gradient(ellipse_at_top_right,rgba(47,39,206,0.08)_0%,transparent_60%)] md:w-[60%]" />
             <div className="absolute left-0 top-1/4 -z-10 h-full w-[50%] -translate-x-1/2 bg-[radial-gradient(circle_at_left_center,rgba(47,39,206,0.04)_0%,transparent_50%)]" />
 
-            <div className="mx-auto max-w-7xl">
+            <div className="layout-shell">
                 {/* Centered Copy & CTAs */}
                 <div className="mx-auto max-w-4xl text-center">
                     <div className="mb-4 sm:mb-6 inline-flex max-w-[calc(100vw-2rem)] items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">

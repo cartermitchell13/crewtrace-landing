@@ -38,8 +38,8 @@ export default function ProcessSection({ variant = "default" }: ProcessSectionPr
     /* On the home texture band: read as a "workflow / diagram" zone — tinted, soft edge — not a second white proof card like TestimonialsSection. */
     const contentShell =
         isTexture
-            ? "max-w-7xl mx-auto rounded-md border border-primary/20 bg-gradient-to-b from-secondary/55 via-secondary/20 to-background/90 p-8 shadow-sm ring-1 ring-inset ring-white/40 sm:px-10 sm:py-16 md:px-14 md:py-20"
-            : "max-w-7xl mx-auto";
+            ? "layout-shell rounded-md border border-primary/20 bg-gradient-to-b from-secondary/55 via-secondary/20 to-background/90 p-8 shadow-sm ring-1 ring-inset ring-white/40 sm:px-10 sm:py-16 md:px-14 md:py-20"
+            : "layout-shell";
     const lineTrack = isTexture ? "bg-primary/15" : "bg-foreground/5";
     const stepBodyClass = isTexture ? "text-foreground/70" : "text-foreground/60";
     const stepTileClass = isTexture
@@ -49,7 +49,7 @@ export default function ProcessSection({ variant = "default" }: ProcessSectionPr
     return (
         <section
             id="process"
-            className={`relative z-10 overflow-hidden scroll-mt-32 py-24 md:py-32 ${isTexture ? "bg-transparent px-0" : "bg-background px-6"}`}
+            className={`relative z-10 overflow-hidden scroll-mt-32 py-24 md:py-32 ${isTexture ? "bg-transparent" : "bg-background"}`}
         >
             <style>{`
                 @keyframes dataFlow {

@@ -54,10 +54,11 @@ export default async function BlogPage() {
         <div className="min-h-screen bg-background">
             <Navbar />
             <main>
-                <section id="hero" className="relative overflow-hidden px-6 pb-20 pt-32 md:pb-32 md:pt-40">
+                <section id="hero" className="relative overflow-hidden pb-20 pt-32 md:pb-32 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.08)_0%,transparent_58%)]" />
 
-                    <div className="mx-auto max-w-4xl text-center">
+                    <div className="layout-shell">
+                        <div className="mx-auto max-w-4xl text-center">
                         <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
                             <BookOpen size={14} />
                             Blog
@@ -84,13 +85,15 @@ export default async function BlogPage() {
                                 <ArrowRight size={16} />
                             </Link>
                         </div>
+                        </div>
                     </div>
                 </section>
 
                 {posts.length > 0 ? (
                     <>
-                        <section className="px-6 pb-24 md:pb-32">
-                            <div className="mx-auto max-w-6xl">
+                        <section className="pb-24 md:pb-32">
+                            <div className="layout-shell">
+                                <div className="mx-auto max-w-6xl">
                                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                                     {posts.map((post) => (
                                         <Link
@@ -122,7 +125,7 @@ export default async function BlogPage() {
                                                     <span>·</span>
                                                     <span className="font-medium">{post.readTime}</span>
                                                 </div>
-                                                <h2 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                                                <h2 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-normal">
                                                     {post.title}
                                                 </h2>
                                                 <p className="text-sm text-foreground/60 line-clamp-2 leading-relaxed font-medium">
@@ -133,10 +136,12 @@ export default async function BlogPage() {
                                     ))}
                                 </div>
                             </div>
+                            </div>
                         </section>
 
-                        <section className="px-6 py-24 md:py-32">
-                            <div className="mx-auto max-w-6xl">
+                        <section className="py-24 md:py-32">
+                            <div className="layout-shell">
+                                <div className="mx-auto max-w-6xl">
                                 <div className="mb-16 text-center">
                                     <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-sm mb-6">
                                         <FileText size={14} />
@@ -183,10 +188,12 @@ export default async function BlogPage() {
                                     })}
                                 </div>
                             </div>
+                            </div>
                         </section>
 
-                        <section className="px-6 py-24 md:py-32">
-                            <div className="mx-auto max-w-6xl">
+                        <section className="py-24 md:py-32">
+                            <div className="layout-shell">
+                                <div className="mx-auto max-w-6xl">
                                 <div className="mb-16 text-center">
                                     <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-600 backdrop-blur-sm mb-6">
                                         <Star size={14} />
@@ -257,11 +264,13 @@ export default async function BlogPage() {
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         </section>
                     </>
                 ) : (
-                    <section className="px-6 pb-24 md:pb-32">
-                        <div className="mx-auto max-w-6xl text-center py-20">
+                    <section className="pb-24 md:pb-32">
+                        <div className="layout-shell">
+                            <div className="mx-auto max-w-6xl py-20 text-center">
                             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                                 <span className="text-4xl">📝</span>
                             </div>
@@ -276,6 +285,7 @@ export default async function BlogPage() {
                             >
                                 Back to Home
                             </Link>
+                        </div>
                         </div>
                     </section>
                 )}

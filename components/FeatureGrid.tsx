@@ -48,8 +48,8 @@ const BentoCard = ({
 
 export default function FeatureGrid() {
     return (
-        <section id="features" className="py-32 px-6 bg-background scroll-mt-32">
-            <div className="max-w-7xl mx-auto">
+        <section id="features" className="py-32 bg-background scroll-mt-32">
+            <div className="layout-shell">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-sm font-bold">
                         <CheckCircle2 size={16} />

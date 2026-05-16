@@ -40,16 +40,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-:where(p) {
-  max-width: var(--reading-max);
-  color: inherit;
-}
-
 a {
   text-underline-offset: 2px;
 }
 
 @layer base {
+
+  :where(p) {
+    max-width: var(--reading-max);
+    color: inherit;
+  }
 
   *,
   ::after,
@@ -72,13 +72,22 @@ a {
 }
 
 /*
- * Headings: keep semibold + 100% line-height site-wide.
- * Classed headings need higher specificity than utility classes (e.g. font-extrabold).
+ * Horizontal page shell — matches `Navbar` / `LandingNavbar` (`w-[95%] max-w-7xl` centered)
+ * so main content aligns with the floating nav on narrow viewports (fixed `px-*` gutters are wider).
+ */
+@layer components {
+  .layout-shell {
+    @apply mx-auto w-[95%] max-w-7xl;
+  }
+}
+
+/*
+ * Headings: keep semibold site-wide on classed headings (beat Tailwind font weights when needed).
+ * Do not set line-height here — this rule is unlayered and would override `leading-*` utilities.
  * Prose markdown headings need to beat @tailwindcss/typography defaults.
  */
 :is(h1, h2, h3, h4, h5, h6)[class] {
   font-weight: 600;
-  line-height: 100%;
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6) {
