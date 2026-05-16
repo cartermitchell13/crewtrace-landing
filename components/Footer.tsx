@@ -10,7 +10,7 @@ const columnHeadingClass =
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="w-full bg-[#050315] rounded-t-3xl md:rounded-t-[2.75rem] relative overflow-hidden">
+            <div className="w-full bg-[#050315] relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
 

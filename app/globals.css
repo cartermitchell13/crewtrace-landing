@@ -64,7 +64,7 @@ a {
   h5,
   h6 {
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.04em;
     text-wrap: balance;
@@ -82,16 +82,16 @@ a {
 }
 
 /*
- * Headings: keep semibold site-wide on classed headings (beat Tailwind font weights when needed).
+ * Headings: medium weight site-wide on classed headings (beat Tailwind font weights when needed).
  * Do not set line-height here — this rule is unlayered and would override `leading-*` utilities.
  * Prose markdown headings need to beat @tailwindcss/typography defaults.
  */
 :is(h1, h2, h3, h4, h5, h6)[class] {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6) {
-  font-weight: 600;
+  font-weight: 500;
   line-height: 100%;
 }
 

@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 /** Shared texture + glow for the testimonial block; wrap ProcessSection here on the home page so one background spans both. */
 export function TestimonialTextureShell({ children }: { children: ReactNode }) {
     return (
-        <div className="relative w-full overflow-hidden rounded-[1.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat md:rounded-[2.75rem]">
+        <div className="relative w-full overflow-hidden bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat">
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
             {children}
         </div>

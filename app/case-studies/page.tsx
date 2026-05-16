@@ -120,7 +120,7 @@ export default function CaseStudiesPage() {
 
                 <section className="px-6 pb-24 md:pb-32">
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.75rem] bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
+                        <div className="relative overflow-hidden bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
                             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
 
                             <div className="relative z-10 py-16 sm:py-20 md:py-24">
