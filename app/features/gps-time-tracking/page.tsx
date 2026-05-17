@@ -438,9 +438,9 @@ export default function GpsTimeTrackingFeaturePage() {
                             <span className="whitespace-nowrap">GPS Time Tracking for Contractors</span>
                         </div>
                         <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                            A GPS time clock
+                            Pay for hours worked.
                             <br />
-                            <span className="text-primary italic">crews can&apos;t fake.</span>
+                            <span className="text-primary italic">Not hours guessed.</span>
                         </h1>
                         <p className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
                             Tie every clock in and out to the real job site. Stop paying for parking-lot hours, windshield time, and &quot;I&apos;m pretty sure I was there.&quot;

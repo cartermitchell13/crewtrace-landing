@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 import { homeFaqItems, type FaqItem } from "@/lib/faq";
-import { publicIcpPhrase } from "@/lib/messaging";
 
 type FAQSectionProps = {
     eyebrow?: string;
@@ -15,7 +14,7 @@ type FAQSectionProps = {
 export default function FAQSection({
     eyebrow = "Support & Help",
     title = "Construction Time Tracking FAQ",
-    description = `Everything you need to know about modernizing crew tracking ${publicIcpPhrase}.`,
+    description = "Everything you need to know about modernizing crew tracking, payroll approvals, and field accountability.",
     items,
 }: FAQSectionProps) {
     const faqItems = items ?? homeFaqItems;

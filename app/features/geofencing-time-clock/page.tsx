@@ -421,9 +421,9 @@ export default function GeofencingTimeClockFeaturePage() {
                             <span className="whitespace-nowrap">Geofencing Time Clock for Contractors</span>
                         </div>
                         <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                            An invisible fence
+                            The job site
                             <br />
-                            <span className="text-primary italic">around every job site.</span>
+                            <span className="text-primary italic">is the time clock.</span>
                         </h1>
                         <p className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 md:text-xl">
                             Set a boundary around each project. Crewtrace checks every clock-in against it automatically — so policy stops living in the handbook and starts living on the phone.
@@ -741,30 +741,29 @@ export default function GeofencingTimeClockFeaturePage() {
                                         key={rule.name}
                                         className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        <div className="grid gap-0 md:grid-cols-[1fr_1.2fr]">
-                                            <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.06] via-white to-emerald-50/30">
-                                                <Image
-                                                    src={rule.image}
-                                                    alt={rule.alt}
-                                                    width={900}
-                                                    height={900}
-                                                    className="h-full w-full object-cover"
-                                                />
-                                                <span className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur">
-                                                    Rule 0{idx + 1}
-                                                </span>
+                                        {/* Absolute on md so media always spans full card height (fill imgs don't contribute to grid row sizing). */}
+                                        <div className="relative min-h-[220px] overflow-hidden bg-gradient-to-br from-primary/[0.06] via-white to-emerald-50/30 md:absolute md:inset-y-0 md:left-0 md:w-[calc(100%/2.2)]">
+                                            <Image
+                                                src={rule.image}
+                                                alt={rule.alt}
+                                                fill
+                                                className="object-cover"
+                                                sizes="(min-width: 768px) 45vw, 100vw"
+                                            />
+                                            <span className="pointer-events-none absolute left-4 top-4 z-[1] inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur">
+                                                Rule 0{idx + 1}
+                                            </span>
+                                        </div>
+                                        <div className="relative z-10 p-7 md:pb-7 md:pl-[calc((100%/2.2)+1.75rem)] md:pr-7 md:pt-7">
+                                            <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
+                                                <Icon size={20} />
                                             </div>
-                                            <div className="p-7">
-                                                <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary ring-1 ring-primary/15">
-                                                    <Icon size={20} />
-                                                </div>
-                                                <h3 className="mt-5 text-xl font-extrabold tracking-tight text-foreground">
-                                                    {rule.name}
-                                                </h3>
-                                                <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/65">
-                                                    {rule.description}
-                                                </p>
-                                            </div>
+                                            <h3 className="mt-5 text-xl font-extrabold tracking-tight text-foreground">
+                                                {rule.name}
+                                            </h3>
+                                            <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/65">
+                                                {rule.description}
+                                            </p>
                                         </div>
                                     </article>
                                 );

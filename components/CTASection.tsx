@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
-    publicIcpPhrase,
 } from "@/lib/messaging";
 
 const contactCtaMessaging = getTemplateMessaging("contact");
@@ -39,23 +38,22 @@ export default function CTASection({
                             </h2>
 
                             <div className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-white/80">
-                                Answer a few quick questions and we&apos;ll send back a
-                                tailored demo walkthrough and pricing guidance {publicIcpPhrase}.{" "}
+                                Invite crews and launch GPS-verified clock-ins fast—or request a demo for a tailored walkthrough and pricing.{" "}
                                 {orderedPromiseLine}
                             </div>
 
-                            <div className="flex flex-col sm:flex-row gap-5 sm:items-center text-sm font-semibold text-white/60">
+                            <div className="flex flex-col sm:flex-row gap-5 sm:items-center text-sm font-semibold text-white/70">
                                 <div className="inline-flex items-center gap-3">
                                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
                                         <CheckCircle2 size={14} />
                                     </span>
-                                    Personalized walkthrough
+                                    Invite crews and verify hours fast
                                 </div>
                                 <div className="inline-flex items-center gap-3">
                                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
                                         <CheckCircle2 size={14} />
                                     </span>
-                                    No hard-sell call
+                                    Personalized demo on request
                                 </div>
                             </div>
                         </div>
@@ -73,19 +71,37 @@ export default function CTASection({
                                     If it is a fit, you get a rollout sequence your team can use.
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="flex w-full items-center justify-center gap-3 rounded-md bg-white py-5 text-base font-bold text-primary transition-all hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:py-6 md:text-lg"
-                                >
-                                    Request Your Custom Demo
-                                    <ArrowRight size={20} />
-                                </Link>
+                                <div className="flex flex-col gap-3">
+                                    <Link
+                                        href="https://www.crewtrace.app/signup"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-5 py-4 text-base font-bold text-primary whitespace-nowrap transition-all hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:text-lg lg:justify-between lg:gap-3"
+                                    >
+                                        <span>Sign Up for Free</span>
+                                        <ArrowRight
+                                            size={20}
+                                            aria-hidden
+                                            className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
+                                        />
+                                    </Link>
+                                    <Link
+                                        href="/contact"
+                                        className="group inline-flex w-full items-center justify-center gap-2 rounded-md border-2 border-white/85 bg-transparent px-5 py-[14px] text-base font-bold text-white whitespace-nowrap transition-all hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:text-lg lg:justify-between lg:gap-3"
+                                    >
+                                        <span>Request demo</span>
+                                        <ArrowRight
+                                            size={20}
+                                            aria-hidden
+                                            className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
+                                        />
+                                    </Link>
+                                </div>
 
                                 <div className="mt-6 flex items-start gap-3">
                                     <div className="mt-1 h-2 w-2 rounded-full bg-white/40 shrink-0" />
-                                    <div className="text-xs leading-relaxed text-white/60">
-                                        Takes about 60 seconds. We respond within one business day
-                                        with a walkthrough tailored to your crew setup.
+                                    <div className="text-xs leading-relaxed text-white/65">
+                                        Sign up takes about a minute. Demo requests get a tailored walkthrough—we reply within one business day.
                                     </div>
                                 </div>
                             </div>

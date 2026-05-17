@@ -21,7 +21,6 @@ import SectionDivider from "@/components/SectionDivider";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
-    publicIcpPhrase,
 } from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
 import { createPageMetadata } from "@/lib/seo";
@@ -91,7 +90,7 @@ const scenarioCards = [
 export const metadata: Metadata = createPageMetadata({
     title: "Features | Contractor Time Tracking and Payroll Controls",
     description:
-        `Explore Crewtrace feature workflows built ${publicIcpPhrase}. ${orderedPromiseLine}`,
+        `Explore Crewtrace feature workflows for contractors who need GPS-verified hours, cleaner payroll approvals, and fewer disputed time records. ${orderedPromiseLine}`,
     path: "/features",
 });
 
@@ -131,7 +130,7 @@ export default function FeaturesPage() {
                             Find the fastest control to deploy first, then expand with adjacent workflows. {featuresMessaging.proofBody}
                         </p>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-foreground/55 md:text-base">
-                            Built {publicIcpPhrase}. {orderedPromiseLine}
+                            Built for contractors who need field records they can trust before payroll closes. {orderedPromiseLine}
                         </p>
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                             <Link

@@ -178,46 +178,46 @@ export const industryRecords: IndustryRecord[] = [
         metaTitle: "HVAC Time Tracking Software & Digital Timesheets | Crewtrace",
         metaDescription:
             "HVAC time tracking software with digital timesheets, mobile GPS clock-ins per stop, and payroll-ready hours for residential and commercial service teams.",
-        heroTitle: "HVAC time tracking and digital timesheets for field service crews",
+        heroTitle: "HVAC time tracking for service calls, installs, and payroll close",
         heroSubtitle:
             "See where techs were, how long each stop took, and what belongs in payroll—one verified record instead of Friday guesswork.",
         hubDescription:
             "HVAC time tracking and digital timesheets for service calls—verified time logs, mobile clock-ins, and cleaner payroll handoff.",
-        hubStat: "Avg. $1,200/mo saved",
+        hubStat: "Per-stop records",
         painPoints: [
             {
-                title: "Drive time padding",
-                description: "Technicians adding extra time between service calls.",
+                title: "Service-call time gets reconstructed later",
+                description: "Techs run calls all day, then payroll has to trust rounded notes or memory at the end of the week.",
             },
             {
-                title: "Call stacking",
-                description: "Techs running personal errands between appointments.",
+                title: "Drive gaps are hard to explain",
+                description: "The office can see finished tickets, but not always where paid time went between one customer stop and the next.",
             },
             {
-                title: "Inaccurate job duration",
+                title: "Job duration feeds bad pricing",
                 description:
-                    "No way to know if a 2-hour job really took the full 2 hours.",
+                    "If a quoted two-hour repair routinely takes three, the estimate problem stays hidden when time records are vague.",
             },
         ],
         benefits: [
             {
-                title: "Multi-Stop Tracking",
-                description: "Automatic time logging at each service location.",
+                title: "Job-specific mobile clock-ins",
+                description: "Techs clock in and out against the assigned service address or install site from their phones.",
                 icon: "map-pin",
             },
             {
-                title: "Route Verification",
-                description: "See actual routes taken between jobs.",
-                icon: "trending-up",
-            },
-            {
-                title: "Service Time Reports",
-                description: "Know exactly how long each job takes.",
+                title: "Schedule versus actual review",
+                description: "Compare the planned service schedule with the clock events payroll is about to approve.",
                 icon: "clock",
             },
             {
-                title: "Customer Communication",
-                description: "Send accurate ETAs to customers.",
+                title: "Payroll-ready approvals",
+                description: "Supervisors review exceptions and approve hours before they sync into payroll.",
+                icon: "shield-check",
+            },
+            {
+                title: "QuickBooks handoff",
+                description: "Push approved hours into QuickBooks with mapped employees, jobs, and pay items.",
                 icon: "check-circle-2",
             },
             {
@@ -228,9 +228,9 @@ export const industryRecords: IndustryRecord[] = [
             },
         ],
         stats: [
-            { value: "$1,200", label: "Average monthly savings" },
-            { value: "18%", label: "More jobs completed per tech" },
-            { value: "2 hrs", label: "Saved on scheduling daily" },
+            { value: "Per stop", label: "Clock events tied to each assigned job" },
+            { value: "Before payroll", label: "Supervisor review of exceptions" },
+            { value: "1 click", label: "Approved hours sync to QuickBooks" },
         ],
         relatedSolutions: [
             "gps-time-tracking",
@@ -244,7 +244,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "Can Crewtrace track drive time between HVAC service calls?",
-                answer: "Yes. The gap between clocking out of one location and clocking in at the next is captured automatically. This gives you visibility into transit time without requiring technicians to log it manually.",
+                answer: "Crewtrace records when a tech clocks out of one assigned location and clocks in at the next. That gives supervisors a clear gap to review before payroll, without claiming continuous route tracking or requiring a separate paper note.",
             },
             {
                 question: "How do HVAC companies use Crewtrace for job costing?",
@@ -256,7 +256,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "What if an HVAC technician forgets to clock out at a job?",
-                answer: "Crewtrace sends a reminder notification. If the technician still does not clock out, the supervisor can review the gap and make an adjustment. Every edit is logged with a reason so the record stays defensible.",
+                answer: "The supervisor can review the gap, adjust the record when appropriate, and keep the edit tied to a reason and timestamp. The goal is not to hide messy field reality; it is to make the correction visible before payroll closes.",
             },
             {
                 question: "What are digital HVAC timesheets and why switch from paper?",
@@ -278,7 +278,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 title: "Track transit time separately from billable service hours",
-                description: "Drive-time padding is a common blind spot. The right time tracking system should automatically separate travel from on-site work so you can bill and pay accurately.",
+                description: "Drive gaps are a common blind spot. The right time tracking system should make the gap between service locations visible so supervisors can review it before hours are approved.",
             },
             {
                 title: "Feed clean hours to payroll without manual reconciliation",
@@ -399,12 +399,12 @@ export const industryRecords: IndustryRecord[] = [
         metaTitle: "Construction Time Tracking Software | Crewtrace",
         metaDescription:
             "Construction time tracking software with GPS time clocks, mobile timesheets, and payroll-ready exports for active job sites.",
-        heroTitle: "Construction time tracking software for field crews",
+        heroTitle: "Construction time tracking built for active job sites",
         heroSubtitle:
             "Give supervisors and payroll one version of the truth across every active site. Crewtrace turns daily clock events into records you can approve with confidence.",
         hubDescription:
             "Track field time across active construction sites with verified clock events, cleaner payroll workflows, and construction-ready reporting.",
-        hubStat: "Avg. $2,100/mo saved",
+        hubStat: "Site-level proof",
         painPoints: [
             {
                 title: "Unverified start times",
@@ -419,7 +419,7 @@ export const industryRecords: IndustryRecord[] = [
             {
                 title: "Payroll close fire drills",
                 description:
-                    "Admins spend end-of-week hours reconciling conflicting timesheets.",
+                    "Admins spend the end of the week reconciling handwritten time, texts from foremen, and payroll system entries.",
             },
         ],
         benefits: [
@@ -430,7 +430,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 title: "Cross-site visibility",
-                description: "See where each crew worked throughout the day.",
+                description: "See which workers clocked into which active job sites.",
                 icon: "trending-up",
             },
             {
@@ -439,15 +439,15 @@ export const industryRecords: IndustryRecord[] = [
                 icon: "shield-check",
             },
             {
-                title: "Payroll-ready exports",
-                description: "Send approved labor data to payroll without manual cleanup.",
+                title: "QuickBooks payroll sync",
+                description: "Send approved labor data to QuickBooks without re-keying timesheets.",
                 icon: "clock",
             },
         ],
         stats: [
-            { value: "$2,100", label: "Average monthly savings" },
-            { value: "5 hrs", label: "Saved on payroll review weekly" },
-            { value: "99%", label: "Clock event verification rate" },
+            { value: "GPS", label: "Clock events tied to job sites" },
+            { value: "Weekly", label: "Supervisor approval before payroll" },
+            { value: "1 click", label: "Approved hours sync to QuickBooks" },
         ],
         relatedSolutions: [
             "gps-time-tracking",
@@ -461,7 +461,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "Can foremen approve time from the field instead of the office?",
-                answer: "Yes. Supervisors can review and approve hours directly from the Crewtrace mobile app. Exception flags for early starts, overtime, or missed clock-outs appear in a prioritized queue so they can handle approvals between site walks instead of waiting until end-of-week.",
+                answer: "Yes. Supervisors can review time records from the field, correct issues with a logged reason, and approve hours before payroll. That keeps corrections close to the job while the details are still fresh.",
             },
             {
                 question: "How does construction time tracking reduce payroll close fire drills?",
@@ -500,52 +500,52 @@ export const industryRecords: IndustryRecord[] = [
         metaTitle: "Contractor Time Tracking App for General Contractors | Crewtrace",
         metaDescription:
             "A contractor time tracking app for general contractors managing employees, subcontractors, multiple sites, and payroll in one workflow.",
-        heroTitle: "A contractor time tracking app for general contractors",
+        heroTitle: "A contractor time tracking app for multi-site crews",
         heroSubtitle:
             "Keep employees, subcontractors, and site leads working from the same record. Crewtrace helps you close payroll faster without chasing down timesheets.",
         hubDescription:
-            "Manage multiple crews across different sites with one source of verified labor time and subcontractor visibility.",
-        hubStat: "Avg. $2,500/mo saved",
+            "Manage crews across different sites with one source of verified labor time, schedule assignments, and payroll-ready approvals.",
+        hubStat: "Multi-site review",
         painPoints: [
             {
-                title: "Subcontractor disputes",
-                description: "He-said-she-said arguments about hours worked.",
+                title: "Foreman time comes in different formats",
+                description: "One site sends a photo of a paper log, another sends a text thread, and payroll has to normalize all of it.",
             },
             {
                 title: "Multi-site chaos",
-                description: "No visibility into which crews are where.",
+                description: "The office needs to know which crews actually made it to which site without calling every lead.",
             },
             {
-                title: "Payroll nightmares",
-                description: "Sunday nights spent deciphering timesheets.",
+                title: "Change-order labor gets fuzzy",
+                description: "When extra labor is approved verbally, it is hard to prove later which hours belonged to the affected job.",
             },
         ],
         benefits: [
             {
-                title: "Multi-Project Dashboard",
-                description: "See all job sites and crews in one view.",
+                title: "Multi-site clock visibility",
+                description: "Review clock events across active projects from one workflow.",
                 icon: "layers",
             },
             {
-                title: "Subcontractor Tracking",
-                description: "Log subcontractor hours for accurate billing.",
+                title: "Crew assignment records",
+                description: "Keep scheduled jobs, assigned workers, and actual clock events connected.",
                 icon: "check-circle-2",
             },
             {
-                title: "Project Cost Reports",
-                description: "Track labor costs by project in real time.",
+                title: "Job-level labor review",
+                description: "Review approved hours by job before they become payroll data.",
                 icon: "bar-chart-3",
             },
             {
-                title: "Payroll Integration",
-                description: "Export directly to payroll systems.",
+                title: "QuickBooks payroll sync",
+                description: "Sync approved hours into QuickBooks with mapped employees, jobs, and pay items.",
                 icon: "clock",
             },
         ],
         stats: [
-            { value: "$2,500", label: "Average monthly savings" },
-            { value: "6 hrs", label: "Saved on payroll weekly" },
-            { value: "100%", label: "Dispute resolution rate" },
+            { value: "One view", label: "Active site time records" },
+            { value: "Logged", label: "Supervisor edits and approvals" },
+            { value: "1 click", label: "Approved hours sync to QuickBooks" },
         ],
         testimonial: {
             quote:
@@ -557,7 +557,7 @@ export const industryRecords: IndustryRecord[] = [
         faqItems: [
             {
                 question: "How does Crewtrace help general contractors track subcontractor hours?",
-                answer: "Subcontractors use the same Crewtrace app to clock in and out at the job site. Their hours are tracked separately from your direct employees, giving you verified records for billing reconciliation and dispute resolution without relying on the sub's own timesheets.",
+                answer: "If you invite non-employee workers into your Crewtrace workflow, their clock events can be reviewed separately from direct employee hours. If your subcontractors stay on their own systems, Crewtrace still gives you a verified record for your own crews so internal labor is not mixed with invoice guesswork.",
             },
             {
                 question: "Can I see all my crews across different sites in one dashboard?",
@@ -565,7 +565,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "How does Crewtrace prevent subcontractor billing disputes?",
-                answer: "When you have GPS-verified clock events for subcontractor workers, there is no argument about whether they were on-site. If a sub invoices for 40 hours but Crewtrace shows 32, you have the data to back up the conversation.",
+                answer: "Crewtrace does not replace a subcontractor's invoice approval process. It gives you GPS-verified records for the workers you track in Crewtrace, which helps separate your approved internal labor from outside invoices and keeps project conversations grounded in actual site records.",
             },
             {
                 question: "What if I have both salaried and hourly workers on the same project?",
@@ -600,17 +600,17 @@ export const industryRecords: IndustryRecord[] = [
         metaTitle: "Waterproofing Contractor Time Tracking Software | Crewtrace",
         metaDescription:
             "Waterproofing contractor time tracking software with geofencing time tracking, mobile timesheets, and payroll-ready records.",
-        heroTitle: "Waterproofing contractor time tracking for rotating crews",
+        heroTitle: "Waterproofing contractor time tracking for crews moving property to property",
         heroSubtitle:
             "Track prep, travel, and install work without the usual guesswork. Crewtrace gives you verified time records before small gaps turn into payroll disputes.",
         hubDescription:
             "Verified time tracking for waterproofing crews rotating across commercial and residential properties with geofenced clock-ins.",
-        hubStat: "Avg. $1,500/mo saved",
+        hubStat: "Geofenced sites",
         painPoints: [
             {
-                title: "Unverified travel and prep time",
+                title: "Prep and staging blur into install time",
                 description:
-                    "Managers cannot separate transit, setup, and billable install work.",
+                    "Crews may load materials, stage equipment, and move between properties before anyone in the office sees a time record.",
             },
             {
                 title: "Off-site clock activity",
@@ -630,25 +630,25 @@ export const industryRecords: IndustryRecord[] = [
                 icon: "map-pin",
             },
             {
-                title: "Shift exception alerts",
-                description: "Flag irregular starts, overtime spikes, and long breaks.",
+                title: "Supervisor review trail",
+                description: "Keep adjustments tied to who changed the record, when they changed it, and why.",
                 icon: "alert-circle",
             },
             {
-                title: "Crew productivity reports",
-                description: "Compare labor effort by job type and team.",
+                title: "Property-level time records",
+                description: "Review how long each crew spent at each approved job location.",
                 icon: "bar-chart-3",
             },
             {
-                title: "Payroll export workflow",
-                description: "Export approved hours directly into payroll processing.",
+                title: "Payroll approval workflow",
+                description: "Approve verified hours before they move into payroll processing.",
                 icon: "clock",
             },
         ],
         stats: [
-            { value: "$1,500", label: "Average monthly savings" },
-            { value: "17%", label: "Reduction in overpayment risk" },
-            { value: "3 hrs", label: "Saved on weekly payroll administration" },
+            { value: "Property", label: "Clock events tied to each job" },
+            { value: "Logged", label: "Edits preserved with reasons" },
+            { value: "Approved", label: "Hours reviewed before payroll" },
         ],
         relatedSolutions: [
             "geofencing-time-clock",
@@ -660,7 +660,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "Can I separate prep time and travel from actual waterproofing installation work?",
-                answer: "Yes. By setting up geofences for staging areas and job sites separately, you can see how long crews spent on setup, transit, and productive install work. This helps you identify where time is being lost before it reaches payroll.",
+                answer: "Crewtrace can track clock events at the job site and at any staging locations you choose to set up as work locations. That gives supervisors a cleaner record to review before payroll, without pretending the app knows the exact task someone performed every minute.",
             },
             {
                 question: "What about waterproofing jobs in basements or underground areas with weak signal?",
@@ -668,7 +668,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "How do waterproofing contractors typically save money with Crewtrace?",
-                answer: "The biggest wins come from eliminating off-site clock-ins, catching inflated prep and travel time, and reducing end-of-week timesheet disputes. Waterproofing contractors with rotating crews across multiple properties typically see $1,000–$2,000 per month in recovered costs.",
+                answer: "The biggest wins usually come from stopping off-site clock-ins, reducing end-of-week timesheet disputes, and making supervisor edits visible before payroll closes. If you want a proof point, the S&W Waterproofing case study shows how one waterproofing contractor used Crewtrace to replace paper logs and recover payroll leakage.",
             },
             {
                 question: "Does Crewtrace help with warranty documentation for waterproofing work?",
@@ -698,53 +698,53 @@ export const industryRecords: IndustryRecord[] = [
         primaryIntent: "landscaping-multi-stop-time-tracking",
         metaTitle: "Landscaping Time Tracking Software | Crewtrace",
         metaDescription:
-            "Landscaping time tracking software with a GPS time clock, route visibility, and payroll-ready records for crews moving property to property.",
-        heroTitle: "Landscaping time tracking with a GPS time clock",
+            "Landscaping time tracking software with a GPS time clock, property-level clock-ins, scheduling, and payroll-ready records.",
+        heroTitle: "Landscaping time tracking for crews moving property to property",
         heroSubtitle:
             "Know how long each stop took, where crews actually worked, and what hours should be paid. Crewtrace keeps routes, labor, and payroll grounded in real field activity.",
         hubDescription:
             "GPS verification for outdoor job sites built for crews that move between locations and need cleaner payroll time tracking.",
-        hubStat: "Avg. $900/mo saved",
+        hubStat: "Per-property time",
         painPoints: [
             {
-                title: "Route inefficiency",
-                description: "Crews taking longer routes or extra stops.",
+                title: "Property time is guessed after the route",
+                description: "Crews finish a long day of stops and the office has to reconstruct which property took what.",
             },
             {
-                title: "Property time guessing",
-                description: "No idea how long each property actually takes.",
+                title: "Yard time blends into job time",
+                description: "Load-up, supply stops, travel, and customer work all hit the same timesheet if locations are not separated.",
             },
             {
                 title: "Seasonal worker oversight",
-                description: "Temporary workers with little supervision.",
+                description: "New or seasonal workers need a simple clock-in workflow that still gives supervisors a verifiable record.",
             },
         ],
         benefits: [
             {
-                title: "Auto Location Tracking",
-                description: "Automatic clock in and out at each property.",
+                title: "Property-level clock-ins",
+                description: "Crews clock in and out against the assigned property or yard location.",
                 icon: "map-pin",
             },
             {
-                title: "Route Optimization Data",
-                description: "See patterns to improve crew routes.",
+                title: "Schedule assignments",
+                description: "Send assigned jobs to crew phones so the day's work starts from the same plan.",
                 icon: "trending-up",
             },
             {
                 title: "Property Time Logs",
-                description: "Know exactly how long each property takes.",
+                description: "Review how long each stop took before approving hours.",
                 icon: "clock",
             },
             {
-                title: "Seasonal Crew Management",
-                description: "Easy onboarding for temporary workers.",
+                title: "Payroll-ready approvals",
+                description: "Approve verified hours and move them toward payroll without retyping paper logs.",
                 icon: "check-circle-2",
             },
         ],
         stats: [
-            { value: "$900", label: "Average monthly savings" },
-            { value: "12%", label: "More properties per crew per day" },
-            { value: "30 min", label: "New worker onboarding time" },
+            { value: "Per property", label: "Clock events tied to locations" },
+            { value: "Scheduled", label: "Assignments visible on crew phones" },
+            { value: "Approved", label: "Hours reviewed before payroll" },
         ],
         relatedSolutions: [
             "geofencing-time-clock",
@@ -762,7 +762,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "How do landscaping companies handle seasonal workers with Crewtrace?",
-                answer: "New workers download the app, create an account, and are added to their crew — usually in under 10 minutes. When the season ends, you deactivate their accounts. Onboarding is simple enough that even temporary workers with limited phone experience can start on day one.",
+                answer: "Seasonal workers use the same mobile clock-in workflow as the rest of the crew. The important part is that the process stays simple: assigned location, clock in, clock out, and supervisor review before payroll.",
             },
             {
                 question: "Does Crewtrace work for landscaping crews that start from a central yard?",
@@ -770,13 +770,13 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 question: "What if a landscaping crew finishes a property early and moves to the next one?",
-                answer: "They clock out and clock in at the next stop as usual. The time gap between properties is visible to the supervisor, so you can spot crews that are idling between jobs or taking detours.",
+                answer: "They clock out and clock in at the next assigned stop. The gap between properties is visible during review, so supervisors can ask about unusual delays before approving the day.",
             },
         ],
         evaluationPoints: [
             {
                 title: "Track time per property to improve route planning and pricing",
-                description: "Landscaping profitability depends on knowing exactly how long each stop takes. GPS-verified per-property time data shows where routes can be tightened and which accounts are underpriced.",
+                description: "Landscaping profitability depends on knowing how long recurring stops and install work actually take. GPS-verified per-property time records give you a better basis for pricing and schedule planning.",
             },
             {
                 title: "Onboard seasonal workers quickly without complex training",
@@ -784,7 +784,7 @@ export const industryRecords: IndustryRecord[] = [
             },
             {
                 title: "Catch route inefficiencies and idle time between stops",
-                description: "Landscaping crews that take detours or extend gaps between properties drain profit quietly. Your system should make transit patterns visible so you can address them early.",
+                description: "Landscaping crews that extend gaps between properties drain profit quietly. Your system should make those gaps visible during supervisor review so they can be addressed early.",
             },
         ],
     },

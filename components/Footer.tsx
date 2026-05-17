@@ -2,24 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinkClass =
-    "text-sm leading-6 text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315] rounded-md";
+    "text-sm font-medium leading-6 text-white/92 transition-colors hover:text-white [text-shadow:0_1px_3px_rgb(0_0_0/_0.85)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-md";
 
 const columnHeadingClass =
-    "text-xs font-bold uppercase tracking-widest text-white/55 mb-4";
+    "text-xs font-bold uppercase tracking-widest text-white/82 mb-4 [text-shadow:0_1px_3px_rgb(0_0_0/_0.75)]";
 
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="w-full bg-[#050315] relative overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2" />
-                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 translate-x-1/2" />
-
-                <div className="layout-shell relative z-10 px-8 pb-12 pt-20 text-white md:px-16 md:pb-20 md:pt-28">
+            <div className="relative w-full overflow-hidden bg-neutral-950 bg-[url('/images/footer-ct-dark.png')] bg-cover bg-center bg-no-repeat">
+                <div className="layout-shell relative z-10 px-8 pb-12 pt-20 text-white antialiased md:px-16 md:pb-20 md:pt-28">
                     {/* Top: Logo + tagline */}
                     <div className="mb-16 text-center">
                         <Link
                             href="/"
-                            className="inline-block rounded-md transition-transform duration-300 motion-safe:hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
+                            className="inline-block rounded-md transition-transform duration-300 motion-safe:hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                         >
                             <Image
                                 src="/images/crew-trace-logo.png"
@@ -29,13 +26,13 @@ export default function Footer() {
                                 className="h-10 w-auto object-contain brightness-0 invert"
                             />
                         </Link>
-                        <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-medium [text-shadow:0_1px_4px_rgb(0_0_0/_0.65)]">
                             GPS-verified time tracking and payroll control<br className="hidden md:block" /> for construction professionals.
                         </p>
                     </div>
 
                     {/* Link columns */}
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 py-10 border-y border-white/10">
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 py-10 border-y border-white/[0.18]">
                         {/* Features */}
                         <div>
                             <h3 className={columnHeadingClass}>Features</h3>
@@ -96,18 +93,18 @@ export default function Footer() {
                                 href="https://www.linkedin.com/in/cartermitchell98"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-white/5 transition-all group hover:bg-primary motion-safe:group-hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050315]"
+                                className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-white/5 transition-all group hover:bg-primary motion-safe:group-hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                                 aria-label="Carter Mitchell on LinkedIn"
                             >
-                                <span className="text-white/70 group-hover:text-white text-xs font-bold">In</span>
+                                <span className="text-white/90 group-hover:text-white text-xs font-bold [text-shadow:0_1px_3px_rgb(0_0_0/_0.85)]">In</span>
                             </Link>
                         </div>
 
-                        <div className="text-center text-xs sm:text-sm font-semibold text-white/55 uppercase tracking-[0.15em] max-w-xl md:max-w-none leading-relaxed">
+                        <div className="text-center text-xs sm:text-sm font-semibold text-white/82 uppercase tracking-[0.15em] max-w-xl md:max-w-none leading-relaxed [text-shadow:0_1px_3px_rgb(0_0_0/_0.75)]">
                             &copy; {new Date().getFullYear()} Crewtrace. Built for the modern jobsite.
                         </div>
 
-                        <div className="text-xs font-semibold text-white/60 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div className="text-xs font-semibold text-white/82 uppercase tracking-widest bg-black/25 px-4 py-2 rounded-full border border-white/[0.18] backdrop-blur-[2px] [text-shadow:0_1px_3px_rgb(0_0_0/_0.65)]">
                             Status: <span className="text-emerald-400">Operational</span>
                         </div>
                     </div>

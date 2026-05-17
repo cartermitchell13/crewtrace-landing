@@ -25,7 +25,6 @@ import { createPageMetadata } from "@/lib/seo";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
-    publicIcpPhrase,
 } from "@/lib/messaging";
 import {
     getIndustrySummaries,
@@ -64,7 +63,7 @@ const industriesMessaging = getTemplateMessaging("industries_hub");
 export const metadata: Metadata = createPageMetadata({
     title: "Industries | GPS Time Tracking for Contractors",
     description:
-        `Explore industry-specific Crewtrace pages built ${publicIcpPhrase}. ${orderedPromiseLine}`,
+        `Explore industry-specific Crewtrace pages for contractors who need GPS-verified hours, cleaner payroll approvals, and fewer disputed time records. ${orderedPromiseLine}`,
     path: "/industries",
 });
 
@@ -110,7 +109,7 @@ export default function IndustriesPage() {
                             implementation sequence. {industriesMessaging.proofBody}
                         </p>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-foreground/55 md:text-base">
-                            Built {publicIcpPhrase}. {orderedPromiseLine}
+                            Built for contractors who need field records they can trust before payroll closes. {orderedPromiseLine}
                         </p>
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                             <Link
@@ -133,9 +132,9 @@ export default function IndustriesPage() {
                     <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
                         {[
                             { value: "8", label: "Trades covered", icon: HardHat },
-                            { value: "3", label: "Priority trades", icon: AlertTriangle },
-                            { value: "2 wk", label: "Avg rollout", icon: Clock },
-                            { value: "$2,100", label: "Avg monthly savings", icon: TrendingUp },
+                            { value: "5", label: "Priority pages", icon: AlertTriangle },
+                            { value: "GPS", label: "Verified clock events", icon: Clock },
+                            { value: "1 click", label: "QuickBooks sync", icon: TrendingUp },
                         ].map((stat) => {
                             const Icon = stat.icon;
                             return (
@@ -285,22 +284,22 @@ export default function IndustriesPage() {
 
                 <SectionDivider />
 
-                <section className="px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat px-4 sm:px-6">
-                            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
+                <section className="py-24 md:py-32">
+                    <div className="relative w-full overflow-hidden bg-[url('/images/background-design-ct.png')] bg-cover bg-center bg-no-repeat">
+                        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(47,39,206,0.06)_0%,transparent_70%)]" />
 
-                            <div className="relative z-10 py-16 sm:py-20 md:py-24">
+                        <div className="relative z-10 py-16 sm:py-20 md:py-24">
+                            <div className="mx-auto max-w-6xl px-6">
                                 <div className="mx-auto max-w-5xl">
                                     <div className="mb-12 text-center">
-                                        <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-600 backdrop-blur-sm mb-4">
-                                            <TrendingUp size={14} />
+                                        <p className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-200 backdrop-blur-sm mb-4">
+                                            <TrendingUp size={14} className="text-emerald-300" />
                                             Real Outcomes
                                         </p>
-                                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+                                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
                                             Results from the field
                                         </h2>
-                                        <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/60 font-medium leading-relaxed">
+                                        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85 font-medium leading-relaxed">
                                             These are not hypothetical numbers. They come from a real waterproofing contractor who replaced paper logs with Crewtrace.
                                         </p>
                                     </div>
@@ -379,10 +378,10 @@ export default function IndustriesPage() {
                                 Priority Trade Spotlight
                             </p>
                             <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                Where payroll risk is highest
+                                Start with the trades that expose the most workflow detail
                             </h2>
                             <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/60 font-medium leading-relaxed">
-                                These trades have the highest DOL enforcement activity and the most payroll leakage exposure based on our customer data.
+                                These pages make the field reality concrete: rotating properties, early starts, multi-site crews, seasonal teams, and payroll records that need to hold up after the job is done.
                             </p>
                         </div>
 

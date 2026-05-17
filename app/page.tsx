@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
+import InjuryAlertWorkflowSection from "@/components/InjuryAlertWorkflowSection";
 import IndustryLinks from "@/components/IndustryLinks";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import PricingSection from "@/components/PricingSection";
@@ -48,15 +49,22 @@ export default function Home() {
           <ProcessSection variant="texture" />
         </TestimonialTextureShell>
         <SectionDivider />
+        <InjuryAlertWorkflowSection
+          eyebrow="Product proof"
+          title="See how field issues reach the office before payroll closes."
+          description="This product walkthrough shows one real workflow: a worker reports an injury, the admin gets notified, and the shift review keeps the notes, photos, worker, and time record together."
+          badge="Live workflow"
+        />
+        <SectionDivider />
         <ComplianceAudit />
         <SectionDivider />
         <IndustryLinks />
         <SectionDivider />
         <LiteSavingsCalculator />
         <SectionDivider />
-        <FAQSection />
-        <SectionDivider />
         <PricingSection />
+        <SectionDivider />
+        <FAQSection />
         <SectionDivider />
         <CTASection />
       </main>

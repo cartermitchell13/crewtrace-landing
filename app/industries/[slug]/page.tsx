@@ -25,6 +25,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
+import InjuryAlertWorkflowSection from "@/components/InjuryAlertWorkflowSection";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
@@ -281,6 +282,10 @@ export default async function IndustryPage({
 
                 <SectionDivider />
 
+                <InjuryAlertWorkflowSection />
+
+                <SectionDivider />
+
                 {/* Challenges and Solutions */}
                 <section className="relative overflow-hidden bg-background px-6 py-24 md:py-32">
                     {/* Soft background glow */}
@@ -338,12 +343,15 @@ export default async function IndustryPage({
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-2">
-                            {industry.benefits.map((benefit) => {
+                            {industry.benefits.map((benefit, index) => {
                                 const BenefitIcon = iconByKey[benefit.icon];
+                                const spanFullRowMd =
+                                    industry.benefits.length % 2 === 1 &&
+                                    index === industry.benefits.length - 1;
                                 return (
                                     <article
                                         key={benefit.title}
-                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                        className={`surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 md:p-10 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${spanFullRowMd ? "md:col-span-2" : ""}`}
                                     >
                                         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200/50 transition-colors group-hover:bg-emerald-100">
                                             <BenefitIcon size={26} />

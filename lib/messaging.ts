@@ -56,6 +56,7 @@ export const intentHeadlineOptions = {
         "Use proof-linked comparisons instead of feature-checklist guesses.",
     ],
     contact: [
+        "Verified crew hours your payroll team can defend.",
         "See how Crewtrace fits your operation.",
         "Get a personalized demo and pricing guidance for your crew setup.",
     ],
