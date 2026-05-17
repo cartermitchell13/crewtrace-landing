@@ -10,7 +10,7 @@ const columnHeadingClass =
 export default function Footer() {
     return (
         <footer className="w-full bg-background">
-            <div className="relative w-full overflow-hidden bg-neutral-950 bg-[url('/images/footer-ct-dark.png')] bg-cover bg-center bg-no-repeat">
+            <div className="relative w-full overflow-hidden bg-neutral-950 bg-[url('/images/footer-gradient-mobile.png')] bg-cover bg-center bg-no-repeat md:bg-[url('/images/footer-ct-dark.png')]">
                 <div className="layout-shell relative z-10 px-8 pb-12 pt-20 text-white antialiased md:px-16 md:pb-20 md:pt-28">
                     {/* Top: Logo + tagline */}
                     <div className="mb-16 text-center">
