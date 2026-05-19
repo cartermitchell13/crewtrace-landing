@@ -38,8 +38,15 @@ export default function Hero() {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
-                            href="/contact"
+                            href="https://www.crewtrace.app/signup"
                             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-sm sm:text-base transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        >
+                            Start Your Free Trial
+                            <ArrowRight size={18} aria-hidden />
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-md border-2 border-primary bg-transparent font-bold text-sm text-primary sm:text-base transition-all hover:bg-primary/[0.06] motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             Get a Personalized Demo
                             <ArrowRight size={18} />

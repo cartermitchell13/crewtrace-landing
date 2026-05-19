@@ -251,6 +251,69 @@ export const featureRecords: FeatureRecord[] = [
             },
         ],
     },
+    {
+        slug: "job-costing",
+        name: "Job Costing",
+        tagline: "Budget-vs-actual labor by job and work type — calculated from the clock, not keyed in after payroll.",
+        description:
+            "Give admins a live view of labor spend against budget by job and cost code, with hours and dollars calculated automatically from existing shift segments.",
+        primaryKeyword: "construction job costing",
+        primaryIntent: "construction-labor-budget-vs-actual-tracking",
+        metaTitle: "Job Costing for Contractors | Crewtrace",
+        metaDescription:
+            "Compare planned labor to actual hours and cost by job and work type. Calculated automatically from Crewtrace clock events — no spreadsheet reconciliation after payroll closes.",
+        heroTitle: "Job costing that runs on the same clock your crews already use",
+        heroSubtitle:
+            "Set labor budgets, define work types once, and let Crewtrace calculate actual hours and labor cost from real shift segments — so you see budget burn while the week is still fixable.",
+        relatedIndustries: [
+            "construction",
+            "general-contractors",
+            "hvac",
+            "electrical",
+            "plumbing",
+        ],
+        challenges: [
+            "Labor budgets living in spreadsheets that go stale before the field moves",
+            "Job-cost numbers that only arrive after payroll closes",
+            "Hours that cannot be tied to a work type or cost code",
+        ],
+        capabilities: [
+            "Reusable tenant-wide work types with archive-safe history",
+            "Optional labor budgets in hours and dollars per job",
+            "Automatic actuals from shift segments and rate snapshots",
+        ],
+        outcomes: [
+            "See over-budget and at-risk jobs before the week ends",
+            "Break down labor by work type without manual entry",
+            "Export job-cost data to CSV for finance and estimating",
+        ],
+        faqItems: [
+            {
+                question: "How do crews tag time to a work type?",
+                answer: "Workers pick a work type at clock-in and again when switching jobs. Each selection is stored on the shift segment it belongs to, so labor reporting stays tied to verified clock events instead of estimates added later.",
+            },
+            {
+                question: "What are work types and how do they relate to cost codes?",
+                answer: "Work types are the field label for reusable cost codes — categories like demolition, framing, electrical, or cleanup. Admins define short codes, names, optional descriptions, billable defaults, and display order company-wide. Archived codes stay out of new selections but historical time remains intact.",
+            },
+            {
+                question: "How are actual hours and labor cost calculated?",
+                answer: "They are not entered manually. Crewtrace calculates them from shift segments — the same time slices used when workers switch jobs — using hourly rate snapshots captured on the shift when available, with fallbacks to stored member rates.",
+            },
+            {
+                question: "What does the Job Costing report show?",
+                answer: "Portfolio KPIs for actual vs. budget labor and hours, counts of over-budget and at-risk jobs, and uncoded hours. Filter by date presets or custom ranges and status, sort jobs, expand any row for a cost-code breakdown and top contributors, see weekly burn rate and estimated days until budget runs out, and export to CSV.",
+            },
+            {
+                question: "Can I set labor budgets in both hours and dollars?",
+                answer: "Yes. Each job can carry an optional labor budget in hours and dollars, plus budget notes. Actuals are calculated automatically from clock data so you can compare planned labor to what the field actually produced.",
+            },
+            {
+                question: "Does job costing replace our payroll or time clock workflow?",
+                answer: "No. Job costing builds on the same geofenced attendance, job sites, and per-job time segments Crewtrace already captures. It adds budget-vs-actual visibility and work-type breakdowns on top of the record you are already running payroll from.",
+            },
+        ],
+    },
 ];
 
 export type FeatureSlug = FeatureRecord["slug"];

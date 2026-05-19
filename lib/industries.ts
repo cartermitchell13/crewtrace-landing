@@ -236,6 +236,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-sync-quickbooks",
             "scheduling",
+            "job-costing",
         ],
         faqItems: [
             {
@@ -352,6 +353,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-sync-quickbooks",
             "scheduling",
+            "job-costing",
         ],
         faqItems: [
             {
@@ -453,6 +455,7 @@ export const industryRecords: IndustryRecord[] = [
             "gps-time-tracking",
             "payroll-sync-quickbooks",
             "scheduling",
+            "job-costing",
         ],
         faqItems: [
             {
@@ -553,7 +556,7 @@ export const industryRecords: IndustryRecord[] = [
             author: "David Chen",
             company: "Chen Construction LLC",
         },
-        relatedSolutions: ["payroll-sync-quickbooks", "scheduling"],
+        relatedSolutions: ["payroll-sync-quickbooks", "scheduling", "job-costing"],
         faqItems: [
             {
                 question: "How does Crewtrace help general contractors track subcontractor hours?",
@@ -947,6 +950,7 @@ export const industryRecords: IndustryRecord[] = [
         relatedSolutions: [
             "payroll-sync-quickbooks",
             "scheduling",
+            "job-costing",
         ],
         faqItems: [
             {

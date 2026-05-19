@@ -130,6 +130,7 @@ const solutionIconsBySlug = {
     "geofencing-time-clock": Clock,
     "scheduling": CalendarDays,
     "payroll-sync-quickbooks": Receipt,
+    "job-costing": BarChart3,
 } as const;
 
 const solutionItems = getSolutionSummaries().map((solution) => ({
