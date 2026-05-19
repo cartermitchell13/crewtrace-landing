@@ -133,14 +133,16 @@ const solutionIconsBySlug = {
     "job-costing": BarChart3,
 } as const;
 
-const solutionItems = getSolutionSummaries().map((solution) => ({
-    name: solution.name,
-    slug: `/features/${solution.slug}`,
-    description: solution.tagline,
-    Icon:
-        solutionIconsBySlug[solution.slug as keyof typeof solutionIconsBySlug] ??
-        FileText,
-}));
+const solutionItems = getSolutionSummaries()
+    .filter((solution) => solution.slug !== "job-costing")
+    .map((solution) => ({
+        name: solution.name,
+        slug: `/features/${solution.slug}`,
+        description: solution.tagline,
+        Icon:
+            solutionIconsBySlug[solution.slug as keyof typeof solutionIconsBySlug] ??
+            FileText,
+    }));
 
 type MenuType = "features" | "industries" | "resources" | "company" | null;
 
