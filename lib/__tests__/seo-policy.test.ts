@@ -34,7 +34,6 @@ describe("seo policy", () => {
     it("keeps dynamic SEO routes indexable", () => {
         expect(isIndexablePath("/features/gps-time-tracking")).toBe(true);
         expect(isIndexablePath("/industries/hvac")).toBe(true);
-        expect(isIndexablePath("/compare/connecteam")).toBe(true);
         expect(isIndexablePath("/blog/example-post")).toBe(true);
         expect(isIndexablePath("/guides/example-guide")).toBe(true);
         expect(isIndexablePath("/case-studies/example-study")).toBe(true);

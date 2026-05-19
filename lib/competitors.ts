@@ -168,17 +168,14 @@ export const competitorRecords: CompetitorRecord[] = [
         softCtaBody:
             "Share your payroll and field workflow. We will map likely verification gaps and a practical rollout order.",
         linkTargets: {
-            featureSlugs: ["gps-time-tracking", "payroll-leakage-prevention", "payroll-exports"],
+            featureSlugs: ["gps-time-tracking", "geofencing-time-clock", "payroll-sync-quickbooks"],
             industrySlugs: ["construction", "general-contractors", "waterproofing"],
             guideSlugs: [
                 "construction-time-tracking-implementation",
-                "payroll-export-workflow-for-contractors",
-                "crew-time-tracking-migration-risk-checklist",
+                "dol-audit-ready-time-records",
             ],
             caseStudySlugs: [
-                "chen-construction-multi-site-control",
                 "sw-waterproofing-payroll-recovery",
-                "summit-hvac-payroll-confidence",
             ],
         },
     },
@@ -284,17 +281,14 @@ export const competitorRecords: CompetitorRecord[] = [
         softCtaBody:
             "We can review your current process and outline a low-risk transition plan based on your crew setup.",
         linkTargets: {
-            featureSlugs: ["gps-time-tracking", "overtime-alerts", "dol-compliance"],
+            featureSlugs: ["gps-time-tracking", "scheduling", "job-costing"],
             industrySlugs: ["construction", "hvac", "electrical"],
             guideSlugs: [
-                "geofencing-best-practices-for-job-sites",
+                "construction-time-tracking-implementation",
                 "dol-audit-ready-time-records",
-                "crew-time-tracking-migration-risk-checklist",
             ],
             caseStudySlugs: [
-                "ramirez-roofing-overtime-control",
-                "chen-construction-multi-site-control",
-                "summit-hvac-payroll-confidence",
+                "sw-waterproofing-payroll-recovery",
             ],
         },
     },

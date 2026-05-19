@@ -8,6 +8,7 @@ import {
     Clock,
     FileText,
     MapPin,
+    BarChart3,
     Workflow,
     AlertTriangle,
     Users,
@@ -26,6 +27,7 @@ import { industryBySlug } from "@/lib/industries";
 import { createPageMetadata } from "@/lib/seo";
 import { getFeatureSummaries } from "@/lib/solutions";
 import { featuresHubFaqItems } from "@/lib/faq";
+import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 
 const featureSummaries = getFeatureSummaries().sort((left, right) => {
     const byName = left.name.localeCompare(right.name);
@@ -42,6 +44,7 @@ const featureImageMap: Record<string, string> = {
     "geofencing-time-clock": "/images/hub/geofencing-preview.svg",
     "scheduling": "/images/sheduling/scheduling-hero.png",
     "payroll-sync-quickbooks": "/images/quickbooks/quickbooks-hero.png",
+    "job-costing": "/images/job-costing/job-costing-hero.png",
 };
 
 const featureIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -49,12 +52,14 @@ const featureIconMap: Record<string, React.ComponentType<{ size?: number; classN
     "geofencing-time-clock": MapPin,
     "scheduling": CalendarDays,
     "payroll-sync-quickbooks": FileText,
+    "job-costing": BarChart3,
 };
 
 const workflowNodes = [
     { slug: "scheduling", label: "Scheduling", step: 1 },
     { slug: "gps-time-tracking", label: "GPS Time Tracking", step: 2 },
     { slug: "geofencing-time-clock", label: "Geofencing", step: 3 },
+    { slug: "job-costing", label: "Job Costing", step: 4 },
 ];
 
 const scenarioCards = [
@@ -84,6 +89,15 @@ const scenarioCards = [
         solutionSlug: "scheduling",
         image: "/images/hub/scenario-payroll-admin.svg",
         color: "primary",
+    },
+    {
+        title: "Labor budgets that go stale before payroll?",
+        context:
+            "You set hours and dollars per job in a spreadsheet, but actual labor only shows up after timesheets close — when it is too late to reassign crews or catch uncoded time.",
+        solution: "Start with Job Costing",
+        solutionSlug: "job-costing",
+        image: "/images/hub/compare-dashboard-split.svg",
+        color: "amber",
     },
 ];
 
@@ -134,10 +148,10 @@ export default function FeaturesPage() {
                         </p>
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                             <Link
-                                href="/contact"
+                                href={buildSelfServeSignupUrl("lt_20")}
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
                             >
-                                {featuresMessaging.primaryCta}
+                                Start your free trial
                                 <ArrowRight size={18} />
                             </Link>
                             <Link

@@ -36,6 +36,7 @@ import FAQSection from "@/components/FAQSection";
 import FeatureComparison from "@/components/FeatureComparison";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
 
@@ -332,10 +333,10 @@ export default function PayrollSyncQuickbooksFeaturePage() {
 
                         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
                             <Link
-                                href="/contact"
+                                href={buildSelfServeSignupUrl("lt_20")}
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                             >
-                                See the sync in action
+                                Start your free trial
                                 <ArrowRight size={18} />
                             </Link>
                             <BookedCallLink
