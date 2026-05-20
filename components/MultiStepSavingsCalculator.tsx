@@ -39,6 +39,8 @@ const GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdID"
 type ContactField = "name" | "company" | "email" | "phone";
 type GtagConversionParams = {
     send_to: string;
+    value: number;
+    currency: string;
     event_callback?: () => void;
 };
 
@@ -114,6 +116,8 @@ function reportCalculatorLeadConversion() {
 
     gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO,
+        value: 1.0,
+        currency: "USD",
     });
 }
 
@@ -453,6 +457,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         }
 
         setFormErrors({});
+        reportCalculatorLeadConversion();
         setIsSubmitting(true);
 
         const inputs: CalculatorInputs = {
@@ -505,7 +510,6 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         } catch (error) {
             console.error("Error submitting calculator audit:", error);
         } finally {
-            reportCalculatorLeadConversion();
             setIsSubmitting(false);
             setStep(LOADING_STEP);
         }

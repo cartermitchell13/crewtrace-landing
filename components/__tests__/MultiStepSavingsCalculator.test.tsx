@@ -165,6 +165,8 @@ describe("MultiStepSavingsCalculator", () => {
         await waitFor(() => {
             expect(gtag).toHaveBeenCalledWith("event", "conversion", {
                 send_to: "AW-18173086361/FiaZCOzI2bAcEJmVzdID",
+                value: 1.0,
+                currency: "USD",
             });
         });
     });
