@@ -145,14 +145,17 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
     // Track if user has touched inputs
     const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-    // Lock body scroll when modal is open
+    // Lock body scroll when modal is open (both axes — modal handles its own vertical scroll)
     useEffect(() => {
         if (isOpen) {
+            document.documentElement.style.overflow = "hidden";
             document.body.style.overflow = "hidden";
         } else {
+            document.documentElement.style.overflow = "";
             document.body.style.overflow = "";
         }
         return () => {
+            document.documentElement.style.overflow = "";
             document.body.style.overflow = "";
         };
     }, [isOpen]);
@@ -425,11 +428,13 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-50 bg-background text-foreground overflow-y-auto flex flex-col justify-between select-none"
+                        className="fixed inset-0 z-50 flex w-full max-w-[100dvw] flex-col justify-between overflow-x-hidden overflow-y-auto overscroll-x-none bg-background text-foreground select-none"
                     >
-                        {/* Ambient glow decoration */}
-                        <div className="pointer-events-none absolute right-1/4 top-0 w-[500px] h-[500px] bg-primary/[0.05] rounded-full blur-[100px] -z-10" />
-                        <div className="pointer-events-none absolute left-1/4 bottom-0 w-[600px] h-[600px] bg-secondary/[0.03] rounded-full blur-[120px] -z-10" />
+                        {/* Ambient glow decoration — clipped so wide blurs don't cause horizontal scroll */}
+                        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+                            <div className="absolute right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.05] blur-[100px]" />
+                            <div className="absolute bottom-0 left-1/4 h-[600px] w-[600px] rounded-full bg-secondary/[0.03] blur-[120px]" />
+                        </div>
 
                         {/* Header */}
                         <header className="w-full max-w-4xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
@@ -457,14 +462,14 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                         </header>
 
                         {/* Main content body with transition layout */}
-                        <main className="flex-1 flex items-center justify-center px-6 py-8 relative z-10">
-                            <div className="w-full max-w-2xl mx-auto overflow-hidden">
+                        <main className="relative z-10 flex min-w-0 w-full max-w-full flex-1 items-center justify-center overflow-x-hidden px-6 py-8">
+                            <div className="relative mx-auto w-full max-w-2xl overflow-x-hidden">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={step}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -20 }}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
                                         transition={{ duration: 0.28, ease: "easeInOut" }}
                                         className="w-full"
                                     >
