@@ -30,6 +30,65 @@ const LOADING_STEPS = [
     "Generating final profit audit report..."
 ];
 
+const CONTACT_START_STEP = 8;
+const CONTACT_END_STEP = 11;
+const LOADING_STEP = 12;
+const TOTAL_INPUT_STEPS = 11;
+
+type ContactField = "name" | "company" | "email" | "phone";
+
+const CONTACT_STEPS: Array<{
+    field: ContactField;
+    label: string;
+    placeholder: string;
+    inputType: string;
+    autoComplete?: string;
+    icon: typeof User;
+    title: string;
+    reason: string;
+}> = [
+    {
+        field: "name",
+        label: "Full Name",
+        placeholder: "John Doe",
+        inputType: "text",
+        autoComplete: "name",
+        icon: User,
+        title: "Who should we address this report to?",
+        reason: "We use your name to personalize the audit summary and benchmark it against contractors in your region.",
+    },
+    {
+        field: "company",
+        label: "Company Name",
+        placeholder: "Acme Construction",
+        inputType: "text",
+        autoComplete: "organization",
+        icon: Building2,
+        title: "What company are we auditing?",
+        reason: "Company size and trade mix shape your leakage benchmarks — generic averages would mislead you.",
+    },
+    {
+        field: "email",
+        label: "Work Email",
+        placeholder: "john@company.com",
+        inputType: "email",
+        autoComplete: "email",
+        icon: Mail,
+        title: "Where should we send your audit?",
+        reason: "We'll deliver your full profit leakage breakdown here — no spam, just the report and one optional follow-up.",
+    },
+    {
+        field: "phone",
+        label: "Phone Number",
+        placeholder: "(555) 555-5555",
+        inputType: "tel",
+        autoComplete: "tel",
+        icon: Phone,
+        title: "What's the best number to reach you?",
+        reason: "If we spot something unusual in your numbers, a quick text helps us keep your audit accurate.",
+    },
+];
+
 function RangeSliderWithTooltip({
     value,
     min,
@@ -116,7 +175,7 @@ interface MultiStepSavingsCalculatorProps {
 
 export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavingsCalculatorProps) {
     const [isOpen, setIsOpen] = useState(false);
-    const [step, setStep] = useState(1); // Steps 1 to 8: Inputs, Step 9: Loading
+    const [step, setStep] = useState(1); // Steps 1 to 11: Inputs, Step 12: Loading
 
     // Calculator inputs state
     const [trackingMethod, setTrackingMethod] = useState<"paper" | "spreadsheet" | "basic-app" | "none">("paper");
@@ -217,14 +276,74 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
 
     // Go forward a step (validated where necessary)
     const handleNext = () => {
-        if (step < 8) {
+        if (step < CONTACT_START_STEP) {
             setStep(step + 1);
         }
     };
 
-    // Step 9 loading animation
+    const validateContactField = (field: ContactField): boolean => {
+        const errors: Record<string, string> = {};
+
+        if (field === "name" && !name.trim()) errors.name = "Name is required";
+        if (field === "company" && !company.trim()) errors.company = "Company name is required";
+        if (field === "email") {
+            if (!email.trim()) {
+                errors.email = "Email is required";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errors.email = "Invalid email address";
+            }
+        }
+        if (field === "phone" && !phone.trim()) errors.phone = "Phone number is required";
+
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            setTouched((prev) => ({ ...prev, [field]: true }));
+            return false;
+        }
+
+        setFormErrors((prev) => ({ ...prev, [field]: "" }));
+        return true;
+    };
+
+    const handleContactNext = (field: ContactField) => {
+        if (validateContactField(field)) {
+            setStep(step + 1);
+        }
+    };
+
+    const getContactFieldValue = (field: ContactField) => {
+        switch (field) {
+            case "name":
+                return name;
+            case "company":
+                return company;
+            case "email":
+                return email;
+            case "phone":
+                return phone;
+        }
+    };
+
+    const setContactFieldValue = (field: ContactField, value: string) => {
+        switch (field) {
+            case "name":
+                setName(value);
+                break;
+            case "company":
+                setCompany(value);
+                break;
+            case "email":
+                setEmail(value);
+                break;
+            case "phone":
+                setPhone(value);
+                break;
+        }
+    };
+
+    // Loading step animation
     useEffect(() => {
-        if (step !== 9) {
+        if (step !== LOADING_STEP) {
             setLoadingStep(0);
             completionHandledRef.current = false;
             return;
@@ -242,7 +361,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
     // Finish after the last loading step is shown
     useEffect(() => {
         if (
-            step !== 9 ||
+            step !== LOADING_STEP ||
             loadingStep !== LOADING_STEPS.length - 1 ||
             completionHandledRef.current
         ) {
@@ -359,7 +478,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
             console.error("Error submitting calculator audit:", error);
         } finally {
             setIsSubmitting(false);
-            setStep(9); // Enter loading step screen
+            setStep(LOADING_STEP);
         }
     };
 
@@ -443,7 +562,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
 
                         {/* Header */}
                         <header className="relative z-10 mx-auto flex w-full max-w-4xl shrink-0 items-center justify-between px-6 py-6">
-                            {step < 9 ? (
+                            {step < LOADING_STEP ? (
                                 <button
                                     onClick={handleBack}
                                     className="inline-flex items-center gap-2 text-xs font-bold text-foreground/50 hover:text-foreground uppercase tracking-wider transition-colors cursor-pointer"
@@ -760,205 +879,135 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                             </div>
                                         )}
 
-                                        {/* STEP 8: Contact info */}
-                                        {step === 8 && (
-                                            <div className="space-y-8 max-w-md mx-auto">
-                                                <div className="text-center space-y-3">
-                                                    <h2 className="text-3xl font-extrabold tracking-tight font-heading">
-                                                        Unlock your profit leakage audit
-                                                    </h2>
-                                                    <p className="text-sm text-foreground/60 leading-relaxed">
-                                                        Enter your details below. We will generate your customized profit metrics, benchmarks, and potential savings immediately.
-                                                    </p>
-                                                </div>
+                                        {/* STEPS 8–11: Contact info (one field per slide) */}
+                                        {step >= CONTACT_START_STEP && step <= CONTACT_END_STEP && (() => {
+                                            const contactIndex = step - CONTACT_START_STEP;
+                                            const config = CONTACT_STEPS[contactIndex];
+                                            const Icon = config.icon;
+                                            const isLastContactStep = contactIndex === CONTACT_STEPS.length - 1;
 
-                                                <div className="flex items-start gap-3 rounded-xl border border-primary/10 bg-primary/[0.04] px-4 py-3">
-                                                    <ShieldCheck size={18} className="mt-0.5 shrink-0 text-primary" aria-hidden />
-                                                    <p className="text-xs font-medium leading-relaxed text-foreground/55">
-                                                        Don&apos;t worry — we won&apos;t spam you. We may reach out once with a helpful follow-up. No cold-call blitz.
-                                                    </p>
-                                                </div>
-
-                                                <form onSubmit={handleSubmit} className="space-y-4">
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold text-foreground/50 uppercase tracking-widest block">
-                                                            Full Name
-                                                        </label>
-                                                        <div className="relative">
-                                                            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/45">
-                                                                <User size={16} />
-                                                            </span>
-                                                            <input
-                                                                type="text"
-                                                                placeholder="John Doe"
-                                                                value={name}
-                                                                onChange={(e) => {
-                                                                    setName(e.target.value);
-                                                                    if (touched.name) setFormErrors(prev => ({ ...prev, name: "" }));
-                                                                }}
-                                                                onBlur={() => setTouched(prev => ({ ...prev, name: true }))}
-                                                                className={`w-full pl-10 pr-4 py-3 bg-white border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all ${
-                                                                    formErrors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-foreground/10 focus:border-primary"
-                                                                }`}
-                                                            />
-                                                        </div>
-                                                        <AnimatePresence>
-                                                            {formErrors.name && (
-                                                                <motion.p
-                                                                    initial={{ opacity: 0, y: -5 }}
-                                                                    animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: -5 }}
-                                                                    className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
-                                                                >
-                                                                    <AlertCircle size={12} /> {formErrors.name}
-                                                                </motion.p>
-                                                            )}
-                                                        </AnimatePresence>
+                                            return (
+                                                <div className="space-y-6 max-w-md mx-auto">
+                                                    <div className="text-center space-y-3">
+                                                        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary/75">
+                                                            {isLastContactStep ? "Last step" : `Step ${contactIndex + 1} of ${CONTACT_STEPS.length}`}
+                                                        </p>
+                                                        <h3 className="text-2xl md:text-[1.75rem] font-extrabold tracking-tight font-heading text-foreground leading-tight">
+                                                            {config.title}
+                                                        </h3>
+                                                        <p className="text-sm text-foreground/55 leading-relaxed max-w-sm mx-auto">
+                                                            {config.reason}
+                                                        </p>
                                                     </div>
 
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold text-foreground/50 uppercase tracking-widest block">
-                                                            Company Name
-                                                        </label>
-                                                        <div className="relative">
-                                                            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/45">
-                                                                <Building2 size={16} />
-                                                            </span>
-                                                            <input
-                                                                type="text"
-                                                                placeholder="Acme Construction"
-                                                                autoComplete="organization"
-                                                                value={company}
-                                                                onChange={(e) => {
-                                                                    setCompany(e.target.value);
-                                                                    if (touched.company) setFormErrors(prev => ({ ...prev, company: "" }));
+                                                    <div className="rounded-2xl border border-foreground/10 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.06)]">
+                                                        <form
+                                                            onSubmit={isLastContactStep
+                                                                ? handleSubmit
+                                                                : (e) => {
+                                                                    e.preventDefault();
+                                                                    handleContactNext(config.field);
                                                                 }}
-                                                                onBlur={() => setTouched(prev => ({ ...prev, company: true }))}
-                                                                className={`w-full pl-10 pr-4 py-3 bg-white border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all ${
-                                                                    formErrors.company ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-foreground/10 focus:border-primary"
-                                                                }`}
-                                                            />
-                                                        </div>
-                                                        <AnimatePresence>
-                                                            {formErrors.company && (
-                                                                <motion.p
-                                                                    initial={{ opacity: 0, y: -5 }}
-                                                                    animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: -5 }}
-                                                                    className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
-                                                                >
-                                                                    <AlertCircle size={12} /> {formErrors.company}
-                                                                </motion.p>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold text-foreground/50 uppercase tracking-widest block">
-                                                            Work Email
-                                                        </label>
-                                                        <div className="relative">
-                                                            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/45">
-                                                                <Mail size={16} />
-                                                            </span>
-                                                            <input
-                                                                type="email"
-                                                                placeholder="john@company.com"
-                                                                value={email}
-                                                                onChange={(e) => {
-                                                                    setEmail(e.target.value);
-                                                                    if (touched.email) setFormErrors(prev => ({ ...prev, email: "" }));
-                                                                }}
-                                                                onBlur={() => setTouched(prev => ({ ...prev, email: true }))}
-                                                                className={`w-full pl-10 pr-4 py-3 bg-white border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all ${
-                                                                    formErrors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-foreground/10 focus:border-primary"
-                                                                }`}
-                                                            />
-                                                        </div>
-                                                        <AnimatePresence>
-                                                            {formErrors.email && (
-                                                                <motion.p
-                                                                    initial={{ opacity: 0, y: -5 }}
-                                                                    animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: -5 }}
-                                                                    className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
-                                                                >
-                                                                    <AlertCircle size={12} /> {formErrors.email}
-                                                                </motion.p>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold text-foreground/50 uppercase tracking-widest block">
-                                                            Phone Number
-                                                        </label>
-                                                        <div className="relative">
-                                                            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/45">
-                                                                <Phone size={16} />
-                                                            </span>
-                                                            <input
-                                                                type="tel"
-                                                                placeholder="(555) 555-5555"
-                                                                value={phone}
-                                                                onChange={(e) => {
-                                                                    setPhone(e.target.value);
-                                                                    if (touched.phone) setFormErrors(prev => ({ ...prev, phone: "" }));
-                                                                }}
-                                                                onBlur={() => setTouched(prev => ({ ...prev, phone: true }))}
-                                                                className={`w-full pl-10 pr-4 py-3 bg-white border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all ${
-                                                                    formErrors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-foreground/10 focus:border-primary"
-                                                                }`}
-                                                            />
-                                                        </div>
-                                                        <AnimatePresence>
-                                                            {formErrors.phone && (
-                                                                <motion.p
-                                                                    initial={{ opacity: 0, y: -5 }}
-                                                                    animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: -5 }}
-                                                                    className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
-                                                                >
-                                                                    <AlertCircle size={12} /> {formErrors.phone}
-                                                                </motion.p>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-
-                                                    <div className="mt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-center gap-3">
-                                                        <button
-                                                            type="button"
-                                                            onClick={handleBack}
-                                                            className="inline-flex w-full sm:w-auto min-w-[140px] items-center justify-center gap-2 rounded-xl border border-foreground/10 bg-white px-6 py-3.5 text-sm font-bold text-foreground/70 transition-all hover:border-foreground/20 hover:bg-foreground/[0.02] hover:text-foreground cursor-pointer"
+                                                            className="p-5 sm:p-6 space-y-5"
                                                         >
-                                                            <ArrowLeft size={16} aria-hidden />
-                                                            <span>Back</span>
-                                                        </button>
-                                                        <button
-                                                            type="submit"
-                                                            disabled={isSubmitting}
-                                                            className="inline-flex w-full sm:flex-1 items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(47,39,206,0.15)] transition-all hover:bg-primary/95 hover:shadow-[0_6px_20px_rgba(47,39,206,0.25)] disabled:opacity-50 focus:outline-none cursor-pointer"
-                                                        >
-                                                            {isSubmitting ? (
-                                                                <span>Analyzing data...</span>
-                                                            ) : (
-                                                                <>
-                                                                    <span>Unlock My Audit</span>
-                                                                    <ArrowRight size={18} aria-hidden />
-                                                                </>
+                                                            <div className="space-y-2">
+                                                                <label
+                                                                    htmlFor={`contact-${config.field}`}
+                                                                    className="text-[11px] font-bold text-foreground/45 uppercase tracking-widest block"
+                                                                >
+                                                                    {config.label}
+                                                                </label>
+                                                                <div className="relative">
+                                                                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/40">
+                                                                        <Icon size={16} />
+                                                                    </span>
+                                                                    <input
+                                                                        id={`contact-${config.field}`}
+                                                                        type={config.inputType}
+                                                                        placeholder={config.placeholder}
+                                                                        autoComplete={config.autoComplete}
+                                                                        value={getContactFieldValue(config.field)}
+                                                                        onChange={(e) => {
+                                                                            setContactFieldValue(config.field, e.target.value);
+                                                                            if (touched[config.field]) {
+                                                                                setFormErrors((prev) => ({ ...prev, [config.field]: "" }));
+                                                                            }
+                                                                        }}
+                                                                        onBlur={() => setTouched((prev) => ({ ...prev, [config.field]: true }))}
+                                                                        className={`w-full pl-10 pr-4 py-3.5 bg-foreground/[0.02] border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:bg-white transition-all ${
+                                                                            formErrors[config.field]
+                                                                                ? "border-red-500 focus:border-red-500 focus:ring-red-500/10"
+                                                                                : "border-foreground/10 focus:border-primary"
+                                                                        }`}
+                                                                    />
+                                                                </div>
+                                                                <AnimatePresence>
+                                                                    {formErrors[config.field] && (
+                                                                        <motion.p
+                                                                            initial={{ opacity: 0, y: -5 }}
+                                                                            animate={{ opacity: 1, y: 0 }}
+                                                                            exit={{ opacity: 0, y: -5 }}
+                                                                            className="text-xs text-red-500 font-semibold flex items-center gap-1.5"
+                                                                        >
+                                                                            <AlertCircle size={12} /> {formErrors[config.field]}
+                                                                        </motion.p>
+                                                                    )}
+                                                                </AnimatePresence>
+                                                            </div>
+
+                                                            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={handleBack}
+                                                                    className="inline-flex w-full sm:w-auto min-w-[120px] items-center justify-center gap-2 rounded-xl border border-foreground/10 bg-white px-5 py-3 text-sm font-bold text-foreground/65 transition-all hover:border-foreground/20 hover:bg-foreground/[0.02] hover:text-foreground cursor-pointer"
+                                                                >
+                                                                    <ArrowLeft size={16} aria-hidden />
+                                                                    <span>Back</span>
+                                                                </button>
+                                                                <button
+                                                                    type="submit"
+                                                                    disabled={isLastContactStep && isSubmitting}
+                                                                    className="inline-flex w-full sm:flex-1 items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(47,39,206,0.15)] transition-all hover:bg-primary/95 hover:shadow-[0_6px_20px_rgba(47,39,206,0.25)] disabled:opacity-50 focus:outline-none cursor-pointer"
+                                                                >
+                                                                    {isLastContactStep ? (
+                                                                        isSubmitting ? (
+                                                                            <span>Analyzing data...</span>
+                                                                        ) : (
+                                                                            <>
+                                                                                <span>Unlock My Audit</span>
+                                                                                <ArrowRight size={18} aria-hidden />
+                                                                            </>
+                                                                        )
+                                                                    ) : (
+                                                                        <>
+                                                                            <span>Continue</span>
+                                                                            <ArrowRight size={18} aria-hidden />
+                                                                        </>
+                                                                    )}
+                                                                </button>
+                                                            </div>
+
+                                                            {isLastContactStep && (
+                                                                <div className="space-y-3 border-t border-foreground/[0.06] pt-4">
+                                                                    <p className="text-[11px] text-foreground/40 text-center font-medium leading-relaxed">
+                                                                        By unlocking results, you agree to our Privacy Policy. We respect your data and never sell it.
+                                                                    </p>
+                                                                    <div className="flex items-center justify-center gap-2 rounded-lg bg-primary/[0.04] px-3 py-2.5 text-center">
+                                                                        <ShieldCheck size={15} className="shrink-0 text-primary" aria-hidden />
+                                                                        <p className="text-[11px] font-medium leading-snug text-foreground/55">
+                                                                            No spam — one helpful follow-up at most. No cold-call blitz.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
                                                             )}
-                                                        </button>
+                                                        </form>
                                                     </div>
-                                                </form>
+                                                </div>
+                                            );
+                                        })()}
 
-                                                <p className="text-[10px] text-foreground/40 text-center font-medium leading-relaxed">
-                                                    By unlocking results, you agree to our Privacy Policy. We respect your data and never sell it.
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {/* STEP 9: Loading Report Sequence */}
-                                        {step === 9 && (
+                                        {/* Loading Report Sequence */}
+                                        {step === LOADING_STEP && (
                                             <div className="space-y-8 max-w-md mx-auto text-center">
                                                 {/* Advanced Branded Spinner */}
                                                 <div className="relative w-20 h-20 mx-auto mb-8">
@@ -1023,7 +1072,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                 </main>
                                 </div>
 
-                                {step < 9 && (
+                                {step < LOADING_STEP && (
                                     <footer className="mx-auto mt-auto flex w-full max-w-4xl shrink-0 flex-col items-center justify-between gap-4 border-t border-foreground/5 px-6 py-6 text-[10px] font-bold uppercase tracking-wider text-foreground/45 sm:flex-row">
                                         <div className="flex gap-4">
                                             <span>Legal Notes</span>
@@ -1033,7 +1082,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                             <span>Manage Cookies</span>
                                         </div>
                                         <div className="flex items-center gap-1.5 rounded-full bg-foreground/5 px-2.5 py-1 text-[9px] font-extrabold tracking-widest text-foreground/60 opacity-80">
-                                            <span>Step {step} of 8</span>
+                                            <span>Step {step} of {TOTAL_INPUT_STEPS}</span>
                                         </div>
                                     </footer>
                                 )}

@@ -19,6 +19,10 @@ import {
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import { type CalculatorInputs, type CalculationResults } from "../lib/calculator-calculations";
+import {
+    CALCULATOR_BENCHMARK_DISCLAIMER,
+    CALCULATOR_METHODOLOGY_ITEMS,
+} from "../lib/calculator-methodology";
 
 interface CalculatorReportProps {
     inputs: CalculatorInputs;
@@ -309,6 +313,30 @@ export default function CalculatorReport({ inputs, calculations, onReset }: Calc
                             tradeType,
                         }}
                     />
+
+                    {/* Methodology & industry sources */}
+                    <div className="rounded-md border border-foreground/5 bg-foreground/[0.02] p-6 md:p-8 space-y-6">
+                        <div className="space-y-2">
+                            <h3 className="text-sm font-bold tracking-tight text-foreground">
+                                How we calculated these numbers
+                            </h3>
+                            <p className="text-xs text-foreground/45 font-medium leading-relaxed">
+                                {CALCULATOR_BENCHMARK_DISCLAIMER}
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2 border-t border-foreground/[0.06]">
+                            {CALCULATOR_METHODOLOGY_ITEMS.map((item) => (
+                                <div key={item.title} className="space-y-2">
+                                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/40">
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-[11px] text-foreground/35 leading-relaxed font-medium">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

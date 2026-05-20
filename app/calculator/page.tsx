@@ -35,6 +35,9 @@ export default function CalculatorPage() {
     const handleReset = () => {
         setInputs(null);
         setResults(null);
+        setTimeout(() => {
+            document.getElementById("calculator-survey")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
     };
 
     const hasReport = Boolean(inputs && results);
@@ -47,7 +50,7 @@ export default function CalculatorPage() {
                 {/* ═══════════════════════════════════════════════════
                     HERO — Light section (2-column layout)
                    ═══════════════════════════════════════════════════ */}
-                <section className="relative overflow-hidden bg-background py-28 md:py-36 lg:py-40">
+                <section id="calculator-survey" className="relative overflow-hidden bg-background py-28 md:py-36 lg:py-40 scroll-mt-28">
                     {/* Ambient glow — weighted toward the calculator column */}
                     <div className="pointer-events-none absolute right-0 top-0 -z-10 h-full w-[90%] translate-x-1/4 bg-[radial-gradient(ellipse_at_top_right,rgba(47,39,206,0.14)_0%,rgba(222,220,255,0.35)_35%,transparent_70%)] md:w-[55%]" />
                     <div className="pointer-events-none absolute left-0 top-1/4 -z-10 h-full w-[50%] -translate-x-1/2 bg-[radial-gradient(circle_at_left_center,rgba(47,39,206,0.04)_0%,transparent_50%)]" />

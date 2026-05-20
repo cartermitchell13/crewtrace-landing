@@ -88,6 +88,9 @@ export default function TrueCostCalculatorPage() {
     const handleReset = () => {
         setInputs(null);
         setResults(null);
+        setTimeout(() => {
+            document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
     };
 
     const faqJsonLd = {

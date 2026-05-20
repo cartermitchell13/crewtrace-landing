@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendBrrrNotification } from "@/lib/brrr-webhook";
+import { sendCalculatorReportEmail } from "@/lib/calculator-report-email";
 import {
     type CalculatorSubmissionApiResponse,
     type CalculatorSubmissionPayload,
@@ -205,6 +206,21 @@ export async function POST(request: Request) {
     ).catch((error) => {
         console.error("brrr notification threw an error.", error);
         return false;
+    });
+
+    await sendCalculatorReportEmail(validated.data).then((result) => {
+        if (result.ok && result.skipped) {
+            console.warn("Calculator report email skipped:", result.reason);
+        }
+        if (!result.ok) {
+            console.error(
+                "Calculator report email failed:",
+                result.status,
+                result.message,
+            );
+        }
+    }).catch((error) => {
+        console.error("Calculator report email threw an error.", error);
     });
 
     return toJson({ ok: true, message: "Submission recorded." });

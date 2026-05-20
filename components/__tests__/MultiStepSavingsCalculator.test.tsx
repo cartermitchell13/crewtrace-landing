@@ -56,6 +56,12 @@ describe("MultiStepSavingsCalculator", () => {
                 json: () => Promise.resolve({ ok: true, message: "Recorded" }),
             })
         );
+        global.ResizeObserver = class {
+            observe = vi.fn();
+            unobserve = vi.fn();
+            disconnect = vi.fn();
+            constructor(_callback: ResizeObserverCallback) {}
+        } as unknown as typeof ResizeObserver;
     });
 
     it("renders the teaser cards initially", () => {
@@ -105,15 +111,28 @@ describe("MultiStepSavingsCalculator", () => {
         // Step 7: Overtime frequency -> click Sometimes
         fireEvent.click(screen.getByText(/Sometimes/i));
 
-        // Step 8: Contact info form
-        expect(screen.getByText(/Unlock your profit leakage audit/i)).toBeDefined();
+        // Step 8: Contact info — name slide
+        expect(screen.getByText(/Who should we address this report to\?/i)).toBeDefined();
 
-        // Submit form with empty fields
-        const submitBtn = screen.getByRole("button", { name: /Unlock My Audit/i });
-        fireEvent.click(submitBtn);
+        // Submit name step with empty field
+        const continueBtn = screen.getByRole("button", { name: /Continue/i });
+        fireEvent.click(continueBtn);
 
-        // Should show validation error (email is required)
-        expect(screen.getByText(/Email is required/i)).toBeDefined();
+        // Should show validation error (name is required)
+        expect(screen.getByText(/Name is required/i)).toBeDefined();
+
+        // Fill name and advance through remaining contact slides
+        fireEvent.change(screen.getByPlaceholderText(/John Doe/i), { target: { value: "John Doe" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        fireEvent.change(screen.getByPlaceholderText(/Acme Construction/i), { target: { value: "Acme Construction" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        fireEvent.change(screen.getByPlaceholderText(/john@company.com/i), { target: { value: "john@company.com" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        // Final contact slide
+        expect(screen.getByText(/What's the best number to reach you\?/i)).toBeDefined();
     });
 
     it("locks body scroll when modal is open and unlocks when closed or unmounted", () => {
