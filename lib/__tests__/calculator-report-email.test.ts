@@ -53,14 +53,23 @@ describe("calculator report email", () => {
         expect(url.searchParams.get("company")).toBe("Crewtrace Test Co");
     });
 
-    it("builds a report email with the calculated summary and CTA", () => {
+    it("builds a triage memo with waiting cost, priorities, verification plan, and CTA", () => {
         const email = buildCalculatorReportEmail(SUBMISSION);
 
         expect(email.to).toBe("owner@example.com");
+        expect(email.subject).toContain("triage memo");
         expect(email.subject).toContain("$35,018/year at risk");
         expect(email.text).toContain("Estimated annual leakage: $35,018");
-        expect(email.text).toContain("The biggest category in your audit");
-        expect(email.html).toContain("Review these numbers with Crewtrace");
+        expect(email.text).toContain("Cost of waiting:");
+        expect(email.text).toContain("Priority diagnosis:");
+        expect(email.text).toContain("7-day verification plan:");
+        expect(email.text).toContain("What we would review on a 15-minute call:");
+        expect(email.text).toContain('reply to this email with "check this"');
+        expect(email.html).toContain("Crewtrace Payroll Leakage Triage Memo");
+        expect(email.html).toContain("Cost of waiting");
+        expect(email.html).toContain("Priority diagnosis");
+        expect(email.html).toContain("7-day verification plan");
+        expect(email.html).toContain("Walk through my audit");
         expect(email.html).toContain("Crewtrace Test Co");
     });
 
