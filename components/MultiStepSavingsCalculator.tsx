@@ -34,22 +34,10 @@ const CONTACT_START_STEP = 8;
 const CONTACT_END_STEP = 11;
 const LOADING_STEP = 12;
 const TOTAL_INPUT_STEPS = 11;
-const GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdID";
-
 type ContactField = "name" | "company" | "email" | "phone";
-type GtagConversionParams = {
-    send_to: string;
-    value: number;
-    currency: string;
-    event_callback?: () => void;
-};
 
 type WindowWithGtag = Window & {
-    gtag?: (
-        command: "event",
-        eventName: "conversion",
-        params: GtagConversionParams,
-    ) => void;
+    gtag_report_conversion?: (url?: string) => false;
 };
 
 const CONTACT_STEPS: Array<{
@@ -109,16 +97,12 @@ function reportCalculatorLeadConversion() {
         return;
     }
 
-    const gtag = (window as WindowWithGtag).gtag;
-    if (typeof gtag !== "function") {
+    const gtagReportConversion = (window as WindowWithGtag).gtag_report_conversion;
+    if (typeof gtagReportConversion !== "function") {
         return;
     }
 
-    gtag("event", "conversion", {
-        send_to: GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO,
-        value: 1.0,
-        currency: "USD",
-    });
+    gtagReportConversion();
 }
 
 function RangeSliderWithTooltip({

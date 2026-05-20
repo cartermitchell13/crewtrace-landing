@@ -4,6 +4,7 @@ import GoogleAnalyticsPageViewTracker from "@/components/GoogleAnalyticsPageView
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 const GOOGLE_ADS_ID = "AW-18173086361";
+const CALCULATOR_LEAD_CONVERSION_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdID";
 
 export default function GoogleAnalytics() {
     const googleTagId = GA_MEASUREMENT_ID || GOOGLE_ADS_ID;
@@ -29,6 +30,20 @@ window.gtag = gtag;
 gtag('js', new Date());
 ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });` : ""}
 gtag('config', '${GOOGLE_ADS_ID}');
+window.gtag_report_conversion = function(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': '${CALCULATOR_LEAD_CONVERSION_SEND_TO}',
+    'value': 1.0,
+    'currency': 'USD',
+    'event_callback': callback
+  });
+  return false;
+};
 `,
                 }}
             />

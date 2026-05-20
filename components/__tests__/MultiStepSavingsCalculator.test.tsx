@@ -50,7 +50,7 @@ describe("MultiStepSavingsCalculator", () => {
 
     beforeEach(() => {
         vi.clearAllMocks();
-        delete (window as typeof window & { gtag?: unknown }).gtag;
+        delete (window as typeof window & { gtag_report_conversion?: unknown }).gtag_report_conversion;
         global.fetch = vi.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: true,
@@ -137,8 +137,10 @@ describe("MultiStepSavingsCalculator", () => {
     });
 
     it("reports the Google Ads conversion when the final audit button submits valid contact info", async () => {
-        const gtag = vi.fn();
-        (window as typeof window & { gtag?: typeof gtag }).gtag = gtag;
+        const gtagReportConversion = vi.fn();
+        (window as typeof window & {
+            gtag_report_conversion?: typeof gtagReportConversion;
+        }).gtag_report_conversion = gtagReportConversion;
 
         render(<MultiStepSavingsCalculator onComplete={mockOnComplete} />);
 
@@ -163,11 +165,7 @@ describe("MultiStepSavingsCalculator", () => {
         fireEvent.click(screen.getByRole("button", { name: /Unlock My Audit/i }));
 
         await waitFor(() => {
-            expect(gtag).toHaveBeenCalledWith("event", "conversion", {
-                send_to: "AW-18173086361/FiaZCOzI2bAcEJmVzdID",
-                value: 1.0,
-                currency: "USD",
-            });
+            expect(gtagReportConversion).toHaveBeenCalledTimes(1);
         });
     });
 
