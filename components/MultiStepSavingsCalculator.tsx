@@ -461,10 +461,11 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                             </button>
                         </header>
 
-                        {/* Scrollable step content — top-aligned so headings aren't clipped on mobile */}
+                        {/* Scrollable step content — top-aligned on mobile, vertically centered on desktop when content fits */}
                         <div className="relative z-10 min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-x-none">
                             <div className="flex min-h-full flex-col">
-                                <main className="w-full px-6 py-6 sm:py-8">
+                                <div className="flex flex-1 flex-col justify-start md:justify-center md:py-8 lg:py-10">
+                                <main className="w-full px-6 py-6 sm:py-8 md:py-0">
                                     <div className="relative mx-auto w-full max-w-2xl">
                                 <AnimatePresence mode="wait">
                                     <motion.div
@@ -971,6 +972,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                 </AnimatePresence>
                                     </div>
                                 </main>
+                                </div>
 
                                 {step < 9 && (
                                     <footer className="mx-auto mt-auto flex w-full max-w-4xl shrink-0 flex-col items-center justify-between gap-4 border-t border-foreground/5 px-6 py-6 text-[10px] font-bold uppercase tracking-wider text-foreground/45 sm:flex-row">
