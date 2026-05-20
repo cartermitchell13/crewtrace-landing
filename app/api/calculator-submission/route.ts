@@ -60,6 +60,7 @@ async function persistSubmission(
             body: JSON.stringify({
                 email: data.email,
                 name: data.name ?? null,
+                company: data.company ?? null,
                 phone: data.phone ?? null,
                 crew_size: data.crewSize,
                 avg_hourly_rate: data.avgHourlyRate,
@@ -121,6 +122,7 @@ async function persistLead(
                 submitted_at: new Date().toISOString(),
                 name: data.name ?? "Anonymous Calculator Lead",
                 email: data.email,
+                company: data.company ?? null,
                 phone: data.phone ?? null,
                 crew_size: `${data.crewSize} workers`,
                 current_software: data.trackingMethod,
@@ -137,6 +139,7 @@ async function persistLead(
 function buildBrrrCalculatorMessage(data: CalculatorSubmissionPayload): string {
     const lines = [
         data.name ? `Name: ${data.name}` : null,
+        data.company ? `Company: ${data.company}` : null,
         data.phone ? `Phone: ${data.phone}` : null,
         `Email: ${data.email}`,
         `Est. annual leakage: $${data.totalYearlyLoss.toLocaleString("en-US")}`,

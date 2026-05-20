@@ -129,6 +129,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
 
     // Contact info state
     const [name, setName] = useState("");
+    const [company, setCompany] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
@@ -261,7 +262,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                 overtimeLevel,
             };
             const results = calculateSavings(inputs);
-            onCompleteRef.current({ ...inputs, name, phone, email }, results);
+            onCompleteRef.current({ ...inputs, name, company, phone, email }, results);
             setIsOpen(false);
             setStep(1);
         }, 600);
@@ -278,6 +279,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         trackingMethod,
         overtimeLevel,
         name,
+        company,
         phone,
         email,
     ]);
@@ -288,6 +290,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         const errors: Record<string, string> = {};
 
         if (!name.trim()) errors.name = "Name is required";
+        if (!company.trim()) errors.company = "Company name is required";
         if (!email.trim()) {
             errors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -325,6 +328,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                 body: JSON.stringify({
                     email,
                     name,
+                    company,
                     phone,
                     crewSize,
                     avgHourlyRate,
@@ -807,6 +811,43 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                                     className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
                                                                 >
                                                                     <AlertCircle size={12} /> {formErrors.name}
+                                                                </motion.p>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </div>
+
+                                                    <div className="space-y-1.5">
+                                                        <label className="text-xs font-bold text-foreground/50 uppercase tracking-widest block">
+                                                            Company Name
+                                                        </label>
+                                                        <div className="relative">
+                                                            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-foreground/45">
+                                                                <Building2 size={16} />
+                                                            </span>
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Acme Construction"
+                                                                autoComplete="organization"
+                                                                value={company}
+                                                                onChange={(e) => {
+                                                                    setCompany(e.target.value);
+                                                                    if (touched.company) setFormErrors(prev => ({ ...prev, company: "" }));
+                                                                }}
+                                                                onBlur={() => setTouched(prev => ({ ...prev, company: true }))}
+                                                                className={`w-full pl-10 pr-4 py-3 bg-white border rounded-xl text-foreground placeholder-foreground/30 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all ${
+                                                                    formErrors.company ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-foreground/10 focus:border-primary"
+                                                                }`}
+                                                            />
+                                                        </div>
+                                                        <AnimatePresence>
+                                                            {formErrors.company && (
+                                                                <motion.p
+                                                                    initial={{ opacity: 0, y: -5 }}
+                                                                    animate={{ opacity: 1, y: 0 }}
+                                                                    exit={{ opacity: 0, y: -5 }}
+                                                                    className="text-xs text-red-500 font-semibold flex items-center gap-1.5 mt-1"
+                                                                >
+                                                                    <AlertCircle size={12} /> {formErrors.company}
                                                                 </motion.p>
                                                             )}
                                                         </AnimatePresence>

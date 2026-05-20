@@ -11,6 +11,7 @@ export interface CalculatorInputs {
     trackingMethod: TrackingMethod;
     overtimeLevel: OvertimeLevel;
     name?: string;
+    company?: string;
     phone?: string;
     email?: string;
 }

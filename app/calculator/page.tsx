@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MultiStepSavingsCalculator from "@/components/MultiStepSavingsCalculator";
 import CalculatorReport from "@/components/CalculatorReport";
-import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import Footer from "@/components/Footer";
+import ProcessSection from "@/components/ProcessSection";
+import FeatureGrid from "@/components/FeatureGrid";
 import Image from "next/image";
 import {
     CheckCircle2,
@@ -35,6 +36,8 @@ export default function CalculatorPage() {
         setInputs(null);
         setResults(null);
     };
+
+    const hasReport = Boolean(inputs && results);
 
     return (
         <div className="min-h-screen bg-background">
@@ -132,14 +135,16 @@ export default function CalculatorPage() {
                 {/* ═══════════════════════════════════════════════════
                     REPORT SECTION — Displayed conditionally when complete
                    ═══════════════════════════════════════════════════ */}
-                {inputs && results && (
+                {hasReport && (
                     <CalculatorReport
-                        inputs={inputs}
-                        calculations={results}
+                        inputs={inputs!}
+                        calculations={results!}
                         onReset={handleReset}
                     />
                 )}
 
+                {!hasReport && (
+                    <>
                 <SectionDivider />
 
                 {/* ═══════════════════════════════════════════════════
@@ -188,17 +193,16 @@ export default function CalculatorPage() {
                    ═══════════════════════════════════════════════════ */}
                 <section className="py-16 md:py-24">
                     <div className="layout-shell">
-                        <div className="mx-auto max-w-5xl">
-                            <div className="mb-10 text-center">
-                                <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                                    Customer proof
-                                </p>
-                                <h2 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-                                    Real results from the field.
-                                </h2>
-                            </div>
+                        <div className="mb-10">
+                            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                                Customer proof
+                            </p>
+                            <h2 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
+                                Real results from the field.
+                            </h2>
+                        </div>
 
-                            <div className="overflow-hidden rounded-md border border-foreground/5 bg-white shadow-lg">
+                        <div className="overflow-hidden rounded-md border border-foreground/5 bg-white shadow-lg">
                                 <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
                                     {/* Quote */}
                                     <div className="flex flex-col justify-between p-8 md:p-12 lg:border-r lg:border-foreground/5">
@@ -311,16 +315,20 @@ export default function CalculatorPage() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </section>
 
                 <SectionDivider />
 
-                {/* ═══════════════════════════════════════════════════
-                    BOTTOM CTA — Calculator again (Lite version)
-                   ═══════════════════════════════════════════════════ */}
-                <LiteSavingsCalculator />
+                {/* How Crewtrace turns audit findings into verified payroll */}
+                <ProcessSection />
+
+                <SectionDivider />
+
+                {/* What Crewtrace is — product proof from the home page */}
+                <FeatureGrid headingAlign="left" />
+                    </>
+                )}
             </main>
 
             <SectionDivider />

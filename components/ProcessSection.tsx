@@ -22,7 +22,7 @@ const steps = [
     },
     {
         id: "payroll",
-        title: "Export to Payroll",
+        title: "Export or Sync",
         description: "Verified timesheets sync to your payroll software in one click.",
         imageSrc: "/images/process-payroll.png",
     }
@@ -31,9 +31,13 @@ const steps = [
 type ProcessSectionProps = {
     /** Use on the home page when this block sits on the shared testimonial texture background. */
     variant?: "default" | "texture";
+    headingAlign?: "center" | "left";
 };
 
-export default function ProcessSection({ variant = "default" }: ProcessSectionProps) {
+export default function ProcessSection({
+    variant = "default",
+    headingAlign = "center",
+}: ProcessSectionProps) {
     const isTexture = variant === "texture";
     /* On the home texture band: read as a "workflow / diagram" zone — tinted, soft edge — not a second white proof card like TestimonialsSection. */
     const contentShell =
@@ -69,7 +73,11 @@ export default function ProcessSection({ variant = "default" }: ProcessSectionPr
             `}</style>
 
             <div className={contentShell}>
-                <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
+                <div
+                    className={`mb-16 max-w-2xl md:mb-24 ${
+                        headingAlign === "left" ? "text-left" : "mx-auto text-center"
+                    }`}
+                >
                     <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
                         Autonomous Workflow
                     </p>
