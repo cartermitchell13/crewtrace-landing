@@ -10,6 +10,9 @@ export interface CalculatorInputs {
     tradeType: TradeType;
     trackingMethod: TrackingMethod;
     overtimeLevel: OvertimeLevel;
+    name?: string;
+    phone?: string;
+    email?: string;
 }
 
 export interface CalculationResults {
