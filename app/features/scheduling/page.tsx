@@ -31,6 +31,7 @@ import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
+import SchedulingPainPointsSection from "./SchedulingPainPointsSection";
 
 const SLUG = "scheduling";
 const PATH = `/features/${SLUG}`;
@@ -98,29 +99,7 @@ function ImagePlaceholder({
     );
 }
 
-const painPoints = [
-    {
-        title: "The Sunday-night rebuild",
-        description:
-            "Spreadsheets get edited by three different people, then printed out before anyone notices the version is already stale.",
-        icon: Repeat,
-        tone: "rose" as const,
-    },
-    {
-        title: "The 6 AM phone tree",
-        description:
-            "A job gets pushed and supervisors burn the morning calling, texting, and re-dispatching crews to the right address.",
-        icon: AlertTriangle,
-        tone: "amber" as const,
-    },
-    {
-        title: "The hours nobody planned",
-        description:
-            "Schedules say one thing, timesheets say another. Payroll spends Thursday reconciling who was actually where.",
-        icon: Clock,
-        tone: "slate" as const,
-    },
-];
+
 
 const spotlights = [
     {
@@ -382,51 +361,7 @@ export default function SchedulingFeaturePage() {
                 <SectionDivider />
 
                 {/* PAIN POINTS */}
-                <section className="relative overflow-hidden px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="flex flex-col items-center text-center mb-16">
-                            <p className="inline-flex items-center gap-2 rounded-full border border-rose-500/15 bg-rose-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600 backdrop-blur-sm">
-                                <AlertTriangle size={14} />
-                                Sound familiar?
-                            </p>
-                            <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                The scheduling problems that aren&apos;t really scheduling problems.
-                            </h2>
-                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                Most crew schedules don&apos;t fail because the plan was wrong. They fail because the plan, the field, and payroll never share the same record.
-                            </p>
-                        </div>
-
-                        <div className="grid gap-6 md:grid-cols-3">
-                            {painPoints.map((pain) => {
-                                const Icon = pain.icon;
-                                const toneClasses: Record<typeof pain.tone, string> = {
-                                    rose: "bg-rose-50 text-rose-600 ring-rose-200/60",
-                                    amber: "bg-amber-50 text-amber-600 ring-amber-200/60",
-                                    slate: "bg-slate-100 text-slate-600 ring-slate-200/60",
-                                };
-                                return (
-                                    <article
-                                        key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
-                                        >
-                                            <Icon size={22} />
-                                        </div>
-                                        <h3 className="text-xl font-bold tracking-tight text-foreground">
-                                            {pain.title}
-                                        </h3>
-                                        <p className="mt-3 text-base font-medium leading-relaxed text-foreground/65">
-                                            {pain.description}
-                                        </p>
-                                    </article>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
+                <SchedulingPainPointsSection />
 
                 <SectionDivider />
 

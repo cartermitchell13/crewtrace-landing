@@ -13,6 +13,8 @@ export type CalculatorSubmissionApiResponse = {
 
 export type CalculatorSubmissionPayload = {
     email: string;
+    name?: string;
+    phone?: string;
     crewSize: number;
     avgHourlyRate: number;
     hoursPerWeekOnPayroll: number;
@@ -85,6 +87,9 @@ export function validateCalculatorSubmission(value: unknown): CalculatorValidati
     if (!email) return createError(422, "Email is required.", "missing_email");
     if (!EMAIL_REGEX.test(email)) return createError(422, "Email format is invalid.", "invalid_email");
 
+    const name = toRequiredString(p.name);
+    const phone = toRequiredString(p.phone);
+
     const crewSize = toFiniteNumber(p.crewSize);
     if (crewSize === null || crewSize < 1) return createError(422, "Invalid crewSize.", "invalid_payload");
 
@@ -125,6 +130,8 @@ export function validateCalculatorSubmission(value: unknown): CalculatorValidati
         ok: true,
         data: {
             email: email.toLowerCase(),
+            ...(name ? { name } : {}),
+            ...(phone ? { phone } : {}),
             crewSize,
             avgHourlyRate,
             hoursPerWeekOnPayroll,

@@ -37,7 +37,15 @@ async function persistSubmission(
     request: Request,
 ): Promise<boolean> {
     const supabase = getSupabaseConfig();
-    if (!supabase) return false;
+    if (!supabase) {
+        if (process.env.NODE_ENV === "development") {
+            console.warn(
+                "Calculator submission storage skipped: SUPABASE_SERVICE_ROLE_KEY is not set.",
+            );
+            return true;
+        }
+        return false;
+    }
 
     const response = await fetch(
         `${supabase.url}/rest/v1/${supabase.table}`,
@@ -51,6 +59,8 @@ async function persistSubmission(
             },
             body: JSON.stringify({
                 email: data.email,
+                name: data.name ?? null,
+                phone: data.phone ?? null,
                 crew_size: data.crewSize,
                 avg_hourly_rate: data.avgHourlyRate,
                 hours_per_week_on_payroll: data.hoursPerWeekOnPayroll,
@@ -75,12 +85,60 @@ async function persistSubmission(
         },
     );
 
+    if (!response.ok) {
+        const errorBody = await response.text().catch(() => "");
+        console.error(
+            "Calculator submission Supabase insert failed:",
+            response.status,
+            errorBody,
+        );
+    }
+
+    return response.ok;
+}
+
+async function persistLead(
+    data: CalculatorSubmissionPayload,
+    request: Request,
+): Promise<boolean> {
+    const supabase = getSupabaseConfig();
+    if (!supabase) return false;
+
+    const leadsTable = process.env.SUPABASE_LEADS_TABLE?.trim() || "marketing_leads";
+    const response = await fetch(
+        `${supabase.url}/rest/v1/${leadsTable}`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                apikey: supabase.serviceRoleKey,
+                Authorization: `Bearer ${supabase.serviceRoleKey}`,
+                Prefer: "return=minimal",
+            },
+            body: JSON.stringify({
+                source: "Crewtrace-landing",
+                source_page: "/calculator",
+                submitted_at: new Date().toISOString(),
+                name: data.name ?? "Anonymous Calculator Lead",
+                email: data.email,
+                phone: data.phone ?? null,
+                crew_size: `${data.crewSize} workers`,
+                current_software: data.trackingMethod,
+                message: `Calculator Audit Submission. Est. annual leakage: $${data.totalYearlyLoss.toLocaleString("en-US")}, Recovery: $${data.yearlyRecovery.toLocaleString("en-US")}/yr. Risk: ${data.riskLevel} (${data.riskScore})`,
+                ip: getRequestIp(request.headers),
+                user_agent: request.headers.get("user-agent") ?? null,
+            }),
+        },
+    );
+
     return response.ok;
 }
 
 function buildBrrrCalculatorMessage(data: CalculatorSubmissionPayload): string {
     const lines = [
-        data.email,
+        data.name ? `Name: ${data.name}` : null,
+        data.phone ? `Phone: ${data.phone}` : null,
+        `Email: ${data.email}`,
         `Est. annual leakage: $${data.totalYearlyLoss.toLocaleString("en-US")}`,
         `Est. monthly leakage: $${data.totalMonthlyLoss.toLocaleString("en-US")}`,
         `Recovery potential: $${data.yearlyRecovery.toLocaleString("en-US")}/yr`,
@@ -88,7 +146,8 @@ function buildBrrrCalculatorMessage(data: CalculatorSubmissionPayload): string {
         `Crew: ${data.crewSize}, $${data.avgHourlyRate}/hr avg, ${data.hoursPerWeekOnPayroll} hrs/wk on payroll`,
         `Job sites: ${data.jobSites}`,
         `Trade: ${data.tradeType}, tracking: ${data.trackingMethod}, OT load: ${data.overtimeLevel}`,
-    ];
+    ].filter(Boolean) as string[];
+
     const utmParts = [
         data.utmSource,
         data.utmMedium,
@@ -131,6 +190,11 @@ export async function POST(request: Request) {
             500,
         );
     }
+
+    // Also save as a marketing lead
+    await persistLead(validated.data, request).catch((err) => {
+        console.error("Failed to copy calculator submission to marketing_leads", err);
+    });
 
     await sendBrrrNotification(
         "New Crewtrace calculator submission",

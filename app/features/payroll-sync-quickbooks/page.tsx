@@ -39,6 +39,7 @@ import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
+import QuickBooksPainPointsSection from "./QuickBooksPainPointsSection";
 
 const SLUG = "payroll-sync-quickbooks";
 const PATH = `/features/${SLUG}`;
@@ -52,29 +53,7 @@ export const metadata: Metadata = createPageMetadata({
 
 const PLACEHOLDER_BASE = "/images/quickbooks";
 
-const painPoints = [
-    {
-        title: "The Thursday timesheet grind",
-        description:
-            "Every pay period, somebody loses three hours retyping approved hours into QuickBooks line by line — and a single typo means a wrong paycheck.",
-        icon: Clock,
-        tone: "rose" as const,
-    },
-    {
-        title: "CSV imports that almost work",
-        description:
-            "One mismatched name, one renamed job, and the whole import either fails or quietly posts the wrong hours to the wrong customer.",
-        icon: FileSpreadsheet,
-        tone: "amber" as const,
-    },
-    {
-        title: "Job costing that doesn't match",
-        description:
-            "Field hours live in one system, QuickBooks lives in another, and the labor numbers on the project P&L never quite tie out.",
-        icon: AlertTriangle,
-        tone: "slate" as const,
-    },
-];
+
 
 const spotlights = [
     {
@@ -383,51 +362,7 @@ export default function PayrollSyncQuickbooksFeaturePage() {
                 <SectionDivider />
 
                 {/* PAIN POINTS */}
-                <section className="relative overflow-hidden px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="flex flex-col items-center text-center mb-16">
-                            <p className="inline-flex items-center gap-2 rounded-full border border-rose-500/15 bg-rose-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600 backdrop-blur-sm">
-                                <AlertTriangle size={14} />
-                                The Thursday timesheet ritual
-                            </p>
-                            <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                Why payroll day still takes a whole afternoon.
-                            </h2>
-                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                Most contractors don&apos;t have a payroll problem. They have a <span className="font-bold text-foreground/80">data-handoff</span> problem — and QuickBooks is where it shows up.
-                            </p>
-                        </div>
-
-                        <div className="grid gap-6 md:grid-cols-3">
-                            {painPoints.map((pain) => {
-                                const Icon = pain.icon;
-                                const toneClasses: Record<typeof pain.tone, string> = {
-                                    rose: "bg-rose-50 text-rose-600 ring-rose-200/60",
-                                    amber: "bg-amber-50 text-amber-600 ring-amber-200/60",
-                                    slate: "bg-slate-100 text-slate-600 ring-slate-200/60",
-                                };
-                                return (
-                                    <article
-                                        key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
-                                        >
-                                            <Icon size={22} />
-                                        </div>
-                                        <h3 className="text-xl font-bold tracking-tight text-foreground">
-                                            {pain.title}
-                                        </h3>
-                                        <p className="mt-3 text-base font-medium leading-relaxed text-foreground/65">
-                                            {pain.description}
-                                        </p>
-                                    </article>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
+                <QuickBooksPainPointsSection />
 
                 <SectionDivider />
 

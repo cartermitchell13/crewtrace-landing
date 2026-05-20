@@ -39,6 +39,7 @@ import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
+import JobCostingPainPointsSection from "./JobCostingPainPointsSection";
 
 const SLUG = "job-costing";
 const PATH = `/features/${SLUG}`;
@@ -106,29 +107,6 @@ function ImagePlaceholder({
     );
 }
 
-const painPoints = [
-    {
-        title: "The Friday spreadsheet rebuild",
-        description:
-            "Labor budgets live in Excel while actual hours live in timesheets. By the time someone reconciles them, the week you could have fixed is already in payroll.",
-        icon: Calculator,
-        tone: "rose" as const,
-    },
-    {
-        title: "Job cost that arrives too late",
-        description:
-            "You find out a job blew its labor budget after payroll closes — when the only option left is to eat the margin or argue about numbers nobody tracked in the field.",
-        icon: Timer,
-        tone: "amber" as const,
-    },
-    {
-        title: "Hours with no work type",
-        description:
-            "Crews clocked the time, but nobody tagged demolition from framing. Reporting becomes guesswork and cost-code breakdowns never tie to real clock events.",
-        icon: Tags,
-        tone: "slate" as const,
-    },
-];
 
 const pillars = [
     {
@@ -421,49 +399,7 @@ export default function JobCostingFeaturePage() {
                 <SectionDivider />
 
                 {/* PAIN POINTS */}
-                <section className="relative overflow-hidden px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="flex flex-col items-center text-center mb-16">
-                            <p className="inline-flex items-center gap-2 rounded-full border border-rose-500/15 bg-rose-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600 backdrop-blur-sm">
-                                <AlertTriangle size={14} />
-                                Sound familiar?
-                            </p>
-                            <h2 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                                Job costing fails when the field and the spreadsheet never meet.
-                            </h2>
-                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                Most contractors do not lack budgets. They lack a live connection between clock events, work types, and the labor numbers finance needs before margin is gone.
-                            </p>
-                        </div>
-
-                        <div className="grid gap-6 md:grid-cols-3">
-                            {painPoints.map((pain) => {
-                                const Icon = pain.icon;
-                                const toneClasses: Record<typeof pain.tone, string> = {
-                                    rose: "bg-rose-50 text-rose-600 ring-rose-200/60",
-                                    amber: "bg-amber-50 text-amber-600 ring-amber-200/60",
-                                    slate: "bg-slate-100 text-slate-600 ring-slate-200/60",
-                                };
-                                return (
-                                    <article
-                                        key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
-                                        >
-                                            <Icon size={22} />
-                                        </div>
-                                        <h3 className="text-xl font-bold tracking-tight text-foreground">{pain.title}</h3>
-                                        <p className="mt-3 text-base font-medium leading-relaxed text-foreground/65">
-                                            {pain.description}
-                                        </p>
-                                    </article>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
+                <JobCostingPainPointsSection />
 
                 <SectionDivider />
 

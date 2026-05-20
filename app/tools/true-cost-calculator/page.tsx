@@ -1,8 +1,10 @@
 "use client";
 
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SavingsCalculator from "@/components/SavingsCalculator";
+import MultiStepSavingsCalculator from "@/components/MultiStepSavingsCalculator";
+import CalculatorReport from "@/components/CalculatorReport";
 import Link from "next/link";
 import {
     DollarSign,
@@ -17,6 +19,7 @@ import {
     Calculator,
 } from "lucide-react";
 import SectionDivider from "@/components/SectionDivider";
+import { type CalculatorInputs, type CalculationResults } from "@/lib/calculator-calculations";
 
 const COST_BREAKDOWN = [
     {
@@ -71,6 +74,22 @@ const INDUSTRY_BENCHMARKS = [
 ];
 
 export default function TrueCostCalculatorPage() {
+    const [inputs, setInputs] = useState<CalculatorInputs | null>(null);
+    const [results, setResults] = useState<CalculationResults | null>(null);
+
+    const handleComplete = (inp: CalculatorInputs, res: CalculationResults) => {
+        setInputs(inp);
+        setResults(res);
+        setTimeout(() => {
+            document.getElementById("calculator-report")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    };
+
+    const handleReset = () => {
+        setInputs(null);
+        setResults(null);
+    };
+
     const faqJsonLd = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -155,12 +174,23 @@ export default function TrueCostCalculatorPage() {
                     </div>
                 </header>
 
-                {/* Calculator Section — Pulled up via negative margin like the other page */}
-                <div className="max-w-[1000px] mx-auto px-6 relative z-20 -mt-10 lg:-mt-20">
+                {/* Calculator Section */}
+                <div className="max-w-md mx-auto px-6 relative z-20 -mt-10 lg:-mt-20">
                     <section id="calculator" className="scroll-mt-32 mb-24 lg:mb-32">
-                        <SavingsCalculator />
+                        <MultiStepSavingsCalculator onComplete={handleComplete} />
                     </section>
                 </div>
+
+                {/* Report Section */}
+                {inputs && results && (
+                    <div className="max-w-6xl mx-auto px-6 mb-24">
+                        <CalculatorReport
+                            inputs={inputs}
+                            calculations={results}
+                            onReset={handleReset}
+                        />
+                    </div>
+                )}
 
                 <SectionDivider />
 

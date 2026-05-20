@@ -43,6 +43,7 @@ import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
+import GeofencingPainPointsSection from "./GeofencingPainPointsSection";
 
 const SLUG = "geofencing-time-clock";
 const PATH = `/features/${SLUG}`;
@@ -68,29 +69,6 @@ const IMG = {
     multisite: "/images/geofencing/multisite-dashboard.png",
 };
 
-const painPoints = [
-    {
-        title: "Off-site punches nobody catches",
-        description:
-            "A worker clocks in from home, from the gas station, or from the truck on the way. The hours look fine on the sheet — because the sheet has no way to know they were wrong.",
-        icon: Ban,
-        tone: "rose" as const,
-    },
-    {
-        title: "Policy without enforcement",
-        description:
-            "\"Clock in at the site\" is in the handbook. But handbooks don't block a punch. Without a boundary rule, the policy only exists on the day someone decides to argue.",
-        icon: Lock,
-        tone: "amber" as const,
-    },
-    {
-        title: "One rule for every job",
-        description:
-            "Your 40-acre commercial site and your 1/10-acre residential service call need very different boundaries. A single GPS radius either lets cheats through or blocks honest workers in the parking lot.",
-        icon: Ruler,
-        tone: "slate" as const,
-    },
-];
 
 const clockStates = [
     {
@@ -465,51 +443,7 @@ export default function GeofencingTimeClockFeaturePage() {
                 <SectionDivider />
 
                 {/* PAIN POINTS */}
-                <section className="relative overflow-hidden px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="flex flex-col items-center text-center mb-16">
-                            <p className="inline-flex items-center gap-2 rounded-full border border-rose-500/15 bg-rose-500/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-600 backdrop-blur-sm">
-                                <AlertTriangle size={14} />
-                                Why GPS alone isn&apos;t enough
-                            </p>
-                            <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl max-w-3xl">
-                                The rule you never had.
-                            </h2>
-                            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/60">
-                                GPS tells you <em>where</em> a punch happened. Geofencing tells the punch <em>whether it&apos;s allowed in the first place</em>. Most contractor payroll leaks come from the gap between those two.
-                            </p>
-                        </div>
-
-                        <div className="grid gap-6 md:grid-cols-3">
-                            {painPoints.map((pain) => {
-                                const Icon = pain.icon;
-                                const toneClasses: Record<typeof pain.tone, string> = {
-                                    rose: "bg-rose-50 text-rose-600 ring-rose-200/60",
-                                    amber: "bg-amber-50 text-amber-600 ring-amber-200/60",
-                                    slate: "bg-slate-100 text-slate-600 ring-slate-200/60",
-                                };
-                                return (
-                                    <article
-                                        key={pain.title}
-                                        className="surface-panel group relative overflow-hidden rounded-md border border-foreground/5 bg-white p-8 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div
-                                            className={`mb-6 flex h-12 w-12 items-center justify-center rounded-md ring-1 ${toneClasses[pain.tone]}`}
-                                        >
-                                            <Icon size={22} />
-                                        </div>
-                                        <h3 className="text-xl font-bold tracking-tight text-foreground">
-                                            {pain.title}
-                                        </h3>
-                                        <p className="mt-3 text-base font-medium leading-relaxed text-foreground/65">
-                                            {pain.description}
-                                        </p>
-                                    </article>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
+                <GeofencingPainPointsSection />
 
                 <SectionDivider />
 
