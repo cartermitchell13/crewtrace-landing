@@ -16,7 +16,8 @@ import {
     User,
     Mail,
     Phone,
-    Building2
+    Building2,
+    ShieldCheck,
 } from "lucide-react";
 import { calculateSavings, type CalculatorInputs, type CalculationResults } from "../lib/calculator-calculations";
 
@@ -764,6 +765,13 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                     </h2>
                                                     <p className="text-sm text-foreground/60 leading-relaxed">
                                                         Enter your details below. We will generate your customized profit metrics, benchmarks, and potential savings immediately.
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex items-start gap-3 rounded-xl border border-primary/10 bg-primary/[0.04] px-4 py-3">
+                                                    <ShieldCheck size={18} className="mt-0.5 shrink-0 text-primary" aria-hidden />
+                                                    <p className="text-xs font-medium leading-relaxed text-foreground/55">
+                                                        Don&apos;t worry — we won&apos;t spam you. We may reach out once with a helpful follow-up. No cold-call blitz.
                                                     </p>
                                                 </div>
 
