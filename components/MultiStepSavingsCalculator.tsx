@@ -34,8 +34,21 @@ const CONTACT_START_STEP = 8;
 const CONTACT_END_STEP = 11;
 const LOADING_STEP = 12;
 const TOTAL_INPUT_STEPS = 11;
+const GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdID";
 
 type ContactField = "name" | "company" | "email" | "phone";
+type GtagConversionParams = {
+    send_to: string;
+    event_callback?: () => void;
+};
+
+type WindowWithGtag = Window & {
+    gtag?: (
+        command: "event",
+        eventName: "conversion",
+        params: GtagConversionParams,
+    ) => void;
+};
 
 const CONTACT_STEPS: Array<{
     field: ContactField;
@@ -88,6 +101,21 @@ const CONTACT_STEPS: Array<{
         reason: "If we spot something unusual in your numbers, a quick text helps us keep your audit accurate.",
     },
 ];
+
+function reportCalculatorLeadConversion() {
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const gtag = (window as WindowWithGtag).gtag;
+    if (typeof gtag !== "function") {
+        return;
+    }
+
+    gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CALCULATOR_LEAD_SEND_TO,
+    });
+}
 
 function RangeSliderWithTooltip({
     value,
@@ -477,6 +505,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         } catch (error) {
             console.error("Error submitting calculator audit:", error);
         } finally {
+            reportCalculatorLeadConversion();
             setIsSubmitting(false);
             setStep(LOADING_STEP);
         }

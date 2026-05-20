@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import React from "react";
 import MultiStepSavingsCalculator from "../MultiStepSavingsCalculator";
 
@@ -50,6 +50,7 @@ describe("MultiStepSavingsCalculator", () => {
 
     beforeEach(() => {
         vi.clearAllMocks();
+        delete (window as typeof window & { gtag?: unknown }).gtag;
         global.fetch = vi.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: true,
@@ -133,6 +134,39 @@ describe("MultiStepSavingsCalculator", () => {
 
         // Final contact slide
         expect(screen.getByText(/What's the best number to reach you\?/i)).toBeDefined();
+    });
+
+    it("reports the Google Ads conversion when the final audit button submits valid contact info", async () => {
+        const gtag = vi.fn();
+        (window as typeof window & { gtag?: typeof gtag }).gtag = gtag;
+
+        render(<MultiStepSavingsCalculator onComplete={mockOnComplete} />);
+
+        fireEvent.click(screen.getByText(/Paper Timesheets/i));
+        fireEvent.click(screen.getByText(/Mixed \/ General Contractor/i));
+        fireEvent.click(screen.getByRole("button", { name: /Next/i }));
+        fireEvent.click(screen.getByRole("button", { name: /Next/i }));
+        fireEvent.click(screen.getByRole("button", { name: /Next/i }));
+        fireEvent.click(screen.getByRole("button", { name: /Next/i }));
+        fireEvent.click(screen.getByText(/Sometimes/i));
+
+        fireEvent.change(screen.getByPlaceholderText(/John Doe/i), { target: { value: "John Doe" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        fireEvent.change(screen.getByPlaceholderText(/Acme Construction/i), { target: { value: "Acme Construction" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        fireEvent.change(screen.getByPlaceholderText(/john@company.com/i), { target: { value: "john@company.com" } });
+        fireEvent.click(screen.getByRole("button", { name: /Continue/i }));
+
+        fireEvent.change(screen.getByPlaceholderText(/\(555\) 555-5555/i), { target: { value: "555-555-5555" } });
+        fireEvent.click(screen.getByRole("button", { name: /Unlock My Audit/i }));
+
+        await waitFor(() => {
+            expect(gtag).toHaveBeenCalledWith("event", "conversion", {
+                send_to: "AW-18173086361/FiaZCOzI2bAcEJmVzdID",
+            });
+        });
     });
 
     it("locks body scroll when modal is open and unlocks when closed or unmounted", () => {
