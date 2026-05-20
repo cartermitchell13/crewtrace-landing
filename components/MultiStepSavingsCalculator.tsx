@@ -428,7 +428,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-50 flex w-full max-w-[100dvw] flex-col justify-between overflow-x-hidden overflow-y-auto overscroll-x-none bg-background text-foreground select-none"
+                        className="fixed inset-0 z-50 flex w-full max-w-[100dvw] flex-col overflow-hidden bg-background text-foreground select-none"
                     >
                         {/* Ambient glow decoration — clipped so wide blurs don't cause horizontal scroll */}
                         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
@@ -437,7 +437,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                         </div>
 
                         {/* Header */}
-                        <header className="w-full max-w-4xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+                        <header className="relative z-10 mx-auto flex w-full max-w-4xl shrink-0 items-center justify-between px-6 py-6">
                             {step < 9 ? (
                                 <button
                                     onClick={handleBack}
@@ -461,9 +461,11 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                             </button>
                         </header>
 
-                        {/* Main content body with transition layout */}
-                        <main className="relative z-10 flex min-w-0 w-full max-w-full flex-1 items-center justify-center overflow-x-hidden px-6 py-8">
-                            <div className="relative mx-auto w-full max-w-2xl overflow-x-hidden">
+                        {/* Scrollable step content — top-aligned so headings aren't clipped on mobile */}
+                        <div className="relative z-10 min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-x-none">
+                            <div className="flex min-h-full flex-col">
+                                <main className="w-full px-6 py-6 sm:py-8">
+                                    <div className="relative mx-auto w-full max-w-2xl">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={step}
@@ -967,24 +969,25 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                         )}
                                     </motion.div>
                                 </AnimatePresence>
-                            </div>
-                        </main>
+                                    </div>
+                                </main>
 
-                        {/* Footer */}
-                        {step < 9 && (
-                            <footer className="w-full max-w-4xl mx-auto px-6 py-6 border-t border-foreground/5 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10 text-[10px] text-foreground/45 font-bold uppercase tracking-wider">
-                                <div className="flex gap-4">
-                                    <span>Legal Notes</span>
-                                    <span>&middot;</span>
-                                    <span>Privacy Policy</span>
-                                    <span>&middot;</span>
-                                    <span>Manage Cookies</span>
-                                </div>
-                                <div className="flex items-center gap-1.5 opacity-80 bg-foreground/5 px-2.5 py-1 rounded-full text-[9px] tracking-widest text-foreground/60 font-extrabold">
-                                    <span>Step {step} of 8</span>
-                                </div>
-                            </footer>
-                        )}
+                                {step < 9 && (
+                                    <footer className="mx-auto mt-auto flex w-full max-w-4xl shrink-0 flex-col items-center justify-between gap-4 border-t border-foreground/5 px-6 py-6 text-[10px] font-bold uppercase tracking-wider text-foreground/45 sm:flex-row">
+                                        <div className="flex gap-4">
+                                            <span>Legal Notes</span>
+                                            <span>&middot;</span>
+                                            <span>Privacy Policy</span>
+                                            <span>&middot;</span>
+                                            <span>Manage Cookies</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5 rounded-full bg-foreground/5 px-2.5 py-1 text-[9px] font-extrabold tracking-widest text-foreground/60 opacity-80">
+                                            <span>Step {step} of 8</span>
+                                        </div>
+                                    </footer>
+                                )}
+                            </div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
