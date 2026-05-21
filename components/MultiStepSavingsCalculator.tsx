@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     ArrowLeft,
@@ -91,6 +92,35 @@ const CONTACT_STEPS: Array<{
         reason: "If we spot something unusual in your numbers, a quick text helps us keep your audit accurate.",
     },
 ];
+
+function CalculatorStepProgress({
+    step,
+    totalSteps,
+}: {
+    step: number;
+    totalSteps: number;
+}) {
+    const progressPercent = Math.min(100, Math.max(0, (step / totalSteps) * 100));
+
+    return (
+        <div
+            className="relative z-20 w-full shrink-0 h-1 bg-foreground/10"
+            role="progressbar"
+            aria-valuenow={step}
+            aria-valuemin={1}
+            aria-valuemax={totalSteps}
+            aria-label={`Audit progress, step ${step} of ${totalSteps}`}
+        >
+            <motion.div
+                className="h-full origin-left bg-gradient-to-r from-primary/85 to-primary shadow-[0_0_12px_rgba(47,39,206,0.35)]"
+                initial={false}
+                animate={{ scaleX: progressPercent / 100 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                style={{ width: "100%" }}
+            />
+        </div>
+    );
+}
 
 function reportCalculatorLeadConversion() {
     if (typeof window === "undefined") {
@@ -191,7 +221,12 @@ interface MultiStepSavingsCalculatorProps {
 
 export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavingsCalculatorProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [portalReady, setPortalReady] = useState(false);
     const [step, setStep] = useState(1); // Steps 1 to 11: Inputs, Step 12: Loading
+
+    useEffect(() => {
+        setPortalReady(true);
+    }, []);
 
     // Calculator inputs state
     const [trackingMethod, setTrackingMethod] = useState<"paper" | "spreadsheet" | "basic-app" | "none">("paper");
@@ -557,28 +592,28 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
         );
     };
 
-    return (
-        <>
-            {renderTeaser()}
+    const modalOverlay = (
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="fixed inset-0 z-[100] flex w-full max-w-[100dvw] flex-col overflow-hidden bg-background text-foreground select-none"
+                >
+                    {step < LOADING_STEP && (
+                        <CalculatorStepProgress step={step} totalSteps={TOTAL_INPUT_STEPS} />
+                    )}
 
-            {/* Full-Screen Multi-Step Modal */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-50 flex w-full max-w-[100dvw] flex-col overflow-hidden bg-background text-foreground select-none"
-                    >
-                        {/* Ambient glow decoration — clipped so wide blurs don't cause horizontal scroll */}
-                        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
-                            <div className="absolute right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.05] blur-[100px]" />
-                            <div className="absolute bottom-0 left-1/4 h-[600px] w-[600px] rounded-full bg-secondary/[0.03] blur-[120px]" />
-                        </div>
+                    {/* Ambient glow decoration — clipped so wide blurs don't cause horizontal scroll */}
+                    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+                        <div className="absolute right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.05] blur-[100px]" />
+                        <div className="absolute bottom-0 left-1/4 h-[600px] w-[600px] rounded-full bg-secondary/[0.03] blur-[120px]" />
+                    </div>
 
-                        {/* Header */}
-                        <header className="relative z-10 mx-auto flex w-full max-w-4xl shrink-0 items-center justify-between px-6 py-6">
+                    {/* Header */}
+                    <header className="relative z-10 mx-auto flex w-full max-w-4xl shrink-0 items-center justify-between px-6 py-6">
                             {step < LOADING_STEP ? (
                                 <button
                                     onClick={handleBack}
@@ -600,10 +635,10 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                             >
                                 <X size={18} />
                             </button>
-                        </header>
+                    </header>
 
-                        {/* Scrollable step content — top-aligned on mobile, vertically centered on desktop when content fits */}
-                        <div className="relative z-10 min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-x-none">
+                    {/* Scrollable step content — top-aligned on mobile, vertically centered on desktop when content fits */}
+                    <div className="relative z-10 min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-x-none">
                             <div className="flex min-h-full flex-col">
                                 <div className="flex flex-1 flex-col justify-start md:justify-center md:py-8 lg:py-10">
                                 <main className="w-full px-6 py-6 sm:py-8 md:py-0">
@@ -1098,10 +1133,16 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                     </footer>
                                 )}
                             </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+
+    return (
+        <>
+            {renderTeaser()}
+            {portalReady ? createPortal(modalOverlay, document.body) : null}
         </>
     );
 }
