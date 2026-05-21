@@ -71,12 +71,12 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-6 auto-rows-min md:auto-rows-[auto]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3 gap-6 auto-rows-min lg:auto-rows-[auto]">
                     <BentoCard
                         title="Verified Clock-ins"
                         description="GPS confirmation shows exactly when and where each crew starts work, so approvals are based on evidence."
                         icon={MapPin}
-                        className="md:col-span-2 md:col-start-1 md:row-start-1 md:row-span-1 min-h-[270px] justify-start"
+                        className="md:col-span-2 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:row-span-1 min-h-[270px] justify-start"
                         badge="GPS Verified"
                     >
                         <div className="relative mx-auto mt-4 w-full max-w-[720px] overflow-hidden rounded-md border border-foreground/10 bg-slate-50 p-1.5">
@@ -95,7 +95,7 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         title="Anomaly Alerts"
                         description="Get notified when Crewtrace detects suspicious punch patterns, so admin can review issues before payroll errors compound."
                         icon={BellRing}
-                        className="md:col-span-2 md:col-start-1 md:row-start-2 md:row-span-1"
+                        className="md:col-span-2 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:row-span-1"
                         badge="Flagged for Review"
                     >
                         <div className="mt-3 space-y-2">
@@ -121,7 +121,7 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         title="Live Labor Budgeting"
                         description="Watch labor dollars accumulate in real time and catch budget drift before payroll closes."
                         icon={BarChart3}
-                        className="md:col-span-2 md:col-start-3 md:row-start-1 md:row-span-1"
+                        className="md:col-span-2 lg:col-span-2 lg:col-start-3 lg:row-start-1 lg:row-span-1"
                         badge="Real-time"
                     >
                         <div className="flex items-end gap-1.5 h-12 mt-2">
@@ -151,7 +151,7 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         title="Flexible CSV Exports"
                         description="Export payroll-ready files in the format your payroll stack expects without manual reformatting."
                         icon={FileDown}
-                        className="md:col-span-1 md:col-start-3 md:row-start-2 md:row-span-1"
+                        className="md:col-span-1 lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:row-span-1"
                     >
                         <div className="flex flex-col gap-1.5 mt-2">
                             {["Standard CSV", "ADP", "QuickBooks"].map((label) => (
@@ -167,7 +167,7 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         title="Instant Payroll Reports"
                         description="When the shift ends, your report is ready with hours, costs, and crew context already compiled."
                         icon={FileCheck2}
-                        className="md:col-span-1 md:col-start-4 md:row-start-2 md:row-span-1"
+                        className="md:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-start-2 lg:row-span-1"
                     >
                         <div className="mt-4 p-3 rounded-sm bg-slate-50 border border-slate-100 space-y-2">
                             <div className="flex items-center justify-between">
@@ -183,8 +183,8 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         </div>
                     </BentoCard>
 
-                    <div className="md:col-span-3 md:col-start-1 md:row-start-3 bg-primary rounded-md p-10 text-white relative overflow-hidden">
-                        <div className="flex flex-col md:flex-row items-center gap-10">
+                    <div className="md:col-span-2 lg:col-span-3 lg:col-start-1 lg:row-start-3 bg-primary rounded-md p-10 text-white relative overflow-hidden">
+                        <div className="flex flex-col lg:flex-row items-center gap-10">
                             <div className="flex-1 space-y-6">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-bold tracking-wider uppercase">
                                     Case Study: S&W Waterproofing
@@ -240,7 +240,7 @@ export default function FeatureGrid({ headingAlign = "center" }: FeatureGridProp
                         title="Sundays Back"
                         description="Stop spending weekends reconciling timesheets and payroll corrections."
                         icon={Clock}
-                        className="md:col-span-1 md:col-start-4 md:row-start-3 md:row-span-1"
+                        className="md:col-span-2 lg:col-span-1 lg:col-start-4 lg:row-start-3 lg:row-span-1"
                         iconBgColor="bg-orange-500/10"
                     >
                         <div className="mt-3 p-3 rounded-sm bg-slate-50 border border-slate-100">

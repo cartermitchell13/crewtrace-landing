@@ -640,10 +640,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                         return (
                                                             <button
                                                                 key={t.id}
-                                                                onClick={() => {
-                                                                    setTradeType(t.id);
-                                                                    handleNext();
-                                                                }}
+                                                                onClick={() => setTradeType(t.id)}
                                                                 className={`p-5 rounded-2xl border text-left transition-all duration-300 group flex gap-4 cursor-pointer hover:shadow-md ${
                                                                     isSelected
                                                                         ? "border-primary bg-primary/[0.03] shadow-sm"
@@ -669,7 +666,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                         );
                                                     })}
                                                 </div>
-                                                {renderStepActions()}
+                                                {renderStepActions({ showNext: true, onNext: handleNext })}
                                             </div>
                                         )}
 
@@ -869,10 +866,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                         return (
                                                             <button
                                                                 key={o.id}
-                                                                onClick={() => {
-                                                                    setOvertimeLevel(o.id);
-                                                                    handleNext();
-                                                                }}
+                                                                onClick={() => setOvertimeLevel(o.id)}
                                                                 className={`p-5 rounded-2xl border text-left transition-all duration-300 group flex items-center justify-between cursor-pointer hover:shadow-md ${
                                                                     isSelected
                                                                         ? "border-primary bg-primary/[0.03] shadow-sm"
@@ -892,7 +886,7 @@ export default function MultiStepSavingsCalculator({ onComplete }: MultiStepSavi
                                                         );
                                                     })}
                                                 </div>
-                                                {renderStepActions()}
+                                                {renderStepActions({ showNext: true, onNext: handleNext })}
                                             </div>
                                         )}
 
