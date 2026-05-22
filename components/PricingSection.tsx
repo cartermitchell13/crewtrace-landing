@@ -20,11 +20,23 @@ const guidedBullets = [
     "Training-focused support so field and office teams get comfortable quickly.",
 ];
 
-export default function PricingSection() {
+type PricingSectionProps = {
+    /** When true, renders the page title as h1 (for /pricing). */
+    standalone?: boolean;
+    /** Attribution path for booked-call CTAs on this surface. */
+    landingPath?: string;
+};
+
+export default function PricingSection({
+    standalone = false,
+    landingPath = "/",
+}: PricingSectionProps) {
+    const HeadingTag = standalone ? "h1" : "h2";
+
     return (
         <section
-            id="pricing"
-            className="relative scroll-mt-32 overflow-hidden bg-background py-24 md:py-32"
+            id={standalone ? undefined : "pricing"}
+            className={`relative overflow-hidden bg-background py-24 md:py-32 ${standalone ? "scroll-mt-0 pt-36 md:pt-40" : "scroll-mt-32"}`}
             aria-labelledby="pricing-heading"
         >
             {/* Atmospheric depth */}
@@ -62,12 +74,12 @@ export default function PricingSection() {
                                     </span>
                                 </div>
 
-                                <h2
+                                <HeadingTag
                                     id="pricing-heading"
                                     className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.08]"
                                 >
                                     Transparent pricing, no surprises.
-                                </h2>
+                                </HeadingTag>
                             </header>
                             {selfServePricingTiers.map((tier) => {
                                 const signupHref = buildSelfServeSignupUrl(tier.id);
@@ -215,7 +227,7 @@ export default function PricingSection() {
                                     buttonSize="md"
                                     templateType="pricing"
                                     cluster="guided_onboarding"
-                                    landingPath="/"
+                                    landingPath={landingPath}
                                     ctaLabel="Book a call"
                                     ctaLocation="pricing_guided_card"
                                     className={bookedCallCtaMatchSelfServe}

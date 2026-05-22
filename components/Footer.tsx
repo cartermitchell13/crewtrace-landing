@@ -79,6 +79,7 @@ export default function Footer() {
                             <h3 className={columnHeadingClass}>Company</h3>
                             <ul className="space-y-3">
                                 <li><Link href="/about" className={footerLinkClass}>About</Link></li>
+                                <li><Link href="/pricing" className={footerLinkClass}>Pricing</Link></li>
                                 <li><Link href="/contact" className={footerLinkClass}>Get a Demo</Link></li>
                                 <li><Link href="/privacy" className={footerLinkClass}>Privacy</Link></li>
                                 <li><Link href="/terms" className={footerLinkClass}>Terms</Link></li>

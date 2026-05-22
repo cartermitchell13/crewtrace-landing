@@ -6,7 +6,6 @@ import ComplianceAudit from "@/components/ComplianceAudit";
 import InjuryAlertWorkflowSection from "@/components/InjuryAlertWorkflowSection";
 import IndustryLinks from "@/components/IndustryLinks";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
-import PricingSection from "@/components/PricingSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
@@ -61,8 +60,6 @@ export default function Home() {
         <IndustryLinks />
         <SectionDivider />
         <LiteSavingsCalculator />
-        <SectionDivider />
-        <PricingSection />
         <SectionDivider />
         <FAQSection />
         <SectionDivider />
