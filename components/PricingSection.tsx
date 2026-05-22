@@ -58,7 +58,7 @@ export default function PricingSection({
                     />
 
                     <div className="grid grid-cols-1 xl:grid-cols-4">
-                        {/* Self-serve tiers row */}
+                        {/* Pricing tiers row */}
                         <div className="col-span-1 grid grid-cols-1 gap-5 p-5 sm:p-6 md:grid-cols-3 md:p-7 xl:col-span-3 xl:p-8">
                             <header className="col-span-full max-w-4xl pb-2 text-left md:col-span-3 md:pb-4">
                                 <div className="mb-4 sm:mb-5 inline-flex max-w-full items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.025] py-[3px] pl-[3px] pr-2.5 text-[11px] font-medium text-foreground/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:gap-2 sm:py-1 sm:pl-1 sm:pr-4 sm:text-xs">

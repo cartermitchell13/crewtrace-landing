@@ -1,5 +1,5 @@
 /**
- * Self-serve tiers: fixed prices and signup deep-link contract (`plan`, `flow`).
+ * Pricing tiers: fixed prices and signup deep-link contract (`plan`, `flow`).
  * Update prices here only—avoid duplicating across components.
  */
 export const SELF_SERVE_SIGNUP_DEFAULT_BASE = "https://crewtrace.app/signup";
@@ -21,7 +21,7 @@ export type SelfServePricingTier = {
 
 /**
  * Terse checklist of product areas included—factual labels, not sales copy.
- * Every self-serve bracket gets the same inclusions (pricing differs by team size).
+ * Every team-size bracket gets the same inclusions (pricing differs by team size).
  */
 export const selfServePlatformFeatures: readonly string[] = [
     "GPS time tracking & geofenced job sites",
@@ -66,7 +66,7 @@ export const selfServePricingTiers: readonly SelfServePricingTier[] = [
 ] as const;
 
 /**
- * Where to send self-serve signup with `plan` + `flow=self-serve`.
+ * Signup deep link with `plan` + `flow=self-serve` (flow value is an app contract).
  * Optional override: `NEXT_PUBLIC_SELF_SERVE_SIGNUP_URL`
  * (absolute URL, with or without existing query string).
  */

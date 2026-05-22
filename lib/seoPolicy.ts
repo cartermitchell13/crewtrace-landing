@@ -103,7 +103,7 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         indexable: true,
         titlePattern: "Pricing | GPS Time Tracking for Construction Crews",
         descriptionPattern:
-            "Flat-rate Crewtrace pricing by team size—no per-seat fees. Self-serve plans from $99/mo or done-for-you onboarding for larger rollouts.",
+            "Flat-rate Crewtrace pricing by team size—no per-seat fees. Plans from $99/mo or done-for-you onboarding for larger rollouts.",
         changeFrequency: "monthly",
         priority: 0.8,
     },

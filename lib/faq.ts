@@ -30,7 +30,7 @@ export const homeFaqItems: FaqItem[] = [
     },
     {
         question: "How much does construction time tracking software cost?",
-        answer: "Before quoting anything, we run a free audit call to confirm we can save money. For qualified teams, pricing is a one-time setup fee plus a monthly fee. The average contractor saves $1,200+ per month, so the software pays for itself many times over.",
+        answer: "Crewtrace uses flat monthly pricing by team size—Starter ($99/mo) for fewer than 20 employees, Growth ($150/mo) for 20–49, and Scale ($250/mo) for 50 or more—with no per-seat fees. Visit the pricing page for plan details, free trials, and done-for-you onboarding options.",
     },
     {
         question: "What if this does not pay for itself?",
@@ -112,6 +112,41 @@ export const guidesHubFaqItems: FaqItem[] = [
     {
         question: "Can I share these guides with my team?",
         answer: "Absolutely. Link directly to any guide page. No login required. Many operations managers share the Implementation Guide with their payroll admin and the DOL Compliance Guide with their compliance officer or accountant.",
+    },
+];
+
+export const pricingFaqItems: FaqItem[] = [
+    {
+        question: "Do you charge per employee or per seat?",
+        answer: "No. Crewtrace uses flat monthly pricing by team-size bracket—not a per-seat or per-clock-in fee. You pick the plan that matches how many employees you run, and everyone on that roster can use the same platform features listed on the plan.",
+    },
+    {
+        question: "What's included in every plan?",
+        answer: "Starter, Growth, and Scale all include the same product areas: GPS time tracking and geofenced job sites, anomaly alerts, scheduling, one-click QuickBooks payroll sync, payroll reports and CSV exports, and crew mobile apps on iOS and Android with offline punch sync when you're back online. The monthly price changes with your team-size bracket, not a stripped-down feature set.",
+    },
+    {
+        question: "How do I choose the right plan for my crew size?",
+        answer: "Starter is for teams with fewer than 20 employees ($99/mo). Growth covers 20–49 employees ($150/mo). Scale is for 50 or more employees ($250/mo). Each tier is built for that headcount range—if you outgrow a bracket, move up to the next plan when your roster does.",
+    },
+    {
+        question: "Is there a free trial?",
+        answer: "Yes. Signup starts a free trial on the plan you select. Monthly billing begins after the trial ends—you're not charged the plan rate until that trial period is over.",
+    },
+    {
+        question: "What is done-for-you onboarding?",
+        answer: "Done-for-you onboarding is for teams that want hands-on rollout help: collaborative setup for migrations or a tailored workspace, structured job-site and crew configuration, and training so field and office teams adopt the workflow before payroll week one. Pricing is scoped on a call based on your crew size and rollout complexity—not a fixed tier on this page.",
+    },
+    {
+        question: "Can I switch plans if my team grows?",
+        answer: "Yes. When your employee count moves into the next bracket, upgrade to the matching plan. There is no per-seat math to redo—just pick the tier that fits your current roster size.",
+    },
+    {
+        question: "How does billing work?",
+        answer: "Plans are billed monthly after your trial ends. You sign up from the plan card that matches your team size; checkout uses that plan's rate with no hidden per-user add-ons on top of the flat monthly price.",
+    },
+    {
+        question: "What if we need help getting started?",
+        answer: "Book a call for done-for-you onboarding. We help with migrations, multi-site setup, crew and job-site configuration, and training so your team is ready before payroll week one. If the expected savings are not there for your operation, we will say so directly.",
     },
 ];
 
