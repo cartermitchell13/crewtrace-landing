@@ -5,6 +5,7 @@ import GoogleAnalyticsPageViewTracker from "@/components/GoogleAnalyticsPageView
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 const GOOGLE_ADS_ID = "AW-18173086361";
 const CALCULATOR_LEAD_CONVERSION_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdlD";
+const DEMO_REQUEST_CONVERSION_SEND_TO = "AW-18173086361/muQVCLiX4LEcEJmVzdlD";
 
 export default function GoogleAnalytics() {
     const googleTagId = GA_MEASUREMENT_ID || GOOGLE_ADS_ID;
@@ -38,6 +39,18 @@ window.gtag_report_conversion = function(url) {
   };
   gtag('event', 'conversion', {
     'send_to': '${CALCULATOR_LEAD_CONVERSION_SEND_TO}',
+    'event_callback': callback
+  });
+  return false;
+};
+window.gtag_report_demo_conversion = function(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': '${DEMO_REQUEST_CONVERSION_SEND_TO}',
     'event_callback': callback
   });
   return false;

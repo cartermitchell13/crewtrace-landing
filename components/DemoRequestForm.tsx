@@ -17,6 +17,24 @@ import { buildLeadFormEvent } from "@/lib/seo-events";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
+type WindowWithGtag = Window & {
+    gtag_report_demo_conversion?: (url?: string) => false;
+};
+
+function reportDemoRequestConversion() {
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const gtagReportDemoConversion = (window as WindowWithGtag)
+        .gtag_report_demo_conversion;
+    if (typeof gtagReportDemoConversion !== "function") {
+        return;
+    }
+
+    gtagReportDemoConversion();
+}
+
 const CREW_SIZE_OPTIONS = [
     "1–5",
     "6–15",
@@ -65,6 +83,7 @@ export default function DemoRequestForm({
 
         setStatus("submitting");
         setErrorMessage("");
+        reportDemoRequestConversion();
 
         const formData = new FormData(event.currentTarget);
         const pathname =
