@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -26,129 +25,21 @@ import {
     Hammer,
     Radar,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
-import SeoLandingTracker from "@/components/SeoLandingTracker";
-import CTASection from "@/components/CTASection";
-import FAQSection from "@/components/FAQSection";
 import FeatureComparison from "@/components/FeatureComparison";
-import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
+import FeaturePageShell from "@/components/feature/FeaturePageShell";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
+import { createFeaturePageMetadata } from "@/lib/feature-pages";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
 import GpsPainPointsSection from "./GpsPainPointsSection";
 
-const SLUG = "gps-time-tracking";
+const SLUG = "gps-time-tracking" as const;
 const PATH = `/features/${SLUG}`;
 const solution = featureBySlug[SLUG]!;
 
-export const metadata: Metadata = createPageMetadata({
-    title: solution.metaTitle,
-    description: solution.metaDescription,
-    path: PATH,
-});
-
-type PlaceholderTone = "primary" | "emerald" | "amber" | "slate" | "rose" | "sky";
-
-type PlaceholderProps = {
-    label: string;
-    sublabel?: string;
-    aspect?: string;
-    tone?: PlaceholderTone;
-    variant?: "grid" | "map" | "phone" | "radar";
-    className?: string;
-};
-
-function ImagePlaceholder({
-    label,
-    sublabel,
-    aspect = "aspect-[16/10]",
-    tone = "primary",
-    variant = "grid",
-    className = "",
-}: PlaceholderProps) {
-    const toneMap: Record<PlaceholderTone, string> = {
-        primary: "from-primary/15 via-primary/5 to-white",
-        emerald: "from-emerald-200/40 via-emerald-50 to-white",
-        amber: "from-amber-200/40 via-amber-50 to-white",
-        slate: "from-slate-200/60 via-slate-50 to-white",
-        rose: "from-rose-200/40 via-rose-50 to-white",
-        sky: "from-sky-200/40 via-sky-50 to-white",
-    };
-    const dotMap: Record<PlaceholderTone, string> = {
-        primary: "bg-primary/40",
-        emerald: "bg-emerald-500/50",
-        amber: "bg-amber-500/50",
-        slate: "bg-slate-500/40",
-        rose: "bg-rose-500/50",
-        sky: "bg-sky-500/50",
-    };
-
-    return (
-        <div
-            className={`relative w-full overflow-hidden rounded-md border border-foreground/5 bg-gradient-to-br ${toneMap[tone]} ${aspect} ${className}`}
-            role="img"
-            aria-label={label}
-        >
-            {variant === "grid" && (
-                <div
-                    className="absolute inset-0 opacity-[0.35]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)",
-                        backgroundSize: "32px 32px",
-                    }}
-                />
-            )}
-            {variant === "map" && (
-                <>
-                    <div
-                        className="absolute inset-0 opacity-[0.4]"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(115deg, rgba(15,23,42,0.08) 1px, transparent 1px), linear-gradient(65deg, rgba(15,23,42,0.08) 1px, transparent 1px)",
-                            backgroundSize: "48px 48px",
-                        }}
-                    />
-                    <div className="absolute left-[18%] top-[28%] h-40 w-40 rounded-full border-2 border-dashed border-primary/50 bg-primary/10" />
-                    <div className="absolute left-[30%] top-[42%] h-3 w-3 rounded-full bg-primary shadow-[0_0_0_6px_rgba(47,39,206,0.18)]" />
-                    <div className="absolute right-[22%] top-[58%] h-28 w-28 rounded-full border-2 border-dashed border-emerald-500/50 bg-emerald-500/10" />
-                    <div className="absolute right-[30%] top-[66%] h-3 w-3 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,0.18)]" />
-                </>
-            )}
-            {variant === "phone" && (
-                <div
-                    className="absolute inset-0 opacity-[0.25]"
-                    style={{
-                        backgroundImage:
-                            "radial-gradient(circle at 30% 20%, rgba(47,39,206,0.25) 0%, transparent 40%), radial-gradient(circle at 75% 80%, rgba(16,185,129,0.2) 0%, transparent 40%)",
-                    }}
-                />
-            )}
-            {variant === "radar" && (
-                <>
-                    <div className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/25" />
-                    <div className="absolute left-1/2 top-1/2 h-[40%] w-[40%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/30" />
-                    <div className="absolute left-1/2 top-1/2 h-[20%] w-[20%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/40" />
-                    <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
-                </>
-            )}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-6">
-                <span className={`flex h-2 w-2 rounded-full ${dotMap[tone]}`} />
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/45">
-                    Image placeholder
-                </p>
-                <p className="max-w-md text-sm font-semibold text-foreground/70">{label}</p>
-                {sublabel && (
-                    <p className="max-w-md text-xs font-medium text-foreground/45">{sublabel}</p>
-                )}
-            </div>
-        </div>
-    );
-}
-
+export const metadata = createFeaturePageMetadata(SLUG);
 
 const spotlights = [
     {
@@ -367,41 +258,15 @@ const stats = [
 ];
 
 export default function GpsTimeTrackingFeaturePage() {
-    const articleJsonLd = articleSchema({
-        headline: solution.metaTitle,
-        description: solution.metaDescription,
-        path: PATH,
-    });
-    const breadcrumbJsonLd = breadcrumbSchema([
-        { name: "Home", path: "/" },
-        { name: "Features", path: "/features" },
-        { name: solution.name, path: PATH },
-    ]);
-    const faqJsonLd = faqSchema(solution.faqItems);
-
     return (
-        <div className="min-h-screen bg-background">
-            <Navbar />
-            <main>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-                />
-                <SeoLandingTracker
-                    templateType="feature_detail"
-                    cluster="features"
-                    pageSlug={SLUG}
-                    pageUrl={PATH}
-                />
-
+        <FeaturePageShell
+            slug={SLUG}
+            faq={{
+                eyebrow: "GPS Time Tracking FAQ",
+                title: "GPS time clock questions, answered",
+                description: `Answers to common questions about ${solution.primaryKeyword}, accuracy, privacy, and how GPS time tracking connects to payroll.`,
+            }}
+        >
                 {/* HERO */}
                 <section id="hero" className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.10)_0%,transparent_60%)]" />
@@ -789,22 +654,6 @@ export default function GpsTimeTrackingFeaturePage() {
                     </div>
                 </section>
 
-                <SectionDivider />
-
-                {/* FAQ */}
-                <FAQSection
-                    eyebrow="GPS Time Tracking FAQ"
-                    title="GPS time clock questions, answered"
-                    description={`Answers to common questions about ${solution.primaryKeyword}, accuracy, privacy, and how GPS time tracking connects to payroll.`}
-                    items={solution.faqItems}
-                />
-
-                <SectionDivider />
-
-                <CTASection cluster="features" templateType="feature_detail" landingPath={PATH} />
-            </main>
-            <SectionDivider />
-            <Footer />
-        </div>
+        </FeaturePageShell>
     );
 }

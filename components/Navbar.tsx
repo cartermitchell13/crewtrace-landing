@@ -4,13 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { getSolutionSummaries } from "@/lib/solutions";
+import { getIndustrySummaries } from "@/lib/industries";
+import { industryIconByKey } from "@/lib/industry-icons";
 import {
-    Home,
-    Thermometer,
-    Wrench,
-    HardHat,
-    Trees,
-    Construction,
     MapPin,
     Clock,
     FileText,
@@ -23,56 +19,18 @@ import {
     Menu,
     X,
     ChevronDown,
-    Zap,
     CalendarDays,
     ShieldCheck,
+    Wrench,
 } from "lucide-react";
 
-// Industry data for mega menu
-const industries = [
-    {
-        name: "HVAC",
-        slug: "hvac",
-        description: "Track technicians across service calls",
-        Icon: Thermometer,
-    },
-    {
-        name: "Electrical",
-        slug: "electrical",
-        description: "GPS time tracking for electricians",
-        Icon: Zap,
-    },
-    {
-        name: "Roofing",
-        slug: "roofing",
-        description: "Stop guessing when crews arrive",
-        Icon: Home,
-    },
-    {
-        name: "Plumbing",
-        slug: "plumbing",
-        description: "Know exactly when crews clock in",
-        Icon: Wrench,
-    },
-    {
-        name: "General Contractors",
-        slug: "general-contractors",
-        description: "Manage crews across job sites",
-        Icon: HardHat,
-    },
-    {
-        name: "Landscaping",
-        slug: "landscaping",
-        description: "GPS verification for outdoor sites",
-        Icon: Trees,
-    },
-    {
-        name: "Concrete",
-        slug: "concrete",
-        description: "Accurate time for pour schedules",
-        Icon: Construction,
-    },
-];
+// Industry data for mega menu — derived from lib/industries.ts
+const industries = getIndustrySummaries().map((industry) => ({
+    name: industry.name,
+    slug: industry.slug,
+    description: industry.description,
+    Icon: industryIconByKey[industry.icon],
+}));
 
 const resources = [
     {

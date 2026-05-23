@@ -5,22 +5,12 @@ import { notFound } from "next/navigation";
 import {
     AlertCircle,
     ArrowRight,
-    BarChart3,
-    CheckCircle2,
-    Clock,
-    Droplets,
-    HardHat,
-    Home,
-    Layers,
     MapPin,
     ShieldCheck,
-    Trees,
-    TrendingUp,
-    Wind,
     Target,
-    Zap,
     Sparkles,
-    type LucideIcon,
+    TrendingUp,
+    Zap,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,39 +25,16 @@ import { getTemplateMessaging } from "@/lib/messaging";
 import {
     industryBySlug,
     industrySlugs,
-    type IndustryIconKey,
     type IndustryRecord,
 } from "@/lib/industries";
 import { getIndustryDetailLinks } from "@/lib/cluster-link-graph";
+import { joinKeywordList } from "@/lib/join-keyword-list";
+import { supportKeywordByFeatureSlug } from "@/lib/feature-pages";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
-import { getFeaturesBySlugs } from "@/lib/solutions";
+import { getFeaturesBySlugs, type FeatureSlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
-
-const iconByKey: Record<IndustryIconKey, LucideIcon> = {
-    home: Home,
-    wind: Wind,
-    droplets: Droplets,
-    "hard-hat": HardHat,
-    trees: Trees,
-    layers: Layers,
-    "map-pin": MapPin,
-    "check-circle-2": CheckCircle2,
-    "alert-circle": AlertCircle,
-    "bar-chart-3": BarChart3,
-    clock: Clock,
-    "trending-up": TrendingUp,
-    "shield-check": ShieldCheck,
-};
-
-const supportKeywordByFeatureSlug: Record<string, string> = {
-    "gps-time-tracking": "gps time clock",
-    "geofencing-time-clock": "geofencing time tracking",
-    "payroll-leakage-prevention": "payroll time tracking",
-    "payroll-exports": "mobile timesheet app",
-    "dol-compliance": "audit-ready time records",
-    "overtime-alerts": "overtime tracking",
-};
+import { industryIconByKey } from "@/lib/industry-icons";
 
 const supportKeywordByIndustrySlug: Record<string, string[]> = {
     roofing: ["mobile time clock", "time clock app with gps"],
@@ -91,29 +58,14 @@ const supportKeywordByIndustrySlug: Record<string, string[]> = {
     ],
 };
 
-function joinKeywordList(items: string[]) {
-    if (items.length === 0) {
-        return "";
-    }
-
-    if (items.length === 1) {
-        return items[0];
-    }
-
-    if (items.length === 2) {
-        return `${items[0]} and ${items[1]}`;
-    }
-
-    return `${items.slice(0, -1).join(", ")}, and ${items.at(-1)}`;
-}
-
 function getSupportKeywords(industry: IndustryRecord, relatedFeatureSlugs: string[]) {
     return Array.from(
         new Set([
             ...(supportKeywordByIndustrySlug[industry.slug] ?? []),
-            ...relatedFeatureSlugs
-                .map((featureSlug) => supportKeywordByFeatureSlug[featureSlug])
-                .filter((keyword): keyword is string => Boolean(keyword)),
+            ...relatedFeatureSlugs.flatMap((featureSlug) => {
+                const keywords = supportKeywordByFeatureSlug[featureSlug as FeatureSlug];
+                return keywords ?? [];
+            }),
         ]),
     ).slice(0, 4);
 }
@@ -176,7 +128,7 @@ export default async function IndustryPage({
     ]);
     const faqJsonLd = faqSchema(industry.faqItems);
 
-    const IndustryIcon = iconByKey[industry.icon];
+    const IndustryIcon = industryIconByKey[industry.icon];
     const relatedSolutions = getFeaturesBySlugs(detailLinks.relatedFeatureSlugs);
     const siblingIndustries: IndustryRecord[] = detailLinks.siblingIndustrySlugs
         .map((siblingSlug) => industryBySlug[siblingSlug])
@@ -344,7 +296,7 @@ export default async function IndustryPage({
 
                         <div className="grid gap-6 md:grid-cols-2">
                             {industry.benefits.map((benefit, index) => {
-                                const BenefitIcon = iconByKey[benefit.icon];
+                                const BenefitIcon = industryIconByKey[benefit.icon];
                                 const spanFullRowMd =
                                     industry.benefits.length % 2 === 1 &&
                                     index === industry.benefits.length - 1;

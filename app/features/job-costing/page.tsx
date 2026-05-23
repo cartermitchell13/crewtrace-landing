@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -27,86 +26,21 @@ import {
     Timer,
     PieChart,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
-import SeoLandingTracker from "@/components/SeoLandingTracker";
-import CTASection from "@/components/CTASection";
-import FAQSection from "@/components/FAQSection";
 import FeatureComparison from "@/components/FeatureComparison";
-import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
+import FeaturePageShell from "@/components/feature/FeaturePageShell";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
+import { createFeaturePageMetadata } from "@/lib/feature-pages";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
 import JobCostingPainPointsSection from "./JobCostingPainPointsSection";
 
-const SLUG = "job-costing";
+const SLUG = "job-costing" as const;
 const PATH = `/features/${SLUG}`;
 const solution = featureBySlug[SLUG]!;
 
-export const metadata: Metadata = createPageMetadata({
-    title: solution.metaTitle,
-    description: solution.metaDescription,
-    path: PATH,
-});
-
-type PlaceholderProps = {
-    label: string;
-    sublabel?: string;
-    aspect?: string;
-    tone?: "primary" | "emerald" | "amber" | "slate" | "rose";
-};
-
-function ImagePlaceholder({
-    label,
-    sublabel,
-    aspect = "aspect-[16/10]",
-    tone = "primary",
-}: PlaceholderProps) {
-    const toneMap: Record<NonNullable<PlaceholderProps["tone"]>, string> = {
-        primary: "from-primary/15 via-primary/5 to-white",
-        emerald: "from-emerald-200/40 via-emerald-50 to-white",
-        amber: "from-amber-200/40 via-amber-50 to-white",
-        slate: "from-slate-200/60 via-slate-50 to-white",
-        rose: "from-rose-200/40 via-rose-50 to-white",
-    };
-    const dotMap: Record<NonNullable<PlaceholderProps["tone"]>, string> = {
-        primary: "bg-primary/30",
-        emerald: "bg-emerald-400/40",
-        amber: "bg-amber-400/40",
-        slate: "bg-slate-400/40",
-        rose: "bg-rose-400/40",
-    };
-
-    return (
-        <div
-            className={`relative w-full overflow-hidden rounded-md border border-foreground/5 bg-gradient-to-br ${toneMap[tone]} ${aspect}`}
-            role="img"
-            aria-label={label}
-        >
-            <div
-                className="absolute inset-0 opacity-[0.35]"
-                style={{
-                    backgroundImage:
-                        "linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)",
-                    backgroundSize: "32px 32px",
-                }}
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-6">
-                <span className={`flex h-2 w-2 rounded-full ${dotMap[tone]}`} />
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-foreground/45">
-                    Image placeholder
-                </p>
-                <p className="max-w-md text-sm font-semibold text-foreground/65">{label}</p>
-                {sublabel && (
-                    <p className="max-w-md text-xs font-medium text-foreground/45">{sublabel}</p>
-                )}
-            </div>
-        </div>
-    );
-}
-
+export const metadata = createFeaturePageMetadata(SLUG);
 
 const pillars = [
     {
@@ -305,41 +239,15 @@ const stats = [
 ];
 
 export default function JobCostingFeaturePage() {
-    const articleJsonLd = articleSchema({
-        headline: solution.metaTitle,
-        description: solution.metaDescription,
-        path: PATH,
-    });
-    const breadcrumbJsonLd = breadcrumbSchema([
-        { name: "Home", path: "/" },
-        { name: "Features", path: "/features" },
-        { name: solution.name, path: PATH },
-    ]);
-    const faqJsonLd = faqSchema(solution.faqItems);
-
     return (
-        <div className="min-h-screen bg-background">
-            <Navbar />
-            <main>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-                />
-                <SeoLandingTracker
-                    templateType="feature_detail"
-                    cluster="features"
-                    pageSlug={SLUG}
-                    pageUrl={PATH}
-                />
-
+        <FeaturePageShell
+            slug={SLUG}
+            faq={{
+                eyebrow: "Job Costing FAQ",
+                title: "Job costing questions, answered",
+                description: `Answers to common questions about ${solution.primaryKeyword}, rollout expectations, and how budget vs. actual labor connects to your existing Crewtrace workflow.`,
+            }}
+        >
                 {/* HERO */}
                 <section id="hero" className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.10)_0%,transparent_60%)]" />
@@ -781,21 +689,6 @@ export default function JobCostingFeaturePage() {
                     </div>
                 </section>
 
-                <SectionDivider />
-
-                <FAQSection
-                    eyebrow="Job Costing FAQ"
-                    title="Job costing questions, answered"
-                    description={`Answers to common questions about ${solution.primaryKeyword}, rollout expectations, and how budget vs. actual labor connects to your existing Crewtrace workflow.`}
-                    items={solution.faqItems}
-                />
-
-                <SectionDivider />
-
-                <CTASection cluster="features" templateType="feature_detail" landingPath={PATH} />
-            </main>
-            <SectionDivider />
-            <Footer />
-        </div>
+        </FeaturePageShell>
     );
 }

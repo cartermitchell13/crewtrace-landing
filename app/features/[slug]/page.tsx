@@ -19,23 +19,17 @@ import {
 } from "@/lib/messaging";
 import { industryBySlug } from "@/lib/industries";
 import { getFeatureDetailLinks } from "@/lib/cluster-link-graph";
+import {
+    getTemplateFeatureSlugs,
+    supportKeywordByFeatureSlug,
+} from "@/lib/feature-pages";
+import { joinKeywordList } from "@/lib/join-keyword-list";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
-import { featureBySlug, featureSlugs, getFeaturesBySlugs } from "@/lib/solutions";
+import { featureBySlug, getFeaturesBySlugs } from "@/lib/solutions";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 
 const detailMessaging = getTemplateMessaging("feature_detail");
-
-const supportKeywordByFeatureSlug: Record<string, string[]> = {
-    "gps-time-tracking": ["time clock app with gps", "gps time tracking app", "gps employee tracking app"],
-    "payroll-leakage-prevention": ["payroll time tracking", "construction payroll software", "employee time clock"],
-    "dol-compliance": ["department of labor time clock rules", "labor laws clocking in and out", "audit-ready time records"],
-    "geofencing-time-clock": ["geofencing time tracking", "geofence time clock", "clock in app with gps"],
-    "payroll-exports": ["payroll time tracking software", "construction payroll software", "time tracking payroll"],
-    "overtime-alerts": ["overtime tracking", "overtime tracking software", "employee time tracking"],
-    "scheduling": ["crew scheduling software", "construction scheduling software", "contractor scheduling app"],
-    "payroll-sync-quickbooks": ["quickbooks payroll sync", "quickbooks time tracking", "construction payroll software"],
-};
 
 const heroImageByFeatureSlug: Record<string, string> = {
     scheduling: "/images/sheduling/scheduling-hero.png",
@@ -43,32 +37,12 @@ const heroImageByFeatureSlug: Record<string, string> = {
 
 const DEFAULT_HERO_IMAGE = "/images/ct-hero-min (1).png";
 
-function joinKeywordList(items: string[]) {
-    if (items.length === 0) {
-        return "";
-    }
-
-    if (items.length === 1) {
-        return items[0];
-    }
-
-    if (items.length === 2) {
-        return `${items[0]} and ${items[1]}`;
-    }
-
-    return `${items.slice(0, -1).join(", ")}, and ${items.at(-1)}`;
-}
-
 function toIndustryName(slug: string) {
     return industryBySlug[slug]?.name ?? slug;
 }
 
-const CUSTOM_FEATURE_SLUGS = new Set(["scheduling", "gps-time-tracking", "geofencing-time-clock", "payroll-sync-quickbooks"]);
-
 export function generateStaticParams() {
-    return featureSlugs
-        .filter((slug) => !CUSTOM_FEATURE_SLUGS.has(slug))
-        .map((slug) => ({ slug }));
+    return getTemplateFeatureSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

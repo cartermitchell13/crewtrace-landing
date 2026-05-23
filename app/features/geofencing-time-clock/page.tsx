@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -31,29 +30,20 @@ import {
     FileCheck2,
     Signal,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import BookedCallLink from "@/components/BookedCallLink";
-import SeoLandingTracker from "@/components/SeoLandingTracker";
-import CTASection from "@/components/CTASection";
-import FAQSection from "@/components/FAQSection";
 import FeatureComparison from "@/components/FeatureComparison";
-import { createPageMetadata } from "@/lib/seo";
-import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
+import FeaturePageShell from "@/components/feature/FeaturePageShell";
 import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
+import { createFeaturePageMetadata } from "@/lib/feature-pages";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
 import GeofencingPainPointsSection from "./GeofencingPainPointsSection";
 
-const SLUG = "geofencing-time-clock";
+const SLUG = "geofencing-time-clock" as const;
 const PATH = `/features/${SLUG}`;
 const solution = featureBySlug[SLUG]!;
 
-export const metadata: Metadata = createPageMetadata({
-    title: solution.metaTitle,
-    description: solution.metaDescription,
-    path: PATH,
-});
+export const metadata = createFeaturePageMetadata(SLUG);
 
 const IMG = {
     hero: "/images/geofencing/geofencing-hero.png",
@@ -339,41 +329,15 @@ const accentMap: Record<
 };
 
 export default function GeofencingTimeClockFeaturePage() {
-    const articleJsonLd = articleSchema({
-        headline: solution.metaTitle,
-        description: solution.metaDescription,
-        path: PATH,
-    });
-    const breadcrumbJsonLd = breadcrumbSchema([
-        { name: "Home", path: "/" },
-        { name: "Features", path: "/features" },
-        { name: solution.name, path: PATH },
-    ]);
-    const faqJsonLd = faqSchema(solution.faqItems);
-
     return (
-        <div className="min-h-screen bg-background">
-            <Navbar />
-            <main>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-                />
-                <SeoLandingTracker
-                    templateType="feature_detail"
-                    cluster="features"
-                    pageSlug={SLUG}
-                    pageUrl={PATH}
-                />
-
+        <FeaturePageShell
+            slug={SLUG}
+            faq={{
+                eyebrow: "Geofencing Time Clock FAQ",
+                title: "Geofencing questions, answered",
+                description: `Answers to common questions about ${solution.primaryKeyword}, boundary accuracy, enforcement modes, and how geofencing connects to payroll.`,
+            }}
+        >
                 {/* HERO */}
                 <section id="hero" className="relative overflow-hidden px-6 pb-16 pt-32 md:pb-24 md:pt-40">
                     <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(47,39,206,0.10)_0%,transparent_60%)]" />
@@ -918,22 +882,6 @@ export default function GeofencingTimeClockFeaturePage() {
                     </div>
                 </section>
 
-                <SectionDivider />
-
-                {/* FAQ */}
-                <FAQSection
-                    eyebrow="Geofencing Time Clock FAQ"
-                    title="Geofencing questions, answered"
-                    description={`Answers to common questions about ${solution.primaryKeyword}, boundary accuracy, enforcement modes, and how geofencing connects to payroll.`}
-                    items={solution.faqItems}
-                />
-
-                <SectionDivider />
-
-                <CTASection cluster="features" templateType="feature_detail" landingPath={PATH} />
-            </main>
-            <SectionDivider />
-            <Footer />
-        </div>
+        </FeaturePageShell>
     );
 }
