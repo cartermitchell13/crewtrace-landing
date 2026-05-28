@@ -8,7 +8,7 @@ const CALCULATOR_LEAD_CONVERSION_SEND_TO = "AW-18173086361/FiaZCOzI2bAcEJmVzdlD"
 const DEMO_REQUEST_CONVERSION_SEND_TO = "AW-18173086361/muQVCLiX4LEcEJmVzdlD";
 
 export default function GoogleAnalytics() {
-    const googleTagId = GA_MEASUREMENT_ID || GOOGLE_ADS_ID;
+    const googleTagId = GOOGLE_ADS_ID;
 
     if (!googleTagId) {
         return null;
