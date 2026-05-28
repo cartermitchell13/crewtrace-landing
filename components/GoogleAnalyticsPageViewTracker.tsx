@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 type GtagConfigParams = {
@@ -34,20 +34,49 @@ export default function GoogleAnalyticsPageViewTracker({
 }: GoogleAnalyticsPageViewTrackerProps) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const lastSentPageViewRef = useRef<string | null>(null);
 
     useEffect(() => {
-        if (!measurementId || typeof window.gtag !== "function" || !pathname) {
+        if (!measurementId || !pathname) {
             return;
         }
 
         const queryString = searchParams.toString();
         const pagePath = queryString ? `${pathname}?${queryString}` : pathname;
+        const pageViewKey = `${measurementId}:${pagePath}`;
+        let retryCount = 0;
+        let retryTimer: number | undefined;
 
-        window.gtag("config", measurementId, {
-            page_path: pagePath,
-            page_location: `${window.location.origin}${pagePath}`,
-            page_title: document.title,
-        });
+        const sendPageView = () => {
+            if (typeof window.gtag !== "function") {
+                if (retryCount < 50) {
+                    retryCount += 1;
+                    retryTimer = window.setTimeout(sendPageView, 100);
+                }
+
+                return;
+            }
+
+            if (lastSentPageViewRef.current === pageViewKey) {
+                return;
+            }
+
+            lastSentPageViewRef.current = pageViewKey;
+
+            window.gtag("config", measurementId, {
+                page_path: pagePath,
+                page_location: `${window.location.origin}${pagePath}`,
+                page_title: document.title,
+            });
+        };
+
+        sendPageView();
+
+        return () => {
+            if (retryTimer !== undefined) {
+                window.clearTimeout(retryTimer);
+            }
+        };
     }, [measurementId, pathname, searchParams]);
 
     return null;
