@@ -6,6 +6,8 @@ import { ShieldCheck, SlidersHorizontal, X } from "lucide-react";
 const COOKIE_CONSENT_STORAGE_KEY = "crewtrace_cookie_consent";
 const COOKIE_SETTINGS_EVENT = "crewtrace:open-cookie-preferences";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+const ANALYTICS_COOKIE_PREFIXES = ["_ga", "_gid", "_gat"];
+const MARKETING_COOKIE_PREFIXES = ["_gcl"];
 
 type ConsentChoice = {
     analytics: boolean;
@@ -121,6 +123,34 @@ function applyGoogleConsent(choice: ConsentChoice) {
     }
 }
 
+function getCookieDeletionDomains() {
+    const hostname = window.location.hostname;
+    const parts = hostname.split(".");
+    const rootDomain = parts.length > 2 ? parts.slice(-2).join(".") : hostname;
+
+    return Array.from(new Set([hostname, `.${hostname}`, rootDomain, `.${rootDomain}`]));
+}
+
+function clearCookie(name: string) {
+    const expires = "Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = `${name}=; expires=${expires}; Max-Age=0; path=/; SameSite=Lax`;
+
+    for (const domain of getCookieDeletionDomains()) {
+        document.cookie = `${name}=; expires=${expires}; Max-Age=0; path=/; domain=${domain}; SameSite=Lax`;
+    }
+}
+
+function clearGoogleCookies(prefixes: string[]) {
+    const cookieNames = document.cookie
+        .split(";")
+        .map((cookie) => cookie.trim().split("=")[0])
+        .filter((name) => prefixes.some((prefix) => name === prefix || name.startsWith(`${prefix}_`)));
+
+    for (const name of cookieNames) {
+        clearCookie(name);
+    }
+}
+
 function storeConsent(analytics: boolean, marketing: boolean): ConsentChoice {
     const choice = {
         analytics,
@@ -129,6 +159,12 @@ function storeConsent(analytics: boolean, marketing: boolean): ConsentChoice {
     };
 
     window.localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(choice));
+    if (!analytics) {
+        clearGoogleCookies(ANALYTICS_COOKIE_PREFIXES);
+    }
+    if (!marketing) {
+        clearGoogleCookies(MARKETING_COOKIE_PREFIXES);
+    }
     applyGoogleConsent(choice);
 
     return choice;
@@ -174,12 +210,12 @@ export default function CookieConsentBanner() {
 
     return (
         <div
-            className="fixed inset-x-0 bottom-0 z-[80] px-3 pb-3 sm:px-5 sm:pb-5"
+            className="fixed inset-x-0 bottom-0 z-[80] pb-3 sm:pb-5"
             role="dialog"
             aria-modal="false"
             aria-labelledby="cookie-consent-title"
         >
-            <div className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-foreground/10 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
+            <div className="layout-shell overflow-hidden rounded-lg border border-foreground/10 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
                 <div className="grid gap-0 md:grid-cols-[1fr_360px]">
                     <div className="p-5 sm:p-6">
                         <div className="flex items-start gap-3">
