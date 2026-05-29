@@ -248,7 +248,7 @@ export default function PayrollLeakageLandingPage() {
                 {/* ── Section 1: Hero ── */}
                 <section
                     id="hero"
-                    className="relative scroll-mt-32 overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36"
+                    className="relative scroll-mt-32 overflow-hidden pb-16 pt-32 md:pb-24 md:pt-44 lg:pt-48"
                 >
                     <div className="pointer-events-none absolute right-0 top-0 -z-10 h-full w-[80%] translate-x-1/3 bg-[radial-gradient(ellipse_at_top_right,rgba(47,39,206,0.1)_0%,transparent_60%)] md:w-[55%]" />
                     <div className="pointer-events-none absolute left-0 top-1/4 -z-10 h-full w-[50%] -translate-x-1/2 bg-[radial-gradient(circle_at_left_center,rgba(47,39,206,0.04)_0%,transparent_50%)]" />

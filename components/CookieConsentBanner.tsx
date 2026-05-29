@@ -44,6 +44,7 @@ type ConsentUiState = {
     storedChoice: ConsentChoice | null;
     analyticsEnabled: boolean;
     marketingEnabled: boolean;
+    showDetails: boolean;
 };
 
 function readStoredConsent(): ConsentChoice | null {
@@ -80,6 +81,7 @@ function getInitialConsentState(): ConsentUiState {
             storedChoice: null,
             analyticsEnabled: true,
             marketingEnabled: true,
+            showDetails: false,
         };
     }
 
@@ -91,6 +93,7 @@ function getInitialConsentState(): ConsentUiState {
         storedChoice: stored,
         analyticsEnabled: stored?.analytics ?? true,
         marketingEnabled: stored?.marketing ?? true,
+        showDetails: false,
     };
 }
 
@@ -183,6 +186,7 @@ export default function CookieConsentBanner() {
                 storedChoice: latest,
                 analyticsEnabled: latest?.analytics ?? current.analyticsEnabled,
                 marketingEnabled: latest?.marketing ?? current.marketingEnabled,
+                showDetails: true,
             }));
         };
 
@@ -205,6 +209,7 @@ export default function CookieConsentBanner() {
             storedChoice: choice,
             analyticsEnabled: analytics,
             marketingEnabled: marketing,
+            showDetails: false,
         });
     };
 
@@ -235,47 +240,65 @@ export default function CookieConsentBanner() {
                             </div>
                         </div>
 
-                        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                            <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
-                                <span>
-                                    <span className="block text-sm font-bold text-foreground">Analytics</span>
-                                    <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
-                                        Helps us see page views, referrals, and calculator performance.
-                                    </span>
-                                </span>
-                                <input
-                                    type="checkbox"
-                                    className="mt-1 h-5 w-5 accent-primary"
-                                    checked={state.analyticsEnabled}
-                                    onChange={(event) =>
-                                        setState((current) => ({
-                                            ...current,
-                                            analyticsEnabled: event.target.checked,
-                                        }))
-                                    }
-                                />
-                            </label>
+                        <button
+                            type="button"
+                            className="mt-4 inline-flex items-center gap-2 rounded-md border border-foreground/10 bg-white px-3 py-2 text-sm font-bold text-foreground transition hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45"
+                            onClick={() =>
+                                setState((current) => ({
+                                    ...current,
+                                    showDetails: !current.showDetails,
+                                }))
+                            }
+                            aria-expanded={state.showDetails}
+                            aria-controls="cookie-consent-details"
+                        >
+                            <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
+                            Customize choices
+                        </button>
 
-                            <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
-                                <span>
-                                    <span className="block text-sm font-bold text-foreground">Advertising</span>
-                                    <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
-                                        Helps measure Google Ads conversion and improve campaign relevance.
+                        {state.showDetails ? (
+                            <div id="cookie-consent-details" className="mt-5 grid gap-3 sm:grid-cols-2">
+                                <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
+                                    <span>
+                                        <span className="block text-sm font-bold text-foreground">Analytics</span>
+                                        <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
+                                            Helps us see page views, referrals, and calculator performance.
+                                        </span>
                                     </span>
-                                </span>
-                                <input
-                                    type="checkbox"
-                                    className="mt-1 h-5 w-5 accent-primary"
-                                    checked={state.marketingEnabled}
-                                    onChange={(event) =>
-                                        setState((current) => ({
-                                            ...current,
-                                            marketingEnabled: event.target.checked,
-                                        }))
-                                    }
-                                />
-                            </label>
-                        </div>
+                                    <input
+                                        type="checkbox"
+                                        className="mt-1 h-5 w-5 accent-primary"
+                                        checked={state.analyticsEnabled}
+                                        onChange={(event) =>
+                                            setState((current) => ({
+                                                ...current,
+                                                analyticsEnabled: event.target.checked,
+                                            }))
+                                        }
+                                    />
+                                </label>
+
+                                <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
+                                    <span>
+                                        <span className="block text-sm font-bold text-foreground">Advertising</span>
+                                        <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
+                                            Helps measure Google Ads conversion and improve campaign relevance.
+                                        </span>
+                                    </span>
+                                    <input
+                                        type="checkbox"
+                                        className="mt-1 h-5 w-5 accent-primary"
+                                        checked={state.marketingEnabled}
+                                        onChange={(event) =>
+                                            setState((current) => ({
+                                                ...current,
+                                                marketingEnabled: event.target.checked,
+                                            }))
+                                        }
+                                    />
+                                </label>
+                            </div>
+                        ) : null}
                     </div>
 
                     <div className="flex flex-col gap-3 border-t border-foreground/10 bg-background p-5 md:border-l md:border-t-0">
