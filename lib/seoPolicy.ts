@@ -129,6 +129,14 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         descriptionPattern: "Interactive compliance audit utility.",
     },
     {
+        path: "/payroll-leakage",
+        pageKind: "utility",
+        indexable: false,
+        titlePattern: "Stop Payroll Leakage from Field Time Errors",
+        descriptionPattern:
+            "Google Ads landing page for payroll leakage, buddy punching, and GPS-verified crew time records.",
+    },
+    {
         path: "/privacy",
         pageKind: "legal",
         indexable: false,

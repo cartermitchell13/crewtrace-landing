@@ -24,7 +24,7 @@ export default function PrivacyPage() {
                             Privacy Policy
                         </h1>
                         <p className="text-foreground/50 font-medium">
-                            Last updated: February 12, 2026
+                            Last updated: May 28, 2026
                         </p>
                     </div>
 
@@ -127,26 +127,49 @@ export default function PrivacyPage() {
                         <section className="space-y-4">
                             <h2 className="text-2xl font-bold tracking-tight text-foreground">8. Cookies and Tracking Technologies</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
-                                We use cookies, pixels, and similar technologies to collect information about your browsing activity. These technologies help us analyze website traffic, personalize content, and improve your experience. You can control cookie preferences through your browser settings.
+                                We use cookies, pixels, tags, local storage, and similar technologies to operate our Services, understand website performance, measure advertising effectiveness, and improve the visitor experience.
+                            </p>
+                            <h3 className="text-lg font-bold text-foreground">Google Analytics and Google Ads</h3>
+                            <p className="text-foreground/70 leading-relaxed font-medium">
+                                Our marketing website uses Google Analytics 4 and Google Ads tags. These services may collect information such as pages viewed, referring URLs, approximate location derived from IP address, browser and device information, interactions with forms or buttons, and conversion events such as demo requests or calculator submissions. Google Analytics uses cookies such as <code className="rounded bg-foreground/5 px-1 py-0.5 text-sm">_ga</code> to distinguish visitors and report aggregate usage statistics.
+                            </p>
+                            <p className="text-foreground/70 leading-relaxed font-medium">
+                                We use this information to understand which pages and campaigns are working, improve our website, measure Google Ads performance, and avoid showing irrelevant advertising. We do not use Google Analytics to collect account passwords, precise GPS clock-in locations from the app, payroll records, or payment card details.
+                            </p>
+                            <h3 className="text-lg font-bold text-foreground">Your Choices</h3>
+                            <p className="text-foreground/70 leading-relaxed font-medium">
+                                You can accept or reject non-essential analytics and advertising storage through the privacy choices banner or the &quot;Privacy choices&quot; link in our footer. You can also control cookies through your browser settings, use Google&apos;s advertising personalization controls, or install the Google Analytics opt-out browser add-on.
                             </p>
                         </section>
 
                         <section className="space-y-4">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">9. Children&apos;s Privacy</h2>
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">9. U.S. State Privacy Rights</h2>
+                            <p className="text-foreground/70 leading-relaxed font-medium">
+                                Depending on your state of residence and whether applicable privacy laws apply to Crewtrace, you may have additional rights to know, access, correct, delete, or obtain a copy of personal information, and to opt out of certain targeted advertising or sale/sharing of personal information.
+                            </p>
+                            <p className="text-foreground/70 leading-relaxed font-medium">
+                                We do not sell personal information for money. Some analytics, advertising measurement, or remarketing activities may be considered &quot;sharing&quot; or targeted advertising under certain U.S. state privacy laws. You can opt out of non-essential advertising storage using the privacy choices banner or footer link, and you may contact us at{" "}
+                                <a href="mailto:carter@getCrewtrace.com" className="text-primary hover:underline font-bold">carter@getCrewtrace.com</a>{" "}
+                                with privacy requests.
+                            </p>
+                        </section>
+
+                        <section className="space-y-4">
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">10. Children&apos;s Privacy</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 Our Services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 18, we will take steps to delete that information promptly.
                             </p>
                         </section>
 
                         <section className="space-y-4">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">10. Changes to This Policy</h2>
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">11. Changes to This Policy</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the &quot;Last updated&quot; date. Your continued use of the Services after any changes constitutes acceptance of the updated policy.
                             </p>
                         </section>
 
                         <section className="space-y-4">
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">11. Contact Us</h2>
+                            <h2 className="text-2xl font-bold tracking-tight text-foreground">12. Contact Us</h2>
                             <p className="text-foreground/70 leading-relaxed font-medium">
                                 If you have any questions about this Privacy Policy or our data practices, please contact us:
                             </p>
