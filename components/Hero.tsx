@@ -1,8 +1,5 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getTemplateMessaging } from "@/lib/messaging";
-
-const homeMessaging = getTemplateMessaging("home");
 
 export default function Hero() {
     return (
@@ -23,38 +20,39 @@ export default function Hero() {
                         </span>
                         <span className="hidden text-foreground/25 sm:inline" aria-hidden="true">·</span>
                         <span className="whitespace-nowrap">
-                            <span>One Click Sync to Quickbooks</span>
+                            <span>GPS-verified time records for field crews</span>
                         </span>
                     </div>
 
                     <h1 className="mb-5 sm:mb-8 text-4xl tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                        {homeMessaging.intentHeadline}
+                        Stop paying for field hours you can&apos;t verify.
                     </h1>
 
                     <p className="mx-auto mb-7 sm:mb-10 max-w-xl text-base font-medium leading-relaxed text-foreground/70 md:text-xl">
-                        Crews clock in at the job site, hours sync to payroll, and you stop
-                        losing money to time theft.
+                        Crewtrace helps contractors catch payroll leakage from off-site
+                        clock-ins, late edits, buddy punching, and messy timesheets before
+                        those hours hit payroll.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
-                            href="https://www.crewtrace.app/signup"
+                            href="/calculator"
                             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-sm sm:text-base transition-all motion-safe:hover:-translate-y-0.5 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            Start Your Free Trial
+                            Get My Free Payroll Leakage Audit
                             <ArrowRight size={18} aria-hidden />
                         </Link>
                         <Link
-                            href="/contact"
+                            href="#payroll-leakage"
                             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-md border-2 border-primary bg-transparent font-bold text-sm text-primary sm:text-base transition-all hover:bg-primary/[0.06] motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            Get a Personalized Demo
+                            See Where Payroll Leaks
                             <ArrowRight size={18} />
                         </Link>
                     </div>
 
                     <p className="mx-auto mt-4 sm:mt-6 max-w-md text-center text-sm font-medium text-foreground/60">
-                        No sales call required. <span className="text-foreground/80">Get a tailored walkthrough and quote in one business day.</span>
+                        No spreadsheet required. <span className="text-foreground/80">Estimate your leakage first, then decide whether Crewtrace fits.</span>
                     </p>
                 </div>
 

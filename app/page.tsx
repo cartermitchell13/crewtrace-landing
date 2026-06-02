@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomePayrollLeakageStory from "@/components/HomePayrollLeakageStory";
 import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
 import InjuryAlertWorkflowSection from "@/components/InjuryAlertWorkflowSection";
-import IndustryLinks from "@/components/IndustryLinks";
 import LiteSavingsCalculator from "@/components/LiteSavingsCalculator";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection, { TestimonialTextureShell } from "@/components/TestimonialsSection";
@@ -17,9 +17,9 @@ import SectionDivider from "@/components/SectionDivider";
 import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Crew Tracking & Construction Time Tracking Software | GPS Verified",
+  title: "Stop Payroll Leakage with GPS Crew Tracking Software",
   description:
-    "GPS-verified crew tracking and construction time tracking software for job sites. Crew location tracking at clock-in, geofenced time clock app, payroll-ready exports—built for contractors running field crews.",
+    "Stop paying for field hours you can't verify. Crewtrace gives contractors GPS-verified crew time, geofenced clock-ins, exception flags, and payroll-ready exports.",
   path: "/",
 });
 
@@ -41,6 +41,8 @@ export default function Home() {
         />
         <Hero />
         <SectionDivider />
+        <HomePayrollLeakageStory />
+        <SectionDivider />
         <FeatureGrid />
         <SectionDivider />
         <TestimonialTextureShell>
@@ -56,8 +58,6 @@ export default function Home() {
         />
         <SectionDivider />
         <ComplianceAudit />
-        <SectionDivider />
-        <IndustryLinks />
         <SectionDivider />
         <LiteSavingsCalculator />
         <SectionDivider />
