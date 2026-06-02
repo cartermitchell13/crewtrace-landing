@@ -403,15 +403,15 @@ export default function PayrollLeakageLandingPage() {
                                         estimated time errors. You&apos;ll see where money may be slipping through
                                         before you change any systems.
                                     </p>
-                                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                                    <div className="flex flex-col items-start gap-3">
                                         <Link
                                             href="/calculator"
-                                            className="group inline-flex items-center justify-center gap-2 rounded-md bg-white px-8 py-4 text-base font-bold text-primary transition-all hover:bg-white/95 motion-safe:hover:-translate-y-0.5"
+                                            className="group inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-white px-6 py-3.5 text-base font-bold text-primary transition-all hover:bg-white/95 motion-safe:hover:-translate-y-0.5"
                                         >
                                             Calculate My Payroll Leakage
                                             <ArrowRight
                                                 size={18}
-                                                className="transition-transform motion-safe:group-hover:translate-x-0.5"
+                                                className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
                                             />
                                         </Link>
                                         <p className="text-sm font-medium text-white/65">
