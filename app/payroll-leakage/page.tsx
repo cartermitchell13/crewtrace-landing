@@ -27,7 +27,7 @@ import SectionDivider from "@/components/SectionDivider";
 import FAQSection from "@/components/FAQSection";
 import BookedCallLink from "@/components/BookedCallLink";
 import SeoLandingTracker from "@/components/SeoLandingTracker";
-import GreyPlaceholder from "@/components/payroll-leakage/GreyPlaceholder";
+import CalculatorReportPreview from "@/components/payroll-leakage/CalculatorReportPreview";
 import { createPageMetadata } from "@/lib/seo";
 import type { FaqItem } from "@/lib/faq";
 
@@ -389,7 +389,7 @@ export default function PayrollLeakageLandingPage() {
                                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.12)_0%,transparent_55%)]"
                             />
 
-                            <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+                            <div className="relative z-10 grid items-start gap-10 lg:grid-cols-[1fr_minmax(0,420px)] lg:items-center lg:gap-12 xl:gap-14">
                                 <div className="space-y-6 text-white">
                                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/90">
                                         <Calculator size={14} />
@@ -420,11 +420,9 @@ export default function PayrollLeakageLandingPage() {
                                     </div>
                                 </div>
 
-                                <GreyPlaceholder
-                                    aspect="aspect-[4/3]"
-                                    label="Payroll leakage calculator preview"
-                                    className="border-white/20 bg-white/20"
-                                />
+                                <div className="w-full">
+                                    <CalculatorReportPreview />
+                                </div>
                             </div>
                         </div>
                     </div>

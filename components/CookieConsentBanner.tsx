@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ShieldCheck, SlidersHorizontal, X } from "lucide-react";
+import { ShieldCheck, X } from "lucide-react";
 
 const COOKIE_CONSENT_STORAGE_KEY = "crewtrace_cookie_consent";
 const COOKIE_SETTINGS_EVENT = "crewtrace:open-cookie-preferences";
@@ -42,9 +42,6 @@ type ConsentUiState = {
     isReady: boolean;
     isOpen: boolean;
     storedChoice: ConsentChoice | null;
-    analyticsEnabled: boolean;
-    marketingEnabled: boolean;
-    showDetails: boolean;
 };
 
 function readStoredConsent(): ConsentChoice | null {
@@ -79,9 +76,6 @@ function getInitialConsentState(): ConsentUiState {
             isReady: false,
             isOpen: false,
             storedChoice: null,
-            analyticsEnabled: true,
-            marketingEnabled: true,
-            showDetails: false,
         };
     }
 
@@ -91,9 +85,6 @@ function getInitialConsentState(): ConsentUiState {
         isReady: true,
         isOpen: !stored,
         storedChoice: stored,
-        analyticsEnabled: stored?.analytics ?? true,
-        marketingEnabled: stored?.marketing ?? true,
-        showDetails: false,
     };
 }
 
@@ -184,9 +175,6 @@ export default function CookieConsentBanner() {
                 isReady: true,
                 isOpen: true,
                 storedChoice: latest,
-                analyticsEnabled: latest?.analytics ?? current.analyticsEnabled,
-                marketingEnabled: latest?.marketing ?? current.marketingEnabled,
-                showDetails: true,
             }));
         };
 
@@ -207,9 +195,6 @@ export default function CookieConsentBanner() {
             isReady: true,
             isOpen: false,
             storedChoice: choice,
-            analyticsEnabled: analytics,
-            marketingEnabled: marketing,
-            showDetails: false,
         });
     };
 
@@ -232,7 +217,7 @@ export default function CookieConsentBanner() {
                                     Privacy choices
                                 </h2>
                                 <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-foreground/68">
-                                    Crewtrace uses necessary site technology plus Google Analytics and Google Ads measurement to understand visits, improve pages, and measure lead conversion. You can accept, reject, or tune non-essential tracking.
+                                    Crewtrace uses necessary site technology plus Google Analytics and Google Ads measurement to understand visits, improve pages, and measure lead conversion. You can accept or reject non-essential tracking.
                                 </p>
                                 <a href="/privacy" className="mt-3 inline-flex text-sm font-bold text-primary hover:underline">
                                     Read the privacy policy
@@ -240,65 +225,6 @@ export default function CookieConsentBanner() {
                             </div>
                         </div>
 
-                        <button
-                            type="button"
-                            className="mt-4 inline-flex items-center gap-2 rounded-md border border-foreground/10 bg-white px-3 py-2 text-sm font-bold text-foreground transition hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45"
-                            onClick={() =>
-                                setState((current) => ({
-                                    ...current,
-                                    showDetails: !current.showDetails,
-                                }))
-                            }
-                            aria-expanded={state.showDetails}
-                            aria-controls="cookie-consent-details"
-                        >
-                            <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
-                            Customize choices
-                        </button>
-
-                        {state.showDetails ? (
-                            <div id="cookie-consent-details" className="mt-5 grid gap-3 sm:grid-cols-2">
-                                <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
-                                    <span>
-                                        <span className="block text-sm font-bold text-foreground">Analytics</span>
-                                        <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
-                                            Helps us see page views, referrals, and calculator performance.
-                                        </span>
-                                    </span>
-                                    <input
-                                        type="checkbox"
-                                        className="mt-1 h-5 w-5 accent-primary"
-                                        checked={state.analyticsEnabled}
-                                        onChange={(event) =>
-                                            setState((current) => ({
-                                                ...current,
-                                                analyticsEnabled: event.target.checked,
-                                            }))
-                                        }
-                                    />
-                                </label>
-
-                                <label className="flex min-h-24 items-start justify-between gap-4 rounded-md border border-foreground/10 bg-foreground/[0.02] p-4">
-                                    <span>
-                                        <span className="block text-sm font-bold text-foreground">Advertising</span>
-                                        <span className="mt-1 block text-xs font-medium leading-5 text-foreground/60">
-                                            Helps measure Google Ads conversion and improve campaign relevance.
-                                        </span>
-                                    </span>
-                                    <input
-                                        type="checkbox"
-                                        className="mt-1 h-5 w-5 accent-primary"
-                                        checked={state.marketingEnabled}
-                                        onChange={(event) =>
-                                            setState((current) => ({
-                                                ...current,
-                                                marketingEnabled: event.target.checked,
-                                            }))
-                                        }
-                                    />
-                                </label>
-                            </div>
-                        ) : null}
                     </div>
 
                     <div className="flex flex-col gap-3 border-t border-foreground/10 bg-background p-5 md:border-l md:border-t-0">
@@ -320,14 +246,6 @@ export default function CookieConsentBanner() {
                         >
                             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                             Accept all
-                        </button>
-                        <button
-                            type="button"
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-foreground/15 bg-white px-4 py-3 text-sm font-bold text-foreground transition hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2"
-                            onClick={() => saveChoice(state.analyticsEnabled, state.marketingEnabled)}
-                        >
-                            <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
-                            Save choices
                         </button>
                         <button
                             type="button"

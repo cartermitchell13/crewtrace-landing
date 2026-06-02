@@ -1,0 +1,14 @@
+{
+  "workspace": "c:\\projects\\crewtrace-landing\\.presentation-workspaces",
+  "pptx": "c:\\projects\\crewtrace-landing\\.presentation-workspaces\\output\\output.pptx",
+  "checks": {
+    "output_hygiene": {
+      "output_dir": "c:\\projects\\crewtrace-landing\\.presentation-workspaces\\output",
+      "unexpected_files": []
+    }
+  },
+  "failures": [
+    "PPTX package inspection failed: unzip -Z1 c:\\projects\\crewtrace-landing\\.presentation-workspaces\\output\\output.pptx failed"
+  ],
+  "warnings": []
+}
