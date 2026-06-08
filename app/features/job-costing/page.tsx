@@ -30,7 +30,6 @@ import BookedCallLink from "@/components/BookedCallLink";
 import FeatureComparison from "@/components/FeatureComparison";
 import FeaturePageShell from "@/components/feature/FeaturePageShell";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
-import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 import { createFeaturePageMetadata } from "@/lib/feature-pages";
 import { featureBySlug } from "@/lib/solutions";
 import SectionDivider from "@/components/SectionDivider";
@@ -272,13 +271,15 @@ export default function JobCostingFeaturePage() {
                         </p>
 
                         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <Link
-                                href={buildSelfServeSignupUrl("lt_20")}
+                            <BookedCallLink
+                                templateType="feature_detail"
+                                cluster="features"
+                                landingPath={PATH}
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-7 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                             >
-                                Start your free trial
+                                Book a 15-minute call
                                 <ArrowRight size={18} />
-                            </Link>
+                            </BookedCallLink>
                             <BookedCallLink
                                 templateType="feature_detail"
                                 cluster="features"

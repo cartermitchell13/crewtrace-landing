@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ComplianceAuditTool from "@/components/ComplianceAuditTool";
+import BookedCallLink from "@/components/BookedCallLink";
 import Link from "next/link";
 import {
     ShieldCheck,
@@ -356,12 +357,16 @@ export default function PayrollAuditChecklistPage() {
                             <p className="text-lg md:text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
                                 Deploy GPS-verified time tracking that gives you indisputable proof of exactly when and where your crew was working.
                             </p>
-                            <Link
-                                href="/contact"
+                            <BookedCallLink
+                                templateType="payroll_audit_checklist"
+                                cluster="tools"
+                                landingPath="/tools/payroll-audit-checklist"
+                                ctaLabel="Book a 15-minute call"
+                                ctaLocation="payroll_audit_final_cta"
                                 className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-md shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
                             >
-                                Get a Personalized Demo
-                            </Link>
+                                Book a 15-minute call
+                            </BookedCallLink>
                         </div>
                     </section>
                 </div>

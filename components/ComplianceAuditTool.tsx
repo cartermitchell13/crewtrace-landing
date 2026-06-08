@@ -7,6 +7,7 @@ import {
     FileText, Clock, MapPin, Users, DollarSign, HardHat,
     Scale, ClipboardList, Zap, PhoneCall
 } from "lucide-react";
+import BookedCallLink from "@/components/BookedCallLink";
 
 // ─── Types ──────────────────────────────────────────────────────
 
@@ -867,16 +868,20 @@ export default function ComplianceAuditTool() {
                             </div>
                         </div>
                         <div className="flex flex-col gap-4 shrink-0 w-full md:w-auto">
-                            <a
+                            <BookedCallLink
                                 id="audit-cta-book-call"
-                                href="/contact"
+                                templateType="compliance_audit"
+                                cluster="compliance"
+                                landingPath="/compliance-audit"
+                                ctaLabel="Book a 15-minute call"
+                                ctaLocation="compliance_audit_results"
                                 className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-5 rounded-md shadow-button hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-y-0 active:translate-x-0 transition-all text-base whitespace-nowrap"
                             >
                                 <PhoneCall size={18} />
-                                Get a Personalized Demo
-                            </a>
+                                Book a 15-minute call
+                            </BookedCallLink>
                             <p className="text-center text-white/40 text-[11px] font-medium">
-                                No pressure. Takes 60 seconds.
+                                No pressure. Fifteen minutes.
                             </p>
                         </div>
                     </div>

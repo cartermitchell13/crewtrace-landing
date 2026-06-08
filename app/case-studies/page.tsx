@@ -17,6 +17,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import BookedCallLink from "@/components/BookedCallLink";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 import { createPageMetadata } from "@/lib/seo";
 import SectionDivider from "@/components/SectionDivider";
@@ -101,13 +102,17 @@ export default function CaseStudiesPage() {
                             See how field and office teams are reducing payroll errors, accelerating approvals, and creating cleaner labor records.
                         </p>
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                            <Link
-                                href="/contact"
+                            <BookedCallLink
+                                templateType="case_studies_hub"
+                                cluster="case_studies"
+                                landingPath="/case-studies"
+                                ctaLabel="Book a 15-minute call"
+                                ctaLocation="case_studies_hero"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
                             >
-                                Get your personalized demo
+                                Book a 15-minute call
                                 <ArrowRight size={18} />
-                            </Link>
+                            </BookedCallLink>
                             <Link
                                 href="/calculator"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary"
@@ -288,13 +293,17 @@ export default function CaseStudiesPage() {
                                         If Crewtrace recovers measurable payroll savings for your operation, we will document the process and outcomes — with your permission — so other contractors can learn from your experience.
                                     </p>
                                     <div className="flex flex-col sm:flex-row gap-4">
-                                        <Link
-                                            href="/contact"
+                                        <BookedCallLink
+                                            templateType="case_studies_hub"
+                                            cluster="case_studies"
+                                            landingPath="/case-studies"
+                                            ctaLabel="Book a 15-minute call"
+                                            ctaLocation="case_studies_rollout_cta"
                                             className="inline-flex items-center justify-center gap-2 rounded-md bg-white py-4 px-8 text-base font-bold text-primary transition-all hover:bg-white/90 hover:-translate-y-0.5"
                                         >
-                                            Start your rollout
+                                            Book a 15-minute call
                                             <ArrowRight size={18} />
-                                        </Link>
+                                        </BookedCallLink>
                                         <Link
                                             href="/calculator"
                                             className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 px-8 py-4 text-base font-bold text-white transition-all hover:bg-white/20"

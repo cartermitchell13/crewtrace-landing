@@ -19,6 +19,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FAQSection";
 import SectionDivider from "@/components/SectionDivider";
+import BookedCallLink from "@/components/BookedCallLink";
 import {
     getTemplateMessaging,
     orderedPromiseLine,
@@ -27,7 +28,6 @@ import { industryBySlug } from "@/lib/industries";
 import { createPageMetadata } from "@/lib/seo";
 import { getFeatureSummaries } from "@/lib/solutions";
 import { featuresHubFaqItems } from "@/lib/faq";
-import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 
 const featureSummaries = getFeatureSummaries().sort((left, right) => {
     const byName = left.name.localeCompare(right.name);
@@ -147,13 +147,17 @@ export default function FeaturesPage() {
                             Built for contractors who need field records they can trust before payroll closes. {orderedPromiseLine}
                         </p>
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                            <Link
-                                href={buildSelfServeSignupUrl("lt_20")}
+                            <BookedCallLink
+                                templateType="features_hub"
+                                cluster="features"
+                                landingPath="/features"
+                                ctaLabel="Book a 15-minute call"
+                                ctaLocation="features_hero"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
                             >
-                                Start your free trial
+                                Book a 15-minute call
                                 <ArrowRight size={18} />
-                            </Link>
+                            </BookedCallLink>
                             <Link
                                 href="/industries"
                                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary"

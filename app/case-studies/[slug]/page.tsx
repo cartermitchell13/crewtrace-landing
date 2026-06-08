@@ -340,23 +340,19 @@ export default async function CaseStudyDetailPage({
                                 Deliver results like {study.company}
                             </h2>
                             <div className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-white/80 md:text-xl">
-                                Find out exactly where your business is leaking payroll dollars. Book a free, no-obligation audit with our team today.
+                                Find out exactly where your business may be leaking payroll dollars. Book a focused 15-minute review with our team.
                             </div>
                             <div className="flex flex-col items-center gap-4">
-                                <Link
-                                    href="/contact"
-                                    className="group inline-flex items-center justify-center gap-2 rounded-md bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
-                                >
-                                    Get a Personalized Demo
-                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                </Link>
                                 <BookedCallLink
                                     templateType="case_study_detail"
                                     cluster="case-studies"
                                     landingPath={`/case-studies/${study.slug}`}
-                                    className="text-base font-semibold text-white/90 underline-offset-2 hover:text-white hover:underline"
+                                    ctaLabel="Book a 15-minute call"
+                                    ctaLocation="case_study_detail_final_cta"
+                                    className="group inline-flex items-center justify-center gap-2 rounded-md bg-white px-8 py-4 text-lg font-bold text-primary shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                                 >
                                     Book a 15-minute call
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                                 </BookedCallLink>
                             </div>
                         </div>

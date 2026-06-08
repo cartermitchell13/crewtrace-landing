@@ -30,7 +30,7 @@ export const homeFaqItems: FaqItem[] = [
     },
     {
         question: "How much does construction time tracking software cost?",
-        answer: "Crewtrace uses flat monthly pricing by team size—Starter ($99/mo) for fewer than 20 employees, Growth ($150/mo) for 20–49, and Scale ($250/mo) for 50 or more—with no per-seat fees. Visit the pricing page for plan details, free trials, and done-for-you onboarding options.",
+        answer: "Crewtrace pricing depends on crew size and rollout scope. Book a 15-minute call and we will confirm fit, talk through the right setup path, and give you straightforward pricing guidance for your operation.",
     },
     {
         question: "What if this does not pay for itself?",

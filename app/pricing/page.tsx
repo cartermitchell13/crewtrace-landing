@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PricingSection from "@/components/PricingSection";
@@ -8,8 +9,13 @@ import { pricingFaqItems } from "@/lib/faq";
 import { faqSchema } from "@/lib/schema";
 
 const PRICING_PATH = "/pricing";
+const isPricingPageVisible = false;
 
 export default function PricingPage() {
+    if (!isPricingPageVisible) {
+        notFound();
+    }
+
     const pricingFaqJsonLd = faqSchema(pricingFaqItems);
 
     return (

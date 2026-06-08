@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+
+const SHOW_HERO_VIDEO = false;
 
 export default function Hero() {
     return (
@@ -25,7 +28,7 @@ export default function Hero() {
                     </div>
 
                     <h1 className="mb-5 sm:mb-8 text-4xl tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-                        Stop paying for field hours you can&apos;t verify.
+                        Stop paying for hours your crew never worked.
                     </h1>
 
                     <p className="mx-auto mb-7 sm:mb-10 max-w-xl text-base font-medium leading-relaxed text-foreground/70 md:text-xl">
@@ -56,18 +59,30 @@ export default function Hero() {
                     </p>
                 </div>
 
-                {/* Video below */}
+                {/* Hero media below */}
                 <div className="mt-12 md:mt-20">
                     <div className="relative overflow-hidden rounded-md border border-foreground/5 shadow-[0_8px_40px_rgba(0,0,0,0.08)]">
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="h-auto w-full"
-                        >
-                            <source src="/videos/hero-video.mp4" type="video/mp4" />
-                        </video>
+                        {SHOW_HERO_VIDEO ? (
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="h-auto w-full"
+                            >
+                                <source src="/videos/hero-video.mp4" type="video/mp4" />
+                            </video>
+                        ) : (
+                            <Image
+                                src="/images/gct-hero.png"
+                                alt="Crewtrace GPS time tracking dashboard on desktop and mobile"
+                                width={3840}
+                                height={2160}
+                                className="h-auto w-full"
+                                sizes="100vw"
+                                priority
+                            />
+                        )}
                     </div>
                 </div>
             </div>

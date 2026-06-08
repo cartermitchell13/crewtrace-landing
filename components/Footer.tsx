@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import CookiePreferencesLink from "@/components/CookiePreferencesLink";
+import BookedCallLink from "@/components/BookedCallLink";
 
 const footerLinkClass =
     "text-sm font-medium leading-6 text-white/92 transition-colors hover:text-white [text-shadow:0_1px_3px_rgb(0_0_0/_0.85)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-md";
@@ -80,8 +83,18 @@ export default function Footer() {
                             <h3 className={columnHeadingClass}>Company</h3>
                             <ul className="space-y-3">
                                 <li><Link href="/about" className={footerLinkClass}>About</Link></li>
-                                <li><Link href="/pricing" className={footerLinkClass}>Pricing</Link></li>
-                                <li><Link href="/contact" className={footerLinkClass}>Get a Demo</Link></li>
+                                <li>
+                                    <BookedCallLink
+                                        templateType="footer"
+                                        cluster="global"
+                                        landingPath="/"
+                                        ctaLabel="Book a call"
+                                        ctaLocation="footer_company"
+                                        className={footerLinkClass}
+                                    >
+                                        Book a call
+                                    </BookedCallLink>
+                                </li>
                                 <li><Link href="/privacy" className={footerLinkClass}>Privacy</Link></li>
                                 <li><CookiePreferencesLink /></li>
                                 <li><Link href="/terms" className={footerLinkClass}>Terms</Link></li>

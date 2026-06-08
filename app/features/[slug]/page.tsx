@@ -27,7 +27,6 @@ import { joinKeywordList } from "@/lib/join-keyword-list";
 import { createPageMetadata } from "@/lib/seo";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { featureBySlug, getFeaturesBySlugs } from "@/lib/solutions";
-import { buildSelfServeSignupUrl } from "@/lib/pricing-plans";
 
 const detailMessaging = getTemplateMessaging("feature_detail");
 
@@ -141,13 +140,15 @@ export default async function FeatureDetailPage({
 
                         <div className="mt-10 flex flex-col items-center gap-4">
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                                <Link
-                                    href={buildSelfServeSignupUrl("lt_20")}
+                                <BookedCallLink
+                                    templateType="feature_detail"
+                                    cluster="features"
+                                    landingPath={`/features/${slug}`}
                                     className="inline-flex w-full sm:w-auto items-center justify-center gap-2 cta-highlight px-8 py-4 text-white bg-primary hover:bg-primary/90 rounded-md font-bold text-base transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
                                 >
-                                    Start your free trial
+                                    Book a 15-minute call
                                     <ArrowRight size={18} />
-                                </Link>
+                                </BookedCallLink>
                                 <Link
                                     href={detailLinks.parentPath}
                                     className="inline-flex w-full items-center justify-center sm:w-auto px-6 py-4 text-sm font-semibold text-foreground/70 transition-colors hover:text-primary group"

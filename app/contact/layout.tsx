@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-    title: "Get a Free Demo & Quote for Your Crew | Crewtrace",
+    title: "Book a 15-Minute Payroll Leakage Review | Crewtrace",
     description:
-        "Request a personalized Crewtrace demo tailored to your trade and crew size. Get a video walkthrough and quote in one business day — no sales call required.",
+        "Book a focused Crewtrace call to review your crew size, time-tracking workflow, payroll leakage risks, and best next step.",
     path: "/contact",
 });
 

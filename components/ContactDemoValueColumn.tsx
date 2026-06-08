@@ -1,97 +1,86 @@
-import { CheckCircle2, Clock, Shield, Zap } from "lucide-react";
+import { CalendarClock, CheckCircle2, Shield, Zap } from "lucide-react";
 
 const benefits = [
     {
         icon: Zap,
-        title: "Personalized demo + quote",
+        title: "Focused payroll leakage review",
         description:
-            "One video walkthrough of Crewtrace for your operation, with your quote built in. Watch whenever it fits",
+            "Your crew size, timekeeping workflow, and where verified hours can help first.",
     },
     {
         icon: Shield,
-        title: "No hard-sell call",
+        title: "No hard sell",
         description:
-            "We email one link. Watch the full walkthrough and pricing on your schedule, no live pitch",
+            "If Crewtrace is not a fit, we say that. If it is, you leave with a clear next step.",
     },
     {
-        icon: Clock,
-        title: "One business day",
-        description: "Expect your video link within 24 hours",
+        icon: CalendarClock,
+        title: "Fifteen focused minutes",
+        description:
+            "Enough time to review the problem and decide whether a deeper rollout conversation makes sense.",
     },
 ] as const;
 
+const trustTags = ["No pressure", "15 minutes", "Clear next step"] as const;
+
+type ContactDemoValueColumnProps = {
+    className?: string;
+};
+
 /**
- * Left column from /contact: benefit cards, trust block, and Cal.com link.
- * Shared with the calculator “next step” section for visual parity.
+ * Left column from /contact: benefit list and trust cues inside the booking panel.
  */
-export default function ContactDemoValueColumn() {
+export default function ContactDemoValueColumn({
+    className = "",
+}: ContactDemoValueColumnProps) {
     return (
-        <div className="flex flex-col gap-8">
-            <div className="space-y-5">
-                <h2 className="text-sm font-bold uppercase tracking-wider text-foreground/40">
+        <div className={`flex h-full flex-col p-8 md:p-10 lg:p-11 ${className}`}>
+            <div>
+                <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.14em] text-primary/70">
                     What you&apos;ll get
-                </h2>
-                <div className="space-y-4">
+                </p>
+
+                <ul className="divide-y divide-foreground/[0.06]">
                     {benefits.map((benefit) => (
-                        <div
-                            key={benefit.title}
-                            className="flex items-start gap-4 rounded-md border border-foreground/[0.06] bg-white p-5 transition-colors hover:border-primary/10"
-                        >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10">
-                                <benefit.icon className="h-5 w-5 text-primary" />
+                        <li key={benefit.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <benefit.icon className="h-4 w-4 text-primary" aria-hidden />
                             </div>
-                            <div>
-                                <h3 className="text-sm font-bold text-foreground">
+                            <div className="min-w-0 pt-0.5">
+                                <h3 className="text-base font-bold tracking-tight text-foreground">
                                     {benefit.title}
                                 </h3>
-                                <p className="mt-0.5 text-sm text-foreground/50 leading-relaxed">
+                                <p className="mt-1 text-sm leading-relaxed text-foreground/55">
                                     {benefit.description}
                                 </p>
                             </div>
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
 
-            <div className="rounded-md border border-foreground/[0.06] bg-white p-6">
-                <div className="mb-4 flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <span className="text-sm font-bold text-foreground">
-                        Trusted by construction owners
-                    </span>
+            <div className="mt-8 rounded-md border border-foreground/[0.06] bg-foreground/[0.02] p-5">
+                <div className="flex items-start gap-3">
+                    <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                        aria-hidden
+                    />
+                    <p className="text-sm leading-relaxed text-foreground/60">
+                        We keep the first call narrow: understand your crew workflow,
+                        identify likely payroll leakage points, and decide whether
+                        Crewtrace is worth a deeper look.
+                    </p>
                 </div>
-                <p className="text-sm leading-relaxed text-foreground/60">
-                    We hate unnecessary meetings too. That&apos;s why we keep this
-                    simple: tell us a bit about your crews, and we&apos;ll send one
-                    video with your demo and quote. Watch it whenever you want. No
-                    call required.
-                </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                    {[
-                        "No pressure",
-                        "No calendar ping-pong",
-                        "Just the info you need",
-                    ].map((tag) => (
+                    {trustTags.map((tag) => (
                         <span
                             key={tag}
-                            className="rounded-full bg-foreground/[0.04] px-3 py-1 text-xs font-semibold text-foreground/50"
+                            className="rounded-full border border-foreground/[0.06] bg-white px-3 py-1 text-xs font-semibold text-foreground/55"
                         >
                             {tag}
                         </span>
                     ))}
                 </div>
-            </div>
-
-            <div className="space-y-3 text-sm">
-                <p className="font-semibold text-foreground/60">
-                    Prefer a live call?{" "}
-                    <a
-                        href="https://cal.com/Crewtrace/15min"
-                        className="text-primary underline underline-offset-2"
-                    >
-                        Book 15 minutes
-                    </a>
-                </p>
             </div>
         </div>
     );

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookedCallLink from "@/components/BookedCallLink";
 import { createPageMetadata } from "@/lib/seo";
 import SectionDivider from "@/components/SectionDivider";
 
@@ -361,12 +362,16 @@ export default function AboutPage() {
                                 </div>
 
                                 <div className="rounded-md border border-foreground/10 bg-[#FBFBFE] p-5 md:p-6 space-y-3">
-                                    <Link
-                                        href="/contact"
+                                    <BookedCallLink
+                                        templateType="about"
+                                        cluster="company"
+                                        landingPath="/about"
+                                        ctaLabel="Book a 15-minute call"
+                                        ctaLocation="about_closing_cta"
                                         className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-4 text-sm font-bold text-white shadow-button transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                                     >
-                                        Get a Personalized Demo
-                                    </Link>
+                                        Book a 15-minute call
+                                    </BookedCallLink>
                                     <Link
                                         href="/calculator"
                                         className="inline-flex w-full items-center justify-center rounded-md border border-foreground/15 bg-white px-6 py-4 text-sm font-bold text-foreground/70 transition-colors hover:border-primary/30 hover:text-primary"
@@ -374,7 +379,7 @@ export default function AboutPage() {
                                         Run the Payroll Leakage Calculator
                                     </Link>
                                     <p className="text-center text-xs font-bold uppercase tracking-widest text-foreground/40">
-                                        No sales call required
+                                        No hard sell
                                     </p>
                                     <div className="pt-3 border-t border-foreground/5">
                                         <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40 text-center">

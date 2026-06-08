@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import BookedCallLink from "@/components/BookedCallLink";
 
 const navLinks = [
     { label: "Features", href: "/features/gps-time-tracking" },
@@ -41,19 +42,27 @@ export default function LandingNavbar() {
                 </div>
 
                 <div className="hidden md:flex items-center gap-3">
-                    <Link
-                        href="/contact"
+                    <BookedCallLink
+                        templateType="landing_nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a call"
+                        ctaLocation="desktop_landing_nav_secondary"
                         className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors px-2"
                     >
-                        Request a demo
-                    </Link>
-                    <Link
-                        href="https://www.crewtrace.app/signup"
+                        Book a call
+                    </BookedCallLink>
+                    <BookedCallLink
+                        templateType="landing_nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a 15-minute call"
+                        ctaLocation="desktop_landing_nav_primary"
                         className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-md shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] inline-flex items-center gap-2"
                     >
-                        Sign up
+                        Book a 15-minute call
                         <ArrowRight size={16} />
-                    </Link>
+                    </BookedCallLink>
                 </div>
 
                 <button
@@ -78,21 +87,29 @@ export default function LandingNavbar() {
                             {link.label}
                         </Link>
                     ))}
-                    <Link
-                        href="https://www.crewtrace.app/signup"
+                    <BookedCallLink
+                        templateType="landing_nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a 15-minute call"
+                        ctaLocation="mobile_landing_nav_primary"
                         onClick={() => setMobileOpen(false)}
                         className="mt-2 w-full bg-primary text-white text-sm font-bold px-4 py-3 rounded-md shadow-button inline-flex items-center justify-center gap-2"
                     >
-                        Sign up
+                        Book a 15-minute call
                         <ArrowRight size={16} />
-                    </Link>
-                    <Link
-                        href="/contact"
+                    </BookedCallLink>
+                    <BookedCallLink
+                        templateType="landing_nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a call"
+                        ctaLocation="mobile_landing_nav_secondary"
                         onClick={() => setMobileOpen(false)}
                         className="mt-2 block w-full text-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                     >
-                        Request a demo
-                    </Link>
+                        Book a call
+                    </BookedCallLink>
                 </div>
             </div>
         </nav>

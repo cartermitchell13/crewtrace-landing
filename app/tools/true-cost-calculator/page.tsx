@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MultiStepSavingsCalculator from "@/components/MultiStepSavingsCalculator";
 import CalculatorReport from "@/components/CalculatorReport";
+import BookedCallLink from "@/components/BookedCallLink";
 import Link from "next/link";
 import {
     DollarSign,
@@ -473,15 +474,19 @@ export default function TrueCostCalculatorPage() {
                                 Stop overpaying. <span className="opacity-90 italic text-white">Start tracking.</span>
                             </h3>
                             <p className="text-xl md:text-2xl text-background/60 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
-                                Book a free demo and see exactly how GPS-verified time tracking can reduce your true labor costs.
+                                Book 15 minutes and see where GPS-verified time tracking can reduce your true labor costs first.
                             </p>
-                            <Link
-                                href="/contact"
+                            <BookedCallLink
+                                templateType="true_cost_calculator"
+                                cluster="tools"
+                                landingPath="/tools/true-cost-calculator"
+                                ctaLabel="Book a 15-minute call"
+                                ctaLocation="true_cost_final_cta"
                                 className="inline-flex items-center justify-center bg-white text-foreground font-bold px-10 py-5 rounded-md shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all text-lg group"
                             >
-                                Get a Personalized Demo
+                                Book a 15-minute call
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            </BookedCallLink>
                         </div>
                     </section>
                 </div>

@@ -58,7 +58,7 @@ export const intentHeadlineOptions = {
     contact: [
         "Verified crew hours your payroll team can defend.",
         "See how Crewtrace fits your operation.",
-        "Get a personalized demo and pricing guidance for your crew setup.",
+        "Book a 15-minute call for fit and pricing guidance.",
     ],
 } as const;
 
@@ -71,10 +71,10 @@ export const proofLedBodyHelpers = {
 } as const;
 
 export const ctaFramingVariants = {
-    primary: "Get a Personalized Demo",
+    primary: "Book a 15-minute call",
     secondary: "See the rollout workflow",
     compare: "Pressure-test our fit for your workflow",
-    contact: "Get Your Personalized Demo",
+    contact: "Book a 15-minute call",
 } as const;
 
 export type MessagingTemplate =

@@ -92,20 +92,18 @@ export const staticSeoPolicies: SeoRoutePolicy[] = [
         path: "/contact",
         pageKind: "company",
         indexable: true,
-        titlePattern: "Get a Free Demo & Quote for Your Crew | Crewtrace",
-        descriptionPattern: "Request a personalized Crewtrace demo tailored to your trade and crew size. Video walkthrough and quote in one business day.",
+        titlePattern: "Book a 15-Minute Payroll Leakage Review | Crewtrace",
+        descriptionPattern: "Book a focused Crewtrace call to review your crew size, time-tracking workflow, payroll leakage risks, and best next step.",
         changeFrequency: "monthly",
         priority: 0.7,
     },
     {
         path: "/pricing",
         pageKind: "company",
-        indexable: true,
+        indexable: false,
         titlePattern: "Pricing | GPS Time Tracking for Construction Crews",
         descriptionPattern:
             "Flat-rate Crewtrace pricing by team size—no per-seat fees. Plans from $99/mo or done-for-you onboarding for larger rollouts.",
-        changeFrequency: "monthly",
-        priority: 0.8,
     },
     {
         path: "/demo",

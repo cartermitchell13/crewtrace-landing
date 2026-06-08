@@ -349,28 +349,24 @@ export default async function GuideDetailPage({
                                     Ready to implement this workflow?
                                 </h2>
                                 <p className="text-lg md:text-xl text-white/80 leading-relaxed font-medium">
-                                    Get a personalized action plan. We&apos;ll
-                                    map your current process and show you how to
-                                    streamline it with the right tools.
+                                    Book 15 minutes and we&apos;ll map your current
+                                    process, identify the biggest payroll-control
+                                    gap, and recommend the next step.
                                 </p>
                             </div>
                             <div className="shrink-0 flex flex-col items-stretch gap-4 pt-4 md:items-end md:pt-0">
-                                <Link
-                                    href="/contact"
-                                    className="group inline-flex items-center justify-center gap-3 rounded-md bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
-                                >
-                                    Get a Personalized Demo
-                                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                                        &rarr;
-                                    </span>
-                                </Link>
                                 <BookedCallLink
                                     templateType="guide_detail"
                                     cluster="guides"
                                     landingPath={`/guides/${slug}`}
-                                    className="text-center text-base font-bold text-white/90 underline-offset-2 hover:text-white hover:underline md:text-right"
+                                    ctaLabel="Book a 15-minute call"
+                                    ctaLocation="guide_detail_final_cta"
+                                    className="group inline-flex items-center justify-center gap-3 rounded-md bg-white px-8 py-4 text-base md:text-lg font-bold text-primary shadow-sm hover:scale-105 transition-all duration-200"
                                 >
                                     Book a 15-minute call
+                                    <span className="group-hover:translate-x-1 transition-transform inline-block">
+                                        &rarr;
+                                    </span>
                                 </BookedCallLink>
                             </div>
                         </div>

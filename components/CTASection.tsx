@@ -1,5 +1,4 @@
 import { CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import BookedCallLink from "@/components/BookedCallLink";
 import {
     getTemplateMessaging,
@@ -10,7 +9,7 @@ const contactCtaMessaging = getTemplateMessaging("contact");
 
 const defaultBullets = [
     "Invite crews and verify hours fast",
-    "Personalized demo on request",
+    "15-minute fit check before rollout",
 ] as const;
 
 type CTASectionVariant = "default" | "calculator";
@@ -59,7 +58,7 @@ export default function CTASection({
 
     const body = isCalculator
         ? `Your audit shows about $${calculatorContext.yearlyLoss.toLocaleString("en-US")}/yr slipping through payroll, with roughly $${calculatorContext.yearlyRecovery.toLocaleString("en-US")}/yr recoverable. Book 15 minutes and we'll prioritize what to tackle first for your ${formatTradeLabel(calculatorContext.tradeType)} crews.`
-        : `Invite crews and launch GPS-verified clock-ins fast—or request a demo for a tailored walkthrough and pricing. ${orderedPromiseLine}`;
+        : `Book 15 minutes and we will map where GPS-verified clock-ins can close payroll leakage first. ${orderedPromiseLine}`;
 
     const bullets = isCalculator
         ? [
@@ -77,7 +76,7 @@ export default function CTASection({
 
     const footnote = isCalculator
         ? "Pick a time that works. Fifteen minutes, focused on your audit numbers."
-        : "Sign up takes about a minute. Demo requests get a tailored walkthrough—we reply within one business day.";
+        : "Pick a time that works. Fifteen minutes, focused on your crew, payroll workflow, and next best step.";
 
     const sectionPadding = embedded
         ? ""
@@ -153,32 +152,21 @@ export default function CTASection({
                                             />
                                         </BookedCallLink>
                                     ) : (
-                                        <>
-                                            <Link
-                                                href="https://www.crewtrace.app/signup"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-5 py-4 text-base font-bold text-primary whitespace-nowrap transition-all hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:text-lg lg:justify-between lg:gap-3"
-                                            >
-                                                <span>Sign Up for Free</span>
-                                                <ArrowRight
-                                                    size={20}
-                                                    aria-hidden
-                                                    className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
-                                                />
-                                            </Link>
-                                            <Link
-                                                href="/contact"
-                                                className="group inline-flex w-full items-center justify-center gap-2 rounded-md border-2 border-white/85 bg-transparent px-5 py-[14px] text-base font-bold text-white whitespace-nowrap transition-all hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:text-lg lg:justify-between lg:gap-3"
-                                            >
-                                                <span>Request demo</span>
-                                                <ArrowRight
-                                                    size={20}
-                                                    aria-hidden
-                                                    className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
-                                                />
-                                            </Link>
-                                        </>
+                                        <BookedCallLink
+                                            templateType={templateType}
+                                            cluster={cluster}
+                                            landingPath={landingPath}
+                                            ctaLabel="Book a 15-minute call"
+                                            ctaLocation="shared_cta_card"
+                                            className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-5 py-4 text-base font-bold text-primary whitespace-nowrap transition-all hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12122a] motion-safe:hover:-translate-y-0.5 md:text-lg lg:justify-between lg:gap-3"
+                                        >
+                                            <span>Book a 15-minute call</span>
+                                            <ArrowRight
+                                                size={20}
+                                                aria-hidden
+                                                className="shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5"
+                                            />
+                                        </BookedCallLink>
                                     )}
                                 </div>
 

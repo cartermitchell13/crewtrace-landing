@@ -219,20 +219,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     Stop the payroll leakage today.
                                 </h3>
                                 <p className="text-lg md:text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed balance-text">
-                                    Book a free demo and see exactly how Crewtrace can save your business thousands of dollars every single month.
+                                    Book 15 minutes and see where verified time records could save your business money first.
                                 </p>
                                 <div className="flex flex-col items-center gap-4">
-                                    <Link
-                                        href="/contact"
-                                        className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-md shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
-                                    >
-                                        Get a Personalized Demo
-                                    </Link>
                                     <BookedCallLink
                                         templateType="blog_detail"
                                         cluster="blog"
                                         landingPath={`/blog/${slug}`}
-                                        className="text-base font-semibold text-background/90 underline-offset-2 hover:text-background hover:underline"
+                                        ctaLabel="Book a 15-minute call"
+                                        ctaLocation="blog_detail_final_cta"
+                                        className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-8 py-4 rounded-md shadow-[0_0_40px_rgba(var(--primary),0.3)] hover:shadow-[0_0_60px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95 transition-all text-lg min-w-[200px]"
                                     >
                                         Book a 15-minute call
                                     </BookedCallLink>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import BookedCallLink from "@/components/BookedCallLink";
 import { getSolutionSummaries } from "@/lib/solutions";
 import { getIndustrySummaries } from "@/lib/industries";
 import { industryIconByKey } from "@/lib/industry-icons";
@@ -207,29 +208,31 @@ export default function Navbar() {
                     >
                         ROI Calculator
                     </Link>
-                    <Link
-                        href="/pricing"
-                        className="px-2.5 xl:px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200"
-                    >
-                        Pricing
-                    </Link>
                 </div>
 
                 {/* CTA */}
                 <div className="flex items-center gap-2 lg:gap-3">
-                    <Link
-                        href="/contact"
+                    <BookedCallLink
+                        templateType="nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a call"
+                        ctaLocation="desktop_nav_secondary"
                         className="hidden lg:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                        Request a demo
-                    </Link>
-                    <Link
-                        href="https://www.crewtrace.app/signup"
+                        Book a call
+                    </BookedCallLink>
+                    <BookedCallLink
+                        templateType="nav"
+                        cluster="global"
+                        landingPath="/"
+                        ctaLabel="Book a 15-minute call"
+                        ctaLocation="desktop_nav_primary"
                         className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary px-4 xl:px-6 py-2.5 text-sm font-bold text-white whitespace-nowrap shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                        Sign up
+                        Book a 15-minute call
                         <ArrowRight size={16} className="hidden xl:block" />
-                    </Link>
+                    </BookedCallLink>
 
                     <button
                         type="button"
@@ -367,13 +370,17 @@ export default function Navbar() {
                                             className="object-cover"
                                         />
                                     </div>
-                                    <Link
-                                        href="/contact"
-                                        className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                                    >
-                                        Get a Demo
+                                        <BookedCallLink
+                                            templateType="nav"
+                                            cluster="industries_menu"
+                                            landingPath="/"
+                                            ctaLabel="Book a call"
+                                            ctaLocation="industries_menu_featured"
+                                            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-white transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                                        >
+                                        Book a call
                                         <ArrowRight className="w-4 h-4" />
-                                    </Link>
+                                    </BookedCallLink>
                                 </div>
                             </div>
                         </div>
@@ -490,16 +497,20 @@ export default function Navbar() {
                             <div className="bg-gradient-to-br from-primary to-primary/90 p-6 flex flex-col justify-center border-l border-foreground/5">
                                 <h4 className="text-lg font-bold text-white">Ready to get started?</h4>
                                 <div className="text-sm text-white mt-2 leading-relaxed">
-                                    Book a free demo and see how Crewtrace can save you thousands every month.
+                                    Book a 15-minute call and see where Crewtrace can help you recover payroll leakage first.
                                 </div>
                                 <div className="mt-4">
-                                    <Link
-                                        href="/contact"
+                                    <BookedCallLink
+                                        templateType="nav"
+                                        cluster="company_menu"
+                                        landingPath="/"
+                                        ctaLabel="Book a call"
+                                        ctaLocation="company_menu_cta"
                                         className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-bold text-primary transition-all hover:bg-white/90 motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                                     >
-                                        Get a Demo
+                                        Book a call
                                         <ArrowRight className="w-4 h-4" />
-                                    </Link>
+                                    </BookedCallLink>
                                 </div>
                             </div>
                         </div>
@@ -640,31 +651,31 @@ export default function Navbar() {
                     >
                         ROI Calculator
                     </Link>
-                    <Link
-                        href="/pricing"
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
-                    >
-                        Pricing
-                    </Link>
-
                     {/* Mobile CTAs */}
                     <div className="px-2 pt-2 border-t border-foreground/5 mt-1 pb-2">
-                        <Link
-                            href="https://www.crewtrace.app/signup"
+                        <BookedCallLink
+                            templateType="nav"
+                            cluster="global"
+                            landingPath="/"
+                            ctaLabel="Book a 15-minute call"
+                            ctaLocation="mobile_nav_primary"
                             onClick={() => setMobileOpen(false)}
                             className="mb-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            Sign up
+                            Book a 15-minute call
                             <ArrowRight size={16} />
-                        </Link>
-                        <Link
-                            href="/contact"
+                        </BookedCallLink>
+                        <BookedCallLink
+                            templateType="nav"
+                            cluster="global"
+                            landingPath="/"
+                            ctaLabel="Book a call"
+                            ctaLocation="mobile_nav_secondary"
                             onClick={() => setMobileOpen(false)}
                             className="flex w-full items-center justify-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                         >
-                            Request a demo
-                        </Link>
+                            Book a call
+                        </BookedCallLink>
                     </div>
                 </div>
             </div>
