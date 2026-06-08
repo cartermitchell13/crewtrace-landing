@@ -201,6 +201,14 @@ export default function Navbar() {
                         </button>
                     </div>
 
+                    {/* Pricing Link */}
+                    <Link
+                        href="/#pricing"
+                        className="px-2.5 xl:px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground rounded-md transition-all duration-200 whitespace-nowrap"
+                    >
+                        Pricing
+                    </Link>
+
                     {/* Calculator Link */}
                     <Link
                         href="/calculator"
@@ -632,6 +640,14 @@ export default function Navbar() {
                             </div>
                         </div>
                     </div>
+
+                    <Link
+                        href="/#pricing"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between px-4 py-3.5 hover:bg-foreground/[0.02] rounded-md transition-colors text-sm font-semibold text-foreground mb-1 bg-white/50"
+                    >
+                        Pricing
+                    </Link>
 
                     {/* ROI Calculator Link */}
                     <Link

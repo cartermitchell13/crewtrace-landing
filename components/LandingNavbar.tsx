@@ -9,6 +9,7 @@ import BookedCallLink from "@/components/BookedCallLink";
 const navLinks = [
     { label: "Features", href: "/features/gps-time-tracking" },
     { label: "Industries", href: "/industries" },
+    { label: "Pricing", href: "/#pricing" },
     { label: "Guides", href: "/guides" },
     { label: "Case Studies", href: "/case-studies" },
 ];
