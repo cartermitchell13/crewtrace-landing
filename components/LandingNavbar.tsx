@@ -46,16 +46,6 @@ export default function LandingNavbar() {
                         templateType="landing_nav"
                         cluster="global"
                         landingPath="/"
-                        ctaLabel="Book a call"
-                        ctaLocation="desktop_landing_nav_secondary"
-                        className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors px-2"
-                    >
-                        Book a call
-                    </BookedCallLink>
-                    <BookedCallLink
-                        templateType="landing_nav"
-                        cluster="global"
-                        landingPath="/"
                         ctaLabel="Book a 15-minute call"
                         ctaLocation="desktop_landing_nav_primary"
                         className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-md shadow-button hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all active:translate-y-[0px] active:translate-x-[0px] inline-flex items-center gap-2"
@@ -98,17 +88,6 @@ export default function LandingNavbar() {
                     >
                         Book a 15-minute call
                         <ArrowRight size={16} />
-                    </BookedCallLink>
-                    <BookedCallLink
-                        templateType="landing_nav"
-                        cluster="global"
-                        landingPath="/"
-                        ctaLabel="Book a call"
-                        ctaLocation="mobile_landing_nav_secondary"
-                        onClick={() => setMobileOpen(false)}
-                        className="mt-2 block w-full text-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-                    >
-                        Book a call
                     </BookedCallLink>
                 </div>
             </div>

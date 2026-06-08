@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import BookedCallLink from "@/components/BookedCallLink";
 
 const SHOW_HERO_VIDEO = false;
 
@@ -45,17 +46,24 @@ export default function Hero() {
                             Get My Free Payroll Leakage Audit
                             <ArrowRight size={18} aria-hidden />
                         </Link>
-                        <Link
-                            href="#payroll-leakage"
+                        <BookedCallLink
+                            templateType="home"
+                            cluster="home"
+                            landingPath="/"
+                            ctaLabel="Book a 15-min leakage review"
+                            ctaLocation="hero_secondary"
                             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-md border-2 border-primary bg-transparent font-bold text-sm text-primary sm:text-base transition-all hover:bg-primary/[0.06] motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            See Where Payroll Leaks
-                            <ArrowRight size={18} />
-                        </Link>
+                            Book a 15-Min Leakage Review
+                            <ArrowRight size={18} aria-hidden />
+                        </BookedCallLink>
                     </div>
 
                     <p className="mx-auto mt-4 sm:mt-6 max-w-md text-center text-sm font-medium text-foreground/60">
-                        No spreadsheet required. <span className="text-foreground/80">Estimate your leakage first, then decide whether Crewtrace fits.</span>
+                        Free audit takes about 60 seconds.{" "}
+                        <span className="text-foreground/80">
+                            Estimate your leakage first, then decide whether Crewtrace fits.
+                        </span>
                     </p>
                 </div>
 

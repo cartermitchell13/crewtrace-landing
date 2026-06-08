@@ -216,21 +216,11 @@ export default function Navbar() {
                         templateType="nav"
                         cluster="global"
                         landingPath="/"
-                        ctaLabel="Book a call"
-                        ctaLocation="desktop_nav_secondary"
-                        className="hidden lg:block rounded-md text-sm font-medium text-foreground/70 transition-colors hover:text-primary whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    >
-                        Book a call
-                    </BookedCallLink>
-                    <BookedCallLink
-                        templateType="nav"
-                        cluster="global"
-                        landingPath="/"
-                        ctaLabel="Book a 15-minute call"
+                        ctaLabel="Talk to us"
                         ctaLocation="desktop_nav_primary"
                         className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary px-4 xl:px-6 py-2.5 text-sm font-bold text-white whitespace-nowrap shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] transition-all motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                        Book a 15-minute call
+                        Talk to us
                         <ArrowRight size={16} className="hidden xl:block" />
                     </BookedCallLink>
 
@@ -657,24 +647,13 @@ export default function Navbar() {
                             templateType="nav"
                             cluster="global"
                             landingPath="/"
-                            ctaLabel="Book a 15-minute call"
+                            ctaLabel="Talk to us"
                             ctaLocation="mobile_nav_primary"
                             onClick={() => setMobileOpen(false)}
-                            className="mb-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3.5 text-sm font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(47,39,206,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                            Book a 15-minute call
+                            Talk to us
                             <ArrowRight size={16} />
-                        </BookedCallLink>
-                        <BookedCallLink
-                            templateType="nav"
-                            cluster="global"
-                            landingPath="/"
-                            ctaLabel="Book a call"
-                            ctaLocation="mobile_nav_secondary"
-                            onClick={() => setMobileOpen(false)}
-                            className="flex w-full items-center justify-center py-3 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-                        >
-                            Book a call
                         </BookedCallLink>
                     </div>
                 </div>
