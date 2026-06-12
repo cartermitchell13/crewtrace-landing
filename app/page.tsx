@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomeMobileClockInSection from "@/components/HomeMobileClockInSection";
 import HomePayrollLeakageStory from "@/components/HomePayrollLeakageStory";
 import FeatureGrid from "@/components/FeatureGrid";
 import ComplianceAudit from "@/components/ComplianceAudit";
@@ -41,6 +42,8 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
         />
         <Hero />
+        <SectionDivider />
+        <HomeMobileClockInSection />
         <SectionDivider />
         <HomePayrollLeakageStory />
         <SectionDivider />
