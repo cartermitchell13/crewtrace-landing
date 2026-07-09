@@ -7,7 +7,7 @@ export const siteConfig = {
     title: "Crew Tracking & Construction Time Tracking Software | GPS Verified | Crewtrace",
     description:
         "GPS-verified crew tracking and construction time tracking software. Crew location tracking at clock-in, geofenced time clock, payroll-ready exports — built for contractors running field crews.",
-    ogImage: "/images/og-ct.png",
+    ogImage: "/images/ct-new-og.png",
 };
 
 type CreatePageMetadataOptions = {
